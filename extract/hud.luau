@@ -14,6 +14,7 @@
 local place = require("@exelib/extract/place")
 local colors = require("@exelib/extract/colors")
 local texts = require("@exelib/extract/texts")
+local glyphs = require("@exelib/extract/glyphs")
 local chatbox = require("@exelib/extract/chatbox")
 local versions = require("./versions")
 local cards = require("./cards")
@@ -46,27 +47,16 @@ function hud.palette(rom: Rom, a: number): Palette
     return colors.masked(gba.palette(rom, a))
 end
 
--- What the first `n` glyphs of a font draw: the encoding's names for them (the cell font's, then the dialogue
--- font's), else each one's number in brackets.
-local function glyph_names(cell: { string }, dialogue: { string }, n: number): { string }
-    local out: { string } = {}
-    for k = 0, n - 1 do
-        local name = if k < #cell then cell[k + 1] else dialogue[k - #cell + 1]
-        table.insert(out, name or string.format("[%03x]", k))
-    end
-    return out
-end
-
 -- `rom`'s 8x16 font: the glyphs its release's encoding (`cell`, `dialogue`) names, no more than the font has, with
 -- their characters.
 function hud.font(rom: Rom, cell: { string }, dialogue: { string }): (Tiles, { string })
     local n = math.min(#cell + #dialogue, FONT_GLYPHS)
-    return gba.tiles(rom, at(rom, FONT), 0x40 * n), glyph_names(cell, dialogue, n)
+    return gba.tiles(rom, at(rom, FONT), 0x40 * n), glyphs.chars(cell, dialogue, n)
 end
 
 -- `rom`'s dialogue font, its glyphs drawing the encoding's characters.
 function hud.dialogue_font(rom: Rom, cell: { string }, dialogue: { string }): DialogueFont
-    local chars = glyph_names(cell, dialogue, DIALOGUE_GLYPHS)
+    local chars = glyphs.chars(cell, dialogue, DIALOGUE_GLYPHS)
     return font.dialogue(rom, at(rom, DIALOGUE_FONT), at(rom, DIALOGUE_ADVANCES), DIALOGUE_GLYPHS, 4, chars)
 end
 

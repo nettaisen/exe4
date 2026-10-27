@@ -9,38 +9,20 @@ local names = require("@exelib/extract/names")
 -- The language of the Japanese ROMs' words, as the pack names its lettering.
 local JAPANESE = "ja"
 
--- Fail if two keys of `entries` (in key order) have one number, as exe4-compat says it: the later key first.
-local function unique(
-    entries: { [string]: any },
-    number: (any) -> number,
-    said: (key: string, other: string, n: number) -> string
-)
-    local seen: { [number]: string } = {}
-    for _, key in names.sorted(entries) do
-        local n = number(entries[key])
-        local other = seen[n]
-        if other ~= nil then
-            error(said(key, other, n), 0)
-        end
-        seen[n] = key
-    end
-end
-
 return function(): AssetNames
     local assets = data("compat/assets.toml")
     local chips = data("compat/chips.toml")
     local text = data("compat/text.toml")
-    unique(chips, function(c: any): number
+    -- (As exe4-compat says it: the later key first.)
+    names.unique("chips.toml", chips, function(c: any): number
         return c.id
-    end, function(key: string, other: string, n: number): string
-        return string.format("chips.toml: %s and %s are both chip 0x%03x", key, other, n)
+    end, function(earlier: string, later: string, n: number): string
+        return string.format("chips.toml: %s and %s are both chip 0x%03x", later, earlier, n)
     end)
     local sprites = names.sprites(assets.sprites or {})
     local sounds: { [string]: number } = assets.sounds or {}
-    unique(sounds, function(n: any): number
-        return n
-    end, function(key: string, other: string, n: number): string
-        return string.format("assets.toml: sounds %s and %s are both 0x%03x", key, other, n)
+    names.unique("assets.toml: sounds", sounds, nil, function(earlier: string, later: string, n: number): string
+        return string.format("assets.toml: sounds %s and %s are both 0x%03x", later, earlier, n)
     end)
     local jp = text.jp or {}
     if #text.glyphs > text.first_control or #(jp.glyphs or {}) > text.first_control then

@@ -20,11 +20,11 @@
 local place = require("@exelib/extract/place")
 local colors = require("@exelib/extract/colors")
 local patches = require("@exelib/extract/patches")
+local buttons = require("@exelib/extract/buttons")
 local hud = require("./hud")
 local versions = require("./versions")
 local cards = require("./cards")
 
-local band, rshift = bit32.band, bit32.rshift
 local at = place.at
 local pointer = place.pointer
 
@@ -186,28 +186,6 @@ function custom.picture(rom: Rom, d: Details): Picture
     return { tiles = tiles, palette = palette(rom, at(rom, d.palette)) }
 end
 
--- A byte as a signed one.
-local function signed(b: number): number
-    return if b >= 0x80 then b - 0x100 else b
-end
-
--- A cursor's corners from a table of them at `a`: two frames of four, each { y, x, hflip, vflip }.
-local function cursor_corners(rom: Rom, a: number): { { { any } } }
-    local frames: { { { any } } } = {}
-    for f = 0, 1 do
-        local four: { { any } } = {}
-        for k = 0, 3 do
-            local w = rom:u32(a + 16 * f + 4 * k)
-            local hi = rshift(w, 16)
-            local y, x = signed(band(w, 0xFF)), signed(band(hi, 0xFF))
-            local corner: { any } = { y, x, band(hi, 0x1000) ~= 0, band(hi, 0x2000) ~= 0 }
-            table.insert(four, corner)
-        end
-        table.insert(frames, four)
-    end
-    return frames
-end
-
 -- The emblem's frames and steps (0x08020078: a pointer a step, a frame's six entries, 1 a hold, 0 the end; the frames
 -- in the order they first show). The first step is the open's draw of the first frame: the turn's are the rest.
 local function window_emblem(rom: Rom): WindowEmblem
@@ -327,7 +305,7 @@ function custom.custom(set: Set, names: AssetNames, chip_versions: { [number]: s
         cursor = {
             x = UNITE_CURSOR.x,
             y = UNITE_CURSOR.y,
-            corners = cursor_corners(rom, at(rom, UNITE_CORNERS)),
+            corners = buttons.corners(rom, at(rom, UNITE_CORNERS)),
         },
         palettes = { unite_picture.palette :: Palette },
         picture = unite_picture,
@@ -352,7 +330,7 @@ function custom.custom(set: Set, names: AssetNames, chip_versions: { [number]: s
         cursor = {
             x = ROW_BUTTON_CURSOR.x,
             y = ROW_BUTTON_CURSOR.y,
-            corners = cursor_corners(rom, at(rom, ROW_BUTTON_CORNERS)),
+            corners = buttons.corners(rom, at(rom, ROW_BUTTON_CORNERS)),
         },
         palettes = { shuffle_picture.palette :: Palette },
         picture = shuffle_picture,
@@ -365,7 +343,7 @@ function custom.custom(set: Set, names: AssetNames, chip_versions: { [number]: s
     local map = gba.map(rom, at(rom, WINDOW_MAP), MAP_CELLS)
     local window_patches = at(rom, WINDOW_PATCHES)
     return {
-        layout = layout(cursor_corners(rom, at(rom, OK_CORNERS))),
+        layout = layout(buttons.corners(rom, at(rom, OK_CORNERS))),
         -- The window's label: CHIP SELECT over the slots (tiles 0x22 to 0x28, color 4 on 1).
         labels = { { name = "chip-select", first = 0x22, last = 0x28, top = 3, bottom = 6, letters = { 4 } } },
         buttons = { { name = custom.SOUL_BUTTON, value = soul }, { name = custom.REDEAL_BUTTON, value = redeal } },
