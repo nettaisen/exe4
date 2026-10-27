@@ -25,7 +25,7 @@ type State = {
     holder: Object?,
 }
 
-local SPRITE = asset.sprite("sparkman")
+local SPRITE = require("./sparkman_sprite")
 local SOUND = asset.sound("spark")
 -- The ticks to the next spark (0x080D11AC's row 4), twice that when it moves on to another column.
 local DELAY = 5

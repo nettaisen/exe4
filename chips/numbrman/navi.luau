@@ -12,16 +12,18 @@
 
 local dice = require("../../objects/dice")
 local navi_chips = require("../../lib/navi_chips")
+local numberman_face_sprite = require("./numberman_face_sprite")
+local numberman_sprite = require("./numberman_sprite")
 
 local FACE = require("@exelib/numbrman/face").make {
     id = "numbrman/face",
-    sprite = asset.sprite("numberman-face"),
+    sprite = numberman_face_sprite,
     follows_in_fight = true,
 }
 
 local NUMBERMAN = require("@exelib/numbrman/navi").make {
     id = "numbrman/navi",
-    sprite = asset.sprite("numberman"),
+    sprite = numberman_sprite,
     appear = asset.sound("appear"),
     throw = asset.sound("minibomb-throw"),
     face = FACE,

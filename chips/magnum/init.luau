@@ -12,6 +12,8 @@ local collision = require("../rules/collision")
 local common_controller = require("@exelib/magnum/controller")
 local common_gunner = require("@exelib/magnum/gunner")
 local sparks = require("../lib/sparks")
+local explosion_sprite = require("../sprites/explosion")
+local search_scope_sprite = require("./serchman/search_scope_sprite")
 
 local GUNNER = common_gunner.make {
     id = "magnum/gunner",
@@ -23,8 +25,8 @@ local GUNNER = common_gunner.make {
     blast = asset.sound("heat-burst"),
     crack = asset.sound("panel-crack"),
     fire_anim = 0x10,
-    sight = new.effect { sprite = asset.sprite("search-scope"), anim = 0, palette = 0 },
-    explosion = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
+    sight = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
     spark = sparks.heavy,
     is = collision.thrown,
     hits = collision.hits_navis,

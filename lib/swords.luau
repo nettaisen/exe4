@@ -12,6 +12,7 @@
 
 local attachment = require("../objects/attachment")
 local slash = require("@exelib/swords/slash")
+local sword_sprite = require("../sprites/sword")
 
 local swords = {}
 
@@ -26,7 +27,7 @@ local function in_protosoul(me: Object): boolean
 end
 
 -- The blade a navi holds (attachment row 3, 0x080CD524: 0c-00 in palette 0).
-swords.blade = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+swords.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 
 -- The swings' sounds (0x080EB612).
 swords.swing = asset.sound("sword-swing")

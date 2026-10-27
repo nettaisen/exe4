@@ -10,13 +10,15 @@ local attachment = require("../../../../objects/attachment")
 local collision = require("../../../../rules/collision")
 local flame_common = require("@exelib/elemrage/flame")
 local sparks = require("../../../../lib/sparks")
+local rage_claw_sprite = require("../../../../sprites/rage_claw")
+local rage_flame_sprite = require("../../../../sprites/rage_flame")
 
 local flame = {}
 
 -- The flame (attack object 9, 0x080CE2D8): its sprite (0c-0e); FireSoul's leave no panel and send none beside.
 local FLAME = flame_common.make_kind {
     id = "firesoul/flame",
-    sprite = asset.sprite("rage-flame"),
+    sprite = rage_flame_sprite,
     spreads = false,
     attack = collision.attack,
     attack_480 = collision.attack_480,
@@ -30,7 +32,7 @@ local OFFSET, HEIGHT = -4, 26
 -- Its flames' time (the parameters' second byte, 0x1E).
 local TICKS = 30
 
-local CLAW = attachment.look { sprite = asset.sprite("rage-claw"), palette = 0 }
+local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0 }
 local ROAR = asset.sound("roar")
 local ANIM = 13
 local LAST_TICK, RECOVER_TICKS = 30, 5

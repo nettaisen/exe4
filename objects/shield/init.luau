@@ -11,7 +11,7 @@ local common = require("@exelib/rflectr/shield")
 
 local shield = {}
 
-local SPRITE = asset.sprite("reflector-shield")
+local SPRITE = require("@self/reflector_shield_sprite")
 local FADE_TICKS = 14
 
 local made = common.make {

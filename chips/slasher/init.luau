@@ -17,8 +17,9 @@ local attachment = require("../objects/attachment")
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 local HIT = { hits = collision.hits_navis, is = collision.slash }
 
 type State = {

@@ -19,7 +19,8 @@ type State = {
     swirl: Object?,
 }
 
-local SPRITE = asset.sprite("windman")
+local SPRITE = require("./windman_sprite")
+local windman_swirl_sprite = require("./windman_swirl_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The swirl on his head (actor #0x5C's sprite row 2, 10-28; its Param2 1: with the fight on, it follows him from its
@@ -27,7 +28,7 @@ local SOUND_APPEAR = asset.sound("appear")
 -- never sets one, so it stays at 0, as rows 0 and 1 keep theirs.)
 local SWIRL = require("@exelib/numbrman/face").make {
     id = "windman/swirl",
-    sprite = asset.sprite("windman-swirl"),
+    sprite = windman_swirl_sprite,
     follows_in_fight = true,
 }
 

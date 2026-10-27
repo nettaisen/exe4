@@ -21,6 +21,7 @@
 local collision = require("../rules/collision")
 local common = require("@exelib/boulder")
 local rock = require("../lib/rock")
+local boulder_sprite = require("@self/boulder_sprite")
 
 local boulder = {}
 
@@ -32,7 +33,7 @@ end
 
 boulder.kind = common.make {
     id = "boulder",
-    sprite = asset.sprite("boulder"),
+    sprite = boulder_sprite,
     debris = rock.debris,
     effects = { puff = rock.effects.puff, splash = rock.effects.splash },
     is = collision.neutral_body,

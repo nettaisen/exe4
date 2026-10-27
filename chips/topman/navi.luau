@@ -21,13 +21,14 @@ export type State = {
     palette: number,
 }
 
-local SPRITE = asset.sprite("topman")
+local SPRITE = require("./topman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("top-spin")
 local SOUND_LEAP = asset.sound("top-leap")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 local SOLID = 0x10
 -- What a panel his top lands on must have none of: bodies and objects.
 local OCCUPIED = 0x0F80_0000

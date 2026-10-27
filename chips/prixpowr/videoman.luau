@@ -17,12 +17,13 @@ type State = {
     held: Object?,
 }
 
-local SPRITE = asset.sprite("videoman")
+local SPRITE = require("../videoman/videoman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PROJECTOR = asset.sound("projector")
 local SOUND_SILHOUETTE = asset.sound("place")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 -- His projector's light (attachment row 0x2B: his own sheet, palette 0), in its animation 18, animating while dimmed.
 local LIGHT = attachment.look { sprite = SPRITE, palette = 0 }
 local LIGHT_ANIM = 18

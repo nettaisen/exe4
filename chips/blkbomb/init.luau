@@ -18,12 +18,14 @@ local rising_bubble = require("../objects/rising_bubble")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
 
-local SPRITE = asset.sprite("black-bomb")
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
+local SPRITE = require("@self/black_bomb_sprite")
+local bomb_sprite = require("../sprites/bomb")
+local explosion_sprite = require("../sprites/explosion")
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
 -- What the navi holds while throwing one: the bomb's sprite, palette 4 (attachment row 0x2A).
-local HELD = attachment.look { sprite = asset.sprite("bomb"), palette = 4 }
+local HELD = attachment.look { sprite = bomb_sprite, palette = 4 }
 
 local destroyed: (Object) -> ()
 

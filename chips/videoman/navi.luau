@@ -18,10 +18,11 @@ type State = {
     palette: number,
 }
 
-local SPRITE = asset.sprite("videoman")
+local SPRITE = require("./videoman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 
 local APPEAR, SWING = 0x0, 0x4
 

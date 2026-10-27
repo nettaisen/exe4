@@ -20,7 +20,7 @@ type State = {
     sandy: boolean,
 }
 
-local SPRITE = asset.sprite("windman-tornado")
+local SPRITE = require("./windman_tornado_sprite")
 local SOUND = asset.sound("tornado")
 local SPEED = 0x4_0000
 local DOWN, ACROSS, UP, BACK = 0x0, 0x4, 0x8, 0xC

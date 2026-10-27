@@ -12,6 +12,8 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
 local gust = require("../../objects/gust")
 local panels = require("@exelib/panels")
+local explosion_sprite = require("../../sprites/explosion")
+local fan_sprite = require("./fan_sprite")
 
 local fan = {}
 
@@ -41,12 +43,12 @@ end
 
 local made = common.make {
     id = "wind/fan",
-    sprite = asset.sprite("fan"),
+    sprite = fan_sprite,
     appear_sound = asset.sound("appear"),
     blow_sound = asset.sound("wind"),
     break_sound = asset.sound("hit-bomb-1"),
     -- 0x080D6660: effect row 0 (14-00) where it stands.
-    explosion = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     spawn_gust = function(x: number, y: number, alliance: number, _flip: number, how: GustHow, damage: number): Object?

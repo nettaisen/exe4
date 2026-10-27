@@ -7,9 +7,10 @@
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 local HIT = { hits = collision.hits_navis, is = collision.slash }
-local LINE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 3, palette = 0 }
+local LINE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 3, palette = 0 }
 
 local ftrsword: Chip = {
     action = swords.slash {

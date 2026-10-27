@@ -8,6 +8,7 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/bugcurse")
+local bug_curse_sprite = require("@self/bug_curse_sprite")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
@@ -24,7 +25,7 @@ local chip: Chip = {
     dimming = common.make {
         controller_id = "bugcurse/controller",
         curse_id = "bugcurse/curse",
-        sprite = asset.sprite("bug-curse"),
+        sprite = bug_curse_sprite,
         sound = asset.sound("curse"),
         untouched = { "invisible", "submerged", "flashing" },
         bugs = { 0x02FF, 0x03FF, 0x04FF, 0x06FF },

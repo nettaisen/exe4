@@ -3,7 +3,7 @@
 -- 0x080E5020): where its VideoMan projects him, and where its LaserMan was as he goes. A copy that blinks for its
 -- ticks, with no shadow or color shader, facing its maker's side's way.
 
-local SPRITE = asset.sprite("laserman-silhouette")
+local SPRITE = require("./laserman_silhouette_sprite")
 
 -- The silhouette on (x, y)'s center for `ticks`, for `maker`.
 local function show(maker: Object, x: number, y: number, ticks: number)

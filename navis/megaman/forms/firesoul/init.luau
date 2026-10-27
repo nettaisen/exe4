@@ -14,7 +14,10 @@ local chip = require("@self/chip").firesoul
 local grass = require("@self/grass")
 local soul = require("./soul")
 
-local FLAMES = asset.sprite("firesoul-flame")
+local FLAMES = require("@self/firesoul_flame_sprite")
+local fireman_flame_sprite = require("../../../chips/fireman/fireman_flame_sprite")
+local fireman_sprite = require("../../../chips/fireman/fireman_sprite")
+local firesoul_sprite = require("@self/firesoul_sprite")
 local overlay = soul.overlay(FLAMES)
 
 local form: FormDef = {
@@ -24,8 +27,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("fireman"), attachment.look { sprite = asset.sprite("fireman-flame"), palette = 0 }),
-    sprite = asset.sprite("firesoul"),
+    image = soul.image(fireman_sprite, attachment.look { sprite = fireman_flame_sprite, palette = 0 }),
+    sprite = firesoul_sprite,
     element = "fire",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon, a_charge = charged_chip.weapon },

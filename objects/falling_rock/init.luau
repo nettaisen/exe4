@@ -21,7 +21,7 @@ export type FallingRock = {
 }
 
 -- The rock's sheet (10-0E).
-local SPRITE = asset.sprite("falling-rock")
+local SPRITE = require("@self/falling_rock_sprite")
 
 -- A user's falling rock: its kind (`id`) and its chips' (`id`'s "-chip").
 function falling_rock.make(id: string): FallingRock

@@ -23,6 +23,13 @@ local support_chips = require("../chips/supports")
 local supports = require("../lib/supports/controller")
 local underground_hole = require("../objects/underground_hole")
 local zeroed = require("../chips/zeroed").zeroed
+local blindness_sprite = require("./blindness_sprite")
+local confusion_sprite = require("./confusion_sprite")
+local full_synchro_aura_sprite = require("./full_synchro_aura_sprite")
+local heal_sprite = require("../sprites/heal")
+local hit_marker_sprite = require("./hit_marker_sprite")
+local hit_sparks_sprite = require("../sprites/hit_sparks")
+local rock_sprite = require("../objects/rock/rock_sprite")
 
 local roles: RolesSpec = {
     chips = {
@@ -132,15 +139,15 @@ local roles: RolesSpec = {
     },
     effects = {
         -- HP recovered (the heal, 0x0800ABCA: effect row 7, 0x080E16B4).
-        recovery = new.effect { sprite = asset.sprite("heal"), anim = 0, palette = 0 },
+        recovery = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
         -- The flash where a side cut in (0x08008BB6, from the cut-in, 0x08010CB0: effect row 0x22, 14-07's animation
         -- 0, 120 pixels up at panel (2 + 3 x the other side, 4)).
-        cut_in_flash = new.effect { sprite = asset.sprite("hit-marker"), anim = 0, palette = 0 },
+        cut_in_flash = new.effect { sprite = hit_marker_sprite, anim = 0, palette = 0 },
         -- A sprung trap's mark (0x0800815C: effect row 0x48, 14-05's animation 7): AntiNavi's over the turned chip.
-        trap_mark = new.effect { sprite = asset.sprite("hit-sparks"), anim = 7, palette = 0 },
+        trap_mark = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 },
         -- What an obstacle encased in ice or a bubble flickers with (0x08011764: effect row 0x6E, the rock sheet's
         -- ice block, 10-02's animation 2).
-        encased = new.effect { sprite = asset.sprite("rock"), anim = 2, palette = 0 },
+        encased = new.effect { sprite = rock_sprite, anim = 2, palette = 0 },
     },
     hooks = {
         -- The first barrier (the navi's init, 0x0800D892: NaviStats +0x21, FstBarr's and the patch cards' aura): the
@@ -165,14 +172,14 @@ local roles: RolesSpec = {
     },
     sprites = {
         -- The Full Synchro aura (actor object 0x5E, 0x080CD1A8: 14-16, EXE5's and EXE6's numbers too).
-        full_synchro_aura = asset.sprite("full-synchro-aura"),
+        full_synchro_aura = full_synchro_aura_sprite,
         -- The status visuals over a navi (effect 6's rows, 0x080E22B8: 14-0B, 14-09; it has no third row, and the status
         -- routine spawns none for the immobilized).
-        confusion = asset.sprite("confusion"),
-        blindness = asset.sprite("blindness"),
+        confusion = confusion_sprite,
+        blindness = blindness_sprite,
         -- The mark over a navi a weakness hit damaged (effect 0x6B, 0x080E9900: 14-07, its animation 0 whatever the
         -- spawn's).
-        hit_marker = asset.sprite("hit-marker"),
+        hit_marker = hit_marker_sprite,
     },
     music = {
         -- The battle start's song by the battle's type (0x080074A4, the table 0x08007510: types 0x46 and 0x47 song

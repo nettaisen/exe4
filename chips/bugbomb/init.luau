@@ -21,11 +21,12 @@ local rising_bubble = require("../objects/rising_bubble")
 local statuses = require("../rules/status")
 local trajectory = require("../lib/trajectory")
 
-local EXPLOSION = asset.sprite("explosion")
+local EXPLOSION = require("../sprites/explosion")
+local bomb_sprite = require("../sprites/bomb")
 -- The bug kinds it may raise (0x080DC134).
 local BUG_KINDS: { number } = { 1, 2, 3, 4, 6, 8 }
 -- What the navi holds while throwing one: the bomb (attachment row 4) in its animation 4.
-local HELD = attachment.look { sprite = asset.sprite("bomb"), palette = 0 }
+local HELD = attachment.look { sprite = bomb_sprite, palette = 0 }
 local HELD_ANIM = 4
 
 -- 0x080DC0F8: one of the kinds at random, raised by code 0xFF.
@@ -35,7 +36,7 @@ local function pick_bug(me: Object)
 end
 
 local KIND = common.make_kind("bugbomb/bomb", {
-    sprite = asset.sprite("bomb"),
+    sprite = bomb_sprite,
     anim = 5,
     is = collision.own_object,
     hit_by = collision.hit_by_other_side_or_blockers,

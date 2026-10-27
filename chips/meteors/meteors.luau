@@ -19,6 +19,8 @@ local falling_meteor = require("@exelib/meteors/falling_meteor")
 local marker = require("@exelib/meteors/marker")
 local panels = require("@exelib/panels")
 local sparks = require("../../lib/sparks")
+local burst_sprite = require("../../sprites/burst")
+local meteor_sprite = require("./meteor_sprite")
 
 local meteors = {}
 
@@ -27,11 +29,11 @@ local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_na
 
 -- (ShotStar's meteors are this kind too, of row 1: chips/shotstar.)
 local METEOR = falling_meteor.make_kind("meteor", {
-    sprite = asset.sprite("meteor"),
+    sprite = meteor_sprite,
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     spark = sparks.of_element,
     -- Effect row 6 (0x080E1698): 14-0a.
-    burst = new.effect { sprite = asset.sprite("burst"), anim = 0, palette = 0 },
+    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 },
     marker = marker.make_kind("meteors/marker"),
     hit_on = "landing",
     marker_takes_side = false,

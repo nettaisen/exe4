@@ -17,6 +17,8 @@
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
 local statuses = require("../../rules/status")
+local puff_sprite = require("../../sprites/puff")
+local shademan_sprite = require("./shademan_sprite")
 
 -- His crush's figure from its panel's center: its X's and Y's whole parts 8 and 12 less (two halfword stores).
 local function place(me: Object)
@@ -30,7 +32,7 @@ end
 
 local CRUSH = require("@exelib/shademan/crush").make {
     id = "shademan/crush",
-    sprite = asset.sprite("shademan"),
+    sprite = shademan_sprite,
     sound = asset.sound("shade-crush"),
     attack = collision.piercing,
     hits = collision.hits_navis,
@@ -44,7 +46,7 @@ local DIRECTIONS: { number } = { 0x40, 0x80, 0x20, 0x10 }
 
 local SHADEMAN = require("@exelib/shademan/navi").make {
     id = "shademan/navi",
-    sprite = asset.sprite("shademan"),
+    sprite = shademan_sprite,
     appear_anim = 0,
     call_anim = 3,
     appear = asset.sound("appear"),
@@ -65,7 +67,7 @@ local SHADEMAN = require("@exelib/shademan/navi").make {
         return { palette = 0, hit_mod = 3, status = nil, bug = 0x0D, bug_arg = direction }
     end,
     bows = false,
-    puff = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
 }
 
 -- 0x080BAF1A: ShadeMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position

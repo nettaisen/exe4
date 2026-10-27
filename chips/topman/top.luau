@@ -22,11 +22,12 @@ export type State = {
     hit_at: number,
 }
 
-local SPRITE = asset.sprite("topman")
+local SPRITE = require("./topman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SPIN = asset.sound("boomerang")
 -- The puff it goes in over a panel that isn't solid (effect row 0x15).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
 local SOLID = 0x10
 local WAIT, SPIN = 0x0, 0x4
 -- Its period, and its speeds across and along (0x080D1FA0: 18 ticks a column of 40 pixels, a row of 24, by

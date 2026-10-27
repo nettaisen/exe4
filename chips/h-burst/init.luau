@@ -15,16 +15,18 @@ local burst = require("@exelib/h_burst/burst")
 local collision = require("../rules/collision")
 local spreader = require("./spreader/spreader")
 local spreaders = require("./spreader")
+local pink_flash_sprite = require("../sprites/pink_flash")
+local spreader_sprite = require("./spreader/spreader_sprite")
 
 local SHOT = burst.make_kind("h-burst/burst", {
     probe = collision.nothing,
     is = collision.attack,
     hits = collision.hits_navis,
-    explosion = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 2 },
+    explosion = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 },
 })
 
 local LOOK: HyperBurstLook = {
-    spreader = attachment.look { sprite = asset.sprite("spreader"), palette = 0 },
+    spreader = attachment.look { sprite = spreader_sprite, palette = 0 },
     hold = spreader.hold,
     slot = "related",
     sound = asset.sound("spreader"),

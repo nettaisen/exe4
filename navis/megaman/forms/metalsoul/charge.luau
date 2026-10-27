@@ -10,6 +10,7 @@
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
+local burst_sprite = require("../../../../sprites/burst")
 
 local charge = {}
 
@@ -21,7 +22,7 @@ local STRIKE_AT, SWING_END, RECOVER_TICKS = 10, 17, 30
 local STRIKE_Z = 16 * 0x10000
 local HIT_MOD = 0x23
 -- What a solid panel shows: effect row 6 (0x080E1698, through 0x080E18EE: 14-0a, at the panel's center, height 0).
-local BURST = new.effect { sprite = asset.sprite("burst"), anim = 0, palette = 0 }
+local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0 }
 local SHAKE, SHAKE_TICKS = 0, 30
 local SOUND_SWING = asset.sound("metal-fist")
 local SOUND_PUNCH = asset.sound("metal-punch")

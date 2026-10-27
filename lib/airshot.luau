@@ -9,11 +9,12 @@
 local attachment = require("../objects/attachment")
 local common = require("@exelib/airshot")
 local projectile = require("./projectile")
+local air_shooter_sprite = require("../sprites/air_shooter")
 
 local airshot = {}
 
 -- The air shooter (attachment row 9, 0x080CD524: 0c-18 in palette 0).
-airshot.shooter = attachment.look { sprite = asset.sprite("air-shooter"), palette = 0 }
+airshot.shooter = attachment.look { sprite = air_shooter_sprite, palette = 0 }
 
 -- The shooter's animation: NaviStats +0x23, the navi's number (MegaMan's 0).
 local NAVI_NUMBER = 0

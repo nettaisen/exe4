@@ -21,14 +21,15 @@ type State = {
     gun: Object?,
 }
 
-local SPRITE = asset.sprite("aquaman")
+local SPRITE = require("./aquaman_sprite")
+local aquaman_spout_sprite = require("./aquaman_spout_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The spout on his head (actor #0x5C's sprite row 1, 10-0C; its Param2 1: with the fight on, it follows him from its
 -- first update).
 local SPOUT = require("@exelib/numbrman/face").make {
     id = "aquaman/spout",
-    sprite = asset.sprite("aquaman-spout"),
+    sprite = aquaman_spout_sprite,
     follows_in_fight = true,
 }
 

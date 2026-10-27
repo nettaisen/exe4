@@ -7,11 +7,12 @@
 local spawners = require("../lib/spawners")
 local tower = require("../objects/tower")
 local towers = require("../lib/towers")
+local geyser_sprite = require("./geyser/geyser_sprite")
 
 -- The aqua tower (the towers' row 0): 0c-25, animations 0, 1 and 2 for 12, 4 and 9 ticks; hit modifier 3; sound 0x120.
 local AQUA_TOWER = tower.make {
     id = "aquaup/tower",
-    sprite = asset.sprite("geyser"),
+    sprite = geyser_sprite,
     steps = { { anim = 0, ticks = 0x0B }, { anim = 1, ticks = 3 }, { anim = 2, ticks = 8 } },
     hit_mod = 3,
     sound = asset.sound("geyser"),

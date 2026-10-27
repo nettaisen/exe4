@@ -18,7 +18,7 @@ local water_gun = {}
 -- What AquaMan keeps it in (his +0x64, the word its +0x60 points at).
 export type Holder = { gun: Object? }
 
-local SPRITE = asset.sprite("water-gun")
+local SPRITE = require("./water_gun_sprite")
 local SOUND_UP = asset.sound("tops")
 local SOUND_SPRAY = asset.sound("water-gun")
 local SOLID = 0x10

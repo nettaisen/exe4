@@ -1,0 +1,28 @@
+--!strict
+-- The wood-tower sprite: its animations, each its frames' durations in ticks.
+return asset.sprite("wood-tower", {
+    { 1, 1, 3, 4, 2 },
+    { 2, 2, 2, 2, 2 },
+    { 2, 2, 2, 2, 2, 2, 2, 2, 2, 10 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+    { 1 },
+})

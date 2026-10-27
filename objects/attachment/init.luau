@@ -8,6 +8,7 @@
 -- look (`attachment.look { sprite, palette, lift }`, a row); `attachment.attach(owner, look, slot, anim)`.
 
 local slot = require("@exelib/slot")
+local muzzle_flash_sprite = require("../sprites/muzzle_flash")
 
 local attachment = {}
 
@@ -104,6 +105,6 @@ function attachment.attach(owner: Object, look: AttachmentLook, which: Slot, ani
 end
 
 -- The buster's muzzle flash (row 0x10: 0c-06), which the buster and the charged shot show (0x080EB396, 0x080ECC96).
-attachment.muzzle_flash = attachment.look { sprite = asset.sprite("muzzle-flash"), palette = 0 }
+attachment.muzzle_flash = attachment.look { sprite = muzzle_flash_sprite, palette = 0 }
 
 return attachment

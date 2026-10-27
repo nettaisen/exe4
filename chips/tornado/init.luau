@@ -10,7 +10,7 @@ local navicust = require("../rules/navicust")
 local statuses = require("../rules/status")
 local tornado = require("@self/tornado")
 
-local FAN = asset.sprite("hand-fan")
+local FAN = require("@self/hand_fan_sprite")
 local TICKS = 0x20
 
 -- Tornado's blow (0x080D3130): one tornado (its parameters: the first 1, palette 0; no status; 0x20 ticks).

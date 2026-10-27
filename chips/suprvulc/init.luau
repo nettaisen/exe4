@@ -9,13 +9,15 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("./vulcan/vulcan")
+local vulcan_hit_sprite = require("./vulcan/vulcan_hit_sprite")
+local vulcan_sprite = require("./vulcan/vulcan_sprite")
 
-local GUN = attachment.look { sprite = asset.sprite("vulcan"), palette = 0 }
+local GUN = attachment.look { sprite = vulcan_sprite, palette = 0 }
 
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 1 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1 },
     single = true,
 }
 

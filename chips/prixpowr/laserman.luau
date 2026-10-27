@@ -16,7 +16,7 @@ type State = {
     controller: Object?,
 }
 
-local SPRITE = asset.sprite("laserman")
+local SPRITE = require("../laserman/laserman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- His laser's course (its first parameter, 0x080CBDBC).

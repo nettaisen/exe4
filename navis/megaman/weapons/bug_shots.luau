@@ -18,6 +18,7 @@ local collision = require("../../../rules/collision")
 local regions = require("@exelib/regions")
 local rock = require("../../../objects/rock")
 local sparks = require("../../../lib/sparks")
+local bubble_sprite = require("./bubble_sprite")
 
 local bug_shots = {}
 
@@ -39,7 +40,7 @@ local PLACE_SOUND = asset.sound("place")
 local CUBE_WAIT, CUBE_RECOVER = 4, 0x1E
 
 -- The bubble (attachment row 0x16), its sound, its hit.
-local BUBBLE = attachment.look { sprite = asset.sprite("bubble"), palette = 0, lift = 1 }
+local BUBBLE = attachment.look { sprite = bubble_sprite, palette = 0, lift = 1 }
 local BUBBLE_SOUND = asset.sound("arrive")
 local BUBBLE_Z = 0x10_0000
 local BUBBLE_HIT_MOD = 1

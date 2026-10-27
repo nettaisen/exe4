@@ -30,12 +30,13 @@ type State = {
     count: number,
 }
 
-local SPRITE = asset.sprite("coldman")
+local SPRITE = require("./coldman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FOUND = asset.sound("place")
 local SOUND_PUNCH = asset.sound("coldman-punch")
 -- A puff 16 pixels above him as he goes (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 local SOLID = 0x10
 -- Bodies and blockers: a panel he stands on behind an obstacle, or forms his cube on, has none.
 local OCCUPIED = 0x0F80_0000

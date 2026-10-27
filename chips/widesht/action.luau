@@ -10,18 +10,20 @@
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local wave = require("@exelib/widesht/wave")
+local wide_shooter_sprite = require("./wide_shooter_sprite")
+local wide_wave_sprite = require("./wide_wave_sprite")
 
 local widesht = {}
 
 -- EXE4's wide wave (attack object #0x3B, 0x080D4914): 10-1d, its sound 0xE7, hitting navis.
 local WAVE = wave.make_kind {
     id = "widesht/wave",
-    sprite = asset.sprite("wide-wave"),
+    sprite = wide_wave_sprite,
     sound = asset.sound("wide-shot"),
     target = collision.hits_navis,
 }
 
-local SHOOTER = attachment.look { sprite = asset.sprite("wide-shooter"), palette = 0 }
+local SHOOTER = attachment.look { sprite = wide_shooter_sprite, palette = 0 }
 
 -- The navi's number: what it holds animates by it (NaviStats +0x23, MegaMan's 0).
 local NAVI_NUMBER = 0

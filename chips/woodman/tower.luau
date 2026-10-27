@@ -17,7 +17,7 @@ type State = {
     sounds: boolean,
 }
 
-local SPRITE = asset.sprite("wood-tower")
+local SPRITE = require("./wood_tower_sprite")
 local SOUND = asset.sound("wood-tower")
 local SOLID = 0x10
 -- Bodies and blockers on a panel (0x080CDF82).

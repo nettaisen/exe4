@@ -6,12 +6,14 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/sun_meteor")
 local sparks = require("../../lib/sparks")
+local burst_sprite = require("../../sprites/burst")
+local meteor_sprite = require("../meteors/meteor_sprite")
 
 local made = common.make {
     id = "redsun/meteor",
     fall_sound = asset.sound("justice-one"),
     burst_sound = asset.sound("hit-bomb-1"),
-    burst = new.effect { sprite = asset.sprite("burst"), anim = 0, palette = 0 },
+    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 },
     spark_of = sparks.of_element,
 }
 
@@ -20,7 +22,7 @@ local meteor = { kind = made.kind, spawn = made.spawn }
 -- The variant (0x080DDDE8's row 0, six bytes): the meteor sheet's animation 0, a thrown attack hitting navis, the
 -- landing shaking the camera, no panel touched.
 meteor.fire = common.variant {
-    sprite = asset.sprite("meteor"),
+    sprite = meteor_sprite,
     anim = 0,
     collision = { is = collision.thrown, hits = collision.hits_navis },
     shake = true,

@@ -10,9 +10,10 @@
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local big_slash_sprite = require("../sprites/big_slash")
 
 -- Its dark slash over two columns (the effect table 0x080E1698's row 0x1E: the big slash 0c-15 in palette 2).
-local SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 2 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2 }
 
 local drksword: Chip = {
     codes = { "A", "B", "C", "*" },

@@ -11,9 +11,10 @@ local cannon = require("../lib/cannon")
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
 local sparks = require("../lib/sparks")
+local cannon_sprite = require("./cannon/cannon_sprite")
 
 -- The dark cannon (attachment row 0x30: 0c-01 in palette 3).
-local ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 3 }
+local ARM = attachment.look { sprite = cannon_sprite, palette = 3 }
 
 -- The cannon's shot (projectile row 1, action 0x0B's variants 0 to 3: 0x080EB97A): it staggers (hit modifier 3), with
 -- the impact spark.

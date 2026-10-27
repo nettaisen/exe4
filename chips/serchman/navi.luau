@@ -9,10 +9,11 @@ local common = require("@exelib/serchman/navi")
 local navi_chips = require("../../lib/navi_chips")
 local scope = require("./scope")
 local shot = require("./shot")
+local searchman_sprite = require("./searchman_sprite")
 
 local searchman = common.make {
     id = "serchman/navi",
-    sprite = asset.sprite("searchman"),
+    sprite = searchman_sprite,
     appear_sound = asset.sound("appear"),
     shot_sound = asset.sound("vulcan"),
     aim_anim = 15,

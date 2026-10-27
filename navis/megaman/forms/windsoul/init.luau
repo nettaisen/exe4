@@ -11,6 +11,9 @@ local chip = require("@self/chip").windsoul
 local collision = require("../../../rules/collision")
 local soul = require("./soul")
 local wind = require("../../../objects/wind")
+local windman_sprite = require("../../../chips/windman/windman_sprite")
+local windman_swirl_sprite = require("../../../chips/windman/windman_swirl_sprite")
+local windsoul_sprite = require("@self/windsoul_sprite")
 
 -- What its status reset gives the hand's wind chips, and the custom screen as OK builds a hand in it.
 local BONUS = 10
@@ -40,8 +43,8 @@ local form: FormDef = {
     change = chip.action,
     revert = soul.revert,
     -- WindMan's image holds his swirl as it comes (attachment row 0x34: 10-28, palette 0).
-    image = soul.image(asset.sprite("windman"), attachment.look { sprite = asset.sprite("windman-swirl"), palette = 0 }),
-    sprite = asset.sprite("windsoul"),
+    image = soul.image(windman_sprite, attachment.look { sprite = windman_swirl_sprite, palette = 0 }),
+    sprite = windsoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },

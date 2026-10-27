@@ -9,15 +9,17 @@ local attachment = require("../../../../objects/attachment")
 local ring = require("../../../../objects/ring")
 local rings = require("../../../../lib/rings")
 local statuses = require("../../../../rules/status")
+local zap_ring_arm_sprite = require("../../zap_ring_arm_sprite")
+local zap_ring_sprite = require("../../zap_ring_sprite")
 
 local charge = {}
 
 charge.action = rings.action {
     id = "thundersoul/charged-shot/action",
     anim = 13,
-    held = attachment.look { sprite = asset.sprite("zap-ring-arm"), palette = 0 },
+    held = attachment.look { sprite = zap_ring_arm_sprite, palette = 0 },
     ring = ring.variant {
-        sprite = asset.sprite("zap-ring"),
+        sprite = zap_ring_sprite,
         speed = 10,
         status = statuses.paralyze_90,
         sound = asset.sound("zap-ring"),

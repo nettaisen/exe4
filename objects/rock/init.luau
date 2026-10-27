@@ -15,6 +15,7 @@ local collision = require("../rules/collision")
 local common = require("@exelib/rock")
 local rock_lib = require("../lib/rock")
 local sparks = require("../lib/sparks")
+local rock_sprite = require("@self/rock_sprite")
 
 local rock = {}
 
@@ -32,7 +33,7 @@ rock.variant = common.variant
 
 local made = common.make {
     id = "rock",
-    sprite = asset.sprite("rock"),
+    sprite = rock_sprite,
     reloads_anim = false,
     debris = rock_lib.debris,
     effects = { puff = rock_lib.effects.puff, dust = rock_lib.effects.dust },

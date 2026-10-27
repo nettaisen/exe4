@@ -12,11 +12,12 @@ local cannons = require("./cannon")
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
 local sparks = require("../lib/sparks")
+local cannon_sprite = require("./cannon/cannon_sprite")
 
 -- Their cannons (attachment rows 0 to 2: 0c-01 in palettes 0 to 2).
-local GIGACAN1_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0 }
-local GIGACAN2_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1 }
-local GIGACAN3_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2 }
+local GIGACAN1_ARM = attachment.look { sprite = cannon_sprite, palette = 0 }
+local GIGACAN2_ARM = attachment.look { sprite = cannon_sprite, palette = 1 }
+local GIGACAN3_ARM = attachment.look { sprite = cannon_sprite, palette = 2 }
 
 -- The GigaCan's shot (projectile row 12, action 0x0B's variants 4 to 6): it knocks back (hit modifier 9), with the
 -- blast spark.

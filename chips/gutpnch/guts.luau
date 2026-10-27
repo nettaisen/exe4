@@ -14,7 +14,7 @@ local sparks = require("../../lib/sparks")
 
 local guts = {}
 
-local SPRITE = asset.sprite("gutsman")
+local SPRITE = require("../gutsman/gutsman_sprite")
 local APPEAR_SOUND = asset.sound("appear")
 local PUNCH_SOUND = asset.sound("fist-swing")
 -- His palette (0x0800B950: navi 2's palettes, 1, times the chip's level's, 0).

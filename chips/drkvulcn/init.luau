@@ -9,16 +9,18 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("./vulcan/vulcan")
+local vulcan_hit_sprite = require("./vulcan/vulcan_hit_sprite")
+local vulcan_sprite = require("./vulcan/vulcan_sprite")
 
 -- The dark gun (attachment row 49: 0c-1d in palette 3).
-local GUN = attachment.look { sprite = asset.sprite("vulcan"), palette = 3 }
+local GUN = attachment.look { sprite = vulcan_sprite, palette = 3 }
 
 -- Bullet row 14: the panel found and the one behind it, modifier 1, its dark hit (effect row 0x6A: the Vulcans' hit in
 -- palette 2) shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 2 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 2 },
     single = true,
 }
 

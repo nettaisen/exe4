@@ -20,7 +20,7 @@ export type State = {
     row: number,
 }
 
-local SPRITE = asset.sprite("thunderman")
+local SPRITE = require("./thunderman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local FADE_GRAY = 0x1F
 local SOLID = 0x10

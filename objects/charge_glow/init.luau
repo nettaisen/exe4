@@ -9,8 +9,8 @@
 
 local glow = {}
 
-local B_GLOW = asset.sprite("charge-glow")
-local A_GLOW = asset.sprite("charge-glow-a")
+local B_GLOW = require("@self/charge_glow_sprite")
+local A_GLOW = require("@self/charge_glow_a_sprite")
 local CHARGING = asset.sound("buster-charge")
 local CHARGED = asset.sound("buster-charged")
 

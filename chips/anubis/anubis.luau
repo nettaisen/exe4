@@ -12,6 +12,9 @@ local collision = require("../../rules/collision")
 local controller = require("@exelib/anubis/controller")
 local rising_bubble = require("../../objects/rising_bubble")
 local statue = require("@exelib/anubis/statue")
+local anubis_sprite = require("./anubis_sprite")
+local explosion_sprite = require("../../sprites/explosion")
+local puff_sprite = require("../../sprites/puff")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -21,15 +24,15 @@ end
 
 local STATUE = statue.make {
     id = "anubis/statue",
-    sprite = asset.sprite("anubis"),
+    sprite = anubis_sprite,
     sounds = { land = asset.sound("metal-punch"), ["break"] = asset.sound("hit-bomb-1") },
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     drain = collision.collision_31,
     nothing = collision.nothing,
     effects = {
-        puff = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
-        explosion = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
+        puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+        explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
     },
     bubble = rising_bubble.kind,
     reads_no_removal = true,

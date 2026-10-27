@@ -14,7 +14,7 @@ local HIT = { hits = collision.hits_navis, is = collision.slash }
 
 -- Their slashes (the effect table 0x080E1698's rows 0x19, 0x17, 0x18, 0x1A and 0x1B: the slash sprite 0c-14): one
 -- panel's, a column's, two panels', and the wide and long ones in palette 5.
-local SLASH = asset.sprite("sword-slash")
+local SLASH = require("../sprites/sword_slash")
 local SWORD_SLASH = new.effect { sprite = SLASH, anim = 2, palette = 0 }
 local WIDE_SLASH = new.effect { sprite = SLASH, anim = 0, palette = 0 }
 local LONG_SLASH = new.effect { sprite = SLASH, anim = 1, palette = 0 }

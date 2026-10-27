@@ -9,15 +9,17 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
+local pink_flash_sprite = require("../sprites/pink_flash")
+local spreader_sprite = require("./spreader/spreader_sprite")
 
 -- The dark gun (attachment row 0x32: the Spreader's, 0c-19, in palette 3).
-local GUN = attachment.look { sprite = asset.sprite("spreader"), palette = 3 }
+local GUN = attachment.look { sprite = spreader_sprite, palette = 3 }
 -- Bullet row 15: a dark burst (effect row 0x64: the Spreader's burst in palette 1) over the 3x3 around the panel found,
 -- modifier 1; sound 0x8D.
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 1 },
+    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 1 },
     sound = asset.sound("spreader"),
 }
 

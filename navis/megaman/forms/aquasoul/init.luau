@@ -10,6 +10,9 @@ local attachment = require("../../../objects/attachment")
 local charge = require("@self/charge")
 local chip = require("@self/chip").aquasoul
 local soul = require("./soul")
+local aquaman_spout_sprite = require("../../../chips/aquaman/aquaman_spout_sprite")
+local aquaman_sprite = require("../../../chips/aquaman/aquaman_sprite")
+local aquasoul_sprite = require("@self/aquasoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -18,8 +21,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("aquaman"), attachment.look { sprite = asset.sprite("aquaman-spout"), palette = 0 }),
-    sprite = asset.sprite("aquasoul"),
+    image = soul.image(aquaman_sprite, attachment.look { sprite = aquaman_spout_sprite, palette = 0 }),
+    sprite = aquasoul_sprite,
     element = "aqua",
     buster_bonus = 0,
     weapons = {

@@ -18,6 +18,7 @@ local controller = require("@exelib/colorpt/controller")
 local panels = require("@exelib/panels")
 local point = require("@exelib/colorpt/point")
 local trajectory = require("../../lib/trajectory")
+local grab_shot_sprite = require("../../sprites/grab_shot")
 
 -- The owner bit side 1's panels have (0x080E7CCC's filter: side 1's require it, side 0's forbid it).
 local OWNER_1 = 0x20
@@ -37,7 +38,7 @@ end
 
 local points = point.make {
     id = "colorpt/point",
-    sprite = asset.sprite("grab-shot"),
+    sprite = grab_shot_sprite,
     sounds = {
         appear = asset.sound("point-appear"),
         rise = asset.sound("point-rise"),

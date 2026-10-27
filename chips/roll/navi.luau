@@ -21,6 +21,8 @@ local collision = require("../../rules/collision")
 local heart = require("./heart")
 local navi_chips = require("../../lib/navi_chips")
 local sparks = require("../../lib/sparks")
+local roll_ribbon_sprite = require("./roll_ribbon_sprite")
+local roll_sprite = require("./roll_sprite")
 
 -- What a panel she lands on must be free of, by her side (0x080C1AE8).
 local OCCUPIED = { [0] = 0x0780_0000, 0x0B80_0000 }
@@ -49,12 +51,12 @@ end
 
 local roll = common.make {
     id = "roll/navi",
-    sprite = asset.sprite("roll"),
+    sprite = roll_sprite,
     appear = asset.sound("appear"),
     warp = asset.sound("roll-warp"),
     swish = asset.sound("roll-whip"),
     sparkle = heart.sparkle,
-    ribbon = attachment.look { sprite = asset.sprite("roll-ribbon"), palette = 0 },
+    ribbon = attachment.look { sprite = roll_ribbon_sprite, palette = 0 },
     ribbon_anim = 0,
     attach = attach,
     heart = heart.spawn,

@@ -11,14 +11,16 @@ local bubblers = require("./bubbler")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
+local bubble_burst_sprite = require("../sprites/bubble_burst")
+local bubbler_sprite = require("./bubbler/bubbler_sprite")
 
 -- The Bubblers' gun (attachment row 0x0E: 0c-1c).
-local GUN = attachment.look { sprite = asset.sprite("bubbler"), palette = 0 }
+local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
 -- Bullet row 7: the bubble burst (effect row 0x25) over the 3x3 around the panel found, its sound 0x9F.
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = asset.sprite("bubble-burst"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 },
     sound = asset.sound("bubble-burst"),
 }
 

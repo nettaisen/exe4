@@ -37,13 +37,14 @@ export type Hammer = {
     spawn: (owner: Object, x: number, y: number, element: number, damage: number) -> Object?,
 }
 
-local SPRITE = asset.sprite("big-hammer")
+local SPRITE = require("./big_hammer_sprite")
+local explosion_sprite = require("../../sprites/explosion")
 local APPEAR_SOUND = asset.sound("appear")
 local SWING_SOUND = asset.sound("hammer-swing")
 local LAND_SOUND = asset.sound("metal-punch")
 local LEAVE_SOUND = asset.sound("hit-bomb-1")
 -- 0x080D6B58: effect row 0, 14-00, where it stands.
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
 
 local HP = 100
 local HIT_MOD = 3

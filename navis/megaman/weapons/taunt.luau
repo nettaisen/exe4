@@ -7,12 +7,13 @@
 -- which a move may cut short, as the charged shot's.
 
 local attachment = require("../../../objects/attachment")
+local taunt_sprite = require("./taunt_sprite")
 
 local taunt = {}
 
 local TAUNT, RECOVER = 0x0, 0x4
 -- The mark (attachment row 21, 0x080CD524: 0c-1f in palette 0, lifted a pixel).
-local MARK = attachment.look { sprite = asset.sprite("taunt"), palette = 0, lift = 1 }
+local MARK = attachment.look { sprite = taunt_sprite, palette = 0, lift = 1 }
 local SOUND = asset.sound("shield")
 
 type State = { timer: number }

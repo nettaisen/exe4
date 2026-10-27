@@ -21,7 +21,7 @@ export type State = {
     busy: boolean,
 }
 
-local SPRITE = asset.sprite("junkman")
+local SPRITE = require("./junkman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local FADE_GRAY = 0x1F
 local SOLID = 0x10

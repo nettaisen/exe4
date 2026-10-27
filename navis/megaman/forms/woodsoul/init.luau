@@ -10,6 +10,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").woodsoul
 local soul = require("./soul")
+local woodman_sprite = require("../../../chips/woodman/woodman_sprite")
+local woodsoul_sprite = require("@self/woodsoul_sprite")
 
 -- 0x0800E294 (`whole`: on the hand) and 0x0801F226 (on the custom screen's list): from the hand's cursor on, a Wood
 -- chip takes in the damaging Null chip after it (its damage and bonuses), which leaves the hand (the chips after it
@@ -46,8 +48,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("woodman")),
-    sprite = asset.sprite("woodsoul"),
+    image = soul.image(woodman_sprite),
+    sprite = woodsoul_sprite,
     element = "wood",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },

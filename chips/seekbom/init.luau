@@ -8,9 +8,10 @@
 local attachment = require("../objects/attachment")
 local bomb = require("@self/bomb")
 local bombs = require("../lib/bombs")
+local bomb_sprite = require("../sprites/bomb")
 
 -- The bomb in hand (attachment row 0x2F: the bomb, 0c-02, in palette 7).
-local HELD = attachment.look { sprite = asset.sprite("bomb"), palette = 7 }
+local HELD = attachment.look { sprite = bomb_sprite, palette = 7 }
 local THROWER = bomb.thrower()
 
 local function throw(id: string): Action

@@ -15,6 +15,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/magbolt/magnet")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
+local mag_bolt_sprite = require("./mag_bolt_sprite")
 
 local magbolt = {}
 
@@ -29,7 +30,7 @@ local FIELD = common.make {
     watches = true,
 }
 
-local MAGNET = attachment.look { sprite = asset.sprite("mag-bolt"), palette = 0 }
+local MAGNET = attachment.look { sprite = mag_bolt_sprite, palette = 0 }
 local PULL_SOUND, HUM = asset.sound("magnet-pull"), asset.sound("spark-charge")
 
 -- The navi's number: what it holds animates by it (NaviStats +0x23, MegaMan's 0).

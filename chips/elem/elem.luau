@@ -14,6 +14,8 @@ local collision = require("../../rules/collision")
 local flame_common = require("@exelib/elemrage/flame")
 local panel_changer = require("../../objects/panel_changer")
 local sparks = require("../../lib/sparks")
+local rage_claw_sprite = require("../../sprites/rage_claw")
+local rage_flame_sprite = require("../../sprites/rage_flame")
 
 local elem = {}
 
@@ -21,7 +23,7 @@ local elem = {}
 -- beside.
 local FLAME = flame_common.make_kind {
     id = "elem/flame",
-    sprite = asset.sprite("rage-flame"),
+    sprite = rage_flame_sprite,
     leaves = { "poison" },
     spreads = false,
     attack = collision.attack,
@@ -34,7 +36,7 @@ local FLAME = flame_common.make_kind {
 local NAVI_NUMBER = 0
 local OFFSET, HEIGHT = -4, 26
 
-local CLAW = attachment.look { sprite = asset.sprite("rage-claw"), palette = 0 }
+local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0 }
 local ROAR, RAGE_ROAR = asset.sound("roar"), asset.sound("rage-roar")
 -- The user's panel back to normal (the panel changer's row 11: its own panel, 30 ticks, flickering).
 local RESTORE = panel_changer.change {

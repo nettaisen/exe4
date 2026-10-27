@@ -16,7 +16,7 @@ type State = {
     hit_panel: number,
 }
 
-local SPRITE = asset.sprite("bug-charger")
+local SPRITE = require("../bugcharg/bug_charger_sprite")
 local SOUND = asset.sound("kendo-draw")
 local SPEED = 0xA_0000
 local HIT_MOD = 3

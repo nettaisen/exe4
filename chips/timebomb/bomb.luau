@@ -11,6 +11,10 @@ local controller = require("@exelib/timebom/controller")
 local countdown = require("@exelib/timebom/countdown")
 local dimming_chips = require("@exelib/dimming")
 local panel_bursts = require("../../objects/panel_bursts")
+local countdown_bomb_sprite = require("./countdown_bomb_sprite")
+local explosion_sprite = require("../../sprites/explosion")
+local puff_sprite = require("../../sprites/puff")
+local small_puff_sprite = require("../../sprites/small_puff")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -23,7 +27,7 @@ end
 -- appears; a puff (0x70, row 0) when broken; no NameID, no tracking, no removal read (0x080D6E6C), its blast even once
 -- the battle is over (0x080D6DE8); EXE4's obstacle rows (0x080D6CCC: row 3 does nothing, no frozen or bubbled).
 local KIND = countdown.make_kind("timebomb/countdown", {
-    sprite = asset.sprite("countdown-bomb"),
+    sprite = countdown_bomb_sprite,
     sounds = {
         place = asset.sound("appear"),
         tick = asset.sound("tick"),
@@ -32,8 +36,8 @@ local KIND = countdown.make_kind("timebomb/countdown", {
         puff = asset.sound("hit-bomb-1"),
     },
     blast = { is = collision.attack, hits = collision.hits_navis },
-    explosion = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
-    puff = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
     bursts = panel_bursts.kind,
     untracked = true,
     blasts_after_battle = true,
@@ -53,7 +57,7 @@ local KIND = countdown.make_kind("timebomb/countdown", {
 local BODY = { is = collision.neutral_body, hits = collision.everything }
 
 -- No bomb where it would go: a puff over the panel, 16 up (effect row 2).
-local NO_BOMB = new.effect { sprite = asset.sprite("small-puff"), anim = 1, palette = 0 }
+local NO_BOMB = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
 
 -- The panel the bomb takes: on the field, solid, with no body on it (0x080E4E26).
 local STANDS, BODIES = 0x0001_0010, 0x0F80_0000

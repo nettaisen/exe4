@@ -9,6 +9,7 @@ local ball = require("@exelib/thunder/ball")
 local collision = require("../../rules/collision")
 local shoot = require("@exelib/thunder/shoot")
 local sparks = require("../../lib/sparks")
+local thunder_ball_sprite = require("./thunder_ball_sprite")
 
 local thunder = {}
 
@@ -34,7 +35,7 @@ local function find_target(me: Object): (number, number)
 end
 
 thunder.kind = ball.make_kind("thunder/ball", {
-    sprite = asset.sprite("thunder-ball"),
+    sprite = thunder_ball_sprite,
     small_anim = 0,
     is = collision.attack,
     target = collision.hits_navis,

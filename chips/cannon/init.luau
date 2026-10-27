@@ -9,11 +9,12 @@ local cannon_lib = require("../lib/cannon")
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
 local sparks = require("../lib/sparks")
+local cannon_sprite = require("@self/cannon_sprite")
 
 -- Their cannons (attachment rows 0 to 2: 0c-01 in palettes 0 to 2).
-local CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0 }
-local HICANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1 }
-local M_CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2 }
+local CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 0 }
+local HICANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 1 }
+local M_CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 2 }
 
 -- The cannon's shot (projectile row 1, action 0x0B's variants 0 to 3: 0x080EB97A): it staggers (hit modifier 3), with
 -- the impact spark.

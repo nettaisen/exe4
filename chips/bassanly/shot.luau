@@ -6,12 +6,13 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/bassanly/shot")
+local bass_sprite = require("../bass/bass_sprite")
 
 local shot = {}
 
 shot.kind = common.make_kind {
     id = "bassanly/shot",
-    sprite = asset.sprite("bass"),
+    sprite = bass_sprite,
     anim = 33,
     sound = asset.sound("bass-anly-shot"),
     self_type = collision.thrown,

@@ -8,14 +8,16 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("@self/spreader")
+local pink_flash_sprite = require("../sprites/pink_flash")
+local spreader_sprite = require("@self/spreader_sprite")
 
 -- Its gun (attachment row 0x0A: 0c-19).
-local GUN = attachment.look { sprite = asset.sprite("spreader"), palette = 0 }
+local GUN = attachment.look { sprite = spreader_sprite, palette = 0 }
 -- Bullet row 3: a burst (effect row 0x27) over the 3x3 around the panel found; sound 0x8D.
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 },
     sound = asset.sound("spreader"),
 }
 

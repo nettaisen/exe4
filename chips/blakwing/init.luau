@@ -11,6 +11,7 @@ local blakwing = require("@exelib/blakwing")
 local collision = require("../rules/collision")
 local rock = require("../lib/rock")
 local sparks = require("../lib/sparks")
+local black_wing_sprite = require("@self/black_wing_sprite")
 
 local chip: Chip = {
     codes = { "W" },
@@ -28,7 +29,7 @@ local chip: Chip = {
         flock_id = "blakwing/flock",
         perch_id = "blakwing/perch",
         wing_id = "blakwing/wing",
-        sprite = asset.sprite("black-wing"),
+        sprite = black_wing_sprite,
         puff = rock.effects.puff,
         sounds = { start = asset.sound("place"), flap = asset.sound("shade-call") },
         is = collision.attack_480,

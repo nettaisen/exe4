@@ -12,6 +12,7 @@
 local base = require("../../navis/megaman/forms/base").base
 local hooks = require("./hooks")
 local turns = require("./turns")
+local deletion_sprite = require("../../sprites/deletion")
 
 local revert = {}
 
@@ -22,7 +23,7 @@ export type State = {
 
 local REVERT_SOUND = asset.sound("soul-revert")
 -- Effect row 3, the deletion's flash.
-local FLASH = new.effect { sprite = asset.sprite("deletion"), anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
 
 -- 0x080EBEAC
 function revert.update(me: Object, s: State)

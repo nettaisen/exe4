@@ -10,7 +10,7 @@ local sparks = require("../../lib/sparks")
 
 local flame = {}
 
-local SPRITE = asset.sprite("flame-line")
+local SPRITE = require("./flame_line_sprite")
 local SOUND = asset.sound("flame-line")
 -- A panel it can stand on: a solid one (0x08009ECC).
 local SOLID = 0x10

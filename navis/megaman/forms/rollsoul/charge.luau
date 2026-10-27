@@ -10,6 +10,7 @@ local collision = require("../../../../rules/collision")
 local flying_shot = require("../../../../objects/flying_shot")
 local projectile = require("../../../../lib/projectile")
 local sparks = require("../../../../lib/sparks")
+local roll_arrow_sprite = require("../../../../chips/rollaro/roll_arrow_sprite")
 
 local charge = {}
 
@@ -21,7 +22,7 @@ local ARROW = flying_shot.variant {
     hit_mod = 3,
     element = 0,
     spark = sparks.chip_destruction,
-    sprite = asset.sprite("roll-arrow"),
+    sprite = roll_arrow_sprite,
     range = 8,
     speed = 0xA_0000,
 }

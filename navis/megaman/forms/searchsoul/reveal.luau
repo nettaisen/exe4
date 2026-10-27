@@ -10,11 +10,12 @@
 
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
+local scope_mark_sprite = require("./scope_mark_sprite")
 
 local reveal = {}
 
 -- The scope's mark (effect row 0x52: 10-23), 20 pixels up.
-local MARK = new.effect { sprite = asset.sprite("scope-mark"), anim = 0, palette = 0 }
+local MARK = new.effect { sprite = scope_mark_sprite, anim = 0, palette = 0 }
 local MARK_Z = 20 * 0x1_0000
 -- What it marks: an invisible, submerged or flashing navi.
 local function hidden(navi: Object): boolean

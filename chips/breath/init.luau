@@ -10,11 +10,11 @@ local breath = require("@self/breath")
 local sparks = require("../lib/sparks")
 local statuses = require("../rules/status")
 
-local NOZZLE = asset.sprite("breath-nozzle")
+local NOZZLE = require("@self/breath_nozzle_sprite")
 
 -- HeatBrth's (its parameter 0): fire (effect rows 0x38 and 0x39, its fire lasting 40 ticks) leaving lava; the roar
 -- every 8 ticks.
-local HEAT_BREATH = asset.sprite("heat-breath")
+local HEAT_BREATH = require("@self/heat_breath_sprite")
 local heat_breath = breath.make {
     id = "heatbrth/breath",
     spark = sparks.fire,
@@ -30,7 +30,7 @@ local heat_breath = breath.make {
 }
 
 -- Blizzard's (its parameter 1): frost (effect rows 0x3A and 0x3C) leaving ice.
-local BLIZZARD = asset.sprite("blizzard")
+local BLIZZARD = require("@self/blizzard_sprite")
 local BLIZZARD_SOUND = asset.sound("blizzard")
 -- The frost that settles on a panel it hit (effect row 0x3B, for 35 ticks): 5 ticks in on its own, 20 on the column's.
 local FROST = new.effect { sprite = BLIZZARD, anim = 1, palette = 0 }
@@ -75,7 +75,8 @@ local blizzard_breath = breath.make {
 
 -- ElecShok's (its parameter 3): lightning (effect rows 0x3E and 0x3F, its lightning lasting 40 ticks) leaving cracked
 -- panels; the thunder ball's sound every 8 ticks.
-local LIGHTNING = asset.sprite("element-pillar-lightning")
+local LIGHTNING = require("@self/element_pillar_lightning_sprite")
+local wood_powder_sprite = require("@self/wood_powder_sprite")
 -- Its own panel highlighted until 15 ticks before its end, the column's until its last tick.
 local HIGHLIGHT_UNTIL, COLUMN_UNTIL = 15, 1
 local elec_breath = breath.make {
@@ -101,7 +102,7 @@ local elec_breath = breath.make {
 
 -- WoodPwdr's (its parameter 2): powder (effect row 0x3D) leaving grass, its hits confusing (hit modifier 1, status
 -- 0x20); the powder's sound every 8 ticks.
-local POWDER = new.effect { sprite = asset.sprite("wood-powder"), anim = 0, palette = 0 }
+local POWDER = new.effect { sprite = wood_powder_sprite, anim = 0, palette = 0 }
 -- More powder on the panels it hit: on its own 16 and 32 ticks in, on the column's 30 and 46.
 local POWDER_AT, COLUMN_POWDER_AT = { 39, 23 }, { 25, 9 }
 

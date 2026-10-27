@@ -5,11 +5,12 @@
 
 local collision = require("../rules/collision")
 local north_wind = require("@exelib/nrthwind/wind")
+local gust_sprite = require("./gust/gust_sprite")
 
 return north_wind.make {
     id = "north-wind",
     sound = asset.sound("wind"),
-    streak_sprite = asset.sprite("gust"),
+    streak_sprite = gust_sprite,
     is = collision.collision_1b,
     hits = collision.nothing,
     copies_flip = false,

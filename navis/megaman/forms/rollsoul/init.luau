@@ -6,6 +6,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").rollsoul
 local soul = require("./soul")
+local roll_sprite = require("../../../chips/roll/roll_sprite")
+local rollsoul_sprite = require("@self/rollsoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -14,8 +16,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("roll")),
-    sprite = asset.sprite("rollsoul"),
+    image = soul.image(roll_sprite),
+    sprite = rollsoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its row of 0x080184F0: the buster on B, no A charge, Roll's arrow charged (routine 0x22, ./charge).

@@ -9,6 +9,10 @@
 local collision = require("../rules/collision")
 local common = require("@exelib/boybomb/bomb")
 local dimming_chips = require("@exelib/dimming")
+local boy_bomb_sprite = require("@self/boy_bomb_sprite")
+local explosion_sprite = require("../sprites/explosion")
+local heal_sprite = require("../sprites/heal")
+local impact_sprite = require("../sprites/impact")
 
 type ControllerState = {
     -- The bonus the telop shows (the original's +0x32), added to the bomb's damage.
@@ -34,17 +38,17 @@ end
 -- (0x080D51D6) takes the controller's side alone.
 local BOMB = common.make {
     id = "boybomb/bomb",
-    sprite = asset.sprite("boy-bomb"),
+    sprite = boy_bomb_sprite,
     body = { is = collision.neutral_body, hits = collision.everything },
     blast = {
         is = collision.attack,
         hits = collision.hits_navis,
-        effect = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
+        effect = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
         sound = asset.sound("heat-burst"),
     },
-    comes = new.effect { sprite = asset.sprite("heal"), anim = 0, palette = 0 },
+    comes = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
     place_sound = asset.sound("place"),
-    broken = new.effect { sprite = asset.sprite("impact"), anim = 0, palette = 0 },
+    broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0 },
     break_sound = asset.sound("hit-bomb-1"),
     stand_forbid = { [0] = 0x0B800000, [1] = 0x07800000 },
     push = "keeps_damage",

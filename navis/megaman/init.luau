@@ -25,9 +25,11 @@ local searchsoul = require("@self/forms/searchsoul").searchsoul
 local thundersoul = require("@self/forms/thundersoul").thundersoul
 local windsoul = require("@self/forms/windsoul").windsoul
 local woodsoul = require("@self/forms/woodsoul").woodsoul
+local megaman_portrait_sprite = require("@self/megaman_portrait_sprite")
+local megaman_sprite = require("@self/megaman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     -- (EXE4's buster adds 1 to Attack itself: ./weapons/buster.)
     buster_bonus = 0,
@@ -38,7 +40,7 @@ local navi: NaviDef = {
     -- mugshot 0x40), the box opening (E7 00), the two lines, the wait for A or B (E6 00), the end (E5). (Its first
     -- command, EE 01, would jump to entry 0x38 at the save's progress 0x7C, whose words are the same.)
     run_message = {
-        portrait = asset.sprite("megaman-portrait"),
+        portrait = megaman_portrait_sprite,
     },
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },
     fresh = { hp = 100, mega_level = 5, giga_level = 1 },

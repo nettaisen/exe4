@@ -23,12 +23,13 @@ type State = {
     palette: number,
 }
 
-local SPRITE = asset.sprite("burnman")
+local SPRITE = require("./burnman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PILLARS = asset.sound("tops")
 local SOUND_BREATH = asset.sound("rage-roar")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 local SOLID = 0x10
 local FIRE = 1
 

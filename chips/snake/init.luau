@@ -11,10 +11,11 @@ local collision = require("../rules/collision")
 local common = require("@exelib/snake")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
+local snake_sprite = require("@self/snake_sprite")
 
 local SNAKE = common.make_kind("snake/snake", {
     trajectory = trajectory,
-    sprite = asset.sprite("snake"),
+    sprite = snake_sprite,
     rise_sound = asset.sound("tops"),
     leap_sound = asset.sound("zap-ring"),
     wait = 0x30,

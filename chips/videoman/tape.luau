@@ -20,7 +20,7 @@ type State = {
     rounds: number,
 }
 
-local SPRITE = asset.sprite("videoman")
+local SPRITE = require("./videoman_sprite")
 local SOUND = asset.sound("tape")
 -- Its rounds of hits, their period (15 >> Param1: VideoMan's 0), and its place off its panel's center.
 local ROUNDS, PERIOD = 3, 15

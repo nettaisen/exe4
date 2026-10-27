@@ -14,12 +14,14 @@
 local base = require("./base").base
 local dark = require("../../../rules/souls/dark")
 local soul = require("./soul")
+local megaman_ds_sprite = require("@self/megaman_ds_sprite")
+local megaman_sprite = require("../megaman_sprite")
 
 local form: FormDef = {
     change = dark.change,
     revert = soul.revert,
-    image = soul.image(asset.sprite("megaman-ds")),
-    sprite = asset.sprite("megaman"),
+    image = soul.image(megaman_ds_sprite),
+    sprite = megaman_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = base.weapons,

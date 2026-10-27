@@ -22,7 +22,7 @@ local dimming_chips = require("@exelib/dimming")
 -- The taunt (weapon routine 0x21).
 local TAUNT: Weapon = require("../navis/megaman/weapons/taunt").weapon
 
-local SPRITE = asset.sprite("bug-chain")
+local SPRITE = require("@self/bug_chain_sprite")
 local SOUND = asset.sound("bug-chain")
 local MARK_TICKS, SOUND_AT = 50, 42
 local WAIT = 60

@@ -15,12 +15,14 @@ local controller = require("@exelib/bodygrd/controller")
 local recipe_muramasa = require("./muramasa").muramasa
 local shuriken = require("@exelib/bodygrd/shuriken")
 local striker = require("@exelib/bodygrd/striker")
+local shuriken_sprite = require("../sprites/shuriken")
+local small_puff_sprite = require("../sprites/small_puff")
 
 local SHURIKEN = shuriken.make_kind {
     id = "bodygrd/shuriken",
-    sprite = asset.sprite("shuriken"),
+    sprite = shuriken_sprite,
     land_sound = asset.sound("panel-crack"),
-    puff = new.effect { sprite = asset.sprite("small-puff"), anim = 1, palette = 0 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
     self_type = collision.thrown_slash,
     target = collision.hits_navis,
 }

@@ -24,12 +24,13 @@ type State = {
     sparks: number,
 }
 
-local SPRITE = asset.sprite("sparkman")
+local SPRITE = require("./sparkman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE = asset.sound("spark-charge")
 local SOUND_FLASH = asset.sound("spark-flash")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 local SOLID = 0x10
 -- His sparks' element (elec), whatever his chip's.
 local ELEC = 3

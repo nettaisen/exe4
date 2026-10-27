@@ -7,13 +7,14 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/crack")
+local dust_sprite = require("../sprites/dust")
 
 local crack = {}
 
 local CRACK = common.make {
     id = "crack",
     anim = 16,
-    sprite = asset.sprite("dust"),
+    sprite = dust_sprite,
     sound = asset.sound("bblstar1"),
     break_sound = asset.sound("crack-shot"),
     is = collision.thrown,

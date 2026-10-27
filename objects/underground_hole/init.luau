@@ -8,7 +8,7 @@
 
 local hole = {}
 
-local SPRITE = asset.sprite("underground-hole")
+local SPRITE = require("@self/underground_hole_sprite")
 
 -- 0x080E6562: under the navi, on the ground.
 local function follow(me: Object)

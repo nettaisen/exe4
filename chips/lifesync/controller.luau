@@ -16,6 +16,7 @@ local marker = require("@exelib/lifesync/marker")
 local navi_list = require("../../lib/navi_list")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
 
 local lifesync = {}
 
@@ -45,7 +46,7 @@ local HIT_DAMAGE, HIT_MOD = 50, 3
 -- 0x080E8C98: in the hit sparks, palette 7, 10 pixels over its panel.
 lifesync.marker = marker.make_kind {
     id = "lifesync/marker",
-    sprite = asset.sprite("hit-sparks"),
+    sprite = hit_sparks_sprite,
     palette = 7,
     height = 0xA_0000,
 }

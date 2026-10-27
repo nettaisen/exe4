@@ -6,12 +6,14 @@
 
 local gunsol = require("@self/gunsol")
 local regions = require("@exelib/regions")
+local sun_beam_ex_sprite = require("@self/sun_beam_ex_sprite")
+local sun_beam_sprite = require("@self/sun_beam_sprite")
 
 -- GunSol1 to 3's beam (0x080E7130's first sprite) in the shade and in the sun, and GunSolEX's (its second).
-local BEAM: SunBeamLook = { sprite = asset.sprite("sun-beam"), palette = 0 }
-local BEAM_IN_SUN: SunBeamLook = { sprite = asset.sprite("sun-beam"), palette = 2 }
-local WIDE_BEAM: SunBeamLook = { sprite = asset.sprite("sun-beam-ex"), palette = 0 }
-local WIDE_BEAM_IN_SUN: SunBeamLook = { sprite = asset.sprite("sun-beam-ex"), palette = 3 }
+local BEAM: SunBeamLook = { sprite = sun_beam_sprite, palette = 0 }
+local BEAM_IN_SUN: SunBeamLook = { sprite = sun_beam_sprite, palette = 2 }
+local WIDE_BEAM: SunBeamLook = { sprite = sun_beam_ex_sprite, palette = 0 }
+local WIDE_BEAM_IN_SUN: SunBeamLook = { sprite = sun_beam_ex_sprite, palette = 3 }
 
 local gunsol1: Chip = {
     action = gunsol.action {

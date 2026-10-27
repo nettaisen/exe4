@@ -12,11 +12,13 @@
 --     its action kept.
 -- (A navi in auto battle, or another navi, has its own deletion, 0x08010D4C: the engine runs its own for those.)
 
+local deletion_sprite = require("../sprites/deletion")
+
 local deletion = {}
 
 local DELETED = asset.sound("deleted")
 -- Effect row 3 (0x080E1698: 14-03, animation 0, palette 0).
-local EXPLOSION = new.effect { sprite = asset.sprite("deletion"), anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
 
 -- The phases.
 local START, EXPLODE, WAIT, FADE = 0x0, 0x4, 0x8, 0xC

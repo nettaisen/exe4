@@ -27,14 +27,16 @@ type State = {
     target_y: number,
 }
 
-local SPRITE = asset.sprite("kendoman")
+local SPRITE = require("./kendoman_sprite")
+local puff_sprite = require("../../sprites/puff")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("counter-strike")
 local SOUND_VANISH = asset.sound("sword-swing")
 local SOUND_DRAW = asset.sound("kendo-draw")
 -- The puff he vanishes and goes in (effect row 0x13), and his cut (effect row 0x17: the sword slash, palette 2 on).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
-local CUT = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local CUT = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 -- His sword (attachment row 0x2D: his own sheet, palette 0), in its animation 8, animating while dimmed.
 local SWORD = attachment.look { sprite = SPRITE, palette = 0 }
 local SWORD_ANIM = 8

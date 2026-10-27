@@ -17,11 +17,12 @@ type State = {
     palette: number,
 }
 
-local SPRITE = asset.sprite("burnman")
+local SPRITE = require("./burnman_sprite")
+local impact_sprite = require("../../sprites/impact")
 local SOUND_FLAME = asset.sound("roar")
 local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The impact a hit ends it in (effect row 0x0F), 8 pixels up.
-local IMPACT = new.effect { sprite = asset.sprite("impact"), anim = 0, palette = 0 }
+local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0 }
 local FIRE = 1
 -- Its X from its panel's center: the upper one's 8.5 pixels right, the lower one's left (0x080D47A0).
 local SHIFT = 0x8_8000

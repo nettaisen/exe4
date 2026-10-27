@@ -7,13 +7,14 @@
 
 local attachment = require("../../objects/attachment")
 local flame = require("./flame")
+local flame_line_burner_sprite = require("./flame_line_burner_sprite")
 
 local flmline = {}
 
 -- The navi's number: what it holds animates by it (NaviStats +0x23, MegaMan's 0).
 local NAVI_NUMBER = 0
 
-local BURNER = attachment.look { sprite = asset.sprite("flame-line-burner"), palette = 0 }
+local BURNER = attachment.look { sprite = flame_line_burner_sprite, palette = 0 }
 -- The ticks each flame burns (the chips' parameters' second byte: 40 for all of them).
 local BURNS = 0x28
 

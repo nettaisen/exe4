@@ -22,7 +22,7 @@ type State = {
     cracks_all: boolean,
 }
 
-local SPRITE = asset.sprite("gutsman")
+local SPRITE = require("./gutsman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 
 local APPEAR, STAND, HAMMER, LEAVE = 0x0, 0x4, 0x8, 0xC

@@ -13,6 +13,8 @@ local recycle = require("@self/recycle")
 local regions = require("@exelib/regions")
 local soul = require("./soul")
 local statuses = require("../../../rules/status")
+local junkman_sprite = require("../../../chips/junkman/junkman_sprite")
+local junksoul_sprite = require("@self/junksoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -22,8 +24,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("junkman")),
-    sprite = asset.sprite("junksoul"),
+    image = soul.image(junkman_sprite),
+    sprite = junksoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },

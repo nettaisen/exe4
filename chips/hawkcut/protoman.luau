@@ -22,16 +22,18 @@ export type State = {
     held: Object?,
 }
 
-local SPRITE = asset.sprite("protoman")
+local SPRITE = require("../protoman/protoman_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
+local sword_sprite = require("../../sprites/sword")
 local APPEAR_SOUND = asset.sound("appear")
 local SWING_SOUND = asset.sound("sword-swing")
 -- His palette (0x0800B950: navi 7's palettes, 1, times the chip's level's, 0).
 local PALETTE = 0
-local SWORD = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 7
 -- The effect table's rows 0x17 and 0x18: the slash (0c-14) across and along.
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 -- The animations: standing, appearing, leaving, slashing.
 local ANIM_STAND, ANIM_APPEAR, ANIM_LEAVE, ANIM_SLASH = 0, 3, 4, 5
 -- A slash's ticks, and the tick of them its hit comes on (the timer reading 12); its effect's height.

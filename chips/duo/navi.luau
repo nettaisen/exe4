@@ -29,7 +29,7 @@ type State = {
     grid: { number },
 }
 
-local SPRITE = asset.sprite("duo")
+local SPRITE = require("./duo_sprite")
 local SOUND_ARRIVE = asset.sound("red-sun-dive")
 local SOUND_STOP = asset.sound("metal-punch")
 

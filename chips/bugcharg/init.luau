@@ -16,7 +16,7 @@ local common_controller = require("@exelib/bugcharg/controller")
 local flying_shot = require("../objects/flying_shot")
 local sparks = require("../lib/sparks")
 
-local CHARGER_SPRITE = asset.sprite("bug-charger")
+local CHARGER_SPRITE = require("@self/bug_charger_sprite")
 -- Attachment row 0x2E (0x080CD524): 0c-43 in palette 0, no lift.
 local CHARGER = attachment.look { sprite = CHARGER_SPRITE, palette = 0 }
 -- The charger's animation as it is raised (0x080CC80C: 1 and twice its navi's number, MegaMan's 0).

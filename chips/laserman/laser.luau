@@ -17,7 +17,7 @@ local regions = require("@exelib/regions")
 
 local laser = {}
 
-local SPRITE = asset.sprite("laserman")
+local SPRITE = require("./laserman_sprite")
 -- A strike with its damage, and none; a course's end.
 local HIT, NONE = 0xFD, 0xFF
 -- The other side's custom level, one less but not below 2, as a strike (0x080E0F18).

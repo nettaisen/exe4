@@ -12,7 +12,10 @@ local charge = require("@self/charge")
 local chip = require("@self/chip").numsoul
 local soul = require("./soul")
 
-local OVERLAY = asset.sprite("numbersoul-overlay")
+local OVERLAY = require("@self/numbersoul_overlay_sprite")
+local numberman_face_sprite = require("../../../chips/numbrman/numberman_face_sprite")
+local numberman_sprite = require("../../../chips/numbrman/numberman_sprite")
+local numbersoul_sprite = require("@self/numbersoul_sprite")
 local overlay = soul.overlay(OVERLAY)
 
 -- The status reset's bonus, and the custom screen's.
@@ -41,8 +44,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("numberman"), attachment.look { sprite = asset.sprite("numberman-face"), palette = 0 }),
-    sprite = asset.sprite("numbersoul"),
+    image = soul.image(numberman_sprite, attachment.look { sprite = numberman_face_sprite, palette = 0 }),
+    sprite = numbersoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },

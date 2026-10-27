@@ -8,10 +8,13 @@
 local common = require("@exelib/bass/navi")
 local navi_chips = require("../../lib/navi_chips")
 local shot = require("./shot")
+local bass_sprite = require("./bass_sprite")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local puff_sprite = require("../../sprites/puff")
 
 local BASS = common.make {
     id = "bass/navi",
-    sprite = asset.sprite("bass"),
+    sprite = bass_sprite,
     cape_anim_offset = 0x0E,
     raise_anim = 3,
     volley_anim = 4,
@@ -20,9 +23,9 @@ local BASS = common.make {
     shoot = function(me: Object, x: number, y: number, damage: number)
         shot.spawn(me, x, y, damage)
     end,
-    flash = new.effect { sprite = asset.sprite("hit-sparks"), anim = 8, palette = 0 },
+    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0 },
     flash_jitter = 0x1F,
-    smoke = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 },
+    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
     appear = asset.sound("appear"),
 }
 

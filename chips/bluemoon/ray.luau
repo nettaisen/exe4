@@ -11,7 +11,7 @@ local regions = require("@exelib/regions")
 
 local ray = {}
 
-local SPRITE = asset.sprite("blue-moon-ray")
+local SPRITE = require("./blue_moon_ray_sprite")
 local SOUND = asset.sound("blue-moon-ray")
 -- Its hits: one panel three columns ahead (the region word 0x1705FF01: no spark, a thrown piercing break hitting
 -- navis); the damage's hit modifier 3, the strips' 1.

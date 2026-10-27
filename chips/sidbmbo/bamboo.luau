@@ -14,7 +14,7 @@ local sparks = require("../../lib/sparks")
 
 local bamboo = {}
 
-local SPRITE = asset.sprite("side-bamboo")
+local SPRITE = require("./side_bamboo_sprite")
 local SWING_SOUND = asset.sound("sword-swing")
 -- Its swing: 31 ticks, the hitboxes at 27 and 25 left; then 30 ticks.
 local SWING_TICKS, FIRST_HIT, SECOND_HIT, AFTER_TICKS = 0x1F, 0x1B, 0x19, 0x1E

@@ -8,6 +8,7 @@
 -- the cannon's sound (0x8C) each time.
 
 local shot = require("./shot")
+local grab_shot_sprite = require("../../sprites/grab_shot")
 
 local stand_in = {}
 
@@ -21,7 +22,7 @@ export type State = {
 }
 
 -- The flash on a holy panel the scan takes (effect row 0x45: 0c-13's animation 1).
-local FLASH = new.effect { sprite = asset.sprite("grab-shot"), anim = 1, palette = 0 }
+local FLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 }
 local SOUND = asset.sound("cannon")
 -- Its pose (the user's sprite's animation 0x12).
 local POSE = 0x12

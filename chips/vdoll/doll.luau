@@ -18,6 +18,8 @@ local curse = require("./curse")
 local rock = require("../../lib/rock")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
+local explosion_sprite = require("../../sprites/explosion")
+local voodoo_doll_sprite = require("./voodoo_doll_sprite")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -27,7 +29,7 @@ end
 
 return common.make {
     id = "vdoll/doll",
-    sprite = asset.sprite("voodoo-doll"),
+    sprite = voodoo_doll_sprite,
     identity = nil,
     is = collision.neutral_body,
     hits = collision.everything,
@@ -55,7 +57,7 @@ return common.make {
         }
     end,
     exe4_leaving = {
-        flash = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 },
+        flash = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 },
         sound = asset.sound("curse"),
     },
 }

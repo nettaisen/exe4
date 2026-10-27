@@ -15,9 +15,10 @@ local trajectory = require("../../lib/trajectory")
 
 local binder = {}
 
-local SPRITE = asset.sprite("binder")
+local SPRITE = require("./binder_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND = asset.sound("binder-hop")
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
 
 -- A hop: 26 ticks, falling 0xA000 a tick (0x080D2764), two panels ahead.
 local HOP_TICKS, GRAVITY, HOP = 26, -0xA000, 2

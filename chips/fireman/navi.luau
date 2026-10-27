@@ -26,15 +26,16 @@ type State = {
     commanded: boolean,
 }
 
-local SPRITE = asset.sprite("fireman")
-local HEAD_FLAME = asset.sprite("fireman-flame")
+local SPRITE = require("./fireman_sprite")
+local HEAD_FLAME = require("./fireman_flame_sprite")
+local rage_flame_sprite = require("../../sprites/rage_flame")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROAR = asset.sound("roar")
 
 -- His flames (attack object #9, the Elem chips' flame, 0x080CE2D8): its sprite (0c-0e), lava left with his command.
 local FLAME = flame_common.make_kind {
     id = "fireman/flame",
-    sprite = asset.sprite("rage-flame"),
+    sprite = rage_flame_sprite,
     leaves = { "lava" },
     spreads = false,
     attack = collision.attack,

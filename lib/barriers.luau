@@ -16,10 +16,13 @@
 local barrier_visual = require("../objects/barrier_visual")
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
+local aura_sprite = require("../sprites/aura")
+local barrier_sprite = require("../sprites/barrier")
+local black_barrier_sprite = require("../sprites/black_barrier")
 
 local barriers = {}
 
-local SPRITE, AURA, BLACK = asset.sprite("barrier"), asset.sprite("aura"), asset.sprite("black-barrier")
+local SPRITE, AURA, BLACK = barrier_sprite, aura_sprite, black_barrier_sprite
 -- The visual's rising sound (0x080E2496), going back up too (0x080E25E4).
 local SOUND = asset.sound("barrier")
 local NO_TIMER = 0xFFFF

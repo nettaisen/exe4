@@ -16,7 +16,7 @@ type State = {
     shader: number,
 }
 
-local SPRITE = asset.sprite("bass")
+local SPRITE = require("../bass/bass_sprite")
 -- (Its palette goes by its Bass's first parameter, a navi chip's level: 3, an SP's, 7; any other but 0, 8. DarkNeo's
 -- is 0, and no other chip brings this Bass.)
 local PALETTE = 0

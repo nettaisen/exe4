@@ -18,15 +18,19 @@ local regions = require("@exelib/regions")
 local sparks = require("../sparks")
 local statuses = require("../../rules/status")
 local traps = require("../traps")
+local bubble_burst_sprite = require("../../sprites/bubble_burst")
+local heat_burst_sprite = require("../../sprites/heat_burst")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local lightning_sprite = require("../../objects/lightning/lightning_sprite")
 
 local trap = {}
 
 -- The bursts' looks (the panel bursts' rows 3, 0, 2 and 4, 0x080E4A00: fire's, and the null element's, a heat burst;
 -- aqua's a bubble's; elec's lightning; wood's leaves).
-local HEAT = new.effect { sprite = asset.sprite("heat-burst"), anim = 0, palette = 0 }
-local BUBBLE = new.effect { sprite = asset.sprite("bubble-burst"), anim = 0, palette = 0 }
-local LIGHTNING = new.effect { sprite = asset.sprite("lightning"), anim = 0, palette = 0 }
-local LEAVES = new.effect { sprite = asset.sprite("hit-sparks"), anim = 5, palette = 0 }
+local HEAT = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0 }
+local BUBBLE = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 }
+local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 }
+local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0 }
 
 -- 0x080E5244: the other side's navi's panels (0x080E52D8: the panels of the other side's player navi, but the
 -- counterattack's own), last to first.
@@ -77,7 +81,7 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
 })
 
 trap.kind = common_trap.make_kind("anti-trap/trap", {
-    sparkle = new.effect { sprite = asset.sprite("hit-sparks"), anim = 7, palette = 0 },
+    sparkle = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 },
     sparkle_sound = asset.sound("dimming-sparkle"),
     watches = "one",
     self_type = collision.nothing,

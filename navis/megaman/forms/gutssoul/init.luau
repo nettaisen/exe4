@@ -9,6 +9,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").gutssoul
 local soul = require("./soul")
+local gutsman_sprite = require("../../../chips/gutsman/gutsman_sprite")
+local gutssoul_sprite = require("@self/gutssoul_sprite")
 
 -- The status reset's bonus, and the families it goes to.
 local BONUS = 30
@@ -39,8 +41,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("gutsman")),
-    sprite = asset.sprite("gutssoul"),
+    image = soul.image(gutsman_sprite),
+    sprite = gutssoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },

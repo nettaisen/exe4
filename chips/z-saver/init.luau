@@ -16,7 +16,7 @@ local sonic_boom = require("@exelib/swords/sonic_boom")
 local sonic_boom_kind = require("../objects/sonic_boom").kind
 local swords = require("../lib/swords")
 
-local SLASH_SPRITE = asset.sprite("sword-slash")
+local SLASH_SPRITE = require("../sprites/sword_slash")
 
 local zsaver: Chip = {
     action = common.make {

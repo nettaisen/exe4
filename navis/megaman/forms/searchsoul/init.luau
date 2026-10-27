@@ -10,6 +10,8 @@ local chip = require("@self/chip").srchsoul
 local reveal = require("@self/reveal")
 local shuffle = require("@self/shuffle")
 local soul = require("./soul")
+local searchman_sprite = require("../../../chips/serchman/searchman_sprite")
+local searchsoul_sprite = require("@self/searchsoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -19,8 +21,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("searchman")),
-    sprite = asset.sprite("searchsoul"),
+    image = soul.image(searchman_sprite),
+    sprite = searchsoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },

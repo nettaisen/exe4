@@ -9,9 +9,10 @@
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local big_slash_sprite = require("../sprites/big_slash")
 
 local HIT = { hits = collision.hits_navis, is = collision.slash }
-local SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 1 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 1 }
 
 local custswrd: Chip = {
     damage = { formula = "gauge", full = 0 },

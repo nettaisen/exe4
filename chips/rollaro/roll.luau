@@ -20,11 +20,13 @@ export type State = {
     gray: number,
 }
 
-local SPRITE = asset.sprite("roll")
+local SPRITE = require("../roll/roll_sprite")
+local roll_arrow_sprite = require("./roll_arrow_sprite")
+local sparkle_sprite = require("../roll/sparkle_sprite")
 local APPEAR_SOUND = asset.sound("appear")
 local ARROW_SOUND = asset.sound("roll-arrow")
 -- The effect table's row 0x2E: a sparkle (10-17).
-local SPARKLE = new.effect { sprite = asset.sprite("sparkle"), anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0 }
 -- Her palette (0x0800B950 by navi 1 and the chip's level, 0).
 local PALETTE = 0
 local ANIM_STAND, ANIM_LEAVE, ANIM_BOW = 0, 4, 7
@@ -41,7 +43,7 @@ local ARROW = flying_shot.variant {
     hit_mod = 3,
     element = 0,
     spark = sparks.chip_destruction,
-    sprite = asset.sprite("roll-arrow"),
+    sprite = roll_arrow_sprite,
     range = 8,
     speed = 7 * 0x10000,
 }

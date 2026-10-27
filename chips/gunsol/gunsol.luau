@@ -15,6 +15,7 @@
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/gundels/beam")
+local gun_del_sol_sprite = require("./gun_del_sol_sprite")
 
 local gunsol = {}
 
@@ -184,7 +185,7 @@ end
 
 -- A gun in its palette (attachment rows 0x1F to 0x22).
 function gunsol.gun(palette: number): AttachmentLook
-    return attachment.look { sprite = asset.sprite("gun-del-sol"), palette = palette }
+    return attachment.look { sprite = gun_del_sol_sprite, palette = palette }
 end
 
 return gunsol

@@ -7,11 +7,12 @@
 local collision = require("../../rules/collision")
 local lance = require("@exelib/lance")
 local sparks = require("../../lib/sparks")
+local lance_sprite = require("./lance_sprite")
 
 local exe4_lance = {}
 
 exe4_lance.kind = lance.make_kind("lance", {
-    sprite = asset.sprite("lance"),
+    sprite = lance_sprite,
     sound = asset.sound("sword-swing"),
     attack = { is = collision.attack, hits = collision.hits_navis, hit_mod = 0x10, spark = sparks.of_element },
 })

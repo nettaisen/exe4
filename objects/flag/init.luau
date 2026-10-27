@@ -9,7 +9,7 @@ local collision = require("../rules/collision")
 
 local flag = {}
 
-local SPRITE = asset.sprite("flag")
+local SPRITE = require("@self/flag_sprite")
 local DAMAGE = asset.sound("damage")
 -- Its breaking (0x080E078A: 0x6F).
 local BROKEN = asset.sound("hit-bomb-0")

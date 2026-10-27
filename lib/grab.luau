@@ -10,10 +10,11 @@ local collision = require("../rules/collision")
 local controller = require("@exelib/grab/controller")
 local panels = require("@exelib/panels")
 local shot = require("@exelib/grab/shot")
+local grab_shot_sprite = require("../sprites/grab_shot")
 
 local shot_kind = shot.make_kind {
     id = "grab/shot",
-    sprite = asset.sprite("grab-shot"),
+    sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
     target = collision.hits_navis,

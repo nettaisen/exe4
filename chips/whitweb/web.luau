@@ -16,10 +16,11 @@ local sparks = require("../../lib/sparks")
 
 local web = {}
 
-local SPRITE = asset.sprite("web")
+local SPRITE = require("./web_sprite")
+local impact_sprite = require("../../sprites/impact")
 local SOUND = asset.sound("web")
 local GONE_SOUND = asset.sound("hit-bomb-1")
-local IMPACT = new.effect { sprite = asset.sprite("impact"), anim = 0, palette = 0 }
+local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0 }
 local TICKS, HIT_MOD = 120, 1
 -- The other side's navi caught, by its side (0x080D4E6C).
 local CAUGHT = { [0] = 0x05800000, [1] = 0x0A800000 }

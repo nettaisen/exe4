@@ -10,6 +10,8 @@ local charge = require("@self/charge")
 local chip = require("@self/chip").protsoul
 local reflect = require("@self/reflect")
 local soul = require("./soul")
+local protoman_sprite = require("../../../chips/protoman/protoman_sprite")
+local protosoul_sprite = require("@self/protosoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -18,8 +20,8 @@ local form: FormDef = {
     chip = chip,
     change = chip.action,
     revert = soul.revert,
-    image = soul.image(asset.sprite("protoman")),
-    sprite = asset.sprite("protosoul"),
+    image = soul.image(protoman_sprite),
+    sprite = protosoul_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = {

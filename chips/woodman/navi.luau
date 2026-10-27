@@ -25,7 +25,8 @@ type State = {
     again: boolean,
 }
 
-local SPRITE = asset.sprite("woodman")
+local SPRITE = require("./woodman_sprite")
+local puff_sprite = require("../../sprites/puff")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The panels his towers rise on, by his side (0x080C9A60: the other side's solid panels).
@@ -208,7 +209,7 @@ local function init(me: Object)
 end
 
 -- A puff 16 pixels above him (effect row 0x13).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
 
 woodman.kind = new.kind {
     id = "woodman/navi",

@@ -8,13 +8,14 @@
 -- variant other than 0, which neither routine sets.)
 
 local attachment = require("../objects/attachment")
+local guts_fist_sprite = require("../sprites/guts_fist")
 
 local punch = {}
 
 local SWING, RECOVER = 0x0, 0x4
 -- The arm swung, and the fist (attachment row 5).
 local ANIM = 10
-local FIST = attachment.look { sprite = asset.sprite("guts-fist"), palette = 0 }
+local FIST = attachment.look { sprite = guts_fist_sprite, palette = 0 }
 -- Its sound as it starts (0xA4).
 local SOUND = asset.sound("fist-swing")
 -- Its ticks: 24 swinging, striking on the tick its count reaches 16, then 6 recovering.
