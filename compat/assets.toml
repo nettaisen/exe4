@@ -439,7 +439,7 @@ junkman-deleted = 0x98
 aquaman-deleted = 0x9c
 woodman-deleted = 0xa0
 
-# Mugshots: the emotion window's faces (0x08014B78), by the number the extractor gives them (its exe4/hud.rs): MegaMan's
+# Mugshots: the emotion window's faces (0x08014B78), by the number the recipe gives them (extract/hud.luau): MegaMan's
 # five (each brings its box) and Red Sun's six souls, in their own palettes (the face table's eleven pictures), then
 # Blue Moon's six souls (Blue Moon's ROM's same table).
 [mugshots]

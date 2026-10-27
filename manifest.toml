@@ -16,3 +16,11 @@ depends = ["exelib"]
 # `emotions`, the emotions a navi can be held in (its rules' `emotion.order`, `EmotionRules::holdable`), by name,
 # for the app's practice menu, which holds a side in one.
 text = ["game", "patch_card_effects", "bugs", "builds", "auto_battle_lists", "battle_themes", "rulesets", "lettering", "emotions"]
+# How its assets are extracted (the engine's docs/design/extraction-recipes.md §4.2): every ROM of a complete Legacy
+# Collection, in the order its places read an address by (a ROM's slot): Red Sun's US ROM, Blue Moon's, then their
+# Japanese ones; the primitives its recipe (extract/) needs; and the files outside extract/ it reads.
+[extract]
+primitives = 1
+roms = ["B4WE", "B4BE", "B4WJ", "B4BJ"]
+size = 0x800000
+reads = ["compat/assets.toml", "compat/chips.toml", "compat/panels.toml", "compat/text.toml"]

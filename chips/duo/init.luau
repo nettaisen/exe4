@@ -1,7 +1,7 @@
 --!strict
 -- Duo (EXE4 chip 0x137): an e-Reader card's chip. Its record and its behavior are in every ROM; its name, its
 -- description, its picture and the picture's palette are the save's card data (the record points at RAM: the
--- extractor's exe4/cards.rs), the palette here as the cards give it, as EXE5's e-Reader chips' and EXE6's gift chips'
+-- recipe's extract/cards.luau), the palette here as the cards give it, as EXE5's e-Reader chips' and EXE6's gift chips'
 -- are.
 --
 -- The dimming chips' action 0x0C, its variant 0x47 (0x080EA876): a navi chip. Its controller (effect object #0x79,
