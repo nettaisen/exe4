@@ -17,6 +17,7 @@ local sent_chips = require("@self/sent_chips")
 local souls = require("@self/souls")
 local soul_turns = require("@self/souls/turns")
 local wind = require("@self/wind")
+local souls_intake = require("@self/souls/intake")
 
 -- What the tools read of the game's builds, as data (./builds: the versions, a new save's folder): loaded with the
 -- rules, which read none of it.
@@ -242,11 +243,17 @@ local rules: Rules = {
             if side == 0 then
                 auto_battle.block.send()
             end
+            -- What each tick asks only where something can come of it (rules.listen): the panels light and dark
+            -- MegaMan act on (./light_dark); the dark soul's AI and pulse from his emerging (./souls/dark).
+            light_dark.listen(side)
+            rules.listen(side, "controller", false)
+            rules.listen(side, "navi_shader", false)
         end,
         -- A navi that starts the round in a soul (a soul patch card's, ./patch_cards): its turns are never counted
         -- (./souls/turns: the navi's init, 0x08010828).
         round_start = function(side: number)
             soul_turns.round_start(battle.navi(side).form)
+            souls_intake.listen(side)
         end,
         -- As each hand is installed: first what the soul the navi is in did to it as OK built it (./souls/custom: the
         -- engine builds a hand without the soul's part, so WoodSoul's fold comes here, before the install sees the
@@ -256,15 +263,18 @@ local rules: Rules = {
             souls.custom.installed(side)
             sent_chips.installed(side)
             dark_chips.custom_result(side)
+            souls_intake.listen(side)
         end,
-        -- Light and dark MegaMan (./light_dark): his starting mood; each tick of the navi's intake, WoodSoul's heal on
-        -- grass (./souls, 0x08012FB6), the holy panel a dark one clears and the hole a navi that isn't dark closes;
-        -- then Double Soul's change or revert asked for (./souls, 0x0800B658).
+        -- Light and dark MegaMan (./light_dark): his starting mood; on the panels he acts on, the holy panel a dark one
+        -- clears and the hole a navi that isn't dark closes; then, each tick of the navi's intake while the souls have
+        -- something to do there (./souls/intake), WoodSoul's heal on grass (./souls, 0x08012FB6) and Double Soul's
+        -- change or revert asked for (./souls, 0x0800B658).
         starting_mood = light_dark.starting_mood,
+        navi_panel = light_dark.navi_panel,
         navi_intake = function(side: number, navi: Object)
             souls.grass_heal(side, navi)
-            light_dark.navi_intake(side, navi)
             souls.navi_intake(side, navi)
+            souls_intake.listen(side)
         end,
         -- Light and dark MegaMan (./light_dark): a chip of the other kind of MegaMan fizzles at its use, and doesn't
         -- cut in.

@@ -70,9 +70,16 @@ function light_dark.starting_mood(side: number): number?
     return starting_mood(setup.karma, battle.navi(side).full_synchro_start)
 end
 
--- Each tick of the navi's intake: 0x080132E6, the holy panel under a dark MegaMan turns normal; 0x08013318, a navi
--- that isn't dark closes the hole he stands on.
-function light_dark.navi_intake(_side: number, navi: Object)
+-- The panels its part of the intake acts on, which the engine calls it on alone (rules.listen_panels): a dark
+-- MegaMan's holy panels, the holes under one who isn't dark.
+function light_dark.listen(side: number)
+    local dark = (rules.setup_of(side) :: Setup).karma <= DARK_AT_MOST
+    rules.listen_panels(side, if dark then { "holy" } else { "hole" })
+end
+
+-- Each tick of the navi's intake on those panels (the rules' `navi_panel`): 0x080132E6, the holy panel under a dark
+-- MegaMan turns normal; 0x08013318, a navi that isn't dark closes the hole he stands on.
+function light_dark.navi_panel(_side: number, navi: Object)
     local dark = (rules.setup() :: Setup).karma <= DARK_AT_MOST
     local x, y = navi.panel_x, navi.panel_y
     local p = field.panel(x, y)

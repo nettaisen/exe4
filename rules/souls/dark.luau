@@ -23,6 +23,7 @@
 
 local ai = require("../auto_battle/ai")
 local change = require("./change")
+local intake = require("./intake")
 
 local dark = {}
 
@@ -79,6 +80,7 @@ dark.change = change.make {
     emerged = function(navi: Object)
         state().dark_soul_ticks = TICKS
         navi.ticked = true
+        rules.listen(navi.alliance, "controller", true)
     end,
     reset = function(_navi: Object)
         ai.reset(state().auto_battle)
@@ -96,6 +98,7 @@ function dark.hp_emptied(side: number, navi: Object): boolean
     s.dark_soul_asked = true
     navi.hp = 1
     navi:ask_form_change(form)
+    intake.listen(side)
     return true
 end
 
@@ -118,6 +121,10 @@ function dark.countdown(navi: Object)
     if s.dark_soul_ticks == 0 then
         navi:set_request("revert_form", true)
     end
+    -- (His last ticks pulse: the rules' `navi_shader` is asked from then.)
+    if s.dark_soul_ticks >= 1 and s.dark_soul_ticks <= PULSING then
+        rules.listen(navi.alliance, "navi_shader", true)
+    end
 end
 
 -- 0x0800C43C, each tick of the intake after the souls' part: in the dark soul no hit reaches him for three ticks
@@ -136,6 +143,8 @@ function dark.navi_shader(side: number, navi: Object): number?
     end
     local ticks = state().dark_soul_ticks
     if ticks < 1 or ticks > PULSING then
+        -- (Until his last ticks come again: ./countdown.)
+        rules.listen(side, "navi_shader", false)
         return nil
     end
     return bit32.lshift(PULSE[bit32.band(battle.battle_time(), 15) + 1], 10)
@@ -154,7 +163,12 @@ end
 -- 0x080EEC78 (the rules' `controller`, where the idle would read the pad for a step): in the dark soul the AI
 -- decides.
 function dark.controller(side: number, navi: Object): "nothing"?
-    if not dark.united(side) or battle.player(side) ~= navi then
+    if not dark.united(side) then
+        -- (Until he emerges again.)
+        rules.listen(side, "controller", false)
+        return nil
+    end
+    if battle.player(side) ~= navi then
         return nil
     end
     ai.run(navi, state().auto_battle)

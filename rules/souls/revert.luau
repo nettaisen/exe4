@@ -14,6 +14,7 @@ local hooks = require("./hooks")
 local turns = require("./turns")
 local deletion_sprite = require("../../sprites/deletion")
 local looks = require("@exelib/looks")
+local intake = require("./intake")
 
 local revert = {}
 
@@ -38,6 +39,7 @@ function revert.update(me: Object, s: State)
         hooks.finish(me, stats.form)
         looks.load_form_sprite(me, base)
         stats.form = base
+        intake.listen(me.alliance)
         hooks.identity(me, base)
         me.sprite.white = true
         hooks.start(me, base)

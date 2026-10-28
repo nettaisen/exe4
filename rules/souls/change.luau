@@ -35,6 +35,7 @@ local regions = require("@exelib/regions")
 local turns = require("./turns")
 local deletion_sprite = require("../../sprites/deletion")
 local looks = require("@exelib/looks")
+local intake = require("./intake")
 
 local change = {}
 
@@ -147,6 +148,7 @@ local function emerge(me: Object, s: State, soul: FormDef, spec: Spec)
         hooks.finish(me, stats.form)
         looks.load_form_sprite(me, soul)
         stats.form = soul
+        intake.listen(me.alliance)
         hooks.identity(me, soul)
         hooks.start(me, soul)
         me.related1 = nil
