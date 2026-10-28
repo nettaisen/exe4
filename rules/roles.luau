@@ -21,6 +21,8 @@ local sparks = require("../lib/sparks")
 local statuses = require("./status")
 local support_chips = require("../chips/supports")
 local supports = require("../lib/supports/controller")
+local wind_registry = require("@exelib/wind/registry")
+local winds = require("./wind")
 local underground_hole = require("../objects/underground_hole")
 local zeroed = require("../chips/zeroed").zeroed
 local blindness_sprite = require("./blindness_sprite")
@@ -166,9 +168,12 @@ local roles: RolesSpec = {
                 navi:set_status("guard", true)
             end
         end,
-        -- What an obstacle encased in ice or a bubble becomes (0x08011788: an ice block or the ice cube; EXE4's
-        -- encasing is ColdMan's, chips/coldman).
-        encased = ice_cube.replace,
+        -- An obstacle encased in ice or a bubble is done (EXE4's encasing is ColdMan's, chips/coldman): no side's wind
+        -- (`sub_80E544C`: ./wind), then what it becomes (0x08011788: an ice block or the ice cube).
+        encased = function(obstacle: Object, ice: boolean, class: number?)
+            wind_registry.clear(winds.of, obstacle)
+            ice_cube.replace(obstacle, ice, class)
+        end,
     },
     sprites = {
         -- The Full Synchro aura (actor object 0x5E, 0x080CD1A8: 14-16, EXE5's and EXE6's numbers too).
