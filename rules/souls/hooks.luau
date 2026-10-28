@@ -4,11 +4,13 @@
 -- the engine's form overlay routines put on and take off what a form wears), the identity he is taken for, and the
 -- status reset that settles MegaMan in his new form.
 
+local overlays = require("@exelib/overlays")
+
 local hooks = {}
 
 -- 0x0800B7E8's spawn: put on what `form` wears.
 function hooks.start(me: Object, form: FormDef)
-    me:put_on_form_overlay(form)
+    overlays.put_on_form(me, form)
 end
 
 -- What MegaMan is taken for follows his form: a form's identity, else his navi's (EXE4's souls have none of their own:
@@ -19,7 +21,7 @@ end
 
 -- 0x0800B7E8's free (AIData +0x48): take off what `form` wore.
 function hooks.finish(me: Object, form: FormDef)
-    me:take_off_form_overlay(form)
+    overlays.take_off_form(me, form)
 end
 
 -- The status reset (0x0800E05C: the weapons, the soul's own routine) and 0x0800C5EA: the anger over (flag 0x200000,

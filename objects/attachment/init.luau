@@ -10,6 +10,7 @@
 local looks = require("@exelib/looks")
 local slot = require("@exelib/slot")
 local muzzle_flash_sprite = require("../sprites/muzzle_flash")
+local visibility = require("@exelib/visibility")
 
 local attachment = {}
 
@@ -35,7 +36,7 @@ local function follow(me: Object)
     local p = owner.pos
     local lift = (s.look.lift or 0) * 0x10000
     me.pos = Vec3.new(p.x, p.y - lift, p.z - lift)
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     looks.copy(me.sprite, owner.sprite, "color_shader", "white", "alpha", "hflip", "vflip")
     if not slot.occupied(owner, s.slot) then
         me.visible = false

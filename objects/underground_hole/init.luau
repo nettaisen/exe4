@@ -6,6 +6,8 @@
 -- by whoever sees its side (0x0800B0CA). (Navi 12's, WoodMan's, stays at 0: the story's, never a netbattle's. Unlike
 -- EXE5's it brings no splash.)
 
+local visibility = require("@exelib/visibility")
+
 local hole = {}
 
 local SPRITE = require("@self/underground_hole_sprite")
@@ -18,7 +20,7 @@ local function follow(me: Object)
     local a = navi.anim
     me.anim = if a == 0 then 0 elseif a == 3 then 2 else 1
     me.visible = true
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
 end
 
 hole.kind = new.kind {

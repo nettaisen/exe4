@@ -7,6 +7,7 @@
 -- buster and fires from its attach point, EXE4's stands in animation 0x12 and fires from 40 pixels ahead, 20 up, with
 -- the cannon's sound (0x8C) each time.
 
+local overlays = require("@exelib/overlays")
 local shot = require("./shot")
 local grab_shot_sprite = require("../../sprites/grab_shot")
 
@@ -93,7 +94,7 @@ local function finish(me: Object)
     if t ~= 0 then
         return
     end
-    me:remove_parts_of(me.related1 :: Object)
+    overlays.remove_parts_of(me, me.related1 :: Object)
     me:set_lifecycle("destroy")
 end
 
@@ -134,7 +135,7 @@ local function init(me: Object)
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.vel = Vec3.new(me.facing, me.vel.y, me.vel.z)
     if user.actor_type == "player" then
-        me:add_overlay_of(user)
+        overlays.add_overlay_of(me, user)
     end
     dimming.hide_user_sparing(user)
     local s = me.state :: State

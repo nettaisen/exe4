@@ -14,6 +14,7 @@ local attachment = require("../objects/attachment")
 local common_actor = require("@exelib/bugcharg/actor")
 local common_controller = require("@exelib/bugcharg/controller")
 local flying_shot = require("../objects/flying_shot")
+local overlays = require("@exelib/overlays")
 local sparks = require("../lib/sparks")
 
 local CHARGER_SPRITE = require("@self/bug_charger_sprite")
@@ -40,11 +41,11 @@ local ACTOR = common_actor.make {
     -- 0x0800B812: what its side's form wears (MegaMan's soul's overlay), off again as it leaves (0x0800B5DA, while it
     -- wears something).
     wear = function(me: Object, _user: Object)
-        me:put_on_form_overlay(battle.navi(me.alliance).form)
+        overlays.put_on_form(me, battle.navi(me.alliance).form)
     end,
     unwear = function(me: Object, _user: Object)
         if me.related2 then
-            me:take_off_form_overlay(battle.navi(me.alliance).form)
+            overlays.take_off_form(me, battle.navi(me.alliance).form)
         end
     end,
     hides_from_blind = false,

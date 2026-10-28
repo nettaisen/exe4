@@ -9,6 +9,7 @@
 -- (0x0800B5DA). It runs while dimmed.
 
 local attachment = require("../../objects/attachment")
+local overlays = require("@exelib/overlays")
 local wave = require("./wave")
 local bug_charger_sprite = require("../bugcharg/bug_charger_sprite")
 local hit_sparks_sprite = require("../../sprites/hit_sparks")
@@ -56,7 +57,7 @@ local function fade_in(me: Object)
         return
     end
     me.sprite.alpha = nil
-    me:put_on_form_overlay(battle.navi(me.alliance).form)
+    overlays.put_on_form(me, battle.navi(me.alliance).form)
     me.timer = WAIT
     me:set_action(WAITING)
 end
@@ -147,7 +148,7 @@ local function leave(me: Object)
         return
     end
     if me.related2 then
-        me:take_off_form_overlay(battle.navi(me.alliance).form)
+        overlays.take_off_form(me, battle.navi(me.alliance).form)
     end
     me:set_lifecycle("destroy")
 end

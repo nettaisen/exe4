@@ -14,6 +14,8 @@
 -- it goes (0x0800B5DA). Its tick (0x080CD01C): its action, then its sprite, while dimmed too; unlike EXE6's it
 -- neither shows itself nor hides from a blind viewer.
 
+local overlays = require("@exelib/overlays")
+
 local glow = {}
 
 export type State = {
@@ -59,7 +61,7 @@ function glow.back(me: Object)
     me.visible = false
     local navi = glow.navi_of(me, "0x080E2DCC")
     if me.related2 then
-        me:take_off_form_overlay(battle.navi(me.alliance).form)
+        overlays.take_off_form(me, battle.navi(me.alliance).form)
     end
     dimming.show_user(navi)
 end
@@ -95,7 +97,7 @@ function glow.make(spec: Spec): Glow
         -- 0x0800BFFE: the navi's palette (the one it wears).
         sprite.palette = navi.sprite.palette
         sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-        me:put_on_form_overlay(battle.navi(me.alliance).form)
+        overlays.put_on_form(me, battle.navi(me.alliance).form)
         me.anim, me.anim_loaded = 0, 0xFF
         me:set_lifecycle("update")
         tick(me)
