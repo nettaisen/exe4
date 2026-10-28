@@ -57,8 +57,7 @@ local FIST = follow_effect.make {
         me:copy_visibility(owner)
         me.panel_x, me.panel_y = owner.panel_x, owner.panel_y
         me:set_coordinates_from_panel()
-        me.sprite.alpha = owner.sprite.alpha
-        me.sprite.mosaic = owner.sprite.mosaic
+        me.sprite:copy_from(owner.sprite, "alpha", "mosaic")
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y - 0x10000, p.z)
     end,

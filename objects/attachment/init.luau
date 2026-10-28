@@ -35,12 +35,7 @@ local function follow(me: Object)
     local lift = (s.look.lift or 0) * 0x10000
     me.pos = Vec3.new(p.x, p.y - lift, p.z - lift)
     me:copy_visibility(owner)
-    local look, worn = me.sprite, owner.sprite
-    look.color_shader = worn.color_shader
-    look.white = worn.white
-    look.alpha = worn.alpha
-    look.hflip = worn.hflip
-    look.vflip = worn.vflip
+    me.sprite:copy_from(owner.sprite, "color_shader", "white", "alpha", "hflip", "vflip")
     if not slot.occupied(owner, s.slot) then
         me.visible = false
         me:set_lifecycle("destroy")
