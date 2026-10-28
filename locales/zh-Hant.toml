@@ -351,6 +351,8 @@ language = "zh-Hant"
 "holydrem" = { name = "神聖夢幻", description = "吸收神聖地面\n向前方發射\n神聖射擊！" }
 "duo" = { name = "迪歐", description = "降下無數的正義鐵拳\n流星指節！" }
 "prixpowr" = { name = "勝者之力", description = "3位獲得冠軍的領航員間的\n夢幻合作！" }
+"invalid" = { name = " ", description = "" }
+"zeroed" = { name = "", description = "" }
 
 [navis]
 "megaman" = { name = "洛克人", run_message = "熱斗，現在可不是\n逃跑的時候！" }

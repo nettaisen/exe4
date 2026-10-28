@@ -351,6 +351,8 @@ language = "zh-Hans"
 "holydrem" = { name = "神圣梦幻", description = "吸收神圣地面\n向前方发射\n神圣射击！" }
 "duo" = { name = "迪欧", description = "降下无数的正义铁拳\n流星指节！" }
 "prixpowr" = { name = "胜者之力", description = "3位获得冠军的领航员间的\n梦幻合作！" }
+"invalid" = { name = " ", description = "" }
+"zeroed" = { name = "", description = "" }
 
 [navis]
 "megaman" = { name = "洛克人", run_message = "热斗，现在可不是\n逃跑的时候！" }
