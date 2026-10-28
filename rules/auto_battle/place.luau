@@ -525,6 +525,9 @@ local function gauge_into_reach(navi: Object, s: State)
     settle(navi, s)
 end
 
+-- The side's sword pick, in its rules' state (the side's +0x12).
+type SwordPick = { sword_pick: number }
+
 -- A `sword_swing` chip's swings by the side's pick (its `auto_battle.swings`: 0x08023A68, VarSwrd's six from byte 0,
 -- NeoVari's four from byte 6, which 0x08023990 and its kin pick by the chip, 0xD9): each a reach list, or a spot
 -- test.
@@ -533,9 +536,10 @@ local function swing_of(navi: Object, s: State): string
     if swings == nil then
         error(string.format("%s's positioning class sword_swing reads its swings, and it names none", chip_of(s).id :: string))
     end
-    local swing: string? = swings[battle.sword_pick(navi.alliance) + 1]
+    local pick = (rules.state_of(navi.alliance) :: SwordPick).sword_pick
+    local swing: string? = swings[pick + 1]
     if swing == nil then
-        error(string.format("the side's sword pick %d is past its chip's swings (0x08023A68)", battle.sword_pick(navi.alliance)))
+        error(string.format("the side's sword pick %d is past its chip's swings (0x08023A68)", pick))
     end
     return swing
 end
@@ -545,7 +549,8 @@ end
 -- number: 0x080239A8), the third step next, else the second.
 local function swing_pick(navi: Object, s: State)
     local swings = record(chip_of(s)).swings or {}
-    battle.set_sword_pick(navi.alliance, battle.rng_positive() % #swings)
+    local pick = rules.state_of(navi.alliance) :: SwordPick
+    pick.sword_pick = battle.rng_positive() % #swings
     s.place_step = if SPOTS[swing_of(navi, s)] ~= nil then 8 else 4
 end
 

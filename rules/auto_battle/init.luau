@@ -11,9 +11,11 @@ local auto_battle = {}
 auto_battle.block = block
 
 -- What a side keeps of it through a round: its auto battle data as its console sent it as the battle started
--- (./block), which the AI plays and turns.
+-- (./block), which the AI plays and turns; and the side's sword pick (the side's +0x12, which the player's init
+-- clears), which the AI draws for a variable sword (./place).
 auto_battle.state = {
     auto_battle_places = schema.list(block.PLACE, block.PLACES),
+    sword_pick = "u8",
 } :: StateSchema
 
 return auto_battle
