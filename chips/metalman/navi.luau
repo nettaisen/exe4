@@ -9,6 +9,7 @@
 
 local collision = require("../../rules/collision")
 local follow_effect = require("@exelib/follow_effect")
+local looks = require("@exelib/looks")
 local navi_chips = require("../../lib/navi_chips")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
@@ -57,7 +58,7 @@ local FIST = follow_effect.make {
         me:copy_visibility(owner)
         me.panel_x, me.panel_y = owner.panel_x, owner.panel_y
         me:set_coordinates_from_panel()
-        me.sprite:copy_from(owner.sprite, "alpha", "mosaic")
+        looks.copy(me.sprite, owner.sprite, "alpha", "mosaic")
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y - 0x10000, p.z)
     end,

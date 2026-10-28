@@ -6,6 +6,7 @@
 -- an attack at navis, hit modifier 3, spark 6. Gone, it lets its controller's flag for it go.
 
 local collision = require("../../rules/collision")
+local looks = require("@exelib/looks")
 local panels = require("@exelib/panels")
 local sparks = require("../../lib/sparks")
 
@@ -125,7 +126,7 @@ local function init(me: Object)
     field.break_empty(me.panel_x, me.panel_y)
     local p = field.panel(me.panel_x, me.panel_y)
     if p then
-        sprite:set_by_console("palette", p.alliance, bit32.bxor(p.alliance, 1))
+        looks.by_console(sprite, "palette", p.alliance, bit32.bxor(p.alliance, 1))
         if not me:create_collision() then
             me:free()
             return
