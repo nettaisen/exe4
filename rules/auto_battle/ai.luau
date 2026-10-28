@@ -17,6 +17,7 @@
 -- place and its run of chips (`pattern_place`).
 
 local block = require("./block")
+local chip_use = require("../chip_use")
 local navi_list = require("../../lib/navi_list")
 local panels = require("@exelib/auto_battle/panels")
 local place = require("./place")
@@ -232,7 +233,8 @@ local function buster_run(navi: Object, s: State)
             step_to(navi, x :: number, y :: number)
         end
     elseif s.sub == 4 then
-        navi:hide_chip_window()
+        -- (0x08015B9E(0x10): its console's, or every console's where the chip-use rules say.)
+        battle.set_hud("chip_window", false, if chip_use.window_hides_every_console then nil else navi.alliance)
         local buster = navi.buster_weapon
         if buster == nil then
             error("the auto-battling navi's buster run fires its buster (0x0800C9D2), and it has none")

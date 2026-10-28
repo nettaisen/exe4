@@ -7,6 +7,8 @@
 -- It sits on its navi: on its position, offset by its navi's row of 0x080E2274 (by NaviStats +0x23), MegaMan's (row 0)
 -- by none; EXE4's content has no other navi.
 
+local visibility = require("@exelib/visibility")
+
 local glow = {}
 
 local B_GLOW = require("@self/charge_glow_sprite")
@@ -33,7 +35,7 @@ local function tick(me: Object)
     local navi = me.related1 :: Object
     local state = me.state :: State
     me.visible = true
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
     if not state.shown then
         me.visible = false
     end

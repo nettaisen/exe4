@@ -13,6 +13,7 @@ local looks = require("@exelib/looks")
 local navi_chips = require("../../lib/navi_chips")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local visibility = require("@exelib/visibility")
 
 local metalman = {}
 
@@ -56,7 +57,7 @@ local FIST = follow_effect.make {
         if owner.anim ~= 0 then
             return
         end
-        me:copy_visibility(owner)
+        visibility.copy(me, owner)
         me.panel_x, me.panel_y = owner.panel_x, owner.panel_y
         me:set_coordinates_from_panel()
         looks.copy(me.sprite, owner.sprite, "alpha", "mosaic")

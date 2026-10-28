@@ -58,6 +58,13 @@ local END_LOCKOUT = 2
 -- The steps, in the attack's step.
 local PREPARE, IMAGE, EMERGE, FADE_IN, SETTLE = 0, 4, 8, 0xC, 0x10
 
+-- The HUD's parts shown or hidden, on every console.
+local function show_hud(parts: { HudField }, shown: boolean)
+    for _, part in parts do
+        battle.set_hud(part, shown)
+    end
+end
+
 -- What a soul's change does besides the steps every soul's takes.
 export type Spec = {
     -- Its soul's chip's key: the change is the action `<id>/change`, the soul's image the kind `<id>/image`.
@@ -102,12 +109,12 @@ local function prepare(me: Object, soul: FormDef, spec: Spec)
         if spec.prepare then
             spec.prepare(me)
         end
-        battle.show_hud({ "emotion_window" }, false)
+        show_hud({ "emotion_window" }, false)
         me.collision:set_region(nil)
         me.step_init = 4
     end
     if not battle.screen_fading() then
-        battle.show_hud({ "hp_box", "gauge" }, false)
+        show_hud({ "hp_box", "gauge" }, false)
         set_step(me, IMAGE)
     end
 end
@@ -171,7 +178,7 @@ local function fade_in(me: Object, spec: Spec)
     if battle.screen_fading() then
         return
     end
-    battle.show_hud(if battle.late_turns() then { "hp_box", "emotion_window" } else { "hp_box", "gauge", "emotion_window" }, true)
+    show_hud(if battle.late_turns() then { "hp_box", "emotion_window" } else { "hp_box", "gauge", "emotion_window" }, true)
     turns.start(battle.navi(me.alliance).form)
     hooks.settle(me)
     if spec.reset then
