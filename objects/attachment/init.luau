@@ -7,10 +7,8 @@
 -- shader, white flash, blending and flip; it runs while dimmed (header flag 0x10) but not while paused. What it shows is a
 -- look (`attachment.look { sprite, palette, lift }`, a row); `attachment.attach(owner, look, slot, anim)`.
 
-local looks = require("@exelib/looks")
 local slot = require("@exelib/slot")
 local muzzle_flash_sprite = require("../sprites/muzzle_flash")
-local visibility = require("@exelib/visibility")
 
 local attachment = {}
 
@@ -27,27 +25,11 @@ function attachment.look(spec: AttachmentLook): AttachmentLook
     return new.record("attachment-look", spec)
 end
 
--- 0x080CD666: at the owner's position less the lift (Y and Z, unsigned); its visibility, color shader, white flash
--- (the sprite's final palette, +0x15's high nibble: 0x08002E34, 0x08002E20), blending (+0x11's bits 0x0C: 0x08002D4C,
--- 0x08002CEA) and flip; gone once the slot is empty; animating unless dimmed.
-local function follow(me: Object)
-    local owner = me.related1 :: Object
-    local s = me.state :: State
-    local p = owner.pos
-    local lift = (s.look.lift or 0) * 0x10000
-    me.pos = Vec3.new(p.x, p.y - lift, p.z - lift)
-    visibility.copy(me, owner)
-    looks.copy(me.sprite, owner.sprite, "color_shader", "white", "alpha", "hflip", "vflip")
-    if not slot.occupied(owner, s.slot) then
-        me.visible = false
-        me:set_lifecycle("destroy")
-        return
-    end
-    if not s.while_dimmed and battle.dimmed() then
-        return
-    end
-    me:update_sprite()
-end
+-- 0x080CD666, each tick from its init's: at the owner's position less the lift (Y and Z, unsigned); its visibility,
+-- color shader, white flash (the sprite's final palette, +0x15's high nibble: 0x08002E34, 0x08002E20), blending (+0x11's
+-- bits 0x0C: 0x08002D4C, 0x08002CEA) and flip; gone once the slot is empty; animating unless dimmed (the engine's
+-- follow: `Object:follow`).
+local WORN = { "color_shader", "white", "alpha", "hflip", "vflip" }
 
 -- 0x080CD618.
 local function init(me: Object)
@@ -63,7 +45,13 @@ local function init(me: Object)
     sprite.palette = k.palette
     me:set_coordinates_from_panel()
     me:set_lifecycle("update")
-    follow(me)
+    local lift = (k.lift or 0) * 0x10000
+    slot.follow(me, me.related1 :: Object, s.slot, {
+        offset = Vec3.new(0, -lift, -lift),
+        looks = WORN,
+        visibility = true,
+        while_dimmed = s.while_dimmed,
+    })
 end
 
 attachment.kind = new.kind {
@@ -74,8 +62,6 @@ attachment.kind = new.kind {
         local l = me.lifecycle
         if l == "init" then
             init(me)
-        elseif l == "update" then
-            follow(me)
         else
             me:free()
         end
