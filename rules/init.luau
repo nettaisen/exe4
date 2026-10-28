@@ -16,6 +16,7 @@ local save = require("@self/save")
 local sent_chips = require("@self/sent_chips")
 local souls = require("@self/souls")
 local soul_turns = require("@self/souls/turns")
+local wind = require("@self/wind")
 
 -- What the tools read of the game's builds, as data (./builds: the versions, a new save's folder): loaded with the
 -- rules, which read none of it.
@@ -24,9 +25,10 @@ require("@self/builds")
 require("@self/rulesets")
 
 -- What a side keeps through a round: the dark chips' (./dark_chips), the chips sent (./sent_chips), Double Soul's
--- (./souls), its NaviCust bugs' counts (./navicust) and its auto battle data as sent (./auto_battle).
+-- (./souls), its NaviCust bugs' counts (./navicust), its auto battle data as sent (./auto_battle) and its wind
+-- (./wind).
 local state: StateSchema = {}
-for _, part in { dark_chips.state, sent_chips.state, souls.state, navicust.state, auto_battle.state } do
+for _, part in { dark_chips.state, sent_chips.state, souls.state, navicust.state, auto_battle.state, wind.state } do
     for name, field in part do
         state[name] = field
     end

@@ -15,6 +15,8 @@
 
 local gust = require("./gust")
 local panels = require("@exelib/panels")
+local registry = require("@exelib/wind/registry")
+local winds = require("../rules/wind")
 
 local wind = {}
 
@@ -74,7 +76,7 @@ end
 -- tracked in its first free slot; then the wait.
 local function blow(me: Object)
     local s = state(me)
-    if s.waits and battle.wind(me.alliance) ~= nil then
+    if s.waits and winds.of(me.alliance).object ~= nil then
         return
     end
     if s.gusts[1] ~= 0 and s.gusts[2] ~= 0 then
@@ -133,7 +135,7 @@ wind.kind = new.kind {
         else
             -- 0x080E68E0: one that registered itself is no side's wind; its slots empty.
             if not s.waits then
-                battle.clear_wind(me)
+                registry.clear(winds.of, me)
             end
             s.gusts[1], s.gusts[2] = 0, 0
             me:free()
@@ -159,8 +161,8 @@ wind.kind = new.kind {
 -- the navi's side, its first parameter 1 (it pulls, seen), not running while dimmed (its header flag 0x10 cleared),
 -- registered as its side's wind, a navi's. (Its position is the spawner's registers.)
 function wind.navi(navi: Object): Object?
-    local held, source = battle.wind(navi.alliance)
-    if held ~= nil and source == "obstacle" then
+    local slot = winds.of(navi.alliance)
+    if slot.object ~= nil and slot.source == "obstacle" then
         return nil
     end
     local o = battle.spawn(wind.kind, Vec3.zero)
@@ -170,7 +172,7 @@ function wind.navi(navi: Object): Object?
     o.alliance = navi.alliance
     o.run_while_dimmed = false
     state(o).pulls = true
-    battle.set_wind(o, navi.alliance, "navi")
+    registry.set(winds.of, o, navi.alliance, "navi")
     return o
 end
 

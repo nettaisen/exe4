@@ -12,6 +12,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
 local gust = require("../../objects/gust")
 local panels = require("@exelib/panels")
+local winds = require("../../rules/wind")
 local explosion_sprite = require("../../sprites/explosion")
 local fan_sprite = require("./fan_sprite")
 
@@ -54,6 +55,7 @@ local made = common.make {
     spawn_gust = function(x: number, y: number, alliance: number, _flip: number, how: GustHow, damage: number): Object?
         return gust.spawn(x, y, alliance, how, damage, nil, 0)
     end,
+    wind = winds.of,
     absorbs = false,
     removal_explodes = true,
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.
