@@ -125,7 +125,7 @@ local function init(me: Object)
     field.break_empty(me.panel_x, me.panel_y)
     local p = field.panel(me.panel_x, me.panel_y)
     if p then
-        sprite.palette = bit32.bxor(p.alliance, battle.local_side())
+        sprite:set_by_console("palette", p.alliance, bit32.bxor(p.alliance, 1))
         if not me:create_collision() then
             me:free()
             return
