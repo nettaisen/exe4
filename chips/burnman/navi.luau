@@ -25,6 +25,7 @@ type State = {
 
 local SPRITE = require("./burnman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PILLARS = asset.sound("tops")
 local SOUND_BREATH = asset.sound("rage-roar")
@@ -179,7 +180,7 @@ burnman.kind = new.kind {
             battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), PUFF)
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
             return

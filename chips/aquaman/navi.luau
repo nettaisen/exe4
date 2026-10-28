@@ -23,6 +23,7 @@ type State = {
 
 local SPRITE = require("./aquaman_sprite")
 local aquaman_spout_sprite = require("./aquaman_spout_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The spout on his head (actor #0x5C's sprite row 1, 10-0C; its Param2 1: with the fight on, it follows him from its
@@ -105,7 +106,7 @@ local function leave(me: Object)
             spout:set_lifecycle("destroy")
         end
         if s.controller then
-            navi_chip.navi_left(s.controller :: Object)
+            navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
         me.lifecycle = "destroy"

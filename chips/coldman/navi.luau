@@ -2,7 +2,7 @@
 -- ColdMan, the navi of EXE4's ColdMan chips (EXE4's actor object #0x56, 0x080CC04C: EXE4's own), and each chip's
 -- controller, which brings him (effect object #0x7B: lib/navi_chips' short course). He appears on his user's panel
 -- and, 11 ticks later (gone if it isn't solid), looks over the field's registered obstacles (the field-object
--- registry's first six slots, each side's; but those the field-taking chips leave, `obstacle.throwable`: 0x080CC35A,
+-- registry's first six slots, each side's; but those the field-taking chips leave, not `throwable`: 0x080CC35A,
 -- 0x0800B3E8's kinds): each one with a free solid panel behind it as he faces (or his own panel there) he can reach,
 -- and it turns to his side with his damage, encased in a bubble; each other one is encased in ice
 -- (`obstacle.encase_in_bubble`, `encase_in_ice`: 0x0800B44C). Some found, the place sound and, 60 ticks later, he
@@ -32,6 +32,7 @@ type State = {
 
 local SPRITE = require("./coldman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FOUND = asset.sound("place")
 local SOUND_PUNCH = asset.sound("coldman-punch")
@@ -73,7 +74,7 @@ local function survey(me: Object)
     local dir = 1 - 2 * me.alliance
     for side = 0, 1 do
         for _, o in field.objects(side) do
-            if obstacle.throwable(o) then
+            if o.identity == nil or o.identity.throwable ~= false then
                 if reaches(me, o, dir) then
                     o.alliance = me.alliance
                     o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
@@ -298,7 +299,7 @@ coldman.kind = new.kind {
             battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), PUFF)
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
             return

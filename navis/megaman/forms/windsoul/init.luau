@@ -14,6 +14,7 @@ local wind = require("../../../objects/wind")
 local windman_sprite = require("../../../chips/windman/windman_sprite")
 local windman_swirl_sprite = require("../../../chips/windman/windman_swirl_sprite")
 local windsoul_sprite = require("@self/windsoul_sprite")
+local chip_hand = require("@exelib/chip_hand")
 
 -- What its status reset gives the hand's wind chips, and the custom screen as OK builds a hand in it.
 local BONUS = 10
@@ -23,12 +24,12 @@ local BONUS = 10
 local function hand(side: number)
     local i = battle.hand_cursor(side)
     while true do
-        local c = battle.hand_chip(side, i)
+        local c = chip_hand.chip(side, i)
         if c == nil then
             break
         end
-        if battle.hand_chip_damages(side, i) and c.family == "wind" then
-            battle.add_hand_charge_bonus(side, i, BONUS)
+        if chip_hand.damages(side, i) and c.family == "wind" then
+            chip_hand.add_bonus(side, i, "charge_bonus", BONUS)
         end
         i += 1
     end

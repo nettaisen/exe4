@@ -9,6 +9,7 @@
 
 local shot = require("./shot")
 local grab_shot_sprite = require("../../sprites/grab_shot")
+local looks = require("@exelib/looks")
 
 local stand_in = {}
 
@@ -125,7 +126,7 @@ local function init(me: Object)
         error("HolyDrem's stand-in has no user (its init reads through a null pointer)")
     end
     local sprite = me.sprite
-    sprite:load_like(user)
+    looks.load_like(sprite, user)
     sprite.shadow = "ground"
     me.visible = true
     me.pos = user.pos

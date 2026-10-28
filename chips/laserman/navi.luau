@@ -23,6 +23,7 @@ type State = {
 
 local SPRITE = require("./laserman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- The puff he goes in (effect row 0x13).
@@ -150,7 +151,7 @@ laserman.kind = new.kind {
             battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), PUFF)
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
             return

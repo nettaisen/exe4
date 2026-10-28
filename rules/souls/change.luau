@@ -34,6 +34,7 @@ local image = require("./image")
 local regions = require("@exelib/regions")
 local turns = require("./turns")
 local deletion_sprite = require("../../sprites/deletion")
+local looks = require("@exelib/looks")
 
 local change = {}
 
@@ -137,7 +138,7 @@ local function emerge(me: Object, s: State, soul: FormDef, spec: Spec)
     if me.step_init == 0 then
         local stats = battle.navi(me.alliance)
         hooks.finish(me, stats.form)
-        me:load_form_sprite(soul)
+        looks.load_form_sprite(me, soul)
         stats.form = soul
         hooks.identity(me, soul)
         hooks.start(me, soul)

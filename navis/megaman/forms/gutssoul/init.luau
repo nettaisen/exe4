@@ -11,6 +11,7 @@ local chip = require("@self/chip").gutssoul
 local soul = require("./soul")
 local gutsman_sprite = require("../../../chips/gutsman/gutsman_sprite")
 local gutssoul_sprite = require("@self/gutssoul_sprite")
+local chip_hand = require("@exelib/chip_hand")
 
 -- The status reset's bonus, and the families it goes to.
 local BONUS = 30
@@ -22,12 +23,12 @@ end
 local function hand(side: number)
     local i = battle.hand_cursor(side)
     while true do
-        local c = battle.hand_chip(side, i)
+        local c = chip_hand.chip(side, i)
         if c == nil then
             break
         end
-        if battle.hand_chip_damages(side, i) and bonus_family(c.family) then
-            battle.add_hand_charge_bonus(side, i, BONUS)
+        if chip_hand.damages(side, i) and bonus_family(c.family) then
+            chip_hand.add_bonus(side, i, "charge_bonus", BONUS)
         end
         i += 1
     end

@@ -14,6 +14,7 @@ local recipe_bass = require("./bass").bass
 local recipe_bassanly = require("./bassanly").bassanly
 local recipe_bugchain = require("./bugchain").bugchain
 local recipe_drkline = require("./drkline").drkline
+local looks = require("@exelib/looks")
 
 -- 0x080EA744: the controller's side's navi is back. For a player's (the original's +0x0F 0, MegaMan's, or 0xF0 to
 -- 0xFC, a navi's in the story) the controller first takes the navi's look itself, where the navi is, and stays
@@ -27,7 +28,7 @@ local function back(c: Object)
     local player = user.actor_type == "player"
     if player then
         local sprite = c.sprite
-        sprite:load_like(user)
+        looks.load_like(sprite, user)
         sprite.shadow = "ground"
         c.pos = user.pos
         sprite.palette = user.sprite.palette

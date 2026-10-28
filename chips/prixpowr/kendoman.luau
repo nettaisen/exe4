@@ -30,6 +30,7 @@ type State = {
 
 local SPRITE = require("../kendoman/kendoman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_DRAW = asset.sound("kendo-draw")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
@@ -179,7 +180,7 @@ kendoman.kind = new.kind {
             -- 0x080CBE64: the controller moves on; his sword away and his hit cut to its last tick; he is freed.
             local s = me.state :: State
             if s.controller then
-                navi_chip.navi_left(s.controller)
+                navi_left(s.controller)
             end
             local sword = me.related1
             if sword and sword.active then

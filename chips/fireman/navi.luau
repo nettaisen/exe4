@@ -29,6 +29,7 @@ type State = {
 local SPRITE = require("./fireman_sprite")
 local HEAD_FLAME = require("./fireman_flame_sprite")
 local rage_flame_sprite = require("../../sprites/rage_flame")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROAR = asset.sound("roar")
 
@@ -163,7 +164,7 @@ local function leave(me: Object)
             flame:set_lifecycle("destroy")
         end
         if s.controller then
-            navi_chip.navi_left(s.controller :: Object)
+            navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
         me.lifecycle = "destroy"

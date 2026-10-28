@@ -21,6 +21,7 @@ export type State = {
 }
 
 local SPRITE = require("./thunderman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local FADE_GRAY = 0x1F
 local SOLID = 0x10
@@ -208,7 +209,7 @@ thunman.kind = new.kind {
             -- 0x080C5B2C: the controller moves on, and he is freed.
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
         end

@@ -29,6 +29,7 @@ local drkstage = require("../chips/drkstage").drkstage
 local drkrecov = require("../chips/drkrecov").drkrecov
 local status = require("./status")
 local taunt = require("../navis/megaman/weapons/taunt")
+local chip_hand = require("@exelib/chip_hand")
 
 local dark_chips = {}
 
@@ -220,17 +221,18 @@ local INSTALLED = 0x04
 function dark_chips.custom_result(side: number)
     local stats = battle.navi(side)
     local i = 0
-    local chip = battle.hand_chip(side, i)
+    local chip = chip_hand.chip(side, i)
     while chip do
-        if not bit32.btest(battle.hand_marks(side, i), INSTALLED) then
-            battle.add_hand_marks(side, i, INSTALLED)
+        local marks = battle.hand_entry(side, i, "marks")
+        if not bit32.btest(marks, INSTALLED) then
+            battle.set_hand_entry(side, i, "marks", bit32.bor(marks, INSTALLED))
             local cost = COSTS[chip]
             if cost then
                 cost(side, stats)
             end
         end
         i += 1
-        chip = battle.hand_chip(side, i)
+        chip = chip_hand.chip(side, i)
     end
 end
 

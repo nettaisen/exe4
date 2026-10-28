@@ -30,6 +30,7 @@ type State = {
 }
 
 local SPRITE = require("./duo_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_ARRIVE = asset.sound("red-sun-dive")
 local SOUND_STOP = asset.sound("metal-punch")
 
@@ -214,7 +215,7 @@ navi.kind = new.kind {
             -- 0x080CB730: his controller moves on; his panels are drawn again; he is freed.
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             show_panels(me, true)
             me:free()

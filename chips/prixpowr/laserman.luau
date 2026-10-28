@@ -17,6 +17,7 @@ type State = {
 }
 
 local SPRITE = require("../laserman/laserman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- His laser's course (its first parameter, 0x080CBDBC).
@@ -113,7 +114,7 @@ laserman.kind = new.kind {
             -- 0x080CBCD4: the controller moves on; he is freed.
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
             return

@@ -23,6 +23,7 @@ local navi_chips = require("../../lib/navi_chips")
 local sparks = require("../../lib/sparks")
 local roll_ribbon_sprite = require("./roll_ribbon_sprite")
 local roll_sprite = require("./roll_sprite")
+local navi_status = require("@exelib/navi_status")
 
 -- What a panel she lands on must be free of, by her side (0x080C1AE8).
 local OCCUPIED = { [0] = 0x0780_0000, 0x0B80_0000 }
@@ -39,7 +40,7 @@ end
 -- 0x080C19B4: her side's mood rises by her chip's amount (0x0800F51E; under event flag 0x1187, which no netbattle
 -- sets, it wouldn't).
 local function heart_dropped(me: Object)
-    battle.gain_mood(me.alliance, (me.state :: any).mood :: number)
+    navi_status.gain_mood(me.alliance, (me.state :: any).mood :: number)
 end
 
 -- 0x080CD6E0, as her lash asks (attachment row 7, her ribbon's animation, animating while dimmed).

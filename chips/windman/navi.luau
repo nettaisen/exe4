@@ -21,6 +21,7 @@ type State = {
 
 local SPRITE = require("./windman_sprite")
 local windman_swirl_sprite = require("./windman_swirl_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The swirl on his head (actor #0x5C's sprite row 2, 10-28; its Param2 1: with the fight on, it follows him from its
@@ -114,7 +115,7 @@ local function leave(me: Object)
             swirl:set_lifecycle("destroy")
         end
         if s.controller then
-            navi_chip.navi_left(s.controller :: Object)
+            navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
         me.lifecycle = "destroy"

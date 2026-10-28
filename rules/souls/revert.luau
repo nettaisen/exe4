@@ -13,6 +13,7 @@ local base = require("../../navis/megaman/forms/base").base
 local hooks = require("./hooks")
 local turns = require("./turns")
 local deletion_sprite = require("../../sprites/deletion")
+local looks = require("@exelib/looks")
 
 local revert = {}
 
@@ -35,7 +36,7 @@ function revert.update(me: Object, s: State)
         me:set_status("moving", false)
         local stats = battle.navi(me.alliance)
         hooks.finish(me, stats.form)
-        me:load_form_sprite(base)
+        looks.load_form_sprite(me, base)
         stats.form = base
         hooks.identity(me, base)
         me.sprite.white = true

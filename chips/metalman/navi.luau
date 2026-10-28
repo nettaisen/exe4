@@ -34,6 +34,7 @@ export type State = {
 local SPRITE = require("./metalman_sprite")
 local metalman_fist_sprite = require("./metalman_fist_sprite")
 local strike_flash_sprite = require("../../sprites/strike_flash")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_WIND_UP = asset.sound("metal-fist")
 
@@ -397,7 +398,7 @@ metalman.kind = new.kind {
             -- 0x080C7FEA: the controller moves on, his fist goes, and he is freed.
             local s = st(me)
             if s.controller then
-                navi_chip.navi_left(s.controller)
+                navi_left(s.controller)
             end
             if s.fist then
                 follow_effect.stop(s.fist)

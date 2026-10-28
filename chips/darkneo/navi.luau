@@ -38,6 +38,7 @@ type State = {
 
 local SPRITE = require("../bass/bass_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local CAPE_ANIM_OFFSET = 0x0E
 -- Attachment row 0x1E (0x080CD524): his sheet in palette 0, no lift; its animation 0x20, animating while dimmed.
 local AURA = attachment.look { sprite = SPRITE, palette = 0 }
@@ -282,7 +283,7 @@ local function leave(me: Object)
     end
     local s = me.state :: State
     if s.controller then
-        navi_chip.navi_left(s.controller)
+        navi_left(s.controller)
     end
     if s.image then
         image.released(s.image)

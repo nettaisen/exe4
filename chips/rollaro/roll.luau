@@ -23,6 +23,7 @@ export type State = {
 local SPRITE = require("../roll/roll_sprite")
 local roll_arrow_sprite = require("./roll_arrow_sprite")
 local sparkle_sprite = require("../roll/sparkle_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local APPEAR_SOUND = asset.sound("appear")
 local ARROW_SOUND = asset.sound("roll-arrow")
 -- The effect table's row 0x2E: a sparkle (10-17).
@@ -237,7 +238,7 @@ roll.kind = new.kind {
             -- 0x080C839E: the controller moves on, and she is freed.
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
         end

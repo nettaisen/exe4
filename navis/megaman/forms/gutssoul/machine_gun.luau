@@ -12,6 +12,7 @@ local projectile = require("../../../../lib/projectile")
 local shot = require("../../../../objects/projectile")
 local sparks = require("../../../../lib/sparks")
 local muzzle_flash_sprite = require("../../../../sprites/muzzle_flash")
+local navi_status = require("@exelib/navi_status")
 
 local machine_gun = {}
 
@@ -82,7 +83,7 @@ local function between(me: Object, s: State)
         return
     end
     -- (0x0800B026.)
-    me:clear_invulnerable()
+    navi_status.clear_invulnerable(me)
     me.rapid_presses, me.rapid_window = 0, 0
     me:exit_attack()
 end

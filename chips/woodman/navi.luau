@@ -27,6 +27,7 @@ type State = {
 
 local SPRITE = require("./woodman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The panels his towers rise on, by his side (0x080C9A60: the other side's solid panels).
@@ -228,7 +229,7 @@ woodman.kind = new.kind {
             battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), PUFF)
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             me:free()
             return

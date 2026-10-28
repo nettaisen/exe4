@@ -10,6 +10,7 @@
 -- the chip's level's (0x0800B9AC: 0 for a chip of level 0, 2 for an SP's 3, 3 for a DS's 4); each chip states its own.
 
 local common = require("@exelib/navi_chips/controller")
+local looks = require("@exelib/looks")
 
 local navi_chips = {}
 
@@ -67,7 +68,7 @@ local function warp_init(me: Object)
     local navi = me.related1 :: Object
     if navi.actor_type == "player" then
         local sprite = me.sprite
-        sprite:load_like(navi)
+        looks.load_like(sprite, navi)
         sprite.shadow = "ground"
         me.visible = true
         me.pos = navi.pos
@@ -81,7 +82,7 @@ local function warp_init(me: Object)
 end
 
 -- EXE4's warp (effect object #0x0C, 0x080E2C24). (Its init loads its sprite through 0x0800B90A's own table; the
--- engine's `load_like` is the same lookup.)
+-- `load_like` of @exelib/looks is the same lookup.)
 navi_chips.warp_kind = new.kind {
     id = "navi-chip-warp",
     pool = "effect",

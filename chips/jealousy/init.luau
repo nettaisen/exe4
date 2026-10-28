@@ -10,6 +10,7 @@
 local collision = require("../rules/collision")
 local controller = require("@exelib/jealousy/controller")
 local sparks = require("../lib/sparks")
+local chip_hand = require("@exelib/chip_hand")
 
 -- 0x080E5FDC: the chips the other side's navi holds (none without one).
 local function count(me: Object): number
@@ -17,7 +18,7 @@ local function count(me: Object): number
     if not navi then
         return 0
     end
-    return battle.hand_left(navi.alliance)
+    return chip_hand.left(navi.alliance)
 end
 
 local chip: Chip = {

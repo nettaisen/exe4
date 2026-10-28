@@ -13,6 +13,7 @@
 -- (A navi in auto battle, or another navi, has its own deletion, 0x08010D4C: the engine runs its own for those.)
 
 local deletion_sprite = require("../sprites/deletion")
+local navi_status = require("@exelib/navi_status")
 
 local deletion = {}
 
@@ -29,17 +30,18 @@ end
 
 -- 0x08010890.
 local function start(me: Object)
-    me:drop_alive_count()
+    battle.set_alive_count(me.alliance, battle.alive_count(me.alliance) - 1)
     me.collision:set_region(nil)
-    me:drop_status_visuals()
+    me.collision.confusion_visual = nil
+    me.collision.blindness_visual = nil
     me:set_status_timer("submerged", 0)
     me:set_status("submerged", false)
-    me:reset_charge()
-    me:drop_chip()
+    navi_status.reset_charge(me)
+    me.chip = nil
     me.anim = 2
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.barrier_visual = nil
-    me:drop_barrier()
+    me.collision.barrier = "none"
     go(me, EXPLODE)
 end
 

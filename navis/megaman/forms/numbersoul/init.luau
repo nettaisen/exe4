@@ -16,6 +16,7 @@ local OVERLAY = require("@self/numbersoul_overlay_sprite")
 local numberman_face_sprite = require("../../../chips/numbrman/numberman_face_sprite")
 local numberman_sprite = require("../../../chips/numbrman/numberman_sprite")
 local numbersoul_sprite = require("@self/numbersoul_sprite")
+local chip_hand = require("@exelib/chip_hand")
 local overlay = soul.overlay(OVERLAY)
 
 -- The status reset's bonus, and the custom screen's.
@@ -25,12 +26,12 @@ local BONUS = 10
 local function hand(side: number)
     local i = battle.hand_cursor(side)
     while true do
-        local c = battle.hand_chip(side, i)
+        local c = chip_hand.chip(side, i)
         if c == nil then
             break
         end
-        if battle.hand_chip_damages(side, i) and c.family == "null" then
-            battle.add_hand_charge_bonus(side, i, BONUS)
+        if chip_hand.damages(side, i) and c.family == "null" then
+            chip_hand.add_bonus(side, i, "charge_bonus", BONUS)
         end
         i += 1
     end

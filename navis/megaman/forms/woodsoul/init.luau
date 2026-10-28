@@ -12,6 +12,7 @@ local chip = require("@self/chip").woodsoul
 local soul = require("./soul")
 local woodman_sprite = require("../../../chips/woodman/woodman_sprite")
 local woodsoul_sprite = require("@self/woodsoul_sprite")
+local chip_hand = require("@exelib/chip_hand")
 
 -- 0x0800E294 (`whole`: on the hand) and 0x0801F226 (on the custom screen's list): from the hand's cursor on, a Wood
 -- chip takes in the damaging Null chip after it (its damage and bonuses), which leaves the hand (the chips after it
@@ -19,16 +20,16 @@ local woodsoul_sprite = require("@self/woodsoul_sprite")
 local function fold(side: number, whole: boolean)
     local i = battle.hand_cursor(side)
     while true do
-        local c = battle.hand_chip(side, i)
+        local c = chip_hand.chip(side, i)
         if c == nil then
             break
         end
         if c.family == "wood" then
-            local after = battle.hand_chip(side, i + 1)
+            local after = chip_hand.chip(side, i + 1)
             if after == nil then
                 break
             end
-            if after.family == "null" and battle.hand_chip_damages(side, i + 1) then
+            if after.family == "null" and chip_hand.damages(side, i + 1) then
                 battle.fold_hand_chip(side, i, whole)
             end
         end

@@ -1,6 +1,6 @@
 --!strict
 -- DarkNeo's image of its user (EXE4's attack object #0xA1, 0x080E1028; it has no collision), which DarkNeo's Bass
--- (./navi) leaves on his panel: the user's navi's sprite (by its navi and soul, 0x0800B90A: the engine's `load_like`)
+-- (./navi) leaves on his panel: the user's navi's sprite (by its navi and soul, 0x0800B90A: exelib's `load_like`)
 -- in the palette 0x0800B990 gives its navi (MegaMan's 1), fading in over 16 ticks with the appearing's sound; what
 -- its navi's form wears put on (0x0800B812); 20 ticks; then it raises the bug charger (attachment row 0x2E, 0c-43,
 -- with sound 0x139) and fires nine waves (./wave) from the panel ahead, 11 ticks apart, in its row, the row above and
@@ -12,6 +12,7 @@ local attachment = require("../../objects/attachment")
 local wave = require("./wave")
 local bug_charger_sprite = require("../bugcharg/bug_charger_sprite")
 local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local looks = require("@exelib/looks")
 
 local image = {}
 
@@ -175,7 +176,7 @@ local function init(me: Object)
         error("DarkNeo's image has no navi to look like (0x0800B90A's caller read its side's navi stats)")
     end
     local sprite = me.sprite
-    sprite:load_like(navi)
+    looks.load_like(sprite, navi)
     sprite.shadow = "ground"
     me.visible = true
     me.anim, me.anim_loaded = 0, 0

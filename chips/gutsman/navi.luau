@@ -23,6 +23,7 @@ type State = {
 }
 
 local SPRITE = require("./gutsman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 
 local APPEAR, STAND, HAMMER, LEAVE = 0x0, 0x4, 0x8, 0xC
@@ -109,7 +110,7 @@ local function leave(me: Object)
     if countdown(me, 5) then
         local s = me.state :: State
         if s.controller then
-            navi_chip.navi_left(s.controller :: Object)
+            navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
         me.lifecycle = "destroy"

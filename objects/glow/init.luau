@@ -7,12 +7,14 @@
 --
 -- Its start (0x080CCF7C): only a navi's copy (the navi's +0x0F 0, MegaMan's, or 0xF0 to 0xFC, a navi's in the story;
 -- anything else, a virus, it isn't busy over and goes at once); the navi's sprite by its navi and soul (0x0800B90A,
--- the engine's `load_like`), with its shadow (navi 10's, JunkMan's, without: the story's, never a netbattle's), a pixel
+-- exelib's `load_like`), with its shadow (navi 10's, JunkMan's, without: the story's, never a netbattle's), a pixel
 -- up the field and lower than the navi (as EXE5's), the navi's palette and its side's facing; what the navi's form
 -- wears (0x0800B812: MegaMan's soul's overlay, 0x08018068 by the soul, stepping on, its Param3 1; another navi's own),
 -- through the form's `put_on` (FireSoul's and NumberSoul's are docs/design/exe4-map.md §18 item 74's), taken off as
 -- it goes (0x0800B5DA). Its tick (0x080CD01C): its action, then its sprite, while dimmed too; unlike EXE6's it
 -- neither shows itself nor hides from a blind viewer.
+
+local looks = require("@exelib/looks")
 
 local glow = {}
 
@@ -87,7 +89,7 @@ function glow.make(spec: Spec): Glow
             return
         end
         local sprite = me.sprite
-        sprite:load_like(navi)
+        looks.load_like(sprite, navi)
         sprite.shadow = "ground"
         me.visible = true
         local p = navi.pos

@@ -20,6 +20,7 @@ local block = require("./block")
 local navi_list = require("../../lib/navi_list")
 local panels = require("@exelib/auto_battle/panels")
 local place = require("./place")
+local navi_status = require("@exelib/navi_status")
 
 local ai = {}
 
@@ -274,7 +275,7 @@ local function dodge(navi: Object, s: State)
         end
         s.sub = 8
     elseif s.sub == 8 then
-        navi:reset_charge()
+        navi_status.reset_charge(navi)
         local shot = navi.charge_shot_weapon
         if shot == nil then
             error("the auto-battling navi's dodge ends in its charged shot (0x0800CA60), and it has none")

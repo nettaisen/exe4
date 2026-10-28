@@ -4,6 +4,8 @@
 -- the engine's form overlay routines put on and take off what a form wears), the identity he is taken for, and the
 -- status reset that settles MegaMan in his new form.
 
+local navi_status = require("@exelib/navi_status")
+
 local hooks = {}
 
 -- 0x0800B7E8's spawn: put on what `form` wears.
@@ -26,7 +28,7 @@ end
 -- AIData +0x2E), the mood back to 0x80 (`sub_8015BEC`).
 function hooks.settle(me: Object)
     me:reset_status()
-    me:end_anger()
+    navi_status.end_anger(me, "unless_zero")
 end
 
 return hooks

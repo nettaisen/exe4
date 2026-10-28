@@ -30,6 +30,7 @@ type State = {
 local SPRITE = require("./kendoman_sprite")
 local puff_sprite = require("../../sprites/puff")
 local sword_slash_sprite = require("../../sprites/sword_slash")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("counter-strike")
 local SOUND_VANISH = asset.sound("sword-swing")
@@ -360,7 +361,7 @@ kendoman.kind = new.kind {
             puff(me)
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             sheathe(me)
             me:free()
