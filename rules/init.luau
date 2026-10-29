@@ -63,8 +63,8 @@ local rules: Rules = {
     setup = {
         -- The navi they play: the round's stats are its. No default: a side states it.
         navi = "navi",
-        -- Their folder as the save keeps it, an entry with no chip empty (a folder being made); the Regular chip, an
-        -- entry of it (from 0), dealt first.
+        -- Their folder as the folder screen shows it, an entry with no chip empty (a folder being made); the Regular
+        -- chip, an entry of it (from 0), dealt first.
         folder = schema.list({ chip = "chip", code = "code" }, 30),
         regular_chip = "u8?",
         -- What the save brings to the navi's stats (./save): MegaMan's HP, the Regular memory and fighting in the sun
