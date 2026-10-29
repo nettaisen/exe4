@@ -2,7 +2,8 @@
 -- EXE4's extraction recipe (docs/design/extraction-recipes.md): how its pack's assets are extracted from a complete
 -- Legacy Collection's four ROMs (its `roms`: Red Sun US, `MEGAMANBN4RS`; Blue Moon US, `MEGAMANBN4BM`; Red Sun Japan,
 -- `ROCK_EXE4_RS`; Blue Moon Japan, `ROCK_EXE4_BM`). It reads the ROMs through the primitives
--- (content/nettai/extract.d.luau) and returns the asset model; the extractor makes the pack.
+-- (content/nettai/extract.d.luau) and returns the asset model, which the host finishes. The game's root gives it as its
+-- `extract` (init.luau), so it loads with the content.
 --
 -- The routines that read the blocks are EXE6's or EXE5's, the same or nearly (docs/design/exe4-map.md §3), or EXE4's
 -- own (§14); the verification workspace's tools/exe5/bmap.py and tools/exe4/emap.py pair EXE4's routines with EXE6's
