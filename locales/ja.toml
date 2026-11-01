@@ -401,7 +401,7 @@ language = "ja"
 
 [navicust_programs]
 "airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
-"antimagc" = { name = "カワリミマジック", description = "B+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
+"antimagc" = { name = "カワリミマジック", description = "Ⓑ+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
 "attack-1" = { name = "アタック+1", description = "ロックバスターの\n攻撃力が1アップ!" }
 "attckmax" = { name = "アタックMAX", description = "ロックバスターの\n攻撃力がMAXに!" }
 "battery" = { name = "バッテリーモード", description = "バッテリーじょうたい\nで電気属性ウイルスが\nよってくるようになる" }
@@ -425,14 +425,14 @@ language = "ja"
 "hp-50" = { name = "HP+50", description = "マックスHPが\n50ふえる!" }
 "hp-500" = { name = "HP+500", description = "マックスHPが\n500ふえる!" }
 "hubbatc" = { name = "サイトバッチ", description = "せんざいのうりょくを\n100%ひきだす\nキケンなプログラム" }
-"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでLで\nはなしてみてください" }
+"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでⓁで\nはなしてみてください" }
 "jungle" = { name = "ジャングルランド", description = "ジャングルのかおりを\nほうしゅつして木属性\nウイルスをひきつける" }
 "megfldr1" = { name = "メガフォルダ1", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+1" }
 "megfldr2" = { name = "メガフォルダ2", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+2" }
 "oilbody" = { name = "オイルボディ", description = "炎属性ウイルスが\n大スキなオイルをぬり\nねらわれやすくなる!" }
-"reflect" = { name = "リフレクト", description = "B+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
+"reflect" = { name = "リフレクト", description = "Ⓑ+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
 "rush" = { name = "ラッシュサポート", description = "たいせんせんよう!\nきえたあいてのニオイ\nをかぎつけとびかかる" }
-"shield" = { name = "シールド", description = "B+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
+"shield" = { name = "シールド", description = "Ⓑ+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
 "sneakrun" = { name = "シノビダッシュ", description = "自分よりよわいてきと\nであわなくなる!" }
 "soulclen" = { name = "ソウルクリーナー", description = "おのれのあくぎょうを\nくいあらためるための\nしゅぎょうプログラム" }
 "speed-1" = { name = "ラピッド+1", description = "ロックバスターの\n連射力が1アップ!" }
@@ -480,10 +480,10 @@ language = "ja"
 "036-max-hp-up" = { name = "マックスHP+450\nバグあり" }
 "037-max-hp-up" = { name = "マックスHP+500" }
 "038-max-hp-up" = { name = "マックスHP+500\nバグあり" }
-"039-b-left-ability-activation" = { name = "B+左でエアシュート" }
-"040-b-left-ability-activation" = { name = "B+左でランダムトラップ" }
-"041-b-left-ability-activation" = { name = "B+左でバグボム" }
-"042-b-left-ability-activation" = { name = "B+左でクラックアウト" }
+"039-b-left-ability-activation" = { name = "Ⓑ+左でエアシュート" }
+"040-b-left-ability-activation" = { name = "Ⓑ+左でランダムトラップ" }
+"041-b-left-ability-activation" = { name = "Ⓑ+左でバグボム" }
+"042-b-left-ability-activation" = { name = "Ⓑ+左でクラックアウト" }
 "043-buster-patch" = { name = "クラックバスター" }
 "044-buster-patch" = { name = "ポイズンバスター" }
 "045-default-full-synchro" = { name = "デフォルトフルシンクロ" }
@@ -509,12 +509,12 @@ language = "ja"
 "065-max-hp-up" = { name = "マックスHP+650" }
 "066-max-hp-up" = { name = "マックスHP+650\nバグあり" }
 "067-max-hp-up" = { name = "マックスHP+700\nバグあり" }
-"068-b-left-ability-activation" = { name = "B+左でメガエナジーボム" }
-"069-b-left-ability-activation" = { name = "B+左でリカバリー10" }
-"070-b-left-ability-activation" = { name = "B+左でパネルリターン" }
-"071-b-left-ability-activation" = { name = "B+左でスーパーキタカゼ" }
-"072-b-left-ability-activation" = { name = "B+左でバンブーランス" }
-"073-b-left-ability-activation" = { name = "B+左でダブルクラック" }
+"068-b-left-ability-activation" = { name = "Ⓑ+左でメガエナジーボム" }
+"069-b-left-ability-activation" = { name = "Ⓑ+左でリカバリー10" }
+"070-b-left-ability-activation" = { name = "Ⓑ+左でパネルリターン" }
+"071-b-left-ability-activation" = { name = "Ⓑ+左でスーパーキタカゼ" }
+"072-b-left-ability-activation" = { name = "Ⓑ+左でバンブーランス" }
+"073-b-left-ability-activation" = { name = "Ⓑ+左でダブルクラック" }
 "074-triple-supporter-1-2" = { name = "トリプルサポーター1/2" }
 "075-triple-supporter-2-2" = { name = "トリプルサポーター2/2" }
 "076-all-guard-1-2" = { name = "オールガード1/2\nバグあり" }
@@ -553,7 +553,7 @@ language = "ja"
 "109-megafolder3" = { name = "メガフォルダ3\nバグあり" }
 "110-custom3" = { name = "カスタム3\nバグあり" }
 "111-gigafolder1" = { name = "ギガフォルダ1" }
-"112-b-left-ability-activation" = { name = "B+左でトリプルクラック" }
+"112-b-left-ability-activation" = { name = "Ⓑ+左でトリプルクラック" }
 "113-charge-shot-switch" = { name = "チャージワイドショット3" }
 "114-charge-shot-switch" = { name = "チャージサンダーボール3" }
 "115-charge-shot-switch" = { name = "チャージフウジンラケット" }

@@ -402,7 +402,7 @@ language = "en"
 
 [navicust_programs]
 "airshoes" = { name = "AirShoes", description = "Walk even\nif no\npanels!" }
-"antimagc" = { name = "AntiMagc", description = "When hit,\nB+Left\nhurl star" }
+"antimagc" = { name = "AntiMagc", description = "When hit,\nⒷ+Left\nhurl star" }
 "attack-1" = { name = "Attack+1", description = "MegBuster\nAttack+1!" }
 "attckmax" = { name = "AttckMAX", description = "MegBuster\nAttckMAX!" }
 "battery" = { name = "Battery", description = "Attracts\nElec\nviruses!" }
@@ -426,14 +426,14 @@ language = "en"
 "hp-50" = { name = "HP+50", description = "MAX HP\n+50!" }
 "hp-500" = { name = "HP+500", description = "MAX HP\n+500!" }
 "hubbatc" = { name = "HubBatc", description = "Maximizes\nyour\npotential" }
-"humor" = { name = "Humor", description = "Install\nand try\nL!" }
+"humor" = { name = "Humor", description = "Install\nand try\nⓁ!" }
 "jungle" = { name = "Jungle", description = "Attracts\nWood\nviruses!" }
 "megfldr1" = { name = "MegFldr1", description = "1 more\nMegaChip\nin folder" }
 "megfldr2" = { name = "MegFldr2", description = "2 more\nMegaChips\nin folder" }
 "oilbody" = { name = "OilBody", description = "Attracts\nFire\nviruses!" }
-"reflect" = { name = "Reflect", description = "Return\ndmg with\nB+Left!" }
+"reflect" = { name = "Reflect", description = "Return\ndmg with\nⒷ+Left!" }
 "rush" = { name = "Rush", description = "VS only!\nFind an\nopponent" }
-"shield" = { name = "Shield", description = "Zero dmg\nwith\nB+Left!" }
+"shield" = { name = "Shield", description = "Zero dmg\nwith\nⒷ+Left!" }
 "sneakrun" = { name = "SneakRun", description = "Weak enmy\nstop\nappearing" }
 "soulclen" = { name = "SoulClen", description = "Cleanses\nevil\nthoughts" }
 "speed-1" = { name = "Speed+1", description = "MegBuster\nSpeed+1!" }
@@ -481,10 +481,10 @@ language = "en"
 "036-max-hp-up" = { name = "MAX HP+450\nw/Bug" }
 "037-max-hp-up" = { name = "MAX HP+500" }
 "038-max-hp-up" = { name = "MAX HP+500\nw/Bug" }
-"039-b-left-ability-activation" = { name = "B+Left:AirShot" }
-"040-b-left-ability-activation" = { name = "B+Left:RandomTrap" }
-"041-b-left-ability-activation" = { name = "B+Left:BugBomb" }
-"042-b-left-ability-activation" = { name = "B+Left:CrakOut" }
+"039-b-left-ability-activation" = { name = "Ⓑ+Left:AirShot" }
+"040-b-left-ability-activation" = { name = "Ⓑ+Left:RandomTrap" }
+"041-b-left-ability-activation" = { name = "Ⓑ+Left:BugBomb" }
+"042-b-left-ability-activation" = { name = "Ⓑ+Left:CrakOut" }
 "043-buster-patch" = { name = "CrakBuster" }
 "044-buster-patch" = { name = "PoisonBuster" }
 "045-default-full-synchro" = { name = "DFulSync" }
@@ -510,12 +510,12 @@ language = "en"
 "065-max-hp-up" = { name = "MAX HP+650" }
 "066-max-hp-up" = { name = "MAX HP+650\nw/Bug" }
 "067-max-hp-up" = { name = "MAX HP+700\nw/Bug" }
-"068-b-left-ability-activation" = { name = "B+Left:MegEnBom" }
-"069-b-left-ability-activation" = { name = "B+Left:Recov10" }
-"070-b-left-ability-activation" = { name = "B+Left:PnlRetrn" }
-"071-b-left-ability-activation" = { name = "B+Left:NrthWind" }
-"072-b-left-ability-activation" = { name = "B+Left:Lance" }
-"073-b-left-ability-activation" = { name = "B+Left:DublCrak" }
+"068-b-left-ability-activation" = { name = "Ⓑ+Left:MegEnBom" }
+"069-b-left-ability-activation" = { name = "Ⓑ+Left:Recov10" }
+"070-b-left-ability-activation" = { name = "Ⓑ+Left:PnlRetrn" }
+"071-b-left-ability-activation" = { name = "Ⓑ+Left:NrthWind" }
+"072-b-left-ability-activation" = { name = "Ⓑ+Left:Lance" }
+"073-b-left-ability-activation" = { name = "Ⓑ+Left:DublCrak" }
 "074-triple-supporter-1-2" = { name = "TripSupp 1/2" }
 "075-triple-supporter-2-2" = { name = "TripSupp 2/2" }
 "076-all-guard-1-2" = { name = "AllGuard 1/2\nw/Bug" }
@@ -554,7 +554,7 @@ language = "en"
 "109-megafolder3" = { name = "MegFldr3\nw/Bug" }
 "110-custom3" = { name = "Custom3\nw/Bug" }
 "111-gigafolder1" = { name = "GigFldr1" }
-"112-b-left-ability-activation" = { name = "B+Left:TripCrak" }
+"112-b-left-ability-activation" = { name = "Ⓑ+Left:TripCrak" }
 "113-charge-shot-switch" = { name = "+WideSht3" }
 "114-charge-shot-switch" = { name = "+Thunder3" }
 "115-charge-shot-switch" = { name = "+WindRack" }
