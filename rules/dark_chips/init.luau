@@ -141,11 +141,14 @@ function dark_chips.last_pick_first(_side: number)
     s.offered_picks = bit32.bor(bit32.lshift(others, 1), if bit32.btest(s.offered_picks, last) then 1 else 0)
 end
 
--- The last pick taken back.
-function dark_chips.chip_taken_back(_side: number, _chip: Chip)
+-- The pick in place `place` taken back (B's, the last): the picks after it, each a place up, their offered flags
+-- with them.
+function dark_chips.chip_taken_back(_side: number, _chip: Chip, place: number)
     local s = rules.state() :: State
+    local before = bit32.band(s.offered_picks, bit32.lshift(1, place) - 1)
+    local after = bit32.rshift(s.offered_picks, place + 1)
+    s.offered_picks = bit32.bor(before, bit32.lshift(after, place))
     s.picks -= 1
-    s.offered_picks = bit32.band(s.offered_picks, bit32.bnot(bit32.lshift(1, s.picks)))
 end
 
 -- 0x0801F0FA: OK sends the hand; each offered dark chip in it counts (0x0801EF92).
