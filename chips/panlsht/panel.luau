@@ -19,7 +19,7 @@ export type State = {
     wait: number,
 }
 
-local SPRITE = require("./panel_shot_sprite")
+local SPRITE = asset.sprite("panel-shot")
 local TEAR_SOUND = asset.sound("panel-lift")
 local SHOT_SOUND = asset.sound("wood-strike")
 local HIT_MOD = 3

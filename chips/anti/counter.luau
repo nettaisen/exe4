@@ -11,12 +11,12 @@ local common = require("@exelib/antidmg/counter")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local shuriken = require("@exelib/bodygrd/shuriken")
-local shuriken_sprite = require("../../sprites/shuriken")
-local small_puff_sprite = require("../../sprites/small_puff")
+local shuriken_sprite = asset.sprite("shuriken")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local counter = {}
 
-local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
+local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 
 -- The shuriken's hit modifier (0x080D8F7C: 1, its own).
 local HIT_MOD = 1

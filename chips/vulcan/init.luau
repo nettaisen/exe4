@@ -8,14 +8,14 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/vulcan")
-local vulcan_hit_sprite = require("@self/vulcan_hit_sprite")
-local vulcan_sprite = require("@self/vulcan_sprite")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_sprite = asset.sprite("vulcan")
 
 -- Bullet row 12: the panel found and the one behind it, modifier 1, its hit (effect row 0x26) shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
 

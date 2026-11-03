@@ -10,8 +10,8 @@ local buster = require("@self/buster")
 local charge = require("@self/charge")
 local chip = require("@self/chip").metlsoul
 local soul = require("./soul")
-local metalman_sprite = require("../../../chips/metalman/metalman_sprite")
-local metalsoul_sprite = require("@self/metalsoul_sprite")
+local metalman_sprite = asset.sprite("metalman")
+local metalsoul_sprite = asset.sprite("metalsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

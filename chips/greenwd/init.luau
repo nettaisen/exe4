@@ -7,7 +7,7 @@
 local spawners = require("../lib/spawners")
 local tower = require("../objects/tower")
 local towers = require("../lib/towers")
-local wood_tower_sprite = require("./woodman/wood_tower_sprite")
+local wood_tower_sprite = asset.sprite("wood-tower")
 
 -- The wood tower (the towers' row 1): 0c-0b, animation 0 for 12 ticks and 4 more, then 1 for 10; hit modifier 1;
 -- sound 0x13E.

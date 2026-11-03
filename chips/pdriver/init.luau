@@ -15,8 +15,8 @@ local controller = require("@exelib/piledrvr/controller")
 local gunsols = require("./gunsol")
 local pile = require("@exelib/piledrvr/pile")
 local sparks = require("../lib/sparks")
-local pile_beam_sprite = require("@self/pile_beam_sprite")
-local pile_driver_sprite = require("@self/pile_driver_sprite")
+local pile_beam_sprite = asset.sprite("pile-beam")
+local pile_driver_sprite = asset.sprite("pile-driver")
 
 local BEAM = beam.make_kind {
     id = "pdriver/beam",

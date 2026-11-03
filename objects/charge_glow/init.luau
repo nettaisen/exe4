@@ -11,8 +11,8 @@ local visibility = require("@exelib/visibility")
 
 local glow = {}
 
-local B_GLOW = require("@self/charge_glow_sprite")
-local A_GLOW = require("@self/charge_glow_a_sprite")
+local B_GLOW = asset.sprite("charge-glow")
+local A_GLOW = asset.sprite("charge-glow-a")
 local CHARGING = asset.sound("buster-charge")
 local CHARGED = asset.sound("buster-charged")
 

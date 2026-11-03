@@ -18,7 +18,7 @@ local collision = require("../../../rules/collision")
 local regions = require("@exelib/regions")
 local rock = require("../../../objects/rock")
 local sparks = require("../../../lib/sparks")
-local bubble_sprite = require("./bubble_sprite")
+local bubble_sprite = asset.sprite("bubble")
 
 local bug_shots = {}
 

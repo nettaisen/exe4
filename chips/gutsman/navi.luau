@@ -22,7 +22,7 @@ type State = {
     cracks_all: boolean,
 }
 
-local SPRITE = require("./gutsman_sprite")
+local SPRITE = asset.sprite("gutsman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 

@@ -10,9 +10,9 @@ local attachment = require("../../../objects/attachment")
 local charge = require("@self/charge")
 local chip = require("@self/chip").aquasoul
 local soul = require("./soul")
-local aquaman_spout_sprite = require("../../../chips/aquaman/aquaman_spout_sprite")
-local aquaman_sprite = require("../../../chips/aquaman/aquaman_sprite")
-local aquasoul_sprite = require("@self/aquasoul_sprite")
+local aquaman_spout_sprite = asset.sprite("aquaman-spout")
+local aquaman_sprite = asset.sprite("aquaman")
+local aquasoul_sprite = asset.sprite("aquasoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

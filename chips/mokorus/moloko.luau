@@ -16,7 +16,7 @@ local sparks = require("../../lib/sparks")
 
 local moloko = {}
 
-local SPRITE = require("./moloko_sprite")
+local SPRITE = asset.sprite("moloko")
 local SOUND = asset.sound("moloko")
 local ANIM = 2
 local HIT_MOD = 0x21

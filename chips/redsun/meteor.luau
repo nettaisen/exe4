@@ -6,14 +6,14 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/sun_meteor")
 local sparks = require("../../lib/sparks")
-local burst_sprite = require("../../sprites/burst")
-local meteor_sprite = require("../meteors/meteor_sprite")
+local burst_sprite = asset.sprite("burst")
+local meteor_sprite = asset.sprite("meteor")
 
 local made = common.make {
     id = "redsun/meteor",
     fall_sound = asset.sound("justice-one"),
     burst_sound = asset.sound("hit-bomb-1"),
-    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 },
+    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 },
     spark_of = sparks.of_element,
 }
 

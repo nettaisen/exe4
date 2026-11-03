@@ -10,7 +10,7 @@ local collision = require("../../../../rules/collision")
 local flying_shot = require("../../../../objects/flying_shot")
 local projectile = require("../../../../lib/projectile")
 local sparks = require("../../../../lib/sparks")
-local roll_arrow_sprite = require("../../../../chips/rollaro/roll_arrow_sprite")
+local roll_arrow_sprite = asset.sprite("roll-arrow")
 
 local charge = {}
 

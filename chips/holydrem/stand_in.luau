@@ -9,7 +9,7 @@
 
 local overlays = require("@exelib/overlays")
 local shot = require("./shot")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 local looks = require("@exelib/looks")
 
 local stand_in = {}
@@ -24,7 +24,7 @@ export type State = {
 }
 
 -- The flash on a holy panel the scan takes (effect row 0x45: 0c-13's animation 1).
-local FLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 }
+local FLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 20 }
 local SOUND = asset.sound("cannon")
 -- Its pose (the user's sprite's animation 0x12).
 local POSE = 0x12

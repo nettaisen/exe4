@@ -9,7 +9,7 @@ local cannon_lib = require("../lib/cannon")
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
 local sparks = require("../lib/sparks")
-local cannon_sprite = require("./cannon/cannon_sprite")
+local cannon_sprite = asset.sprite("cannon")
 
 -- Its cannon (attachment row 0: 0c-01 in palette 0) and shot (projectile row 1: it staggers, the impact spark).
 local ARM = attachment.look { sprite = cannon_sprite, palette = 0 }

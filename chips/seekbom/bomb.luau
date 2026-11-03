@@ -17,11 +17,11 @@ local trajectory = require("../../lib/trajectory")
 
 local bomb = {}
 
-local SPRITE = require("./seek_bomb_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local SPRITE = asset.sprite("seek-bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 
 -- Its flight: 40 ticks, falling 0x3000 a tick (0x080DEFE8); its first X velocity (the init's: 3 pixels a tick toward
 -- the other side, which the aim replaces).

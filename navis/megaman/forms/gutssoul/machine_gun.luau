@@ -11,7 +11,7 @@ local collision = require("../../../../rules/collision")
 local projectile = require("../../../../lib/projectile")
 local shot = require("../../../../objects/projectile")
 local sparks = require("../../../../lib/sparks")
-local muzzle_flash_sprite = require("../../../../sprites/muzzle_flash")
+local muzzle_flash_sprite = asset.sprite("muzzle-flash")
 local navi_status = require("@exelib/navi_status")
 
 local machine_gun = {}
@@ -21,7 +21,7 @@ local SHOTS = 8
 local SHOT_TICKS, BETWEEN_TICKS = 4, 2
 -- Its arm out, and the muzzle flash at it (effect row 5, 0c-06).
 local ANIM = 7
-local FLASH = new.effect { sprite = muzzle_flash_sprite, anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = muzzle_flash_sprite, anim = 0, palette = 0, steps = 7 }
 -- Its shot (projectile row 3, 0x080CD2C3): an attack at navis, hit modifier 0, the charged shot's spark.
 local SHOT = shot.variant {
     id = "gutssoul/machine-gun/shot",

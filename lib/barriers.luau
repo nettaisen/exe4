@@ -16,9 +16,9 @@
 local barrier_visual = require("../objects/barrier_visual")
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
-local aura_sprite = require("../sprites/aura")
-local barrier_sprite = require("../sprites/barrier")
-local black_barrier_sprite = require("../sprites/black_barrier")
+local aura_sprite = asset.sprite("aura")
+local barrier_sprite = asset.sprite("barrier")
+local black_barrier_sprite = asset.sprite("black-barrier")
 
 local barriers = {}
 
@@ -40,7 +40,7 @@ barriers.barrier_10 = barrier {
     hp = 10,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -51,7 +51,7 @@ barriers.barrier_100 = barrier {
     hp = 100,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 0, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -62,7 +62,7 @@ barriers.barrier_200 = barrier {
     hp = 200,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 0, hidden_parts = 0 },
+    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -73,7 +73,7 @@ barriers.black_barrier = barrier {
     hp = 150,
     threshold = 0,
     timer = NO_TIMER,
-    look = { sprite = BLACK, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0 },
+    look = { sprite = BLACK, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0, up_steps = 14, down_steps = 19 },
     sound = SOUND,
 }
 
@@ -84,7 +84,7 @@ barriers.life_aura = barrier {
     hp = 1,
     threshold = 200,
     timer = 3000,
-    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 0, hidden_parts = PART_7 },
+    look = { sprite = AURA, anim = 0, palette = 0, attach_point = 0, hidden_parts = PART_7, up_steps = 9, down_steps = 19 },
     sound = SOUND,
 }
 

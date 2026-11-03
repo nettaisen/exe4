@@ -10,7 +10,7 @@ local wave = require("@self/wave")
 
 -- Their counter (0x080ECD98): a shock wave (0x080CFD2A) of row 6 for all three (0x080ECE10's first byte: animation 0,
 -- 10 ticks a panel).
-local WAVE = wave.variant { anim = 0, ticks = 0x0A }
+local WAVE = wave.variant { anim = 0, steps = 28, ticks = 0x0A }
 local function counter(me: Object, x: number, y: number, damage: number)
     wave.spawn(me, x, y, WAVE, damage)
 end

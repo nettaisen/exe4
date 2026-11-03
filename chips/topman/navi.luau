@@ -21,15 +21,15 @@ export type State = {
     palette: number,
 }
 
-local SPRITE = require("./topman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("topman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("top-spin")
 local SOUND_LEAP = asset.sound("top-leap")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOLID = 0x10
 -- What a panel his top lands on must have none of: bodies and objects.
 local OCCUPIED = 0x0F80_0000
@@ -37,6 +37,8 @@ local OCCUPIED = 0x0F80_0000
 local TOPS: { { number } } = { { 2, -1 }, { 4, -1 }, { 4, 1 }, { 2, 1 } }
 -- His leap: up at 11 pixels a tick, across at 0x1B0AD, falling 0x4F80 a tick.
 local LEAP_VZ, LEAP_VX, GRAVITY = 0xB_0000, 0x1_B0AD, 0x4F80
+-- His spin up's animation 5 lasts 19 of his sprite's steps (then animation 6 loops).
+local SPIN_UP_STEPS = 19
 
 local APPEAR, SPIN_UP, LEAP, LAND = 0x0, 0x4, 0x8, 0xC
 
@@ -73,7 +75,7 @@ local function spin_up(me: Object)
         battle.play_sound(SOUND_SPIN)
     end
     if me.anim == 5 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if me.sprite.steps < SPIN_UP_STEPS then
             return
         end
         me.anim = 6

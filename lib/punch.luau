@@ -8,7 +8,7 @@
 -- variant other than 0, which neither routine sets.)
 
 local attachment = require("../objects/attachment")
-local guts_fist_sprite = require("../sprites/guts_fist")
+local guts_fist_sprite = asset.sprite("guts-fist")
 
 local punch = {}
 

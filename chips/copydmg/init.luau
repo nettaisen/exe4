@@ -9,7 +9,7 @@
 
 local collision = require("../rules/collision")
 local common_mark = require("@exelib/copydmg/mark")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 -- The mark (EXE4's attack 0x28, 0x080D1C24).
 local mark = common_mark.make {

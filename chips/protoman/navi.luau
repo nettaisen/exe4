@@ -11,9 +11,9 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/protoman/navi")
 local navi_chips = require("../../lib/navi_chips")
-local protoman_sprite = require("./protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- What a panel he lands on must be free of, by his side (0x080C70CC).
 local OCCUPIED = { [0] = 0x0788_0080, 0x0B88_0080 }
@@ -41,7 +41,7 @@ local protoman = common.make {
 
 -- His sword (attachment row 3) and his slash (effect row 0x5E).
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 -- What each ProtoMan chip states for its own controller: the controller's id (the original's effect object #0x42,
 -- 0x080E6A18, for all six navis' chips: compat maps each to it) and his palette (0x0800B950 by the chip's level: two

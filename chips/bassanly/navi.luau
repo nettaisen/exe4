@@ -10,8 +10,8 @@ local common = require("@exelib/bassanly/navi")
 local navi_chips = require("../../lib/navi_chips")
 local shot = require("./shot")
 
-local SPRITE = require("../bass/bass_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bass")
+local puff_sprite = asset.sprite("puff")
 
 local BASSANLY = common.make {
     id = "bassanly/navi",
@@ -19,8 +19,9 @@ local BASSANLY = common.make {
     cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0E },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("panel-hole") },
     anims = { raise = 9, stance = 0xA, fire = 0xB, fire_loop = 0xC, rest = 0xD },
-    glow = { effect = new.effect { sprite = SPRITE, anim = 32, palette = 0 }, ticks = 26 },
-    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
+    steps = { raise = 5, fire = 3 },
+    glow = { effect = new.effect { sprite = SPRITE, anim = 32, palette = 0, steps = 8 }, ticks = 26 },
+    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
     -- His shots (0x080CB2FA): level 2, the fastest, seeking enemy navis along the slant.
     shoot = function(owner: Object, x: number, y: number, slant: number, damage: number): Object?
         return shot.spawn(owner, x, y, 0, { slant = slant, homing = "seeking" }, damage, 0)

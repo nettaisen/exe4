@@ -7,15 +7,15 @@ local common_debris = require("@exelib/rock/debris")
 
 local rock = {}
 
-local SMALL_PUFF = require("../sprites/small_puff")
-local puff_sprite = require("../sprites/puff")
-local rock_debris_sprite = require("../sprites/rock_debris")
+local SMALL_PUFF = asset.sprite("small-puff")
+local puff_sprite = asset.sprite("puff")
+local rock_debris_sprite = asset.sprite("rock-debris")
 -- Effects 1 and 2 (rows 1, 2: 14-02's animations 0 and 1): a splash, dust; effect 21 (row 21: 14-0D's animation 2)
 -- a puff.
 rock.effects = {
-    splash = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0 },
-    dust = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0 },
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    splash = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0, steps = 16 },
+    dust = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 }
 
 -- The debris (0x080E6170: sheet 10-09, landing in a splash, 0x080E6208).

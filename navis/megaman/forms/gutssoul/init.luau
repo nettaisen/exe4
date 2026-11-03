@@ -9,8 +9,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").gutssoul
 local soul = require("./soul")
-local gutsman_sprite = require("../../../chips/gutsman/gutsman_sprite")
-local gutssoul_sprite = require("@self/gutssoul_sprite")
+local gutsman_sprite = asset.sprite("gutsman")
+local gutssoul_sprite = asset.sprite("gutssoul")
 local chip_hand = require("@exelib/chip_hand")
 
 -- The status reset's bonus, and the families it goes to.

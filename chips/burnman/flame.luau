@@ -15,7 +15,7 @@ type State = {
     hits: { Object? },
 }
 
-local SPRITE = require("./burnman_sprite")
+local SPRITE = asset.sprite("burnman")
 local TICKS = 60
 
 function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) -> ()): { kind: Kind, spawn: (Object, Vec3) -> Object? }

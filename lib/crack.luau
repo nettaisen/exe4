@@ -7,7 +7,7 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/crack")
-local dust_sprite = require("../sprites/dust")
+local dust_sprite = asset.sprite("dust")
 
 local crack = {}
 

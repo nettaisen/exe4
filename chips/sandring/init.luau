@@ -8,7 +8,7 @@
 
 local ring = require("../objects/ring")
 local rings = require("../lib/rings")
-local sand_ring_sprite = require("@self/sand_ring_sprite")
+local sand_ring_sprite = asset.sprite("sand-ring")
 
 local sandring: Chip = {
     action = rings.action {

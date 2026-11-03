@@ -13,7 +13,7 @@ local common = require("@exelib/ice_cube")
 local rock = require("./rock")
 local rock_lib = require("../lib/rock")
 local sparks = require("../lib/sparks")
-local rock_sprite = require("./rock/rock_sprite")
+local rock_sprite = asset.sprite("rock")
 
 -- The ice block: row 3 of 0x080D89C0.
 local ICE_BLOCK = rock.variant {

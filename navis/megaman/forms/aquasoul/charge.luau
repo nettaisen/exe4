@@ -9,14 +9,14 @@ local attachment = require("../../../../objects/attachment")
 local bullet = require("../../../../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("../../../../chips/spreader/spreader")
-local bubble_burst_sprite = require("../../../../sprites/bubble_burst")
-local bubbler_sprite = require("../../../../chips/bubbler/bubbler_sprite")
+local bubble_burst_sprite = asset.sprite("bubble-burst")
+local bubbler_sprite = asset.sprite("bubbler")
 
 local charge = {}
 
 -- The Bubblers' gun (attachment row 0x0E: 0c-1c), and the bubble burst (effect row 0x25) and its sound (0x9F).
 local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
-local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 }
 local SOUND = asset.sound("bubble-burst")
 -- Bullet row 0x0D.
 local SHOT = bullet.variant { region = regions.long, hit_mod = 3, effect = BURST, sound = SOUND }

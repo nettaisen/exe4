@@ -9,7 +9,7 @@ local common = require("@exelib/serchman/navi")
 local navi_chips = require("../../lib/navi_chips")
 local scope = require("./scope")
 local shot = require("./shot")
-local searchman_sprite = require("./searchman_sprite")
+local searchman_sprite = asset.sprite("searchman")
 
 local searchman = common.make {
     id = "serchman/navi",

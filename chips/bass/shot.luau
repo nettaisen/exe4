@@ -10,13 +10,13 @@
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local bass_sprite = require("./bass_sprite")
+local bass_sprite = asset.sprite("bass")
 
 local shot = {}
 
 local SOUND = asset.sound("vulcan")
 -- Bass's burst (effect row 0x57: his sheet 08-19, animation 28).
-local BURST = new.effect { sprite = bass_sprite, anim = 28, palette = 0 }
+local BURST = new.effect { sprite = bass_sprite, anim = 28, palette = 0, steps = 12 }
 local SOLID = 0x10
 local WARNING = 10
 

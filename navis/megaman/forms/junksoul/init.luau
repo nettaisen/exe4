@@ -13,8 +13,8 @@ local recycle = require("@self/recycle")
 local regions = require("@exelib/regions")
 local soul = require("./soul")
 local statuses = require("../../../rules/status")
-local junkman_sprite = require("../../../chips/junkman/junkman_sprite")
-local junksoul_sprite = require("@self/junksoul_sprite")
+local junkman_sprite = asset.sprite("junkman")
+local junksoul_sprite = asset.sprite("junksoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

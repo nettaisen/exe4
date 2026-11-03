@@ -14,8 +14,8 @@ local collision = require("../../rules/collision")
 local flame_common = require("@exelib/elemrage/flame")
 local panel_changer = require("../../objects/panel_changer")
 local sparks = require("../../lib/sparks")
-local rage_claw_sprite = require("../../sprites/rage_claw")
-local rage_flame_sprite = require("../../sprites/rage_flame")
+local rage_claw_sprite = asset.sprite("rage-claw")
+local rage_flame_sprite = asset.sprite("rage-flame")
 
 local elem = {}
 

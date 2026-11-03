@@ -7,7 +7,7 @@
 local attachment = require("../../../../objects/attachment")
 local fan = require("../../../../chips/tornado/fan")
 local tornado = require("../../../../chips/tornado/tornado")
-local hand_fan_sprite = require("../../../../chips/tornado/hand_fan_sprite")
+local hand_fan_sprite = asset.sprite("hand-fan")
 
 local charge = {}
 

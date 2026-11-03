@@ -10,7 +10,7 @@ local visibility = require("@exelib/visibility")
 
 local hole = {}
 
-local SPRITE = require("@self/underground_hole_sprite")
+local SPRITE = asset.sprite("underground-hole")
 
 -- 0x080E6562: under the navi, on the ground.
 local function follow(me: Object)

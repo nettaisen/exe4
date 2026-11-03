@@ -25,6 +25,8 @@ type State = {
 local START, SET_UP, SWING, STEP_BACK, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 
 local ANIM_SWING, ANIM_NO_STEP = 5, 4
+-- The swing lasts 22 of MegaMan's sprite's steps, his warp out (with nowhere to step) 4 (every soul's alike).
+local SWING_STEPS, NO_STEP_STEPS = 22, 4
 local SWING_TICKS, THROW_AT, RECOVER_TICKS = 0x15, 0x0C, 5
 -- A charged one's boom's hit modifier (its first parameter becomes 1).
 local CHARGED_HIT_MOD = 1
@@ -89,7 +91,7 @@ end
 
 -- 0x080ED92A: back where it stepped from once its animation ends.
 local function step_back(me: Object)
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.sprite.steps < (if me.sprite.animation == ANIM_NO_STEP then NO_STEP_STEPS else SWING_STEPS) then
         return
     end
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y

@@ -15,10 +15,10 @@ local throw = require("@exelib/bombs/throw")
 
 local bombs = {}
 
-local SPRITE = require("../sprites/bomb")
-local explosion_sprite = require("../sprites/explosion")
-local puff_sprite = require("../sprites/puff")
-local small_puff_sprite = require("../sprites/small_puff")
+local SPRITE = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 -- What a navi holds while throwing a bomb (attachment row 4, 0x080CD524: 0c-02 in palette 0).
 bombs.held = attachment.look { sprite = SPRITE, palette = 0 }
@@ -33,9 +33,9 @@ local made = bomb.make {
     sprite = SPRITE,
     -- 0x080CE216.
     hit_sound = asset.sound("hit-bomb-1"),
-    splash = new.effect { sprite = small_puff_sprite, anim = 0, palette = 0 },
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    splash = new.effect { sprite = small_puff_sprite, anim = 0, palette = 0, steps = 16 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 }
 
 -- A thrower that throws a bomb of `variant` (0x080CE2B8), null-element.

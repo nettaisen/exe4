@@ -8,7 +8,7 @@
 -- look (`attachment.look { sprite, palette, lift }`, a row); `attachment.attach(owner, look, slot, anim)`.
 
 local slot = require("@exelib/slot")
-local muzzle_flash_sprite = require("../sprites/muzzle_flash")
+local muzzle_flash_sprite = asset.sprite("muzzle-flash")
 
 local attachment = {}
 

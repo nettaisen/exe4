@@ -10,19 +10,19 @@ local breath = require("@self/breath")
 local sparks = require("../lib/sparks")
 local statuses = require("../rules/status")
 
-local NOZZLE = require("@self/breath_nozzle_sprite")
+local NOZZLE = asset.sprite("breath-nozzle")
 
 -- HeatBrth's (its parameter 0): fire (effect rows 0x38 and 0x39, its fire lasting 40 ticks) leaving lava; the roar
 -- every 8 ticks.
-local HEAT_BREATH = require("@self/heat_breath_sprite")
+local HEAT_BREATH = asset.sprite("heat-breath")
 local heat_breath = breath.make {
     id = "heatbrth/breath",
     spark = sparks.fire,
     element = 1,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
-    panel_effect = new.effect { sprite = HEAT_BREATH, anim = 1, palette = 0 },
+    panel_effect = new.effect { sprite = HEAT_BREATH, anim = 1, palette = 0, steps = 12 },
     panel = "lava",
     -- 0x080D3C6C: its panels left alone until it leaves them.
     step = nil,
@@ -30,10 +30,10 @@ local heat_breath = breath.make {
 }
 
 -- Blizzard's (its parameter 1): frost (effect rows 0x3A and 0x3C) leaving ice.
-local BLIZZARD = require("@self/blizzard_sprite")
+local BLIZZARD = asset.sprite("blizzard")
 local BLIZZARD_SOUND = asset.sound("blizzard")
 -- The frost that settles on a panel it hit (effect row 0x3B, for 35 ticks): 5 ticks in on its own, 20 on the column's.
-local FROST = new.effect { sprite = BLIZZARD, anim = 1, palette = 0 }
+local FROST = new.effect { sprite = BLIZZARD, anim = 1, palette = 0, steps = 3 }
 local FROST_TICKS, FROST_AT, FROST_COLUMN_AT = 35, 50, 35
 -- Its sound's second blow, when the column ahead was hit (0x080D3E96).
 local SECOND_BLOW = 16
@@ -51,9 +51,9 @@ local blizzard_breath = breath.make {
     spark = sparks.aqua,
     element = 2,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0, steps = 6 },
     hit_effect_lasts = false,
-    panel_effect = new.effect { sprite = BLIZZARD, anim = 2, palette = 0 },
+    panel_effect = new.effect { sprite = BLIZZARD, anim = 2, palette = 0, steps = 9 },
     panel = "ice",
     -- 0x080D3C74: the frost.
     step = function(me: Object, s: BreathState)
@@ -75,8 +75,8 @@ local blizzard_breath = breath.make {
 
 -- ElecShok's (its parameter 3): lightning (effect rows 0x3E and 0x3F, its lightning lasting 40 ticks) leaving cracked
 -- panels; the thunder ball's sound every 8 ticks.
-local LIGHTNING = require("@self/element_pillar_lightning_sprite")
-local wood_powder_sprite = require("@self/wood_powder_sprite")
+local LIGHTNING = asset.sprite("element-pillar-lightning")
+local wood_powder_sprite = asset.sprite("wood-powder")
 -- Its own panel highlighted until 15 ticks before its end, the column's until its last tick.
 local HIGHLIGHT_UNTIL, COLUMN_UNTIL = 15, 1
 local elec_breath = breath.make {
@@ -84,9 +84,9 @@ local elec_breath = breath.make {
     spark = sparks.elec,
     element = 3,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
-    panel_effect = new.effect { sprite = LIGHTNING, anim = 1, palette = 0 },
+    panel_effect = new.effect { sprite = LIGHTNING, anim = 1, palette = 0, steps = 10 },
     panel = "cracked",
     -- 0x080D3D60: the panels it hit highlighted.
     step = function(me: Object, s: BreathState)
@@ -102,7 +102,7 @@ local elec_breath = breath.make {
 
 -- WoodPwdr's (its parameter 2): powder (effect row 0x3D) leaving grass, its hits confusing (hit modifier 1, status
 -- 0x20); the powder's sound every 8 ticks.
-local POWDER = new.effect { sprite = wood_powder_sprite, anim = 0, palette = 0 }
+local POWDER = new.effect { sprite = wood_powder_sprite, anim = 0, palette = 0, steps = 15 }
 -- More powder on the panels it hit: on its own 16 and 32 ticks in, on the column's 30 and 46.
 local POWDER_AT, COLUMN_POWDER_AT = { 39, 23 }, { 25, 9 }
 

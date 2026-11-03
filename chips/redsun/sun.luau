@@ -17,16 +17,16 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./red_sun_sprite")
-local burst_sprite = require("../../sprites/burst")
-local explosion_sprite = require("../../sprites/explosion")
+local SPRITE = asset.sprite("red-sun")
+local burst_sprite = asset.sprite("burst")
+local explosion_sprite = asset.sprite("explosion")
 local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SHINE = asset.sound("sun-moon-shine")
 local SOUND_DIVE = asset.sound("red-sun-dive")
 -- Its burst where it lands (effect row 6) and its sparkles (their parameters 0x10000: 32 ticks, the sparkles' row 0,
 -- of explosions, effect row 0, without their sound).
-local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0 }
-local SPARKLE = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
+local SPARKLE = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 local SPARKLE_TICKS = 0x20
 
 -- How high it is spawned (16.16: the controller's register, 70 pixels).

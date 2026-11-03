@@ -21,8 +21,8 @@ type State = {
     gun: Object?,
 }
 
-local SPRITE = require("./aquaman_sprite")
-local aquaman_spout_sprite = require("./aquaman_spout_sprite")
+local SPRITE = asset.sprite("aquaman")
+local aquaman_spout_sprite = asset.sprite("aquaman-spout")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 

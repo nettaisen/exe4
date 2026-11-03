@@ -11,7 +11,7 @@ local sparks = require("../../lib/sparks")
 
 local tornado = {}
 
-local SPRITE = require("./tornado_sprite")
+local SPRITE = asset.sprite("tornado")
 local SOUND = asset.sound("tornado")
 -- SandRing's pitfall: twice the re-arms, its own look, and normal after.
 local PITFALL: PanelType, NORMAL: PanelType = "pitfall", "normal"

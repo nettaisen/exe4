@@ -16,7 +16,7 @@ local sonic_boom = require("@exelib/swords/sonic_boom")
 local sonic_boom_kind = require("../objects/sonic_boom").kind
 local swords = require("../lib/swords")
 
-local SLASH_SPRITE = require("../sprites/sword_slash")
+local SLASH_SPRITE = asset.sprite("sword-slash")
 
 local zsaver: Chip = {
     action = common.make {
@@ -34,9 +34,9 @@ local zsaver: Chip = {
         is = collision.slash,
         hits = collision.hits_navis,
         effects = {
-            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9 },
+            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9, steps = 15 },
         },
         boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(sonic_boom_kind, owner, x, y, element, damage, boom)

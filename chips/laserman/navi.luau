@@ -21,14 +21,16 @@ type State = {
     course: number,
 }
 
-local SPRITE = require("./laserman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("laserman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOLID = 0x10
+-- His last animation (4) lasts 8 of his sprite's steps.
+local LAST_STEPS = 8
 -- The courses the keys held aim, in the order they are tried (0x080CAD1C).
 local AIMS: { { key: Key, course: number } } = {
     { key = "up", course = 1 },
@@ -93,7 +95,7 @@ local function attack(me: Object)
             me.phase, me.phase_init = 8, 0
         end
     elseif me.phase == 8 then
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if me.sprite.steps >= LAST_STEPS then
             me:set_lifecycle("destroy")
         end
     else

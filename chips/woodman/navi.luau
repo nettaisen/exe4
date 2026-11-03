@@ -25,8 +25,8 @@ type State = {
     again: boolean,
 }
 
-local SPRITE = require("./woodman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("woodman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAND = asset.sound("metal-punch")
@@ -37,6 +37,8 @@ local SOLID = 0x10
 local LEAP_SPEED, GRAVITY = 0x1B_0000, 0x1_0000
 -- A key of his command counts this long.
 local PRESS_TICKS = 5
+-- His landing (animation 7) lasts 7 of his sprite's steps.
+local LANDING_STEPS = 7
 
 local APPEAR, ATTACK = 0x0, 0x4
 
@@ -146,7 +148,7 @@ local function attack(me: Object)
         me.phase, me.phase_init = 8, 0
     elseif phase == 8 then
         command(me)
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if me.sprite.steps >= LANDING_STEPS then
             me.anim = 10
             me.phase, me.phase_init = 0xC, 0
         end
@@ -210,7 +212,7 @@ local function init(me: Object)
 end
 
 -- A puff 16 pixels above him (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 
 woodman.kind = new.kind {
     id = "woodman/navi",

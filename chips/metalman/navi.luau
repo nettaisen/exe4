@@ -32,9 +32,9 @@ export type State = {
     fist: Object?,
 }
 
-local SPRITE = require("./metalman_sprite")
-local metalman_fist_sprite = require("./metalman_fist_sprite")
-local strike_flash_sprite = require("../../sprites/strike_flash")
+local SPRITE = asset.sprite("metalman")
+local metalman_fist_sprite = asset.sprite("metalman-fist")
+local strike_flash_sprite = asset.sprite("strike-flash")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_WIND_UP = asset.sound("metal-fist")
@@ -67,7 +67,7 @@ local FIST = follow_effect.make {
 }
 local SOUND_PUNCH = asset.sound("metal-punch")
 -- The punch's flash on a solid panel (effect row 0x47).
-local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }
 local FADE_GRAY = 0x1F
 -- A body of each side (0x080C7F3C): a target that holds one of his own side stops his punch.
 local OWN_BODY = { [0] = 0x0400_0000, 0x0800_0000 }

@@ -33,7 +33,7 @@ local hooks = require("./hooks")
 local image = require("./image")
 local regions = require("@exelib/regions")
 local turns = require("./turns")
-local deletion_sprite = require("../../sprites/deletion")
+local deletion_sprite = asset.sprite("deletion")
 local looks = require("@exelib/looks")
 local intake = require("./intake")
 
@@ -47,7 +47,7 @@ export type State = {
 local CHANGE_SOUND = asset.sound("soul-change")
 local UNITE_SOUND = asset.sound("soul-unite")
 -- Effect row 3, the deletion's flash.
-local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 -- The fades' speed.
 local FADE_SPEED = 16
 -- The cameras' shake (0x080EBC00's rows: magnitude 2, 50 ticks).

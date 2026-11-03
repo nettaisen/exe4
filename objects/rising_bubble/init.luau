@@ -3,7 +3,7 @@
 -- its sprite the small puff (14-02).
 
 local common = require("@exelib/rising_bubble")
-local small_puff_sprite = require("../sprites/small_puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local rising_bubble = {}
 

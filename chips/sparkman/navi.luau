@@ -24,14 +24,14 @@ type State = {
     sparks: number,
 }
 
-local SPRITE = require("./sparkman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("sparkman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE = asset.sound("spark-charge")
 local SOUND_FLASH = asset.sound("spark-flash")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOLID = 0x10
 -- His sparks' element (elec), whatever his chip's.
 local ELEC = 3
@@ -39,6 +39,8 @@ local ELEC = 3
 local FLASH_TICKS = 0x14
 -- His charge, his flash's ticks, and the shock's.
 local CHARGE, FLASH, SHOCK = 10, 20, 28
+-- His animation 4, as his charge runs out, lasts 10 of his sprite's steps.
+local CHARGED_STEPS = 10
 
 local APPEAR, ATTACK = 0x0, 0x4
 
@@ -125,7 +127,7 @@ local function attack(me: Object)
         me.timer2 = SHOCK
         return
     end
-    if me.anim == 4 and not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.anim == 4 and me.sprite.steps < CHARGED_STEPS then
         me.anim = 5
         flash(me)
         return

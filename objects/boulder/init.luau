@@ -21,7 +21,7 @@
 local collision = require("../rules/collision")
 local common = require("@exelib/boulder")
 local rock = require("../lib/rock")
-local boulder_sprite = require("@self/boulder_sprite")
+local boulder_sprite = asset.sprite("boulder")
 
 local boulder = {}
 

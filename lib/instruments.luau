@@ -11,8 +11,8 @@
 local collision = require("../rules/collision")
 local controller = require("@exelib/instruments/controller")
 local instrument = require("@exelib/instruments/instrument")
-local explosion_sprite = require("../sprites/explosion")
-local instrument_sprite = require("../sprites/instrument")
+local explosion_sprite = asset.sprite("explosion")
+local instrument_sprite = asset.sprite("instrument")
 
 local instruments = {}
 
@@ -30,7 +30,7 @@ instruments.kind = instrument.make_kind("instrument", {
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.
     crush = "destroys",
     -- 0x080DC5A2: effect row 0, 14-00.
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
 })
 
 -- A chip's `dimming` hook for its instrument (0x080E73B8).

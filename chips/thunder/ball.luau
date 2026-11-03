@@ -9,7 +9,7 @@ local ball = require("@exelib/thunder/ball")
 local collision = require("../../rules/collision")
 local shoot = require("@exelib/thunder/shoot")
 local sparks = require("../../lib/sparks")
-local thunder_ball_sprite = require("./thunder_ball_sprite")
+local thunder_ball_sprite = asset.sprite("thunder-ball")
 
 local thunder = {}
 
@@ -37,6 +37,7 @@ end
 thunder.kind = ball.make_kind("thunder/ball", {
     sprite = thunder_ball_sprite,
     small_anim = 0,
+    small_steps = { flight = 16, burst = 11 },
     is = collision.attack,
     target = collision.hits_navis,
     hit_mod = 0,

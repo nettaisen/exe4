@@ -8,19 +8,19 @@
 -- (action 0x15: a body the other side can hit).
 
 local collision = require("../rules/collision")
-local dice_sprite = require("@self/dice_sprite")
-local explosion_sprite = require("../sprites/explosion")
-local puff_sprite = require("../sprites/puff")
-local small_puff_sprite = require("../sprites/small_puff")
+local dice_sprite = asset.sprite("dice")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local dice = {}
 
 dice.made = require("@exelib/numbrman/dice").make {
     id = "dice",
     sprite = dice_sprite,
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
-    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 },
+    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     blow_up = asset.sound("damage"),
     bounce = asset.sound("top-spin"),
     burst = asset.sound("heat-burst"),

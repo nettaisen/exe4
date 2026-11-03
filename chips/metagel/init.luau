@@ -12,8 +12,8 @@ local collision = require("../rules/collision")
 local common_controller = require("@exelib/metagel/controller")
 local common_gel = require("@exelib/metagel/gel")
 local sparks = require("../lib/sparks")
-local meta_gel_sprite = require("@self/meta_gel_sprite")
-local puff_sprite = require("../sprites/puff")
+local meta_gel_sprite = asset.sprite("meta-gel")
+local puff_sprite = asset.sprite("puff")
 
 -- 0x080D5F0C: anywhere but the other side's back column (column 6 for side 0's gel, 1 for side 1's).
 local function takes(x: number, _y: number, side: number): boolean
@@ -29,7 +29,7 @@ local GEL = common_gel.make {
     is = collision.thrown,
     hits = collision.hits_navis,
     takes = takes,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 }
 
 local CONTROLLER = common_controller.make {

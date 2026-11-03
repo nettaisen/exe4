@@ -12,15 +12,15 @@ local collision = require("../rules/collision")
 local common = require("@exelib/cannball/ball")
 local trajectory = require("../lib/trajectory")
 
-local SPRITE = require("../sprites/bomb")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
-local puff_sprite = require("../sprites/puff")
+local SPRITE = asset.sprite("bomb")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local puff_sprite = asset.sprite("puff")
 
 local BALL = common.make({
     id = "ball/ball",
     sprite = SPRITE,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
-    impact = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+    impact = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 0, steps = 10 },
     crack = asset.sound("panel-crack"),
     is = collision.thrown_break,
     hits = collision.hits_navis,

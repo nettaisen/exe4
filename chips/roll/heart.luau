@@ -4,11 +4,11 @@
 -- effect table's rows 0x2E (the sparkle, 10-17) and 7 (the heal, 0c-12), and its heal sound (0x9A).
 
 local common = require("@exelib/roll/heart")
-local heal_sprite = require("../../sprites/heal")
-local heart_sprite = require("./heart_sprite")
-local sparkle_sprite = require("./sparkle_sprite")
+local heal_sprite = asset.sprite("heal")
+local heart_sprite = asset.sprite("heart")
+local sparkle_sprite = asset.sprite("sparkle")
 
-local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0, steps = 16 }
 
 local heart = common.make {
     id = "roll/heart",
@@ -16,7 +16,7 @@ local heart = common.make {
     anim = 0,
     heal_sound = asset.sound("heal"),
     sparkle = SPARKLE,
-    healed = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
+    healed = new.effect { sprite = heal_sprite, anim = 0, palette = 0, steps = 16 },
     heals_side_navi = true,
 }
 

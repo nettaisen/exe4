@@ -17,16 +17,16 @@ local collision = require("../../rules/collision")
 
 local signal = {}
 
-local SPRITE = require("./signal_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("signal")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
 -- It takes its panel; it turns green; it breaks.
 local SOUND_STAND = asset.sound("tops")
 local SOUND_GREEN = asset.sound("bugfix-flash")
 local SOUND_BREAK = asset.sound("hit-bomb-1")
 -- Effect rows 21 (a puff) and 0 (an explosion), 16 pixels over it.
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 local EFFECT_Z = 0x10_0000
 local HP, LIFETIME, HIT_MOD = 100, 0x960, 3
 -- Ticks before it takes its panel; of each light (to -1).

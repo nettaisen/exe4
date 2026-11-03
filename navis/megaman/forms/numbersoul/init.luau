@@ -12,10 +12,10 @@ local charge = require("@self/charge")
 local chip = require("@self/chip").numsoul
 local soul = require("./soul")
 
-local OVERLAY = require("@self/numbersoul_overlay_sprite")
-local numberman_face_sprite = require("../../../chips/numbrman/numberman_face_sprite")
-local numberman_sprite = require("../../../chips/numbrman/numberman_sprite")
-local numbersoul_sprite = require("@self/numbersoul_sprite")
+local OVERLAY = asset.sprite("numbersoul-overlay")
+local numberman_face_sprite = asset.sprite("numberman-face")
+local numberman_sprite = asset.sprite("numberman")
+local numbersoul_sprite = asset.sprite("numbersoul")
 local chip_hand = require("@exelib/chip_hand")
 local overlay = soul.overlay(OVERLAY)
 

@@ -15,9 +15,9 @@ local punisher = require("./punisher").punisher
 local rising_bubble = require("../objects/rising_bubble")
 local statue = require("@exelib/guardian/statue")
 local strike = require("@exelib/guardian/strike")
-local guardian_statue_sprite = require("@self/guardian_statue_sprite")
-local lightning_sprite = require("../objects/lightning/lightning_sprite")
-local puff_sprite = require("../sprites/puff")
+local guardian_statue_sprite = asset.sprite("guardian-statue")
+local lightning_sprite = asset.sprite("lightning")
+local puff_sprite = asset.sprite("puff")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -30,14 +30,14 @@ local STATUE = statue.make {
     sprite = guardian_statue_sprite,
     hp = 10,
     sounds = { place = asset.sound("tops"), strike = asset.sound("lightning") },
-    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
-    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 },
+    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },
+    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 },
     is = collision.neutral_body,
     hits = collision.everything,
     strike_is = collision.thrown_piercing_break,
     strike_hits = collision.hits_navis,
     strike = strike.make { id = "guardian/strike", punisher = punisher },
-    effects = { puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 } },
+    effects = { puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 } },
     bubble = rising_bubble.kind,
     reads_no_removal = true,
     untracked = true,

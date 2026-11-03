@@ -11,7 +11,7 @@ local blakwing = require("@exelib/blakwing")
 local collision = require("../rules/collision")
 local rock = require("../lib/rock")
 local sparks = require("../lib/sparks")
-local black_wing_sprite = require("@self/black_wing_sprite")
+local black_wing_sprite = asset.sprite("black-wing")
 
 local chip: Chip = {
     codes = { "W" },

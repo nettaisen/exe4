@@ -17,7 +17,7 @@ local regions = require("@exelib/regions")
 
 local laser = {}
 
-local SPRITE = require("./laserman_sprite")
+local SPRITE = asset.sprite("laserman")
 -- A strike with its damage, and none; a course's end.
 local HIT, NONE = 0xFD, 0xFF
 -- The other side's custom level, one less but not below 2, as a strike (0x080E0F18).
@@ -35,6 +35,8 @@ local SHADERS: { [number]: number } = { [0] = 0, [1] = 0xB060, [2] = 0xA80A, [3]
 local SHORT = 5
 -- Its strikes, and their period.
 local STRIKES, PERIOD = 10, 6
+-- It shows over 12 of its sprite's steps (its animation 17's length), and ends over 12 (its animation 19's).
+local SHOW_STEPS, END_STEPS = 12, 12
 local FIRING, ENDING = 0x0, 0x4
 
 type State = {
@@ -75,7 +77,7 @@ end
 -- (course 5's every other one); after the tenth, animation 19 and on to its end.
 local function firing(me: Object)
     if me.anim == 17 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if me.sprite.steps < SHOW_STEPS then
             return
         end
         me.anim = 18
@@ -110,7 +112,7 @@ end
 
 -- Action 4 (0x080E0FC8): as its animation ends, it goes.
 local function ending(me: Object)
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.sprite.steps >= END_STEPS then
         me:set_lifecycle("destroy")
     end
 end

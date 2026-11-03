@@ -8,8 +8,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").thunsoul
 local soul = require("./soul")
-local thunderman_sprite = require("../../../chips/thunman/thunderman_sprite")
-local thundersoul_sprite = require("@self/thundersoul_sprite")
+local thunderman_sprite = asset.sprite("thunderman")
+local thundersoul_sprite = asset.sprite("thundersoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

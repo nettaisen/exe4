@@ -7,7 +7,7 @@
 
 local common = require("@exelib/serchman/scope")
 local panels = require("@exelib/panels")
-local search_scope_sprite = require("./search_scope_sprite")
+local search_scope_sprite = asset.sprite("search-scope")
 
 -- The panel filters by side: a side's panels have the owner bit 0x20 set for side 1, clear for side 0 (0x080E6D32).
 local OWN = { [0] = { require = 0, forbid = 0x20 }, [1] = { require = 0x20, forbid = 0 } }

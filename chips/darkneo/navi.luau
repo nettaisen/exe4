@@ -36,16 +36,16 @@ type State = {
     image: Object?,
 }
 
-local SPRITE = require("../bass/bass_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bass")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local CAPE_ANIM_OFFSET = 0x0E
 -- Attachment row 0x1E (0x080CD524): his sheet in palette 0, no lift; its animation 0x20, animating while dimmed.
 local AURA = attachment.look { sprite = SPRITE, palette = 0 }
 local AURA_ANIM = 0x20
 -- Effect rows 0x13 (14-0d) and 0x59 (his sheet's animation 0x23).
-local SMOKE = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
-local BLAST = new.effect { sprite = SPRITE, anim = 0x23, palette = 0 }
+local SMOKE = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
+local BLAST = new.effect { sprite = SPRITE, anim = 0x23, palette = 0, steps = 60 }
 local APPEAR = asset.sound("appear")
 local HOLE_SOUND = asset.sound("panel-hole")
 local FLY_SOUND = asset.sound("windrack")
@@ -56,6 +56,9 @@ local RISE, RISING = 0x64, 0x50
 local HOLE_SOUND_EVERY, HOLE_TICKS = 0x20, 0x1E
 local IMAGE_WAIT = 0x8C
 local FLIGHT, FALL = 6, 0x6_AAAA
+-- His rise (animation 0) comes round every 38 of his sprite's steps; his arm goes up over 5 (animation 9), and he
+-- lands over 3 (animation 11).
+local RISE_STEPS, ARM_UP_STEPS, LANDING_STEPS = 38, 5, 3
 -- His ghosts' tints.
 local NEAR_SHADER, FAR_SHADER = 0x1000, 0x2083
 -- Where the blast's effect shows (the field's middle, 36 pixels down it, a pixel up) and its hit's height.
@@ -91,13 +94,17 @@ local function rise(me: Object)
     end
 end
 
--- 0x080CB464: his arm up; when it is, the aura, his shadow gone.
+-- 0x080CB464: his arm up; when it is, the aura, his shadow gone. (On the tick his arm is asked for, his rise is still
+-- loaded: its coming round would end it.)
 local function arm_up(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 1
         me.anim = 9
     end
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    local up = if me.sprite.animation == 9
+        then me.sprite.steps >= ARM_UP_STEPS
+        else (me.sprite.steps > 0 and me.sprite.steps % RISE_STEPS == 0)
+    if not up then
         return
     end
     me.anim = 10
@@ -195,7 +202,7 @@ end
 local function blast(me: Object)
     local init = me.phase_init
     if init == 0 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if me.sprite.steps < LANDING_STEPS then
             return
         end
         me.phase_init = 1

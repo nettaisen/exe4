@@ -10,6 +10,8 @@
 return {
     shake = "battle_rng",
     spark_steps_at_start = false,
+    -- The mark over a navi a damaging weakness hit told about shows for 18 of its sprite's steps.
+    hit_marker_steps = { weakness = 18 },
     retype = "is_alone",
     damage_word = {
         damage = 0x3FFF,

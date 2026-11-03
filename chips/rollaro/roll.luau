@@ -20,14 +20,14 @@ export type State = {
     gray: number,
 }
 
-local SPRITE = require("../roll/roll_sprite")
-local roll_arrow_sprite = require("./roll_arrow_sprite")
-local sparkle_sprite = require("../roll/sparkle_sprite")
+local SPRITE = asset.sprite("roll")
+local roll_arrow_sprite = asset.sprite("roll-arrow")
+local sparkle_sprite = asset.sprite("sparkle")
 local navi_left = require("@exelib/navi_chips/left")
 local APPEAR_SOUND = asset.sound("appear")
 local ARROW_SOUND = asset.sound("roll-arrow")
 -- The effect table's row 0x2E: a sparkle (10-17).
-local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0, steps = 16 }
 -- Her palette (0x0800B950 by navi 1 and the chip's level, 0).
 local PALETTE = 0
 local ANIM_STAND, ANIM_LEAVE, ANIM_BOW = 0, 4, 7

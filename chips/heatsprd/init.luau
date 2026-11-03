@@ -11,8 +11,8 @@ local bullet = require("../objects/bullet")
 local heatshots = require("./heatshot")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
-local heat_burst_sprite = require("../sprites/heat_burst")
-local heatshot_sprite = require("./heatshot/heatshot_sprite")
+local heat_burst_sprite = asset.sprite("heat-burst")
+local heatshot_sprite = asset.sprite("heatshot")
 
 -- The HeatShots' gun (attachment row 6: 0c-0d).
 local GUN = attachment.look { sprite = heatshot_sprite, palette = 0 }
@@ -20,7 +20,7 @@ local GUN = attachment.look { sprite = heatshot_sprite, palette = 0 }
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0, steps = 34 },
     sound = asset.sound("heat-burst"),
 }
 
