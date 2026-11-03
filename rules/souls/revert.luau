@@ -25,7 +25,7 @@ export type State = {
 
 local REVERT_SOUND = asset.sound("soul-revert")
 -- Effect row 3, the deletion's flash.
-local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 
 -- 0x080EBEAC
 function revert.update(me: Object, s: State)

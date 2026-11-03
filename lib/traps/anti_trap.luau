@@ -27,10 +27,10 @@ local trap = {}
 
 -- The bursts' looks (the panel bursts' rows 3, 0, 2 and 4, 0x080E4A00: fire's, and the null element's, a heat burst;
 -- aqua's a bubble's; elec's lightning; wood's leaves).
-local HEAT = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0 }
-local BUBBLE = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 }
-local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 }
-local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0 }
+local HEAT = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0, steps = 34 }
+local BUBBLE = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 }
+local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 }
+local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, steps = 16 }
 
 -- 0x080E5244: the other side's navi's panels (0x080E52D8: the panels of the other side's player navi, but the
 -- counterattack's own), last to first.
@@ -81,7 +81,7 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
 })
 
 trap.kind = common_trap.make_kind("anti-trap/trap", {
-    sparkle = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 },
+    sparkle = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0, steps = 24 },
     sparkle_sound = asset.sound("dimming-sparkle"),
     watches = "one",
     self_type = collision.nothing,

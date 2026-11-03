@@ -23,7 +23,7 @@ local BALL = common_ball.make {
     sit_ticks = 0x1D,
     set_sound = asset.sound("place"),
     hit_sound = asset.sound("damage"),
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     is = collision.attack,
     hits = collision.hits_navis,
     hidden_parts = 0x3FFF_FC00,

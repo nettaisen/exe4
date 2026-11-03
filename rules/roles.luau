@@ -141,15 +141,15 @@ local roles: RolesSpec = {
     },
     effects = {
         -- HP recovered (the heal, 0x0800ABCA: effect row 7, 0x080E16B4).
-        recovery = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
+        recovery = new.effect { sprite = heal_sprite, anim = 0, palette = 0, steps = 16 },
         -- The flash where a side cut in (0x08008BB6, from the cut-in, 0x08010CB0: effect row 0x22, 14-07's animation
         -- 0, 120 pixels up at panel (2 + 3 x the other side, 4)).
-        cut_in_flash = new.effect { sprite = hit_marker_sprite, anim = 0, palette = 0 },
+        cut_in_flash = new.effect { sprite = hit_marker_sprite, anim = 0, palette = 0, steps = 18 },
         -- A sprung trap's mark (0x0800815C: effect row 0x48, 14-05's animation 7): AntiNavi's over the turned chip.
-        trap_mark = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 },
+        trap_mark = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0, steps = 24 },
         -- What an obstacle encased in ice or a bubble flickers with (0x08011764: effect row 0x6E, the rock sheet's
         -- ice block, 10-02's animation 2).
-        encased = new.effect { sprite = rock_sprite, anim = 2, palette = 0 },
+        encased = new.effect { sprite = rock_sprite, anim = 2, palette = 0, steps = 2 },
     },
     hooks = {
         -- The first barrier (the navi's init, 0x0800D892: NaviStats +0x21, FstBarr's and the patch cards' aura): the

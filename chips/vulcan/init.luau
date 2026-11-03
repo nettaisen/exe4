@@ -15,7 +15,7 @@ local vulcan_sprite = require("@self/vulcan_sprite")
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
 

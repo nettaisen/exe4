@@ -20,7 +20,7 @@ return common.make {
     appear_sound = asset.sound("place"),
     bite_sound = asset.sound("bite"),
     -- Digging in and out (effect row 21, 0x080E1698: the puff's animation 2).
-    dust = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    dust = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     is = collision.thrown_piercing_break,
     hits = collision.hits_navis,
     status = statuses.paralyze_150,

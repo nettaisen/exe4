@@ -22,7 +22,7 @@ local STRIKE_AT, SWING_END, RECOVER_TICKS = 10, 17, 30
 local STRIKE_Z = 16 * 0x10000
 local HIT_MOD = 0x23
 -- What a solid panel shows: effect row 6 (0x080E1698, through 0x080E18EE: 14-0a, at the panel's center, height 0).
-local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
 local SHAKE, SHAKE_TICKS = 0, 30
 local SOUND_SWING = asset.sound("metal-fist")
 local SOUND_PUNCH = asset.sound("metal-punch")

@@ -20,9 +20,9 @@ local heat_breath = breath.make {
     spark = sparks.fire,
     element = 1,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
-    panel_effect = new.effect { sprite = HEAT_BREATH, anim = 1, palette = 0 },
+    panel_effect = new.effect { sprite = HEAT_BREATH, anim = 1, palette = 0, steps = 12 },
     panel = "lava",
     -- 0x080D3C6C: its panels left alone until it leaves them.
     step = nil,
@@ -33,7 +33,7 @@ local heat_breath = breath.make {
 local BLIZZARD = require("@self/blizzard_sprite")
 local BLIZZARD_SOUND = asset.sound("blizzard")
 -- The frost that settles on a panel it hit (effect row 0x3B, for 35 ticks): 5 ticks in on its own, 20 on the column's.
-local FROST = new.effect { sprite = BLIZZARD, anim = 1, palette = 0 }
+local FROST = new.effect { sprite = BLIZZARD, anim = 1, palette = 0, steps = 3 }
 local FROST_TICKS, FROST_AT, FROST_COLUMN_AT = 35, 50, 35
 -- Its sound's second blow, when the column ahead was hit (0x080D3E96).
 local SECOND_BLOW = 16
@@ -51,9 +51,9 @@ local blizzard_breath = breath.make {
     spark = sparks.aqua,
     element = 2,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0, steps = 6 },
     hit_effect_lasts = false,
-    panel_effect = new.effect { sprite = BLIZZARD, anim = 2, palette = 0 },
+    panel_effect = new.effect { sprite = BLIZZARD, anim = 2, palette = 0, steps = 9 },
     panel = "ice",
     -- 0x080D3C74: the frost.
     step = function(me: Object, s: BreathState)
@@ -84,9 +84,9 @@ local elec_breath = breath.make {
     spark = sparks.elec,
     element = 3,
     hit_mod = 3,
-    hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0 },
+    hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
-    panel_effect = new.effect { sprite = LIGHTNING, anim = 1, palette = 0 },
+    panel_effect = new.effect { sprite = LIGHTNING, anim = 1, palette = 0, steps = 10 },
     panel = "cracked",
     -- 0x080D3D60: the panels it hit highlighted.
     step = function(me: Object, s: BreathState)
@@ -102,7 +102,7 @@ local elec_breath = breath.make {
 
 -- WoodPwdr's (its parameter 2): powder (effect row 0x3D) leaving grass, its hits confusing (hit modifier 1, status
 -- 0x20); the powder's sound every 8 ticks.
-local POWDER = new.effect { sprite = wood_powder_sprite, anim = 0, palette = 0 }
+local POWDER = new.effect { sprite = wood_powder_sprite, anim = 0, palette = 0, steps = 15 }
 -- More powder on the panels it hit: on its own 16 and 32 ticks in, on the column's 30 and 46.
 local POWDER_AT, COLUMN_POWDER_AT = { 39, 23 }, { 25, 9 }
 

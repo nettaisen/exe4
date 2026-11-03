@@ -67,7 +67,7 @@ local SHADEMAN = require("@exelib/shademan/navi").make {
         return { palette = 0, hit_mod = 3, status = nil, bug = 0x0D, bug_arg = direction }
     end,
     bows = false,
-    puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
 }
 
 -- 0x080BAF1A: ShadeMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position

@@ -23,7 +23,7 @@ local puff_sprite = require("../../sprites/puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 
 local APPEAR, SWING = 0x0, 0x4
 

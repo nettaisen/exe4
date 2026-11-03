@@ -29,7 +29,7 @@ local GEL = common_gel.make {
     is = collision.thrown,
     hits = collision.hits_navis,
     takes = takes,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 }
 
 local CONTROLLER = common_controller.make {

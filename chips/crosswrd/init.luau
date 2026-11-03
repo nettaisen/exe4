@@ -10,7 +10,7 @@ local swords = require("../lib/swords")
 local cross_slash_sprite = require("@self/cross_slash_sprite")
 
 local HIT = { hits = collision.hits_navis, is = collision.slash }
-local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 1 }
+local CROSS_SLASH = new.effect { sprite = cross_slash_sprite, anim = 0, palette = 1, steps = 10 }
 
 local crosswrd: Chip = {
     action = swords.slash {

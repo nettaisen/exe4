@@ -16,7 +16,7 @@ local explosion_sprite = require("../sprites/explosion")
 -- The dark bomb in hand (attachment row 0x11: the bomb, 0c-02, in palette 3), and its explosion (effect row 0x2B: the
 -- explosion in palette 1).
 local HELD = attachment.look { sprite = bomb_sprite, palette = 3 }
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, steps = 27 }
 
 local darkbomb: Chip = {
     codes = { "A", "B", "C", "*" },

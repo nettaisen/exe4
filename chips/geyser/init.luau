@@ -23,7 +23,7 @@ local GEYSER = common.make({
     water_id = "geyser/water",
     bomb = bomb_sprite,
     geyser = geyser_sprite,
-    splash = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 },
+    splash = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 },
     splash_sound = asset.sound("bubble-burst"),
     erupt = asset.sound("geyser"),
     attack = collision.attack,

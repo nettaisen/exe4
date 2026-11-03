@@ -19,7 +19,7 @@ local deletion = {}
 
 local DELETED = asset.sound("deleted")
 -- Effect row 3 (0x080E1698: 14-03, animation 0, palette 0).
-local EXPLOSION = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 
 -- The phases.
 local START, EXPLODE, WAIT, FADE = 0x0, 0x4, 0x8, 0xC

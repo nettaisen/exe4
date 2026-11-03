@@ -11,7 +11,7 @@ local common = require("@exelib/grabbnsh/controller")
 local hand = require("@exelib/grabbnsh/hand")
 
 local SHEET = require("../../sprites/grab_shot")
-local FLASH = new.effect { sprite = SHEET, anim = 1, palette = 0 }
+local FLASH = new.effect { sprite = SHEET, anim = 1, palette = 0, steps = 20 }
 -- The other side's ownership of a panel, by the user's side (0x080E4888: side 1's bit 0x20, set or clear).
 local OTHER = { [0] = { require = 0x20, forbid = 0 }, [1] = { require = 0, forbid = 0x20 } }
 local AFTER_STRIKES = 90

@@ -14,7 +14,7 @@ local heatshot_sprite = require("@self/heatshot_sprite")
 
 -- The HeatShots' gun (attachment row 6: 0c-0d), and their bullets' fire burst (effect row 0x29) and its sound (0xBC).
 local GUN = attachment.look { sprite = heatshot_sprite, palette = 0 }
-local BURST = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0, steps = 34 }
 local SOUND = asset.sound("heat-burst")
 
 -- A HeatShot's spreader: its bullet row (8 to 10) bursts over `region` around the panel found.

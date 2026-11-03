@@ -18,9 +18,9 @@ local dice = {}
 dice.made = require("@exelib/numbrman/dice").make {
     id = "dice",
     sprite = dice_sprite,
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
-    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 },
+    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     blow_up = asset.sound("damage"),
     bounce = asset.sound("top-spin"),
     burst = asset.sound("heat-burst"),

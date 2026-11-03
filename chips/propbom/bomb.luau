@@ -18,8 +18,8 @@ local explosion_sprite = require("../../sprites/explosion")
 local puff_sprite = require("../../sprites/puff")
 local SOUND = asset.sound("prop-bomb")
 local BROKEN = asset.sound("damage")
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local HP = 10
 local HOVER_TICKS = 5
 -- What breaks it (its hit flags: bodies, attacks, navis).

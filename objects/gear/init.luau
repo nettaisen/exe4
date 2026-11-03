@@ -26,7 +26,7 @@ local explosion_sprite = require("../sprites/explosion")
 local ROLL = asset.sound("gear")
 -- Its breaking (0x080DBF32: 0x6F) and effect 0 (the explosion: 14-00's animation 0).
 local BROKEN = asset.sound("hit-bomb-0")
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 local HP = 50
 -- Its damage word (0x080068D0: 20, its hit parameter 0x94).
 local DAMAGE = 0x940014

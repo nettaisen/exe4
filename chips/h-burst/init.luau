@@ -22,7 +22,7 @@ local SHOT = burst.make_kind("h-burst/burst", {
     probe = collision.nothing,
     is = collision.attack,
     hits = collision.hits_navis,
-    explosion = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 },
+    explosion = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 },
 })
 
 local LOOK: HyperBurstLook = {

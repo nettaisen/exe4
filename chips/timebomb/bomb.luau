@@ -36,8 +36,8 @@ local KIND = countdown.make_kind("timebomb/countdown", {
         puff = asset.sound("hit-bomb-1"),
     },
     blast = { is = collision.attack, hits = collision.hits_navis },
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     bursts = panel_bursts.kind,
     untracked = true,
     blasts_after_battle = true,
@@ -57,7 +57,7 @@ local KIND = countdown.make_kind("timebomb/countdown", {
 local BODY = { is = collision.neutral_body, hits = collision.everything }
 
 -- No bomb where it would go: a puff over the panel, 16 up (effect row 2).
-local NO_BOMB = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
+local NO_BOMB = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 
 -- The panel the bomb takes: on the field, solid, with no body on it (0x080E4E26).
 local STANDS, BODIES = 0x0001_0010, 0x0F80_0000

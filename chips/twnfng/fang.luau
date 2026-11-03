@@ -15,7 +15,7 @@ local SPRITE = require("./twin_fang_sprite")
 local puff_sprite = require("../../sprites/puff")
 local SOUND = asset.sound("set-down")
 -- The puff it goes in as the battle ends (effect row 0x15).
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 -- Its speeds, 16.16: across, and up or down.
 local ACROSS, ALONG = 0xA_0000, 0x4_0000
 local ROW_TICKS = 6

@@ -21,7 +21,7 @@ local trajectory = require("../lib/trajectory")
 local SPRITE = require("@self/black_bomb_sprite")
 local bomb_sprite = require("../sprites/bomb")
 local explosion_sprite = require("../sprites/explosion")
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
 -- What the navi holds while throwing one: the bomb's sprite, palette 4 (attachment row 0x2A).

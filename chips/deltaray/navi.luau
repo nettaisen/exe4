@@ -37,9 +37,9 @@ local deltaray = common.make {
         burst = asset.sound("delta-ray-burst"),
     },
     -- Effect rows 3, 0x60 and 0x5E.
-    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 },
-    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1 },
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 },
+    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1, steps = 20 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     attach = attach,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 7,

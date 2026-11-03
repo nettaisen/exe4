@@ -15,7 +15,7 @@ local sparks = require("../../lib/sparks")
 local SPRITE = require("./duo_sprite")
 local burst_sprite = require("../../sprites/burst")
 local SOUND = asset.sound("justice-one")
-local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
 
 local function make(id: string, anim: number)
     return common.make {

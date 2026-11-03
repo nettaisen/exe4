@@ -41,7 +41,7 @@ local protoman = common.make {
 
 -- His sword (attachment row 3) and his slash (effect row 0x5E).
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 -- What each ProtoMan chip states for its own controller: the controller's id (the original's effect object #0x42,
 -- 0x080E6A18, for all six navis' chips: compat maps each to it) and his palette (0x0800B950 by the chip's level: two

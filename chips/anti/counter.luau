@@ -16,7 +16,7 @@ local small_puff_sprite = require("../../sprites/small_puff")
 
 local counter = {}
 
-local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
+local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 
 -- The shuriken's hit modifier (0x080D8F7C: 1, its own).
 local HIT_MOD = 1

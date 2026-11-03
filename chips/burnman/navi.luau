@@ -30,7 +30,7 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PILLARS = asset.sound("tops")
 local SOUND_BREATH = asset.sound("rage-roar")
 -- The puff he goes in (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOLID = 0x10
 local FIRE = 1
 

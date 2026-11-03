@@ -27,7 +27,7 @@ local RAISED_ANIM, FIRED_ANIM = 1, 2
 -- Attachment row 0x2E (0x080CD524): 0c-43 in palette 0, no lift.
 local CHARGER = attachment.look { sprite = bug_charger_sprite, palette = 0 }
 -- Effect row 0x6C (0x080E1698): 14-05, animation 10.
-local SPARK = new.effect { sprite = hit_sparks_sprite, anim = 10, palette = 0 }
+local SPARK = new.effect { sprite = hit_sparks_sprite, anim = 10, palette = 0, steps = 2 }
 local APPEAR = asset.sound("appear")
 local RAISE = asset.sound("darkneo-charger")
 

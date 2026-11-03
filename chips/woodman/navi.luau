@@ -210,7 +210,7 @@ local function init(me: Object)
 end
 
 -- A puff 16 pixels above him (effect row 0x13).
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 
 woodman.kind = new.kind {
     id = "woodman/navi",

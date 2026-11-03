@@ -17,7 +17,7 @@ local GUN = attachment.look { sprite = vulcan_sprite, palette = 0 }
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1, steps = 10 },
     single = true,
 }
 

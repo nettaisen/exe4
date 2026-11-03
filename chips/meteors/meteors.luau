@@ -33,7 +33,7 @@ local METEOR = falling_meteor.make_kind("meteor", {
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     spark = sparks.of_element,
     -- Effect row 6 (0x080E1698): 14-0a.
-    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 },
+    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 },
     marker = marker.make_kind("meteors/marker"),
     hit_on = "landing",
     marker_takes_side = false,

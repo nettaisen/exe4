@@ -20,7 +20,7 @@ local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 },
     sound = asset.sound("bubble-burst"),
 }
 

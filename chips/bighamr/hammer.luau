@@ -44,7 +44,7 @@ local SWING_SOUND = asset.sound("hammer-swing")
 local LAND_SOUND = asset.sound("metal-punch")
 local LEAVE_SOUND = asset.sound("hit-bomb-1")
 -- 0x080D6B58: effect row 0, 14-00, where it stands.
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 
 local HP = 100
 local HIT_MOD = 3

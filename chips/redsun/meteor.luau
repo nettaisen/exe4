@@ -13,7 +13,7 @@ local made = common.make {
     id = "redsun/meteor",
     fall_sound = asset.sound("justice-one"),
     burst_sound = asset.sound("hit-bomb-1"),
-    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 },
+    burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 },
     spark_of = sparks.of_element,
 }
 

@@ -24,7 +24,7 @@ local LOOK: CircGunLook = {
         hit = asset.sound("vulcan"),
     },
     target = collision.hits_navis,
-    flash = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 },
+    flash = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
     spark = sparks.plain,
     on_floor = true,
     turns_on_own_column = true,

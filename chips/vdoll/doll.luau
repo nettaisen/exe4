@@ -57,7 +57,7 @@ return common.make {
         }
     end,
     exe4_leaving = {
-        flash = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 },
+        flash = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, steps = 27 },
         sound = asset.sound("curse"),
     },
 }

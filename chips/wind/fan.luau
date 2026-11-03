@@ -49,7 +49,7 @@ local made = common.make {
     blow_sound = asset.sound("wind"),
     break_sound = asset.sound("hit-bomb-1"),
     -- 0x080D6660: effect row 0 (14-00) where it stands.
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     spawn_gust = function(x: number, y: number, alliance: number, _flip: number, how: GustHow, damage: number): Object?

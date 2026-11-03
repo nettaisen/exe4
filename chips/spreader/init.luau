@@ -17,7 +17,7 @@ local GUN = attachment.look { sprite = spreader_sprite, palette = 0 }
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
     sound = asset.sound("spreader"),
 }
 

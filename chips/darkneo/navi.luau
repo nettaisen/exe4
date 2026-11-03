@@ -44,8 +44,8 @@ local CAPE_ANIM_OFFSET = 0x0E
 local AURA = attachment.look { sprite = SPRITE, palette = 0 }
 local AURA_ANIM = 0x20
 -- Effect rows 0x13 (14-0d) and 0x59 (his sheet's animation 0x23).
-local SMOKE = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
-local BLAST = new.effect { sprite = SPRITE, anim = 0x23, palette = 0 }
+local SMOKE = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
+local BLAST = new.effect { sprite = SPRITE, anim = 0x23, palette = 0, steps = 60 }
 local APPEAR = asset.sound("appear")
 local HOLE_SOUND = asset.sound("panel-hole")
 local FLY_SOUND = asset.sound("windrack")

@@ -20,7 +20,7 @@ local GUN = attachment.look { sprite = heatshot_sprite, palette = 0 }
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0, steps = 34 },
     sound = asset.sound("heat-burst"),
 }
 

@@ -31,8 +31,8 @@ local STATUE = statue.make {
     drain = collision.collision_31,
     nothing = collision.nothing,
     effects = {
-        puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
-        explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+        puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+        explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     },
     bubble = rising_bubble.kind,
     reads_no_removal = true,

@@ -14,12 +14,12 @@ local pink_flash_sprite = require("../sprites/pink_flash")
 
 -- By element (null, fire, aqua, elec, wood, and 5): hit effects 0 to 5.
 local BY_ELEMENT: { [number]: Spark } = {
-    [0] = new.spark { sprite = HIT_SPARKS, anim = 0, palette = 0 },
-    [1] = new.spark { sprite = HIT_SPARKS, anim = 2, palette = 0 },
-    [2] = new.spark { sprite = HIT_SPARKS, anim = 3, palette = 0 },
-    [3] = new.spark { sprite = HIT_SPARKS, anim = 4, palette = 0 },
-    [4] = new.spark { sprite = HIT_SPARKS, anim = 5, palette = 0 },
-    [5] = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0 },
+    [0] = new.spark { sprite = HIT_SPARKS, anim = 0, palette = 0, steps = 5 },
+    [1] = new.spark { sprite = HIT_SPARKS, anim = 2, palette = 0, steps = 18 },
+    [2] = new.spark { sprite = HIT_SPARKS, anim = 3, palette = 0, steps = 14 },
+    [3] = new.spark { sprite = HIT_SPARKS, anim = 4, palette = 0, steps = 14 },
+    [4] = new.spark { sprite = HIT_SPARKS, anim = 5, palette = 0, steps = 16 },
+    [5] = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
 }
 
 -- The plain hit (spark 0) and the charged shot's (5).
@@ -28,19 +28,19 @@ sparks.charged = BY_ELEMENT[5]
 -- The element sparks by name (hit effects 1 to 4).
 sparks.fire, sparks.aqua, sparks.elec, sparks.wood = BY_ELEMENT[1], BY_ELEMENT[2], BY_ELEMENT[3], BY_ELEMENT[4]
 -- A heavy hit's (6).
-sparks.heavy = new.spark { sprite = HIT_SPARKS, anim = 8, palette = 0 }
+sparks.heavy = new.spark { sprite = HIT_SPARKS, anim = 8, palette = 0, steps = 5 }
 -- A cannon's impact (7).
-sparks.impact = new.spark { sprite = impact_sprite, anim = 0, palette = 0 }
+sparks.impact = new.spark { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 }
 -- A guarded hit's (8).
-sparks.guard = new.spark { sprite = hit_sprite, anim = 0, palette = 0 }
+sparks.guard = new.spark { sprite = hit_sprite, anim = 0, palette = 0, steps = 10 }
 -- The chip destruction hit spark (9).
-sparks.chip_destruction = new.spark { sprite = chip_destruction_spark_sprite, anim = 0, palette = 0 }
+sparks.chip_destruction = new.spark { sprite = chip_destruction_spark_sprite, anim = 0, palette = 0, steps = 15 }
 -- A breaking hit (0x0A).
-sparks.breaking = new.spark { sprite = HIT_SPARKS, anim = 1, palette = 0 }
+sparks.breaking = new.spark { sprite = HIT_SPARKS, anim = 1, palette = 0, steps = 10 }
 -- A blast (0x0B).
-sparks.blast = new.spark { sprite = explosion_sprite, anim = 0, palette = 0 }
+sparks.blast = new.spark { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 -- The erase beams' (0x0C).
-sparks.erase = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 2 }
+sparks.erase = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 }
 
 -- 0x08012F7A (EXE6's `sub_801A146`): the spark of an attack of `element`, its whole element byte (EXE4 masks none of
 -- it), hit effects 0 to 5.

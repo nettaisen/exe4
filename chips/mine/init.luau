@@ -19,7 +19,7 @@ local MINE = land_mine.make_kind {
     identity = new.identity { class = "field_object", throwable = false },
     sprite = land_mine_sprite,
     hop_sound = asset.sound("hop"),
-    blast = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0 },
+    blast = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 },
     blast_sound = asset.sound("hit-bomb-1"),
     self_type = collision.mine,
     target = collision.hits_both_sides,

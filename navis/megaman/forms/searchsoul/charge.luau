@@ -27,7 +27,7 @@ export type State = {
 -- The panels it looks in: those of the other side's navi, by side (0x0800FC38).
 local OTHER_NAVI = { [0] = 0x0020_0000, [1] = 0x0040_0000 }
 -- The scope's mark (effect row 0x52: 10-23), 20 pixels up.
-local MARK = new.effect { sprite = scope_mark_sprite, anim = 0, palette = 0 }
+local MARK = new.effect { sprite = scope_mark_sprite, anim = 0, palette = 0, steps = 18 }
 local MARK_Z = 20 * 0x1_0000
 local SHOT_SOUND = asset.sound("vulcan")
 local ANIM = 10

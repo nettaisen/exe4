@@ -18,7 +18,7 @@ local ANIM = 5
 local SOUND = asset.sound("windrack")
 -- The rack (attachment row 0x17) and the swirl (effect row 0x40), 16 pixels up.
 local RACK = attachment.look { sprite = wind_rack_sprite, palette = 0 }
-local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0 }
+local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0, steps = 24 }
 local HEIGHT = 0x10_0000
 local SWING_TICKS, HIT_AT, RECOVER_TICKS = 0x15, 0x0C, 5
 local HIT_MOD, HIT_TICKS = 9, 0x0A

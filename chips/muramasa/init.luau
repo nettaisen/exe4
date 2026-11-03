@@ -11,7 +11,7 @@ local swords = require("../lib/swords")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 local HIT = { hits = collision.hits_navis, is = collision.slash }
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 8 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 8, steps = 15 }
 
 local muramasa: Chip = {
     damage = { formula = "hp_lost", cap = 999 },

@@ -16,7 +16,7 @@ local charge = {}
 
 -- The Bubblers' gun (attachment row 0x0E: 0c-1c), and the bubble burst (effect row 0x25) and its sound (0x9F).
 local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
-local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 }
 local SOUND = asset.sound("bubble-burst")
 -- Bullet row 0x0D.
 local SHOT = bullet.variant { region = regions.long, hit_mod = 3, effect = BURST, sound = SOUND }
