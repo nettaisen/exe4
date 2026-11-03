@@ -17,6 +17,7 @@ local shot_kind = shot.make_kind {
     sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
+    landing_steps = 20,
     target = collision.hits_navis,
     self_type = collision.thrown,
     spares = "back_column",

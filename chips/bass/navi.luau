@@ -17,9 +17,11 @@ local BASS = common.make {
     sprite = bass_sprite,
     cape_anim_offset = 0x0E,
     raise_anim = 3,
+    raise_steps = 20,
     volley_anim = 4,
     ending = "animation",
     last_anim = 5,
+    last_steps = 10,
     shoot = function(me: Object, x: number, y: number, damage: number)
         shot.spawn(me, x, y, damage)
     end,

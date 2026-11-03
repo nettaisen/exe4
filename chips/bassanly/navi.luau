@@ -19,6 +19,7 @@ local BASSANLY = common.make {
     cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0E },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("panel-hole") },
     anims = { raise = 9, stance = 0xA, fire = 0xB, fire_loop = 0xC, rest = 0xD },
+    steps = { raise = 5, fire = 3 },
     glow = { effect = new.effect { sprite = SPRITE, anim = 32, palette = 0, steps = 8 }, ticks = 26 },
     smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
     -- His shots (0x080CB2FA): level 2, the fastest, seeking enemy navis along the slant.

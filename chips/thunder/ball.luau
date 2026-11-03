@@ -37,6 +37,7 @@ end
 thunder.kind = ball.make_kind("thunder/ball", {
     sprite = thunder_ball_sprite,
     small_anim = 0,
+    small_steps = { flight = 16, burst = 11 },
     is = collision.attack,
     target = collision.hits_navis,
     hit_mod = 0,

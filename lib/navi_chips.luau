@@ -11,6 +11,7 @@
 
 local common = require("@exelib/navi_chips/controller")
 local looks = require("@exelib/looks")
+local played = require("@exelib/played")
 
 local navi_chips = {}
 
@@ -27,6 +28,10 @@ navi_chips.RETURNED = { { wait = 0x1E, warp = "out" }, "navi" } :: { Step }
 -- The short course (TopMan's 0x080E2B9C and its copies): the user warps out, 11 ticks, the navi, 21 ticks after it
 -- left, the undim with the user warping back in.
 navi_chips.SHORT = { out = 10, after = 20 } :: NaviChipShortCourse
+
+-- A player's warp plays out over MegaMan's warp out or in (animation 4 or 3: 4 of his sprite's steps either way, every
+-- soul's alike); another actor's shows no sprite, which ends after a step.
+local WARP_STEPS, NO_SPRITE_STEPS = 4, 1
 
 type WarpState = {
     -- Out (1) or back in (0): Param4.
@@ -50,7 +55,7 @@ local function warp_tick(me: Object)
         end
         me.phase_init = 4
     end
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, if player then WARP_STEPS else NO_SPRITE_STEPS) then
         me.visible = false
         if not s.out then
             if player then
