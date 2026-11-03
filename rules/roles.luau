@@ -197,6 +197,9 @@ local roles: RolesSpec = {
         winner = asset.sound("winner"),
         winner_special = asset.sound("winner-special"),
         loser = asset.sound("loser"),
+        -- The start screen's, which its first state sets as the screen opens (song 0: 0x08025430, then the setter
+        -- 0x08000586). No rule plays it; the app plays it across its menus.
+        title_screen = asset.sound("title-screen"),
     },
     banners = {
         -- A round's start, a turn's (a netbattle's: 0x080070BA), the final turns' (0x08007094).
