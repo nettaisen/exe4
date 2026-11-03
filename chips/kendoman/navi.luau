@@ -12,6 +12,7 @@ local lingering_hit = require("../../objects/lingering_hit")
 local link_chips = require("@exelib/link_chips")
 local navi_chips = require("../../lib/navi_chips")
 local panels = require("@exelib/panels")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
@@ -44,6 +45,8 @@ local SWORD_ANIM = 8
 -- His hit while he rushes back (0x080C892E).
 local RUSH_HITS = lingering_hit.make("kendoman/rush-hit")
 local RUSH_TICKS = 100
+-- His animations' lengths in his sprite's steps: his slash's (animation 4), his cut's (7), drawing his sword (5).
+local SLASH_STEPS, CUT_STEPS, DRAW_STEPS = 8, 12, 9
 
 -- An enemy body on a panel, by his side (0x080C8A20).
 local ENEMY_BODY: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
@@ -176,7 +179,7 @@ local function dash(me: Object)
         me.phase_init = 2
         return
     end
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, SLASH_STEPS) then
         me.timer = int.u16(me.timer - 1)
         if me.timer == 0 then
             me:set_action(CUT_BACK)
@@ -248,7 +251,7 @@ local function cut_back(me: Object)
         me.phase_init = 3
         return
     end
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, CUT_STEPS) then
         me.timer = int.u16(me.timer - 1)
         if me.timer == 0 then
             me:set_action(RUSH)
@@ -268,7 +271,7 @@ local function rush(me: Object)
         return
     end
     if me.phase_init == 1 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if not played.ended(me.sprite, DRAW_STEPS) then
             return
         end
         me.anim = 6

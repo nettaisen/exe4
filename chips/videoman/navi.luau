@@ -7,6 +7,7 @@
 -- back from him: each square spreads to the right.)
 
 local navi_chips = require("../../lib/navi_chips")
+local played = require("@exelib/played")
 local tape = require("./tape")
 
 local videoman = {}
@@ -26,6 +27,8 @@ local SOUND_APPEAR = asset.sound("appear")
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 
 local APPEAR, SWING = 0x0, 0x4
+-- His swing (animation 5) lasts 9 of his sprite's steps.
+local SWING_STEPS = 9
 
 -- His squares' column: two ahead of him for side 0, three back for side 1 (0x080C77DE).
 local function square_x(me: Object): number
@@ -47,7 +50,7 @@ end
 -- Action 4 (0x080C77C8): as his swing ends, animation 6 and the upper tape; else with 65 ticks left the lower one;
 -- with 20 left animation 7; at its end he goes.
 local function swing(me: Object)
-    if me.anim == 5 and bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.anim == 5 and played.ended(me.sprite, SWING_STEPS) then
         me.anim = 6
         if me.panel_y ~= 1 then
             tape.spawn(me, square_x(me), me.panel_y - 1)

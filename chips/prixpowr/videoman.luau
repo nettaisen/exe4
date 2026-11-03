@@ -6,6 +6,7 @@
 -- (animation 10, the light gone), and 6 ticks later goes in a puff. He hits nothing. He runs while dimmed.
 
 local attachment = require("../../objects/attachment")
+local played = require("@exelib/played")
 local silhouette = require("./silhouette")
 
 local videoman = {}
@@ -28,6 +29,8 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4
 -- His projector's light (attachment row 0x2B: his own sheet, palette 0), in its animation 18, animating while dimmed.
 local LIGHT = attachment.look { sprite = SPRITE, palette = 0 }
 local LIGHT_ANIM = 18
+-- His projector goes up over 3 of his sprite's steps (his animation 8's length).
+local RAISE_STEPS = 3
 
 local APPEAR, PROJECT = 0x0, 0x4
 
@@ -47,7 +50,7 @@ end
 -- silhouette on the panel ahead, its sound; with 5 left animation 10, the light gone (0x080CD708); at its end he
 -- goes.
 local function project(me: Object)
-    if me.anim == 8 and bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.anim == 8 and played.ended(me.sprite, RAISE_STEPS) then
         me.anim = 9
         attachment.attach(me, LIGHT, "held", LIGHT_ANIM, true)
         battle.play_sound(SOUND_PROJECTOR)

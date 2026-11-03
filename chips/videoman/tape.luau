@@ -10,6 +10,7 @@
 -- 1 (0x080CD7E2); it waits on that actor, which no netbattle spawns.)
 
 local collision = require("../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
@@ -26,6 +27,8 @@ local SOUND = asset.sound("tape")
 local ROUNDS, PERIOD = 3, 15
 local DX, DY, Z = 0x14_0000, 0x2E_0000, 0x18_0000
 local WINDING, UNWINDING = 0x4, 0x8
+-- It unwinds over 7 of its sprite's steps (its animation 17's length).
+local UNWIND_STEPS = 7
 
 -- Its four panels: its own, the one to its right, the one below that, the one below it.
 local function square(me: Object): { { number } }
@@ -80,7 +83,7 @@ end
 
 -- Action 8 (0x080D923A): as its animation ends, it goes.
 local function unwinding(me: Object)
-    if bit32.btest(me.sprite.frame_flags, 0x80) then
+    if played.ended(me.sprite, UNWIND_STEPS) then
         me:set_lifecycle("destroy")
     end
 end

@@ -22,6 +22,7 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local ghost = require("./ghost")
 local image = require("./image")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local navi = {}
@@ -56,6 +57,8 @@ local RISE, RISING = 0x64, 0x50
 local HOLE_SOUND_EVERY, HOLE_TICKS = 0x20, 0x1E
 local IMAGE_WAIT = 0x8C
 local FLIGHT, FALL = 6, 0x6_AAAA
+-- His arm goes up over 5 of his sprite's steps (his animation 9's length), and he lands over 3 (his animation 11's).
+local ARM_UP_STEPS, LANDING_STEPS = 5, 3
 -- His ghosts' tints.
 local NEAR_SHADER, FAR_SHADER = 0x1000, 0x2083
 -- Where the blast's effect shows (the field's middle, 36 pixels down it, a pixel up) and its hit's height.
@@ -91,13 +94,15 @@ local function rise(me: Object)
     end
 end
 
--- 0x080CB464: his arm up; when it is, the aura, his shadow gone.
+-- 0x080CB464: his arm up; when it is, the aura, his shadow gone. (On the first tick the original reads the end of
+-- the animation still shown, his rise's, a loop of 38 steps at its 101st: never one of its ends.)
 local function arm_up(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 1
         me.anim = 9
+        return
     end
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if not played.ended(me.sprite, ARM_UP_STEPS) then
         return
     end
     me.anim = 10
@@ -195,7 +200,7 @@ end
 local function blast(me: Object)
     local init = me.phase_init
     if init == 0 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if not played.ended(me.sprite, LANDING_STEPS) then
             return
         end
         me.phase_init = 1

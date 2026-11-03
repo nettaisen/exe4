@@ -16,6 +16,7 @@
 local collision = require("../../rules/collision")
 local ice_cube = require("../../objects/ice_cube")
 local navi_chips = require("../../lib/navi_chips")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local coldman = {}
@@ -45,6 +46,8 @@ local OCCUPIED = 0x0F80_0000
 local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = 2, 1, 0x21
 -- The animations: vanishing, appearing, winding up, punching, after a punch on his own panel.
 local ANIM_VANISH, ANIM_APPEAR, ANIM_WIND_UP, ANIM_PUNCH, ANIM_AFTER = 3, 4, 5, 6, 7
+-- He winds up over 9 of his sprite's steps (his wind-up animation's length), and punches as it ends.
+local WIND_UP_STEPS = 9
 
 local APPEAR, LOOK, ATTACK = 0x0, 0x4, 0x8
 
@@ -238,7 +241,7 @@ local function attack(me: Object)
             end
             me.phase_init = 2
             me.anim = ANIM_WIND_UP
-        elseif bit32.btest(me.sprite.frame_flags, 0x80) then
+        elseif played.ended(me.sprite, WIND_UP_STEPS) then
             me.anim = ANIM_PUNCH
             punch(me)
             me.timer = if s.count == 1 then 20 else 10

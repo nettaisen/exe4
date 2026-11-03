@@ -7,6 +7,7 @@
 -- with no puff. He runs while dimmed.
 
 local laser = require("../laserman/laser")
+local played = require("@exelib/played")
 local silhouette = require("./silhouette")
 
 local laserman = {}
@@ -22,6 +23,8 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- His laser's course (its first parameter, 0x080CBDBC).
 local COURSE = 5
+-- His charge (animation 2) lasts 16 of his sprite's steps, his last animation (4) 8.
+local CHARGE_STEPS, LAST_STEPS = 16, 8
 
 local APPEAR, ATTACK = 0x0, 0x4
 
@@ -45,7 +48,7 @@ local function attack(me: Object)
             me.timer = 30
             return
         end
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if not played.ended(me.sprite, CHARGE_STEPS) then
             return
         end
         me.anim = 3
@@ -61,7 +64,7 @@ local function attack(me: Object)
             me.phase, me.phase_init = 8, 0
         end
     elseif me.phase == 8 then
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if played.ended(me.sprite, LAST_STEPS) then
             silhouette.show(me, me.panel_x, me.panel_y, 18)
             me:set_lifecycle("destroy")
         end

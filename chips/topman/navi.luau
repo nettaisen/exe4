@@ -8,6 +8,7 @@
 
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local top = require("./top")
@@ -37,6 +38,8 @@ local OCCUPIED = 0x0F80_0000
 local TOPS: { { number } } = { { 2, -1 }, { 4, -1 }, { 4, 1 }, { 2, 1 } }
 -- His leap: up at 11 pixels a tick, across at 0x1B0AD, falling 0x4F80 a tick.
 local LEAP_VZ, LEAP_VX, GRAVITY = 0xB_0000, 0x1_B0AD, 0x4F80
+-- His spin up's animation 5 lasts 19 of his sprite's steps (then animation 6 loops).
+local SPIN_UP_STEPS = 19
 
 local APPEAR, SPIN_UP, LEAP, LAND = 0x0, 0x4, 0x8, 0xC
 
@@ -73,7 +76,7 @@ local function spin_up(me: Object)
         battle.play_sound(SOUND_SPIN)
     end
     if me.anim == 5 then
-        if not bit32.btest(me.sprite.frame_flags, 0x80) then
+        if not played.ended(me.sprite, SPIN_UP_STEPS) then
             return
         end
         me.anim = 6

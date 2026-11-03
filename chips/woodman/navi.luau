@@ -8,6 +8,7 @@
 
 local navi_chips = require("../../lib/navi_chips")
 local panels = require("@exelib/panels")
+local played = require("@exelib/played")
 local tower = require("./tower")
 
 local woodman = {}
@@ -37,6 +38,8 @@ local SOLID = 0x10
 local LEAP_SPEED, GRAVITY = 0x1B_0000, 0x1_0000
 -- A key of his command counts this long.
 local PRESS_TICKS = 5
+-- His landing (animation 7) lasts 7 of his sprite's steps.
+local LANDING_STEPS = 7
 
 local APPEAR, ATTACK = 0x0, 0x4
 
@@ -146,7 +149,7 @@ local function attack(me: Object)
         me.phase, me.phase_init = 8, 0
     elseif phase == 8 then
         command(me)
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if played.ended(me.sprite, LANDING_STEPS) then
             me.anim = 10
             me.phase, me.phase_init = 0xC, 0
         end

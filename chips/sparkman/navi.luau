@@ -8,6 +8,7 @@
 
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local spark = require("./spark")
@@ -39,6 +40,8 @@ local ELEC = 3
 local FLASH_TICKS = 0x14
 -- His charge, his flash's ticks, and the shock's.
 local CHARGE, FLASH, SHOCK = 10, 20, 28
+-- His animation 4, as his charge runs out, lasts 10 of his sprite's steps.
+local CHARGED_STEPS = 10
 
 local APPEAR, ATTACK = 0x0, 0x4
 
@@ -125,7 +128,7 @@ local function attack(me: Object)
         me.timer2 = SHOCK
         return
     end
-    if me.anim == 4 and not bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.anim == 4 and not played.ended(me.sprite, CHARGED_STEPS) then
         me.anim = 5
         flash(me)
         return

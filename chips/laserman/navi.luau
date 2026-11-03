@@ -8,6 +8,7 @@
 
 local laser = require("./laser")
 local navi_chips = require("../../lib/navi_chips")
+local played = require("@exelib/played")
 
 local laserman = {}
 
@@ -29,6 +30,8 @@ local SOUND_FIRE = asset.sound("laser")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOLID = 0x10
+-- His last animation (4) lasts 8 of his sprite's steps.
+local LAST_STEPS = 8
 -- The courses the keys held aim, in the order they are tried (0x080CAD1C).
 local AIMS: { { key: Key, course: number } } = {
     { key = "up", course = 1 },
@@ -93,7 +96,7 @@ local function attack(me: Object)
             me.phase, me.phase_init = 8, 0
         end
     elseif me.phase == 8 then
-        if bit32.btest(me.sprite.frame_flags, 0x80) then
+        if played.ended(me.sprite, LAST_STEPS) then
             me:set_lifecycle("destroy")
         end
     else

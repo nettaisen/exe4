@@ -11,6 +11,7 @@
 -- parameter is 0. Its spawn takes a count to keep up to date, the object's +0x4C, which the WhitWebs pass as none.)
 
 local collision = require("../../rules/collision")
+local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
@@ -22,6 +23,8 @@ local SOUND = asset.sound("web")
 local GONE_SOUND = asset.sound("hit-bomb-1")
 local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 }
 local TICKS, HIT_MOD = 120, 1
+-- Its first animation (0) plays over 10 of its sprite's steps; then animation 1 loops.
+local FIRST_ANIM_STEPS = 10
 -- The other side's navi caught, by its side (0x080D4E6C).
 local CAUGHT = { [0] = 0x05800000, [1] = 0x0A800000 }
 -- The other side's panels, by the user's side (0x080D4F10).
@@ -34,7 +37,7 @@ end
 
 -- 0x080D4E74: animation 1 once animation 0 has played; gone at its end.
 local function stand(me: Object)
-    if me.anim == 0 and bit32.btest(me.sprite.frame_flags, 0x80) then
+    if me.anim == 0 and played.ended(me.sprite, FIRST_ANIM_STEPS) then
         me.anim = 1
     end
     local t = me.timer - 1
