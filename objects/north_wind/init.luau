@@ -5,7 +5,7 @@
 
 local collision = require("../rules/collision")
 local north_wind = require("@exelib/nrthwind/wind")
-local gust_sprite = require("./gust/gust_sprite")
+local gust_sprite = asset.sprite("gust")
 
 return north_wind.make {
     id = "north-wind",

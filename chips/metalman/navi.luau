@@ -32,9 +32,9 @@ export type State = {
     fist: Object?,
 }
 
-local SPRITE = require("./metalman_sprite")
-local metalman_fist_sprite = require("./metalman_fist_sprite")
-local strike_flash_sprite = require("../../sprites/strike_flash")
+local SPRITE = asset.sprite("metalman")
+local metalman_fist_sprite = asset.sprite("metalman-fist")
+local strike_flash_sprite = asset.sprite("strike-flash")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_WIND_UP = asset.sound("metal-fist")

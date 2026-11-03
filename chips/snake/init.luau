@@ -11,7 +11,7 @@ local collision = require("../rules/collision")
 local common = require("@exelib/snake")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
-local snake_sprite = require("@self/snake_sprite")
+local snake_sprite = asset.sprite("snake")
 
 local SNAKE = common.make_kind("snake/snake", {
     trajectory = trajectory,

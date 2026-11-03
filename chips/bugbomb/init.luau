@@ -21,8 +21,8 @@ local rising_bubble = require("../objects/rising_bubble")
 local statuses = require("../rules/status")
 local trajectory = require("../lib/trajectory")
 
-local EXPLOSION = require("../sprites/explosion")
-local bomb_sprite = require("../sprites/bomb")
+local EXPLOSION = asset.sprite("explosion")
+local bomb_sprite = asset.sprite("bomb")
 -- The bug kinds it may raise (0x080DC134).
 local BUG_KINDS: { number } = { 1, 2, 3, 4, 6, 8 }
 -- What the navi holds while throwing one: the bomb (attachment row 4) in its animation 4.

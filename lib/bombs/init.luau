@@ -15,10 +15,10 @@ local throw = require("@exelib/bombs/throw")
 
 local bombs = {}
 
-local SPRITE = require("../sprites/bomb")
-local explosion_sprite = require("../sprites/explosion")
-local puff_sprite = require("../sprites/puff")
-local small_puff_sprite = require("../sprites/small_puff")
+local SPRITE = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 -- What a navi holds while throwing a bomb (attachment row 4, 0x080CD524: 0c-02 in palette 0).
 bombs.held = attachment.look { sprite = SPRITE, palette = 0 }

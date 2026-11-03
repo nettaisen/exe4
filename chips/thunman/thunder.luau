@@ -16,8 +16,8 @@ export type State = {
     struck: boolean,
 }
 
-local SPRITE = require("../../objects/lightning/lightning_sprite")
-local strike_flash_sprite = require("../../sprites/strike_flash")
+local SPRITE = asset.sprite("lightning")
+local strike_flash_sprite = asset.sprite("strike-flash")
 local SOUND = asset.sound("lightning")
 -- Its flash on a solid panel (effect row 0x47).
 local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }

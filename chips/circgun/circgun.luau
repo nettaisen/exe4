@@ -11,8 +11,8 @@ local controller = require("@exelib/circgun/controller")
 local gun = require("@exelib/circgun/gun")
 local shot = require("@exelib/circgun/shot")
 local sparks = require("../../lib/sparks")
-local pink_flash_sprite = require("../../sprites/pink_flash")
-local search_scope_sprite = require("../serchman/search_scope_sprite")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local search_scope_sprite = asset.sprite("search-scope")
 
 local circgun = {}
 

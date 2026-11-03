@@ -10,7 +10,7 @@ local collision = require("../../../../rules/collision")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
-local scope_mark_sprite = require("./scope_mark_sprite")
+local scope_mark_sprite = asset.sprite("scope-mark")
 
 local charge = {}
 

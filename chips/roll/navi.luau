@@ -21,8 +21,8 @@ local collision = require("../../rules/collision")
 local heart = require("./heart")
 local navi_chips = require("../../lib/navi_chips")
 local sparks = require("../../lib/sparks")
-local roll_ribbon_sprite = require("./roll_ribbon_sprite")
-local roll_sprite = require("./roll_sprite")
+local roll_ribbon_sprite = asset.sprite("roll-ribbon")
+local roll_sprite = asset.sprite("roll")
 local navi_status = require("@exelib/navi_status")
 
 -- What a panel she lands on must be free of, by her side (0x080C1AE8).

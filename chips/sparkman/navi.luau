@@ -8,7 +8,6 @@
 
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local spark = require("./spark")
@@ -25,8 +24,8 @@ type State = {
     sparks: number,
 }
 
-local SPRITE = require("./sparkman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("sparkman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE = asset.sound("spark-charge")
@@ -128,7 +127,7 @@ local function attack(me: Object)
         me.timer2 = SHOCK
         return
     end
-    if me.anim == 4 and not played.ended(me.sprite, CHARGED_STEPS) then
+    if me.anim == 4 and me.sprite.steps < CHARGED_STEPS then
         me.anim = 5
         flash(me)
         return

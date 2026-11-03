@@ -12,9 +12,9 @@ local collision = require("../rules/collision")
 local common = require("@exelib/cannball/ball")
 local trajectory = require("../lib/trajectory")
 
-local SPRITE = require("../sprites/bomb")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
-local puff_sprite = require("../sprites/puff")
+local SPRITE = asset.sprite("bomb")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local puff_sprite = asset.sprite("puff")
 
 local BALL = common.make({
     id = "ball/ball",

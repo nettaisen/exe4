@@ -11,8 +11,8 @@
 local attachment = require("../objects/attachment")
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
-local swirl_sprite = require("@self/swirl_sprite")
-local wind_rack_sprite = require("@self/wind_rack_sprite")
+local swirl_sprite = asset.sprite("swirl")
+local wind_rack_sprite = asset.sprite("wind-rack")
 
 local ANIM = 5
 local SOUND = asset.sound("windrack")

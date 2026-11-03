@@ -17,9 +17,9 @@ local trajectory = require("../../lib/trajectory")
 
 local bomb = {}
 
-local SPRITE = require("./seek_bomb_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("seek-bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 

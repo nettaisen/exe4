@@ -10,8 +10,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").woodsoul
 local soul = require("./soul")
-local woodman_sprite = require("../../../chips/woodman/woodman_sprite")
-local woodsoul_sprite = require("@self/woodsoul_sprite")
+local woodman_sprite = asset.sprite("woodman")
+local woodsoul_sprite = asset.sprite("woodsoul")
 local chip_hand = require("@exelib/chip_hand")
 
 -- 0x0800E294 (`whole`: on the hand) and 0x0801F226 (on the custom screen's list): from the hand's cursor on, a Wood

@@ -15,7 +15,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/magbolt/magnet")
 local sparks = require("../../lib/sparks")
 local statuses = require("../../rules/status")
-local mag_bolt_sprite = require("./mag_bolt_sprite")
+local mag_bolt_sprite = asset.sprite("mag-bolt")
 
 local magbolt = {}
 

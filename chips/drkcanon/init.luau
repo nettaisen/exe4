@@ -11,7 +11,7 @@ local cannon = require("../lib/cannon")
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
 local sparks = require("../lib/sparks")
-local cannon_sprite = require("./cannon/cannon_sprite")
+local cannon_sprite = asset.sprite("cannon")
 
 -- The dark cannon (attachment row 0x30: 0c-01 in palette 3).
 local ARM = attachment.look { sprite = cannon_sprite, palette = 3 }

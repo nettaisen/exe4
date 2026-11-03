@@ -17,9 +17,9 @@ local collision = require("../../rules/collision")
 
 local signal = {}
 
-local SPRITE = require("./signal_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("signal")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
 -- It takes its panel; it turns green; it breaks.
 local SOUND_STAND = asset.sound("tops")
 local SOUND_GREEN = asset.sound("bugfix-flash")

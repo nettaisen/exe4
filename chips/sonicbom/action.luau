@@ -11,7 +11,6 @@
 -- (`action.make`).
 
 local attachment = require("../../objects/attachment")
-local played = require("@exelib/played")
 local sonic_boom = require("@exelib/swords/sonic_boom")
 local sonic_boom_kind = require("../../objects/sonic_boom").kind
 local swords = require("../../lib/swords")
@@ -92,7 +91,7 @@ end
 
 -- 0x080ED92A: back where it stepped from once its animation ends.
 local function step_back(me: Object)
-    if not played.ended(me.sprite, if me.sprite.animation == ANIM_NO_STEP then NO_STEP_STEPS else SWING_STEPS) then
+    if me.sprite.steps < (if me.sprite.animation == ANIM_NO_STEP then NO_STEP_STEPS else SWING_STEPS) then
         return
     end
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y

@@ -9,8 +9,8 @@
 local collision = require("../rules/collision")
 local common = require("@exelib/mine/controller")
 local land_mine = require("@exelib/mine/land_mine")
-local land_mine_sprite = require("@self/land_mine_sprite")
-local strike_flash_sprite = require("../sprites/strike_flash")
+local land_mine_sprite = asset.sprite("land-mine")
+local strike_flash_sprite = asset.sprite("strike-flash")
 
 local MINE = land_mine.make_kind {
     id = "mine/land-mine",

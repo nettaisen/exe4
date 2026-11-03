@@ -9,8 +9,8 @@ local attachment = require("../../../../objects/attachment")
 local ring = require("../../../../objects/ring")
 local rings = require("../../../../lib/rings")
 local statuses = require("../../../../rules/status")
-local zap_ring_arm_sprite = require("../../zap_ring_arm_sprite")
-local zap_ring_sprite = require("../../zap_ring_sprite")
+local zap_ring_arm_sprite = asset.sprite("zap-ring-arm")
+local zap_ring_sprite = asset.sprite("zap-ring")
 
 local charge = {}
 

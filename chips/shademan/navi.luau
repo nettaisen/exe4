@@ -17,8 +17,8 @@
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
 local statuses = require("../../rules/status")
-local puff_sprite = require("../../sprites/puff")
-local shademan_sprite = require("./shademan_sprite")
+local puff_sprite = asset.sprite("puff")
+local shademan_sprite = asset.sprite("shademan")
 
 -- His crush's figure from its panel's center: its X's and Y's whole parts 8 and 12 less (two halfword stores).
 local function place(me: Object)

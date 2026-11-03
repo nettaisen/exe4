@@ -22,7 +22,6 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local ghost = require("./ghost")
 local image = require("./image")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local navi = {}
@@ -37,8 +36,8 @@ type State = {
     image: Object?,
 }
 
-local SPRITE = require("../bass/bass_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bass")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local CAPE_ANIM_OFFSET = 0x0E
 -- Attachment row 0x1E (0x080CD524): his sheet in palette 0, no lift; its animation 0x20, animating while dimmed.
@@ -103,8 +102,8 @@ local function arm_up(me: Object)
         me.anim = 9
     end
     local up = if me.sprite.animation == 9
-        then played.ended(me.sprite, ARM_UP_STEPS)
-        else played.ended(me.sprite, RISE_STEPS, RISE_STEPS)
+        then me.sprite.steps >= ARM_UP_STEPS
+        else (me.sprite.steps > 0 and me.sprite.steps % RISE_STEPS == 0)
     if not up then
         return
     end
@@ -203,7 +202,7 @@ end
 local function blast(me: Object)
     local init = me.phase_init
     if init == 0 then
-        if not played.ended(me.sprite, LANDING_STEPS) then
+        if me.sprite.steps < LANDING_STEPS then
             return
         end
         me.phase_init = 1

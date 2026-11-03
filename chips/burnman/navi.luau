@@ -23,8 +23,8 @@ type State = {
     palette: number,
 }
 
-local SPRITE = require("./burnman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("burnman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PILLARS = asset.sound("tops")

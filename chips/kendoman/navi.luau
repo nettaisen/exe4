@@ -12,7 +12,6 @@ local lingering_hit = require("../../objects/lingering_hit")
 local link_chips = require("@exelib/link_chips")
 local navi_chips = require("../../lib/navi_chips")
 local panels = require("@exelib/panels")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
@@ -28,9 +27,9 @@ type State = {
     target_y: number,
 }
 
-local SPRITE = require("./kendoman_sprite")
-local puff_sprite = require("../../sprites/puff")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local SPRITE = asset.sprite("kendoman")
+local puff_sprite = asset.sprite("puff")
+local sword_slash_sprite = asset.sprite("sword-slash")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("counter-strike")
@@ -179,7 +178,7 @@ local function dash(me: Object)
         me.phase_init = 2
         return
     end
-    if played.ended(me.sprite, SLASH_STEPS) then
+    if me.sprite.steps >= SLASH_STEPS then
         me.timer = int.u16(me.timer - 1)
         if me.timer == 0 then
             me:set_action(CUT_BACK)
@@ -251,7 +250,7 @@ local function cut_back(me: Object)
         me.phase_init = 3
         return
     end
-    if played.ended(me.sprite, CUT_STEPS) then
+    if me.sprite.steps >= CUT_STEPS then
         me.timer = int.u16(me.timer - 1)
         if me.timer == 0 then
             me:set_action(RUSH)
@@ -271,7 +270,7 @@ local function rush(me: Object)
         return
     end
     if me.phase_init == 1 then
-        if not played.ended(me.sprite, DRAW_STEPS) then
+        if me.sprite.steps < DRAW_STEPS then
             return
         end
         me.anim = 6

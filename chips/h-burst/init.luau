@@ -15,8 +15,8 @@ local burst = require("@exelib/h_burst/burst")
 local collision = require("../rules/collision")
 local spreader = require("./spreader/spreader")
 local spreaders = require("./spreader")
-local pink_flash_sprite = require("../sprites/pink_flash")
-local spreader_sprite = require("./spreader/spreader_sprite")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local spreader_sprite = asset.sprite("spreader")
 
 local SHOT = burst.make_kind("h-burst/burst", {
     probe = collision.nothing,

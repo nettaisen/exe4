@@ -13,7 +13,7 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./blue_moon_sprite")
+local SPRITE = asset.sprite("blue-moon")
 local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SHINE = asset.sound("sun-moon-shine")
 

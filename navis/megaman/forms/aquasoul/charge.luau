@@ -9,8 +9,8 @@ local attachment = require("../../../../objects/attachment")
 local bullet = require("../../../../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("../../../../chips/spreader/spreader")
-local bubble_burst_sprite = require("../../../../sprites/bubble_burst")
-local bubbler_sprite = require("../../../../chips/bubbler/bubbler_sprite")
+local bubble_burst_sprite = asset.sprite("bubble-burst")
+local bubbler_sprite = asset.sprite("bubbler")
 
 local charge = {}
 

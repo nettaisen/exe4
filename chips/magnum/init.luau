@@ -12,8 +12,8 @@ local collision = require("../rules/collision")
 local common_controller = require("@exelib/magnum/controller")
 local common_gunner = require("@exelib/magnum/gunner")
 local sparks = require("../lib/sparks")
-local explosion_sprite = require("../sprites/explosion")
-local search_scope_sprite = require("./serchman/search_scope_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local search_scope_sprite = asset.sprite("search-scope")
 
 local GUNNER = common_gunner.make {
     id = "magnum/gunner",

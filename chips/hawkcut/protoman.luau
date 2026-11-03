@@ -22,9 +22,9 @@ export type State = {
     held: Object?,
 }
 
-local SPRITE = require("../protoman/protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local SPRITE = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 local APPEAR_SOUND = asset.sound("appear")
 local SWING_SOUND = asset.sound("sword-swing")
 -- His palette (0x0800B950: navi 7's palettes, 1, times the chip's level's, 0).

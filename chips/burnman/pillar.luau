@@ -17,8 +17,8 @@ type State = {
     palette: number,
 }
 
-local SPRITE = require("./burnman_sprite")
-local impact_sprite = require("../../sprites/impact")
+local SPRITE = asset.sprite("burnman")
+local impact_sprite = asset.sprite("impact")
 local SOUND_FLAME = asset.sound("roar")
 local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The impact a hit ends it in (effect row 0x0F), 8 pixels up.

@@ -16,7 +16,6 @@
 local collision = require("../../rules/collision")
 local ice_cube = require("../../objects/ice_cube")
 local navi_chips = require("../../lib/navi_chips")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local coldman = {}
@@ -31,8 +30,8 @@ type State = {
     count: number,
 }
 
-local SPRITE = require("./coldman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("coldman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FOUND = asset.sound("place")
@@ -241,7 +240,7 @@ local function attack(me: Object)
             end
             me.phase_init = 2
             me.anim = ANIM_WIND_UP
-        elseif played.ended(me.sprite, WIND_UP_STEPS) then
+        elseif me.sprite.steps >= WIND_UP_STEPS then
             me.anim = ANIM_PUNCH
             punch(me)
             me.timer = if s.count == 1 then 20 else 10

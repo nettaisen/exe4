@@ -25,8 +25,8 @@ local searchsoul = require("@self/forms/searchsoul").searchsoul
 local thundersoul = require("@self/forms/thundersoul").thundersoul
 local windsoul = require("@self/forms/windsoul").windsoul
 local woodsoul = require("@self/forms/woodsoul").woodsoul
-local megaman_portrait_sprite = require("@self/megaman_portrait_sprite")
-local megaman_sprite = require("@self/megaman_sprite")
+local megaman_portrait_sprite = asset.sprite("megaman-portrait")
+local megaman_sprite = asset.sprite("megaman")
 
 local navi: NaviDef = {
     sprite = megaman_sprite,

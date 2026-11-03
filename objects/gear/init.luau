@@ -21,8 +21,8 @@ export type State = {
     travel: number,
 }
 
-local SPRITE = require("@self/gear_sprite")
-local explosion_sprite = require("../sprites/explosion")
+local SPRITE = asset.sprite("gear")
+local explosion_sprite = asset.sprite("explosion")
 local ROLL = asset.sound("gear")
 -- Its breaking (0x080DBF32: 0x6F) and effect 0 (the explosion: 14-00's animation 0).
 local BROKEN = asset.sound("hit-bomb-0")

@@ -28,8 +28,8 @@ type State = {
     gone: boolean,
 }
 
-local SPRITE = require("../kendoman/kendoman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("kendoman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_DRAW = asset.sound("kendo-draw")
 -- The puff he goes in (effect row 0x13).

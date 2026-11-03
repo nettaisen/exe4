@@ -19,8 +19,8 @@ type State = {
     swirl: Object?,
 }
 
-local SPRITE = require("./windman_sprite")
-local windman_swirl_sprite = require("./windman_swirl_sprite")
+local SPRITE = asset.sprite("windman")
+local windman_swirl_sprite = asset.sprite("windman-swirl")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 

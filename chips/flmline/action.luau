@@ -7,7 +7,7 @@
 
 local attachment = require("../../objects/attachment")
 local flame = require("./flame")
-local flame_line_burner_sprite = require("./flame_line_burner_sprite")
+local flame_line_burner_sprite = asset.sprite("flame-line-burner")
 
 local flmline = {}
 

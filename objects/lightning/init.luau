@@ -10,8 +10,8 @@ local regions = require("@exelib/regions")
 
 local lightning = {}
 
-local SPRITE = require("@self/lightning_sprite")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
+local SPRITE = asset.sprite("lightning")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 local SOUND = asset.sound("lightning")
 local SPARK = new.effect { sprite = hit_sparks_sprite, anim = 13, palette = 0, steps = 2 }
 local HIT_MOD = 3

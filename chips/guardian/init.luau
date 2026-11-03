@@ -15,9 +15,9 @@ local punisher = require("./punisher").punisher
 local rising_bubble = require("../objects/rising_bubble")
 local statue = require("@exelib/guardian/statue")
 local strike = require("@exelib/guardian/strike")
-local guardian_statue_sprite = require("@self/guardian_statue_sprite")
-local lightning_sprite = require("../objects/lightning/lightning_sprite")
-local puff_sprite = require("../sprites/puff")
+local guardian_statue_sprite = asset.sprite("guardian-statue")
+local lightning_sprite = asset.sprite("lightning")
+local puff_sprite = asset.sprite("puff")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)

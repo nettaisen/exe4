@@ -19,8 +19,8 @@ local falling_meteor = require("@exelib/meteors/falling_meteor")
 local marker = require("@exelib/meteors/marker")
 local panels = require("@exelib/panels")
 local sparks = require("../../lib/sparks")
-local burst_sprite = require("../../sprites/burst")
-local meteor_sprite = require("./meteor_sprite")
+local burst_sprite = asset.sprite("burst")
+local meteor_sprite = asset.sprite("meteor")
 
 local meteors = {}
 

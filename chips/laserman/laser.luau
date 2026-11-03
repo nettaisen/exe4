@@ -13,12 +13,11 @@
 -- so over in five strikes' time, in the aimed courses' palette and the left course's color shader.
 
 local collision = require("../../rules/collision")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 
 local laser = {}
 
-local SPRITE = require("./laserman_sprite")
+local SPRITE = asset.sprite("laserman")
 -- A strike with its damage, and none; a course's end.
 local HIT, NONE = 0xFD, 0xFF
 -- The other side's custom level, one less but not below 2, as a strike (0x080E0F18).
@@ -78,7 +77,7 @@ end
 -- (course 5's every other one); after the tenth, animation 19 and on to its end.
 local function firing(me: Object)
     if me.anim == 17 then
-        if not played.ended(me.sprite, SHOW_STEPS) then
+        if me.sprite.steps < SHOW_STEPS then
             return
         end
         me.anim = 18
@@ -113,7 +112,7 @@ end
 
 -- Action 4 (0x080E0FC8): as its animation ends, it goes.
 local function ending(me: Object)
-    if played.ended(me.sprite, END_STEPS) then
+    if me.sprite.steps >= END_STEPS then
         me:set_lifecycle("destroy")
     end
 end

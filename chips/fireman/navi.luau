@@ -26,9 +26,9 @@ type State = {
     commanded: boolean,
 }
 
-local SPRITE = require("./fireman_sprite")
-local HEAD_FLAME = require("./fireman_flame_sprite")
-local rage_flame_sprite = require("../../sprites/rage_flame")
+local SPRITE = asset.sprite("fireman")
+local HEAD_FLAME = asset.sprite("fireman-flame")
+local rage_flame_sprite = asset.sprite("rage-flame")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROAR = asset.sound("roar")

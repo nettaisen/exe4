@@ -15,8 +15,8 @@ local controller = require("@exelib/bodygrd/controller")
 local recipe_muramasa = require("./muramasa").muramasa
 local shuriken = require("@exelib/bodygrd/shuriken")
 local striker = require("@exelib/bodygrd/striker")
-local shuriken_sprite = require("../sprites/shuriken")
-local small_puff_sprite = require("../sprites/small_puff")
+local shuriken_sprite = asset.sprite("shuriken")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local SHURIKEN = shuriken.make_kind {
     id = "bodygrd/shuriken",

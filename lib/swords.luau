@@ -12,7 +12,7 @@
 
 local attachment = require("../objects/attachment")
 local slash = require("@exelib/swords/slash")
-local sword_sprite = require("../sprites/sword")
+local sword_sprite = asset.sprite("sword")
 
 local swords = {}
 

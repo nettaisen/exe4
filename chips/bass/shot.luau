@@ -10,7 +10,7 @@
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local bass_sprite = require("./bass_sprite")
+local bass_sprite = asset.sprite("bass")
 
 local shot = {}
 

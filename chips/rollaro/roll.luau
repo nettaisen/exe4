@@ -20,9 +20,9 @@ export type State = {
     gray: number,
 }
 
-local SPRITE = require("../roll/roll_sprite")
-local roll_arrow_sprite = require("./roll_arrow_sprite")
-local sparkle_sprite = require("../roll/sparkle_sprite")
+local SPRITE = asset.sprite("roll")
+local roll_arrow_sprite = asset.sprite("roll-arrow")
+local sparkle_sprite = asset.sprite("sparkle")
 local navi_left = require("@exelib/navi_chips/left")
 local APPEAR_SOUND = asset.sound("appear")
 local ARROW_SOUND = asset.sound("roll-arrow")

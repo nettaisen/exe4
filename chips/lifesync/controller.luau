@@ -16,7 +16,7 @@ local marker = require("@exelib/lifesync/marker")
 local navi_list = require("../../lib/navi_list")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 local lifesync = {}
 

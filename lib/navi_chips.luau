@@ -11,7 +11,6 @@
 
 local common = require("@exelib/navi_chips/controller")
 local looks = require("@exelib/looks")
-local played = require("@exelib/played")
 
 local navi_chips = {}
 
@@ -55,7 +54,7 @@ local function warp_tick(me: Object)
         end
         me.phase_init = 4
     end
-    if played.ended(me.sprite, if player then WARP_STEPS else NO_SPRITE_STEPS) then
+    if me.sprite.steps >= (if player then WARP_STEPS else NO_SPRITE_STEPS) then
         me.visible = false
         if not s.out then
             if player then

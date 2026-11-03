@@ -11,9 +11,9 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/protoman/navi")
 local navi_chips = require("../../lib/navi_chips")
-local protoman_sprite = require("./protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- What a panel he lands on must be free of, by his side (0x080C70CC).
 local OCCUPIED = { [0] = 0x0788_0080, 0x0B88_0080 }

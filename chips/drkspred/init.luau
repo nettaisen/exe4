@@ -9,8 +9,8 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
-local pink_flash_sprite = require("../sprites/pink_flash")
-local spreader_sprite = require("./spreader/spreader_sprite")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local spreader_sprite = asset.sprite("spreader")
 
 -- The dark gun (attachment row 0x32: the Spreader's, 0c-19, in palette 3).
 local GUN = attachment.look { sprite = spreader_sprite, palette = 3 }

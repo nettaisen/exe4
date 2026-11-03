@@ -8,7 +8,6 @@
 
 local navi_chips = require("../../lib/navi_chips")
 local panels = require("@exelib/panels")
-local played = require("@exelib/played")
 local tower = require("./tower")
 
 local woodman = {}
@@ -26,8 +25,8 @@ type State = {
     again: boolean,
 }
 
-local SPRITE = require("./woodman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("woodman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAND = asset.sound("metal-punch")
@@ -149,7 +148,7 @@ local function attack(me: Object)
         me.phase, me.phase_init = 8, 0
     elseif phase == 8 then
         command(me)
-        if played.ended(me.sprite, LANDING_STEPS) then
+        if me.sprite.steps >= LANDING_STEPS then
             me.anim = 10
             me.phase, me.phase_init = 0xC, 0
         end

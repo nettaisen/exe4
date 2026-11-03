@@ -6,8 +6,8 @@
 local charge = require("@self/charge")
 local chip = require("@self/chip").rollsoul
 local soul = require("./soul")
-local roll_sprite = require("../../../chips/roll/roll_sprite")
-local rollsoul_sprite = require("@self/rollsoul_sprite")
+local roll_sprite = asset.sprite("roll")
+local rollsoul_sprite = asset.sprite("rollsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

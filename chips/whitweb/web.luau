@@ -11,14 +11,13 @@
 -- parameter is 0. Its spawn takes a count to keep up to date, the object's +0x4C, which the WhitWebs pass as none.)
 
 local collision = require("../../rules/collision")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
 local web = {}
 
-local SPRITE = require("./web_sprite")
-local impact_sprite = require("../../sprites/impact")
+local SPRITE = asset.sprite("web")
+local impact_sprite = asset.sprite("impact")
 local SOUND = asset.sound("web")
 local GONE_SOUND = asset.sound("hit-bomb-1")
 local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 }
@@ -37,7 +36,7 @@ end
 
 -- 0x080D4E74: animation 1 once animation 0 has played; gone at its end.
 local function stand(me: Object)
-    if me.anim == 0 and played.ended(me.sprite, FIRST_ANIM_STEPS) then
+    if me.anim == 0 and me.sprite.steps >= FIRST_ANIM_STEPS then
         me.anim = 1
     end
     local t = me.timer - 1

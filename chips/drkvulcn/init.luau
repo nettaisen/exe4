@@ -9,8 +9,8 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("./vulcan/vulcan")
-local vulcan_hit_sprite = require("./vulcan/vulcan_hit_sprite")
-local vulcan_sprite = require("./vulcan/vulcan_sprite")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_sprite = asset.sprite("vulcan")
 
 -- The dark gun (attachment row 49: 0c-1d in palette 3).
 local GUN = attachment.look { sprite = vulcan_sprite, palette = 3 }

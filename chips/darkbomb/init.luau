@@ -10,8 +10,8 @@ local attachment = require("../objects/attachment")
 local bombs = require("../lib/bombs")
 local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
-local bomb_sprite = require("../sprites/bomb")
-local explosion_sprite = require("../sprites/explosion")
+local bomb_sprite = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
 
 -- The dark bomb in hand (attachment row 0x11: the bomb, 0c-02, in palette 3), and its explosion (effect row 0x2B: the
 -- explosion in palette 1).

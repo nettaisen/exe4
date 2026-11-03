@@ -12,8 +12,8 @@
 
 local dice = require("../../objects/dice")
 local navi_chips = require("../../lib/navi_chips")
-local numberman_face_sprite = require("./numberman_face_sprite")
-local numberman_sprite = require("./numberman_sprite")
+local numberman_face_sprite = asset.sprite("numberman-face")
+local numberman_sprite = asset.sprite("numberman")
 
 local FACE = require("@exelib/numbrman/face").make {
     id = "numbrman/face",

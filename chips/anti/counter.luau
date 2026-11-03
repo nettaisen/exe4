@@ -11,8 +11,8 @@ local common = require("@exelib/antidmg/counter")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local shuriken = require("@exelib/bodygrd/shuriken")
-local shuriken_sprite = require("../../sprites/shuriken")
-local small_puff_sprite = require("../../sprites/small_puff")
+local shuriken_sprite = asset.sprite("shuriken")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local counter = {}
 

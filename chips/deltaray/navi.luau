@@ -12,12 +12,12 @@ local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/deltaray/navi")
 local navi_chips = require("../../lib/navi_chips")
-local deletion_sprite = require("../../sprites/deletion")
-local follow_effect_sprite = require("./follow_effect_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local protoman_sprite = require("../protoman/protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local deletion_sprite = asset.sprite("deletion")
+local follow_effect_sprite = asset.sprite("follow-effect")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- 0x080CD6E0, as his strike asks (attachment row 3, his sword's animation, animating while dimmed).
 local function attach(owner: Object, look: AttachmentLook, which: Slot, options: AttachmentOptions?): Object?

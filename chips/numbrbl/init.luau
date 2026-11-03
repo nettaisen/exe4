@@ -11,9 +11,9 @@ local common = require("@exelib/numbrbl/controller")
 local common_ball = require("@exelib/numbrbl/ball")
 local common_numberman = require("@exelib/numbrbl/numberman")
 local navi_chips = require("../lib/navi_chips")
-local explosion_sprite = require("../sprites/explosion")
-local number_ball_sprite = require("@self/number_ball_sprite")
-local numberman_sprite = require("./numbrman/numberman_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local number_ball_sprite = asset.sprite("number-ball")
+local numberman_sprite = asset.sprite("numberman")
 
 -- The balls (0x080DF508): sheet 10-05, sitting 30 ticks with 0xAA, an explosion (effect row 0) with 0xC8 as one
 -- hits; parts 2 to 21 hidden as they wait and roll (0x080DF640).

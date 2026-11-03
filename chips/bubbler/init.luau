@@ -9,8 +9,8 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
-local bubble_burst_sprite = require("../sprites/bubble_burst")
-local bubbler_sprite = require("@self/bubbler_sprite")
+local bubble_burst_sprite = asset.sprite("bubble-burst")
+local bubbler_sprite = asset.sprite("bubbler")
 
 -- The Bubblers' gun (attachment row 0x0E: 0c-1c), and their bullets' bubble burst (effect row 0x25) and its sound
 -- (0x9F).

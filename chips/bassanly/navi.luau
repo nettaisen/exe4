@@ -10,8 +10,8 @@ local common = require("@exelib/bassanly/navi")
 local navi_chips = require("../../lib/navi_chips")
 local shot = require("./shot")
 
-local SPRITE = require("../bass/bass_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bass")
+local puff_sprite = asset.sprite("puff")
 
 local BASSANLY = common.make {
     id = "bassanly/navi",

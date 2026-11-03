@@ -9,7 +9,7 @@ local ball = require("@exelib/thunder/ball")
 local collision = require("../../rules/collision")
 local shoot = require("@exelib/thunder/shoot")
 local sparks = require("../../lib/sparks")
-local thunder_ball_sprite = require("./thunder_ball_sprite")
+local thunder_ball_sprite = asset.sprite("thunder-ball")
 
 local thunder = {}
 

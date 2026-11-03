@@ -14,8 +14,8 @@
 local base = require("./base").base
 local dark = require("../../../rules/souls/dark")
 local soul = require("./soul")
-local megaman_ds_sprite = require("@self/megaman_ds_sprite")
-local megaman_sprite = require("../megaman_sprite")
+local megaman_ds_sprite = asset.sprite("megaman-ds")
+local megaman_sprite = asset.sprite("megaman")
 
 local form: FormDef = {
     change = dark.change,

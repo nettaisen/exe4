@@ -17,9 +17,9 @@ export type State = {
     controller: Object?,
 }
 
-local SPRITE = require("./red_sun_sprite")
-local burst_sprite = require("../../sprites/burst")
-local explosion_sprite = require("../../sprites/explosion")
+local SPRITE = asset.sprite("red-sun")
+local burst_sprite = asset.sprite("burst")
+local explosion_sprite = asset.sprite("explosion")
 local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SHINE = asset.sound("sun-moon-shine")
 local SOUND_DIVE = asset.sound("red-sun-dive")

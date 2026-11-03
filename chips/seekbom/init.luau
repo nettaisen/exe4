@@ -8,7 +8,7 @@
 local attachment = require("../objects/attachment")
 local bomb = require("@self/bomb")
 local bombs = require("../lib/bombs")
-local bomb_sprite = require("../sprites/bomb")
+local bomb_sprite = asset.sprite("bomb")
 
 -- The bomb in hand (attachment row 0x2F: the bomb, 0c-02, in palette 7).
 local HELD = attachment.look { sprite = bomb_sprite, palette = 7 }

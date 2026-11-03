@@ -8,7 +8,6 @@
 
 local laser = require("./laser")
 local navi_chips = require("../../lib/navi_chips")
-local played = require("@exelib/played")
 
 local laserman = {}
 
@@ -22,8 +21,8 @@ type State = {
     course: number,
 }
 
-local SPRITE = require("./laserman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("laserman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
@@ -96,7 +95,7 @@ local function attack(me: Object)
             me.phase, me.phase_init = 8, 0
         end
     elseif me.phase == 8 then
-        if played.ended(me.sprite, LAST_STEPS) then
+        if me.sprite.steps >= LAST_STEPS then
             me:set_lifecycle("destroy")
         end
     else

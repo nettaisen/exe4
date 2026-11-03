@@ -11,9 +11,9 @@ local chip = require("@self/chip").windsoul
 local collision = require("../../../rules/collision")
 local soul = require("./soul")
 local wind = require("../../../objects/wind")
-local windman_sprite = require("../../../chips/windman/windman_sprite")
-local windman_swirl_sprite = require("../../../chips/windman/windman_swirl_sprite")
-local windsoul_sprite = require("@self/windsoul_sprite")
+local windman_sprite = asset.sprite("windman")
+local windman_swirl_sprite = asset.sprite("windman-swirl")
+local windsoul_sprite = asset.sprite("windsoul")
 local chip_hand = require("@exelib/chip_hand")
 
 -- What its status reset gives the hand's wind chips, and the custom screen as OK builds a hand in it.

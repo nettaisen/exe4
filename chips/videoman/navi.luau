@@ -7,7 +7,6 @@
 -- back from him: each square spreads to the right.)
 
 local navi_chips = require("../../lib/navi_chips")
-local played = require("@exelib/played")
 local tape = require("./tape")
 
 local videoman = {}
@@ -19,8 +18,8 @@ type State = {
     palette: number,
 }
 
-local SPRITE = require("./videoman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("videoman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 -- The puff he goes in (effect row 0x13).
@@ -50,7 +49,7 @@ end
 -- Action 4 (0x080C77C8): as his swing ends, animation 6 and the upper tape; else with 65 ticks left the lower one;
 -- with 20 left animation 7; at its end he goes.
 local function swing(me: Object)
-    if me.anim == 5 and played.ended(me.sprite, SWING_STEPS) then
+    if me.anim == 5 and me.sprite.steps >= SWING_STEPS then
         me.anim = 6
         if me.panel_y ~= 1 then
             tape.spawn(me, square_x(me), me.panel_y - 1)

@@ -37,8 +37,8 @@ export type Hammer = {
     spawn: (owner: Object, x: number, y: number, element: number, damage: number) -> Object?,
 }
 
-local SPRITE = require("./big_hammer_sprite")
-local explosion_sprite = require("../../sprites/explosion")
+local SPRITE = asset.sprite("big-hammer")
+local explosion_sprite = asset.sprite("explosion")
 local APPEAR_SOUND = asset.sound("appear")
 local SWING_SOUND = asset.sound("hammer-swing")
 local LAND_SOUND = asset.sound("metal-punch")

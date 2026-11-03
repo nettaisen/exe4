@@ -11,7 +11,7 @@ local sparks = require("../../lib/sparks")
 
 local boomerang = {}
 
-local SPRITE = require("./boomerang_sprite")
+local SPRITE = asset.sprite("boomerang")
 
 boomerang.kind = common.make_kind {
     id = "boomer/boomerang",

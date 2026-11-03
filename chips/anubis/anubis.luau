@@ -12,9 +12,9 @@ local collision = require("../../rules/collision")
 local controller = require("@exelib/anubis/controller")
 local rising_bubble = require("../../objects/rising_bubble")
 local statue = require("@exelib/anubis/statue")
-local anubis_sprite = require("./anubis_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
+local anubis_sprite = asset.sprite("anubis")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)

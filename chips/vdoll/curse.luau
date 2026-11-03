@@ -9,7 +9,7 @@ local common = require("@exelib/vdoll/curse")
 local curse_chip = require("../curse").curse
 local sparkles = require("../../objects/sparkles")
 local sparks = require("../../lib/sparks")
-local explosion_sprite = require("../../sprites/explosion")
+local explosion_sprite = asset.sprite("explosion")
 
 return common.make {
     id = "vdoll/curse",

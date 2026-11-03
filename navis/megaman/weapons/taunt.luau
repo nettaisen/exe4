@@ -7,7 +7,7 @@
 -- which a move may cut short, as the charged shot's.
 
 local attachment = require("../../../objects/attachment")
-local taunt_sprite = require("./taunt_sprite")
+local taunt_sprite = asset.sprite("taunt")
 
 local taunt = {}
 

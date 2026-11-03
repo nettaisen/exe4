@@ -22,8 +22,8 @@ export type State = {
     hit_at: number,
 }
 
-local SPRITE = require("./topman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("topman")
+local puff_sprite = asset.sprite("puff")
 local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SPIN = asset.sound("boomerang")
 -- The puff it goes in over a panel that isn't solid (effect row 0x15).

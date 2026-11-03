@@ -11,8 +11,8 @@ local sparks = require("../../lib/sparks")
 
 local fang = {}
 
-local SPRITE = require("./twin_fang_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("twin-fang")
+local puff_sprite = asset.sprite("puff")
 local SOUND = asset.sound("set-down")
 -- The puff it goes in as the battle ends (effect row 0x15).
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }

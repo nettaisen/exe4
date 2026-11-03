@@ -14,10 +14,10 @@ local chip = require("@self/chip").firesoul
 local grass = require("@self/grass")
 local soul = require("./soul")
 
-local FLAMES = require("@self/firesoul_flame_sprite")
-local fireman_flame_sprite = require("../../../chips/fireman/fireman_flame_sprite")
-local fireman_sprite = require("../../../chips/fireman/fireman_sprite")
-local firesoul_sprite = require("@self/firesoul_sprite")
+local FLAMES = asset.sprite("firesoul-flame")
+local fireman_flame_sprite = asset.sprite("fireman-flame")
+local fireman_sprite = asset.sprite("fireman")
+local firesoul_sprite = asset.sprite("firesoul")
 local overlay = soul.overlay(FLAMES)
 
 local form: FormDef = {

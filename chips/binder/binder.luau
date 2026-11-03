@@ -15,8 +15,8 @@ local trajectory = require("../../lib/trajectory")
 
 local binder = {}
 
-local SPRITE = require("./binder_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("binder")
+local puff_sprite = asset.sprite("puff")
 local SOUND = asset.sound("binder-hop")
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 

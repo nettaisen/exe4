@@ -11,8 +11,8 @@
 local attachment = require("../../objects/attachment")
 local overlays = require("@exelib/overlays")
 local wave = require("./wave")
-local bug_charger_sprite = require("../bugcharg/bug_charger_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local bug_charger_sprite = asset.sprite("bug-charger")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 local looks = require("@exelib/looks")
 
 local image = {}

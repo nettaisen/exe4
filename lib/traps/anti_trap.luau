@@ -18,10 +18,10 @@ local regions = require("@exelib/regions")
 local sparks = require("../sparks")
 local statuses = require("../../rules/status")
 local traps = require("../traps")
-local bubble_burst_sprite = require("../../sprites/bubble_burst")
-local heat_burst_sprite = require("../../sprites/heat_burst")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local lightning_sprite = require("../../objects/lightning/lightning_sprite")
+local bubble_burst_sprite = asset.sprite("bubble-burst")
+local heat_burst_sprite = asset.sprite("heat-burst")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local lightning_sprite = asset.sprite("lightning")
 
 local trap = {}
 

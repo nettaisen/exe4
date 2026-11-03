@@ -12,7 +12,7 @@
 --     its action kept.
 -- (A navi in auto battle, or another navi, has its own deletion, 0x08010D4C: the engine runs its own for those.)
 
-local deletion_sprite = require("../sprites/deletion")
+local deletion_sprite = asset.sprite("deletion")
 local navi_status = require("@exelib/navi_status")
 
 local deletion = {}

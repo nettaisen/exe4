@@ -10,7 +10,6 @@
 -- 1 (0x080CD7E2); it waits on that actor, which no netbattle spawns.)
 
 local collision = require("../../rules/collision")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 
@@ -21,7 +20,7 @@ type State = {
     rounds: number,
 }
 
-local SPRITE = require("./videoman_sprite")
+local SPRITE = asset.sprite("videoman")
 local SOUND = asset.sound("tape")
 -- Its rounds of hits, their period (15 >> Param1: VideoMan's 0), and its place off its panel's center.
 local ROUNDS, PERIOD = 3, 15
@@ -83,7 +82,7 @@ end
 
 -- Action 8 (0x080D923A): as its animation ends, it goes.
 local function unwinding(me: Object)
-    if played.ended(me.sprite, UNWIND_STEPS) then
+    if me.sprite.steps >= UNWIND_STEPS then
         me:set_lifecycle("destroy")
     end
 end

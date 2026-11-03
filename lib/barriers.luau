@@ -16,9 +16,9 @@
 local barrier_visual = require("../objects/barrier_visual")
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
-local aura_sprite = require("../sprites/aura")
-local barrier_sprite = require("../sprites/barrier")
-local black_barrier_sprite = require("../sprites/black_barrier")
+local aura_sprite = asset.sprite("aura")
+local barrier_sprite = asset.sprite("barrier")
+local black_barrier_sprite = asset.sprite("black-barrier")
 
 local barriers = {}
 

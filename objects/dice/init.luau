@@ -8,10 +8,10 @@
 -- (action 0x15: a body the other side can hit).
 
 local collision = require("../rules/collision")
-local dice_sprite = require("@self/dice_sprite")
-local explosion_sprite = require("../sprites/explosion")
-local puff_sprite = require("../sprites/puff")
-local small_puff_sprite = require("../sprites/small_puff")
+local dice_sprite = asset.sprite("dice")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local dice = {}
 

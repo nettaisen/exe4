@@ -8,7 +8,7 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/bugcurse")
-local bug_curse_sprite = require("@self/bug_curse_sprite")
+local bug_curse_sprite = asset.sprite("bug-curse")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).

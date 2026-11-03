@@ -7,7 +7,6 @@
 -- with no puff. He runs while dimmed.
 
 local laser = require("../laserman/laser")
-local played = require("@exelib/played")
 local silhouette = require("./silhouette")
 
 local laserman = {}
@@ -17,7 +16,7 @@ type State = {
     controller: Object?,
 }
 
-local SPRITE = require("../laserman/laserman_sprite")
+local SPRITE = asset.sprite("laserman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
@@ -48,7 +47,7 @@ local function attack(me: Object)
             me.timer = 30
             return
         end
-        if not played.ended(me.sprite, CHARGE_STEPS) then
+        if me.sprite.steps < CHARGE_STEPS then
             return
         end
         me.anim = 3
@@ -64,7 +63,7 @@ local function attack(me: Object)
             me.phase, me.phase_init = 8, 0
         end
     elseif me.phase == 8 then
-        if played.ended(me.sprite, LAST_STEPS) then
+        if me.sprite.steps >= LAST_STEPS then
             silhouette.show(me, me.panel_x, me.panel_y, 18)
             me:set_lifecycle("destroy")
         end

@@ -11,7 +11,7 @@ local collision = require("../../../../rules/collision")
 local projectile = require("../../../../lib/projectile")
 local shot = require("../../../../objects/projectile")
 local sparks = require("../../../../lib/sparks")
-local muzzle_flash_sprite = require("../../../../sprites/muzzle_flash")
+local muzzle_flash_sprite = asset.sprite("muzzle-flash")
 local navi_status = require("@exelib/navi_status")
 
 local machine_gun = {}

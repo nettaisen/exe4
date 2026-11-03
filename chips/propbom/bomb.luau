@@ -13,9 +13,9 @@ local regions = require("@exelib/regions")
 
 local bomb = {}
 
-local SPRITE = require("./prop_bomb_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("prop-bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
 local SOUND = asset.sound("prop-bomb")
 local BROKEN = asset.sound("damage")
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }

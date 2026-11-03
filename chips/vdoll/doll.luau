@@ -18,8 +18,8 @@ local curse = require("./curse")
 local rock = require("../../lib/rock")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
-local explosion_sprite = require("../../sprites/explosion")
-local voodoo_doll_sprite = require("./voodoo_doll_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local voodoo_doll_sprite = asset.sprite("voodoo-doll")
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)

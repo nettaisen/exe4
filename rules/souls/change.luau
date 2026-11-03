@@ -33,7 +33,7 @@ local hooks = require("./hooks")
 local image = require("./image")
 local regions = require("@exelib/regions")
 local turns = require("./turns")
-local deletion_sprite = require("../../sprites/deletion")
+local deletion_sprite = asset.sprite("deletion")
 local looks = require("@exelib/looks")
 local intake = require("./intake")
 

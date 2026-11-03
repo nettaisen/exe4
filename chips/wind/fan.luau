@@ -13,8 +13,8 @@ local common = require("@exelib/wind/fan")
 local gust = require("../../objects/gust")
 local panels = require("@exelib/panels")
 local winds = require("../../rules/wind")
-local explosion_sprite = require("../../sprites/explosion")
-local fan_sprite = require("./fan_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local fan_sprite = asset.sprite("fan")
 
 local fan = {}
 

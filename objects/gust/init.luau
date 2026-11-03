@@ -11,7 +11,7 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/gust")
-local gust_sprite = require("@self/gust_sprite")
+local gust_sprite = asset.sprite("gust")
 
 local gust = {}
 

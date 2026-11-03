@@ -6,8 +6,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/sun_meteor")
 local sparks = require("../../lib/sparks")
-local burst_sprite = require("../../sprites/burst")
-local meteor_sprite = require("../meteors/meteor_sprite")
+local burst_sprite = asset.sprite("burst")
+local meteor_sprite = asset.sprite("meteor")
 
 local made = common.make {
     id = "redsun/meteor",

@@ -8,7 +8,6 @@
 
 local collision = require("../../rules/collision")
 local navi_chips = require("../../lib/navi_chips")
-local played = require("@exelib/played")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local top = require("./top")
@@ -22,8 +21,8 @@ export type State = {
     palette: number,
 }
 
-local SPRITE = require("./topman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("topman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SPIN = asset.sound("top-spin")
@@ -76,7 +75,7 @@ local function spin_up(me: Object)
         battle.play_sound(SOUND_SPIN)
     end
     if me.anim == 5 then
-        if not played.ended(me.sprite, SPIN_UP_STEPS) then
+        if me.sprite.steps < SPIN_UP_STEPS then
             return
         end
         me.anim = 6

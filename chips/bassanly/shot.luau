@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/bassanly/shot")
-local bass_sprite = require("../bass/bass_sprite")
+local bass_sprite = asset.sprite("bass")
 
 local shot = {}
 
