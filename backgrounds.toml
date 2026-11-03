@@ -1,0 +1,60 @@
+# EXE4's backgrounds (docs/design/asset-formats.md §8): the background its link battle stages are drawn on, those a
+# link battle picks one of, and each background's music. Presentation, read with the locales: no tick reads any of it,
+# so the content hash leaves it out.
+
+# The background every link battle stage is drawn on (each stage record's, the same one in every record): a round's
+# where it states none and none is picked, and where the one it states isn't here.
+stage = "comp"
+
+# The backgrounds a netbattle picks one of at random with its settings (another `PosRNG2() % 24` from 0x0803AAA4, after
+# its stage's), by the pick's index: the table's 24 (0x0A, 0x11 and 0x17 not among them).
+link_battle = [
+    "eltwr-comp", "toyrobo-comp", "lans-hp", "comp", "acdc-area", "town-area", "park-area", "yumland-area",
+    "undernet", "darksoul", "mayls-hp", "dexs-hp", "yais-hp", "hotel-hp", "castillo-hp", "jomonelec-hp",
+    "toyrobo-comp4", "netopia-area", "netfrica-area", "sharo-area", "spacectr-hp", "stadium", "air-stadium",
+    "colosseum"
+]
+
+# Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
+# "The battle's music"). Each is the theme most of the original's battles on it start (their settings' byte 3; a
+# battle draws the background its settings state, or with 0xFF its map's): the random encounters of the maps that draw
+# it (0x080F5370; the encounter lists 0x08017FB8, all virus battles) and the battles their scripts start (cutscene
+# command 0x51, map-script command 0x23's cutscenes 0x0809D618 and 0x0809D638). The homepages whose maps have no
+# encounters (rate 7 at 0x080189E8) and start no battle are drawn by link battles alone: theirs is a single link
+# battle's, the virus battles'. A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's
+# pick: by count every one would be the virus battles', its encounters outnumbering them).
+[backgrounds]
+acdc-area = { music = "virus-battle" }
+air-stadium = { music = "tournament-battle" }
+# BlackEarth2's seven navi battles (records 169 to 175).
+black-earth = { music = "boss-battle" }
+castillo-hp = { music = "virus-battle" }
+colosseum = { music = "tournament-battle" }
+comp = { music = "virus-battle" }
+# No map's: the DarkSoul battle (record 58, on CastNBMComp) states it.
+darksoul = { music = "boss-battle" }
+dexs-hp = { music = "virus-battle" }
+# No map's: Duo's two battles (records 93 and 94, on ControlArea) state it.
+duo = { music = "final-battle" }
+# ElTwrComp's navi battle (record 6) ends its dungeon.
+eltwr-comp = { music = "boss-battle" }
+hotel-hp = { music = "virus-battle" }
+jomonelec-hp = { music = "virus-battle" }
+lans-hp = { music = "virus-battle" }
+mayls-hp = { music = "virus-battle" }
+# MeteorComp's navi battles (records 91, MeteorComp4, and 92, ControlArea) end its dungeon.
+meteor-comp = { music = "boss-battle" }
+netfrica-area = { music = "virus-battle" }
+netopia-area = { music = "virus-battle" }
+park-area = { music = "virus-battle" }
+sharo-area = { music = "virus-battle" }
+spacectr-hp = { music = "virus-battle" }
+# No map's: the tournament battles the venues' scripts start (maps 2:3, 3:3 and 4:4) state these, eight each.
+stadium = { music = "tournament-battle" }
+town-area = { music = "virus-battle" }
+toyrobo-comp = { music = "virus-battle" }
+# ToyRoboComp4's navi battle (record 57) ends ToyRoboComp's dungeon.
+toyrobo-comp4 = { music = "boss-battle" }
+undernet = { music = "virus-battle" }
+yais-hp = { music = "virus-battle" }
+yumland-area = { music = "virus-battle" }

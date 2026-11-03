@@ -4,7 +4,7 @@
 -- triple one (0x48 and 0x4A); then the background by another `PosRNG2() % 24` from 0x0803AAA4). A set's first battle
 -- picks its rounds' places at once (0x08007D68, four of them); a random match is a triple battle's: every round
 -- among the first 0x60 records. The stages by the pick's index, those the engine has (the others wait: stages.luau);
--- the backgrounds by the pick's index, the table's 24 (0x0A, 0x11 and 0x17 not among them).
+-- the backgrounds are ../backgrounds.toml's `link_battle`.
 -- Written by tools/exe4/gen_rules.py (bn6battle-verify) from the EXE4 ROM; people own it now.
 
 local stages = require("../stages")
@@ -109,32 +109,6 @@ return {
         stages["netbattle-96"],
     },
     first_round_stages = 96,
-    backgrounds = {
-        asset.background("eltwr-comp"),
-        asset.background("toyrobo-comp"),
-        asset.background("lans-hp"),
-        asset.background("comp"),
-        asset.background("acdc-area"),
-        asset.background("town-area"),
-        asset.background("park-area"),
-        asset.background("yumland-area"),
-        asset.background("undernet"),
-        asset.background("darksoul"),
-        asset.background("mayls-hp"),
-        asset.background("dexs-hp"),
-        asset.background("yais-hp"),
-        asset.background("hotel-hp"),
-        asset.background("castillo-hp"),
-        asset.background("jomonelec-hp"),
-        asset.background("toyrobo-comp4"),
-        asset.background("netopia-area"),
-        asset.background("netfrica-area"),
-        asset.background("sharo-area"),
-        asset.background("spacectr-hp"),
-        asset.background("stadium"),
-        asset.background("air-stadium"),
-        asset.background("colosseum"),
-    },
     match_stages = {
         stages["netbattle-1"],
         stages["netbattle-2"],
