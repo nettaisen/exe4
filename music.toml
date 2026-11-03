@@ -4,4 +4,22 @@
 # the navis met in the net), the tournaments' (24, at the three venues) and Duo's two (../compat/assets.toml). Their
 # names are the locales' (`battle_themes`, by asset name). Presentation, read with the locales: no tick reads them, so
 # the content hash leaves them out.
-themes = ["virus-battle", "boss-battle", "tournament-battle", "final-battle"]
+themes = [
+    "virus-battle", "boss-battle", "tournament-battle", "final-battle", "glory-to-hong-kong",
+    "national-anthem-of-the-roc"
+]
+
+# Glory to Hong Kong (願榮光歸香港, 2019) arranged in the style of BN4's battle theme, on its instruments (song 20, the virus
+# battles'): its voicegroup, reverb and priority, eight tracks. Made from bnmusic's glory_to_hong_kong_bn4_style (its
+# .s) by nettai-verify's tools/songs/m4a_to_midi.py (but a drum hit that rang 4 ticks past the loop's end, cut there).
+[songs.glory-to-hong-kong]
+file = "music/glory_to_hong_kong.mid"
+voices = "virus-battle"
+
+# The National Anthem of the Republic of China (中華民國國歌, San Min Chu-i; music by Cheng Mao-yun, 1928, public domain)
+# arranged in the style of BN4's battle theme, on its instruments (song 20, the virus battles'): its voicegroup, reverb
+# and priority, eight tracks. Made from bnmusic's san_min_chu_i_bn4_style (its .s) by nettai-verify's
+# tools/songs/m4a_to_midi.py (but a drum hit that rang 4 ticks past the loop's end, cut there).
+[songs.national-anthem-of-the-roc]
+file = "music/national_anthem_of_the_roc.mid"
+voices = "virus-battle"
