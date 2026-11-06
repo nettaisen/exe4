@@ -53,8 +53,8 @@ local form: FormDef = {
     -- is alone), its wind (objects/wind: a navi's, pulling), which the next status reset ends (AIData +0x5C), and 10
     -- more on each damaging Wind chip of the hand from its cursor on (0x0800E208).
     reset = function(navi: Object)
-        navi:set_status("air_shoe", true)
-        navi:set_status("float_shoe", true)
+        navi.status.air_shoe = true
+        navi.status.float_shoe = true
         navi:reset_collision_types(collision.floating_navi, collision.navi_target, 0)
         navi.reset_linked_object = wind.navi(navi)
         hand(navi.alliance)

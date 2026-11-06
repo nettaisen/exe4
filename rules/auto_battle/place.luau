@@ -96,7 +96,7 @@ end
 
 -- 0x080230F0: a hit would reach the target: it is neither invisible, invulnerable nor flashing (its flags 0x20A).
 local function hittable(target: Object): boolean
-    return not (target:status("invisible") or target:status("invulnerable") or target:status("flashing"))
+    return not (target.status.invisible or target.status.invulnerable or target.status.flashing)
 end
 
 -- 0x0800C9BA after 0x0800C208: a step to (x, y), the step's end lag its own.
@@ -712,7 +712,7 @@ end
 
 -- 0x08023F8C (`when_visible`, class 25): the navi is neither invisible nor submerged (its flags 6).
 local function visible(navi: Object): boolean
-    return not (navi:status("invisible") or navi:status("submerged"))
+    return not (navi.status.invisible or navi.status.submerged)
 end
 
 -- 0x08023FBC (`when_unbarriered`, class 26): the navi has no barrier (its collision record's +0x04).

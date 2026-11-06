@@ -21,7 +21,7 @@ local function wait(me: Object, s: State)
     if me.step_init == 0 then
         me.anim = ANIM
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = WAIT_TICKS
         me.step_init = 4
     end

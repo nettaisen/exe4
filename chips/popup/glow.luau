@@ -17,8 +17,8 @@ local function dive(me: Object)
     if me.phase_init == 0 then
         local navi = glow.navi_of(me, "0x080E2D56")
         dimming.hide_user_sparing(navi)
-        navi:set_status_timer("submerged", 0)
-        navi:set_status("submerged", false)
+        navi.status_timers.submerged = 0
+        navi.status.submerged = false
         me.sprite.white = true
         me.timer = WHITE
         me.phase_init = 4
@@ -30,8 +30,8 @@ local function dive(me: Object)
     end
     glow.back(me)
     local navi = glow.navi_of(me, "0x0800C126")
-    navi:set_status_timer("submerged", UNDER)
-    navi:set_status("submerged", true)
+    navi.status_timers.submerged = UNDER
+    navi.status.submerged = true
     navi.visible = false
     battle.play_sound(SOUND)
     glow.done(me)

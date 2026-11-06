@@ -141,7 +141,7 @@ end
 -- record's action): none of a hand's machinery.
 function ai.use_chip(navi: Object, chip: Chip)
     navi:load_chip_attack(chip)
-    navi:start_chip_attack(chip, 2)
+    navi:start_chip_attack(chip, "chip")
 end
 
 -- 0x0800C9BA after 0x0800C208: a step to (x, y), the step's end lag its own.
@@ -234,12 +234,12 @@ local function buster_run(navi: Object, s: State)
         end
     elseif s.sub == 4 then
         -- (0x08015B9E(0x10): its console's, or every console's where the chip-use rules say.)
-        battle.set_hud("chip_window", false, if chip_use.window_hides_every_console then nil else navi.alliance)
+        battle.hud(if chip_use.window_hides_every_console then nil else navi.alliance).chip_window = false
         local buster = navi.buster_weapon
         if buster == nil then
             error("the auto-battling navi's buster run fires its buster (0x0800C9D2), and it has none")
         end
-        navi:start_weapon(buster :: Weapon, 1)
+        navi:start_weapon(buster :: Weapon, "buster")
         s.shots += 1
         if s.shots < 2 then
             s.sub = 0
@@ -259,7 +259,7 @@ end
 local function dodge(navi: Object, s: State)
     if s.sub == 0 then
         s.since = battle.battle_time()
-        navi.charge_source, navi.charge_counter = 2, 0
+        navi.charge_source, navi.charge_counter = "b", 0
         s.sub = 4
     elseif s.sub == 4 then
         local ticks = battle.battle_time() - s.since
@@ -282,7 +282,7 @@ local function dodge(navi: Object, s: State)
         if shot == nil then
             error("the auto-battling navi's dodge ends in its charged shot (0x0800CA60), and it has none")
         end
-        navi:start_weapon(shot :: Weapon, 1)
+        navi:start_weapon(shot :: Weapon, "buster")
         s.step = DECIDE
     else
         error(string.format("the auto-battling navi's dodge's step %#x reads past its table (0x0800E690)", s.sub))

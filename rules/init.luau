@@ -243,11 +243,11 @@ local rules: Rules = {
             if side == 0 then
                 auto_battle.block.send()
             end
-            -- What each tick asks only where something can come of it (rules.listen): the panels light and dark
+            -- What each tick asks only where something can come of it (rules.listening): the panels light and dark
             -- MegaMan act on (./light_dark); the dark soul's AI and pulse from his emerging (./souls/dark).
             light_dark.listen(side)
-            rules.listen(side, "controller", false)
-            rules.listen(side, "navi_shader", false)
+            rules.listening(side).controller = false
+            rules.listening(side).navi_shader = false
         end,
         -- A navi that starts the round in a soul (a soul patch card's, ./patch_cards): its turns are never counted
         -- (./souls/turns: the navi's init, 0x08010828).
@@ -345,6 +345,8 @@ local rules: Rules = {
     pools = require("@self/pools"),
     reactions = require("@self/reactions"),
     roles = require("@self/roles"),
+    -- The slots of a side's statistics its content names (each the original's counter's).
+    side_stats = { recoveries = 5 },
     status = require("@self/status").rules,
 }
 

@@ -118,18 +118,18 @@ end
 -- reaches him this tick (0x0800C43C, the intake's next call).
 function souls.navi_intake(side: number, navi: Object)
     if not battle.dimmed() then
-        if navi:status("frozen") then
-            navi:set_request("form_change", false)
+        if navi.status.frozen then
+            navi.requests.form_change = false
         else
             local next = navi:next_chip()
             if next ~= nil and next.family == "special" then
-                navi:set_request("form_change", true)
+                navi.requests.form_change = true
             else
-                navi:set_request("form_change", false)
+                navi.requests.form_change = false
                 if dark.united(side) then
                     dark.countdown(navi)
                 elseif battle.navi(side).form.soul ~= nil and turns.over() then
-                    navi:set_request("revert_form", true)
+                    navi.requests.revert_form = true
                 end
             end
             dark.asked(side, navi)
@@ -149,7 +149,7 @@ function souls.grass_heal(side: number, navi: Object)
     end
     local c = navi.collision
     local p = field.panel(c.panel_x, c.panel_y)
-    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle(2) ~= 0 then
+    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle("second") ~= 0 then
         return
     end
     navi.hp = math.min(navi.hp + 1, navi.max_hp)

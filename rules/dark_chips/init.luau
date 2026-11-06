@@ -226,9 +226,9 @@ function dark_chips.custom_result(side: number)
     local i = 0
     local chip = chip_hand.chip(side, i)
     while chip do
-        local marks = battle.hand_entry(side, i, "marks")
+        local marks = battle.hand_entry(side, i).marks
         if not bit32.btest(marks, INSTALLED) then
-            battle.set_hand_entry(side, i, "marks", bit32.bor(marks, INSTALLED))
+            battle.hand_entry(side, i).marks = bit32.bor(marks, INSTALLED)
             local cost = COSTS[chip]
             if cost then
                 cost(side, stats)

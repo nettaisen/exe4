@@ -15,8 +15,8 @@ local INVULNERABLE_TICKS = 4
 local function cheer(me: Object)
     local navi = battle.player(me.alliance)
     if navi then
-        navi:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-        navi:set_status("invulnerable", true)
+        navi.status_timers.invulnerable = INVULNERABLE_TICKS
+        navi.status.invulnerable = true
     end
 end
 

@@ -64,7 +64,7 @@ function flame.action(spec: { id: string, count: number }): Action
             me.anim = ANIM
             me:open_counter_window()
             attachment.attach(me, CLAW, "related", 3 * NAVI_NUMBER)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end
