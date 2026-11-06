@@ -16,7 +16,7 @@ local invalid: Chip = {
     rarity = 0,
     mb = 5,
     damage = 10,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = {},
     action = spawners.action { id = "invalid/action", spawn = plus.spawner("attack") },

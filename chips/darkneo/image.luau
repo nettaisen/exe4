@@ -43,10 +43,6 @@ local LEAVE, LAST_BLINKS = 0x1E, 0x0A
 -- Its actions: fading in, the wait, waiting for Bass, the attack, leaving.
 local FADING, WAITING, STANDING, ATTACKING, LEAVING = 0x0, 0x4, 0x8, 0xC, 0x10
 
-local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-end
-
 -- 0x080E10F4: a sixteenth more a tick; then solid, wearing what its navi's form wears.
 local function fade_in(me: Object)
     local shown = me.timer2 + 1
@@ -75,7 +71,7 @@ end
 -- A wave from the panel ahead, in the row its count says; the shake; the spark 40 pixels ahead of it.
 local function fire(me: Object)
     local y = bit32.band(me.panel_y + ROWS[me.timer2], 0xFF)
-    wave.spawn(me, me.panel_x + me.facing, y, WAVE_HEIGHT, damage_word(me))
+    wave.spawn(me, me.panel_x + me.facing, y, WAVE_HEIGHT, me.damage_word)
     battle.shake_camera(1, 5)
     local p = me.pos
     local pos = battle.jitter(SPARK_JITTER, Vec3.new(p.x + me.facing * SPARK_AHEAD, p.y, p.z))
@@ -216,7 +212,7 @@ function image.spawn(owner: Object, x: number, y: number, damage: number): Objec
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true
     end

@@ -50,9 +50,8 @@ local sand_kind = new.kind {
             hit_effect = sparks.plain,
             target = collision.hits_navis,
             self_type = collision.collision_20,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -71,7 +70,7 @@ local function drop_sand(me: Object)
     end
     o.element = me.element
     o.panel_x, o.panel_y = me.panel_x, me.panel_y
-    o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    o.damage_word = me.damage_word
     o.alliance = me.alliance
     o.related1 = me
     o.run_while_dimmed = true
@@ -273,7 +272,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.collision_20, collision.hits_navis, 3)
+    me:setup_collision(collision.collision_20, collision.hits_navis, { flinch = true, flash = true })
     me.collision:present()
     me:set_lifecycle("update")
     battle.play_sound(SOUND)
@@ -311,7 +310,7 @@ function tornado.spawn(windman: Object, x: number, y: number, element: Element):
     end
     o.element = element
     o.panel_x, o.panel_y = x, y
-    o:set_damage_word(bit32.bor(windman.damage, bit32.lshift(windman.stamina, 16)))
+    o.damage_word = windman.damage_word
     o.alliance = windman.alliance
     o.related1 = windman
     o.run_while_dimmed = true

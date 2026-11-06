@@ -79,7 +79,7 @@ local function attack(me: Object)
         end
         if countdown(me, 10, false) then
             water_gun.spawn(me, me.panel_x + me.facing, me.panel_y, me.element,
-                bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+                me.damage_word)
             me.phase, me.phase_init = 4, 0
         end
     elseif me.phase == 4 then
@@ -169,7 +169,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.element = controller.element
     o.related1 = controller
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

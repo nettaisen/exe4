@@ -17,7 +17,7 @@ local vdoll: Chip = {
     rarity = 3,
     mb = 58,
     damage = 10,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { standard_library = true, library = true },
     auto_battle = { class = "three_ahead_open" },

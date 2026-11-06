@@ -39,7 +39,7 @@ thunder.kind = ball.make_kind("thunder/ball", {
     small_steps = { flight = 16, burst = 11 },
     is = collision.attack,
     target = collision.hits_navis,
-    hit_mod = 0,
+    hit_mod = {},
     spark = sparks.elec,
     sound = asset.sound("thunder-ball"),
     find_target = find_target,

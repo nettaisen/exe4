@@ -26,11 +26,12 @@ local FLASH = new.effect { sprite = muzzle_flash_sprite, anim = 0, palette = 0, 
 local SHOT = shot.variant {
     id = "gutssoul/machine-gun/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
 }
-local SHOT_DAMAGE = 5 + 0x85 * 0x10000
+-- Its shots' damage word: 5 damage, counter strength 5, and they can't counter (0x85).
+local SHOT_DAMAGE = damage_word.of { amount = 5, counter = 5, cant_counter = true }
 local SHOT_Z = 24 * 0x10000
 local SOUND = asset.sound("machine-gun")
 -- Invulnerable all along.

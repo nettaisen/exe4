@@ -29,7 +29,7 @@ local ANIM_SWING, ANIM_NO_STEP = 5, 4
 local SWING_STEPS, NO_STEP_STEPS = 22, 4
 local SWING_TICKS, THROW_AT, RECOVER_TICKS = 0x15, 0x0C, 5
 -- A charged one's boom's hit modifier (its first parameter becomes 1).
-local CHARGED_HIT_MOD = 1
+local CHARGED_HIT_MOD: HitModifier = { flinch = true }
 
 local function set_step(me: Object, step: number)
     me.step, me.step_init = step, 0
@@ -58,7 +58,7 @@ local function start(me: Object)
 end
 
 -- 0x080ED87E: the swing; on the timer's 12 the boom.
-local function swing(me: Object, s: State, hit_mod: number, pierces: boolean)
+local function swing(me: Object, s: State, hit_mod: HitModifier, pierces: boolean)
     if me.step_init == 0 then
         me:set_animation(ANIM_SWING)
         me:open_counter_window()
@@ -69,7 +69,7 @@ local function swing(me: Object, s: State, hit_mod: number, pierces: boolean)
         me.step_init = 4
     end
     if s.timer == THROW_AT then
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         sonic_boom.throw(sonic_boom_kind, me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage, {
             hit_mod = if me.charged ~= 0 then CHARGED_HIT_MOD else hit_mod,
             pierces = pierces,
@@ -117,7 +117,7 @@ local function recover(me: Object, s: State)
 end
 
 -- The action of a chip whose parameters are `hit_mod` (its boom's hit modifier) and `pierces` (it goes through).
-function action.make(id: string, hit_mod: number, pierces: boolean): Action
+function action.make(id: string, hit_mod: HitModifier, pierces: boolean): Action
     return new.action {
         id = id,
         state = { timer = schema.u16 },

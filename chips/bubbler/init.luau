@@ -20,7 +20,7 @@ local SOUND = asset.sound("bubble-burst")
 
 -- A Bubbler's spreader: its bullet row (4 to 6) bursts over `region` around the panel found.
 local function fire(id: string, region: Region): Action
-    local shot = bullet.variant { region = region, hit_mod = 0, effect = BURST, sound = SOUND }
+    local shot = bullet.variant { region = region, hit_mod = {}, effect = BURST, sound = SOUND }
     return spreader.action { id = id, gun = GUN, delay = 10, z = 0, shot = shot }
 end
 
@@ -33,7 +33,7 @@ local bubbler: Chip = {
     rarity = 0,
     mb = 12,
     damage = 50,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "behind_target" },
@@ -48,7 +48,7 @@ local bub_v: Chip = {
     rarity = 1,
     mb = 22,
     damage = 80,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_target_row" },
@@ -63,7 +63,7 @@ local bublside: Chip = {
     rarity = 2,
     mb = 44,
     damage = 110,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_target_row" },

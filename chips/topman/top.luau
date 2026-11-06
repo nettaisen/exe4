@@ -177,7 +177,7 @@ local function init(me: Object, number: number)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_region(regions.single)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
@@ -219,7 +219,7 @@ function top.spawn(navi: Object, x: number, y: number, number: number): Object?
     end
     o.panel_x, o.panel_y = x, y
     o.element = navi.element
-    o:set_damage_word(bit32.bor(navi.damage, bit32.lshift(navi.stamina, 16)))
+    o.damage_word = navi.damage_word
     o.alliance = navi.alliance
     o.run_while_dimmed = true
     ;(o.state :: any).number = number

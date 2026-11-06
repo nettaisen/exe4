@@ -18,17 +18,23 @@ local regions = require("@exelib/regions")
 local laser = {}
 
 local SPRITE = asset.sprite("laserman")
--- A strike with its damage, and none; a course's end.
-local HIT, NONE = 0xFD, 0xFF
--- The other side's custom level, one less but not below 2, as a strike (0x080E0F18).
-local CUSTOM_DOWN = 0xFE
-local COURSES: { [number]: { number } } = {
-    [0] = { HIT },
-    [1] = { 0x05, 0x06, 0x07, HIT },
-    [2] = { 0x01, 0x02, 0x03, 0x04, 0xFF0C, HIT },
-    [3] = { 0x10A, HIT },
-    [4] = { CUSTOM_DOWN, HIT },
-    [5] = { HIT },
+-- A strike: with its damage ("hit", the list's 0xFD), the other side's custom level one less but not below 2
+-- ("custom_down", 0xFE: 0x080E0F18), or a bug (its code and argument). A course's end (0xFF) is none.
+type Strike = "hit" | "custom_down" | BugCode
+local COURSES: { [number]: { Strike } } = {
+    [0] = { "hit" },
+    [1] = { { bug = 0x05, arg = 0 }, { bug = 0x06, arg = 0 }, { bug = 0x07, arg = 0 }, "hit" },
+    [2] = {
+        { bug = 0x01, arg = 0 },
+        { bug = 0x02, arg = 0 },
+        { bug = 0x03, arg = 0 },
+        { bug = 0x04, arg = 0 },
+        { bug = 0x0C, arg = 0xFF },
+        "hit",
+    },
+    [3] = { { bug = 0x0A, arg = 1 }, "hit" },
+    [4] = { "custom_down", "hit" },
+    [5] = { "hit" },
 }
 local SHADERS: { [number]: number } = { [0] = 0, [1] = 0xB060, [2] = 0xA80A, [3] = 0, [4] = 0xB9C0, [5] = 0xB9C0 }
 -- Course 5 counts two steps a strike.
@@ -45,13 +51,13 @@ type State = {
 }
 
 -- 0x080E1000: a strike on its row (region 8 from its panel, no spark, a piercing hit at navis at its height): with its
--- damage word and hit modifier 3, or (`word`, a bug's code and argument) of no damage carrying that bug.
-local function strike(me: Object, word: number)
-    local damage, hit_mod, bug, bug_arg = 0, 0, 0, 0
-    if word == HIT then
-        damage, hit_mod = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 3
+-- damage word and a flinch and a flash, or of no damage carrying a bug (its code and argument).
+local function strike(me: Object, what: "hit" | BugCode)
+    local damage, hit_mod: HitModifier, bug, bug_arg = 0, {}, 0, 0
+    if what == "hit" then
+        damage, hit_mod = me.damage_word, { flinch = true, flash = true }
     else
-        bug, bug_arg = bit32.band(word, 0xFF), bit32.band(bit32.rshift(word, 8), 0xFF)
+        bug, bug_arg = what.bug, what.arg
     end
     local box = battle.hitbox(me, {
         panel_x = me.panel_x,
@@ -62,8 +68,7 @@ local function strike(me: Object, word: number)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.piercing,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
+        damage = damage,
         hit_mod = hit_mod,
         bug = bug,
         bug_arg = bug_arg,
@@ -96,16 +101,15 @@ local function firing(me: Object)
     end
     local course = (me.state :: State).course
     me.timer2 = int.u16(i + if course == SHORT then 2 else 1)
-    local word = COURSES[course][i + 1] or NONE
-    if word ~= NONE then
-        if word == CUSTOM_DOWN then
-            local level = battle.navi(battle.other_side(me.alliance)).custom_level
-            if level > 2 then
-                level -= 1
-            end
-            word = level * 0x100 + 0x12
+    local what = COURSES[course][i + 1]
+    if what == "custom_down" then
+        local level = battle.navi(battle.other_side(me.alliance)).custom_level
+        if level > 2 then
+            level -= 1
         end
-        strike(me, word)
+        strike(me, { bug = 0x12, arg = level })
+    elseif what ~= nil then
+        strike(me, what)
     end
     me.timer = PERIOD
 end
@@ -170,7 +174,7 @@ function laser.spawn(laserman: Object, x: number, y: number, course: number): Ob
     end
     o.panel_x, o.panel_y = x, y
     o.element = Element.null
-    o:set_damage_word(bit32.bor(laserman.damage, bit32.lshift(laserman.stamina, 16)))
+    o.damage_word = laserman.damage_word
     o.alliance = laserman.alliance
     o.run_while_dimmed = true
     ;(o.state :: State).course = course

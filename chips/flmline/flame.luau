@@ -12,7 +12,7 @@ local flame = {}
 
 local SPRITE = asset.sprite("flame-line")
 local SOUND = asset.sound("flame-line")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local RISE_TICKS, SINK_TICKS = 3, 3
 
 -- Its actions.
@@ -146,7 +146,7 @@ function flame.spawn(user: Object, x: number, y: number, element: Element, damag
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = user.alliance
         o.related1 = user;
         (o.state :: State).burns = burns

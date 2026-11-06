@@ -14,7 +14,7 @@ local drkrecov: Chip = {
     rarity = 4,
     mb = 99,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { dark = true },
     action = recov.action { id = "drkrecov/action", hp = 1000, mood = 0 },

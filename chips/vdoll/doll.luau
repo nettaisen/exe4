@@ -33,7 +33,7 @@ return common.make {
     identity = nil,
     is = collision.neutral_body,
     hits = collision.everything,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     spark = sparks.plain,
     set_down = nil,
     breaking_hits = nil,

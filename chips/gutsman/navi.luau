@@ -76,9 +76,8 @@ local function strike(me: Object)
         hit_effect = sparks.heavy,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 1,
+        damage = me.damage_word,
+        hit_mod = { flinch = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -172,7 +171,7 @@ local function spawn(controller: Object, damage: number, chip: ChipSpec): Object
     o.element = controller.element
     o.related1 = controller
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = chip.palette

@@ -25,7 +25,7 @@ local CHARGER_ANIM = 1
 -- The flying shot's row 14 (0x080CE690): an attack at navis, hit modifier 3, the heavy spark, the charger's sprite
 -- (animation 0, drawn with its sprite), eight panel centers at 10 pixels a tick.
 local SHOT = flying_shot.variant {
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = Element.null,
     spark = sparks.heavy,
     sprite = CHARGER_SPRITE,
@@ -77,7 +77,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 77,
     damage = 80,
-    hit_param = 138,
+    counter = 10,
+    cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, library = true },
     dimming = CONTROLLER.hook,

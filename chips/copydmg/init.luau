@@ -47,7 +47,7 @@ local function shoot(me: Object, s: State)
         battle.play_sound(SOUND)
         -- The damage word (AIAttackVars +8: the hit parameter in its high half). The spawner's register r2 (its
         -- position's Y until its init places it, the same tick) is the action dispatcher's: 0 here.
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+        local damage = me.attack_word
         mark.spawn(me, me.panel_x + me.facing, me.panel_y, Element.null, damage)
     end
     local t = s.timer + 1
@@ -94,7 +94,7 @@ local copydmg: Chip = {
     rarity = 1,
     mb = 12,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { standard_library = true, library = true },
     auto_battle = { class = "into_target_row" },

@@ -39,7 +39,7 @@ local SOUND_PUNCH = asset.sound("coldman-punch")
 -- A puff 16 pixels above him as he goes (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His punch: aqua, 1 damage, hit modifier 0x21 (a push).
-local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = Element.aqua, 1, 0x21
+local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = Element.aqua, 1, { flinch = true, back = true }
 -- The animations: vanishing, appearing, winding up, punching, after a punch on his own panel.
 local ANIM_VANISH, ANIM_APPEAR, ANIM_WIND_UP, ANIM_PUNCH, ANIM_AFTER = 3, 4, 5, 6, 7
 -- He winds up over 9 of his sprite's steps (his wind-up animation's length), and punches as it ends.
@@ -79,7 +79,7 @@ local function survey(me: Object)
             if o.identity == nil or o.identity.throwable ~= false then
                 if reaches(me, o, dir) then
                     o.alliance = me.alliance
-                    o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+                    o.damage_word = me.damage_word
                     obstacle.encase_in_bubble(o)
                 else
                     obstacle.encase_in_ice(o)
@@ -156,8 +156,7 @@ local function punch(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = PUNCH_DAMAGE,
-        stamina = 0,
+        damage = damage_word.of { amount = PUNCH_DAMAGE, counter = 0 },
         hit_mod = PUNCH_HIT_MOD,
     })
     if box then
@@ -227,7 +226,7 @@ local function attack(me: Object)
                 me:set_lifecycle("destroy")
                 return
             end
-            ice_cube.spawn(me, x, y, 0, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 0)
+            ice_cube.spawn(me, x, y, 0, me.damage_word, 0)
             me.timer = 15
             if me.anim == ANIM_PUNCH then
                 me.anim = ANIM_AFTER
@@ -320,7 +319,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

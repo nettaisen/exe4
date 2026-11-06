@@ -19,7 +19,7 @@ local chip: Chip = {
     class = "giga",
     rarity = 4,
     mb = 73,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { dimming = true, library = true },
     dimming = common.make {
@@ -28,7 +28,7 @@ local chip: Chip = {
         sprite = bug_curse_sprite,
         sound = asset.sound("curse"),
         untouched = { invisible = true, submerged = true, flashing = true },
-        bugs = { 0x02FF, 0x03FF, 0x04FF, 0x06FF },
+        bugs = { { bug = 0xFF, arg = 2 }, { bug = 0xFF, arg = 3 }, { bug = 0xFF, arg = 4 }, { bug = 0xFF, arg = 6 } },
         is = collision.breaking,
         hits = collision.hits_navis,
     },

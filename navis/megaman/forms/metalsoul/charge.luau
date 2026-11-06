@@ -20,7 +20,7 @@ local ANIM = 10
 local STRIKE_AT, SWING_END, RECOVER_TICKS = 10, 17, 30
 -- The hit's height and hit modifier (0x080CD7E2's r3 and r7).
 local STRIKE_Z = 16 * 0x10000
-local HIT_MOD = 0x23
+local HIT_MOD: HitModifier = { flinch = true, flash = true, back = true }
 -- What a solid panel shows: effect row 6 (0x080E1698, through 0x080E18EE: 14-0a, at the panel's center, height 0).
 local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
 local SHAKE, SHAKE_TICKS = 0, 30
@@ -50,8 +50,7 @@ local function swing(me: Object, s: State)
             hit_effect = sparks.heavy,
             target = collision.hits_navis,
             self_type = collision.breaking,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
         if field.solid(x, y) then
@@ -102,8 +101,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0xA8
-    navi.attack_damage = 150
+    navi.attack_word = damage_word.of { amount = 150, counter = 40, cant_counter = true }
     return charge.action
 end
 

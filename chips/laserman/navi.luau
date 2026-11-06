@@ -171,7 +171,7 @@ local function spawn(controller: Object, damage: number, chip: ChipSpec): Object
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = chip.palette

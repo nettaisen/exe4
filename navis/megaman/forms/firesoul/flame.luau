@@ -47,7 +47,7 @@ function flame.action(spec: { id: string, count: number }): Action
     -- 0x080EC468: on its first tick the flame out, the claw raised; the roar every 16 ticks; on after the 30th.
     local function fire(me: Object, s: State)
         if me.step_init == 0 then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             FLAME.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, HEIGHT * 0x10000, {
                 count = spec.count,
                 spread = false,

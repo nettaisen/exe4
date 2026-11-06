@@ -18,7 +18,7 @@ local SPRITE = asset.sprite("side-bamboo")
 local SWING_SOUND = asset.sound("sword-swing")
 -- Its swing: 31 ticks, the hitboxes at 27 and 25 left; then 30 ticks.
 local SWING_TICKS, FIRST_HIT, SECOND_HIT, AFTER_TICKS = 0x1F, 0x1B, 0x19, 0x1E
-local HITBOX_TICKS, HIT_MOD = 20, 1
+local HITBOX_TICKS, HIT_MOD = 20, { flinch = true }
 local LOWER = 8
 
 -- Its palette (twice its Param1, the chip's parameter).
@@ -47,8 +47,7 @@ local function swinging(me: Object)
             hit_effect = sparks.wood,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if o then
@@ -153,7 +152,7 @@ function bamboo.spawner(palette: number): (user: Object, element: Element, damag
             o.panel_x, o.panel_y = user.panel_x + 3 * user.facing, 0
             o.element = element
             o.alliance = user.alliance
-            o:set_damage_word(damage)
+            o.damage_word = damage
             local s = o.state :: State
             s.palette = palette
         end

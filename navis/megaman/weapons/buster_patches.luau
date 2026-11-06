@@ -22,7 +22,7 @@ local function row(id: string, hit_panel: PanelHit?, status: Status?): Projectil
     return shot.variant {
         id = id,
         collision = { is = collision.attack, hits = collision.hits_navis },
-        hit_mod = 0,
+        hit_mod = {},
         element = "null",
         spark = sparks.plain,
         hit_panel = hit_panel,
@@ -33,11 +33,10 @@ end
 -- 0x0800D0B8 and its kind: Attack + 1 damage, the rest 0 (the row its action fires).
 local function setup(action: Action): (navi: Object) -> Action
     return function(navi: Object): Action
-        navi.attack_damage = battle.navi(navi.alliance).attack + 1
+        navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).attack + 1, counter = 0 }
         navi.attack_element = Element.null
         navi.charged = 0
         navi.extra = 0
-        navi.hit_param = 0
         navi.attack_lockout = 0
         return action
     end

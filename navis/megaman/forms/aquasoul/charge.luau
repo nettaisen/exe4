@@ -19,7 +19,7 @@ local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
 local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 }
 local SOUND = asset.sound("bubble-burst")
 -- Bullet row 0x0D.
-local SHOT = bullet.variant { region = regions.long, hit_mod = 3, effect = BURST, sound = SOUND }
+local SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true, flash = true }, effect = BURST, sound = SOUND }
 
 charge.action = spreader.action { id = "aquasoul/charged-shot/action", gun = GUN, delay = 10, z = 0, shot = SHOT }
 
@@ -30,8 +30,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0x94
-    navi.attack_damage = 20
+    navi.attack_word = damage_word.of { amount = 20, counter = 20, cant_counter = true }
     return charge.action
 end
 

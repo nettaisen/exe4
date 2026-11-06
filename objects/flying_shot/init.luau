@@ -28,7 +28,7 @@ local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
 function flying_shot.variant(r: {
     is: CollisionType?,
     hits: CollisionType?,
-    hit_mod: number,
+    hit_mod: HitModifier,
     element: Element,
     spark: Spark?,
     sprite: SpriteAsset,
@@ -168,7 +168,7 @@ function flying_shot.launch(owner: Object, pos: Vec3, variant: FlyingShotVariant
     local o = battle.spawn(flying_shot.kind, pos)
     if o then
         (o.state :: State).variant = variant
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.related1 = owner
     end

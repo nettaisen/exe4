@@ -88,7 +88,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
             return nil
         end
         o.element = Element.fire
-        o:set_damage_word(bit32.bor(burnman.damage, bit32.lshift(burnman.stamina, 16)))
+        o.damage_word = burnman.damage_word
         o.alliance = burnman.alliance
         o.run_while_dimmed = true
         return o

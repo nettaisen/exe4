@@ -15,7 +15,7 @@ local minibomb: Chip = {
         held = bombs.held,
         thrower = bombs.thrower(bombs.variant {
             collision = { is = collision.thrown, hits = collision.hits_navis },
-            hit_mod = 0,
+            hit_mod = {},
             palette = 0,
             anim = 1,
             blast = regions.single,
@@ -28,7 +28,7 @@ local minibomb: Chip = {
     rarity = 0,
     mb = 5,
     damage = 50,
-    hit_param = 40,
+    counter = 40,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_ahead" },

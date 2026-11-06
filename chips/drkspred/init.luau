@@ -18,7 +18,7 @@ local GUN = attachment.look { sprite = spreader_sprite, palette = 3 }
 -- modifier 1; sound 0x8D.
 local BURST = bullet.variant {
     region = regions.square,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 1, steps = 10 },
     sound = asset.sound("spreader"),
 }
@@ -31,7 +31,7 @@ local drkspred: Chip = {
     rarity = 4,
     mb = 99,
     damage = 400,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true, dark = true },
     action = spreader.action { id = "drkspred/action", gun = GUN, delay = 1, z = 0x10, shot = BURST },

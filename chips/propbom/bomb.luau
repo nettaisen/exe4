@@ -32,7 +32,7 @@ local BREAKS: HitNames = {
     enemy_other_body = true,
     neutral = true,
 }
-local HIT_MOD, BURST_HIT_MOD = 1, 3
+local HIT_MOD, BURST_HIT_MOD = { flinch = true }, { flinch = true, flash = true }
 -- Where it bursts: the other side's column 5 (side 0's bomb) or 2 (side 1's), row 2.
 local BURST_ROW = 2
 -- Off the screen: 140 pixels either side of the middle.
@@ -100,8 +100,7 @@ local function burst(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = BURST_HIT_MOD,
     })
     battle.region_effects(x, BURST_ROW, regions.wide_long, me.alliance, EXPLOSION, 0)
@@ -196,7 +195,7 @@ function bomb.spawn(user: Object, x: number, y: number, z: number, element: Elem
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance = user.alliance
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.run_while_dimmed = true
         o.related1 = user
         o.identity = IDENTITY;

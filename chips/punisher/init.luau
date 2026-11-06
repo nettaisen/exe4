@@ -7,7 +7,7 @@
 local action = require("./sonicbom/action")
 
 local punisher: Chip = {
-    action = action.make("punisher/action", 0, false),
+    action = action.make("punisher/action", {}, false),
     codes = { "E", "L", "S", "*" },
     element = "null",
     family = "sword",
@@ -15,7 +15,7 @@ local punisher: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

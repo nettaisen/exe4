@@ -13,7 +13,7 @@ type Strike = (me: Object, x: number, y: number) -> boolean
 
 -- The controller's damage word, which what it raises takes.
 function towers.damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    return me.damage_word
 end
 
 local ENEMY_BODY: PanelCondition = { enemy_body = true }
@@ -93,7 +93,7 @@ function towers.controller(spec: { id: string, strike: Strike }): (user: Object,
         if o then
             o.element = element
             o.alliance = user.alliance
-            o:set_damage_word(damage)
+            o.damage_word = damage
         end
     end
 end

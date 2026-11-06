@@ -23,7 +23,7 @@ local PALETTE = 0
 local ANIM_STAND, ANIM_APPEAR, ANIM_LEAVE, ANIM_PUNCH = 0, 3, 4, 15
 -- His hit: its modifier (0x21) and height: 0x080CD7E2 keeps none of the 16 pixels asked (r3), and the region object
 -- starts at the registers, its Z the raw 16.
-local HIT_MOD, HIT_Z = 0x21, 16
+local HIT_MOD, HIT_Z = { flinch = true, back = true }, 16
 -- The punch's ticks, and the tick of them the hit comes on (the timer reading 12).
 local PUNCH, HIT_AT, AFTER = 20, 12, 20
 
@@ -79,8 +79,7 @@ local function punch(me: Object)
             hit_effect = sparks.heavy,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if box then
@@ -204,7 +203,7 @@ function guts.spawn(c: Object, _user: Object, damage: number): Object?
     o.element = c.element
     o.alliance = c.alliance
     o.related1 = c
-    o:set_damage_word(damage)
+    o.damage_word = damage
     return o
 end
 

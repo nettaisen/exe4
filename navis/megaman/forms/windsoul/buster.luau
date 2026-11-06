@@ -16,7 +16,7 @@ local buster = {}
 local SHOT = projectile.variant {
     id = "windsoul/buster/shot",
     collision = { is = collision.pushing, hits = collision.hits_navis },
-    hit_mod = 0x21,
+    hit_mod = { flinch = true, back = true },
     element = "null",
     spark = sparks.impact,
 }
@@ -26,8 +26,7 @@ buster.action = airshot.action { id = "windsoul/buster/action", shooter = airsho
 -- 0x0800D3E8.
 local function setup(navi: Object): Action
     navi:load_chip_attack(airshot_chip)
-    navi.attack_damage = 5
-    navi.hit_param = 0x85
+    navi.attack_word = damage_word.of { amount = 5, counter = 5, cant_counter = true }
     navi.attack_variant = 1
     return buster.action
 end

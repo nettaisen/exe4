@@ -68,7 +68,7 @@ local drkstage: Chip = {
     rarity = 4,
     mb = 99,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { dimming = true, dark = true },
     -- 0x080E98BC: the controller on the user's panel and side (no facing of the user's).

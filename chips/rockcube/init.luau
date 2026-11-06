@@ -36,7 +36,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 6,
     damage = 200,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     dimming = CONTROLLER.places { variant = CUBE, class = "two_a_side", entrance = "rise" },

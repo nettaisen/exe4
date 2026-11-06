@@ -33,7 +33,7 @@ function falling_rock.make(id: string): FallingRock
         gravity = 0x1000,
         is = collision.attack,
         hits = collision.hits_navis,
-        hit_mod = 3,
+        hit_mod = { flinch = true, flash = true },
         spark = sparks.plain,
         puff = rock.effects.puff,
         chips = chips,
@@ -49,7 +49,7 @@ function falling_rock.make(id: string): FallingRock
         end
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         return o
     end

@@ -32,7 +32,7 @@ local HP = 50
 local DAMAGE = 0x940014
 -- Its speed, 16.16 a tick: half a pixel.
 local SPEED = 0x8000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- What its timer starts at (a mode-1 gear's lifetime).
 local TIMER = 0x708
 -- What it rolls onto: a solid panel without another body or a neutral object (0x080DBFB4:
@@ -229,7 +229,7 @@ gear.kind = new.kind {
             return nil
         end
         o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
-        o:set_damage_word(DAMAGE)
+        o.damage_word = DAMAGE
         o.run_while_paused = true
         o.run_while_dimmed = true
         return o
@@ -248,7 +248,7 @@ function gear.spawn(x: number, y: number, element: Element, alliance: number, mo
     o.panel_x, o.panel_y = x, y
     o.element = element
     o.alliance = alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.run_while_paused = true
     o.run_while_dimmed = true
     state(o).mode = mode

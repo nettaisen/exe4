@@ -108,7 +108,7 @@ function ring.spawn(owner: Object, variant: RingVariant, x: number, y: number, z
         (o.state :: State).variant = variant
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
     end
 end

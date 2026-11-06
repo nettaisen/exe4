@@ -19,7 +19,7 @@ type State = {
 local SPRITE = asset.sprite("bug-charger")
 local SOUND = asset.sound("kendo-draw")
 local SPEED = 0xA_0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- An afterimage every fourth tick: its lifetime and tint.
 local TRAIL_EVERY, TRAIL_TICKS, TRAIL_SHADER = 4, 8, 0xA94A
 
@@ -121,7 +121,7 @@ function wave.spawn(owner: Object, x: number, y: number, z: number, damage: numb
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true
     end

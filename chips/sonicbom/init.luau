@@ -6,7 +6,7 @@
 local action = require("@self/action")
 
 local sonicbom: Chip = {
-    action = action.make("sonicbom/action", 3, false),
+    action = action.make("sonicbom/action", { flinch = true, flash = true }, false),
     codes = { "E", "L", "S", "*" },
     element = "null",
     family = "sword",
@@ -14,7 +14,7 @@ local sonicbom: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

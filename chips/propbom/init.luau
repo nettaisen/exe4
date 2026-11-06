@@ -35,7 +35,7 @@ end
 -- 0x080EE582: the bomb out.
 local function send(me: Object)
     battle.play_sound(SOUND)
-    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local damage = damage_word.plus(me.attack_word, me.extra)
     bomb.spawn(me, me.panel_x + me.facing, me.panel_y, HEIGHT, me.attack_element, damage, SPEED)
     me.step, me.step_init = 8, 0
 end
@@ -82,7 +82,7 @@ local propbom1: Chip = {
     rarity = 1,
     mb = 18,
     damage = 120,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },
@@ -97,7 +97,7 @@ local propbom2: Chip = {
     rarity = 2,
     mb = 26,
     damage = 160,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },
@@ -112,7 +112,7 @@ local propbom3: Chip = {
     rarity = 3,
     mb = 34,
     damage = 200,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },

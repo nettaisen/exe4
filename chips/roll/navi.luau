@@ -76,7 +76,6 @@ local roll = common.make {
         navi_chips.warp(me.alliance, false)
     end,
     heart_at = heart_at,
-    heal_mask = 0x3FFF,
 }
 
 -- What each Roll chip states for its own controller: the controller's id (the original's effect object #0x2D for all

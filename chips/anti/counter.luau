@@ -19,7 +19,7 @@ local counter = {}
 local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 
 -- The shuriken's hit modifier (0x080D8F7C: 1, its own).
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 
 local SHURIKEN = shuriken.make_kind {
     id = "antidmg/shuriken",

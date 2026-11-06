@@ -38,7 +38,7 @@ local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette =
 local ANIM_STAND, ANIM_APPEAR, ANIM_LEAVE, ANIM_SLASH = 0, 3, 4, 5
 -- A slash's ticks, and the tick of them its hit comes on (the timer reading 12); its effect's height.
 local SLASH, HIT_AT, AFTER, EFFECT_Z = 20, 12, 20, 0x10_0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- The actions.
 local APPEARING, STANDING, SLASHING, LEAVING = 0, 4, 8, 0xC
@@ -93,8 +93,7 @@ local function strike(me: Object, region: Region, effect: Effect)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if box then
@@ -240,7 +239,7 @@ function protoman.spawn(c: Object, _user: Object, damage: number): Object?
     o.element = c.element
     o.alliance = c.alliance
     o.related1 = c
-    o:set_damage_word(damage)
+    o.damage_word = damage
     return o
 end
 

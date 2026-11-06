@@ -55,7 +55,7 @@ local form: FormDef = {
     reset = function(navi: Object)
         navi.status.air_shoe = true
         navi.status.float_shoe = true
-        navi:reset_collision_types(collision.floating_navi, collision.navi_target, 0)
+        navi:reset_collision_types(collision.floating_navi, collision.navi_target, {})
         navi.reset_linked_object = wind.navi(navi)
         hand(navi.alliance)
     end,

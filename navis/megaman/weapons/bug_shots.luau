@@ -43,7 +43,7 @@ local CUBE_WAIT, CUBE_RECOVER = 4, 0x1E
 local BUBBLE = attachment.look { sprite = bubble_sprite, palette = 0, lift = 1 }
 local BUBBLE_SOUND = asset.sound("arrive")
 local BUBBLE_Z = 0x10_0000
-local BUBBLE_HIT_MOD = 1
+local BUBBLE_HIT_MOD: HitModifier = { flinch = true }
 
 type State = { timer: number }
 
@@ -93,7 +93,7 @@ bug_shots.rock_cube_action = new.action {
         elseif step == 0x4 then
             -- 0x080EEAA6: the cube on the panel ahead (its parameter: row 1, slot class 0, rising).
             battle.play_sound(PLACE_SOUND)
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             rock.spawn(me.panel_x + me.facing, me.panel_y, me.alliance, { variant = CUBE, class = "two_a_side", entrance = "rise" }, damage)
             me.step, me.step_init = 0x8, 0
         elseif step == 0x8 then
@@ -128,7 +128,7 @@ bug_shots.bubble_action = new.action {
             end
             if s.timer == 1 then
                 battle.play_sound(BUBBLE_SOUND)
-                local word = me.attack_damage + me.hit_param * 0x10000
+                local word = me.attack_word
                 battle.hitbox(me, {
                     panel_x = me.panel_x + me.facing,
                     panel_y = me.panel_y,
@@ -138,8 +138,7 @@ bug_shots.bubble_action = new.action {
                     hit_effect = sparks.aqua,
                     target = collision.hits_navis,
                     self_type = collision.attack,
-                    damage = bit32.band(word, 0xFFFF),
-                    stamina = bit32.rshift(word, 16),
+                    damage = word,
                     hit_mod = BUBBLE_HIT_MOD,
                 })
                 attachment.attach(me, BUBBLE, "related", 0)
@@ -161,8 +160,7 @@ local function rock_cube_setup(navi: Object): Action
     navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0xB2
-    navi.attack_damage = 200
+    navi.attack_word = damage_word.of { amount = 200, counter = 50, cant_counter = true }
     navi.attack_lockout = 0
     return bug_shots.rock_cube_action
 end
@@ -172,8 +170,7 @@ local function bubble_setup(navi: Object): Action
     navi.attack_element = Element.aqua
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
-    navi.attack_damage = 100
+    navi.attack_word = damage_word.of { amount = 100, counter = 0 }
     navi.attack_lockout = 0
     return bug_shots.bubble_action
 end

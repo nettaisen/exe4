@@ -27,7 +27,7 @@ local SHOT_Z = 0x18_0000
 local SHOT = shot.variant {
     id = "megaman/buster/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.plain,
 }
@@ -52,7 +52,7 @@ local function shoot(me: Object, s: State, variant: ProjectileVariant)
         local blanks = battle.navi(me.alliance).buster_blanks
         if bit32.band(battle.rng(), 0xF) + 1 > blanks then
             battle.play_sound(SHOT_SOUND)
-            local damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16))
+            local damage = me.attack_word
             me.attack_count = projectile.fire(me, { variant = variant, damage = damage, z = SHOT_Z })
             attachment.attach(me, attachment.muzzle_flash, "related", NAVI_NUMBER)
         else
@@ -114,11 +114,10 @@ buster.shot = buster.shot_action("megaman/buster/shot", SHOT)
 
 -- 0x0800CC2E.
 function buster.setup(navi: Object): Action
-    navi.attack_damage = battle.navi(navi.alliance).attack + 1
+    navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).attack + 1, counter = 0 }
     navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     return buster.shot
 end

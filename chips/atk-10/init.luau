@@ -17,7 +17,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 6,
     damage = 10,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { standard_library = true, library = true },
     auto_battle = { class = "at_once" },

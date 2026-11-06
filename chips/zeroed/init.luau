@@ -16,7 +16,7 @@ local ARM = attachment.look { sprite = cannon_sprite, palette = 0 }
 local SHOT = projectile.variant {
     id = "zeroed/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = "null",
     spark = sparks.impact,
 }
@@ -29,7 +29,7 @@ local zeroed: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { has_damage = true },
     action = cannon_lib.action { id = "zeroed/action", arm = ARM, shot = SHOT },

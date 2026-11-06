@@ -32,7 +32,7 @@ return common.make {
     spark = sparks.aqua,
     is = collision.neutral_body,
     hits = collision.everything,
-    pushes = 0xFC,
+    pushes = { forward_far = true, back_far = true, forward = true, back = true, up = true, down = true },
     debris = rock_lib.debris,
     effects = { burst = rock_lib.effects.dust, puff = rock_lib.effects.puff },
     ice_block = { spawn = rock.spawn, variant = ICE_BLOCK },

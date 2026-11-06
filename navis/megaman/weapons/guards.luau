@@ -37,7 +37,7 @@ local SHIELD = guard.action {
 local REFLECTED = projectile.variant {
     id = "megaman/reflect/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
 }
@@ -57,8 +57,7 @@ local function raise(navi: Object, variant: number, damage: number)
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0
-    navi.attack_damage = damage
+    navi.attack_word = damage_word.of { amount = damage, counter = 0 }
 end
 
 -- 0x0800CF88.
@@ -105,7 +104,7 @@ local ANTI_MAGIC = new.action {
             battle.set_linked(me.alliance, {
                 chip = antidmg,
                 bonus = me.extra,
-                damage = int.u32(me.attack_damage + me.hit_param * 0x10000),
+                damage = me.attack_word,
                 owner = me,
                 object = nil,
             })

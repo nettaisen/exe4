@@ -51,7 +51,7 @@ local zsaver: Chip = {
     rarity = 4,
     mb = 80,
     damage = 100,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "two_in_row" },

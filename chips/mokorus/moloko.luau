@@ -19,7 +19,7 @@ local moloko = {}
 local SPRITE = asset.sprite("moloko")
 local SOUND = asset.sound("moloko")
 local ANIM = 2
-local HIT_MOD = 0x21
+local HIT_MOD: HitModifier = { flinch = true, back = true }
 -- 140 pixels from the field's middle either way; 3 pixels a tick; a dust puff every 10 ticks.
 local REACH, SPEED, DUST_EVERY = 140, 0x3_0000, 10
 local PUFF_UP = 0x10_0000
@@ -166,7 +166,7 @@ function moloko.spawner(palette: number): (user: Object, element: Element, damag
                 o.panel_x, o.panel_y = 1, y
                 o.element = element
                 o.alliance = user.alliance
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.timer = 10 * (i - 1)
                 local s = o.state :: State
                 s.palette = palette

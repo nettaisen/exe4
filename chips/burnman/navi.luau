@@ -43,8 +43,8 @@ local function hit(owner: Object, dx: number, dy: number, ticks: number, slot: n
         hit_effect = sparks.fire,
         target = collision.hits_navis,
         self_type = collision.attack,
-        hit_mod = 3,
-        damage = bit32.bor(owner.damage, bit32.lshift(owner.stamina, 16)),
+        hit_mod = { flinch = true, flash = true },
+        damage = owner.damage_word,
         z = 0x10_0000,
         ticks = ticks,
         element = FIRE,
@@ -198,7 +198,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

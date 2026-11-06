@@ -19,7 +19,7 @@ local swords = {}
 -- The navi's number: what it holds animates by it (NaviStats +0x23, MegaMan's 0); ProtoSoul's blade (its animation 13)
 -- and its swords' hit modifier (0x080EB7FE's rows of the swords' variants).
 local NAVI_NUMBER = 0
-local PROTOSOUL_BLADE, PROTOSOUL_HIT_MOD = 13, 1
+local PROTOSOUL_BLADE, PROTOSOUL_HIT_MOD = 13, { flinch = true }
 
 -- In ProtoSoul (NaviStats +0x24 7).
 local function in_protosoul(me: Object): boolean
@@ -72,7 +72,7 @@ local GAME: SlashGame = {
         return battle.navi(me.alliance).form.sprite
     end,
     -- 0x080EB6E8: the hit modifier by the variant, ProtoSoul's from its own row.
-    hit_mod = function(me: Object, chip_hit_mod: number): number
+    hit_mod = function(me: Object, chip_hit_mod: HitModifier): HitModifier
         return if in_protosoul(me) then PROTOSOUL_HIT_MOD else chip_hit_mod
     end,
     hold = function(me: Object, blade: AttachmentLook, anim: number)

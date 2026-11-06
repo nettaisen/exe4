@@ -14,7 +14,7 @@ local chip: Chip = {
     rarity = 3,
     mb = 42,
     damage = 130,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     action = spawners.action {

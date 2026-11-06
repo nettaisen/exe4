@@ -19,7 +19,7 @@ local SHOOT, RECOVER = 0x0, 0x4
 -- animation 0, drawn with its sprite), eight panel centers at 10 pixels a tick.
 local ARROW = flying_shot.variant {
     is = collision.chip_destruction,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = Element.null,
     spark = sparks.chip_destruction,
     sprite = roll_arrow_sprite,
@@ -49,7 +49,7 @@ local function shoot(me: Object, s: State)
         local p = me.pos
         local x = int.i32(p.x + me.facing * 8 * 0x10000)
         local y = int.i32(bit32.band(p.y, 0xFFFF0000) - 0x10000)
-        flying_shot.launch(me, Vec3.new(x, y, ARROW_Z), ARROW, me.attack_damage + me.hit_param * 0x10000)
+        flying_shot.launch(me, Vec3.new(x, y, ARROW_Z), ARROW, me.attack_word)
         battle.play_sound(SOUND)
     end
     s.timer += 1
@@ -100,13 +100,12 @@ charge.action = new.action {
 
 -- 0x0800CF20.
 local function setup(navi: Object): Action
-    navi.attack_damage = 30
+    navi.attack_word = damage_word.of { amount = 30, counter = 20, cant_counter = true }
     navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0x94
     return charge.action
 end
 

@@ -12,7 +12,7 @@ local collision = require("../rules/collision")
 
 local THROWER = bombs.thrower(bombs.variant {
     collision = { is = collision.thrown, hits = collision.hits_navis },
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     palette = 0,
     anim = 3,
     after = burst.leave,
@@ -31,7 +31,7 @@ local energbom: Chip = {
     rarity = 2,
     mb = 11,
     damage = 40,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_ahead" },
@@ -46,7 +46,7 @@ local megenbom: Chip = {
     rarity = 3,
     mb = 30,
     damage = 60,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_ahead" },

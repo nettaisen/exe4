@@ -29,7 +29,8 @@ local chip: Chip = {
     rarity = 3,
     mb = 35,
     damage = 80,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, library = true },
     dimming = controller.make {

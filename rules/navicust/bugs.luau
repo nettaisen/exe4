@@ -45,8 +45,7 @@ end
 
 -- 0x0800D9E8's part: the navi's hit's code, if any, written; "edited" then.
 function bugs.navi_bug(side: number, navi: Object): ("edited" | "spared")?
-    local word = navi.collision.inflicted_bugs
-    local code, arg = bit32.band(word, 0xFF), bit32.band(bit32.rshift(word, 8), 0xFF)
+    local code, arg = navi.collision.inflicted_bug, navi.collision.inflicted_bug_arg
     if code == 0 then
         return nil
     end

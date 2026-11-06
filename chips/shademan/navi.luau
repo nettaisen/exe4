@@ -55,16 +55,16 @@ local SHADEMAN = require("@exelib/shademan/navi").make {
     commands = {
         {
             steps = { { "down" }, { "down", "right" }, { "right", "a" } },
-            hit = { palette = 7, hit_mod = 0, status = statuses.paralyze_150 },
+            hit = { palette = 7, hit_mod = {}, status = statuses.paralyze_150 },
         },
         {
             steps = { { "down" }, { "down", "left" }, { "left", "a" } },
-            hit = { palette = 8, hit_mod = 3, status = statuses.confuse_960 },
+            hit = { palette = 8, hit_mod = { flinch = true, flash = true }, status = statuses.confuse_960 },
         },
     },
     uncommanded = function(): ShadeManHit
         local direction = DIRECTIONS[bit32.band(battle.rng_positive(), 3) + 1]
-        return { palette = 0, hit_mod = 3, status = nil, bug = 0x0D, bug_arg = direction }
+        return { palette = 0, hit_mod = { flinch = true, flash = true }, status = nil, bug = 0x0D, bug_arg = direction }
     end,
     bows = false,
     puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
@@ -80,7 +80,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     SHADEMAN.summoned(o, controller, palette)
     return o
 end

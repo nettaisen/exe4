@@ -26,7 +26,7 @@ function spawners.action(spec: Spawner): Action
         update = function(me: Object, s: State)
             if me.step == SPAWN then
                 me.step = 4
-                local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + bit32.band(me.extra, 0xFF))
+                local damage = damage_word.plus(me.attack_word, bit32.band(me.extra, 0xFF))
                 spec.spawn(me, me.attack_element, damage)
                 if not spec.hold then
                     me:exit_attack()

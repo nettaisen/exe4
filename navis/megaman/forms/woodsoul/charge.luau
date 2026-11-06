@@ -29,8 +29,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0x84
-    navi.attack_damage = 20
+    navi.attack_word = damage_word.of { amount = 20, counter = 4, cant_counter = true }
     return charge.action
 end
 

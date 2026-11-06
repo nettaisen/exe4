@@ -138,7 +138,7 @@ local function attack(me: Object)
             palette = 0,
             hit = false,
             sent = false,
-        }, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        }, me.damage_word)
         me.phase_init = 4
     end
     me.timer2 = bit32.band(me.timer2 + 1, 15)
@@ -228,7 +228,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.element = controller.element
     o.related1 = controller
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

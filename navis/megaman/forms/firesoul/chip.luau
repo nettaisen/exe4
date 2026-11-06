@@ -16,7 +16,7 @@ local firesoul: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = {},
     -- Next in the hand it shows no icon over MegaMan (0x0801502E: chips 0x160 to 0x16F).

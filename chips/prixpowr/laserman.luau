@@ -135,7 +135,7 @@ function laserman.summon(controller: Object, x: number, y: number, damage: numbe
     o.panel_x, o.panel_y = x, y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     ;(o.state :: State).controller = controller
     return o
 end

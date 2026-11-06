@@ -16,7 +16,7 @@ local drklance: Chip = {
     rarity = 4,
     mb = 99,
     damage = { formula = "half_opponent_max_hp" },
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true, dark = true, variable_damage = true },
     action = spawners.action {

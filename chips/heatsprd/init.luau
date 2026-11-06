@@ -19,7 +19,7 @@ local GUN = attachment.look { sprite = heatshot_sprite, palette = 0 }
 -- Bullet row 0x0B: the fire burst (effect row 0x29) over the 3x3 around the panel found, its sound 0xBC.
 local BURST = bullet.variant {
     region = regions.square,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = heat_burst_sprite, anim = 0, palette = 0, steps = 34 },
     sound = asset.sound("heat-burst"),
 }
@@ -33,7 +33,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 300,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true },
     program_advances = {

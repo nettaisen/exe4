@@ -47,7 +47,7 @@ local LEAVE_SOUND = asset.sound("hit-bomb-1")
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 
 local HP = 100
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The waits: before winding up, winding up, the swing, after the landing.
 local WAIT, WIND_UP, SWING, AFTER = 10, 24, 5, 60
 local SHAKE_TICKS = 30
@@ -68,8 +68,7 @@ function hammer.hit(me: Object, x: number, y: number, region: Region, is: Collis
         hit_effect = spark,
         target = collision.hits_navis,
         self_type = is,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -293,7 +292,7 @@ function hammer.make(look: Look): Hammer
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance = owner.alliance
-        o:set_damage_word(damage)
+        o.damage_word = damage
         obstacle.register(o, o.alliance, "one_a_side")
         o.run_while_dimmed = true
         return o

@@ -187,9 +187,8 @@ local function touch(me: Object, s: State)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.collision_27,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
     })
     if box then
         box.run_while_dimmed = true
@@ -252,9 +251,8 @@ local function punch(me: Object, s: State)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -419,7 +417,7 @@ function metalman.spawn(controller: Object, user: Object, damage: number, palett
     end
     o.panel_x, o.panel_y = x, y
     o.alliance = user.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = st(o)
     s.controller = controller
     s.palette = palette

@@ -15,7 +15,7 @@ local metal_buster = {}
 local SHOT = shot.variant {
     id = "metalsoul/buster/row",
     collision = { is = collision.breaking, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.breaking,
 }
@@ -24,12 +24,11 @@ metal_buster.action = buster.shot_action("metalsoul/buster/shot", SHOT)
 
 -- 0x0800CDE2.
 local function setup(navi: Object): Action
-    navi.attack_damage = battle.navi(navi.alliance).attack + 1
+    navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).attack + 1, counter = 0 }
     navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     return metal_buster.action
 end

@@ -28,7 +28,7 @@ local SOUND_BREAK = asset.sound("hit-bomb-1")
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 }
 local EFFECT_Z = 0x10_0000
-local HP, LIFETIME, HIT_MOD = 100, 0x960, 3
+local HP, LIFETIME, HIT_MOD = 100, 0x960, { flinch = true, flash = true }
 -- Ticks before it takes its panel; of each light (to -1).
 local APPEAR, RED, GREEN = 3, 0x1A4, 50
 
@@ -201,7 +201,7 @@ function signal.spawn(owner: Object, x: number, y: number, damage: number): Obje
     if not o then
         return nil
     end
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.panel_x, o.panel_y = x, y
     o.alliance = owner.alliance
     o.run_while_dimmed = true

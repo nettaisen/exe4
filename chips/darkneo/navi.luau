@@ -147,7 +147,7 @@ local function hole(me: Object)
         field.set_type(x, y, "hole")
     end
     -- (0x0800B90A: the image's sprite is its side's navi's, by its navi and soul: the image's own `load_like`.)
-    s.image = image.spawn(me, x, y, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    s.image = image.spawn(me, x, y, me.damage_word)
     me.timer = IMAGE_WAIT
     me.phase, me.phase_init = IMAGE, 0
 end
@@ -225,9 +225,8 @@ local function blast(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.thrown_piercing_break,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -330,7 +329,7 @@ function navi.summon(controller: Object, x: number, y: number, element: Element,
     o.panel_x, o.panel_y = x, y
     o.element = element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     ;(o.state :: State).controller = controller
     return o
 end

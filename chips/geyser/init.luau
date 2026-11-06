@@ -43,7 +43,7 @@ local geyser: Chip = {
     rarity = 3,
     mb = 38,
     damage = 200,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "three_ahead_near_enemy" },

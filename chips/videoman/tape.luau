@@ -47,9 +47,8 @@ local function hit(me: Object, x: number, y: number)
         hit_effect = sparks.plain,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -159,7 +158,7 @@ function tape.spawn(videoman: Object, x: number, y: number): Object?
     end
     o.panel_x, o.panel_y = x, y
     o.element = Element.null
-    o:set_damage_word(bit32.bor(videoman.damage, bit32.lshift(videoman.stamina, 16)))
+    o.damage_word = videoman.damage_word
     o.alliance = videoman.alliance
     o.run_while_dimmed = true
     return o

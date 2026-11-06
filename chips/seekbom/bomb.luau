@@ -26,7 +26,7 @@ local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0,
 -- Its flight: 40 ticks, falling 0x3000 a tick (0x080DEFE8); its first X velocity (the init's: 3 pixels a tick toward
 -- the other side, which the aim replaces).
 local FLIGHT_TICKS, GRAVITY, FIRST_SPEED = 40, -0x3000, 0x3_0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Its bursts: the sparkles' 32 ticks (their table's row 2, 0x080E3368) of explosions (effect row 0).
 local BURST_TICKS = 0x20
 -- With no target: past the far edge of the field (column 7, or 0 for side 1), the middle row.
@@ -187,7 +187,7 @@ function bomb.thrower(): Thrower
             if o then
                 o.alliance = user.alliance
                 o.element = Element.null
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 local s = o.state :: State
                 s.target_x, s.target_y = x, y
             end

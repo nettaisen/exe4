@@ -19,7 +19,7 @@ local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
 -- Bullet row 7: the bubble burst (effect row 0x25) over the 3x3 around the panel found, its sound 0x9F.
 local BURST = bullet.variant {
     region = regions.square,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 },
     sound = asset.sound("bubble-burst"),
 }
@@ -33,7 +33,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 300,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { has_damage = true },
     program_advances = {

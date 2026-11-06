@@ -143,7 +143,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
             me:free()
             return
         end
-        me:setup_collision(collision.attack, collision.hits_navis, 3)
+        me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
         local c = me.collision
         c:set_region(regions.single)
         c:set_hit_effect(sparks.plain)
@@ -186,7 +186,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
         end
         o.panel_x, o.panel_y = x, y
         o.element = FIRE
-        o:set_damage_word(bit32.bor(burnman.damage, bit32.lshift(burnman.stamina, 16)))
+        o.damage_word = burnman.damage_word
         o.alliance = burnman.alliance
         o.run_while_dimmed = true
         local s = o.state :: State
