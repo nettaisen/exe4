@@ -47,8 +47,6 @@ local LEAVE_AT, LAST = 15, 1
 local SOUND = asset.sound("breath")
 -- What a breath's effects show turned (the effect's second parameter).
 local TURNED = 1
--- A panel a breath can hit: a solid one (0x080D3B78).
-local SOLID = 0x10
 
 -- 0x080D3EDC: an effect on the ground at (x, y)'s center, turned, not running while dimmed.
 function breath.effect_at(x: number, y: number, effect: Effect): Object?
@@ -90,9 +88,10 @@ end
 -- A chip's breath: its spawn (0x080D3B42), a breath on (x, y) from `user` with the attack's element and damage word.
 -- (Its position is the spawner's registers until its init places it: Y, the element and 0.)
 function breath.make(look: BreathLook): (user: Object, x: number, y: number, element: number, damage: number) -> ()
-    -- 0x080D3B6C: on a solid panel, the effect, and a hit of the chip's element for 40 ticks at its height.
+    -- 0x080D3B6C: on a solid panel (0x080D3B78), the effect, and a hit of the chip's element for 40 ticks at its
+    -- height.
     local function hit(me: Object, x: number, y: number): boolean
-        if not field.check(x, y, SOLID, 0) then
+        if not field.solid(x, y) then
             return false
         end
         local fx = breath.effect_at(x, y, look.hit_effect)

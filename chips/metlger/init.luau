@@ -14,21 +14,15 @@ local SOUND = asset.sound("tops")
 local WAIT = 60
 -- The gear's mode (the controller's first parameter): a lifetime gear.
 local MODE = 1
--- The gear's panel: solid, without a body, of the other side (0x080E72DC by the user's side: the owner bit 0x20 set
--- for side 1's panels, clear for side 0's).
-local SOLID, BODIES, SIDE_1 = 0x10, 0x0F80_0000, 0x20
+-- The gear's panel: solid, of the other side's own area, without a body (0x080E72DC by the user's side).
+local GEAR_PANEL: { PanelFlag } = { "solid", "own_area" }
 
 -- 0x080E7288.
 local function effect(me: Object)
     if me.phase_init == 0 then
         local other = bit32.bxor(me.alliance, 1)
-        local need, forbid = SOLID, BODIES
-        if other == 1 then
-            need = bit32.bor(need, SIDE_1)
-        else
-            forbid = bit32.bor(forbid, SIDE_1)
-        end
-        local x = panels.closest_in_row(other, me.panel_y, need, forbid)
+        -- (Its own area: side 1's for a side 1, else side 0's.)
+        local x = panels.closest_in_row(other, me.panel_y, GEAR_PANEL, "any_body", if other == 1 then 1 else 0)
         if x ~= 0 then
             local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
             gear.spawn(x, me.panel_y, me.element, me.alliance, MODE, damage)

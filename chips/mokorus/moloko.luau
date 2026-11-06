@@ -23,9 +23,8 @@ local HIT_MOD = 0x21
 -- 140 pixels from the field's middle either way; 3 pixels a tick; a dust puff every 10 ticks.
 local REACH, SPEED, DUST_EVERY = 140, 0x3_0000, 10
 local PUFF_UP = 0x10_0000
--- What stops it on its panel, by its side (0x080D2504): an obstacle's body bits.
-local BLOCKS = { [0] = 0x01800000, [1] = 0x02800000 }
-local SOLID = 0x10
+-- What stops it on its panel, of its side (0x080D2504): the other side's obstacle, or a neutral one; or no solid panel.
+local BLOCKS: { PanelFlag } = { "enemy_other_body", "neutral" }
 
 local WAIT, CHARGE = 0x0, 0x4
 
@@ -76,8 +75,7 @@ local function charge(me: Object)
     if not field.valid(me.panel_x, me.panel_y) then
         return
     end
-    local flags = field.flags(me.panel_x, me.panel_y)
-    if not bit32.btest(flags, BLOCKS[me.alliance]) and bit32.btest(flags, SOLID) then
+    if field.check(me.panel_x, me.panel_y, "solid", BLOCKS, me.alliance) then
         return
     end
     local q = me.pos
@@ -96,7 +94,7 @@ local function tick(me: Object)
         gone(me)
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         gone(me)
         return
     end

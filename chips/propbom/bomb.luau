@@ -22,8 +22,16 @@ local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0,
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local HP = 10
 local HOVER_TICKS = 5
--- What breaks it (its hit flags: bodies, attacks, navis).
-local BREAKS = 0x3F800000
+-- What breaks it (its hit results: objects, bodies and other bodies of either side, neutral objects).
+local BREAKS: { HitName } = {
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 local HIT_MOD, BURST_HIT_MOD = 1, 3
 -- Where it bursts: the other side's column 5 (side 0's bomb) or 2 (side 1's), row 2.
 local BURST_ROW = 2
@@ -112,7 +120,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if bit32.btest(c.hit_flags, BREAKS) or me:take_damage(0) < 0 then
+    if c:hit_any(BREAKS) or me:take_damage(0) < 0 then
         battle.effect(me.pos, EXPLOSION)
         battle.play_sound(BROKEN)
         finish(me)

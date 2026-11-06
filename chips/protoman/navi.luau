@@ -15,8 +15,8 @@ local protoman_sprite = asset.sprite("protoman")
 local sword_slash_sprite = asset.sprite("sword-slash")
 local sword_sprite = asset.sprite("sword")
 
--- What a panel he lands on must be free of, by his side (0x080C70CC).
-local OCCUPIED = { [0] = 0x0788_0080, 0x0B88_0080 }
+-- What a panel he lands on must be free of, of his side (0x080C70CC).
+local OCCUPIED: { PanelFlag } = { "reserved", "enemy_body", "own_other_body", "enemy_other_body", "neutral", "blocker" }
 
 -- 0x080CD6E0, as his slash asks (attachment row 3, his sword's animation, animating while dimmed).
 local function attach(owner: Object, look: AttachmentLook, which: Slot, options: AttachmentOptions?): Object?

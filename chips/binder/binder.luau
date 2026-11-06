@@ -30,8 +30,8 @@ local REACH = 140
 local HIT_Z, HIT_MOD, LAND_TICKS = 0x10_0000, 1, 4
 -- Its animations: hopping, its first hop's and landed.
 local ANIM_HOP, ANIM_FIRST, ANIM_LANDED = 1, 2, 3
--- The other side's navi on a panel, by its side (0x080D2740).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The other side's navi on a panel, of its side (0x080D2740: the other side's body).
+local ENEMY_BODY = "enemy_body"
 -- A puff's height over it.
 local PUFF_Z = 0x10_0000
 
@@ -49,7 +49,7 @@ end
 
 -- 0x080D271C: whether the other side's navi stands on its panel.
 local function enemy_here(me: Object): boolean
-    return bit32.btest(field.flags(me.panel_x, me.panel_y), ENEMY_BODY[me.alliance])
+    return field.any(me.panel_x, me.panel_y, ENEMY_BODY, me.alliance)
 end
 
 -- Action 0 (0x080D25EC): aimed on its first tick (in place, or two panels on); halfway, the battle and its landings

@@ -43,9 +43,8 @@ local RUSH_TICKS = 100
 -- His afterimages (0x080C20D0, the KendoMan chips'): their color shader and lifetime.
 local AFTERIMAGE_SHADER, AFTERIMAGE_TICKS = 0x814A, 12
 local SPEED = 0x8_0000
-local SOLID = 0x10
--- What stops him (0x080CBFD0).
-local BLOCKERS = 0x0380_0000
+-- What stops him (0x080CBFD0): another body or a neutral object.
+local BLOCKERS: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 
 -- 0x080CC026: a hit on his panel, which follows him and keeps itself in his `hits`.
 local function hit(me: Object)
@@ -135,7 +134,7 @@ local function rush(me: Object)
     if x >= 1 and x <= 6 then
         -- 0x080CBFD0: the panel under him must be solid with no blocker on it.
         local px, py = link_chips.panel_at(me.pos.x, me.pos.y, me.alliance)
-        if not field.check(px, py, SOLID, BLOCKERS) then
+        if not field.check(px, py, "solid", BLOCKERS) then
             return stop(me)
         end
     end

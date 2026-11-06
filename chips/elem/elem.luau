@@ -44,7 +44,7 @@ local RESTORE = panel_changer.change {
     panels = "own",
     flicker = true,
     ticks = 30,
-    sides = panel_changer.OWN_AREA,
+    condition = panel_changer.OWN_AREA,
     tick_sound = panel_changer.TICK_SOUND,
     change_sound = panel_changer.CHANGE_SOUND,
 }

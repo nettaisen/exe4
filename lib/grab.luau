@@ -23,14 +23,13 @@ local shot_kind = shot.make_kind {
     spares = "back_column",
 }
 
--- The panel filters by side (0x080E205C's: a side's panels have the owner bit 0x20 set for side 1, clear for side 0).
-local OWN = { [0] = { require = 0, forbid = 0x20 }, [1] = { require = 0x20, forbid = 0 } }
+-- The panel filters by side (0x080E205C's): a side's own panels.
+local OWN = "own_area"
 
 -- 0x0800A1AE (@exelib/panels' `closest_in_row`): in row `y`, from the far edge of `side`'s field back toward `side`'s,
 -- the first panel of `side`'s; 0 when it walks off the field.
 local function closest_of_side(side: number, y: number): number
-    local own = OWN[side]
-    return panels.closest_in_row(side, y, own.require, own.forbid)
+    return panels.closest_in_row(side, y, OWN, nil, side)
 end
 
 -- 0x0800A1E4 (@exelib/panels' `front_most`): AreaGrab's column, the other side's panels' front-most across the rows
@@ -38,8 +37,7 @@ end
 -- 1; none without one.
 local function column(me: Object): number?
     local other = bit32.bxor(me.alliance, 1)
-    local own = OWN[other]
-    local x = panels.front_most(other, own.require, own.forbid)
+    local x = panels.front_most(other, OWN, nil, other)
     return if x ~= 0 then x else nil
 end
 

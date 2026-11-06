@@ -21,11 +21,10 @@ type State = {
 }
 
 local SOUND = asset.sound("metal-punch")
-local SOLID = 0x10
 -- Its rocks fall on solid panels without these (bodies of the stage's and the sides' objects: 0x080D07FA).
-local ROCK_FORBID = 0x0380_0000
--- The other side's navi's body, by side (0x080D088C).
-local OTHER_NAVI: { [number]: number } = { [0] = 0x20_0000, [1] = 0x40_0000 }
+local ROCK_FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+-- The other side's player navi, by side (0x080D088C).
+local OTHER_NAVI = "enemy_navi"
 -- How many panels it cracks at random, and rocks it drops at random.
 local CRACKS, ROCKS = 6, 2
 
@@ -85,7 +84,6 @@ end
 -- solid panels nothing else stands on: the first the other side's navi stands on is its target, the rest listed;
 -- rocks on two of the listed after a shuffle (the second first), then on the target.
 local function drop(me: Object)
-    local mask = OTHER_NAVI[me.alliance]
     local back = -panels.side_direction(me.alliance)
     local stop = me.panel_x + back
     local x = 6 - 5 * me.alliance
@@ -93,8 +91,8 @@ local function drop(me: Object)
     local tx, ty = 0, 0
     repeat
         for y = 3, 1, -1 do
-            if field.check(x, y, SOLID, ROCK_FORBID) then
-                if tx == 0 and bit32.btest(field.flags(x, y), mask) then
+            if field.check(x, y, "solid", ROCK_FORBID) then
+                if tx == 0 and field.any(x, y, OTHER_NAVI, me.alliance) then
                     tx, ty = x, y
                 else
                     list[#list + 1] = panels.pack(x, y)

@@ -19,14 +19,11 @@ gust.kind = common.make_kind("gust", {
     sprite = gust_sprite,
     is = collision.pull,
     hits = collision.hits_navis,
-    stopped_by = 0,
+    stopped_by = nil,
     weak_when_unseen = true,
-    -- The panels it can blow over (0x080D689C, by side: require, forbid).
-    panels = {
-        [0] = { 0x20, 0x00 },
-        [1] = { 0x00, 0x20 },
-        [2] = { 0xB427B500, 0xF72C2049 },
-    },
+    -- The panels it can blow over (0x080D689C, by side: the other side's area; its third row, read for a side of 2,
+    -- is code: require 0xB427B500, forbid 0xF72C2049).
+    panels = { require = "enemy_area" },
 })
 
 -- 0x080D68AC: a gust on (x, y) for side `alliance`, blowing as `how` says, with the damage word `damage`, tracked by

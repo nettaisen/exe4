@@ -39,7 +39,7 @@ local SOUND_DOWN = asset.sound("lifesync")
 -- The warning's (0x08008424).
 local SOUND_WARNING = asset.sound("program-advance-part")
 -- The other side's player navi stands there (0x080E89F8, 0x080E8A40).
-local ENEMY_NAVI = { [0] = 0x00200000, [1] = 0x00400000 }
+local ENEMY_NAVI = "enemy_navi"
 -- Its hit under event flag 0x1187.
 local HIT_DAMAGE, HIT_MOD = 50, 3
 
@@ -54,7 +54,7 @@ lifesync.marker = marker.make_kind {
 -- 0x080E89BA: if the panel shows the other side's player navi, the first of BattleState +0x44's list whose collision
 -- is on it.
 local function combatant_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     for i = 0, navi_list.LENGTH - 1 do
@@ -72,7 +72,7 @@ end
 -- 0x080E8A00: if the panel shows the other side's player navi, that navi (BattleState +0x44's entry by its side,
 -- `battle_networkInvert`) when its collision is on it.
 local function enemy_navi_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     local o = battle.player(bit32.bxor(side, 1))

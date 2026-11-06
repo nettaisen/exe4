@@ -74,7 +74,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         finish(me)
     else
         local cx, cy = field.center(me.panel_x, me.panel_y)

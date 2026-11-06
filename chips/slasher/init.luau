@@ -29,11 +29,8 @@ type State = {
 }
 
 local START, WAIT, SLASH, RECOVER = 0x0, 0x4, 0x8, 0xC
--- What the column search looks for, by side (0x0800D474): a panel's flags required and forbidden.
-local SEARCH = {
-    [0] = { require = 0x00200000, forbid = 0x00000020 },
-    [1] = { require = 0x00400020, forbid = 0x00000000 },
-}
+-- What the column search looks for, by side (0x0800D474): the other side's player navi on the side's own area.
+local SEARCH: PanelCondition = { require = { "enemy_navi", "own_area" } }
 local ROW = 2
 local Z = 0x10_0000
 local SLASH_TICKS, SLASH_AT, RECOVER_TICKS = 0x15, 0x0C, 5
@@ -42,11 +39,10 @@ local NAVI_NUMBER = 0
 
 -- 0x0800D432: the column, or 0: from the side's back column (0x0800D484: 1 or 6) toward its facing.
 local function find(me: Object): number
-    local s = SEARCH[me.alliance]
     local x = 1 + 5 * me.alliance
     while true do
         for y = 3, 1, -1 do
-            if field.check(x, y, s.require, s.forbid) then
+            if field.check(x, y, SEARCH.require, SEARCH.forbid, me.alliance) then
                 return x
             end
         end

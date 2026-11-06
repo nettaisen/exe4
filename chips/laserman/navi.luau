@@ -28,7 +28,6 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("laser")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
-local SOLID = 0x10
 -- His last animation (4) lasts 8 of his sprite's steps.
 local LAST_STEPS = 8
 -- The courses the keys held aim, in the order they are tried (0x080CAD1C).
@@ -48,7 +47,7 @@ local function appear(me: Object)
     if left >= 0 then
         return
     end
-    if field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if field.solid(me.panel_x, me.panel_y) then
         me:set_action(ATTACK)
     else
         me:set_lifecycle("destroy")

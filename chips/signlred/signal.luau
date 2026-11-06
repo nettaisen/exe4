@@ -31,8 +31,6 @@ local EFFECT_Z = 0x10_0000
 local HP, LIFETIME, HIT_MOD = 100, 0x960, 3
 -- Ticks before it takes its panel; of each light (to -1).
 local APPEAR, RED, GREEN = 3, 0x1A4, 50
--- Where it can stand: a solid panel with nothing on it.
-local SOLID, OCCUPIED = 0x10, 0x0F88_0080
 
 -- The other side.
 local function other_side(me: Object): number
@@ -58,7 +56,8 @@ local function appear(me: Object)
     if t ~= 0 then
         return
     end
-    if not field.check(me.panel_x, me.panel_y, SOLID, OCCUPIED) then
+    -- (Where it can stand: a solid panel with nothing on it.)
+    if not field.check(me.panel_x, me.panel_y, "solid", "occupied") then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + EFFECT_Z), PUFF)
         leave(me)

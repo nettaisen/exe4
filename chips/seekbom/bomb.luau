@@ -29,8 +29,6 @@ local FLIGHT_TICKS, GRAVITY, FIRST_SPEED = 40, -0x3000, 0x3_0000
 local HIT_MOD = 3
 -- Its bursts: the sparkles' 32 ticks (their table's row 2, 0x080E3368) of explosions (effect row 0).
 local BURST_TICKS = 0x20
--- The other side's navi on a panel, by the user's side (0x080DEFE0).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
 -- With no target: past the far edge of the field (column 7, or 0 for side 1), the middle row.
 local NO_TARGET_Y = 2
 
@@ -93,7 +91,7 @@ local function tick(me: Object)
         puff(me)
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         burst(me)
         return
     end
@@ -155,7 +153,8 @@ bomb.kind = new.kind {
 -- row; none (0, 0) when no navi of the other side is ahead.
 local function target(user: Object): (number, number)
     local ahead = {}
-    for _, p in panels.filtered_except(user, ENEMY_BODY[user.alliance], 0) do
+    -- (The other side's navi on a panel, 0x080DEFE0.)
+    for _, p in panels.filtered_except(user, "enemy_body", nil, user.alliance) do
         local x = panels.x(p)
         if (user.alliance == 0 and x > user.panel_x) or (user.alliance ~= 0 and user.panel_x > x) then
             table.insert(ahead, p)

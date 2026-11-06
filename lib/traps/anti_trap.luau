@@ -37,7 +37,7 @@ local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, s
 local function targets(me: Object): { { x: number, y: number } }
     local marked = regions.other_navi[me.alliance].field :: PanelCondition
     local list: { { x: number, y: number } } = {}
-    for _, p in panels.filtered_except(me, marked.require, marked.forbid) do
+    for _, p in panels.filtered_except(me, marked.require, marked.forbid, me.alliance) do
         local x: number, y: number = panels.x(p), panels.y(p)
         table.insert(list, { x = x, y = y })
     end

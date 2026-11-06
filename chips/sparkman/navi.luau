@@ -32,7 +32,6 @@ local SOUND_CHARGE = asset.sound("spark-charge")
 local SOUND_FLASH = asset.sound("spark-flash")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
-local SOLID = 0x10
 -- His sparks' element (elec), whatever his chip's.
 local ELEC = 3
 -- The flash's flicker (a white palette flash, effect #0x0A's variant 0, going on while dimmed).
@@ -51,7 +50,7 @@ local function appear(me: Object)
     if left >= 0 then
         return
     end
-    if not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if not field.solid(me.panel_x, me.panel_y) then
         me:set_lifecycle("destroy")
         return
     end

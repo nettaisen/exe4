@@ -61,7 +61,7 @@ local function fly(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         local sand = v.sand
         if sand then
             field.set_type(me.panel_x, me.panel_y, sand)

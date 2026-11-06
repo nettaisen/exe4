@@ -60,30 +60,22 @@ local BODY = { is = collision.neutral_body, hits = collision.everything }
 local NO_BOMB = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 
 -- The panel the bomb takes: on the field, solid, with no body on it (0x080E4E26).
-local STANDS, BODIES = 0x0001_0010, 0x0F80_0000
--- The other side's solid panels (0x080E4D74, 0x080E4D7C by the user's side: the owner bit 0x20 set for side 1's,
--- clear for side 0's), and those of them with nothing on them (0x080E4D84, 0x080E4D8C).
-local SOLID, SIDE_1, OCCUPIED = 0x10, 0x20, 0x0F80_0080
-
--- The conditions for the other side's panels: solid, and with `forbid`.
-local function other_side(side: number, forbid: number): (number, number)
-    if side == 0 then
-        return bit32.bor(SOLID, SIDE_1), forbid
-    end
-    return SOLID, bit32.bor(forbid, SIDE_1)
-end
+local STANDS: { PanelFlag } = { "solid", "on_field" }
+-- The other side's solid panels (0x080E4D74, 0x080E4D7C by the user's side; a side but 0 as side 1), and those of
+-- them with no body on them, not reserved (0x080E4D84, 0x080E4D8C).
+local OTHER_SIDE: { PanelFlag } = { "solid", "enemy_area" }
+local TAKEN: { PanelFlag } = { "any_body", "reserved" }
 
 -- 0x080E4D94: from the user's back edge (column 1 for side 0, 6 for side 1) forward, the first column with a panel
--- meeting (`need`, `forbid`) in any row; 0 when none.
-local function front_column(side: number, need: number, forbid: number): number
+-- meeting (`need`, `forbid`: side-relative flags of side `of`) in any row; 0 when none.
+local function front_column(side: number, need: PanelFlags?, forbid: PanelFlags?, of: number): number
     local x, step = 1, 1
     if side == 1 then
         x, step = 6, -1
     end
     while x >= 1 and x <= 6 do
         for y = 1, 3 do
-            local f = field.flags(x, y)
-            if bit32.band(f, forbid) == 0 and bit32.band(f, need) == need then
+            if field.check(x, y, need, forbid, of) then
                 return x
             end
         end
@@ -92,12 +84,11 @@ local function front_column(side: number, need: number, forbid: number): number
     return 0
 end
 
--- In column `x`, rows 3 to 1, the panels meeting (`need`, `forbid`).
-local function rows_of(x: number, need: number, forbid: number): { number }
+-- In column `x`, rows 3 to 1, the panels meeting (`need`, `forbid`: of side `of`).
+local function rows_of(x: number, need: PanelFlags?, forbid: PanelFlags?, of: number): { number }
     local found = {}
     for y = 3, 1, -1 do
-        local f = field.flags(x, y)
-        if bit32.band(f, forbid) == 0 and bit32.band(f, need) == need then
+        if field.check(x, y, need, forbid, of) then
             table.insert(found, y)
         end
     end
@@ -108,15 +99,14 @@ end
 -- panels when none has); nil when the other side has no solid panel at all.
 local function target(me: Object): (number?, number?)
     local side = me.alliance
-    local need, forbid = other_side(side, 0)
-    local x = front_column(side, need, forbid)
+    local of = if side == 0 then 0 else 1
+    local x = front_column(side, OTHER_SIDE, nil, of)
     if x == 0 then
         return nil, nil
     end
-    local free_need, free_forbid = other_side(side, OCCUPIED)
-    local rows = rows_of(x, free_need, free_forbid)
+    local rows = rows_of(x, OTHER_SIDE, TAKEN, of)
     if #rows == 0 then
-        rows = rows_of(x, need, forbid)
+        rows = rows_of(x, OTHER_SIDE, nil, of)
         if #rows == 0 then
             return nil, nil
         end
@@ -136,7 +126,7 @@ local function place(me: Object)
         -- (0x080E4E68) matches no panel, writes nothing through the stale r7 and draws no RNG: no bomb, no puff.
         return
     end
-    if field.check(x, y, STANDS, BODIES) then
+    if field.check(x, y, STANDS, "any_body") then
         local s = me.state :: { bonus: number, variant: CountdownVariant }
         countdown.spawn_kind(KIND, s.variant, x, y, me.alliance, dimming_chips.damage_plus(me, s.bonus), s.bonus)
     else

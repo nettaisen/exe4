@@ -93,7 +93,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
         if battle.over() then
             return ends(me)
         end
-        if c.hit_flags ~= 0 then
+        if c.hit then
             local p = me.pos
             battle.effect(Vec3.new(p.x, p.y, p.z + 0x8_0000), IMPACT)
             battle.play_sound(SOUND_HIT)

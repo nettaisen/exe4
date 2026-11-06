@@ -47,11 +47,8 @@ local RUSH_TICKS = 100
 -- His animations' lengths in his sprite's steps: his slash's (animation 4), his cut's (7), drawing his sword (5).
 local SLASH_STEPS, CUT_STEPS, DRAW_STEPS = 8, 12, 9
 
--- An enemy body on a panel, by his side (0x080C8A20).
-local ENEMY_BODY: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local SOLID = 0x10
--- What his moves stop at (0x080C1DC8), and what his landing panel must be free of (0x080C8814).
-local BLOCKERS, BODIES = 0x0380_0000, 0x0F80_0000
+-- What his moves stop at (0x080C1DC8); his landing panel must be free of any body (0x080C8814).
+local BLOCKERS: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 -- His afterimages' color shader, and their lifetimes on his dash and his rush.
 local AFTERIMAGE_SHADER = 0x814A
 local DASH_SPEED = 0x6_AAAB
@@ -62,7 +59,7 @@ local APPEAR, DASH, CUT_BACK, RUSH = 0x0, 0x4, 0x8, 0xC
 -- 0x080C1DC8: the panel under him is solid with no blocker on it.
 local function on_ground(me: Object): boolean
     local x, y = link_chips.panel_at(me.pos.x, me.pos.y, me.alliance)
-    return field.valid(x, y) and field.check(x, y, SOLID, BLOCKERS)
+    return field.valid(x, y) and field.check(x, y, "solid", BLOCKERS)
 end
 
 -- 0x080C20D0: his afterimage as he stands (his sheet, his animation, his side's flip), lasting `ticks`, with its
@@ -106,7 +103,8 @@ local function dash_target(me: Object): (number, number)
     local edge = 7 * bit32.rshift(dir + 1, 1)
     local x = me.panel_x
     while true do
-        if bit32.btest(field.flags(x, me.panel_y), ENEMY_BODY[me.alliance]) then
+        -- (An enemy body on the panel, 0x080C8A20.)
+        if field.any(x, me.panel_y, "enemy_body", me.alliance) then
             return x - dir, me.panel_y
         end
         x += dir
@@ -123,7 +121,7 @@ local function appear(me: Object)
     if left >= 0 then
         return
     end
-    if field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if field.solid(me.panel_x, me.panel_y) then
         me:set_action(DASH)
     else
         me:set_lifecycle("destroy")
@@ -205,7 +203,7 @@ local function cut_back(me: Object)
             return
         end
         local x = me.panel_x + 2 * dir
-        if not (field.valid(x, me.panel_y) and field.check(x, me.panel_y, SOLID, BODIES)) then
+        if not (field.valid(x, me.panel_y) and field.check(x, me.panel_y, "solid", "any_body")) then
             me.panel_x = 0
             me:set_coordinates_from_panel()
             return

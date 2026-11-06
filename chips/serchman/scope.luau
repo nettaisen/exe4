@@ -9,14 +9,13 @@ local common = require("@exelib/serchman/scope")
 local panels = require("@exelib/panels")
 local search_scope_sprite = asset.sprite("search-scope")
 
--- The panel filters by side: a side's panels have the owner bit 0x20 set for side 1, clear for side 0 (0x080E6D32).
-local OWN = { [0] = { require = 0, forbid = 0x20 }, [1] = { require = 0x20, forbid = 0 } }
+-- The panel filters by side: a side's own panels (0x080E6D32).
+local OWN = "own_area"
 
 -- 0x080E6D30: the other side's front-most column; the one before it; the field's edge.
 local function columns(me: Object): (number, number, number)
     local other = bit32.bxor(me.alliance, 1)
-    local own = OWN[other]
-    local x = panels.front_most(other, own.require, own.forbid)
+    local x = panels.front_most(other, OWN, nil, other)
     return x, x - me.facing, if me.facing > 0 then 7 else 0
 end
 

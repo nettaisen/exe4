@@ -15,7 +15,7 @@ local HOLES = panel_changer.change {
     panels = "all",
     flicker = false,
     ticks = 30,
-    sides = panel_changer.OWN_AREA,
+    condition = panel_changer.OWN_AREA,
     start_sound = panel_changer.START_SOUND,
     tick_sound = panel_changer.TICK_SOUND,
     change_sound = panel_changer.CHANGE_SOUND,
@@ -27,7 +27,7 @@ local POISON = panel_changer.change {
     panels = "all",
     flicker = true,
     ticks = 30,
-    sides = panel_changer.OTHER_AREA,
+    condition = panel_changer.OTHER_AREA,
     tick_sound = panel_changer.TICK_SOUND,
     change_sound = panel_changer.POISON_SOUND,
 }

@@ -11,18 +11,19 @@ local towers = {}
 -- A panel's turn: whether something rose from it.
 type Strike = (me: Object, x: number, y: number) -> boolean
 
--- The other side's navi on the panel, by the user's side (0x080DF8F8, 0x080DF954: its body bit).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
-
 -- The controller's damage word, which what it raises takes.
 function towers.damage_word(me: Object): number
     return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
 end
 
--- Whether (x, y) is a panel of type `kind` of the other side's, holding its navi (AquaUp's and GreenWd's test).
+-- Whether (x, y) is a panel of type `kind` of the other side's, holding its navi (AquaUp's and GreenWd's test; the
+-- navi by the other side's body, 0x080DF8F8, 0x080DF954).
 function towers.enemy_panel(me: Object, x: number, y: number, kind: PanelType): boolean
     local p = field.panel(x, y)
-    return p ~= nil and p.kind == kind and p.alliance ~= me.alliance and field.check(x, y, ENEMY_BODY[me.alliance], 0)
+    return p ~= nil
+        and p.kind == kind
+        and p.alliance ~= me.alliance
+        and field.check(x, y, "enemy_body", nil, me.alliance)
 end
 
 -- Its row's ticks between columns (0x080DF7F4: 10 for each).

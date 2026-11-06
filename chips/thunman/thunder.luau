@@ -24,6 +24,16 @@ local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, 
 local ELEC = 3
 
 local MARK, STRIKE = 0x0, 0x4
+-- A hit that ends its region: of an object, a body or another body of either side, or of a neutral object.
+local ENDS_REGION: { HitName } = {
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 
 -- 0x080DB620: 4 rounds of 8 ticks, the panel highlighted in each round's first 4 (but its first); then the strike.
 local function mark(me: Object)
@@ -89,7 +99,7 @@ local function tick(me: Object)
         c:set_region(nil)
         me:set_lifecycle("destroy")
     else
-        if bit32.btest(c.hit_flags, 0x3F80_0000) then
+        if c:hit_any(ENDS_REGION) then
             c:set_region(nil)
         end
         local a = me.action

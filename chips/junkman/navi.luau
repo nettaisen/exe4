@@ -25,7 +25,6 @@ local SPRITE = asset.sprite("junkman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local FADE_GRAY = 0x1F
-local SOLID = 0x10
 
 -- Action 0, phase 0 (0x080C96A0): he fades in from gray 31, 2 a tick, flickering.
 local function fade_in(me: Object)
@@ -65,7 +64,7 @@ local function ready(me: Object)
     if left > 0 then
         return
     end
-    if field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if field.solid(me.panel_x, me.panel_y) then
         me:set_action(4)
     else
         me:set_lifecycle("destroy")

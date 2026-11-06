@@ -20,16 +20,14 @@ local point = require("@exelib/colorpt/point")
 local trajectory = require("../../lib/trajectory")
 local grab_shot_sprite = asset.sprite("grab-shot")
 
--- The owner bit side 1's panels have (0x080E7CCC's filter: side 1's require it, side 0's forbid it).
-local OWNER_1 = 0x20
 -- 0x080E7EAA: the element the point's spawn leaves.
 local ELEMENT = 0xD9
 
 -- 0x080E7C7A: the front of the user's area in row `y`, not its back column; 0 for none.
 local function front(me: Object, y: number): number
     local side = me.alliance
-    local require, forbid = if side == 1 then OWNER_1 else 0, if side == 1 then 0 else OWNER_1
-    local x = panels.closest_in_row(side, y, require, forbid)
+    -- (0x080E7CCC's filter: the side's own area; a side but 1 as side 0.)
+    local x = panels.closest_in_row(side, y, "own_area", nil, if side == 1 then 1 else 0)
     if x == side * 5 + 1 then
         return 0
     end

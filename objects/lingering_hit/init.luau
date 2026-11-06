@@ -74,7 +74,7 @@ function lingering_hit.make(id: string): LingeringHit
         local c = me.collision
         c:remove()
         me:hit_spark()
-        if c.hit_flags == 0 then
+        if not c.hit then
             local owner = me.related1 :: Object
             local ended = false
             if not held(owner) then

@@ -4,7 +4,7 @@
 -- user's panel; while the battle is dimmed his user aims his punch: with A held, the d-pad moves a target over the
 -- field (highlighted), from his own panel; A let go fixes it. 22 ticks after he came he blinks to the target's column
 -- (unless it is his own panel), 3 ticks out, 3 in, a hit of no damage on the target; then, unless that is the field's
--- far edge or holds a body of his side, he winds up (40 ticks) and punches the panel ahead (60 ticks; the hit at 56
+-- far edge or holds the other side's body, he winds up (40 ticks) and punches the panel ahead (60 ticks; the hit at 56
 -- left: it breaks a solid panel, with a shake, a flash and a sound); else he waits 61 ticks. Then he goes.
 
 local collision = require("../../rules/collision")
@@ -69,8 +69,8 @@ local SOUND_PUNCH = asset.sound("metal-punch")
 -- The punch's flash on a solid panel (effect row 0x47).
 local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }
 local FADE_GRAY = 0x1F
--- A body of each side (0x080C7F3C): a target that holds one of his own side stops his punch.
-local OWN_BODY = { [0] = 0x0400_0000, 0x0800_0000 }
+-- The other side's body (0x080C7F3C, by his side: side 1's for side 0): a target that holds one stops his punch.
+local ENEMY_BODY = "enemy_body"
 
 local function st(me: Object): State
     return me.state :: State
@@ -197,7 +197,7 @@ local function touch(me: Object, s: State)
 end
 
 -- Action 4, phase 8 (0x080C7EE0): he blinks in on the target (animation 3), 3 ticks; the touch; then the punch, unless
--- the target is the field's far edge or holds a body of his side: then a wait.
+-- the target is the field's far edge or holds the other side's body: then a wait.
 local function blink_in(me: Object)
     local s = st(me)
     if me.phase_init == 0 then
@@ -215,7 +215,7 @@ local function blink_in(me: Object)
     end
     touch(me, s)
     local far = if me.alliance == 0 then 6 else 1
-    if s.target_x == far or not field.check(s.target_x, s.target_y, 0, OWN_BODY[me.alliance]) then
+    if s.target_x == far or not field.check(s.target_x, s.target_y, nil, ENEMY_BODY, me.alliance) then
         me.phase, me.phase_init = 0x14, 0
         return
     end

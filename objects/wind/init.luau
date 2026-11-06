@@ -40,13 +40,8 @@ end
 local START = asset.sound("wind")
 -- The ticks it waits after a gust (Timer2).
 local WAIT = 12
--- The panel a gust starts on (0x080E69AC, by side: require, forbid): the other side's.
-local PANELS = {
-    [0] = { 0x20, 0x00 },
-    [1] = { 0x00, 0x20 },
-}
--- A panel with a neutral object (an obstacle's body).
-local NEUTRAL = 0x800000
+-- The panel a gust starts on (0x080E69AC, by side): the other side's.
+local PANELS = "enemy_area"
 
 -- 0x080E6950: the panel of row `y` a gust starts on, 0 for none: the other side's first panel from the far edge
 -- (`object_getClosestPanelMatchingRowFiltered` for the other side), none where a neutral object stands; a wind with a
@@ -54,12 +49,12 @@ local NEUTRAL = 0x800000
 -- object or the field's edge.
 local function start_panel(me: Object, s: State, y: number): number
     local side = me.alliance
-    local rule = PANELS[side]
-    if rule == nil then
+    if side > 1 then
         error(string.format("wind side %d reads past its panel table (0x080E69AC)", side))
     end
-    local x = panels.closest_in_row(bit32.bxor(side, 1), y, rule[1], rule[2])
-    if bit32.btest(field.flags(x, y), NEUTRAL) then
+    local x = panels.closest_in_row(bit32.bxor(side, 1), y, PANELS, nil, side)
+    -- (A panel with a neutral object: an obstacle's body.)
+    if field.any(x, y, "neutral") then
         return 0
     end
     if not (s.pulls or s.unseen) then
@@ -68,7 +63,7 @@ local function start_panel(me: Object, s: State, y: number): number
     local dir = panels.side_direction(side)
     repeat
         x += dir
-    until x < 1 or x > 6 or bit32.btest(field.flags(x, y), NEUTRAL)
+    until x < 1 or x > 6 or field.any(x, y, "neutral")
     return x - dir
 end
 

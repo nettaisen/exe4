@@ -30,9 +30,6 @@ local SOUND_LEAP = asset.sound("top-leap")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
-local SOLID = 0x10
--- What a panel his top lands on must have none of: bodies and objects.
-local OCCUPIED = 0x0F80_0000
 -- The tops' panels from his (0x080B8640): columns ahead (by his side's way), rows.
 local TOPS: { { number } } = { { 2, -1 }, { 4, -1 }, { 4, 1 }, { 2, 1 } }
 -- His leap: up at 11 pixels a tick, across at 0x1B0AD, falling 0x4F80 a tick.
@@ -50,13 +47,14 @@ local function appear(me: Object)
     if left >= 0 then
         return
     end
-    if not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if not field.solid(me.panel_x, me.panel_y) then
         me:set_lifecycle("destroy")
         return
     end
     for i, d in TOPS do
         local x, y = me.panel_x + me.facing * d[1], me.panel_y + d[2]
-        if field.check(x, y, SOLID, OCCUPIED) then
+        -- (A panel his top lands on has no body on it.)
+        if field.check(x, y, "solid", "any_body") then
             top.spawn(me, x, y, i - 1)
         end
     end
@@ -135,7 +133,7 @@ local function land(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 1
         hit(me)
-        if not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+        if not field.solid(me.panel_x, me.panel_y) then
             me:set_lifecycle("destroy")
             return
         end

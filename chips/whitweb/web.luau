@@ -24,10 +24,10 @@ local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps
 local TICKS, HIT_MOD = 120, 1
 -- Its first animation (0) plays over 10 of its sprite's steps; then animation 1 loops.
 local FIRST_ANIM_STEPS = 10
--- The other side's navi caught, by its side (0x080D4E6C).
-local CAUGHT = { [0] = 0x05800000, [1] = 0x0A800000 }
--- The other side's panels, by the user's side (0x080D4F10).
-local OTHER_SIDE = { [0] = { require = 0x20, forbid = 0 }, [1] = { require = 0, forbid = 0x20 } }
+-- The other side's navi caught, of its side (0x080D4E6C: the other side's bodies, or a neutral object).
+local CAUGHT: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+-- The other side's panels, of the user's side (0x080D4F10).
+local OTHER_SIDE = "enemy_area"
 
 local function gone(me: Object)
     me.collision:set_region(nil)
@@ -62,7 +62,7 @@ local function tick(me: Object)
         gone(me)
         return
     end
-    if bit32.btest(c.hit_flags, CAUGHT[me.alliance]) then
+    if c:hit_any(CAUGHT) then
         gone(me)
         return
     end
@@ -119,11 +119,12 @@ web.kind = new.kind {
     end,
 }
 
--- `object_getPanelsInRowFiltered` (0x0800A10E): row `y`'s panels meeting the filter, left to right.
-local function row_of(y: number, require: number, forbid: number): { { number } }
+-- `object_getPanelsInRowFiltered` (0x0800A10E): row `y`'s panels meeting the filter (side-relative flags of side
+-- `of`), left to right.
+local function row_of(y: number, require: PanelFlags?, forbid: PanelFlags?, of: number): { { number } }
     local list = {}
     for x = 1, 6 do
-        if field.check(x, y, require, forbid) then
+        if field.check(x, y, require, forbid, of) then
             table.insert(list, { x, y })
         end
     end
@@ -134,8 +135,7 @@ end
 -- with the attack's element and damage word. (Its position is the registers until its init places it.)
 function web.spawner(row: number): (user: Object, element: number, damage: number) -> ()
     return function(user: Object, element: number, damage: number)
-        local f = OTHER_SIDE[user.alliance]
-        local list = row_of(row, f.require, f.forbid)
+        local list = row_of(row, OTHER_SIDE, nil, user.alliance)
         for i = #list, 1, -1 do
             local x, y = list[i][1], list[i][2]
             local o = battle.spawn(web.kind, Vec3.new(y, element, user.pos.z))

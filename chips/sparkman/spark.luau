@@ -32,7 +32,15 @@ local DELAY = 5
 -- It lasts 19 ticks, its region its panel until 7 are left.
 local LASTS, REGION_UNTIL = 19, 7
 -- What a hit on it must have touched to end its region (a body or an object).
-local STOPS = 0x3F80_0000
+local STOPS: { HitName } = {
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 
 local function count(me: Object, by: number)
     local h = (me.state :: State).holder
@@ -105,7 +113,7 @@ local function update(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if bit32.btest(c.hit_flags, STOPS) then
+    if c:hit_any(STOPS) then
         c:set_region(nil)
         hide(me)
     end

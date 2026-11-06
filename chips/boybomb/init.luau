@@ -20,8 +20,8 @@ type ControllerState = {
 }
 
 local WAIT = 30
--- The front panel the bomb takes: solid, with nothing on it, its owner bit as its side's.
-local SOLID, OCCUPIED, SIDE_1 = 0x10, 0x0F88_0080, 0x20
+-- The front panel the bomb takes: solid, its side's own, with nothing on it.
+local TAKES: { PanelFlag } = { "solid", "own_area" }
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -50,7 +50,10 @@ local BOMB = common.make {
     place_sound = asset.sound("place"),
     broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 },
     break_sound = asset.sound("hit-bomb-1"),
-    stand_forbid = { [0] = 0x0B800000, [1] = 0x07800000 },
+    stand_forbid = {
+        [0] = { "own_body", "own_other_body", "enemy_other_body", "neutral" },
+        [1] = { "own_body", "own_other_body", "enemy_other_body", "neutral" },
+    },
     push = "keeps_damage",
     actions = {
         [1] = return_to_idle,
@@ -65,8 +68,13 @@ local BOMB = common.make {
 }
 
 -- 0x0800A244: in each row, walking from `side`'s far column (6 - 5 * `side`) back toward its own edge, `side`'s first
--- panel, kept when it meets (`need`, `forbid`).
-local function front_panels(side: number, need: number, forbid: number): { { x: number, y: number } }
+-- panel, kept when it meets (`need`, `forbid`: side-relative flags of side `of`).
+local function front_panels(
+    side: number,
+    need: PanelFlags?,
+    forbid: PanelFlags?,
+    of: number?
+): { { x: number, y: number } }
     local step = 2 * side - 1
     local found = {}
     for y = 1, 3 do
@@ -77,7 +85,7 @@ local function front_panels(side: number, need: number, forbid: number): { { x: 
                 break
             end
             if p.alliance == side then
-                if field.check(x, y, need, forbid) then
+                if field.check(x, y, need, forbid, of) then
                     table.insert(found, { x = x, y = y })
                 end
                 break
@@ -88,19 +96,13 @@ local function front_panels(side: number, need: number, forbid: number): { { x: 
     return found
 end
 
--- 0x080E956C: one of the user's side's front panels at random, solid and free (0x080E95C0 by its side: the owner bit
--- 0x20 required for side 1's, forbidden for side 0's); without one, any of its front panels; none, nil.
+-- 0x080E956C: one of the user's side's front panels at random, solid and free (0x080E95C0 by its side: its own area;
+-- a side but 1 as side 0); without one, any of its front panels; none, nil.
 local function pick(me: Object): (number?, number?)
     local side = me.alliance
-    local need, forbid = SOLID, OCCUPIED
-    if side == 1 then
-        need = bit32.bor(need, SIDE_1)
-    else
-        forbid = bit32.bor(forbid, SIDE_1)
-    end
-    local found = front_panels(side, need, forbid)
+    local found = front_panels(side, TAKES, "occupied", if side == 1 then 1 else 0)
     if #found == 0 then
-        found = front_panels(side, 0, 0)
+        found = front_panels(side, nil, nil)
         if #found == 0 then
             return nil, nil
         end

@@ -12,8 +12,6 @@ local flame = {}
 
 local SPRITE = asset.sprite("flame-line")
 local SOUND = asset.sound("flame-line")
--- A panel it can stand on: a solid one (0x08009ECC).
-local SOLID = 0x10
 local HIT_MOD = 3
 local RISE_TICKS, SINK_TICKS = 3, 3
 
@@ -79,7 +77,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local a = me.action
@@ -98,7 +96,8 @@ end
 -- 0x080CFFA4: on a solid panel, its sprite (its shadow on the ground) in its first animation requested, on its panel;
 -- an attack hitting navis with the fire spark, on no panel yet; its sound; then its first tick.
 local function init(me: Object)
-    if not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    -- (A panel it can stand on: a solid one, 0x08009ECC.)
+    if not field.solid(me.panel_x, me.panel_y) then
         me:free()
         return
     end

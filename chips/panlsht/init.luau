@@ -21,19 +21,12 @@ type State = {
 local WAIT = 0x1E
 -- The first panel's wait; each next one's 4 more.
 local FIRST_WAIT, STAGGER = 40, 4
--- 0x080E7BE0 by the user's side: its own side's panel (the owner bit 0x20 set for side 1's, clear for side 0's),
--- solid, with nothing on it.
-local SOLID, OCCUPIED, SIDE_1 = 0x10, 0x0F88_0080, 0x20
+-- 0x080E7BE0 by the user's side: its own side's panel, solid, with nothing on it.
+local TAKES: { PanelFlag } = { "solid", "own_area" }
 
--- 0x080E7BC8: (x, y) is the user's side's, solid and free.
+-- 0x080E7BC8: (x, y) is the user's side's, solid and free (a side but 1 as side 0).
 local function takes(me: Object, x: number, y: number): boolean
-    local need, forbid = SOLID, OCCUPIED
-    if me.alliance == 1 then
-        need = bit32.bor(need, SIDE_1)
-    else
-        forbid = bit32.bor(forbid, SIDE_1)
-    end
-    return field.check(x, y, need, forbid)
+    return field.check(x, y, TAKES, "occupied", if me.alliance == 1 then 1 else 0)
 end
 
 -- Tear up (x, y) with the `n`th panel's wait.

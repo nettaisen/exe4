@@ -25,7 +25,7 @@ export type State = {
 }
 
 -- The panels it looks in: those of the other side's navi, by side (0x0800FC38).
-local OTHER_NAVI = { [0] = 0x0020_0000, [1] = 0x0040_0000 }
+local OTHER_NAVI = "enemy_navi"
 -- The scope's mark (effect row 0x52: 10-23), 20 pixels up.
 local MARK = new.effect { sprite = scope_mark_sprite, anim = 0, palette = 0, steps = 18 }
 local MARK_Z = 20 * 0x1_0000
@@ -39,7 +39,7 @@ local HIT_MOD, LAST_HIT_MOD = 1, 3
 -- column and those to the right; side 1's its own column and those to the left), else nearest behind, by column
 -- distance; of those as near as the nearest so far, the later one in the list; nil for none.
 local function find(me: Object): (number?, number?)
-    local list = panels.filtered_except(me, OTHER_NAVI[me.alliance], 0)
+    local list = panels.filtered_except(me, OTHER_NAVI, nil, me.alliance)
     local function pick(ahead: boolean): { number }
         local out: { number } = {}
         for _, p in list do

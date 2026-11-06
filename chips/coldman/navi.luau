@@ -38,9 +38,6 @@ local SOUND_FOUND = asset.sound("place")
 local SOUND_PUNCH = asset.sound("coldman-punch")
 -- A puff 16 pixels above him as he goes (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
-local SOLID = 0x10
--- Bodies and blockers: a panel he stands on behind an obstacle, or forms his cube on, has none.
-local OCCUPIED = 0x0F80_0000
 -- His punch: aqua, 1 damage, hit modifier 0x21 (a push).
 local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = 2, 1, 0x21
 -- The animations: vanishing, appearing, winding up, punching, after a punch on his own panel.
@@ -58,7 +55,8 @@ end
 local function reaches(me: Object, o: Object, dir: number): boolean
     local s = me.state :: State
     local x, y = o.panel_x - dir, o.panel_y
-    if not (x == me.panel_x and y == me.panel_y) and not field.check(x, y, SOLID, OCCUPIED) then
+    -- (A panel he stands on behind an obstacle, or forms his cube on, has no body.)
+    if not (x == me.panel_x and y == me.panel_y) and not field.check(x, y, "solid", "any_body") then
         return false
     end
     s.count += 1
@@ -127,7 +125,7 @@ local function appear(me: Object)
     if left >= 0 then
         return
     end
-    if not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if not field.solid(me.panel_x, me.panel_y) then
         me:set_lifecycle("destroy")
         return
     end
@@ -223,7 +221,7 @@ local function attack(me: Object)
             end
             me.phase_init = 1
             local x, y = me.panel_x + 1 - 2 * me.alliance, me.panel_y
-            if not field.check(x, y, SOLID, OCCUPIED) then
+            if not field.check(x, y, "solid", "any_body") then
                 me:set_lifecycle("destroy")
                 return
             end

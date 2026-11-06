@@ -30,8 +30,6 @@ local SWING_STEPS, NO_STEP_STEPS = 22, 4
 local SWING_TICKS, THROW_AT, RECOVER_TICKS = 0x15, 0x0C, 5
 -- A charged one's boom's hit modifier (its first parameter becomes 1).
 local CHARGED_HIT_MOD = 1
--- The panel the step goes to: on the field (every panel type's flag 0x10000), with no body on it.
-local PANEL_EXISTS, BODIES = 0x10000, 0x0F800000
 
 local function set_step(me: Object, step: number)
     me.step, me.step_init = step, 0
@@ -46,7 +44,8 @@ local function start(me: Object)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
-    if field.check(x, y, PANEL_EXISTS, BODIES) then
+    -- (The panel the step goes to: on the field, a flag every panel type has, with no body on it.)
+    if field.check(x, y, "on_field", "any_body") then
         me.panel_x, me.panel_y = x, y
         me:set_coordinates_from_panel()
         me:update_collision_panels()

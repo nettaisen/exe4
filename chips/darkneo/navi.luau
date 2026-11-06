@@ -51,7 +51,7 @@ local HOLE_SOUND = asset.sound("panel-hole")
 local FLY_SOUND = asset.sound("windrack")
 local BLAST_SOUND = asset.sound("bass-blast")
 
-local NO_FLOOR = 0x8000
+local NO_FLOOR = "missing"
 local RISE, RISING = 0x64, 0x50
 local HOLE_SOUND_EVERY, HOLE_TICKS = 0x20, 0x1E
 local IMAGE_WAIT = 0x8C
@@ -64,8 +64,8 @@ local NEAR_SHADER, FAR_SHADER = 0x1000, 0x2083
 -- Where the blast's effect shows (the field's middle, 36 pixels down it, a pixel up) and its hit's height.
 local BLAST_AT = Vec3.new(0, 0x24_0000, 0x1_0000)
 local BLAST_HEIGHT = 0x10_0000
--- The panel he lands on must hold none of these, by his side (0x080CB640).
-local IN_HIS_WAY = { [0] = 0x0780_0000, [1] = 0x0B80_0000 }
+-- The panel he lands on must hold none of these, of his side (0x080CB640).
+local IN_HIS_WAY: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 
 local RISE_ACTION, CAST, BLAST_ACTION = 0x0, 0x4, 0x8
 local ARM_UP, HOLE, IMAGE, FLY = 0x0, 0x4, 0x8, 0xC
@@ -179,7 +179,7 @@ local function fly(me: Object)
         aura:set_lifecycle("destroy")
     end
     local px, py = panel_at(me.pos.x, me.pos.y, me.alliance)
-    if not field.check(px, py, 0, IN_HIS_WAY[me.alliance]) then
+    if not field.check(px, py, nil, IN_HIS_WAY, me.alliance) then
         me:set_lifecycle("destroy")
         return
     end
@@ -274,7 +274,7 @@ local function init(me: Object)
     me.related1 =
         battle.form_overlay(me, { sprite = SPRITE, stepping = "while_dimmed", anim_offset = CAPE_ANIM_OFFSET })
     local s = me.state :: State
-    s.floorless = bit32.btest(field.flags(me.panel_x, me.panel_y), NO_FLOOR)
+    s.floorless = field.any(me.panel_x, me.panel_y, NO_FLOOR)
     me.timer = RISE
     me:set_lifecycle("update")
     tick(me)

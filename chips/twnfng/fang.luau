@@ -38,7 +38,7 @@ end
 -- 0x080D7AAC: down or up a row (a hit takes it off its panels); there, an attack of its hit modifier on its panel.
 local function turn(me: Object)
     local c = me.collision
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     if me.phase_init == 0 then
@@ -64,7 +64,7 @@ end
 
 -- 0x080D7B08: forward, gone at its first hit or off the screen.
 local function slide(me: Object)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         finish(me)
         return
     end

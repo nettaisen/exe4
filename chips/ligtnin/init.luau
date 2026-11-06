@@ -8,12 +8,12 @@ local lightning = require("../objects/lightning")
 local spawners = require("../lib/spawners")
 local towers = require("../lib/towers")
 
--- An obstacle's body bits (0x080DF9AC).
-local OBSTACLE = 0x03800000
+-- An obstacle on a panel (0x080DF9AC): another body of either side, or a neutral object.
+local OBSTACLE: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
 
 -- 0x080DF964: any panel holding an obstacle: a lightning.
 local function strike(me: Object, x: number, y: number): boolean
-    if not bit32.btest(field.flags(x, y), OBSTACLE) then
+    if not field.any(x, y, OBSTACLE) then
         return false
     end
     lightning.spawn(me, x, y, me.element, towers.damage_word(me))

@@ -19,8 +19,8 @@ local rock_sprite = asset.sprite("rock")
 
 local rock = {}
 
--- What on the panel it appears on breaks it: bodies and blockers.
-local OCCUPIED = 0x0F80_0000
+-- What on the panel it appears on breaks it: any body.
+local OCCUPIED = "any_body"
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)

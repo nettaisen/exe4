@@ -26,9 +26,8 @@ local laserman = require("@self/laserman")
 local navi_chips = require("../lib/navi_chips")
 local videoman = require("@self/videoman")
 
-local SOLID = 0x10
 -- What LaserMan's panel must be free of (0x080EA9CA): a body or an object.
-local IN_THE_WAY = 0x0F80_0000
+local IN_THE_WAY = "any_body"
 
 local VIDEO, LASER, KENDO, BACK = 0x0, 0x4, 0x8, 0xC
 
@@ -63,7 +62,7 @@ local function course(c: Object)
             return
         end
         local x = c.panel_x + c.facing
-        if field.check(x, c.panel_y, SOLID, IN_THE_WAY) then
+        if field.check(x, c.panel_y, "solid", IN_THE_WAY) then
             if laserman.summon(c, x, c.panel_y, common.damage(c)) then
                 common.await(c)
             end

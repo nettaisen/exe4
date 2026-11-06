@@ -18,11 +18,10 @@ panel_changer.TICK_SOUND = asset.sound("panel-change-tick")
 panel_changer.CHANGE_SOUND = asset.sound("panel-change")
 panel_changer.POISON_SOUND = asset.sound("panel-poison")
 
--- The conditions EXE4's rows use: a side's own area (side 0's: not missing, not side 1's; side 1's: side 1's, not
--- missing), the other side's, and any panel that isn't missing.
-panel_changer.OWN_AREA = { [0] = { require = 0x0, forbid = 0x8020 }, [1] = { require = 0x20, forbid = 0x8000 } }
-panel_changer.OTHER_AREA = { [0] = { require = 0x20, forbid = 0x8000 }, [1] = { require = 0x0, forbid = 0x8020 } }
-panel_changer.ANY = { [0] = { require = 0x0, forbid = 0x8000 }, [1] = { require = 0x0, forbid = 0x8000 } }
+-- The conditions EXE4's rows use: a side's own area, the other side's, and any panel, none missing.
+panel_changer.OWN_AREA = { require = "own_area", forbid = "missing" } :: PanelCondition
+panel_changer.OTHER_AREA = { require = "enemy_area", forbid = "missing" } :: PanelCondition
+panel_changer.ANY = { forbid = "missing" } :: PanelCondition
 
 panel_changer.kind = common.make_kind("panel-changer")
 

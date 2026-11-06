@@ -19,9 +19,9 @@ type State = {
 
 local SPRITE = asset.sprite("wood-tower")
 local SOUND = asset.sound("wood-tower")
-local SOLID = 0x10
--- Bodies and blockers on a panel (0x080CDF82).
-local BLOCKED = 0x0384_0000
+-- Bodies and blockers on a panel (0x080CDF82): other bodies, neutral objects, and what reaches the objects set down (a
+-- mine, a hitbox of both sides).
+local BLOCKED: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral", "reaches_set_objects" }
 local WAIT, UP = 0x0, 0x4
 
 -- Enter the phase with a timer, or count down; true once it has run out past 0 (`bge`).
@@ -44,8 +44,7 @@ local function wait(me: Object)
         end
         return
     end
-    local f = field.flags(me.panel_x, me.panel_y)
-    if not bit32.btest(f, SOLID) or bit32.btest(f, BLOCKED) then
+    if not field.check(me.panel_x, me.panel_y, "solid", BLOCKED) then
         me:set_lifecycle("destroy")
     else
         me:set_action(UP)
@@ -89,7 +88,7 @@ end
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     if me.action == WAIT then

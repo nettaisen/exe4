@@ -17,7 +17,6 @@ local shot = {}
 local SOUND = asset.sound("vulcan")
 -- Bass's burst (effect row 0x57: his sheet 08-19, animation 28).
 local BURST = new.effect { sprite = bass_sprite, anim = 28, palette = 0, steps = 12 }
-local SOLID = 0x10
 local WARNING = 10
 
 -- 0x080DB742: its panel highlighted; after its ticks, on a solid panel, the burst, the hit and its sound; then gone.
@@ -28,7 +27,7 @@ local function tick(me: Object)
     if left > 0 then
         return
     end
-    if bit32.btest(field.flags(me.panel_x, me.panel_y), SOLID) then
+    if field.solid(me.panel_x, me.panel_y) then
         battle.effect(me.pos, BURST, me.alliance)
         local box = battle.hitbox(me, {
             panel_x = me.panel_x,

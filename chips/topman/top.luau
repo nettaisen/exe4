@@ -28,15 +28,16 @@ local SOUND_APPEAR = asset.sound("tops")
 local SOUND_SPIN = asset.sound("boomerang")
 -- The puff it goes in over a panel that isn't solid (effect row 0x15).
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
-local SOLID = 0x10
 local WAIT, SPIN = 0x0, 0x4
 -- Its period, and its speeds across and along (0x080D1FA0: 18 ticks a column of 40 pixels, a row of 24, by
 -- `Div`).
 local PERIOD = 18
 local VX = (0x28_0000 + bit32.lshift(PERIOD, 15) + bit32.lshift(PERIOD, 14)) // PERIOD
 local VY = (0x18_0000 + bit32.lshift(PERIOD, 15)) // PERIOD
--- What a hit on it does: a body's (bits 0x03800000) ends it; another's (0x3C000000) ends its region.
-local ENDS, STOPS = 0x0380_0000, 0x3C00_0000
+-- What a hit on it does: another body's or a neutral object's (0x03800000) ends it; an object's or a body's
+-- (0x3C000000) ends its region.
+local ENDS: { HitName } = { "own_other_body", "enemy_other_body", "neutral" }
+local STOPS: { HitName } = { "own_object", "enemy_object", "own_body", "enemy_body" }
 -- Past this X it is off the field's right edge (0x080B6C7C).
 local RIGHT_EDGE = 0x8C_0000
 
@@ -93,7 +94,7 @@ local function spin(me: Object)
     move(me)
     local sign = field.side_sign(me.alliance)
     local past = if sign > 0 then 7 else 0
-    if me.panel_x ~= past and not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if me.panel_x ~= past and not field.solid(me.panel_x, me.panel_y) then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), PUFF)
         gone(me)
@@ -120,11 +121,10 @@ local function tick(me: Object)
     if battle.over() then
         return ends(me)
     end
-    local hit = c.hit_flags
-    if bit32.btest(hit, ENDS) then
+    if c:hit_any(ENDS) then
         return ends(me)
     end
-    if bit32.btest(hit, STOPS) then
+    if c:hit_any(STOPS) then
         if me.action == WAIT then
             return ends(me)
         end
@@ -155,7 +155,7 @@ end
 -- heavy spark), its region the panel; its sound.
 local function init(me: Object, number: number)
     local s = me.state :: State
-    if not field.valid(me.panel_x, me.panel_y) or not field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if not field.valid(me.panel_x, me.panel_y) or not field.solid(me.panel_x, me.panel_y) then
         me:free()
         return
     end

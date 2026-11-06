@@ -13,20 +13,19 @@ local thunder_ball_sprite = asset.sprite("thunder-ball")
 
 local thunder = {}
 
--- The other side's navi on a panel, by the ball's side (0x080D221C).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The other side's navi on a panel, of the ball's side (0x080D221C: the other side's body).
+local ENEMY_BODY = "enemy_body"
 
 -- 0x080D21D4: the first column holding the other side's navi, bottom row up, from the ball's side's back column
 -- toward the other side (side 0's from column 0 to 6, side 1's from 6 to 1); none, (0, 0).
 local function find_target(me: Object): (number, number)
-    local bodies = ENEMY_BODY[me.alliance]
     local first, last, step = 0, 6, 1
     if me.alliance ~= 0 then
         first, last, step = 6, 1, -1
     end
     for x = first, last, step do
         for y = 3, 1, -1 do
-            if bit32.btest(field.flags(x, y), bodies) then
+            if field.any(x, y, ENEMY_BODY, me.alliance) then
                 return x, y
             end
         end

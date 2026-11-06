@@ -26,10 +26,13 @@ return common.make {
     status = statuses.paralyze_150,
     spared = nil,
     lost_target = "skips",
-    -- 0x080CA738's rows (EXE6's words) as 0x080CA70A reads them.
+    -- 0x080CA738's rows (EXE6's words) as 0x080CA70A reads them: side 0's on the field (0x00010000) and side 1's its
+    -- own area too (0x00010020), side 1's not under its own navi (0x00200000); and each not of an odd type (bit 0 of
+    -- the type's number, 0x00000001: of EXE4's types broken, cracked, metal, ice, holy and the hole).
     stand = {
-        [0] = { require = 0x0001_0000, forbid = 0x0000_0001 },
-        [1] = { require = 0x0001_0020, forbid = 0x0020_0001 },
+        [0] = { require = "on_field" },
+        [1] = { require = { "on_field", "own_area" }, forbid = "own_navi" },
     },
+    not_on = { "broken", "cracked", "metal", "ice", "holy", "hole" },
     pixel_nudge = false,
 }
