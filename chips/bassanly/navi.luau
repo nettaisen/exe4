@@ -24,7 +24,7 @@ local BASSANLY = common.make {
     smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
     -- His shots (0x080CB2FA): level 2, the fastest, seeking enemy navis along the slant.
     shoot = function(owner: Object, x: number, y: number, slant: number, damage: number): Object?
-        return shot.spawn(owner, x, y, 0, { slant = slant, homing = "seeking" }, damage, 0)
+        return shot.spawn(owner, x, y, Element.null, { slant = slant, homing = "seeking" }, damage, 0)
     end,
 }
 

@@ -25,7 +25,7 @@ charge.action = spreader.action { id = "aquasoul/charged-shot/action", gun = GUN
 
 -- 0x0800CF42.
 local function setup(navi: Object): Action
-    navi.attack_element = 2
+    navi.attack_element = Element.aqua
     navi.attack_variant = 2
     navi.charged = 0
     navi.attack_lockout = 0

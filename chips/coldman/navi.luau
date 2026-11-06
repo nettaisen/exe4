@@ -39,7 +39,7 @@ local SOUND_PUNCH = asset.sound("coldman-punch")
 -- A puff 16 pixels above him as he goes (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His punch: aqua, 1 damage, hit modifier 0x21 (a push).
-local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = 2, 1, { flinch = true, back = true }
+local AQUA, PUNCH_DAMAGE, PUNCH_HIT_MOD = Element.aqua, 1, { flinch = true, back = true }
 -- The animations: vanishing, appearing, winding up, punching, after a punch on his own panel.
 local ANIM_VANISH, ANIM_APPEAR, ANIM_WIND_UP, ANIM_PUNCH, ANIM_AFTER = 3, 4, 5, 6, 7
 -- He winds up over 9 of his sprite's steps (his wind-up animation's length), and punches as it ends.
@@ -273,7 +273,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 10
@@ -310,7 +310,7 @@ coldman.kind = new.kind {
 -- 0x080CC2C0: ColdMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(coldman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(coldman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

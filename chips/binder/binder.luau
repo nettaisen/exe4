@@ -152,7 +152,7 @@ local function init(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = ANIM_FIRST, 0xFF
     sprite.palette = (me.state :: State).palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_panel_from_coordinates()
     local s = me.state :: State
     s.landings = 0
@@ -186,7 +186,7 @@ function binder.thrower(palette: number): Thrower
         throw = function(user: Object, pos: Vec3, damage: number): Object?
             local o = battle.spawn(binder.kind, pos)
             if o then
-                o.element = bit32.band(pos.y, 0xFF)
+                o.element = Element.from_byte(bit32.band(pos.y, 0xFF))
                 o.alliance = user.alliance
                 o.damage_word = damage
                 local s = o.state :: State

@@ -19,6 +19,7 @@
 -- - **The mood**: none. The offer asks a mood of 0, which no setter changes (0x0800F4DE and the others leave it), and
 --   neither the pick nor the use touches it.
 
+local MOVE_BUG = require("./move_bug")
 local drkcanon = require("../chips/drkcanon").drkcanon
 local drksword = require("../chips/drksword").drksword
 local darkbomb = require("../chips/darkbomb").darkbomb
@@ -182,10 +183,10 @@ local COSTS: { [Chip]: (side: number, stats: Stats) -> () } = {
     end,
     -- +0x0D: the move bug, the keys the navi steps by with none held (0x0800B4D8: effects.steps.bug): right, left.
     [drksword] = function(_side: number, stats: Stats)
-        stats.move_bug = 0x10
+        stats.move_bug = MOVE_BUG.right
     end,
     [darkbomb] = function(_side: number, stats: Stats)
-        stats.move_bug = 0x20
+        stats.move_bug = MOVE_BUG.left
     end,
     -- 0x40: a status on its user (0x080134C4's 0x21: 720 ticks of confusion).
     [drkvulcn] = function(side: number, _stats: Stats)

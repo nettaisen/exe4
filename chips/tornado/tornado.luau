@@ -89,7 +89,7 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     s.step = 1
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -143,8 +143,8 @@ end
 
 -- 0x080D3130: a tornado of `user`'s on (x, y) of `look`, with the attack's element and damage word. (Its position is
 -- the spawner's registers until its init places it: Y, the element and 0.)
-function tornado.spawn(user: Object, x: number, y: number, element: number, damage: number, look: TornadoLook)
-    local o = battle.spawn(kind, Vec3.new(y, element, 0))
+function tornado.spawn(user: Object, x: number, y: number, element: Element, damage: number, look: TornadoLook)
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
     if o then
         o.element = element
         o.panel_x, o.panel_y = x, y

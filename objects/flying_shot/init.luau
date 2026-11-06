@@ -29,7 +29,7 @@ function flying_shot.variant(r: {
     is: CollisionType?,
     hits: CollisionType?,
     hit_mod: HitModifier,
-    element: number,
+    element: Element,
     spark: Spark?,
     sprite: SpriteAsset,
     anim: number?,
@@ -122,7 +122,7 @@ local function init(me: Object)
     me.anim = r.anim
     me.anim_loaded = 0xFF
     me.visible = true
-    look:set_flip(bit32.bxor(me.alliance, me.flip))
+    look:face(me)
     me.element = r.element
     s.range = r.range
     me:set_panel_from_coordinates()

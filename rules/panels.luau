@@ -25,7 +25,6 @@ local BURN = panel_types.burn {
 }
 -- What a player takes in from lava, and in which form: FireSoul (NaviStats +0x24 5, 0x0801313E).
 local LAVA_HEAL = 50
-local FIRE = 1
 local TAKES_LAVA_IN = "firesoul"
 
 -- 0x08013128: a player in FireSoul takes the lava in before anything else is asked (0x080131B8): 50 HP back with the
@@ -36,7 +35,7 @@ local function LAVA_BURN(me: Object, player: boolean)
         local c = me.collision
         local x, y = c.panel_x, c.panel_y
         me:heal(LAVA_HEAL, false)
-        c:add_raw_damage(FIRE, LAVA_HEAL)
+        c:add_raw_damage("fire", LAVA_HEAL)
         field.set_type(x, y, "normal")
         return
     end
@@ -83,8 +82,8 @@ return {
             flags = { "solid", "ice", "on_field" },
             doubles = "elec",
             move_end = panel_types.ice_pushes({
-                { none = {}, up = { up = true }, down = { down = true }, back = { back = true }, forward = { forward = true } },
-                { none = {}, up = { up = true }, down = { down = true }, back = { forward = true }, forward = { back = true } },
+                { none = {}, up = { up = true }, down = { down = true }, left = { back = true }, right = { forward = true } },
+                { none = {}, up = { up = true }, down = { down = true }, left = { forward = true }, right = { back = true } },
             }),
             slide = panel_types.ice,
         },

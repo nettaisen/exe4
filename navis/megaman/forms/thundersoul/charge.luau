@@ -30,7 +30,7 @@ charge.action = rings.action {
 
 -- 0x0800D298.
 local function setup(navi: Object): Action
-    navi.attack_element = 3
+    navi.attack_element = Element.elec
     navi.attack_variant = 3
     navi.charged = 0
     navi.extra = 0

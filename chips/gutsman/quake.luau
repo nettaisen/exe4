@@ -156,7 +156,7 @@ quake.kind = new.kind {
 -- hammer's: 0x080B9AC8). (Its position is the spawner's registers: the row, the element and what the caller left in
 -- r3; it never sets one.)
 function quake.spawn(gutsman: Object, x: number, y: number, cracks_all: boolean): Object?
-    local o = battle.spawn(quake.kind, Vec3.new(y, gutsman.element, 0))
+    local o = battle.spawn(quake.kind, Vec3.new(y, gutsman.element.byte, 0))
     if not o then
         return nil
     end

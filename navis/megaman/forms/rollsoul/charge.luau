@@ -20,7 +20,7 @@ local SHOOT, RECOVER = 0x0, 0x4
 local ARROW = flying_shot.variant {
     is = collision.chip_destruction,
     hit_mod = { flinch = true, flash = true },
-    element = 0,
+    element = Element.null,
     spark = sparks.chip_destruction,
     sprite = roll_arrow_sprite,
     range = 8,
@@ -101,7 +101,7 @@ charge.action = new.action {
 -- 0x0800CF20.
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = 30, counter = 20, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0

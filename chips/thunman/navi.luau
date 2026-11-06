@@ -185,7 +185,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     sprite.palette = s.palette
     sprite.color_shader = 0x7FFF
     me.visible = true
@@ -219,7 +219,7 @@ thunman.kind = new.kind {
 -- is the spawner's registers: his panel, the element and his side, of which his init keeps the height.)
 function thunman.spawn(controller: Object, user: Object, damage: number, palette: number): Object?
     local x, y = controller.panel_x, controller.panel_y
-    local o = battle.spawn(thunman.kind, Vec3.new(x + y * 0x100, controller.element, user.alliance))
+    local o = battle.spawn(thunman.kind, Vec3.new(x + y * 0x100, controller.element.byte, user.alliance))
     if not o then
         return nil
     end

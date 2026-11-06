@@ -16,7 +16,7 @@ local zap_ring = {}
 
 -- The damage by weapon level (0x0800CD28).
 local DAMAGE: { number } = { 30, 40, 50 }
-local ELEC, VARIANT, COUNTER = 3, 3, 10
+local ELEC, VARIANT, COUNTER = Element.elec, 3, 10
 
 local ACTION = rings.action {
     id = "megaman/zap-ring/action",

@@ -109,7 +109,7 @@ function magbolt.action(spec: MagnetSpec): Action
         battle.hitbox(me, {
             panel_x = me.panel_x + me.facing,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = spec.pull(me),
             hit_effect = nil,

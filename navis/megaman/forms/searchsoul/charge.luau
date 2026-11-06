@@ -166,7 +166,7 @@ charge.action = new.action {
 -- 0x0800CDC4.
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = 10, counter = 5, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0

@@ -74,8 +74,8 @@ strike.kind = new.kind {
 
 -- 0x080CFDE4: a strike on (x, y) with the element and damage word, of `owner`'s side. (Its position is the registers
 -- until its init places it.)
-function strike.spawn(owner: Object, x: number, y: number, element: number, damage: number)
-    local o = battle.spawn(strike.kind, Vec3.new(y, element, 0))
+function strike.spawn(owner: Object, x: number, y: number, element: Element, damage: number)
+    local o = battle.spawn(strike.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.element = element
         o.panel_x, o.panel_y = x, y
@@ -88,9 +88,9 @@ end
 -- local side BattleState +0x0D), three entries for a user of side 0 and one for side 1, a strike on each navi whose counter window
 -- is open. (So on side 1's console a side-0 user's entries are side 1's navi, its own and none. A navi always has its
 -- collision, whose absence would end the search.)
-function strike.spawner(user: Object, element: number, damage: number)
+function strike.spawner(user: Object, element: Element, damage: number)
     local count = if user.alliance == 0 then 3 else 1
-    local i = bit32.bxor(bit32.bxor(user.alliance, 1), battle.local_side())
+    local i = bit32.bxor(battle.other_side(user.alliance), battle.local_side())
     for _ = 1, count do
         local o = navi_list.at(i)
         if o and o.collision.counter_timer ~= 0 then

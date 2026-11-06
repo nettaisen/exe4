@@ -179,7 +179,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = PALETTE
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.timer = FADE
     me.timer2 = 0
@@ -211,7 +211,7 @@ function image.spawn(owner: Object, x: number, y: number, damage: number): Objec
     local o = battle.spawn(image.kind, Vec3.new(y, 0, 0))
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true

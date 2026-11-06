@@ -21,7 +21,7 @@ local strike_flash_sprite = asset.sprite("strike-flash")
 local SOUND = asset.sound("lightning")
 -- Its flash on a solid panel (effect row 0x47).
 local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }
-local ELEC = 3
+local ELEC = Element.elec
 
 local MARK, STRIKE = 0x0, 0x4
 -- A hit that ends its region: of an object, a body or another body of either side, or of a neutral object.
@@ -126,7 +126,7 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.band(battle.rng_positive(), 1))
+    sprite:face_side(bit32.band(battle.rng_positive(), 1))
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)

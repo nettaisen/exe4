@@ -63,8 +63,8 @@ local THROWER = new.kind {
 
 -- 0x080E9A36: the spawner: the thrower, of the user's side, with the attack's element and damage word. Its position
 -- is the registers (the user's row, the element, the user's height), which nothing reads; it has no panel.
-local function spawn(user: Object, element: number, damage: number)
-    local o = battle.spawn(THROWER, Vec3.new(user.panel_y, element, user.pos.z))
+local function spawn(user: Object, element: Element, damage: number)
+    local o = battle.spawn(THROWER, Vec3.new(user.panel_y, element.byte, user.pos.z))
     if o then
         o.element = element
         o.damage_word = damage

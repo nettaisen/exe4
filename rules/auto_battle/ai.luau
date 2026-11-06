@@ -89,7 +89,7 @@ local ANSWERED_AT = 50
 -- from its second on (lib/navi_list: the other console's navi, whichever side that is, then none), which the
 -- searches reach only with neither a third object nor the other side's navi: no fight's.
 local function target_at(navi: Object, i: number): Object?
-    local other = bit32.bxor(navi.alliance, 1)
+    local other = battle.other_side(navi.alliance)
     if i == 0 then
         return field.object_slot(other, 3)
     elseif i == 1 then

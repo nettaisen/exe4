@@ -13,7 +13,7 @@ charged_chip.action = flame.action { id = "firesoul/charged-chip/action", count 
 
 -- 0x0800D638.
 local function setup(navi: Object): Action
-    navi.attack_element = 1
+    navi.attack_element = Element.fire
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0

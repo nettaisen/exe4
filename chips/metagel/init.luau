@@ -17,7 +17,7 @@ local puff_sprite = asset.sprite("puff")
 
 -- 0x080D5F0C: anywhere but the other side's back column (column 6 for side 0's gel, 1 for side 1's).
 local function takes(x: number, _y: number, side: number): boolean
-    return x ~= bit32.bxor(side, 1) * 5 + 1
+    return x ~= battle.other_side(side) * 5 + 1
 end
 
 local GEL = common_gel.make {

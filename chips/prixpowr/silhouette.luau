@@ -11,7 +11,7 @@ local function show(maker: Object, x: number, y: number, ticks: number)
     battle.afterimage(maker, Vec3.new(cx, cy, 0), {
         sprite = SPRITE,
         anim = 0,
-        flip = maker.alliance,
+        facing = maker.alliance,
         lifetime = ticks,
         color_shader = 0,
     })

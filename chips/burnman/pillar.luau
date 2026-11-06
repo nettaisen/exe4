@@ -23,7 +23,7 @@ local SOUND_FLAME = asset.sound("roar")
 local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The impact a hit ends it in (effect row 0x0F), 8 pixels up.
 local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 }
-local FIRE = 1
+local FIRE = Element.fire
 -- Its X from its panel's center: the upper one's 8.5 pixels right, the lower one's left (0x080D47A0).
 local SHIFT = 0x8_8000
 
@@ -138,7 +138,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
         me.anim, me.anim_loaded = a, a
         sprite:set_animation(a)
         sprite.palette = s.palette
-        sprite:set_flip(me.alliance)
+        sprite:face_side(me.alliance)
         if not me:create_collision() then
             me:free()
             return
@@ -180,7 +180,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
     -- 0x080D48BC: a pillar of BurnMan's on (x, y), fire, with his damage word, running while dimmed; the lower one
     -- (`lower`); his palette. (Its position is the spawner's registers.)
     local function spawn(burnman: Object, x: number, y: number, palette: number, lower: boolean): Object?
-        local o = battle.spawn(kind, Vec3.new(y, FIRE, 0))
+        local o = battle.spawn(kind, Vec3.new(y, FIRE.byte, 0))
         if not o then
             return nil
         end

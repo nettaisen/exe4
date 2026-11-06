@@ -118,7 +118,7 @@ local function rush(me: Object)
         battle.afterimage(me, me.pos, {
             sprite = SPRITE,
             anim = me.anim,
-            flip = me.alliance,
+            facing = me.alliance,
             lifetime = AFTERIMAGE_TICKS,
             color_shader = AFTERIMAGE_SHADER,
             shadow = "hidden",
@@ -138,7 +138,7 @@ local function rush(me: Object)
             return stop(me)
         end
     end
-    if x == bit32.bxor(me.alliance, 1) * 7 then
+    if x == battle.other_side(me.alliance) * 7 then
         stop(me)
     end
 end
@@ -153,7 +153,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local s = me.state :: State
     s.gone_at, s.gone = 0, false
@@ -198,7 +198,7 @@ kendoman.kind = new.kind {
 -- 0x080CBFAC: KendoMan on (x, y) for `controller`, of its side, with its element and the damage word. (His position
 -- is the spawner's registers: the row, the element and 0.)
 function kendoman.summon(controller: Object, x: number, y: number, damage: number): Object?
-    local o = battle.spawn(kendoman.kind, Vec3.new(y, controller.element, 0))
+    local o = battle.spawn(kendoman.kind, Vec3.new(y, controller.element.byte, 0))
     if not o then
         return nil
     end

@@ -33,7 +33,7 @@ local function trail(me: Object)
     battle.afterimage(me, me.pos, {
         sprite = SPRITE,
         anim = me.anim,
-        flip = me.alliance,
+        facing = me.alliance,
         lifetime = TRAIL_TICKS,
         color_shader = TRAIL_SHADER,
     })
@@ -80,7 +80,7 @@ local function init(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.vel = Vec3.new(me.facing * SPEED, me.vel.y, me.vel.z)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
@@ -120,7 +120,7 @@ function wave.spawn(owner: Object, x: number, y: number, z: number, damage: numb
     local o = battle.spawn(wave.kind, Vec3.new(y, 0, z))
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true

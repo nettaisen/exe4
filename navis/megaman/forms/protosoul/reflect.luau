@@ -39,7 +39,7 @@ reflect.weapon = new.weapon {
     -- The charge table's row 0x6A (0x080180B8): 60 ticks throughout (a B+Left special, which nothing charges).
     charge_ticks = { 60, 60, 60, 60, 60, 60 },
     setup = function(navi: Object): Action
-        navi.attack_element = 0
+        navi.attack_element = Element.null
         navi.attack_variant = 4
         navi.charged = 0
         navi.attack_lockout = 0

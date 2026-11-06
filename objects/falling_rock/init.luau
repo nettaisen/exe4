@@ -17,7 +17,7 @@ local falling_rock = {}
 export type FallingRock = {
     kind: Kind,
     chips: Kind,
-    spawn: (owner: Object, x: number, y: number, element: number, damage: number) -> Object?,
+    spawn: (owner: Object, x: number, y: number, element: Element, damage: number) -> Object?,
 }
 
 -- The rock's sheet (10-0E).
@@ -42,8 +42,8 @@ function falling_rock.make(id: string): FallingRock
 
     -- 0x080D0A40: a rock on (x, y) of `owner`'s side, with `element` and the damage word. (Its position is the
     -- spawner's registers: the row, the element, and what the caller left in r3, which its init overwrites.)
-    local function spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-        local o = battle.spawn(kind, Vec3.new(y, element, 0))
+    local function spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+        local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
         if not o then
             return nil
         end

@@ -95,8 +95,8 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me.element = 0
+    sprite:face(me)
+    me.element = Element.null
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -127,7 +127,7 @@ local kind = new.kind {
 -- alone; it acts while dimmed. (Its position is the spawner's registers, which its init overwrites: the row, the
 -- element and 0.)
 function moon.spawn(controller: Object, damage: number): Object?
-    local o = battle.spawn(kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if o then
         o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
         o.element = controller.element

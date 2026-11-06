@@ -15,7 +15,7 @@ local TICKS = 0x20
 
 -- Tornado's blow (0x080D3130): one tornado (its parameters: the first 1, palette 0; no status; 0x20 ticks).
 local PLAIN = tornado.look { palette = 0, status = nil, ticks = TICKS }
-local function single(me: Object, x: number, y: number, element: number, damage: number)
+local function single(me: Object, x: number, y: number, element: Element, damage: number)
     tornado.spawn(me, x, y, element, damage, PLAIN)
 end
 
@@ -34,7 +34,7 @@ local SPREAD = {
     { { 0, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } },
     { { 0, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 1 } },
 }
-local function spread(me: Object, x: number, y: number, element: number, damage: number)
+local function spread(me: Object, x: number, y: number, element: Element, damage: number)
     local level = math.min(navicust.bug_kinds(me.alliance), 3) + 1
     local look = STATIC[level]
     for _, d in SPREAD[level] do

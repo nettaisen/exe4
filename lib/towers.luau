@@ -31,7 +31,7 @@ local EVERY = 10
 
 -- A chip's controller `id` of its strike: its spawner (0x080DF98C, the spawners' variant 0x0C), the controller with
 -- the attack's element and damage word, of the user's side. (Its position is the registers, which nothing reads.)
-function towers.controller(spec: { id: string, strike: Strike }): (user: Object, element: number, damage: number) -> ()
+function towers.controller(spec: { id: string, strike: Strike }): (user: Object, element: Element, damage: number) -> ()
     local strike = spec.strike
 
     -- 0x080DF83C: when its count runs out, each column on from where it is until one has something rise (or it walks
@@ -86,8 +86,8 @@ function towers.controller(spec: { id: string, strike: Strike }): (user: Object,
         end,
     }
 
-    return function(user: Object, element: number, damage: number)
-        local o = battle.spawn(kind, Vec3.new(user.panel_y, element, user.pos.z))
+    return function(user: Object, element: Element, damage: number)
+        local o = battle.spawn(kind, Vec3.new(user.panel_y, element.byte, user.pos.z))
         if o then
             o.element = element
             o.alliance = user.alliance

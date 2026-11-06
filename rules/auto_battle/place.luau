@@ -296,7 +296,7 @@ local function to_front(navi: Object, s: State)
         end
         return settle(navi, s)
     end
-    local fx, fy = panels.front_line(navi, navi.alliance, 0)
+    local fx, fy = panels.front_line(navi, navi.alliance, false)
     go_or(navi, s, fx, fy, give_up)
 end
 
@@ -464,7 +464,7 @@ end
 -- +0x44): from the other side's place in it, three entries when that side is the console's and one when it isn't. On
 -- the navi's own console that is the other side's navi; on the other console it, then the navi itself, then none.
 local function other_navis(navi: Object): { Object }
-    local at = bit32.bxor(bit32.bxor(navi.alliance, 1), battle.local_side())
+    local at = bit32.bxor(battle.other_side(navi.alliance), battle.local_side())
     local out = {}
     for i = at, if at == 0 then 2 else at do
         local o = navi_list.at(i)
@@ -477,7 +477,7 @@ end
 
 -- 0x0802385C: of those navis of element `element` (any: nil), the panels three before each (toward the navi's side)
 -- that the navi may step onto: one at random.
-local function before_enemies(navi: Object, element: number?): (number?, number?)
+local function before_enemies(navi: Object, element: Element?): (number?, number?)
     local back = -panels.enemy_direction(navi) * 3
     local require, forbid, of = panels.step_condition(navi)
     local found = {}
@@ -493,7 +493,7 @@ local function before_enemies(navi: Object, element: number?): (number?, number?
 end
 
 -- The fire element's number (0x080237A2).
-local FIRE = 1
+local FIRE = Element.fire
 
 -- 0x08023790 (`lava_ahead`, class 12): a panel it may step onto whose panel three ahead is lava (0x080237DA); else
 -- three before a fire enemy, else before any; else not ready and a step anywhere.
@@ -622,7 +622,7 @@ end
 -- first two rows of the step conditions, whatever its shoes: its own area's, solid, free).
 local FRONT_FREE: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
 local function front_free(navi: Object): boolean
-    return #panels.area_fronts(navi.alliance, 0, FRONT_FREE.require, FRONT_FREE.forbid, side_of(navi.alliance)) ~= 0
+    return #panels.area_fronts(navi.alliance, false, FRONT_FREE.require, FRONT_FREE.forbid, side_of(navi.alliance)) ~= 0
 end
 
 -- 0x08023C48 (`when_hole_in_area`, class 18): a panel of the navi's area no body stands on.
@@ -794,7 +794,7 @@ end
 local OTHERS_PANEL = "enemy_area"
 local function into_open_row(navi: Object, s: State)
     local x, y = step_in_rows(navi, function(y: number): boolean
-        local fx = first_in_row(bit32.bxor(navi.alliance, 1), y, OTHERS_PANEL, nil, side_of(navi.alliance))
+        local fx = first_in_row(battle.other_side(navi.alliance), y, OTHERS_PANEL, nil, side_of(navi.alliance))
         return fx ~= nil and field.check(fx, y, STANDABLE, ANY_BODY)
     end)
     go_or(navi, s, x, y, settle)
@@ -908,7 +908,7 @@ local function to_front_before_solid(navi: Object, s: State)
     local dir = panels.enemy_direction(navi)
     local require, forbid, of = panels.step_condition(navi)
     local found = {}
-    for _, p in panels.area_fronts(navi.alliance, 0, require, forbid, of) do
+    for _, p in panels.area_fronts(navi.alliance, false, require, forbid, of) do
         local x, y = unpacked(p)
         if field.solid(x + dir, y) then
             table.insert(found, p)

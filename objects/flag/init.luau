@@ -14,6 +14,8 @@ local DAMAGE = asset.sound("damage")
 -- Its breaking (0x080E078A: 0x6F).
 local BROKEN = asset.sound("hit-bomb-0")
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
+-- The damage slots it takes (null to wood: not the drain's).
+local ELEMENTS: { ElementName } = { "null", "fire", "aqua", "elec", "wood" }
 
 -- 0x080E07CE (its argument 0): this tick's damage (a burning panel's first), halved rounding up on a holy panel, off
 -- its HP: -1 when that leaves none (its HP 0), else 0, its sprite white while hit, with its hit's sound.
@@ -21,7 +23,7 @@ local function take_damage(me: Object): number
     me:burn_on_panel()
     local c = me.collision
     local total = 0
-    for e = 0, 4 do
+    for _, e in ELEMENTS do
         total += c:element_damage(e)
     end
     local p = field.panel(me.panel_x, me.panel_y)
@@ -72,9 +74,9 @@ local function init(me: Object)
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
     me.visible = true
-    me.element = 0
+    me.element = Element.null
     -- (`sprite_setFlip(object_getFlip())`: EXE4's flip, 0x0800ACA6, is the object's side: side 1's flag points left.)
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     battle.show_hp(me, {})
     if not me:create_collision() then
         me:free()

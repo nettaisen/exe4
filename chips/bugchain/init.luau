@@ -18,6 +18,7 @@
 -- of type under 0x46, not a netbattle's, the effect ends at once: 0x080E6630.) Its record is written by
 -- tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
 
+local MOVE_BUG = require("../rules/move_bug")
 local dimming_chips = require("@exelib/dimming")
 -- The taunt (weapon routine 0x21).
 local TAUNT: Weapon = require("../navis/megaman/weapons/taunt").weapon
@@ -69,7 +70,7 @@ local MARK = new.kind {
             sprite:set_animation(0)
             sprite:step()
             me.alliance = navi.alliance
-            sprite:set_flip(me.alliance)
+            sprite:face_side(me.alliance)
             me:set_lifecycle("update")
             mark_tick(me)
         elseif l == "update" then
@@ -106,7 +107,7 @@ end
 local function spread(from: number, to: number)
     local a, b = battle.navi(from), battle.navi(to)
     local move = a.move_bug
-    if move ~= 0 and move ~= 0xFF then
+    if move ~= MOVE_BUG.none and move ~= MOVE_BUG.confused then
         b.move_bug = move
     end
     b.hp_drain = drain(a.hp_drain, b.hp_drain)
@@ -147,7 +148,7 @@ local function effect(me: Object)
     if left >= 0 then
         return
     end
-    spread(me.alliance, bit32.bxor(me.alliance, 1))
+    spread(me.alliance, battle.other_side(me.alliance))
     dimming_chips.done(me)
 end
 

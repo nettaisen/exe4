@@ -32,7 +32,7 @@ local function tick(me: Object)
         local box = battle.hitbox(me, {
             panel_x = me.panel_x,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = regions.single,
             hit_effect = sparks.plain,
@@ -80,7 +80,7 @@ function shot.spawn(bass: Object, x: number, y: number, damage: number): Object?
         return nil
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o.damage_word = damage
     o.alliance = bass.alliance
     o.run_while_dimmed = true

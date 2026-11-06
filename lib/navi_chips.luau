@@ -77,7 +77,7 @@ local function warp_init(me: Object)
         me.visible = true
         me.pos = navi.pos
         sprite.palette = navi.sprite.palette
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         me.anim = if (me.state :: WarpState).out then 4 else 3
         me.anim_loaded = 0xFF
     end
@@ -138,7 +138,7 @@ function navi_chips.anti_recovery(
 ): (user: Object, spec: DimmingChipSpec) -> Object?
     return function(user: Object, spec: DimmingChipSpec): Object?
         if not battle.dimmed() then
-            local trap = battle.linked(bit32.bxor(user.alliance, 1)).chip
+            local trap = battle.linked(battle.other_side(user.alliance)).chip
             if trap and trap.trap == "anti_recovery" then
                 -- (Half the whole word, three times: its counter byte halves and triples too.)
                 local damage = int.u32(bit32.rshift(spec.damage, 1) * 3)

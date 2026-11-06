@@ -98,7 +98,7 @@ local function arrive(me: Object)
         me.anim, me.anim_loaded = 0, 0
         sprite:set_animation(0)
         sprite.palette = 0
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         me.panel_x, me.panel_y = me.alliance * 7, 2
         me:set_coordinates_from_panel()
         battle.play_sound(SOUND_ARRIVE)
@@ -142,7 +142,7 @@ local function punch(me: Object)
     if x ~= 0 then
         -- 0x080CB9B0: with his damage word.
         local fist = if bit32.btest(n, 1) then fists.odd else fists.even
-        fist.spawn(me, x, panels.y(target), 0, HEIGHT, me.damage_word)
+        fist.spawn(me, x, panels.y(target), Element.null, HEIGHT, me.damage_word)
     end
     me.timer2 = int.u16(n - 1)
     if n - 1 < 0 then
@@ -228,7 +228,7 @@ navi.kind = new.kind {
 -- 0x080CB96E: Duo for `controller`, of its side, with the damage word. (His panel is the controller's until he
 -- appears; his position the spawner's registers: the row, the element and 0.)
 function navi.summon(controller: Object, damage: number): Object?
-    local o = battle.spawn(navi.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(navi.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

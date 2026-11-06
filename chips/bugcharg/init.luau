@@ -26,7 +26,7 @@ local CHARGER_ANIM = 1
 -- (animation 0, drawn with its sprite), eight panel centers at 10 pixels a tick.
 local SHOT = flying_shot.variant {
     hit_mod = { flinch = true, flash = true },
-    element = 0,
+    element = Element.null,
     spark = sparks.heavy,
     sprite = CHARGER_SPRITE,
     range = 8,

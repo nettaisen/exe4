@@ -40,7 +40,7 @@ function gust.spawn(
     holder: Object?,
     slot: number
 ): Object?
-    local o = common.spawn(gust.kind, x, y, alliance, 0, how, damage, nil, 0)
+    local o = common.spawn(gust.kind, x, y, alliance, false, how, damage, nil, 0)
     if not o or not holder then
         return o
     end

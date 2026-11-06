@@ -50,7 +50,7 @@ local function swing(me: Object, s: State)
         local hit = battle.hitbox(me, {
             panel_x = me.panel_x + me.facing,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = HEIGHT,
             region = regions.wide,
             hit_effect = nil,

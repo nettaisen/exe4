@@ -100,7 +100,7 @@ local function strike(me: Object, region: Region, effect: Effect)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, EFFECT_Z), effect, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, EFFECT_Z), effect, me.facing_side)
 end
 
 -- 0x080C8B5A and 0x080C8BD8: a slash (the sword drawn for the first, its animation restarted for the second).
@@ -203,7 +203,7 @@ local function init(me: Object)
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = PALETTE
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     me:set_lifecycle("update")

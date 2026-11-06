@@ -34,7 +34,7 @@ local APPEAR, RED, GREEN = 3, 0x1A4, 50
 
 -- The other side.
 local function other_side(me: Object): number
-    return bit32.bxor(me.alliance, 1)
+    return battle.other_side(me.alliance)
 end
 
 -- 0x080DD71A: the other side's chips on again (0x080DD73C, which an encasing's start calls too: the kind's
@@ -154,7 +154,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y

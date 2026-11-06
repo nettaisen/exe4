@@ -68,7 +68,7 @@ local function afterimage(me: Object, ticks: number)
     battle.afterimage(me, me.pos, {
         sprite = SPRITE,
         anim = me.anim,
-        flip = me.alliance,
+        facing = me.alliance,
         lifetime = ticks,
         color_shader = AFTERIMAGE_SHADER,
         shadow = "hidden",
@@ -158,7 +158,7 @@ local function dash(me: Object)
         local box = battle.hitbox(me, {
             panel_x = me.panel_x + me.facing,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = 0x10_0000,
             region = regions.single,
             hit_effect = sparks.plain,
@@ -211,7 +211,7 @@ local function cut_back(me: Object)
         me:set_coordinates_from_panel()
         me.visible = true
         me.anim = 0
-        me.sprite:set_flip(bit32.bxor(me.alliance, 1))
+        me.sprite:face_side(battle.other_side(me.alliance))
         me.timer = 8
         me.phase_init = 2
     end
@@ -226,7 +226,7 @@ local function cut_back(me: Object)
         local box = battle.hitbox(me, {
             panel_x = x,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = regions.wide,
             hit_effect = nil,
@@ -239,7 +239,7 @@ local function cut_back(me: Object)
             box.run_while_dimmed = true
         end
         local cx, cy = field.center(x, me.panel_y)
-        battle.effect(Vec3.new(cx, cy, 0x10_0000), CUT, bit32.bxor(me.alliance, 1), 2)
+        battle.effect(Vec3.new(cx, cy, 0x10_0000), CUT, battle.other_side(me.alliance), 2)
         me.anim = 7
         me:set_coordinates_from_panel()
         me.timer = 10
@@ -285,7 +285,7 @@ local function rush(me: Object)
         if hit then
             hit.run_while_dimmed = true
         end
-        me.vel = Vec3.new(panels.side_direction(bit32.bxor(me.alliance, 1)) * RUSH_SPEED, me.vel.y, me.vel.z)
+        me.vel = Vec3.new(panels.side_direction(battle.other_side(me.alliance)) * RUSH_SPEED, me.vel.y, me.vel.z)
         me.timer = 3
         me.phase_init = 2
     end
@@ -293,7 +293,7 @@ local function rush(me: Object)
     if bit32.band(me.timer, 3) == 0 then
         -- (Its side turned while it is made: its alliance and flip.)
         local side = me.alliance
-        me.alliance = bit32.bxor(side, 1)
+        me.alliance = battle.other_side(side)
         afterimage(me, 12)
         me.alliance = side
     end
@@ -333,9 +333,9 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
-    me.element = 0
+    me.element = Element.null
     battle.play_sound(SOUND_APPEAR)
     me.timer = 30
     me:set_lifecycle("update")
@@ -372,7 +372,7 @@ kendoman.kind = new.kind {
 -- 0x080C89C0: KendoMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(kendoman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(kendoman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

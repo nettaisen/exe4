@@ -157,7 +157,7 @@ bug_shots.bubble_action = new.action {
 
 -- 0x0800CE7C.
 local function rock_cube_setup(navi: Object): Action
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_word = damage_word.of { amount = 200, counter = 50, cant_counter = true }
@@ -167,7 +167,7 @@ end
 
 -- 0x0800CFD0.
 local function bubble_setup(navi: Object): Action
-    navi.attack_element = 2
+    navi.attack_element = Element.aqua
     navi.charged = 0
     navi.extra = 0
     navi.attack_word = damage_word.of { amount = 100, counter = 0 }

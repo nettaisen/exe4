@@ -50,7 +50,7 @@ export type FlyingShotVariant = {
     hits: CollisionType,
     hit_mod: HitModifier,
     -- Its element byte.
-    element: number,
+    element: Element,
     -- Its hit spark (0xFF: none).
     spark: Spark?,
     sprite: SpriteAsset,

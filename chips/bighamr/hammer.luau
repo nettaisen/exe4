@@ -34,7 +34,7 @@ export type Hammer = {
     kind: Kind,
     -- 0x080D6BCC: on panel (`x`, `y`), on `owner`'s side (not its facing), of `element` and the damage word: one of
     -- the side's field objects; it runs while the battle is dimmed.
-    spawn: (owner: Object, x: number, y: number, element: number, damage: number) -> Object?,
+    spawn: (owner: Object, x: number, y: number, element: Element, damage: number) -> Object?,
 }
 
 local SPRITE = asset.sprite("big-hammer")
@@ -247,7 +247,7 @@ function hammer.make(look: Look): Hammer
         me.anim, me.anim_loaded = look.stand_anim, 0xFF
         sprite:set_animation(look.stand_anim)
         sprite:step()
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         sprite.palette = look.palette
         me.hp, me.max_hp = HP, HP
         me:set_coordinates_from_panel()
@@ -284,7 +284,7 @@ function hammer.make(look: Look): Hammer
         end,
     }
 
-    local function spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
+    local function spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
         local o = battle.spawn(kind, Vec3.zero)
         if not o then
             return nil

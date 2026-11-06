@@ -115,7 +115,7 @@ buster.shot = buster.shot_action("megaman/buster/shot", SHOT)
 -- 0x0800CC2E.
 function buster.setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).attack + 1, counter = 0 }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

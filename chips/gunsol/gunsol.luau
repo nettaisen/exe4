@@ -50,7 +50,7 @@ local WIND_UP_TICKS, RECOVER_TICKS = 6, 10
 -- The beam, 80 pixels ahead of the navi.
 local BEAM_AHEAD = 0x50
 -- The hits: element 5, two panels ahead, 2 damage (4 in the sun).
-local ELEMENT, AHEAD = 5, 2
+local ELEMENT, AHEAD = Element.drain, 2
 local DAMAGE, SUN_DAMAGE = 2, 4
 -- What the light fills, and what it leaves.
 local HOLE: PanelType, NORMAL: PanelType = "hole", "normal"

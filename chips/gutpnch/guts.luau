@@ -73,7 +73,7 @@ local function punch(me: Object)
         local box = battle.hitbox(me, {
             panel_x = me.panel_x + panels.side_direction(me.alliance),
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = HIT_Z,
             region = regions.single,
             hit_effect = sparks.heavy,
@@ -168,7 +168,7 @@ local function init(me: Object)
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = PALETTE
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     me:set_lifecycle("update")

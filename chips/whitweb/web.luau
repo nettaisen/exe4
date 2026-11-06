@@ -86,7 +86,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me.hp, me.max_hp = 1, 1
     if not me:create_collision() then
         me:free()
@@ -133,12 +133,12 @@ end
 
 -- 0x080D4EC4, the spawners' variants 8 to 10: a web on each of the other side's panels of row `row`, the last first,
 -- with the attack's element and damage word. (Its position is the registers until its init places it.)
-function web.spawner(row: number): (user: Object, element: number, damage: number) -> ()
-    return function(user: Object, element: number, damage: number)
+function web.spawner(row: number): (user: Object, element: Element, damage: number) -> ()
+    return function(user: Object, element: Element, damage: number)
         local list = row_of(row, OTHER_SIDE, nil, user.alliance)
         for i = #list, 1, -1 do
             local x, y = list[i][1], list[i][2]
-            local o = battle.spawn(web.kind, Vec3.new(y, element, user.pos.z))
+            local o = battle.spawn(web.kind, Vec3.new(y, element.byte, user.pos.z))
             if o then
                 o.panel_x, o.panel_y = x, y
                 o.element = element

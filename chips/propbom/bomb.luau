@@ -151,7 +151,7 @@ local function init(me: Object)
     me.hp, me.max_hp = HP, HP
     me:set_coordinates_from_panel()
     me.vel = Vec3.new(me.facing * (me.state :: State).speed * 0x1000, me.vel.y, me.vel.z)
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     if not me:create_collision() then
         me:free()
         return
@@ -189,8 +189,8 @@ local kind = new.kind {
 -- 0x080DED30: a propeller bomb of `user`'s on (x, y) at height `z`, of the attack's element and damage word, flying at
 -- `speed`; running while dimmed; its user's; one of its side's field objects (class 1). (Its position is the
 -- spawner's registers until its init places it: Y, the element and the height.)
-function bomb.spawn(user: Object, x: number, y: number, z: number, element: number, damage: number, speed: number)
-    local o = battle.spawn(kind, Vec3.new(y, element, z))
+function bomb.spawn(user: Object, x: number, y: number, z: number, element: Element, damage: number, speed: number)
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

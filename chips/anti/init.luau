@@ -21,7 +21,7 @@ local antifire: Chip = {
     counter = 0,
     lockout = 0,
     flags = { "dimming", "has_damage", "standard_library", "library" },
-    dimming = anti_trap.hook(1),
+    dimming = anti_trap.hook("fire"),
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
@@ -36,7 +36,7 @@ local antiwatr: Chip = {
     counter = 0,
     lockout = 0,
     flags = { "dimming", "has_damage", "standard_library", "library" },
-    dimming = anti_trap.hook(2),
+    dimming = anti_trap.hook("aqua"),
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
@@ -51,7 +51,7 @@ local antielec: Chip = {
     counter = 0,
     lockout = 0,
     flags = { "dimming", "has_damage", "standard_library", "library" },
-    dimming = anti_trap.hook(3),
+    dimming = anti_trap.hook("elec"),
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
@@ -66,7 +66,7 @@ local antiwood: Chip = {
     counter = 0,
     lockout = 0,
     flags = { "dimming", "has_damage", "standard_library", "library" },
-    dimming = anti_trap.hook(4),
+    dimming = anti_trap.hook("wood"),
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 

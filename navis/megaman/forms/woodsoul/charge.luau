@@ -17,14 +17,14 @@ local LOOK = tornado.look { palette = 1, status = nil, ticks = 0x20 }
 charge.action = fan.action(
     "woodsoul/charged-shot/action",
     FAN,
-    function(me: Object, x: number, y: number, element: number, damage: number)
+    function(me: Object, x: number, y: number, element: Element, damage: number)
         tornado.spawn(me, x, y, element, damage, LOOK)
     end
 )
 
 -- 0x0800D270.
 local function setup(navi: Object): Action
-    navi.attack_element = 4
+    navi.attack_element = Element.wood
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0
