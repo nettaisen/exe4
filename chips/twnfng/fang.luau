@@ -19,7 +19,7 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4
 -- Its speeds, 16.16: across, and up or down.
 local ACROSS, ALONG = 0xA_0000, 0x4_0000
 local ROW_TICKS = 6
-local ROW_HIT_MOD, HIT_MOD, WEAK_HIT_MOD = 1, 3, 1
+local ROW_HIT_MOD, HIT_MOD, WEAK_HIT_MOD = { flinch = true }, { flinch = true, flash = true }, { flinch = true }
 
 local TURN, SLIDE = 0x0, 0x4
 
@@ -163,7 +163,7 @@ function fang.spawn(user: Object, x: number, y: number, element: number, damage:
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.alliance = user.alliance
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
 end
 

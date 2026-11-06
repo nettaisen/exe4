@@ -58,7 +58,7 @@ function flmline.action(id: string, flames: Flames): Action
                 burner.anim += 1
             end
             me.anim = FIRE_ANIM
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             flames(me, me.panel_x + 2 * me.facing, me.panel_y, me.attack_element, damage)
         end
         local t = s.timer - 1

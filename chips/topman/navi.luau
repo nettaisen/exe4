@@ -119,9 +119,8 @@ local function hit(me: Object)
         hit_effect = sparks.breaking,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -217,7 +216,7 @@ function topman.spawn(controller: Object, user: Object, damage: number, palette:
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

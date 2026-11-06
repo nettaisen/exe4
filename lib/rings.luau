@@ -47,7 +47,7 @@ function rings.action(spec: Spec): Action
             if spec.held and arm then
                 arm.anim = 1
             end
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             ring.spawn(me, spec.ring, me.panel_x + me.facing, me.panel_y, HEIGHT, me.attack_element, damage)
         end
         local t = s.timer - 1

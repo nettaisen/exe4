@@ -54,7 +54,7 @@ local function shine(me: Object)
     elseif phase == 4 then
         if me.phase_init == 0 then
             me.anim = 1
-            ray.spawn(me, me.panel_x, me.panel_y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            ray.spawn(me, me.panel_x, me.panel_y, me.element, me.damage_word)
             me.timer = 90
             me.phase_init = 4
         end
@@ -131,7 +131,7 @@ function moon.spawn(controller: Object, damage: number): Object?
     if o then
         o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
         o.element = controller.element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = controller.alliance
         ;(o.state :: State).controller = controller
         o.run_while_dimmed = true

@@ -19,7 +19,7 @@ local custswrd: Chip = {
     action = swords.slash {
         id = "custswrd/action",
         blade = swords.blade,
-        hit = { region = regions.wide_long, collision = HIT, hit_mod = 3 },
+        hit = { region = regions.wide_long, collision = HIT, hit_mod = { flinch = true, flash = true } },
         effect = SLASH,
         sound = swords.swing,
     },
@@ -29,7 +29,7 @@ local custswrd: Chip = {
     class = "standard",
     rarity = 2,
     mb = 20,
-    hit_param = 40,
+    counter = 40,
     lockout = 0,
     flags = { "has_damage", "standard_library", "damage_shown_variable", "library", "variable_damage" },
     auto_battle = { class = "gauge_into_reach" },

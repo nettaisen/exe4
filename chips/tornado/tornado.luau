@@ -17,7 +17,7 @@ local SOUND = asset.sound("tornado")
 local PITFALL: PanelType, NORMAL: PanelType = "pitfall", "normal"
 local PITFALL_PALETTE = 2
 local REARM = 4
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 
 -- A tornado's look and rhythm: its palette, the status its hits give (none: none) and its ticks.
 export type TornadoLook = { palette: number, status: Status?, ticks: number }
@@ -150,7 +150,7 @@ function tornado.spawn(user: Object, x: number, y: number, element: number, dama
         o.panel_x, o.panel_y = x, y
         o.timer = look.ticks;
         (o.state :: State).look = look
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = user.alliance
     end
 end

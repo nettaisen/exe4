@@ -13,7 +13,7 @@ local SPRITE = asset.sprite("flag")
 local DAMAGE = asset.sound("damage")
 -- Its breaking (0x080E078A: 0x6F).
 local BROKEN = asset.sound("hit-bomb-0")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- 0x080E07CE (its argument 0): this tick's damage (a burning panel's first), halved rounding up on a holy panel, off
 -- its HP: -1 when that leaves none (its HP 0), else 0, its sprite white while hit, with its hit's sound.

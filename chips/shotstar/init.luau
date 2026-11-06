@@ -13,7 +13,7 @@ local falling_meteor = require("@exelib/meteors/falling_meteor")
 local meteors = require("./meteors/meteors")
 
 -- Row 1 of 0x080D8580 (hit modifier 3: 0x080D863E).
-local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
+local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, shake = 1, panel = "none" }
 
 local DIMMING = controller.make {
     id = "shotstar/controller",
@@ -30,7 +30,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 73,
     damage = 40,
-    hit_param = 138,
+    counter = 10,
+    cant_counter = true,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     dimming = DIMMING,

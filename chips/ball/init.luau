@@ -39,7 +39,7 @@ local ball: Chip = {
     rarity = 2,
     mb = 30,
     damage = 140,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "into_reach", range = "three_ahead" },

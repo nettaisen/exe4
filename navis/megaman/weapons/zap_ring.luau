@@ -27,7 +27,7 @@ local ACTION = rings.action {
         speed = 10,
         status = statuses.paralyze_90,
         sound = asset.sound("zap-ring"),
-        hit_mod = 0,
+        hit_mod = {},
         sand = nil,
     },
 }
@@ -45,7 +45,7 @@ local function setup(navi: Object): Action
     if damage == nil then
         error(string.format("the zap ring's damage reads past 0x0800CD28 at weapon level %d", level))
     end
-    navi.attack_damage = damage
+    navi.attack_word = damage_word.with_damage(navi.attack_word, damage)
     return ACTION
 end
 

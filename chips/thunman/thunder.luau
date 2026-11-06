@@ -135,7 +135,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     me:update_collision_panels()
     me.collision:set_hit_effect(sparks.elec)
     ;(me.state :: State).struck = false
@@ -169,7 +169,7 @@ thunder.kind = new.kind {
 function thunder.spawn(owner: Object, x: number, y: number, damage: number, breaks: boolean): Object?
     local o = battle.spawn(thunder.kind, Vec3.zero)
     if o then
-        o:set_damage_word(damage)
+        o.damage_word = damage
         ;(o.state :: State).breaks = breaks
         o.alliance = owner.alliance
         o.panel_x, o.panel_y = x, y

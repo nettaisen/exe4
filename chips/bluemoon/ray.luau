@@ -16,7 +16,7 @@ local SOUND = asset.sound("blue-moon-ray")
 -- Its hits: one panel three columns ahead (the region word 0x1705FF01: no spark, a thrown piercing break hitting
 -- navis); the damage's hit modifier 3, the strips' 1.
 local AHEAD = 3
-local HIT_MOD, STRIP_HIT_MOD = 3, 1
+local HIT_MOD, STRIP_HIT_MOD = { flinch = true, flash = true }, { flinch = true }
 -- The strips' element (their spawner's register 5).
 local STRIP_ELEMENT = 5
 -- The strips, one a tick (0x080DE284: each word's bug code and its argument).
@@ -35,7 +35,7 @@ local STRIPS = {
 local LASTS = 90
 
 -- A hit on the panel three columns ahead that resolves while dimmed (`sub_80C53A6`, 0x080CD81E).
-local function hit(me: Object, element: number, damage: number, hit_mod: number, bug: number?, arg: number?)
+local function hit(me: Object, element: number, damage: number, hit_mod: HitModifier, bug: number?, arg: number?)
     local box = battle.hitbox(me, {
         panel_x = me.panel_x + me.facing * AHEAD,
         panel_y = me.panel_y,
@@ -44,8 +44,7 @@ local function hit(me: Object, element: number, damage: number, hit_mod: number,
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.thrown_piercing_break,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
+        damage = damage,
         hit_mod = hit_mod,
         bug = bug,
         bug_arg = arg,
@@ -73,7 +72,7 @@ local function shine(me: Object)
     if me.phase_init == 0 then
         me.timer = LASTS
         me.timer2 = 0
-        hit(me, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), HIT_MOD, nil, nil)
+        hit(me, me.element, me.damage_word, HIT_MOD, nil, nil)
         me.phase_init = 4
     end
     local n = me.timer2
@@ -144,7 +143,7 @@ function ray.spawn(owner: Object, x: number, y: number, element: number, damage:
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true
     end

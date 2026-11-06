@@ -18,7 +18,7 @@ local COOLDOWN = 40
 local REFLECTED = projectile.variant {
     id = "protosoul/reflect/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
 }
@@ -44,8 +44,7 @@ reflect.weapon = new.weapon {
         navi.charged = 0
         navi.attack_lockout = 0
         navi.extra = 0
-        navi.hit_param = 0
-        navi.attack_damage = 50
+        navi.attack_word = damage_word.of { amount = 50, counter = 0 }
         navi.back_special_cooldown = COOLDOWN
         return reflect.action
     end,

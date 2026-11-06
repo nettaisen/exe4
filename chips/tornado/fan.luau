@@ -35,7 +35,7 @@ function fan.action(id: string, look: AttachmentLook, blow: FanBlow): Action
             s.timer = HOLD_TICKS
         end
         if s.timer == BLOW_AT then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             blow(me, me.panel_x + AHEAD * me.facing, me.panel_y, me.attack_element, damage)
             local f = me.related1
             if f then

@@ -24,7 +24,7 @@ local function effect(me: Object)
         -- (Its own area: side 1's for a side 1, else side 0's.)
         local x = panels.closest_in_row(other, me.panel_y, GEAR_PANEL, "any_body", if other == 1 then 1 else 0)
         if x ~= 0 then
-            local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+            local damage = me.damage_word
             gear.spawn(x, me.panel_y, me.element, me.alliance, MODE, damage)
             battle.play_sound(SOUND)
         end
@@ -60,7 +60,8 @@ local metlger1: Chip = {
     rarity = 1,
     mb = 20,
     damage = 100,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     dimming = hook,
@@ -76,7 +77,8 @@ local metlger2: Chip = {
     rarity = 2,
     mb = 28,
     damage = 130,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     dimming = hook,
@@ -92,7 +94,8 @@ local metlger3: Chip = {
     rarity = 3,
     mb = 36,
     damage = 160,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     dimming = hook,

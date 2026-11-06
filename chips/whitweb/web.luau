@@ -21,7 +21,7 @@ local impact_sprite = asset.sprite("impact")
 local SOUND = asset.sound("web")
 local GONE_SOUND = asset.sound("hit-bomb-1")
 local IMPACT = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 }
-local TICKS, HIT_MOD = 120, 1
+local TICKS, HIT_MOD = 120, { flinch = true }
 -- Its first animation (0) plays over 10 of its sprite's steps; then animation 1 loops.
 local FIRST_ANIM_STEPS = 10
 -- The other side's navi caught, of its side (0x080D4E6C: the other side's bodies, or a neutral object).
@@ -142,7 +142,7 @@ function web.spawner(row: number): (user: Object, element: number, damage: numbe
             if o then
                 o.panel_x, o.panel_y = x, y
                 o.element = element
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.alliance = user.alliance
                 o.run_while_dimmed = true
             end

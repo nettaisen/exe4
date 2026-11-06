@@ -34,6 +34,6 @@ dice.made = require("@exelib/numbrman/dice").make {
 }
 
 -- What the die states of itself, whoever throws it.
-dice.own = { hp = 40, status = nil :: Status?, hit_mod = 3 }
+dice.own = { hp = 40, status = nil :: Status?, hit_mod = { flinch = true, flash = true } }
 
 return dice

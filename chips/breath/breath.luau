@@ -31,7 +31,7 @@ type BreathLook = {
     id: string,
     spark: Spark,
     element: number,
-    hit_mod: number,
+    hit_mod: HitModifier,
     status: Status?,
     hit_effect: Effect,
     hit_effect_lasts: boolean,
@@ -107,8 +107,7 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
             hit_effect = look.spark,
             target = collision.hits_navis,
             self_type = collision.thrown,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = look.hit_mod,
             status = look.status,
         })
@@ -199,7 +198,7 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
         if o then
             o.panel_x, o.panel_y = x, y
             o.element = element
-            o:set_damage_word(damage)
+            o.damage_word = damage
             o.alliance = user.alliance
         end
     end
@@ -233,7 +232,7 @@ function breath.action(spec: {
             if nozzle then
                 nozzle.anim += 2
             end
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             spec.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage)
         end
         local t = s.timer - 1

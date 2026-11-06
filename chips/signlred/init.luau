@@ -16,7 +16,7 @@ local TICKS = 30
 local function effect(me: Object)
     if me.phase_init == 0 then
         local x = me.panel_x + (1 - 2 * me.alliance)
-        signal.spawn(me, x, me.panel_y, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        signal.spawn(me, x, me.panel_y, me.damage_word)
         me.timer = TICKS
         me.phase_init = 4
     end
@@ -44,7 +44,7 @@ local chip: Chip = {
     rarity = 4,
     mb = 61,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { "dimming", "library" },
     -- 0x080E8472: its controller (only the alliance byte of its user's).

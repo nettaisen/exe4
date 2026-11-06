@@ -26,7 +26,7 @@ local FLASH = new.effect { sprite = muzzle_flash_sprite, anim = 0, palette = 0, 
 local SHOT = shot.variant {
     id = "gutssoul/machine-gun/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
 }

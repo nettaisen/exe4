@@ -16,7 +16,7 @@ export type Spec = {
     hit_effect: Spark?,
     target: CollisionType,
     self_type: CollisionType,
-    hit_mod: number,
+    hit_mod: HitModifier,
     status: Status?,
     bug: number?,
     bug_arg: number?,
@@ -41,7 +41,7 @@ type State = {
     hit_effect: Spark?,
     target: CollisionType?,
     self_type: CollisionType?,
-    hit_mod: number,
+    hit_mod: HitModifierByte,
     status: Status?,
     bug: number,
     bug_arg: number,
@@ -162,9 +162,9 @@ function lingering_hit.make(id: string): LingeringHit
         s.dx, s.dy = dx, dy
         o.panel_x, o.panel_y = owner.panel_x + dx, owner.panel_y + dy
         o.alliance = owner.alliance
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         s.region, s.hit_effect, s.target, s.self_type = spec.region, spec.hit_effect, spec.target, spec.self_type
-        s.hit_mod, s.status, s.bug, s.bug_arg = spec.hit_mod, spec.status, spec.bug or 0, spec.bug_arg or 0
+        s.hit_mod, s.status, s.bug, s.bug_arg = hit_modifier.byte(spec.hit_mod), spec.status, spec.bug or 0, spec.bug_arg or 0
         s.holder, s.slot = spec.holder, spec.slot or 0
         o.related1 = owner
         o.timer = spec.ticks

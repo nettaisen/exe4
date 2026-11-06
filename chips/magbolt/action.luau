@@ -83,7 +83,7 @@ function magbolt.action(spec: MagnetSpec): Action
         end
         s.timer = PULL_TICKS
         step_magnet(me)
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         for _, dy in spec.rows do
             FIELD(me, me.facing, dy, me.attack_element, spec.paralyzes, damage)
         end
@@ -115,8 +115,7 @@ function magbolt.action(spec: MagnetSpec): Action
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.pull,
-            damage = 0,
-            stamina = 0,
+            damage = damage_word.of { amount = 0, counter = 0 },
             hit_mod = PULL_MOD,
         })
     end

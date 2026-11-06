@@ -53,8 +53,8 @@ local function hit(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        hit_mod = 3,
-        damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+        hit_mod = { flinch = true, flash = true },
+        damage = me.damage_word,
         z = 0,
         ticks = RUSH_TICKS,
         element = me.element,
@@ -205,7 +205,7 @@ function kendoman.summon(controller: Object, x: number, y: number, damage: numbe
     o.panel_x, o.panel_y = x, y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     ;(o.state :: State).controller = controller
     return o
 end

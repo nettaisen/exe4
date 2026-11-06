@@ -24,7 +24,7 @@ sword.action = common.action_with {
     hold = function(me: Object, blade: AttachmentLook)
         attachment.attach(me, blade, "related", NAVI_NUMBER)
     end,
-    boom_hit_mod = 1,
+    boom_hit_mod = { flinch = true },
     plain = true,
 }
 

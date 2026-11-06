@@ -16,7 +16,7 @@ local ftrsword: Chip = {
     action = swords.slash {
         id = "ftrsword/action",
         blade = swords.blade,
-        hit = { region = regions.line, collision = HIT, hit_mod = 3 },
+        hit = { region = regions.line, collision = HIT, hit_mod = { flinch = true, flash = true } },
         effect = LINE_SLASH,
         sound = swords.swing,
     },
@@ -27,7 +27,7 @@ local ftrsword: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "library" },
     auto_battle = { class = "into_reach", range = "three_in_row" },

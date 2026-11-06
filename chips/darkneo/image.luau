@@ -44,7 +44,7 @@ local LEAVE, LAST_BLINKS = 0x1E, 0x0A
 local FADING, WAITING, STANDING, ATTACKING, LEAVING = 0x0, 0x4, 0x8, 0xC, 0x10
 
 local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    return me.damage_word
 end
 
 -- 0x080E10F4: a sixteenth more a tick; then solid, wearing what its navi's form wears.
@@ -216,7 +216,7 @@ function image.spawn(owner: Object, x: number, y: number, damage: number): Objec
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = 0
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true
     end

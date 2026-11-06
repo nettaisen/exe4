@@ -25,7 +25,7 @@ local hand_kind = hand.make_kind {
     target = collision.hits_navis,
     self_type = collision.thrown_break,
     height = 0x100_0000,
-    hit_mod = 0x0B,
+    hit_mod = { flinch = true, flash = true, back_far = true },
 }
 
 -- 0x080E4836: of the user's home columns (from 0x080E4898's, by side: 1 or 4), each panel, the rows from the bottom,

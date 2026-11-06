@@ -42,7 +42,7 @@ function supports.dimming(support: Support): (user: Object, spec: DimmingChipSpe
         o.element = spec.element
         o.related1 = user
         o.alliance = user.alliance
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         local s = o.state :: { support: Support, telop_chip: Chip? }
         s.support = support
         s.telop_chip = spec.chip

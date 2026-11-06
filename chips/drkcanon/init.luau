@@ -21,7 +21,7 @@ local ARM = attachment.look { sprite = cannon_sprite, palette = 3 }
 local SHOT = projectile.variant {
     id = "drkcanon/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = "null",
     spark = sparks.impact,
 }
@@ -34,7 +34,7 @@ local drkcanon: Chip = {
     rarity = 4,
     mb = 99,
     damage = { formula = "hp_lost", cap = 999 },
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { "has_damage", "dark", "variable_damage" },
     action = cannon.action { id = "drkcanon/action", arm = ARM, shot = SHOT },

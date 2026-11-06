@@ -16,7 +16,7 @@ local dbldream: Chip = {
     action = swords.slash {
         id = "dbldream/action",
         blade = swords.blade,
-        hit = { region = regions.wide_long, collision = HIT, hit_mod = 1 },
+        hit = { region = regions.wide_long, collision = HIT, hit_mod = { flinch = true } },
         effect = BIG_SLASH,
         sound = swords.big_swing,
         swings = 2,
@@ -28,7 +28,7 @@ local dbldream: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "library" },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

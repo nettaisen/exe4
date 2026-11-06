@@ -38,9 +38,8 @@ local function tick(me: Object)
             hit_effect = sparks.plain,
             target = collision.hits_navis,
             self_type = collision.thrown,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = me.run_while_dimmed
@@ -82,7 +81,7 @@ function shot.spawn(bass: Object, x: number, y: number, damage: number): Object?
     end
     o.panel_x, o.panel_y = x, y
     o.element = 0
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance = bass.alliance
     o.run_while_dimmed = true
     return o

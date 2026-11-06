@@ -21,7 +21,7 @@ local SHOT_Z = 0x18_0000
 local SHOT = shot.variant {
     id = "megaman/charged-shot/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.charged,
 }
@@ -94,11 +94,10 @@ charged_shot.action = new.action {
 
 -- 0x0800CC54.
 function charged_shot.setup(navi: Object): Action
-    navi.attack_damage = (battle.navi(navi.alliance).attack + 1) * 10
+    navi.attack_word = damage_word.of { amount = (battle.navi(navi.alliance).attack + 1) * 10, counter = 0 }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     return charged_shot.action
 end

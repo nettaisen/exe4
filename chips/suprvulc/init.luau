@@ -16,7 +16,7 @@ local GUN = attachment.look { sprite = vulcan_sprite, palette = 0 }
 
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1, steps = 10 },
     single = true,
 }
@@ -30,7 +30,7 @@ local suprvulc: Chip = {
     rarity = 3,
     mb = 75,
     damage = 10,
-    hit_param = 3,
+    counter = 3,
     lockout = 0,
     flags = { "has_damage", "library" },
     auto_battle = { class = "behind_target" },

@@ -77,9 +77,8 @@ local function flash(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.collision_2e,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
         status = statuses.blind_480,
     })
     if box then
@@ -101,9 +100,8 @@ local function shock(me: Object)
         hit_effect = sparks.elec,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -217,7 +215,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

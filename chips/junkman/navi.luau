@@ -77,7 +77,7 @@ local function raise(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
         me.anim = 0
-        poltergeist.spawn(me, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), true)
+        poltergeist.spawn(me, me.damage_word, true)
         me.phase_init = 4
         return
     end
@@ -191,7 +191,7 @@ function junkman.spawn(controller: Object, user: Object, damage: number, palette
     end
     o.panel_x, o.panel_y = x, y
     o.alliance = user.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

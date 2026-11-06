@@ -13,7 +13,7 @@ local sparks = require("../lib/sparks")
 local SHOT = projectile.variant {
     id = "airshot/shot",
     collision = { is = collision.pushing, hits = collision.hits_navis },
-    hit_mod = 0x21,
+    hit_mod = { flinch = true, back = true },
     element = "null",
     spark = sparks.impact,
 }
@@ -26,7 +26,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 6,
     damage = 20,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     action = airshot.action { id = "airshot/action", shooter = airshot.shooter, shot = SHOT, recovery = 0 },

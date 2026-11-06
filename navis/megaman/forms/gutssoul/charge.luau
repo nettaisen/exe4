@@ -20,13 +20,12 @@ charge.action = punch.make {
 
 -- 0x0800CF62.
 local function setup(navi: Object): Action
-    navi.attack_damage = 60
+    navi.attack_word = damage_word.of { amount = 60, counter = 40, cant_counter = true }
     navi.attack_element = 0
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0xA8
     return charge.action
 end
 

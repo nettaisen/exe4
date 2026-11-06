@@ -16,7 +16,7 @@ local GUN = attachment.look { sprite = spreader_sprite, palette = 0 }
 -- Bullet row 3: a burst (effect row 0x27) over the 3x3 around the panel found; sound 0x8D.
 local BURST = bullet.variant {
     region = regions.square,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
     sound = asset.sound("spreader"),
 }
@@ -30,7 +30,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 10,
     damage = 30,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "behind_target" },

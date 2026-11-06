@@ -40,7 +40,7 @@ local METEOR_DAMAGE = 0x0085_0028
 local DIVE_TICKS = 10
 -- Its landing's hit: its panel (the region word 0x1505FF01: one panel, no spark, a thrown break hitting navis), hit
 -- modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The landing cracks the 3x3 panels around it (0x080DDD84's offsets: by column, then row).
 local AROUND = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 0 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } }
 
@@ -140,8 +140,7 @@ local function dive(me: Object)
                 hit_effect = nil,
                 target = collision.hits_navis,
                 self_type = collision.thrown_break,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
             if box then
@@ -226,7 +225,7 @@ function sun.spawn(controller: Object, damage: number): Object?
     if o then
         o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
         o.element = controller.element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = controller.alliance
         ;(o.state :: State).controller = controller
         o.run_while_dimmed = true

@@ -41,7 +41,7 @@ local SOUND_WARNING = asset.sound("program-advance-part")
 -- The other side's player navi stands there (0x080E89F8, 0x080E8A40).
 local ENEMY_NAVI = "enemy_navi"
 -- Its hit under event flag 0x1187.
-local HIT_DAMAGE, HIT_MOD = 50, 3
+local HIT_DAMAGE, HIT_MOD = 50, { flinch = true, flash = true }
 
 -- 0x080E8C98: in the hit sparks, palette 7, 10 pixels over its panel.
 lifesync.marker = marker.make_kind {

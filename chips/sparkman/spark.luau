@@ -147,7 +147,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 3)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_region(regions.single)
     me.collision:set_hit_effect(sparks.elec)
     me.collision:present()
@@ -193,7 +193,7 @@ function spark.spawn(owner: Object, x: number, y: number, element: number, up: b
     end
     o.panel_x, o.panel_y = x, y
     o.element = element
-    o:set_damage_word(bit32.bor(owner.damage, bit32.lshift(owner.stamina, 16)))
+    o.damage_word = owner.damage_word
     o.alliance = owner.alliance
     local s = o.state :: State
     s.up = up

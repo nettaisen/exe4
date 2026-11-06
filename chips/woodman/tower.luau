@@ -13,7 +13,7 @@ local tower = {}
 
 type State = {
     -- Its hit modifier (its spawner's r7, +0x60), and it rises with its sound (Param1 0: the last of its set).
-    hit_mod: number,
+    hit_mod: HitModifierByte,
     sounds: boolean,
 }
 
@@ -156,11 +156,11 @@ function tower.spawn(woodman: Object, x: number, y: number, element: number, sou
     o.panel_x, o.panel_y = x, y
     o.element = element
     o.alliance = woodman.alliance
-    o:set_damage_word(bit32.bor(woodman.damage, bit32.lshift(woodman.stamina, 16)))
+    o.damage_word = woodman.damage_word
     o.related1 = woodman
     o.run_while_dimmed = true
     local s = o.state :: State
-    s.hit_mod, s.sounds = 1, sounds
+    s.hit_mod, s.sounds = hit_modifier.byte({ flinch = true }), sounds
     return o
 end
 

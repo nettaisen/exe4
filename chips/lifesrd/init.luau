@@ -18,7 +18,7 @@ local lifesrd: Chip = {
     action = swords.slash {
         id = "lifesrd/action",
         blade = swords.blade,
-        hit = { region = regions.wide_long, collision = HIT, hit_mod = 3 },
+        hit = { region = regions.wide_long, collision = HIT, hit_mod = { flinch = true, flash = true } },
         effect = BIG_SLASH,
         sound = swords.big_swing,
     },
@@ -29,7 +29,7 @@ local lifesrd: Chip = {
     rarity = 0,
     mb = 5,
     damage = 400,
-    hit_param = 40,
+    counter = 40,
     lockout = 0,
     flags = { "has_damage" },
     program_advances = {

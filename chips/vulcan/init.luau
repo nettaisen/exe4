@@ -14,7 +14,7 @@ local vulcan_sprite = asset.sprite("vulcan")
 -- Bullet row 12: the panel found and the one behind it, modifier 1, its hit (effect row 0x26) shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
@@ -35,7 +35,7 @@ local vulcan1: Chip = {
     rarity = 0,
     mb = 6,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "behind_target" },
@@ -50,7 +50,7 @@ local vulcan2: Chip = {
     rarity = 1,
     mb = 18,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "behind_target" },
@@ -65,7 +65,7 @@ local vulcan3: Chip = {
     rarity = 2,
     mb = 30,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "behind_target" },

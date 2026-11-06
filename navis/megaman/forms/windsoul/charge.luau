@@ -9,8 +9,7 @@ local charge = {}
 -- 0x0800D204.
 local function setup(navi: Object): Chip
     navi:load_chip_attack(windrack)
-    navi.attack_damage = 50
-    navi.hit_param = 0x9E
+    navi.attack_word = damage_word.of { amount = 50, counter = 30, cant_counter = true }
     return windrack
 end
 

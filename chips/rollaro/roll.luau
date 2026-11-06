@@ -41,7 +41,7 @@ local APPEAR, SHOOT, LEAVE = 0x0, 0x4, 0x8
 -- navis, hit modifier 3, spark 9, the arrow (0c-10, animation 0, drawn with its sprite), eight panel centers.
 local ARROW = flying_shot.variant {
     is = collision.chip_destruction,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     element = 0,
     spark = sparks.chip_destruction,
     sprite = roll_arrow_sprite,
@@ -119,7 +119,7 @@ local function shoot(me: Object)
         local p = me.pos
         local x = int.i32(p.x + panels.side_direction(me.alliance) * 8 * 0x10000)
         local y = int.i32(bit32.band(p.y, 0xFFFF0000) - 0x10000)
-        local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local damage = me.damage_word
         local o = flying_shot.launch(me, Vec3.new(x, y, 36 * 0x10000), ARROW, damage)
         if o then
             o.run_while_dimmed = true
@@ -256,7 +256,7 @@ function roll.spawn(controller: Object, _user: Object, damage: number): Object?
     end
     o.panel_x, o.panel_y = x, y
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     ;(o.state :: State).controller = controller
     return o
 end

@@ -7,6 +7,12 @@
 return {
     leave_on_use = true,
     anti_navi_sparkle = { dy = 0, z = 16 },
+    -- A hand entry's marks of the game's own (the engine's, 0x01, the folder's Regular chip), which the
+    -- rules below and content name.
+    mark_bits = {
+        offered_again = 0x02,
+        installed = 0x04,
+    },
     -- A hand entry's marks add nothing to the damage word and heal no one: EXE4's use (0x0800D4C0) has no such step.
     -- Its marks are 0x01 the Regular chip, 0x02 a chip offered again (JunkSoul's: navis/megaman/forms/junksoul/
     -- recycle) and 0x04 an entry whose hand was installed (rules/dark_chips). What reads them: the install itself;
@@ -14,8 +20,8 @@ return {
     -- karma reads it, 0x0800F5E2) nor, outside a netbattle, the mood; and the local console's check of its own next
     -- chip, 0x0800865C, which a chip offered again passes without being the folder's (the engine has no such check:
     -- a build is checked before the battle).
-    mark_damage = { 0, 0, 0, 0, 0, 0, 0, 0 },
-    mark_heals = 0,
+    mark_damage = {},
+    mark_heals = {},
     -- Beat lets a dark Mega or Giga chip go (0x0800C86C tests its flag 0x20).
     beat_spares_dark = true,
     -- What hides a navi's chip window (HUD task 0x10) hides it on every console, whichever navi it is (no check of

@@ -33,7 +33,7 @@ local function tick(me: Object)
     local left = me.timer2
     local x = me.alliance * 5 + 1
     local y = bit32.band(left, 1) * 2 + 1
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     common.spawn(boomerang.kind, me, x, y, me.element, HEIGHT, { variant = boomerang.boomer, column = left - 1, strong = true }, damage)
     left -= 1
     me.timer2 = left
@@ -67,7 +67,7 @@ local function spawn(user: Object, element: number, damage: number)
     local o = battle.spawn(THROWER, Vec3.new(user.panel_y, element, user.pos.z))
     if o then
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = user.alliance
     end
 end
@@ -81,7 +81,7 @@ local pitrng1: Chip = {
     rarity = 0,
     mb = 5,
     damage = 200,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { "has_damage" },
     program_advances = { { order = 23, code_run = { chip = boomers.boomer1, count = 3 } } },
@@ -97,7 +97,7 @@ local pitrng2: Chip = {
     rarity = 0,
     mb = 5,
     damage = 250,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { "has_damage" },
     program_advances = { { order = 24, code_run = { chip = boomers.boomer2, count = 3 } } },
@@ -113,7 +113,7 @@ local pitrng3: Chip = {
     rarity = 0,
     mb = 5,
     damage = 300,
-    hit_param = 20,
+    counter = 20,
     lockout = 0,
     flags = { "has_damage" },
     program_advances = { { order = 25, code_run = { chip = boomers.boomer3, count = 3 } } },

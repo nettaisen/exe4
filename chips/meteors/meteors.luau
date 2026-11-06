@@ -25,7 +25,7 @@ local meteor_sprite = asset.sprite("meteor")
 local meteors = {}
 
 -- Row 6 of 0x080D8580: thrown, hitting navis, modifier 0, the camera shaking (its fifth byte set: 0x080D8716).
-local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 0, shake = 1, panel = "none" }
+local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = {}, shake = 1, panel = "none" }
 
 -- (ShotStar's meteors are this kind too, of row 1: chips/shotstar.)
 local METEOR = falling_meteor.make_kind("meteor", {
@@ -62,7 +62,7 @@ local function tick(me: Object)
     end
     me.timer = EVERY
     -- 0x080D877C: the row its parameter word (r4), its position the registers until its init places it.
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     falling_meteor.spawn_kind(METEOR, ROW, me, me.panel_x, me.panel_y, me.element, damage, false,
         Vec3.new(me.panel_y, me.element, 0))
     local left = me.timer2 - 1
@@ -117,7 +117,7 @@ function meteors.spawn(user: Object, element: number, damage: number)
     if o then
         o.panel_x, o.panel_y = x, user.panel_y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = user.alliance
         o.run_while_dimmed = false
     end

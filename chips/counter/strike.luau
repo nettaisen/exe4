@@ -14,7 +14,7 @@ local strike = {}
 local SPRITE = asset.sprite("counter-strike")
 local SOUND = asset.sound("counter-strike")
 local Z = 0x10_0000
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local TICKS = 0x25
 
 -- 0x080CFDBC: 38 ticks, then gone.
@@ -48,8 +48,7 @@ local function init(me: Object)
         hit_effect = sparks.heavy,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     me:set_lifecycle("update")
@@ -80,7 +79,7 @@ function strike.spawn(owner: Object, x: number, y: number, element: number, dama
     if o then
         o.element = element
         o.panel_x, o.panel_y = x, y
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
     end
 end

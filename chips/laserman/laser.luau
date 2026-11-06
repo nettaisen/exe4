@@ -49,7 +49,7 @@ type State = {
 local function strike(me: Object, word: number)
     local damage, hit_mod, bug, bug_arg = 0, 0, 0, 0
     if word == HIT then
-        damage, hit_mod = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), 3
+        damage, hit_mod = me.damage_word, 3
     else
         bug, bug_arg = bit32.band(word, 0xFF), bit32.band(bit32.rshift(word, 8), 0xFF)
     end
@@ -62,8 +62,7 @@ local function strike(me: Object, word: number)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.piercing,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
+        damage = damage,
         hit_mod = hit_mod,
         bug = bug,
         bug_arg = bug_arg,
@@ -170,7 +169,7 @@ function laser.spawn(laserman: Object, x: number, y: number, course: number): Ob
     end
     o.panel_x, o.panel_y = x, y
     o.element = 0
-    o:set_damage_word(bit32.bor(laserman.damage, bit32.lshift(laserman.stamina, 16)))
+    o.damage_word = laserman.damage_word
     o.alliance = laserman.alliance
     o.run_while_dimmed = true
     ;(o.state :: State).course = course

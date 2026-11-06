@@ -23,7 +23,7 @@ charge.action = rings.action {
         speed = 10,
         status = statuses.paralyze_90,
         sound = asset.sound("zap-ring"),
-        hit_mod = 0,
+        hit_mod = {},
         sand = nil,
     },
 }
@@ -35,8 +35,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0
-    navi.hit_param = 0x8A
-    navi.attack_damage = 20
+    navi.attack_word = damage_word.of { amount = 20, counter = 10, cant_counter = true }
     return charge.action
 end
 

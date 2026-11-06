@@ -27,7 +27,7 @@ local HALFWAY, LAST_HOP = 13, 3
 -- The field's sides: 140 pixels either side of its middle.
 local REACH = 140
 -- Its landing: its hit 16 pixels up, modifier 1; its landing animation for 4 ticks.
-local HIT_Z, HIT_MOD, LAND_TICKS = 0x10_0000, 1, 4
+local HIT_Z, HIT_MOD, LAND_TICKS = 0x10_0000, { flinch = true }, 4
 -- Its animations: hopping, its first hop's and landed.
 local ANIM_HOP, ANIM_FIRST, ANIM_LANDED = 1, 2, 3
 -- The other side's navi on a panel, of its side (0x080D2740: the other side's body).
@@ -109,8 +109,7 @@ local function landed(me: Object)
             hit_effect = sparks.heavy,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if not field.solid(me.panel_x, me.panel_y) then
@@ -189,7 +188,7 @@ function binder.thrower(palette: number): Thrower
             if o then
                 o.element = bit32.band(pos.y, 0xFF)
                 o.alliance = user.alliance
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 local s = o.state :: State
                 s.palette = palette
             end

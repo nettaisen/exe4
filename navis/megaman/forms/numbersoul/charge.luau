@@ -44,7 +44,7 @@ local function throw(me: Object, s: State)
             hp = own.hp,
             status = own.status,
             hit_mod = own.hit_mod,
-            damage = bit32.bor(me.attack_damage, bit32.lshift(me.hit_param, 16)),
+            damage = me.attack_word,
             holder = nil,
         })
     end
@@ -89,8 +89,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0x94
-    navi.attack_damage = 10
+    navi.attack_word = damage_word.of { amount = 10, counter = 20, cant_counter = true }
     return charge.action
 end
 

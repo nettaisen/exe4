@@ -28,7 +28,7 @@ export type RingVariant = {
     speed: number,
     status: Status?,
     sound: Sound,
-    hit_mod: number,
+    hit_mod: HitModifier,
     sand: PanelType?,
 }
 
@@ -48,7 +48,7 @@ export type FlyingShotVariant = {
     -- Its collision (the row's first three bytes: what it is, what it hits, the hit modifier).
     is: CollisionType,
     hits: CollisionType,
-    hit_mod: number,
+    hit_mod: HitModifier,
     -- Its element byte.
     element: number,
     -- Its hit spark (0xFF: none).

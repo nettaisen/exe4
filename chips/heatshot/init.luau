@@ -19,7 +19,7 @@ local SOUND = asset.sound("heat-burst")
 
 -- A HeatShot's spreader: its bullet row (8 to 10) bursts over `region` around the panel found.
 local function fire(id: string, region: Region): Action
-    local shot = bullet.variant { region = region, hit_mod = 0, effect = BURST, sound = SOUND }
+    local shot = bullet.variant { region = region, hit_mod = {}, effect = BURST, sound = SOUND }
     return spreader.action { id = id, gun = GUN, delay = 10, z = 0x10, shot = shot }
 end
 
@@ -32,7 +32,7 @@ local heatshot: Chip = {
     rarity = 0,
     mb = 8,
     damage = 40,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "behind_target" },
@@ -47,7 +47,7 @@ local heat_v: Chip = {
     rarity = 1,
     mb = 22,
     damage = 70,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "into_target_row" },
@@ -62,7 +62,7 @@ local heatside: Chip = {
     rarity = 2,
     mb = 44,
     damage = 100,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "into_target_row" },

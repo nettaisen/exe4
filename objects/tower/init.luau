@@ -16,7 +16,7 @@ type Look = {
     id: string,
     sprite: SpriteAsset,
     steps: { { anim: number?, ticks: number } },
-    hit_mod: number,
+    hit_mod: HitModifier,
     sound: Sound,
 }
 
@@ -118,7 +118,7 @@ function tower.make(look: Look): (owner: Object, x: number, y: number, element: 
             o.panel_x, o.panel_y = x, y
             o.element = element
             o.alliance = owner.alliance
-            o:set_damage_word(damage)
+            o.damage_word = damage
         end
     end
 end

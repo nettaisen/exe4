@@ -90,7 +90,7 @@ function elem.action(spec: ElemSpec): Action
                 panel_changer.spawn(me, me.panel_x, me.panel_y, RESTORE, nil)
             end
             s.raged = raged
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             FLAME.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, HEIGHT * 0x10000, {
                 count = bit32.band(count, 0x7F),
                 spread = bit32.btest(count, 0x80),

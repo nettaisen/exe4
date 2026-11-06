@@ -21,7 +21,7 @@ local RACK = attachment.look { sprite = wind_rack_sprite, palette = 0 }
 local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0, steps = 24 }
 local HEIGHT = 0x10_0000
 local SWING_TICKS, HIT_AT, RECOVER_TICKS = 0x15, 0x0C, 5
-local HIT_MOD, HIT_TICKS = 9, 0x0A
+local HIT_MOD, HIT_TICKS = { flinch = true, back_far = true }, 0x0A
 -- The navi's number: the rack animates by it (NaviStats +0x23, MegaMan's 0).
 local NAVI_NUMBER = 0
 
@@ -46,7 +46,7 @@ local function swing(me: Object, s: State)
         me.step_init = 4
     end
     if s.timer == HIT_AT then
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         local hit = battle.hitbox(me, {
             panel_x = me.panel_x + me.facing,
             panel_y = me.panel_y,
@@ -56,8 +56,7 @@ local function swing(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.pushing,
-            damage = bit32.band(damage, 0xFFFF),
-            stamina = bit32.rshift(damage, 16),
+            damage = damage,
             hit_mod = HIT_MOD,
         })
         if hit then
@@ -108,7 +107,7 @@ local windrack: Chip = {
     rarity = 2,
     mb = 23,
     damage = 100,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     auto_battle = { class = "into_reach", range = "column_ahead" },

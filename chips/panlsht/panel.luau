@@ -22,7 +22,7 @@ export type State = {
 local SPRITE = asset.sprite("panel-shot")
 local TEAR_SOUND = asset.sound("panel-lift")
 local SHOT_SOUND = asset.sound("wood-strike")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Rising 2 pixels a tick to 16 up; flying 10 pixels a tick; gone once its X is 160 pixels or more off the field's
 -- middle.
 local RISE, TOP, SPEED, REACH = 0x2_0000, 16, 10, 0xA0
@@ -172,7 +172,7 @@ function panel.spawn(controller: Object, x: number, y: number, damage: number, w
     end
     o.panel_x, o.panel_y = x, y
     o.element = controller.element
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance = controller.alliance
     o.run_while_dimmed = true
     local s = o.state :: State

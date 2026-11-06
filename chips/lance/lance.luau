@@ -14,7 +14,7 @@ local exe4_lance = {}
 exe4_lance.kind = lance.make_kind("lance", {
     sprite = lance_sprite,
     sound = asset.sound("sword-swing"),
-    attack = { is = collision.attack, hits = collision.hits_navis, hit_mod = 0x10, spark = sparks.of_element },
+    attack = { is = collision.attack, hits = collision.hits_navis, hit_mod = { forward = true }, spark = sparks.of_element },
 })
 
 -- 0x080D7540, action 0x20's variant 6: three lances of `user`'s side in the far column at its height, in palette

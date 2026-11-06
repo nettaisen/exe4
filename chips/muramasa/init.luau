@@ -18,7 +18,7 @@ local muramasa: Chip = {
     action = swords.slash {
         id = "muramasa/action",
         blade = swords.blade,
-        hit = { region = regions.long, collision = HIT, hit_mod = 3 },
+        hit = { region = regions.long, collision = HIT, hit_mod = { flinch = true, flash = true } },
         effect = SLASH,
         sound = swords.swing,
     },
@@ -28,7 +28,7 @@ local muramasa: Chip = {
     class = "mega",
     rarity = 4,
     mb = 81,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { "has_damage", "damage_shown_variable", "library", "variable_damage" },
     megaman = "dark",

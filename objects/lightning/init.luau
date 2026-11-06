@@ -14,7 +14,7 @@ local SPRITE = asset.sprite("lightning")
 local hit_sparks_sprite = asset.sprite("hit-sparks")
 local SOUND = asset.sound("lightning")
 local SPARK = new.effect { sprite = hit_sparks_sprite, anim = 13, palette = 0, steps = 2 }
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The sparks' panels from the strike's (x by its facing, y), in order; one every 2 ticks, each lasting 3.
 local AROUND = { { 0, -1 }, { 1, 1 }, { -1, 0 }, { 0, 1 }, { -1, -1 }, { 1, 0 }, { -1, 1 }, { 1, -1 } }
 local EVERY, SPARK_TICKS = 2, 3
@@ -97,7 +97,7 @@ function lightning.spawn(owner: Object, x: number, y: number, element: number, d
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
     end
 end

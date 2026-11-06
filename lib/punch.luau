@@ -22,7 +22,7 @@ local SOUND = asset.sound("fist-swing")
 local SWING_TICKS, STRIKE_AT, RECOVER_TICKS = 23, 16, 5
 -- The hitbox's height and hit modifier.
 local STRIKE_Z = 16 * 0x10000
-local HIT_MOD = 0x21
+local HIT_MOD: HitModifier = { flinch = true, back = true }
 
 type State = { timer: number }
 
@@ -55,8 +55,7 @@ function punch.make(spec: {
                 hit_effect = spec.spark,
                 target = spec.target,
                 self_type = spec.self_type,
-                damage = me.attack_damage,
-                stamina = me.hit_param,
+                damage = me.attack_word,
                 hit_mod = HIT_MOD,
             })
         end

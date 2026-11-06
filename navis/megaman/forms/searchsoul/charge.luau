@@ -33,7 +33,7 @@ local SHOT_SOUND = asset.sound("vulcan")
 local ANIM = 10
 local SHOTS, AIM_TICKS, SHOT_TICKS, RECOVER_TICKS = 5, 4, 5, 5
 -- A shot's hit modifier: the last one's flinches (3), the others' don't (1).
-local HIT_MOD, LAST_HIT_MOD = 1, 3
+local HIT_MOD, LAST_HIT_MOD = { flinch = true }, { flinch = true, flash = true }
 
 -- 0x0800FB3C: the panel of the other side's navi nearest ahead of `me` by its side alone (side 0's ahead is its own
 -- column and those to the right; side 1's its own column and those to the left), else nearest behind, by column
@@ -115,8 +115,7 @@ local function shoot(me: Object, s: State)
             hit_effect = sparks.plain,
             target = collision.hits_navis,
             self_type = if s.shots == SHOTS then collision.curse else collision.thrown,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = if s.shots > 1 then HIT_MOD else LAST_HIT_MOD,
         })
         battle.play_sound(SHOT_SOUND)
@@ -166,13 +165,12 @@ charge.action = new.action {
 
 -- 0x0800CDC4.
 local function setup(navi: Object): Action
-    navi.attack_damage = 10
+    navi.attack_word = damage_word.of { amount = 10, counter = 5, cant_counter = true }
     navi.attack_element = 0
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = 0x85
     return charge.action
 end
 

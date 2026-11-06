@@ -133,7 +133,7 @@ function gunsol.action(spec: Spec): Action
             target = collision.hits_navis,
             self_type = collision.thrown_piercing_break,
             damage = if battle.navi(me.alliance).sun then SUN_DAMAGE else DAMAGE,
-            hit_mod = 0,
+            hit_mod = {},
         })
         for c = 0, spec.columns - 1 do
             fill(x + c * me.facing, y)

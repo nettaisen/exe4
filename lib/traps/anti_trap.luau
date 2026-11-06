@@ -52,20 +52,20 @@ end
 
 trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     strikes = {
-        [0] = { sound = nil, spark = sparks.breaking, hit_mod = 3, status = nil, burst = HEAT },
-        [1] = { sound = asset.sound("heat-burst"), spark = sparks.fire, hit_mod = 3, status = nil, burst = HEAT },
-        [2] = { sound = asset.sound("bubble-burst"), spark = sparks.aqua, hit_mod = 3, status = nil, burst = BUBBLE },
+        [0] = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = HEAT },
+        [1] = { sound = asset.sound("heat-burst"), spark = sparks.fire, hit_mod = { flinch = true, flash = true }, status = nil, burst = HEAT },
+        [2] = { sound = asset.sound("bubble-burst"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = BUBBLE },
         [3] = {
             sound = asset.sound("lightning"),
             spark = sparks.elec,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             status = statuses.paralyze_90,
             burst = LIGHTNING,
         },
         [4] = {
             sound = asset.sound("wood-strike"),
             spark = sparks.wood,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             status = statuses.confuse_480,
             burst = LEAVES,
         },

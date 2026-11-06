@@ -13,10 +13,15 @@ return {
     -- The mark over a navi a damaging weakness hit told about shows for 18 of its sprite's steps.
     hit_marker_steps = { weakness = 18 },
     retype = "is_alone",
+    -- The damage word's flag bits of the game's own (the engine's, 0x8000, doubles the damage), which its
+    -- reading below and content name.
+    damage_word_bits = {
+        paralysis = 0x4000,
+    },
     damage_word = {
         damage = 0x3FFF,
         flags = {
-            { bit = 0x4000, status = "damage_word_paralysis", hit_modifier = 0, stop = true },
+            { flag = "paralysis", status = "damage_word_paralysis", hit_modifier = {}, stop = true },
         },
     },
     palette_flash = "pause_holds",

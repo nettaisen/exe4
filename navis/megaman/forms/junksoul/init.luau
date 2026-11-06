@@ -43,7 +43,7 @@ local form: FormDef = {
             target = collision.hits_navis,
             self_type = collision.thrown_piercing_break,
             damage = 0,
-            hit_mod = 0,
+            hit_mod = {},
             status = statuses.confuse_720,
         })
         if o then

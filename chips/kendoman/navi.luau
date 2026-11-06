@@ -164,9 +164,8 @@ local function dash(me: Object)
             hit_effect = sparks.plain,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 1,
+            damage = me.damage_word,
+            hit_mod = { flinch = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -233,9 +232,8 @@ local function cut_back(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 1,
+            damage = me.damage_word,
+            hit_mod = { flinch = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -278,8 +276,8 @@ local function rush(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.attack,
-            hit_mod = 1,
-            damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+            hit_mod = { flinch = true },
+            damage = me.damage_word,
             z = 0,
             ticks = RUSH_TICKS,
             element = me.element,
@@ -381,7 +379,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

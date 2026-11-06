@@ -43,7 +43,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 100,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage" },
     program_advances = { { order = 36, code_run = { chip = spreaders.spreader, count = 3 } } },

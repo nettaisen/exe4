@@ -43,7 +43,7 @@ local function spawn(controller: Object, damage: number, palette: number): Objec
     o.element = controller.element
     o.related1 = controller
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     NUMBERMAN.summoned(o, controller, palette)
     return o
 end

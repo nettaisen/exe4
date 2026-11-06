@@ -142,7 +142,7 @@ local function punch(me: Object)
     if x ~= 0 then
         -- 0x080CB9B0: with his damage word.
         local fist = if bit32.btest(n, 1) then fists.odd else fists.even
-        fist.spawn(me, x, panels.y(target), 0, HEIGHT, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        fist.spawn(me, x, panels.y(target), 0, HEIGHT, me.damage_word)
     end
     me.timer2 = int.u16(n - 1)
     if n - 1 < 0 then
@@ -235,7 +235,7 @@ function navi.summon(controller: Object, damage: number): Object?
     o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
     o.element = controller.element
     o.alliance = controller.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     ;(o.state :: State).controller = controller
     return o
 end

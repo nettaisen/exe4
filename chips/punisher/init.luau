@@ -15,7 +15,7 @@ local punisher: Chip = {
     rarity = 0,
     mb = 8,
     damage = 80,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "library" },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

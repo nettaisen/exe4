@@ -91,7 +91,7 @@ local function call(me: Object, s: State)
     if me.alliance == 0 then
         x += 6
     end
-    thunder.spawn(me, x, s.row, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), true)
+    thunder.spawn(me, x, s.row, me.damage_word, true)
 end
 
 -- Action 4, phase 4 (0x080C5AA4): animation 10; a thunderbolt on rows 1, 2 and 3, 20 ticks apart.
@@ -225,7 +225,7 @@ function thunman.spawn(controller: Object, user: Object, damage: number, palette
     end
     o.panel_x, o.panel_y = x, y
     o.alliance = user.alliance
-    o:set_damage_word(damage)
+    o.damage_word = damage
     local s = o.state :: State
     s.controller = controller
     s.palette = palette

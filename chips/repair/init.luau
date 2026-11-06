@@ -33,7 +33,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { "standard_library", "library" },
     auto_battle = { class = "when_object_hurt" },

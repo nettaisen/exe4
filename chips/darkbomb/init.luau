@@ -26,7 +26,7 @@ local darkbomb: Chip = {
     rarity = 4,
     mb = 99,
     damage = 200,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { "has_damage", "dark" },
     action = bombs.throw {
@@ -34,7 +34,7 @@ local darkbomb: Chip = {
         held = HELD,
         thrower = bombs.thrower(bombs.variant {
             collision = { is = collision.thrown, hits = collision.hits_navis },
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             palette = 3,
             anim = 1,
             blast = regions.square,

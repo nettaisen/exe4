@@ -63,7 +63,7 @@ local bugbomb: Chip = {
     rarity = 2,
     mb = 30,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { "standard_library", "library" },
     auto_battle = { class = "into_reach", range = "three_ahead" },

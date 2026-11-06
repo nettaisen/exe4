@@ -74,7 +74,7 @@ end
 
 -- A rock of its element and damage word on (x, y), running while dimmed.
 local function rock(me: Object, x: number, y: number)
-    local o = ROCK.spawn(me, x, y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    local o = ROCK.spawn(me, x, y, me.element, me.damage_word)
     if o then
         o.run_while_dimmed = true
     end
@@ -163,7 +163,7 @@ function quake.spawn(gutsman: Object, x: number, y: number, cracks_all: boolean)
     o.panel_x, o.panel_y = x, y
     o.element = gutsman.element
     o.related1 = gutsman
-    o:set_damage_word(bit32.bor(gutsman.damage, bit32.lshift(gutsman.stamina, 16)))
+    o.damage_word = gutsman.damage_word
     o.alliance = gutsman.alliance
     ;(o.state :: State).cracks_all = cracks_all
     o.run_while_dimmed = true

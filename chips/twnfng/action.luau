@@ -37,7 +37,7 @@ function twnfng.action(id: string, pairs: number, weak: boolean): Action
             return
         end
         s.timer = INTERVAL
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         fang.spawn(me, me.panel_x, me.panel_y, me.attack_element, damage, false, weak)
         fang.spawn(me, me.panel_x, me.panel_y, me.attack_element, damage, true, weak)
         local left = s.pairs - 1
