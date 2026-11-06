@@ -19,7 +19,7 @@ local SNAKE = common.make_kind("snake/snake", {
     rise_sound = asset.sound("tops"),
     leap_sound = asset.sound("zap-ring"),
     wait = 0x30,
-    strike_element = 0,
+    strike_element = Element.null,
     strike_spark = sparks.wood,
     strike_hit_mod = { flinch = true },
     is = collision.attack,
