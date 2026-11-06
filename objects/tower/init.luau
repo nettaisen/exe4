@@ -24,7 +24,7 @@ local RISE, HOLD, SINK = 0x0, 0x4, 0x8
 
 -- A tower of `look`: its spawn (0x080DF7D0), a tower on (x, y) with the element and damage word, of `owner`'s side.
 -- (Its position is the registers until its init places it.)
-function tower.make(look: Look): (owner: Object, x: number, y: number, element: number, damage: number) -> ()
+function tower.make(look: Look): (owner: Object, x: number, y: number, element: Element, damage: number) -> ()
     -- 0x080DF754, 0x080DF77C, 0x080DF7A6: a step of the look: on its first tick its ticks, and the sound rising (its
     -- animation the init's) or the step's animation after; past them the next step, past the last gone.
     local function step(me: Object, i: number)
@@ -112,8 +112,8 @@ function tower.make(look: Look): (owner: Object, x: number, y: number, element: 
         end,
     }
 
-    return function(owner: Object, x: number, y: number, element: number, damage: number)
-        local o = battle.spawn(kind, Vec3.new(y, element, 0))
+    return function(owner: Object, x: number, y: number, element: Element, damage: number)
+        local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
         if o then
             o.panel_x, o.panel_y = x, y
             o.element = element

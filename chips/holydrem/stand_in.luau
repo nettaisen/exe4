@@ -133,7 +133,7 @@ local function init(me: Object)
     me.pos = user.pos
     me:set_panel_from_coordinates()
     sprite.palette = user.sprite.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.vel = Vec3.new(me.facing, me.vel.y, me.vel.z)
     if user.actor_type == "player" then
         overlays.add_overlay_of(me, user)

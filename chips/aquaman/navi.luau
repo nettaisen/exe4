@@ -126,7 +126,7 @@ local function init(me: Object)
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -161,7 +161,7 @@ aquaman.kind = new.kind {
 -- is the spawner's registers: the row, the element and whatever the controller left in r3, which his init overwrites.
 -- The controller gives him B's charge at the ask, full or not, as his Param2, which he never reads: 0x080E39FA.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(aquaman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(aquaman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

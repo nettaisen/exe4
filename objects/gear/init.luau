@@ -159,7 +159,7 @@ local function tick(me: Object)
     if me.visible then
         field.highlight(me.panel_x, me.panel_y)
     end
-    me.sprite:set_flip(if me.vel.x > 0 then 1 else 0)
+    me.sprite:face_side(if me.vel.x > 0 then 1 else 0)
     me.collision:present()
 end
 
@@ -180,9 +180,9 @@ local function init(me: Object)
     local panel_side = if field.check(me.panel_x, me.panel_y, "own_area", nil, 1) then 1 else 0
     if s.mode == 0 then
         s.travel = panel_side
-        me.alliance = bit32.bxor(panel_side, 1)
+        me.alliance = battle.other_side(panel_side)
     elseif s.mode == 1 then
-        s.travel = bit32.bxor(me.alliance, 1)
+        s.travel = battle.other_side(me.alliance)
     else
         s.travel = panel_side
     end
@@ -238,8 +238,8 @@ gear.kind = new.kind {
 -- running while the battle is paused or dimmed; a lifetime gear (mode 1) one of its side's field objects (class 1).
 -- (Its position is the spawner's registers until its init places it: the row, the element and the side. MetlGer's
 -- controller watches no slot: its +0x60 stays empty.)
-function gear.spawn(x: number, y: number, element: number, alliance: number, mode: number, damage: number): Object?
-    local o = battle.spawn(gear.kind, Vec3.new(y, element, alliance))
+function gear.spawn(x: number, y: number, element: Element, alliance: number, mode: number, damage: number): Object?
+    local o = battle.spawn(gear.kind, Vec3.new(y, element.byte, alliance))
     if not o then
         return nil
     end

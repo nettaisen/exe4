@@ -25,7 +25,7 @@ metal_buster.action = buster.shot_action("metalsoul/buster/shot", SHOT)
 -- 0x0800CDE2.
 local function setup(navi: Object): Action
     navi.attack_damage = battle.navi(navi.alliance).attack + 1
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.extra = 0

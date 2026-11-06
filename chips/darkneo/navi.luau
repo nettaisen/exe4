@@ -112,7 +112,7 @@ local function arm_up(me: Object)
     me.timer2 = HOLE_SOUND_EVERY
     attachment.attach(me, AURA, "held", AURA_ANIM, true)
     local sprite = me.sprite
-    sprite.hidden_parts = bit32.bor(sprite.hidden_parts, 0x8000_0000)
+    sprite.hidden_parts[0] = true
     me.timer = HOLE_TICKS
     me.phase, me.phase_init = HOLE, 0
 end
@@ -159,7 +159,7 @@ local function wait_for_image(me: Object)
     ghost.spawn(me, 10, 10, FAR_SHADER, FALL)
     ghost.spawn(me, 10 + CAPE_ANIM_OFFSET, 10, FAR_SHADER, FALL)
     local sprite = me.sprite
-    sprite.hidden_parts = bit32.band(sprite.hidden_parts, 0x7FFF_FFFF)
+    sprite.hidden_parts[0] = false
     battle.play_sound(FLY_SOUND)
     me.phase, me.phase_init = FLY, 0
 end
@@ -213,7 +213,7 @@ local function blast(me: Object)
         local box = battle.hitbox(me, {
             panel_x = 5 - 3 * me.alliance,
             panel_y = 2,
-            element = 0,
+            element = Element.null,
             z = BLAST_HEIGHT,
             region = regions.wide_long,
             -- None.
@@ -268,7 +268,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     battle.play_sound(APPEAR)
     me.related1 =
@@ -317,8 +317,8 @@ navi.kind = new.kind {
 
 -- 0x080CB6E4: Bass on (x, y) for `controller`, of its side, with the element and the damage word. (His position is
 -- the spawner's registers, the row, the element and 0, until his init places him; on the ground.)
-function navi.summon(controller: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(navi.kind, Vec3.new(y, element, 0))
+function navi.summon(controller: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(navi.kind, Vec3.new(y, element.byte, 0))
     if not o then
         return nil
     end

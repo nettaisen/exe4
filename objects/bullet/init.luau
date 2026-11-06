@@ -23,7 +23,7 @@ bullet.kind = common.make_kind("bullet", {
 bullet.variant = common.variant
 
 -- 0x080CF596: a bullet of `variant` from `owner` on panel (x, y) at height `z`, with `element` and the damage word.
-function bullet.fire(owner: Object, x: number, y: number, z: number, variant: BulletVariant, element: number, damage: number): Object?
+function bullet.fire(owner: Object, x: number, y: number, z: number, variant: BulletVariant, element: Element, damage: number): Object?
     return common.fire(bullet.kind, owner, x, y, z, variant, element, damage)
 end
 

@@ -18,7 +18,7 @@ local HEAT_BREATH = asset.sprite("heat-breath")
 local heat_breath = breath.make {
     id = "heatbrth/breath",
     spark = sparks.fire,
-    element = 1,
+    element = Element.fire,
     hit_mod = 3,
     hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
@@ -49,7 +49,7 @@ end
 local blizzard_breath = breath.make {
     id = "blizzard/breath",
     spark = sparks.aqua,
-    element = 2,
+    element = Element.aqua,
     hit_mod = 3,
     hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0, steps = 6 },
     hit_effect_lasts = false,
@@ -82,7 +82,7 @@ local HIGHLIGHT_UNTIL, COLUMN_UNTIL = 15, 1
 local elec_breath = breath.make {
     id = "elecshok/breath",
     spark = sparks.elec,
-    element = 3,
+    element = Element.elec,
     hit_mod = 3,
     hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
@@ -114,7 +114,7 @@ end
 local wood_breath = breath.make {
     id = "woodpwdr/breath",
     spark = sparks.wood,
-    element = 4,
+    element = Element.wood,
     hit_mod = 1,
     status = statuses.confuse_480,
     hit_effect = POWDER,

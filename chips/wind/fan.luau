@@ -25,7 +25,7 @@ local FRONT = "enemy_area"
 
 -- 0x080D6688.
 local function column(me: Object, row: number, pulls: boolean): number
-    local x = panels.closest_in_row(bit32.bxor(me.alliance, 1), row, FRONT, nil, me.alliance)
+    local x = panels.closest_in_row(battle.other_side(me.alliance), row, FRONT, nil, me.alliance)
     -- (Another obstacle on the panel: a neutral object.)
     if field.any(x, row, "neutral") then
         return 0
@@ -50,7 +50,7 @@ local made = common.make {
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     is = collision.own_body,
     hits = collision.hit_by_other_side,
-    spawn_gust = function(x: number, y: number, alliance: number, _flip: number, how: GustHow, damage: number): Object?
+    spawn_gust = function(x: number, y: number, alliance: number, _flip: boolean, how: GustHow, damage: number): Object?
         return gust.spawn(x, y, alliance, how, damage, nil, 0)
     end,
     wind = winds.of,

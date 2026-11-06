@@ -25,7 +25,7 @@ end
 -- 0x080E6DB4: the other side's hidden navi marked; the hit on the next update. (The timer of 10 it sets is read only
 -- by the marks' second update, which the action of 4 leaves unrun.)
 local function mark(me: Object)
-    local navi = battle.player(bit32.bxor(me.alliance, 1))
+    local navi = battle.player(battle.other_side(me.alliance))
     if navi ~= nil and hidden(navi) then
         battle.effect(navi.pos + Vec3.new(0, 0, MARK_Z), MARK)
     end
@@ -39,7 +39,7 @@ local function hit(me: Object)
     local o = battle.hitbox(me, {
         panel_x = 2,
         panel_y = 2,
-        element = 0,
+        element = Element.null,
         region = regions.field,
         hit_effect = nil,
         target = collision.hits_navis,

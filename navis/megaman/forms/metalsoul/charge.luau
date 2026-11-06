@@ -97,7 +97,7 @@ charge.action = new.action {
 
 -- 0x0800CE28.
 local function setup(navi: Object): Action
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0

@@ -10,7 +10,7 @@ local spawners = {}
 export type Spawner = {
     id: string,
     -- The variant's spawner: the user, the attack's element and damage word.
-    spawn: (user: Object, element: number, damage: number) -> (),
+    spawn: (user: Object, element: Element, damage: number) -> (),
     -- How long the user stays in the action after the spawn (SidBmbo's 40); none, the attack ends at once.
     hold: number?,
 }

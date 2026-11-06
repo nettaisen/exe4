@@ -13,7 +13,7 @@ local SPARKLE = (roles.effects :: any).recovery :: Effect
 local SOUND = (roles.sounds :: any).recovery :: Sound
 
 -- 0x0800C720.
-local function repair(user: Object, _element: number, _damage: number)
+local function repair(user: Object, _element: Element, _damage: number)
     for i = 1, 3 do
         local o = field.object_slot(user.alliance, i)
         if o and o.hp ~= 0 then

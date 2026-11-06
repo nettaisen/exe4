@@ -14,7 +14,7 @@ local OWN = "own_area"
 
 -- 0x080E6D30: the other side's front-most column; the one before it; the field's edge.
 local function columns(me: Object): (number, number, number)
-    local other = bit32.bxor(me.alliance, 1)
+    local other = battle.other_side(me.alliance)
     local x = panels.front_most(other, OWN, nil, other)
     return x, x - me.facing, if me.facing > 0 then 7 else 0
 end

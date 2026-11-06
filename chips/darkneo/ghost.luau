@@ -102,10 +102,10 @@ local function init(me: Object)
     sprite:set_animation(s.anim)
     sprite.shadow = "ground"
     sprite.under_objects = true
-    sprite.hidden_parts = bit32.bor(sprite.hidden_parts, 0x8000_0000)
+    sprite.hidden_parts[0] = true
     sprite.palette = PALETTE
     sprite.color_shader = s.shader
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     s.blink = 2
     me.visible = true
     me:set_lifecycle("update")

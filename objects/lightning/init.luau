@@ -92,8 +92,8 @@ lightning.kind = new.kind {
 
 -- 0x080DF108: a lightning on (x, y) with the element and damage word, of `owner`'s side. (Its position is the
 -- registers until its init places it.)
-function lightning.spawn(owner: Object, x: number, y: number, element: number, damage: number)
-    local o = battle.spawn(lightning.kind, Vec3.new(y, element, 0))
+function lightning.spawn(owner: Object, x: number, y: number, element: Element, damage: number)
+    local o = battle.spawn(lightning.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

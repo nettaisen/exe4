@@ -25,9 +25,8 @@ local barriers = {}
 local SPRITE, AURA, BLACK = barrier_sprite, aura_sprite, black_barrier_sprite
 -- The visual's rising sound (0x080E2496), going back up too (0x080E25E4).
 local SOUND = asset.sound("barrier")
-local NO_TIMER = 0xFFFF
 -- The parts MegaMan's aura hides (0x080E23D8's word for types 6 and 7: part 7).
-local PART_7 = 0x1000000
+local PART_7: HiddenParts = { [7] = true }
 
 local function barrier(b: Barrier): Barrier
     return new.record(common_controller.BARRIER, b)
@@ -39,8 +38,7 @@ barriers.barrier_10 = barrier {
     behavior = "plain",
     hp = 10,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 0, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -50,8 +48,7 @@ barriers.barrier_100 = barrier {
     behavior = "plain",
     hp = 100,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 0, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -61,8 +58,7 @@ barriers.barrier_200 = barrier {
     behavior = "plain",
     hp = 200,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 0, hidden_parts = 0, up_steps = 16, down_steps = 21 },
+    look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 0, hidden_parts = {}, up_steps = 16, down_steps = 21 },
     sound = SOUND,
 }
 
@@ -72,8 +68,7 @@ barriers.black_barrier = barrier {
     behavior = "regrowing",
     hp = 150,
     threshold = 0,
-    timer = NO_TIMER,
-    look = { sprite = BLACK, anim = 0, palette = 0, attach_point = 0, hidden_parts = 0, up_steps = 14, down_steps = 19 },
+    look = { sprite = BLACK, anim = 0, palette = 0, attach_point = 0, hidden_parts = {}, up_steps = 14, down_steps = 19 },
     sound = SOUND,
 }
 

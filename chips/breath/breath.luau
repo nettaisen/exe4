@@ -30,7 +30,7 @@ local breath = {}
 type BreathLook = {
     id: string,
     spark: Spark,
-    element: number,
+    element: Element,
     hit_mod: number,
     status: Status?,
     hit_effect: Effect,
@@ -45,7 +45,7 @@ local TICKS, HIT_TICKS, COLUMN_AT = 55, 40, 40
 local LEAVE_AT, LAST = 15, 1
 -- Its sound as it starts (0x11F).
 local SOUND = asset.sound("breath")
--- What a breath's effects show turned (the effect's second parameter).
+-- A breath's effects show turned side 1's way (the effect's second parameter, 1, whatever the side).
 local TURNED = 1
 
 -- 0x080D3EDC: an effect on the ground at (x, y)'s center, turned, not running while dimmed.
@@ -87,7 +87,7 @@ end
 
 -- A chip's breath: its spawn (0x080D3B42), a breath on (x, y) from `user` with the attack's element and damage word.
 -- (Its position is the spawner's registers until its init places it: Y, the element and 0.)
-function breath.make(look: BreathLook): (user: Object, x: number, y: number, element: number, damage: number) -> ()
+function breath.make(look: BreathLook): (user: Object, x: number, y: number, element: Element, damage: number) -> ()
     -- 0x080D3B6C: on a solid panel (0x080D3B78), the effect, and a hit of the chip's element for 40 ticks at its
     -- height.
     local function hit(me: Object, x: number, y: number): boolean
@@ -194,8 +194,8 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
         end,
     }
 
-    return function(user: Object, x: number, y: number, element: number, damage: number)
-        local o = battle.spawn(kind, Vec3.new(y, element, 0))
+    return function(user: Object, x: number, y: number, element: Element, damage: number)
+        local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
         if o then
             o.panel_x, o.panel_y = x, y
             o.element = element
@@ -216,7 +216,7 @@ type ActionState = { timer: number }
 function breath.action(spec: {
     id: string,
     nozzle: AttachmentLook,
-    spawn: (user: Object, x: number, y: number, element: number, damage: number) -> (),
+    spawn: (user: Object, x: number, y: number, element: Element, damage: number) -> (),
 }): Action
     -- 0x080ED430: the nozzle up; 6 ticks in, its animation two on and the breath out; 37 ticks.
     local function hold(me: Object, s: ActionState)

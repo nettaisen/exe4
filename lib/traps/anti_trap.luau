@@ -47,22 +47,22 @@ end
 -- 0x080E529E: the other side's mood falls to 1 (`battle.set_mood`: EXE4's mood is held at 0; under event flag 0x1187,
 -- which no netbattle sets, it wouldn't change).
 local function after(me: Object)
-    battle.set_mood(bit32.bxor(me.alliance, 1), 1)
+    battle.set_mood(battle.other_side(me.alliance), 1)
 end
 
 trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     strikes = {
-        [0] = { sound = nil, spark = sparks.breaking, hit_mod = 3, status = nil, burst = HEAT },
-        [1] = { sound = asset.sound("heat-burst"), spark = sparks.fire, hit_mod = 3, status = nil, burst = HEAT },
-        [2] = { sound = asset.sound("bubble-burst"), spark = sparks.aqua, hit_mod = 3, status = nil, burst = BUBBLE },
-        [3] = {
+        null = { sound = nil, spark = sparks.breaking, hit_mod = 3, status = nil, burst = HEAT },
+        fire = { sound = asset.sound("heat-burst"), spark = sparks.fire, hit_mod = 3, status = nil, burst = HEAT },
+        aqua = { sound = asset.sound("bubble-burst"), spark = sparks.aqua, hit_mod = 3, status = nil, burst = BUBBLE },
+        elec = {
             sound = asset.sound("lightning"),
             spark = sparks.elec,
             hit_mod = 3,
             status = statuses.paralyze_90,
             burst = LIGHTNING,
         },
-        [4] = {
+        wood = {
             sound = asset.sound("wood-strike"),
             spark = sparks.wood,
             hit_mod = 3,
@@ -76,7 +76,7 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     targets = targets,
     after = after,
     bursts_over = function(me: Object): Region
-        return regions.area[bit32.bxor(me.alliance, 1)]
+        return regions.area[battle.other_side(me.alliance)]
     end,
 })
 
@@ -91,8 +91,8 @@ trap.kind = common_trap.make_kind("anti-trap/trap", {
     strike_kind = trap.strike_kind,
 })
 
--- The `dimming` hook of the Anti chip of `element` (1 fire, 2 aqua, 3 elec, 4 wood: its first parameter plus one).
-function trap.hook(element: number)
+-- The `dimming` hook of the Anti chip of `element` (fire to wood: its first parameter plus one, by number).
+function trap.hook(element: ElementName)
     return traps.hook(traps.trap {
         set = function(controller: Object, user: Object, chip: Chip?, bonus: number): Object?
             return common_trap.spawn(trap.kind, controller, user, chip, bonus, element)

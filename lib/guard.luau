@@ -36,8 +36,7 @@ export type State = {
 -- The shield's offset from its navi by the navi's number (NaviStats +0x23, 0x080ECDF0): MegaMan's 16 pixels ahead,
 -- level. (EXE4's content has no other navi.)
 local SHIELD_X, SHIELD_Z = 16, 0
--- The guard byte's bit that takes the shield down.
-local DROPS = 0x2
+-- (A guarded hit from a turned hitter, the guard byte's bit 1, takes the shield down.)
 
 -- The shield goes, and the guard with it.
 local function drop_shield(me: Object)
@@ -59,9 +58,9 @@ function guard.action(spec: Spec): Action
             s.timer = 0
             return
         end
-        local guarded = me.collision.guard_dirs
-        if counter and guarded ~= 0 then
-            if bit32.btest(guarded, DROPS) then
+        local c = me.collision
+        if counter and (c:guarded_from(false) or c:guarded_from(true)) then
+            if c:guarded_from(true) then
                 drop_shield(me)
             elseif me.marker == 0 then
                 me.marker = 1

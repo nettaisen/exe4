@@ -18,7 +18,7 @@ local SOUND = asset.sound("blue-moon-ray")
 local AHEAD = 3
 local HIT_MOD, STRIP_HIT_MOD = 3, 1
 -- The strips' element (their spawner's register 5).
-local STRIP_ELEMENT = 5
+local STRIP_ELEMENT = Element.drain
 -- The strips, one a tick (0x080DE284: each word's bug code and its argument).
 local STRIPS = {
     { bug = 0x01, arg = 0 },
@@ -35,7 +35,7 @@ local STRIPS = {
 local LASTS = 90
 
 -- A hit on the panel three columns ahead that resolves while dimmed (`sub_80C53A6`, 0x080CD81E).
-local function hit(me: Object, element: number, damage: number, hit_mod: number, bug: number?, arg: number?)
+local function hit(me: Object, element: Element, damage: number, hit_mod: number, bug: number?, arg: number?)
     local box = battle.hitbox(me, {
         panel_x = me.panel_x + me.facing * AHEAD,
         panel_y = me.panel_y,
@@ -112,7 +112,7 @@ local function init(me: Object)
     sprite:set_animation(0)
     sprite:step()
     sprite.shadow = "with_sprite"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -139,8 +139,8 @@ local kind = new.kind {
 
 -- 0x080DE2A8: a ray on (x, y) with `element` and the damage word, of `owner`'s side alone; it acts while dimmed.
 -- (Its position is the spawner's registers, which its init overwrites.)
-function ray.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(kind, Vec3.new(y, element, 0))
+function ray.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

@@ -84,7 +84,7 @@ taunt.action = new.action {
 -- 0x0800CFEC.
 function taunt.setup(navi: Object): Action
     navi.attack_damage = 0
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0

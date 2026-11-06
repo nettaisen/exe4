@@ -35,7 +35,7 @@ local NUMBERMAN = require("@exelib/numbrman/navi").make {
 -- position is the spawner's registers: the row, the element and whatever the controller left in r3, all of which his
 -- init overwrites.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(NUMBERMAN.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(NUMBERMAN.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

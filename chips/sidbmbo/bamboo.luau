@@ -119,7 +119,7 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y + LOWER * 0x10000, 0)
     sprite.palette = (me.state :: State).palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me.timer = 0
     me:set_lifecycle("update")
     tick(me)
@@ -146,9 +146,9 @@ bamboo.kind = new.kind {
 -- 0x080D5DDA, the spawners' variant 5: the bamboo in `palette` (twice the chip's parameter) three columns ahead of
 -- the user, on row 0, with the attack's element and damage word. (Its position is the registers until its init
 -- places it.)
-function bamboo.spawner(palette: number): (user: Object, element: number, damage: number) -> ()
-    return function(user: Object, element: number, damage: number)
-        local o = battle.spawn(bamboo.kind, Vec3.new(user.panel_y, element, 3 * user.facing))
+function bamboo.spawner(palette: number): (user: Object, element: Element, damage: number) -> ()
+    return function(user: Object, element: Element, damage: number)
+        local o = battle.spawn(bamboo.kind, Vec3.new(user.panel_y, element.byte, 3 * user.facing))
         if o then
             o.panel_x, o.panel_y = user.panel_x + 3 * user.facing, 0
             o.element = element

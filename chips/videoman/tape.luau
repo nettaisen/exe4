@@ -119,7 +119,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 15, 15
     sprite:set_animation(15)
     sprite.palette = 0
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_lifecycle("update")
     me.anim = 16
     battle.play_sound(SOUND)
@@ -158,7 +158,7 @@ function tape.spawn(videoman: Object, x: number, y: number): Object?
         return nil
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o:set_damage_word(bit32.bor(videoman.damage, bit32.lshift(videoman.stamina, 16)))
     o.alliance = videoman.alliance
     o.run_while_dimmed = true

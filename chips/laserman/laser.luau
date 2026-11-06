@@ -99,7 +99,7 @@ local function firing(me: Object)
     local word = COURSES[course][i + 1] or NONE
     if word ~= NONE then
         if word == CUSTOM_DOWN then
-            local level = battle.navi(bit32.bxor(me.alliance, 1)).custom_level
+            local level = battle.navi(battle.other_side(me.alliance)).custom_level
             if level > 2 then
                 level -= 1
             end
@@ -129,7 +129,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 17, 17
     sprite:set_animation(17)
     sprite.palette = if s.course == 0 or s.course == 2 then 0 else 10
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     sprite.color_shader = SHADERS[s.course]
     local p = me.pos
     me.pos = Vec3.new(int.i32(p.x + me.facing * 0x40_0000), p.y, p.z)
@@ -169,7 +169,7 @@ function laser.spawn(laserman: Object, x: number, y: number, course: number): Ob
         return nil
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o:set_damage_word(bit32.bor(laserman.damage, bit32.lshift(laserman.stamina, 16)))
     o.alliance = laserman.alliance
     o.run_while_dimmed = true

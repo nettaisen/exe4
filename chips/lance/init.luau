@@ -19,7 +19,7 @@ local chip: Chip = {
     flags = { "has_damage", "standard_library", "library" },
     action = spawners.action {
         id = "lance/action",
-        spawn = function(user: Object, element: number, damage: number)
+        spawn = function(user: Object, element: Element, damage: number)
             lance.thrust(user, element, 0, damage)
         end,
     },

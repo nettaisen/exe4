@@ -38,7 +38,7 @@ local zsaver: Chip = {
             new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9, steps = 15 },
             new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9, steps = 15 },
         },
-        boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
+        boom = function(owner: Object, x: number, y: number, element: Element, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(sonic_boom_kind, owner, x, y, element, damage, boom)
         end,
         step = nil,

@@ -25,6 +25,7 @@
 --
 -- The PET leaves the HP (+0x30) as it was, the save's: the HP programs raise the maximum alone.
 
+local MOVE_BUG = require("./move_bug")
 local board = require("@self/board")
 local patch_cards = require("./patch_cards")
 local programs = require("@self/programs")
@@ -158,7 +159,7 @@ local BUG_WEAPONS: { Weapon } = { bug_shots.rock_cube, bug_shots.bubble, taunt }
 -- Each bug at its level, 1 to 3 (0x08042B18's routines).
 local BUG_WORK: { [string]: (stats: Navi, level: number, work: Work) -> () } = {
     move = function(stats, level)
-        stats.move_bug = ({ 0xFF, 0x10, 0x20 })[level]
+        stats.move_bug = ({ MOVE_BUG.confused, MOVE_BUG.right, MOVE_BUG.left })[level]
     end,
     hp = function(stats, level)
         stats.hp_drain = ({ 10, 6, 3 })[level]
@@ -386,7 +387,7 @@ end
 -- engine's intake does each tick). The bugs' counts stay: the next raised bug runs them all again (`raise_bug`).
 local function fix_bugs(side: number)
     local s = battle.navi(side)
-    s.move_bug = 0
+    s.move_bug = MOVE_BUG.none
     s.buster_blanks = 0
     s.hp_drain = 0
     s.custom_drain = 0
@@ -461,7 +462,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
 end
 
 -- The bytes of the navi's stats that hold a kind of bug, and the values that are one (0x08043070, 0x0804304C).
-local MOVE_BUGS, HP_DRAINS, CUSTOM_DRAINS = { 0x20, 0x10, 0xFF }, { 0x0A, 6, 3 }, { 6, 4, 3 }
+local MOVE_BUGS, HP_DRAINS, CUSTOM_DRAINS = { MOVE_BUG.left, MOVE_BUG.right, MOVE_BUG.confused }, { 0x0A, 6, 3 }, { 6, 4, 3 }
 local PANEL_BUGS, BLANKS = { 3, 4 }, { 4, 8, 0x0A }
 
 -- 0x08043014: how many kinds of bug side `side`'s navi has, of EXE4's nine (the move, HP and custom drains, the

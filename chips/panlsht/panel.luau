@@ -119,14 +119,14 @@ local function init(me: Object)
     sprite:set_animation(0)
     sprite:step()
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local v = me.vel
     me.vel = Vec3.new(panels.side_direction(me.alliance) * SPEED * 0x10000, v.y, v.z)
     field.break_empty(me.panel_x, me.panel_y)
     local p = field.panel(me.panel_x, me.panel_y)
     if p then
-        looks.by_console(sprite, "palette", p.alliance, bit32.bxor(p.alliance, 1))
+        looks.by_console(sprite, "palette", p.alliance, battle.other_side(p.alliance))
         if not me:create_collision() then
             me:free()
             return
@@ -166,7 +166,7 @@ panel.kind = new.kind {
 -- before it flies, running while dimmed; it holds a flag of the controller's and sets it. (Its position is the
 -- spawner's registers until its init places it: the row and the element.)
 function panel.spawn(controller: Object, x: number, y: number, damage: number, wait: number): Object?
-    local o = battle.spawn(panel.kind, Vec3.new(y, controller.element, 0))
+    local o = battle.spawn(panel.kind, Vec3.new(y, controller.element.byte, 0))
     if not o then
         return nil
     end

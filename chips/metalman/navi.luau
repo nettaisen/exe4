@@ -181,7 +181,7 @@ local function touch(me: Object, s: State)
     local box = battle.hitbox(me, {
         panel_x = s.target_x,
         panel_y = s.target_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = nil,
@@ -246,7 +246,7 @@ local function punch(me: Object, s: State)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = sparks.breaking,
@@ -359,7 +359,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     sprite.palette = s.palette
     sprite.color_shader = 0x7FFF
     me.visible = true
@@ -413,7 +413,7 @@ metalman.kind = new.kind {
 -- is the spawner's registers: his panel, the element and his side, of which his init keeps the height.)
 function metalman.spawn(controller: Object, user: Object, damage: number, palette: number): Object?
     local x, y = controller.panel_x, controller.panel_y
-    local o = battle.spawn(metalman.kind, Vec3.new(x + y * 0x100, controller.element, user.alliance))
+    local o = battle.spawn(metalman.kind, Vec3.new(x + y * 0x100, controller.element.byte, user.alliance))
     if not o then
         return nil
     end

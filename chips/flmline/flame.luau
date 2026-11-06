@@ -141,8 +141,8 @@ local kind = new.kind {
 
 -- 0x080D00B8: a flame of `user`'s on (x, y) with the attack's element and damage word, burning `burns` ticks; its
 -- owner the user. (Its position is the spawner's registers until its init places it: Y, the element and 0.)
-function flame.spawn(user: Object, x: number, y: number, element: number, damage: number, burns: number)
-    local o = battle.spawn(kind, Vec3.new(y, element, 0))
+function flame.spawn(user: Object, x: number, y: number, element: Element, damage: number, burns: number)
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

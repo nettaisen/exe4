@@ -14,7 +14,7 @@ function navi_list.at(i: number): Object?
     if i == 0 then
         return battle.player(here)
     elseif i == 1 then
-        return battle.player(bit32.bxor(here, 1))
+        return battle.player(battle.other_side(here))
     end
     return nil
 end

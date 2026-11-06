@@ -47,7 +47,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
         sprite:set_animation(8)
         me.timer = TICKS
         sprite.palette = 0
-        sprite:set_flip(me.alliance)
+        sprite:face_side(me.alliance)
         me:set_panel_from_coordinates()
         for i = 0, 2 do
             hits(me, i * me.facing, 0, i + 1)
@@ -87,7 +87,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
         if not o then
             return nil
         end
-        o.element = 1
+        o.element = Element.fire
         o:set_damage_word(bit32.bor(burnman.damage, bit32.lshift(burnman.stamina, 16)))
         o.alliance = burnman.alliance
         o.run_while_dimmed = true

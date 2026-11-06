@@ -21,7 +21,7 @@ local trajectory = require("../../lib/trajectory")
 local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- 0x080E7EAA: the element the point's spawn leaves.
-local ELEMENT = 0xD9
+local ELEMENT = Element.from_byte(0xd9)
 
 -- 0x080E7C7A: the front of the user's area in row `y`, not its back column; 0 for none.
 local function front(me: Object, y: number): number

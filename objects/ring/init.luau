@@ -102,8 +102,8 @@ ring.kind = new.kind {
 
 -- 0x080DB0CC: a ring of `variant` of `owner`'s on (x, y) at height `z`, of `element` and the damage word. (Its position
 -- is the spawner's registers until its init places it: Y, the element and the height.)
-function ring.spawn(owner: Object, variant: RingVariant, x: number, y: number, z: number, element: number, damage: number)
-    local o = battle.spawn(ring.kind, Vec3.new(y, element, z))
+function ring.spawn(owner: Object, variant: RingVariant, x: number, y: number, z: number, element: Element, damage: number)
+    local o = battle.spawn(ring.kind, Vec3.new(y, element.byte, z))
     if o then
         (o.state :: State).variant = variant
         o.panel_x, o.panel_y = x, y

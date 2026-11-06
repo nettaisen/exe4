@@ -27,8 +27,8 @@ boomerang.boomer = common.variant { speed = 0x8_0000, turn_speed = 314573, grass
 
 -- 0x080D344E: a boomerang of `variant` from the user's back column (by its side: EXE4 has no flip), row 3, 16 pixels
 -- up, with the attack's element and damage word.
-function boomerang.spawner(variant: BoomerangVariant): (user: Object, element: number, damage: number) -> ()
-    return function(user: Object, element: number, damage: number)
+function boomerang.spawner(variant: BoomerangVariant): (user: Object, element: Element, damage: number) -> ()
+    return function(user: Object, element: Element, damage: number)
         local x = user.alliance * 5 + 1
         common.spawn(boomerang.kind, user, x, 3, element, 0x10_0000, { variant = variant }, damage)
     end

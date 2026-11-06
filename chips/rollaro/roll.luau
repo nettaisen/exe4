@@ -42,7 +42,7 @@ local APPEAR, SHOOT, LEAVE = 0x0, 0x4, 0x8
 local ARROW = flying_shot.variant {
     is = collision.chip_destruction,
     hit_mod = 3,
-    element = 0,
+    element = Element.null,
     spark = sparks.chip_destruction,
     sprite = roll_arrow_sprite,
     range = 8,
@@ -216,7 +216,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = ANIM_STAND, 0
     sprite:set_animation(ANIM_STAND)
     me:set_coordinates_from_panel()
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     sprite.palette = PALETTE
     sprite.color_shader = 0x7FFF
     me:set_lifecycle("update")

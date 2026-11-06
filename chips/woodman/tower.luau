@@ -148,8 +148,8 @@ tower.kind = new.kind {
 -- 0x080CE074: a tower on (x, y) of WoodMan's side, his, with `element` and his damage word, hit modifier 1, running
 -- while dimmed; rising with its sound if `sounds`. (Its position is the spawner's registers: the row, the element and
 -- 0.)
-function tower.spawn(woodman: Object, x: number, y: number, element: number, sounds: boolean): Object?
-    local o = battle.spawn(tower.kind, Vec3.new(y, element, 0))
+function tower.spawn(woodman: Object, x: number, y: number, element: Element, sounds: boolean): Object?
+    local o = battle.spawn(tower.kind, Vec3.new(y, element.byte, 0))
     if not o then
         return nil
     end

@@ -24,17 +24,17 @@ local HOLD_TICKS, FIRE_AT, RECOVER_TICKS = 32, 27, 10
 type State = { timer: number }
 
 -- Where a chip's flames rise around (x, y), the panel two ahead, with `element` and the damage word.
-export type Flames = (me: Object, x: number, y: number, element: number, damage: number) -> ()
+export type Flames = (me: Object, x: number, y: number, element: Element, damage: number) -> ()
 
 -- 0x080D00D8 (variant 0, FlmLine's): the column's flames, level, up, down.
-function flmline.column(me: Object, x: number, y: number, element: number, damage: number)
+function flmline.column(me: Object, x: number, y: number, element: Element, damage: number)
     flame.spawn(me, x, y, element, damage, BURNS)
     flame.spawn(me, x, y - 1, element, damage, BURNS)
     flame.spawn(me, x, y + 1, element, damage, BURNS)
 end
 
 -- 0x080D00F8 (variant 1, FlmCros's): a cross of five, level, up, down, the panel behind it and the one past it.
-function flmline.cross(me: Object, x: number, y: number, element: number, damage: number)
+function flmline.cross(me: Object, x: number, y: number, element: Element, damage: number)
     flmline.column(me, x, y, element, damage)
     flame.spawn(me, x - me.facing, y, element, damage, BURNS)
     flame.spawn(me, x + me.facing, y, element, damage, BURNS)
