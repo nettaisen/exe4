@@ -30,7 +30,7 @@ function fan.action(id: string, look: AttachmentLook, blow: FanBlow): Action
             me:set_animation(ANIM)
             me:open_counter_window()
             attachment.attach(me, look, "related", 2 * NAVI_NUMBER)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             s.timer = HOLD_TICKS
         end

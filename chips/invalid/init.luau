@@ -19,7 +19,7 @@ local invalid: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = {},
-    action = spawners.action { id = "invalid/action", spawn = plus.spawner(0) },
+    action = spawners.action { id = "invalid/action", spawn = plus.spawner("attack") },
     auto_battle = { class = "at_once" },
 }
 

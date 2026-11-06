@@ -65,7 +65,7 @@ local function let_go(me: Object): boolean
     if me.actor_type ~= "player" or battle.navi(me.alliance).form.id == DRIVEN then
         return false
     end
-    return not me:held("a")
+    return not me.held.a
 end
 
 -- 0x080EDF68: the holes in column x, its three rows, turned normal.
@@ -82,7 +82,7 @@ function gunsol.action(spec: Spec): Action
     -- 0x080EDE44: the gun out with its sound; 6 ticks later its animation one on, the beam lit, firing.
     local function wind_up(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.anim, me.anim_loaded = ANIM, 0xFF
             me:open_counter_window()
             attachment.attach(me, spec.gun, "related", 3 * NAVI_NUMBER)
@@ -155,7 +155,7 @@ function gunsol.action(spec: Spec): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.anim = 0
         me.related1 = nil
         me:exit_attack()
@@ -176,7 +176,7 @@ function gunsol.action(spec: Spec): Action
             else
                 error(string.format("GunSol's phase %#x reads past its table (0x080EDE38)", step))
             end
-            if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
+            if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
                 me:check_reactive_abort()
             end
         end,

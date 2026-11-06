@@ -40,7 +40,7 @@ function punch.make(spec: {
             me.anim = ANIM
             me:open_counter_window()
             attachment.attach(me, FIST, "related", 0)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SWING_TICKS
             battle.play_sound(SOUND)
             me.step_init = 4

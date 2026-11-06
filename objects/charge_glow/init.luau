@@ -17,8 +17,8 @@ local CHARGING = asset.sound("buster-charge")
 local CHARGED = asset.sound("buster-charged")
 
 export type State = {
-    -- The charge source it glows for (its +6: 1 A, 2 B).
-    source: number,
+    -- The charge source it glows for (its +6).
+    source: ChargeSource,
     -- Shown with its navi (its +0x0C): dimming hides it.
     shown: boolean,
 }
@@ -39,11 +39,11 @@ local function tick(me: Object)
     if not state.shown then
         me.visible = false
     end
-    if navi.charge_source ~= state.source or navi.charge_level == 0 then
+    if navi.charge_source ~= state.source or navi.charge_level == "none" then
         return finish(me, navi)
     end
     local before = me.anim
-    local anim = if navi.charge_level == 2 then 2 else 0
+    local anim = if navi.charge_level == "full" then 2 else 0
     me.anim = anim
     if anim ~= before and anim == 2 then
         battle.play_sound(CHARGED)
@@ -61,11 +61,11 @@ local function init(me: Object)
     local state = me.state :: State
     local source = navi.charge_source
     state.source = source
-    if source == 0 then
+    if source == "none" then
         return finish(me, navi)
     end
     local sprite = me.sprite
-    sprite:load(if source == 2 then B_GLOW else A_GLOW)
+    sprite:load(if source == "b" then B_GLOW else A_GLOW)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -78,7 +78,7 @@ end
 glow.kind = new.kind {
     id = "charge-glow",
     pool = "effect",
-    state = { source = "u8", shown = "bool" },
+    state = { source = { "none", "a", "b" }, shown = "bool" },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

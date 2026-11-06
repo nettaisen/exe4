@@ -93,7 +93,7 @@ local ANTI_MAGIC = new.action {
     id = "megaman/anti-magic/action",
     state = { timer = "u16" },
     update = function(me: Object, s: AntiMagicState)
-        if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
+        if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
             me:check_reactive_abort()
             return
         end
@@ -101,7 +101,7 @@ local ANTI_MAGIC = new.action {
             error(string.format("AntiMagc's stance: phase %#x reads past 0x080EEA18", me.step))
         end
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             battle.set_linked(me.alliance, {
                 chip = antidmg,
                 bonus = me.extra,

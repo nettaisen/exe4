@@ -48,7 +48,7 @@ function flmline.action(id: string, flames: Flames): Action
             me.anim = ANIM
             me:open_counter_window()
             s.timer = HOLD_TICKS
-            me:set_status("using_action", true)
+            me.status.using_action = true
             attachment.attach(me, BURNER, "related", 3 * NAVI_NUMBER)
             me.step_init = 4
         end

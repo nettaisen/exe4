@@ -58,7 +58,7 @@ local APPEAR, STAND, ATTACK, LEAVE = 0x0, 0x4, 0x8, 0xC
 -- Whether `navi` holds `key` alone (its dimmed record's word, 0x3FF of it, is the key's).
 local function held_alone(navi: Object, key: Key): boolean
     for _, k in KEYS do
-        if navi:dimmed_held(k) ~= (k == key) then
+        if (navi.dimmed_held :: any)[k] ~= (k == key) then
             return false
         end
     end

@@ -63,7 +63,7 @@ local function recover(me: Object, s: State)
         return
     end
     local dir = me:held_direction()
-    if dir == 0 or me:step_target(dir) == nil then
+    if dir == nil or me:step_target(dir) == nil then
         return
     end
     me.related1 = nil
@@ -82,7 +82,7 @@ bug_shots.rock_cube_action = new.action {
             if me.step_init == 0 then
                 me.anim = 0x12
                 me:open_counter_window()
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 s.timer = CUBE_WAIT
                 me.step_init = 4
             end
@@ -94,7 +94,7 @@ bug_shots.rock_cube_action = new.action {
             -- 0x080EEAA6: the cube on the panel ahead (its parameter: row 1, slot class 0, rising).
             battle.play_sound(PLACE_SOUND)
             local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
-            rock.spawn(me.panel_x + me.facing, me.panel_y, me.alliance, { variant = CUBE, class = 0, entrance = "rise" }, damage)
+            rock.spawn(me.panel_x + me.facing, me.panel_y, me.alliance, { variant = CUBE, class = "two_a_side", entrance = "rise" }, damage)
             me.step, me.step_init = 0x8, 0
         elseif step == 0x8 then
             -- 0x080EEAC8: 31 ticks, then back to idle.
@@ -122,7 +122,7 @@ bug_shots.bubble_action = new.action {
             -- 0x080ED048.
             if me.step_init == 0 then
                 me:set_animation(0x12)
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 me.step_init = 4
                 s.timer = 0
             end
