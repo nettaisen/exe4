@@ -7,7 +7,7 @@
 local action = require("./sonicbom/action")
 
 local punisher: Chip = {
-    action = action.make("punisher/action", 0, false),
+    action = action.make("punisher/action", {}, false),
     codes = { "E", "L", "S", "*" },
     element = "null",
     family = "sword",

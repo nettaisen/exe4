@@ -6,7 +6,7 @@
 local action = require("./sonicbom/action")
 
 local curse: Chip = {
-    action = action.make("curse/action", 0, false),
+    action = action.make("curse/action", {}, false),
     codes = { "E", "L", "S", "*" },
     element = "null",
     family = "sword",
