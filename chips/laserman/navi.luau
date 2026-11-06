@@ -69,7 +69,7 @@ local function attack(me: Object)
             local navi = battle.player(me.alliance)
             if navi then
                 for _, aim in AIMS do
-                    if navi:dimmed_held(aim.key) then
+                    if (navi.dimmed_held :: any)[aim.key] then
                         s.course = aim.course
                         break
                     end
@@ -138,7 +138,7 @@ end
 laserman.kind = new.kind {
     id = "laserman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", aims = "bool", course = "u8" },
+    state = { controller = schema.object, palette = schema.u8, aims = schema.bool, course = schema.u8 },
     -- 0x080CABE4: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

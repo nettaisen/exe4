@@ -37,7 +37,7 @@ local function shoot(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(0x12)
         me.step_init = 4
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
     end
     if s.timer == 1 then
@@ -68,7 +68,7 @@ local function recover(me: Object, s: State)
         return
     end
     local dir = me:held_direction()
-    if dir == 0 or me:step_target(dir) == nil then
+    if dir == nil or me:step_target(dir) == nil then
         return
     end
     me.related1 = nil
@@ -79,7 +79,7 @@ end
 
 charged_shot.action = new.action {
     id = "megaman/charged-shot/action",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
         if step == SHOOT then

@@ -58,7 +58,7 @@ local APPEAR, STAND, ATTACK, LEAVE = 0x0, 0x4, 0x8, 0xC
 -- Whether `navi` holds `key` alone (its dimmed record's word, 0x3FF of it, is the key's).
 local function held_alone(navi: Object, key: Key): boolean
     for _, k in KEYS do
-        if navi:dimmed_held(k) ~= (k == key) then
+        if (navi.dimmed_held :: any)[k] ~= (k == key) then
             return false
         end
     end
@@ -197,7 +197,7 @@ end
 fireman.kind = new.kind {
     id = "fireman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", flame = "object", command_steps = "u8", commanded = "bool" },
+    state = { controller = schema.object, palette = schema.u8, flame = schema.object, command_steps = schema.u8, commanded = schema.bool },
     -- 0x080B92A2: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

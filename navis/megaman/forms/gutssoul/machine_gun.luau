@@ -42,10 +42,10 @@ type State = { timer: number }
 -- 0x080EBDE4.
 local function start(me: Object, s: State)
     -- (`object_setInvulnerableTime`, 0x0800B018.)
-    me:set_status_timer("invulnerable", INVULNERABLE)
-    me:set_status("invulnerable", true)
+    me.status_timers.invulnerable = INVULNERABLE
+    me.status.invulnerable = true
     me.attack_count = SHOTS
-    me:set_status("using_action", true)
+    me.status.using_action = true
     me.step, me.step_init = SHOOT, 0
 end
 
@@ -90,7 +90,7 @@ end
 
 machine_gun.action = new.action {
     id = "gutssoul/machine-gun",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
         if step == START then

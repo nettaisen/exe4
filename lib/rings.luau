@@ -31,7 +31,7 @@ function rings.action(spec: Spec): Action
     -- 0x080EDC78: the throw; on the timer's 5 the ring.
     local function throw(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me:set_animation(spec.anim)
             me:open_counter_window()
             local held = spec.held
@@ -66,7 +66,7 @@ function rings.action(spec: Spec): Action
         local t = s.timer - 1
         s.timer = int.u16(t)
         if t < 0 then
-            me:set_status("using_action", false)
+            me.status.using_action = false
             me.anim = IDLE_ANIM
             me.related1 = nil
             me:exit_attack()
@@ -75,7 +75,7 @@ function rings.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080EDC5A.
         update = function(me: Object, s: State)
             local step = me.step

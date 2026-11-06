@@ -34,7 +34,7 @@ function revert.update(me: Object, s: State)
         battle.play_sound(REVERT_SOUND)
         battle.effect(me.pos + Vec3.new(0, 0, 0x14_0000), FLASH)
         me:snap_to_future_panel()
-        me:set_status("moving", false)
+        me.status.moving = false
         local stats = battle.navi(me.alliance)
         hooks.finish(me, stats.form)
         looks.load_form_sprite(me, base)
@@ -46,7 +46,7 @@ function revert.update(me: Object, s: State)
         turns.start(base)
         hooks.settle(me)
         me.related1 = nil
-        me:set_request("revert_form", false)
+        me.requests.revert_form = false
         s.timer = 0
         me.step_init = 4
     end
@@ -55,14 +55,14 @@ function revert.update(me: Object, s: State)
         return
     end
     -- (+0x44's 0x3D: the dark soul's, the dimming's and the revert's flags.)
-    me:set_navi_state("reverting_form", false)
+    me.navi_flags.reverting_form = false
     me:exit_attack()
 end
 
 -- The revert out of a soul, MegaMan's action 0x11: one of rules/souls's actions (./init).
 revert.action = new.action {
     id = "souls/revert",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = revert.update,
 }
 

@@ -18,6 +18,7 @@
 -- 0x0802041C: the engine's two-cell button. EXE5's Shuffle, the framework's re-deal, is this routine's later form.)
 
 local order = require("@exelib/order")
+local soul_custom = require("@exelib/souls/custom")
 
 local shuffle = {}
 
@@ -140,9 +141,9 @@ local function land(side: number, s: Screen)
     end
 end
 
-shuffle.custom = new.record("soul-custom", {
+shuffle.custom = new.record(soul_custom.SOUL_CUSTOM, {
     state = {
-        shuffle_deal = schema.list({ chip = "chip", code = "code" }, 30),
+        shuffle_deal = schema.list({ chip = schema.chip, code = schema.code }, 30),
     },
     buttons = {
         [BUTTON] = {

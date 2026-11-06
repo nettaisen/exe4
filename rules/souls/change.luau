@@ -62,7 +62,7 @@ local PREPARE, IMAGE, EMERGE, FADE_IN, SETTLE = 0, 4, 8, 0xC, 0x10
 -- The HUD's parts shown or hidden, on every console.
 local function show_hud(parts: { HudField }, shown: boolean)
     for _, part in parts do
-        battle.set_hud(part, shown)
+        (battle.hud() :: any)[part] = shown
     end
 end
 
@@ -100,13 +100,13 @@ local function prepare(me: Object, soul: FormDef, spec: Spec)
     me.sprite.white = true
     if me.step_init == 0 then
         me.attack_lockout = END_LOCKOUT
-        me:set_status("frozen", true)
+        me.status.frozen = true
         battle.screen_fade("transform_out", FADE_SPEED)
         me:snap_to_future_panel()
         flash(me)
         battle.play_sound(CHANGE_SOUND)
-        me:set_status("moving", false)
-        me:set_request("revert_form", false)
+        me.status.moving = false
+        me.requests.revert_form = false
         if spec.prepare then
             spec.prepare(me)
         end
@@ -131,7 +131,7 @@ local function show_image(me: Object, s: State, soul: FormDef, spec: Spec, spawn
         battle.play_sound(UNITE_SOUND)
         flash(me)
         if spec.flash == true then
-            battle.palette_flash(0, 0x28, true, false)
+            battle.palette_flash("one_layer", 0x28, true, false)
         end
     end
     s.timer -= 1
@@ -199,13 +199,13 @@ local function settle(me: Object, s: State, spec: Spec)
     if int.i16(s.timer) >= 0 then
         return
     end
-    me:set_status("frozen", false)
+    me.status.frozen = false
     if spec.keeps_hand ~= true then
         battle.advance_hand(me.alliance)
     end
     battle.set_dimmed(false)
     me.collision:set_region(regions.single)
-    me:set_navi_state("form_change", false)
+    me.navi_flags.form_change = false
     me:exit_attack()
 end
 
@@ -214,7 +214,7 @@ function change.make(spec: Spec): Action
     local spawn_image = image.make(spec.id .. "/image")
     return new.action {
         id = spec.id .. "/change",
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- One tick of the change.
         update = function(me: Object, s: State)
             local soul = me:form_change_target()

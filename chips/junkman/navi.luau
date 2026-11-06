@@ -162,7 +162,7 @@ end
 junkman.kind = new.kind {
     id = "junkman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", gray = "u8", busy = "bool" },
+    state = { controller = schema.object, palette = schema.u8, gray = schema.u8, busy = schema.bool },
     -- 0x080C95E8.
     update = function(me: Object)
         local l = me.lifecycle

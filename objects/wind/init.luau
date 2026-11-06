@@ -114,7 +114,7 @@ end
 wind.kind = new.kind {
     id = "wind",
     pool = "effect",
-    state = { gusts = "u8[2]", row = "u8", pulls = "bool", unseen = "bool", waits = "bool" },
+    state = { gusts = schema.array(schema.u8, 2), row = schema.u8, pulls = schema.bool, unseen = schema.bool, waits = schema.bool },
     -- 0x080E6820.
     update = function(me: Object)
         local l = me.lifecycle

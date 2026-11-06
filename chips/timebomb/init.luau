@@ -7,7 +7,7 @@ local bomb = require("@self/bomb")
 local countdown = require("@exelib/timebom/countdown")
 
 -- TimeBomb's bomb (its first parameter 0: animations 0 and 1, 50 HP).
-local BOMB = countdown.variant { appear_anim = 0, idle_anim = 1, hp = 50, class = 1, collision = bomb.body }
+local BOMB = countdown.variant { appear_anim = 0, idle_anim = 1, hp = 50, class = "one_a_side", collision = bomb.body }
 
 -- TimeBomb (EXE4 chip 0x061).
 local timebomb: Chip = {

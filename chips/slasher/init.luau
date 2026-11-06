@@ -67,7 +67,7 @@ local function update(me: Object, s: State)
         end
     elseif step == WAIT then
         -- 0x080ED5D0: while A is held, wait for it.
-        if me:held("a") then
+        if me.held.a then
             local x = find(me)
             if x ~= 0 then
                 s.target_x = x
@@ -83,7 +83,7 @@ local function update(me: Object, s: State)
             me:open_counter_window()
             battle.play_sound(swords.swing)
             attachment.attach(me, swords.blade, "related", NAVI_NUMBER)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = SLASH_TICKS
             -- (Chip 0x38, Slasher, whose action this is alone.)
             local chip = me.attack_chip
@@ -131,13 +131,13 @@ local function update(me: Object, s: State)
     else
         error(string.format("Slasher's phase %#x reads past its table (0x080ED598)", step))
     end
-    if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
+    if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
         me:check_reactive_abort()
     end
 end
 
 local slasher: Chip = {
-    action = new.action { id = "slasher/action", state = { timer = "u16", target_x = "u8" }, update = update },
+    action = new.action { id = "slasher/action", state = { timer = schema.u16, target_x = schema.u8 }, update = update },
     codes = { "F", "H", "R" },
     element = "null",
     family = "sword",

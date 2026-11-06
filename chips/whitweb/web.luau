@@ -55,7 +55,7 @@ local function tick(me: Object)
         gone(me)
         return
     end
-    if me:take_damage(0) == -1 then
+    if me:take_damage("damage_sound") == "broken" then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x8_0000), IMPACT)
         battle.play_sound(GONE_SOUND)

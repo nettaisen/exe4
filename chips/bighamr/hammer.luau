@@ -294,7 +294,7 @@ function hammer.make(look: Look): Hammer
         o.element = element
         o.alliance = owner.alliance
         o:set_damage_word(damage)
-        obstacle.register(o, o.alliance, 1)
+        obstacle.register(o, o.alliance, "one_a_side")
         o.run_while_dimmed = true
         return o
     end

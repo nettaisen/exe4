@@ -34,8 +34,8 @@ local function start(me: Object)
     me.collision:set_region(nil)
     me.collision.confusion_visual = nil
     me.collision.blindness_visual = nil
-    me:set_status_timer("submerged", 0)
-    me:set_status("submerged", false)
+    me.status_timers.submerged = 0
+    me.status.submerged = false
     navi_status.reset_charge(me)
     me.chip = nil
     me.anim = 2

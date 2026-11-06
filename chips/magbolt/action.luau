@@ -68,7 +68,7 @@ function magbolt.action(spec: MagnetSpec): Action
     -- 0x080EE034: the magnet held out; 6 ticks on, its fields and the pull.
     local function raise(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me:set_animation(ANIM)
             me:open_counter_window()
             attachment.attach(me, MAGNET, "related", 3 * NAVI_NUMBER)
@@ -131,7 +131,7 @@ function magbolt.action(spec: MagnetSpec): Action
         local t = s.timer - 1
         s.timer = int.u16(t)
         if t < 0 then
-            me:set_status("using_action", false)
+            me.status.using_action = false
             me.anim = 0
             me.related1 = nil
             me:exit_attack()
@@ -140,7 +140,7 @@ function magbolt.action(spec: MagnetSpec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16", hum = "u16" },
+        state = { timer = schema.u16, hum = schema.u16 },
         -- 0x080EE012.
         update = function(me: Object, s: State)
             local step = me.step

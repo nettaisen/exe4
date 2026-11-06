@@ -21,11 +21,11 @@ type State = {
 
 sent_chips.state = {
     -- A console's list.
-    sent = schema.list({ chip = "chip", code = "code" }, 60),
+    sent = schema.list({ chip = schema.chip, code = schema.code }, 60),
     -- The side's hand's (its block's +0x32), from OK to the install.
-    sending = schema.list({ chip = "chip", code = "code" }, 5),
+    sending = schema.list({ chip = schema.chip, code = schema.code }, 5),
     -- Where this turn's blocks start in the console's list, plus one (none: 0).
-    turn = "u8",
+    turn = schema.u8,
 } :: StateSchema
 
 -- 0x0801F10A, as OK builds the side's hand: the picks its hand lists.

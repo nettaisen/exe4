@@ -13,7 +13,7 @@ local BIG_BOMB = countdown.variant {
     appear_anim = 2,
     idle_anim = 3,
     hp = 300,
-    class = 1,
+    class = "one_a_side",
     collision = bomb.body,
     strong_shake = true,
 }

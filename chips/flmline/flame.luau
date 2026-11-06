@@ -124,7 +124,7 @@ end
 local kind = new.kind {
     id = "flmline/flame",
     pool = "attack",
-    state = { burns = "u8" },
+    state = { burns = schema.u8 },
     -- 0x080CFF80: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

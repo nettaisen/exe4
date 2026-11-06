@@ -203,7 +203,7 @@ function signal.spawn(owner: Object, x: number, y: number, damage: number): Obje
     o.panel_x, o.panel_y = x, y
     o.alliance = owner.alliance
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, 1)
+    obstacle.register(o, o.alliance, "one_a_side")
     return o
 end
 

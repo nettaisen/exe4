@@ -28,7 +28,7 @@ local function throw(me: Object, s: State)
         me.anim = ANIM
         battle.play_sound(SOUND)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end
@@ -69,7 +69,7 @@ end
 
 charge.action = new.action {
     id = "numbersoul/charged-shot/action",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
         if step == THROW then

@@ -126,7 +126,7 @@ end
 tower.kind = new.kind {
     id = "woodman/tower",
     pool = "attack",
-    state = { hit_mod = "u8", sounds = "bool" },
+    state = { hit_mod = schema.u8, sounds = schema.bool },
     -- 0x080CDEB8: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle

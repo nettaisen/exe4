@@ -50,7 +50,7 @@ function widesht.action(id: string, variant: WaveVariant, waves: number): Action
         me:set_animation(ANIM)
         me:open_counter_window()
         attachment.attach(me, SHOOTER, "related", 2 * NAVI_NUMBER)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step, me.step_init = 4, 0
         s.waves = waves
         s.timer = FIRST_TICKS
@@ -101,7 +101,7 @@ function widesht.action(id: string, variant: WaveVariant, waves: number): Action
 
     return new.action {
         id = id,
-        state = { timer = "u16", waves = "u16" },
+        state = { timer = schema.u16, waves = schema.u16 },
         -- 0x080ED25C.
         update = function(me: Object, s: State)
             local step = me.step

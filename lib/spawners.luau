@@ -22,7 +22,7 @@ local SPAWN = 0x0
 function spawners.action(spec: Spawner): Action
     return new.action {
         id = spec.id,
-        state = { timer = "i16" },
+        state = { timer = schema.i16 },
         update = function(me: Object, s: State)
             if me.step == SPAWN then
                 me.step = 4

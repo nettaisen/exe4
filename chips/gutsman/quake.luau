@@ -137,7 +137,7 @@ end
 quake.kind = new.kind {
     id = "gutsman/quake",
     pool = "attack",
-    state = { cracks_all = "bool" },
+    state = { cracks_all = schema.bool },
     -- 0x080D055C: by its state.
     update = function(me: Object)
         local l = me.lifecycle

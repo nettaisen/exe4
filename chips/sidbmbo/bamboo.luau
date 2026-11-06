@@ -128,7 +128,7 @@ end
 bamboo.kind = new.kind {
     id = "sidbmbo/bamboo",
     pool = "attack",
-    state = { palette = "u8" },
+    state = { palette = schema.u8 },
     -- 0x080D5C50: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

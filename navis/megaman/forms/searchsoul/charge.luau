@@ -86,7 +86,7 @@ local function aim(me: Object, s: State)
         end
         return
     end
-    me:set_status("using_action", true)
+    me.status.using_action = true
     s.shots = SHOTS
     local x, y = find(me)
     if x == nil or y == nil then
@@ -148,7 +148,7 @@ end
 
 charge.action = new.action {
     id = "searchsoul/charged-shot/action",
-    state = { timer = "u16", shots = "u16", target_x = "u8", target_y = "u8" },
+    state = { timer = schema.u16, shots = schema.u16, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080EDB5C
     update = function(me: Object, s: State)
         local step = me.step

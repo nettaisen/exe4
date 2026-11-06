@@ -58,7 +58,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
     local kind = new.kind {
         id = "burnman/flame",
         pool = "attack",
-        state = { hits = "object[3]" } :: StateSchema,
+        state = { hits = schema.array(schema.object, 3) } :: StateSchema,
         -- 0x080D3EF0: by its state, then its sprite.
         update = function(me: Object)
             local l = me.lifecycle

@@ -162,7 +162,7 @@ end
 spark.kind = new.kind {
     id = "sparkman/spark",
     pool = "attack",
-    state = { up = "bool", next_x = "u8", next_y = "u8", holder = "object" },
+    state = { up = schema.bool, next_x = schema.u8, next_y = schema.u8, holder = schema.object },
     -- 0x080D10D0: by its state, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

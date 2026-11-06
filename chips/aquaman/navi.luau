@@ -137,7 +137,7 @@ end
 aquaman.kind = new.kind {
     id = "aquaman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", spout = "object", gun = "object" },
+    state = { controller = schema.object, palette = schema.u8, spout = schema.object, gun = schema.object },
     -- 0x080BAF88: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

@@ -139,7 +139,7 @@ end
 laser.kind = new.kind {
     id = "laserman/laser",
     pool = "attack",
-    state = { course = "u8" },
+    state = { course = schema.u8 },
     -- 0x080E0E0C: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle

@@ -17,7 +17,7 @@ local chip: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = { "dimming", "standard_library", "library" },
-    extra_flags = { 2 },
+    extra_flags = { "rush_cancels" },
     dimming = controller,
     auto_battle = { class = "when_visible" },
 }

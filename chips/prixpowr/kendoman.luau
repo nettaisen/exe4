@@ -164,7 +164,7 @@ end
 kendoman.kind = new.kind {
     id = "prixpowr/kendoman",
     pool = "actor",
-    state = { controller = "object", hits = "object[1]", gone_at = "u8", gone = "bool" } :: StateSchema,
+    state = { controller = schema.object, hits = schema.array(schema.object, 1), gone_at = schema.u8, gone = schema.bool } :: StateSchema,
     -- 0x080CBE40: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

@@ -131,7 +131,7 @@ end
 local controller = new.kind {
     id = "boybomb/controller",
     pool = "effect",
-    state = { bonus = "u16" },
+    state = { bonus = schema.u16 },
     -- 0x080E94CC.
     update = dimming_chips.phases { name = "BoyBomb", effect = effect },
 }

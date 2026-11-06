@@ -92,13 +92,13 @@ souls.windows = windows
 -- and the custom screen's (./custom): the UNITE button's offer (the screen's +0x0D; once given, the soul given) and
 -- the soul's choice's step and count; and what each soul's screen keeps.
 souls.state = {
-    soul_turns = schema.role("form_offer.turns", "u8"),
-    soul_turn_limit = schema.role("form_offer.turn_limit", "u8"),
-    souls_used = schema.list("form", 12),
-    offer = schema.role("form_offer.form", "form"),
-    unite_step = schema.role("offer_flight.step", "u8"),
-    unite_count = schema.role("offer_flight.count", "u8"),
-    soul_hand_sent = "bool",
+    soul_turns = schema.role("form_offer.turns", schema.u8),
+    soul_turn_limit = schema.role("form_offer.turn_limit", schema.u8),
+    souls_used = schema.list(schema.form, 12),
+    offer = schema.role("form_offer.form", schema.form),
+    unite_step = schema.role("offer_flight.step", schema.u8),
+    unite_count = schema.role("offer_flight.count", schema.u8),
+    soul_hand_sent = schema.bool,
 } :: StateSchema
 for name, kind in screen do
     assert(souls.state[name] == nil, `a soul's screen field \`{name}\` is one of Double Soul's own`)
@@ -118,18 +118,18 @@ end
 -- reaches him this tick (0x0800C43C, the intake's next call).
 function souls.navi_intake(side: number, navi: Object)
     if not battle.dimmed() then
-        if navi:status("frozen") then
-            navi:set_request("form_change", false)
+        if navi.status.frozen then
+            navi.requests.form_change = false
         else
             local next = navi:next_chip()
             if next ~= nil and next.family == "special" then
-                navi:set_request("form_change", true)
+                navi.requests.form_change = true
             else
-                navi:set_request("form_change", false)
+                navi.requests.form_change = false
                 if dark.united(side) then
                     dark.countdown(navi)
                 elseif battle.navi(side).form.soul ~= nil and turns.over() then
-                    navi:set_request("revert_form", true)
+                    navi.requests.revert_form = true
                 end
             end
             dark.asked(side, navi)
@@ -149,7 +149,7 @@ function souls.grass_heal(side: number, navi: Object)
     end
     local c = navi.collision
     local p = field.panel(c.panel_x, c.panel_y)
-    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle(2) ~= 0 then
+    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle("second") ~= 0 then
         return
     end
     navi.hp = math.min(navi.hp + 1, navi.max_hp)

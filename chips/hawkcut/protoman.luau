@@ -213,7 +213,7 @@ end
 protoman.kind = new.kind {
     id = "hawkcut/protoman",
     pool = "actor",
-    state = { held = "object" },
+    state = { held = schema.object },
     -- 0x080C8A28: its state's routine, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

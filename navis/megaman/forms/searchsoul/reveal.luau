@@ -19,7 +19,7 @@ local MARK = new.effect { sprite = scope_mark_sprite, anim = 0, palette = 0, ste
 local MARK_Z = 20 * 0x1_0000
 -- What it marks: an invisible, submerged or flashing navi.
 local function hidden(navi: Object): boolean
-    return navi:status("invisible") or navi:status("submerged") or navi:status("flashing")
+    return navi.status.invisible or navi.status.submerged or navi.status.flashing
 end
 
 -- 0x080E6DB4: the other side's hidden navi marked; the hit on the next update. (The timer of 10 it sets is read only

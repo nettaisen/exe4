@@ -201,7 +201,7 @@ end
 navi.kind = new.kind {
     id = "duo/navi",
     pool = "actor",
-    state = { controller = "object", last = targets.LAST, grid = targets.GRID },
+    state = { controller = schema.object, last = targets.LAST, grid = targets.GRID },
     -- 0x080CB70C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

@@ -43,7 +43,7 @@ function controller.make(
     local kind = new.kind {
         id = id,
         pool = "effect",
-        state = { bonus = "u16" },
+        state = { bonus = schema.u16 },
         -- 0x080E4B88.
         update = dimming_chips.phases { name = "the hammer chips", effect = effect },
     }

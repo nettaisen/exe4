@@ -283,7 +283,7 @@ end
 tornado.kind = new.kind {
     id = "windman/tornado",
     pool = "attack",
-    state = { ticks = "u32", steps = "u8", sandy = "bool" },
+    state = { ticks = schema.u32, steps = schema.u8, sandy = schema.bool },
     -- 0x080DAC54: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle

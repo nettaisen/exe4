@@ -15,7 +15,7 @@ auto_battle.block = block
 -- clears), which the AI draws for a variable sword (./place).
 auto_battle.state = {
     auto_battle_places = schema.list(block.PLACE, block.PLACES),
-    sword_pick = "u8",
+    sword_pick = schema.u8,
 } :: StateSchema
 
 return auto_battle

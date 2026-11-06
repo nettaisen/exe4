@@ -85,7 +85,7 @@ local function flash(me: Object)
     if box then
         box.run_while_dimmed = true
     end
-    battle.palette_flash(0, FLASH_TICKS, true, false)
+    battle.palette_flash("one_layer", FLASH_TICKS, true, false)
     battle.play_sound(SOUND_FLASH)
 end
 
@@ -184,7 +184,7 @@ end
 sparkman.kind = new.kind {
     id = "sparkman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", sparks = "u32" },
+    state = { controller = schema.object, palette = schema.u8, sparks = schema.u32 },
     -- 0x080B89C0: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

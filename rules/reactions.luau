@@ -58,12 +58,16 @@ return {
         drag = { "anti_sword_triggered" },
         cut_in = {},
     },
+    -- EXE4's own request (the collision's flag2 bit 0x8000): its counter mark, a paralysis a counter made that tick
+    -- (0x08013A48 keeps it through a drag or a flinch). The engine keeps every game's counter mark at EXE6's 0x4000,
+    -- so the status end clears a bit nothing sets.
+    request_bits = { counter_mark = 0x8000 },
     -- What a navi's statuses' end clears (0x08013218): EXE4 has no freeze and no bubble, the other four statuses'
     -- flags (0xE800), the requests 0x8068 and the four timers (its flag 0x10000 holds a navi changing into a soul:
     -- rules/souls/change).
     status_end = {
         flags = { "paralyzed", "blind", "immobilized", "confused" },
-        requests = 0x8068,
+        requests = { "paralyze", "blind", "immobilize", "counter_mark" },
         timers = { "paralyze", "confuse", "blind", "immobilize" },
     },
     push = {

@@ -23,7 +23,7 @@ function twnfng.action(id: string, pairs: number, weak: boolean): Action
     local function start(me: Object, s: State)
         me:set_animation(ANIM)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.pairs = pairs
         s.timer = 0
         me.step, me.step_init = 4, 0
@@ -62,7 +62,7 @@ function twnfng.action(id: string, pairs: number, weak: boolean): Action
 
     return new.action {
         id = id,
-        state = { timer = "u16", pairs = "u16" },
+        state = { timer = schema.u16, pairs = schema.u16 },
         -- 0x080ED4C6.
         update = function(me: Object, s: State)
             local step = me.step

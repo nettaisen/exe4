@@ -226,7 +226,7 @@ end
 roll.kind = new.kind {
     id = "rollaro/roll",
     pool = "actor",
-    state = { controller = "object", gray = "u8" },
+    state = { controller = schema.object, gray = schema.u8 },
     -- 0x080C8120.
     update = function(me: Object)
         local l = me.lifecycle

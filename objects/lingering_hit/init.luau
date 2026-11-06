@@ -54,7 +54,7 @@ local function held(owner: Object): boolean
     if not owner.has_collision then
         return false
     end
-    return owner:status("paralyzed") or owner:status("drag") or owner:status("sliding")
+    return owner.status.paralyzed or owner.status.drag or owner.status.sliding
 end
 
 function lingering_hit.make(id: string): LingeringHit
@@ -121,18 +121,18 @@ function lingering_hit.make(id: string): LingeringHit
         id = id,
         pool = "attack",
         state = {
-            dx = "i8",
-            dy = "i8",
-            region = "region",
-            hit_effect = "spark",
-            target = "collision",
-            self_type = "collision",
-            hit_mod = "u8",
-            status = "status",
-            bug = "u8",
-            bug_arg = "u8",
-            holder = "object",
-            slot = "u8",
+            dx = schema.i8,
+            dy = schema.i8,
+            region = schema.region,
+            hit_effect = schema.spark,
+            target = schema.collision,
+            self_type = schema.collision,
+            hit_mod = schema.u8,
+            status = schema.status,
+            bug = schema.u8,
+            bug_arg = schema.u8,
+            holder = schema.object,
+            slot = schema.u8,
         },
         -- 0x080DCC5C.
         update = function(me: Object)

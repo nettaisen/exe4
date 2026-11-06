@@ -138,7 +138,7 @@ end
 moloko.kind = new.kind {
     id = "mokorus/moloko",
     pool = "attack",
-    state = { palette = "u8" },
+    state = { palette = schema.u8 },
     -- 0x080D235C: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

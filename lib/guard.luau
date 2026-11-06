@@ -42,7 +42,7 @@ local DROPS = 0x2
 -- The shield goes, and the guard with it.
 local function drop_shield(me: Object)
     me.related1 = nil
-    me:set_status("guard", false)
+    me.status.guard = false
 end
 
 function guard.action(spec: Spec): Action
@@ -51,8 +51,8 @@ function guard.action(spec: Spec): Action
     local function guarding(me: Object, s: State)
         if me.step_init == 0 then
             shield.spawn(me, Vec3.px(SHIELD_X * me.facing, 0, SHIELD_Z), spec.shield)
-            me:set_status("guard", true)
-            me:set_status("using_action", true)
+            me.status.guard = true
+            me.status.using_action = true
             me.anim = 0
             me.marker = 0
             me.step_init = 4
@@ -79,7 +79,7 @@ function guard.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = spec,
         -- 0x080ECCF2: one phase.
         update = function(me: Object, s: State)

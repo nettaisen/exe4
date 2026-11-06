@@ -85,7 +85,7 @@ local function aim(me: Object)
         return
     end
     local navi = battle.player(me.alliance) :: Object
-    if not navi:dimmed_held("a") then
+    if not navi.dimmed_held.a then
         if s.aim ~= 0 then
             s.aim = 2
         end
@@ -98,17 +98,17 @@ local function aim(me: Object)
             s.target_x = x
         end
     end
-    if navi:dimmed_pressed("up") then
+    if navi.dimmed_pressed.up then
         if s.target_y > 1 then
             s.target_y -= 1
         end
-    elseif navi:dimmed_pressed("down") then
+    elseif navi.dimmed_pressed.down then
         if s.target_y < 3 then
             s.target_y += 1
         end
-    elseif navi:dimmed_pressed("left") then
+    elseif navi.dimmed_pressed.left then
         step(-1)
-    elseif navi:dimmed_pressed("right") then
+    elseif navi.dimmed_pressed.right then
         step(1)
     end
     field.highlight(s.target_x, s.target_y)
@@ -380,13 +380,13 @@ metalman.kind = new.kind {
     id = "metalman/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        palette = "u8",
-        gray = "u8",
-        aim = "u8",
-        target_x = "u8",
-        target_y = "u8",
-        fist = "object",
+        controller = schema.object,
+        palette = schema.u8,
+        gray = schema.u8,
+        aim = schema.u8,
+        target_x = schema.u8,
+        target_y = schema.u8,
+        fist = schema.object,
     },
     -- 0x080C7D44.
     update = function(me: Object)

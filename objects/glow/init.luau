@@ -107,7 +107,7 @@ function glow.make(spec: Spec): Glow
     local kind = new.kind {
         id = spec.id,
         pool = "actor",
-        state = { holder = "object" },
+        state = { holder = schema.object },
         -- 0x080CCF5C.
         update = function(me: Object)
             local l = me.lifecycle

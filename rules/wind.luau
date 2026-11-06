@@ -7,7 +7,7 @@ local wind = {}
 
 -- Its part of the rules' state (./init).
 wind.state = {
-    wind = { object = "object", source = { "obstacle", "navi" } },
+    wind = { object = schema.object, source = { "obstacle", "navi" } },
 } :: StateSchema
 
 -- The side's slot.

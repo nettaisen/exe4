@@ -74,7 +74,7 @@ end
 local copydmg: Chip = {
     action = new.action {
         id = "copydmg/action",
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED1D2.
         update = function(me: Object, s: State)
             local step = me.step

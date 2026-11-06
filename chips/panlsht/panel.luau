@@ -143,7 +143,7 @@ end
 panel.kind = new.kind {
     id = "panlsht/panel",
     pool = "attack",
-    state = { controller = "object", wait = "u8" },
+    state = { controller = schema.object, wait = schema.u8 },
     -- 0x080DCAA4: by state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle

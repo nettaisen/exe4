@@ -140,7 +140,7 @@ end
 gutsman.kind = new.kind {
     id = "gutsman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", cracks_all = "bool" },
+    state = { controller = schema.object, palette = schema.u8, cracks_all = schema.bool },
     -- 0x080B999C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

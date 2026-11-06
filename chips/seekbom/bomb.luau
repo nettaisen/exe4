@@ -133,7 +133,7 @@ end
 bomb.kind = new.kind {
     id = "seekbom/bomb",
     pool = "attack",
-    state = { target_x = "u8", target_y = "u8" },
+    state = { target_x = schema.u8, target_y = schema.u8 },
     -- 0x080DED60: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

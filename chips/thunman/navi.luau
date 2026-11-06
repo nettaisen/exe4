@@ -196,7 +196,7 @@ end
 thunman.kind = new.kind {
     id = "thunman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", gray = "u8", row = "u8" },
+    state = { controller = schema.object, palette = schema.u8, gray = schema.u8, row = schema.u8 },
     -- 0x080C5920.
     update = function(me: Object)
         local l = me.lifecycle

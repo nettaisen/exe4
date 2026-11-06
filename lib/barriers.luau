@@ -30,7 +30,7 @@ local NO_TIMER = 0xFFFF
 local PART_7 = 0x1000000
 
 local function barrier(b: Barrier): Barrier
-    return new.record("barrier", b)
+    return new.record(common_controller.BARRIER, b)
 end
 
 -- Type 1: 10 HP (FstBarr's, the Barrier chip's).

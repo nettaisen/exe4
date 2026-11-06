@@ -19,6 +19,8 @@ export type State = {
     highlight: boolean,
 }
 
+local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
+
 -- A flying shot variant (a row of 0x080CE5B0): what it is (an attack unless said) and what it hits (navis unless
 -- said), its hit modifier, element byte, hit spark (none: none), look, whether it casts a shadow on the ground and
 -- lights its panel, the panel centers it passes, its speed (16.16 a tick, forward), and the effect that shows where
@@ -37,7 +39,7 @@ function flying_shot.variant(r: {
     speed: number,
     end_effect: Effect?,
 }): FlyingShotVariant
-    return new.record("flying-shot-variant", {
+    return new.record(FLYING_SHOT_VARIANT, {
         is = r.is or collision.attack,
         hits = r.hits or collision.hits_navis,
         hit_mod = r.hit_mod,
@@ -141,7 +143,7 @@ end
 flying_shot.kind = new.kind {
     id = "flying-shot",
     pool = "attack",
-    state = { variant = "record:flying-shot-variant", range = "u8", highlight = "bool" },
+    state = { variant = FLYING_SHOT_VARIANT, range = schema.u8, highlight = schema.bool },
     -- 0x080CE6E0.
     update = function(me: Object)
         local l = me.lifecycle

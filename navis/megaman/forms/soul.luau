@@ -17,6 +17,7 @@
 
 local attachment = require("../../../objects/attachment")
 local base = require("./base").base
+local soul_custom = require("@exelib/souls/custom")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
 
@@ -61,7 +62,7 @@ end
 -- 0x0801F1B0 and 0x0801F1E2), which rules/souls gathers and asks while the side's navi is in the soul. (The status
 -- reset's part, at the change, is the form's `reset`.)
 function soul.custom(spec: SoulCustom): SoulCustom
-    return new.record("soul-custom", spec)
+    return new.record(soul_custom.SOUL_CUSTOM, spec)
 end
 
 -- What a soul wears (0x0800B7E8: 0x08018068 by the soul, FireSoul's and NumberSoul's; its form's `put_on` and

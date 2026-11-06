@@ -90,7 +90,7 @@ end
 navi_chips.warp_kind = new.kind {
     id = "navi-chip-warp",
     pool = "effect",
-    state = { out = "bool" },
+    state = { out = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

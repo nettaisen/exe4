@@ -42,9 +42,9 @@ export type State = {
     offered_picks: number,
 }
 dark_chips.state = {
-    dark_chips_sent = "u8",
-    picks = "u8",
-    offered_picks = "u16",
+    dark_chips_sent = schema.u8,
+    picks = schema.u8,
+    offered_picks = schema.u16,
 }
 
 -- The slots the offer fills (0x0801DF84, 0x0801DF88: the block's +6 and +8, slots 8 and 9).
@@ -226,9 +226,9 @@ function dark_chips.custom_result(side: number)
     local i = 0
     local chip = chip_hand.chip(side, i)
     while chip do
-        local marks = battle.hand_entry(side, i, "marks")
+        local marks = battle.hand_entry(side, i).marks
         if not bit32.btest(marks, INSTALLED) then
-            battle.set_hand_entry(side, i, "marks", bit32.bor(marks, INSTALLED))
+            battle.hand_entry(side, i).marks = bit32.bor(marks, INSTALLED)
             local cost = COSTS[chip]
             if cost then
                 cost(side, stats)

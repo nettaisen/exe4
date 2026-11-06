@@ -102,7 +102,7 @@ end
 videoman.kind = new.kind {
     id = "videoman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8" },
+    state = { controller = schema.object, palette = schema.u8 },
     -- 0x080C76EC: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
