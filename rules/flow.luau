@@ -31,4 +31,9 @@ return {
     -- The battle's counts of fight ticks (BattleState +0x0E and +0x16, while neither paused nor dimmed: 0x08006D08):
     -- 10 and 2.
     fight_cycles = { 10, 2 },
+    -- Its battle effects of its own, which its stages name besides the engine's (`full_hp`, `link`): EXE4's
+    -- netbattle records have no effects word, so its stages state EXE5's netbattle's (../stages), and these are
+    -- EXE5's bits: the folder dealt with its Regular chip and tag chips first and shuffled, and the light/dark
+    -- bit. The engine reads neither but through `battle.has_effect`.
+    effect_bits = { shuffled_folder = 0x80, karma_changes = 0x800 },
 }
