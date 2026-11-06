@@ -17,7 +17,7 @@ local grabrvng: Chip = {
     damage = 50,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     auto_battle = { class = "when_area_lost", answers = "area_lost" },
 }
 
@@ -32,7 +32,7 @@ local grabbnsh: Chip = {
     damage = 30,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     auto_battle = { class = "when_area_lost", answers = "area_lost" },
 }
 

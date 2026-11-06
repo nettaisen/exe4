@@ -34,7 +34,7 @@ local drkvulcn: Chip = {
     damage = 20,
     hit_param = 2,
     lockout = 0,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     action = vulcan.action {
         id = "drkvulcn/action",
         gun = GUN,

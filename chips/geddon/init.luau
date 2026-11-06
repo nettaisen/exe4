@@ -34,7 +34,7 @@ local geddon1: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = controller.hook(CRACK),
     auto_battle = { class = "at_once" },
 }
@@ -51,7 +51,7 @@ local geddon2: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = controller.hook(BREAK),
     auto_battle = { class = "at_once" },
 }
@@ -68,7 +68,7 @@ local geddon3: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = controller.hook(POISON),
     auto_battle = { class = "at_once" },
 }

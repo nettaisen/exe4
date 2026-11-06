@@ -31,7 +31,7 @@ local lifesrd: Chip = {
     damage = 400,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = {
         { order = 0, sequence = { blades.sword, blades.wideswrd, blades.longswrd } },
         { order = 1, sequence = { blades.sword, blades.wideblde, blades.longblde } },

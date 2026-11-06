@@ -30,7 +30,7 @@ local muramasa: Chip = {
     mb = 81,
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "damage_shown_variable", "library", "variable_damage" },
+    flags = { has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     megaman = "dark",
     auto_battle = { class = "hurt_into_reach", range = "two_in_row" },
 }

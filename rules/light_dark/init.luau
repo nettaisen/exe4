@@ -74,7 +74,7 @@ end
 -- MegaMan's holy panels, the holes under one who isn't dark.
 function light_dark.listen(side: number)
     local dark = (rules.setup_of(side) :: Setup).karma <= DARK_AT_MOST
-    rules.listen_panels(side, if dark then { "holy" } else { "hole" })
+    rules.listen_panels(side, if dark then { holy = true } else { hole = true })
 end
 
 -- Each tick of the navi's intake on those panels (the rules' `navi_panel`): 0x080132E6, the holy panel under a dark

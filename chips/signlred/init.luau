@@ -46,7 +46,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     -- 0x080E8472: its controller (only the alliance byte of its user's).
     dimming = function(user: Object, spec: DimmingChipSpec): Object?
         return dimming_chips.spawn(controller, user, spec, true)

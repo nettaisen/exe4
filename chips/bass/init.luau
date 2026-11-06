@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     dimming = navi.controller { id = "bass/controller" }.hook,
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

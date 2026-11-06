@@ -41,7 +41,9 @@ local START = asset.sound("wind")
 -- The ticks it waits after a gust (Timer2).
 local WAIT = 12
 -- The panel a gust starts on (0x080E69AC, by side): the other side's.
-local PANELS = "enemy_area"
+local PANELS: PanelCondition = { enemy_area = true }
+
+local NEUTRAL: PanelFlags = { neutral = true }
 
 -- 0x080E6950: the panel of row `y` a gust starts on, 0 for none: the other side's first panel from the far edge
 -- (`object_getClosestPanelMatchingRowFiltered` for the other side), none where a neutral object stands; a wind with a
@@ -52,9 +54,9 @@ local function start_panel(me: Object, s: State, y: number): number
     if side > 1 then
         error(string.format("wind side %d reads past its panel table (0x080E69AC)", side))
     end
-    local x = panels.closest_in_row(bit32.bxor(side, 1), y, PANELS, nil, side)
+    local x = panels.closest_in_row(bit32.bxor(side, 1), y, PANELS, side)
     -- (A panel with a neutral object: an obstacle's body.)
-    if field.any(x, y, "neutral") then
+    if field.any(x, y, NEUTRAL) then
         return 0
     end
     if not (s.pulls or s.unseen) then
@@ -63,7 +65,7 @@ local function start_panel(me: Object, s: State, y: number): number
     local dir = panels.side_direction(side)
     repeat
         x += dir
-    until x < 1 or x > 6 or field.any(x, y, "neutral")
+    until x < 1 or x > 6 or field.any(x, y, NEUTRAL)
     return x - dir
 end
 

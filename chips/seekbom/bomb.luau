@@ -148,13 +148,15 @@ bomb.kind = new.kind {
     end,
 }
 
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
+
 -- 0x080DEF1A: the panel of the other side's navi ahead of `user` nearest in columns; between equally near ones, the
 -- one whose row is below the nearest row distance so far (the game compares the row itself with it), then the lower
 -- row; none (0, 0) when no navi of the other side is ahead.
 local function target(user: Object): (number, number)
     local ahead = {}
     -- (The other side's navi on a panel, 0x080DEFE0.)
-    for _, p in panels.filtered_except(user, "enemy_body", nil, user.alliance) do
+    for _, p in panels.filtered_except(user, ENEMY_BODY, user.alliance) do
         local x = panels.x(p)
         if (user.alliance == 0 and x > user.panel_x) or (user.alliance ~= 0 and user.panel_x > x) then
             table.insert(ahead, p)

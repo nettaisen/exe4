@@ -22,11 +22,11 @@ local WAIT = 0x1E
 -- The first panel's wait; each next one's 4 more.
 local FIRST_WAIT, STAGGER = 40, 4
 -- 0x080E7BE0 by the user's side: its own side's panel, solid, with nothing on it.
-local TAKES: { PanelFlag } = { "solid", "own_area" }
+local TAKES: PanelCondition = { solid = true, own_area = true, occupied = false }
 
 -- 0x080E7BC8: (x, y) is the user's side's, solid and free (a side but 1 as side 0).
 local function takes(me: Object, x: number, y: number): boolean
-    return field.check(x, y, TAKES, "occupied", if me.alliance == 1 then 1 else 0)
+    return field.check(x, y, TAKES, if me.alliance == 1 then 1 else 0)
 end
 
 -- Tear up (x, y) with the `n`th panel's wait.
@@ -133,7 +133,7 @@ local panlsht1: Chip = {
     damage = 100,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = controller("panlsht1/controller", front),
     auto_battle = { class = "own_panel_before_enemy" },
 }
@@ -149,7 +149,7 @@ local panlsht2: Chip = {
     damage = 60,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = controller("panlsht2/controller", row),
     auto_battle = { class = "own_panel_before_enemy" },
 }
@@ -165,7 +165,7 @@ local panlsht3: Chip = {
     damage = 80,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = controller("panlsht3/controller", around),
     auto_battle = { class = "own_panel_before_enemy" },
 }

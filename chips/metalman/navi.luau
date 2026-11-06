@@ -70,7 +70,7 @@ local SOUND_PUNCH = asset.sound("metal-punch")
 local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }
 local FADE_GRAY = 0x1F
 -- The other side's body (0x080C7F3C, by his side: side 1's for side 0): a target that holds one stops his punch.
-local ENEMY_BODY = "enemy_body"
+local NOT_ENEMY_BODY: PanelCondition = { enemy_body = false }
 
 local function st(me: Object): State
     return me.state :: State
@@ -215,7 +215,7 @@ local function blink_in(me: Object)
     end
     touch(me, s)
     local far = if me.alliance == 0 then 6 else 1
-    if s.target_x == far or not field.check(s.target_x, s.target_y, nil, ENEMY_BODY, me.alliance) then
+    if s.target_x == far or not field.check(s.target_x, s.target_y, NOT_ENEMY_BODY, me.alliance) then
         me.phase, me.phase_init = 0x14, 0
         return
     end

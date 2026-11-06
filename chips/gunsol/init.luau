@@ -34,7 +34,7 @@ local gunsol1: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     megaman = "light",
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
@@ -58,7 +58,7 @@ local gunsol2: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     megaman = "light",
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
@@ -82,7 +82,7 @@ local gunsol3: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     megaman = "light",
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
@@ -106,7 +106,7 @@ local gunsolex: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "library" },
+    flags = { library = true },
     megaman = "light",
     auto_battle = { class = "into_reach", range = "columns_two_and_three" },
 }

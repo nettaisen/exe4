@@ -13,7 +13,7 @@ local hand = require("@exelib/grabbnsh/hand")
 local SHEET = asset.sprite("grab-shot")
 local FLASH = new.effect { sprite = SHEET, anim = 1, palette = 0, steps = 20 }
 -- The other side's ownership of a panel, of the user's side (0x080E4888, by side).
-local OTHER = "enemy_area"
+local OTHER: PanelCondition = { enemy_area = true }
 local AFTER_STRIKES = 90
 
 local hand_kind = hand.make_kind {
@@ -35,7 +35,7 @@ local function take_back(me: Object): number
     local n = 0
     for x = first, first + 2 do
         for y = 3, 1, -1 do
-            if field.check(x, y, OTHER, nil, me.alliance) then
+            if field.check(x, y, OTHER, me.alliance) then
                 n += 1
                 local cx, cy = field.center(x, y)
                 battle.effect(Vec3.new(cx, cy, 0), FLASH)

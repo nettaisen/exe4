@@ -53,7 +53,7 @@ local tornado_chip: Chip = {
     damage = 20,
     hit_param = 4,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }
 
@@ -68,7 +68,7 @@ local static: Chip = {
     damage = 20,
     hit_param = 4,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }

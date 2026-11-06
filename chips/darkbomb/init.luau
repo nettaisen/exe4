@@ -28,7 +28,7 @@ local darkbomb: Chip = {
     damage = 200,
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     action = bombs.throw {
         id = "darkbomb/action",
         held = HELD,

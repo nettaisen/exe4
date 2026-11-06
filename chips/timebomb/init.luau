@@ -20,7 +20,7 @@ local timebomb: Chip = {
     damage = 150,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = bomb.controller.hook(BOMB),
     auto_battle = { class = "when_far_front_free" },
 }

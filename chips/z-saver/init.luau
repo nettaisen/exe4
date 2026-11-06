@@ -53,7 +53,7 @@ local zsaver: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "two_in_row" },
 }
 

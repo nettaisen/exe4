@@ -31,7 +31,7 @@ local zeroed: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     action = cannon_lib.action { id = "zeroed/action", arm = ARM, shot = SHOT },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

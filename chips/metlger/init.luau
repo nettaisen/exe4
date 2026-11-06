@@ -15,14 +15,14 @@ local WAIT = 60
 -- The gear's mode (the controller's first parameter): a lifetime gear.
 local MODE = 1
 -- The gear's panel: solid, of the other side's own area, without a body (0x080E72DC by the user's side).
-local GEAR_PANEL: { PanelFlag } = { "solid", "own_area" }
+local GEAR_PANEL: PanelCondition = { solid = true, own_area = true, any_body = false }
 
 -- 0x080E7288.
 local function effect(me: Object)
     if me.phase_init == 0 then
         local other = bit32.bxor(me.alliance, 1)
         -- (Its own area: side 1's for a side 1, else side 0's.)
-        local x = panels.closest_in_row(other, me.panel_y, GEAR_PANEL, "any_body", if other == 1 then 1 else 0)
+        local x = panels.closest_in_row(other, me.panel_y, GEAR_PANEL, if other == 1 then 1 else 0)
         if x ~= 0 then
             local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
             gear.spawn(x, me.panel_y, me.element, me.alliance, MODE, damage)
@@ -62,7 +62,7 @@ local metlger1: Chip = {
     damage = 100,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = hook,
     auto_battle = { class = "into_open_row" },
 }
@@ -78,7 +78,7 @@ local metlger2: Chip = {
     damage = 130,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = hook,
     auto_battle = { class = "into_open_row" },
 }
@@ -94,7 +94,7 @@ local metlger3: Chip = {
     damage = 160,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = hook,
     auto_battle = { class = "into_open_row" },
 }

@@ -17,6 +17,8 @@ export type State = {
 
 local WAIT = 30
 
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
+
 -- A chip's controller (kind `id`) setting its hammer (`spawn`, ./hammer's): the chip's `dimming` hook.
 function controller.make(
     id: string,
@@ -27,7 +29,7 @@ function controller.make(
         if me.phase_init == 0 then
             local x, y = me.panel_x + panels.side_direction(me.alliance), me.panel_y
             -- (0x080E4BE0: the panel in front must be solid and free.)
-            if field.check(x, y, "solid", "occupied") then
+            if field.check(x, y, SOLID_NOT_OCCUPIED) then
                 spawn(me, x, y, me.element, dimming_chips.damage_plus(me, (me.state :: State).bonus))
             end
             me.timer = WAIT

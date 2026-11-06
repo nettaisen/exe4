@@ -38,7 +38,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 50,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = CONTROLLER.places { variant = CUBE, class = "two_a_side", entrance = "rise" },
     auto_battle = { class = "landing_ahead" },
 }

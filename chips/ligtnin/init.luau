@@ -9,7 +9,7 @@ local spawners = require("../lib/spawners")
 local towers = require("../lib/towers")
 
 -- An obstacle on a panel (0x080DF9AC): another body of either side, or a neutral object.
-local OBSTACLE: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local OBSTACLE: PanelFlags = { own_other_body = true, enemy_other_body = true, neutral = true }
 
 -- 0x080DF964: any panel holding an obstacle: a lightning.
 local function strike(me: Object, x: number, y: number): boolean
@@ -33,7 +33,7 @@ local ligtnin1: Chip = {
     damage = 100,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_any_obstacle" },
 }
 
@@ -48,7 +48,7 @@ local ligtnin2: Chip = {
     damage = 130,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_any_obstacle" },
 }
 
@@ -63,7 +63,7 @@ local ligtnin3: Chip = {
     damage = 160,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_any_obstacle" },
 }
 

@@ -35,7 +35,7 @@ local chip: Chip = {
     damage = 300,
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = {
         { order = 4, sequence = { heatshots.heatshot, heatshots["heat-v"], heatshots.heatside } },
         { order = 8, code_run = { chip = heatshots.heatshot, count = 3 } },

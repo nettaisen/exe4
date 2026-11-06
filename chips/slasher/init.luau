@@ -30,7 +30,7 @@ type State = {
 
 local START, WAIT, SLASH, RECOVER = 0x0, 0x4, 0x8, 0xC
 -- What the column search looks for, by side (0x0800D474): the other side's player navi on the side's own area.
-local SEARCH: PanelCondition = { require = { "enemy_navi", "own_area" } }
+local SEARCH: PanelCondition = { enemy_navi = true, own_area = true }
 local ROW = 2
 local Z = 0x10_0000
 local SLASH_TICKS, SLASH_AT, RECOVER_TICKS = 0x15, 0x0C, 5
@@ -42,7 +42,7 @@ local function find(me: Object): number
     local x = 1 + 5 * me.alliance
     while true do
         for y = 3, 1, -1 do
-            if field.check(x, y, SEARCH.require, SEARCH.forbid, me.alliance) then
+            if field.check(x, y, SEARCH, me.alliance) then
                 return x
             end
         end
@@ -147,9 +147,9 @@ local slasher: Chip = {
     damage = 240,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     -- Its use isn't named to the other player (0x080EECF6 leaves chip 0x38 out): its slash names it.
-    traits = { "not_named_on_use" },
+    traits = { not_named_on_use = true },
     auto_battle = { class = "when_enemy_in_area" },
 }
 

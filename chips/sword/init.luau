@@ -42,7 +42,7 @@ local sword: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "one_ahead" },
 }
 
@@ -57,7 +57,7 @@ local wideswrd: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "column_ahead" },
 }
 
@@ -72,7 +72,7 @@ local longswrd: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "two_in_row" },
 }
 
@@ -87,7 +87,7 @@ local wideblde: Chip = {
     damage = 130,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "column_ahead" },
 }
 
@@ -102,7 +102,7 @@ local longblde: Chip = {
     damage = 130,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "two_in_row" },
 }
 

@@ -31,7 +31,7 @@ local chip: Chip = {
     damage = 80,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = controller.make {
         id = "jealousy/controller",
         count = count,

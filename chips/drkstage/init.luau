@@ -70,7 +70,7 @@ local drkstage: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "dark" },
+    flags = { dimming = true, dark = true },
     -- 0x080E98BC: the controller on the user's panel and side (no facing of the user's).
     dimming = function(user: Object, spec: DimmingChipSpec): Object?
         return dimming_chips.spawn(controller, user, spec, true)

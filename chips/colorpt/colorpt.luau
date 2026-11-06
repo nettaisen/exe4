@@ -23,11 +23,13 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 -- 0x080E7EAA: the element the point's spawn leaves.
 local ELEMENT = 0xD9
 
+local OWN_AREA: PanelCondition = { own_area = true }
+
 -- 0x080E7C7A: the front of the user's area in row `y`, not its back column; 0 for none.
 local function front(me: Object, y: number): number
     local side = me.alliance
     -- (0x080E7CCC's filter: the side's own area; a side but 1 as side 0.)
-    local x = panels.closest_in_row(side, y, "own_area", nil, if side == 1 then 1 else 0)
+    local x = panels.closest_in_row(side, y, OWN_AREA, if side == 1 then 1 else 0)
     if x == side * 5 + 1 then
         return 0
     end

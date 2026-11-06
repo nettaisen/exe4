@@ -173,7 +173,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     dimming = hook,
     auto_battle = { class = "when_bugged" },
 }

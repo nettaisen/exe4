@@ -16,7 +16,7 @@ local recov10: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov10/action", hp = 10, mood = 30 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -31,7 +31,7 @@ local recov30: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov30/action", hp = 30, mood = 30 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -46,7 +46,7 @@ local recov50: Chip = {
     damage = 40,
     hit_param = 40,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov50/action", hp = 50, mood = 40 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -61,7 +61,7 @@ local recov80: Chip = {
     damage = 40,
     hit_param = 40,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov80/action", hp = 80, mood = 40 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -76,7 +76,7 @@ local recov120: Chip = {
     damage = 40,
     hit_param = 50,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov120/action", hp = 120, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -91,7 +91,7 @@ local recov150: Chip = {
     damage = 40,
     hit_param = 50,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov150/action", hp = 150, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -106,7 +106,7 @@ local recov200: Chip = {
     damage = 40,
     hit_param = 50,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov200/action", hp = 200, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
@@ -121,7 +121,7 @@ local recov300: Chip = {
     damage = 40,
     hit_param = 50,
     lockout = 30,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = recov.action { id = "recov300/action", hp = 300, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }

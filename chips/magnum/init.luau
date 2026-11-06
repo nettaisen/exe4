@@ -45,7 +45,7 @@ local chip: Chip = {
     damage = 130,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = CONTROLLER.hook,
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

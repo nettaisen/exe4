@@ -46,7 +46,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 130,
     lockout = 0,
-    flags = { "dimming" },
+    flags = { dimming = true },
     program_advances = { { order = 5, sequence = { gunsols.gunsol1, gunsols.gunsol2, gunsols.gunsol3 } } },
     dimming = CONTROLLER.hook,
     megaman = "light",

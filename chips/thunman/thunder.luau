@@ -25,14 +25,14 @@ local ELEC = 3
 
 local MARK, STRIKE = 0x0, 0x4
 -- A hit that ends its region: of an object, a body or another body of either side, or of a neutral object.
-local ENDS_REGION: { HitName } = {
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local ENDS_REGION: HitNames = {
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 -- 0x080DB620: 4 rounds of 8 ticks, the panel highlighted in each round's first 4 (but its first); then the strike.

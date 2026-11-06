@@ -19,8 +19,8 @@ local rock_sprite = asset.sprite("rock")
 
 local rock = {}
 
--- What on the panel it appears on breaks it: any body.
-local OCCUPIED = "any_body"
+-- What the panel it appears on must be, else it breaks: solid, with no body on it.
+local STANDS_ON: PanelCondition = { solid = true, any_body = false }
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -43,7 +43,7 @@ local made = common.make {
     land_sound = nil,
     absorbed = nil,
     stage_damage = nil,
-    occupied = OCCUPIED,
+    stands_on = STANDS_ON,
     -- 0x080D8ABC, by the framework's numbers (its rows 0 to 6: 0, 1, 2, 3, 4, 5, 8).
     actions = function(appear: (Object) -> (), destroyed: (Object) -> (), standing: (Object) -> ())
         return {

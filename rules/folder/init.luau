@@ -24,17 +24,13 @@ local folder_rules = require("@exelib/folder_rules")
 -- How many copies of a chip a folder holds, by its class.
 local COPIES: { [string]: number } = { standard = 4, mega = 1, giga = 1 }
 
-local function has(list: any, x: any): boolean
-    return list ~= nil and table.find(list, x) ~= nil
-end
-
 local RULES: FolderRules = {
     size = 30,
     in_pack = function(c: Chip): boolean
         return COPIES[c.class or ""] ~= nil
             and c.codes ~= nil
             and #c.codes > 0
-            and (has(c.flags, "library") or (c :: any).collectible == true)
+            and (c.flags and c.flags.library or (c :: any).collectible == true)
     end,
     copies = function(c: Chip): number
         return COPIES[c.class or ""] or 0

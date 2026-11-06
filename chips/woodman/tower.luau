@@ -21,7 +21,13 @@ local SPRITE = asset.sprite("wood-tower")
 local SOUND = asset.sound("wood-tower")
 -- Bodies and blockers on a panel (0x080CDF82): other bodies, neutral objects, and what reaches the objects set down (a
 -- mine, a hitbox of both sides).
-local BLOCKED: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral", "reaches_set_objects" }
+local RISES_ON: PanelCondition = {
+    solid = true,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+    reaches_set_objects = false,
+}
 local WAIT, UP = 0x0, 0x4
 
 -- Enter the phase with a timer, or count down; true once it has run out past 0 (`bge`).
@@ -44,7 +50,7 @@ local function wait(me: Object)
         end
         return
     end
-    if not field.check(me.panel_x, me.panel_y, "solid", BLOCKED) then
+    if not field.check(me.panel_x, me.panel_y, RISES_ON) then
         me:set_lifecycle("destroy")
     else
         me:set_action(UP)

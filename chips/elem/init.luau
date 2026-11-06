@@ -27,7 +27,7 @@ local elemflar: Chip = {
     damage = 100,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
@@ -48,7 +48,7 @@ local elemice: Chip = {
     damage = 100,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
@@ -69,7 +69,7 @@ local elemleaf: Chip = {
     damage = 80,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
@@ -90,7 +90,7 @@ local elemsand: Chip = {
     damage = 120,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
@@ -113,7 +113,7 @@ local elemdark: Chip = {
     damage = 220,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }

@@ -27,7 +27,7 @@ local navi_chips = require("../lib/navi_chips")
 local videoman = require("@self/videoman")
 
 -- What LaserMan's panel must be free of (0x080EA9CA): a body or an object.
-local IN_THE_WAY = "any_body"
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
 
 local VIDEO, LASER, KENDO, BACK = 0x0, 0x4, 0x8, 0xC
 
@@ -62,7 +62,7 @@ local function course(c: Object)
             return
         end
         local x = c.panel_x + c.facing
-        if field.check(x, c.panel_y, "solid", IN_THE_WAY) then
+        if field.check(x, c.panel_y, SOLID_NOT_ANY_BODY) then
             if laserman.summon(c, x, c.panel_y, common.damage(c)) then
                 common.await(c)
             end
@@ -111,7 +111,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi" },
+    flags = { dimming = true, has_damage = true, navi = true },
     art_palette = { 0x0000, 0x4645, 0x7B2B, 0x1C53, 0x3D3B, 0x51BD, 0x625E, 0x0842, 0x1CE7, 0x2928, 0x2D8C, 0x3DEF, 0x4E73, 0x6AF9, 0x777C, 0x7BDE },
     dimming = CONTROLLER.hook,
     auto_battle = { class = "into_reach", range = "ahead_in_row" },

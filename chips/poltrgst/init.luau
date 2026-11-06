@@ -30,7 +30,7 @@ local chip: Chip = {
     hit_param = 148,
     lockout = 0,
     flags = {},
-    traits = { "no_cut_in" },
+    traits = { no_cut_in = true },
     dimming = made.hook(false),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

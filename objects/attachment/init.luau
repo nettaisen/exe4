@@ -30,7 +30,7 @@ end
 -- color shader, white flash (the sprite's final palette, +0x15's high nibble: 0x08002E34, 0x08002E20), blending (+0x11's
 -- bits 0x0C: 0x08002D4C, 0x08002CEA) and flip; gone once the slot is empty; animating unless dimmed (the engine's
 -- follow: `Object:follow`).
-local WORN = { "color_shader", "white", "alpha", "hflip", "vflip" }
+local WORN = { color_shader = true, white = true, alpha = true, hflip = true, vflip = true }
 
 -- 0x080CD618.
 local function init(me: Object)

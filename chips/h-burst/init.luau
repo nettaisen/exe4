@@ -45,7 +45,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 36, code_run = { chip = spreaders.spreader, count = 3 } } },
     auto_battle = { class = "behind_target" },
 }

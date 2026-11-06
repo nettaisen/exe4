@@ -23,14 +23,14 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4
 local HP = 10
 local HOVER_TICKS = 5
 -- What breaks it (its hit results: objects, bodies and other bodies of either side, neutral objects).
-local BREAKS: { HitName } = {
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local BREAKS: HitNames = {
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 local HIT_MOD, BURST_HIT_MOD = 1, 3
 -- Where it bursts: the other side's column 5 (side 0's bomb) or 2 (side 1's), row 2.

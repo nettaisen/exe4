@@ -36,7 +36,7 @@ local drkcanon: Chip = {
     damage = { formula = "hp_lost", cap = 999 },
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "dark", "variable_damage" },
+    flags = { has_damage = true, dark = true, variable_damage = true },
     action = cannon.action { id = "drkcanon/action", arm = ARM, shot = SHOT },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

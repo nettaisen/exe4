@@ -83,7 +83,7 @@ local pitrng1: Chip = {
     damage = 200,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 23, code_run = { chip = boomers.boomer1, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -99,7 +99,7 @@ local pitrng2: Chip = {
     damage = 250,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 24, code_run = { chip = boomers.boomer2, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -115,7 +115,7 @@ local pitrng3: Chip = {
     damage = 300,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 25, code_run = { chip = boomers.boomer3, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

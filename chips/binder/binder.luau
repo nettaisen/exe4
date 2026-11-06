@@ -31,7 +31,7 @@ local HIT_Z, HIT_MOD, LAND_TICKS = 0x10_0000, 1, 4
 -- Its animations: hopping, its first hop's and landed.
 local ANIM_HOP, ANIM_FIRST, ANIM_LANDED = 1, 2, 3
 -- The other side's navi on a panel, of its side (0x080D2740: the other side's body).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 -- A puff's height over it.
 local PUFF_Z = 0x10_0000
 

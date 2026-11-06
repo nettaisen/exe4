@@ -31,7 +31,7 @@ local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAND = asset.sound("metal-punch")
 -- The panels his towers rise on, by his side (0x080C9A60: the other side's solid panels).
-local TOWER_PANELS: { PanelFlag } = { "solid", "enemy_area" }
+local TOWER_PANELS: PanelCondition = { solid = true, enemy_area = true }
 -- His leap: up 27 pixels a tick, falling a pixel a tick faster each.
 local LEAP_SPEED, GRAVITY = 0x1B_0000, 0x1_0000
 -- A key of his command counts this long.
@@ -94,7 +94,7 @@ end
 local function towers(me: Object)
     local count = bit32.band(battle.rng_positive(), 1) + 4
     -- (Shuffled from its side's order: docs/engine/side-symmetry.md.)
-    local list = panels.filtered_except(me, TOWER_PANELS, nil, me.alliance, me.alliance)
+    local list = panels.filtered_except(me, TOWER_PANELS, me.alliance, me.alliance)
     local n = #list
     if n == 0 then
         return

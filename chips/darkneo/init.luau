@@ -71,7 +71,7 @@ local chip: Chip = {
     damage = 250,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi" },
+    flags = { dimming = true, has_damage = true, navi = true },
     program_advances = {
         { order = 2, sequence = { recipe_drkline, recipe_bugchain, recipe_bass } },
         { order = 3, sequence = { recipe_drkline, recipe_bugchain, recipe_bassanly } },

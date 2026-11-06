@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 130,
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     action = spawners.action {
         id = "lance/action",
         spawn = function(user: Object, element: number, damage: number)

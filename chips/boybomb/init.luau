@@ -21,7 +21,7 @@ type ControllerState = {
 
 local WAIT = 30
 -- The front panel the bomb takes: solid, its side's own, with nothing on it.
-local TAKES: { PanelFlag } = { "solid", "own_area" }
+local TAKES: PanelCondition = { solid = true, own_area = true, occupied = false }
 
 -- 0x0801013A: back to its idle, no longer running while paused.
 local function return_to_idle(me: Object)
@@ -50,9 +50,10 @@ local BOMB = common.make {
     place_sound = asset.sound("place"),
     broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 26 },
     break_sound = asset.sound("hit-bomb-1"),
-    stand_forbid = {
-        [0] = { "own_body", "own_other_body", "enemy_other_body", "neutral" },
-        [1] = { "own_body", "own_other_body", "enemy_other_body", "neutral" },
+    -- Where it may stand, by side: solid, free of these.
+    stands_on = {
+        [0] = { solid = true, own_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
+        [1] = { solid = true, own_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
     },
     push = "keeps_damage",
     actions = {
@@ -68,11 +69,10 @@ local BOMB = common.make {
 }
 
 -- 0x0800A244: in each row, walking from `side`'s far column (6 - 5 * `side`) back toward its own edge, `side`'s first
--- panel, kept when it meets (`need`, `forbid`: side-relative flags of side `of`).
+-- panel, kept when it meets `cond` (side-relative flags of side `of`).
 local function front_panels(
     side: number,
-    need: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     of: number?
 ): { { x: number, y: number } }
     local step = 2 * side - 1
@@ -85,7 +85,7 @@ local function front_panels(
                 break
             end
             if p.alliance == side then
-                if field.check(x, y, need, forbid, of) then
+                if field.check(x, y, cond, of) then
                     table.insert(found, { x = x, y = y })
                 end
                 break
@@ -100,7 +100,7 @@ end
 -- a side but 1 as side 0); without one, any of its front panels; none, nil.
 local function pick(me: Object): (number?, number?)
     local side = me.alliance
-    local found = front_panels(side, TAKES, "occupied", if side == 1 then 1 else 0)
+    local found = front_panels(side, TAKES, if side == 1 then 1 else 0)
     if #found == 0 then
         found = front_panels(side, nil, nil)
         if #found == 0 then
@@ -156,7 +156,7 @@ local boybomb1: Chip = {
     damage = 220,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = hook,
     auto_battle = { class = "when_front_free" },
 }
@@ -172,7 +172,7 @@ local boybomb2: Chip = {
     damage = 250,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = hook,
     auto_battle = { class = "when_front_free" },
 }
@@ -188,7 +188,7 @@ local boybomb3: Chip = {
     damage = 280,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = hook,
     auto_battle = { class = "when_front_free" },
 }

@@ -28,7 +28,7 @@ local chip: Chip = {
     damage = 20,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     action = airshot.action { id = "airshot/action", shooter = airshot.shooter, shot = SHOT, recovery = 0 },
     auto_battle = { class = "past_obstacle" },
 }

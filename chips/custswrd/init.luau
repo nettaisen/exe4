@@ -31,7 +31,7 @@ local custswrd: Chip = {
     mb = 20,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "damage_shown_variable", "library", "variable_damage" },
+    flags = { has_damage = true, standard_library = true, damage_shown_variable = true, library = true, variable_damage = true },
     auto_battle = { class = "gauge_into_reach" },
 }
 

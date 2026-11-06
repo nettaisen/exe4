@@ -20,7 +20,7 @@ local suprspr1: Chip = {
     damage = 60,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 17, code_run = { chip = wideshts.widesht1, count = 3 } } },
     auto_battle = { class = "spot_test", range = "ahead_within_a_row" },
 }
@@ -37,7 +37,7 @@ local suprspr2: Chip = {
     damage = 80,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 18, code_run = { chip = wideshts.widesht2, count = 3 } } },
     auto_battle = { class = "spot_test", range = "ahead_within_a_row" },
 }
@@ -54,7 +54,7 @@ local suprspr3: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 19, code_run = { chip = wideshts.widesht3, count = 3 } } },
     auto_battle = { class = "spot_test", range = "ahead_within_a_row" },
 }

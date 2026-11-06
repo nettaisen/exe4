@@ -91,16 +91,16 @@ local DROPPER = new.kind {
 
 -- The panel filters of 0x0800FC48 by the user's side (0x0800FC84, 0x0800FC94): the target's side's panel holding the
 -- target (its player navi), else just the target's side's panel.
-local HOLDING: { PanelFlag } = { "enemy_navi", "enemy_area" }
-local OWNED = "enemy_area"
+local HOLDING: PanelCondition = { enemy_navi = true, enemy_area = true }
+local OWNED: PanelCondition = { enemy_area = true }
 
 -- 0x0800FC48: in the user's row, from the user's side's back edge on, the first of the other side's panels holding
 -- its navi, else the first of the other side's panels; 0 for none.
 local function target(user: Object): number
     local other, y = bit32.bxor(user.alliance, 1), user.panel_y
-    local x = panels.closest_in_row(other, y, HOLDING, nil, user.alliance)
+    local x = panels.closest_in_row(other, y, HOLDING, user.alliance)
     if x == 0 then
-        x = panels.closest_in_row(other, y, OWNED, nil, user.alliance)
+        x = panels.closest_in_row(other, y, OWNED, user.alliance)
     end
     return x
 end

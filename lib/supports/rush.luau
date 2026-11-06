@@ -30,9 +30,9 @@ return common.make {
     -- own area too (0x00010020), side 1's not under its own navi (0x00200000); and each not of an odd type (bit 0 of
     -- the type's number, 0x00000001: of EXE4's types broken, cracked, metal, ice, holy and the hole).
     stand = {
-        [0] = { require = "on_field" },
-        [1] = { require = { "on_field", "own_area" }, forbid = "own_navi" },
+        [0] = { on_field = true },
+        [1] = { on_field = true, own_area = true, own_navi = false },
     },
-    not_on = { "broken", "cracked", "metal", "ice", "holy", "hole" },
+    not_on = { broken = true, cracked = true, metal = true, ice = true, holy = true, hole = true },
     pixel_nudge = false,
 }

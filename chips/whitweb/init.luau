@@ -18,7 +18,7 @@ local whitweb1: Chip = {
     damage = 40,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
@@ -33,7 +33,7 @@ local whitweb2: Chip = {
     damage = 40,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
@@ -48,7 +48,7 @@ local whitweb3: Chip = {
     damage = 40,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 

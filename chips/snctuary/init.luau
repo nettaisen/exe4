@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     dimming = panel_chips.hook(panel_changer.change {
         panel = "holy",
         panels = "all",

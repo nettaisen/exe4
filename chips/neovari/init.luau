@@ -36,7 +36,7 @@ local neovari: Chip = {
     damage = 240,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "sword_swing", swings = { "x_one_ahead", "ahead_within_a_row", "two_columns_ahead", "one_ahead" } },
 }
 

@@ -35,7 +35,7 @@ local chip: Chip = {
     damage = 300,
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = {
         { order = 9, code_run = { chip = bubblers.bubbler, count = 3 } },
         { order = 11, code_run = { chip = bubblers["bub-v"], count = 3 } },

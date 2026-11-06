@@ -18,7 +18,7 @@ local drklance: Chip = {
     damage = { formula = "half_opponent_max_hp" },
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "dark", "variable_damage" },
+    flags = { has_damage = true, dark = true, variable_damage = true },
     action = spawners.action {
         id = "drklance/action",
         spawn = function(user: Object, element: number, damage: number)

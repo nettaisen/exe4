@@ -17,7 +17,7 @@ local flmline1: Chip = {
     damage = 70,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
 
@@ -32,7 +32,7 @@ local flmline2: Chip = {
     damage = 120,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
 
@@ -47,7 +47,7 @@ local flmline3: Chip = {
     damage = 170,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "column_two_ahead" },
 }
 

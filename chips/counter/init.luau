@@ -18,7 +18,7 @@ local counter1: Chip = {
     damage = 70,
     hit_param = 50,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 
@@ -33,7 +33,7 @@ local counter2: Chip = {
     damage = 110,
     hit_param = 50,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 
@@ -48,7 +48,7 @@ local counter3: Chip = {
     damage = 150,
     hit_param = 50,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 

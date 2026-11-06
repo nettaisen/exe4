@@ -63,7 +63,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     dimming = CONTROLLER.spawn,
     megaman = "light",
     auto_battle = { class = "when_bugged" },

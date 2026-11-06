@@ -29,7 +29,7 @@ local guard1: Chip = {
     damage = 50,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 
@@ -44,7 +44,7 @@ local guard2: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 
@@ -59,7 +59,7 @@ local guard3: Chip = {
     damage = 110,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "when_counterable" },
 }
 

@@ -15,8 +15,16 @@ local protoman_sprite = asset.sprite("protoman")
 local sword_slash_sprite = asset.sprite("sword-slash")
 local sword_sprite = asset.sprite("sword")
 
--- What a panel he lands on must be free of, of his side (0x080C70CC).
-local OCCUPIED: { PanelFlag } = { "reserved", "enemy_body", "own_other_body", "enemy_other_body", "neutral", "blocker" }
+-- What a panel he lands on must be, of his side: solid, and free of these (0x080C70CC).
+local LANDS_ON: PanelCondition = {
+    solid = true,
+    reserved = false,
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+    blocker = false,
+}
 
 -- 0x080CD6E0, as his slash asks (attachment row 3, his sword's animation, animating while dimmed).
 local function attach(owner: Object, look: AttachmentLook, which: Slot, options: AttachmentOptions?): Object?
@@ -33,7 +41,7 @@ local protoman = common.make {
     target = collision.hits_navis,
     self_type = collision.slash,
     summoned_alone = true,
-    occupied = OCCUPIED,
+    lands_on = LANDS_ON,
     user_panel_free = false,
     slash_at_once = true,
     attach = attach,

@@ -37,7 +37,7 @@ local HIT_MOD = 3
 local TIMER = 0x708
 -- What it rolls onto: a solid panel without another body or a neutral object (0x080DBFB4:
 -- `object_checkPanelParameters(0x10, 0x03800000)`).
-local BODIES: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local ROLLS_ONTO: PanelCondition = { solid = true, own_other_body = false, enemy_other_body = false, neutral = false }
 
 -- Its actions in the framework's numbering (its table's 0, 2 and 6).
 local WAIT, DESTROYED, ROLLING = 0, 2, 8
@@ -91,6 +91,8 @@ local function destroyed(me: Object)
     leave(me)
 end
 
+local OWN_AREA: PanelCondition = { own_area = true }
+
 -- 0x080DBF5E: its first tick a sound, and the next panel at once; then, past its panel's center, the next panel
 -- along its way, else the one under where it is going. A panel it may roll onto (on the field, solid, no body, its
 -- travel side's) it rolls on toward; any other turns it back.
@@ -110,8 +112,8 @@ local function rolling(me: Object)
         end
     end
     -- (Side 1's on a panel of side 1's area, else side 0's.)
-    local side = if field.check(x, y, "own_area", nil, 1) then 1 else 0
-    if field.valid(x, y) and field.check(x, y, "solid", BODIES) and side == state(me).travel then
+    local side = if field.check(x, y, OWN_AREA, 1) then 1 else 0
+    if field.valid(x, y) and field.check(x, y, ROLLS_ONTO) and side == state(me).travel then
         local p = me.pos
         me.pos = Vec3.new(p.x + me.vel.x, p.y, p.z)
         me:set_panel_from_coordinates()
@@ -177,7 +179,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     me.visible = true
     local s = state(me)
-    local panel_side = if field.check(me.panel_x, me.panel_y, "own_area", nil, 1) then 1 else 0
+    local panel_side = if field.check(me.panel_x, me.panel_y, OWN_AREA, 1) then 1 else 0
     if s.mode == 0 then
         s.travel = panel_side
         me.alliance = bit32.bxor(panel_side, 1)

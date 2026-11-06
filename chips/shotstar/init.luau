@@ -32,7 +32,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = DIMMING,
     auto_battle = { class = "when_enemy_at_home" },
 }

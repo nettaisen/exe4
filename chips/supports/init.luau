@@ -18,8 +18,8 @@ local rush: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
-    traits = { "no_cut_in" },
+    flags = { dimming = true, library = true },
+    traits = { no_cut_in = true },
     dimming = supports.dimming("rush"),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -34,8 +34,8 @@ local beat: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
-    traits = { "no_cut_in" },
+    flags = { dimming = true, library = true },
+    traits = { no_cut_in = true },
     dimming = supports.dimming("beat"),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -50,8 +50,8 @@ local tango: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
-    traits = { "no_cut_in" },
+    flags = { dimming = true, library = true },
+    traits = { no_cut_in = true },
     dimming = supports.dimming("tango"),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

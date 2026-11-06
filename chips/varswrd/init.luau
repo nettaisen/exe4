@@ -39,7 +39,7 @@ local varswrd: Chip = {
     damage = 150,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "sword_swing", swings = { "two_in_row", "three_in_row", "column_ahead", "two_columns_ahead", "ahead_within_a_row", "one_ahead" } },
 }
 

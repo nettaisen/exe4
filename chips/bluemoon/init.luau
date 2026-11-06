@@ -22,7 +22,7 @@ local chip: Chip = {
     mb = 90,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     damage = damage(200),
     dimming = CONTROLLER.hook,
     auto_battle = { class = "into_reach", range = "three_ahead" },

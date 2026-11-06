@@ -48,7 +48,7 @@ local RUSH_TICKS = 100
 local SLASH_STEPS, CUT_STEPS, DRAW_STEPS = 8, 12, 9
 
 -- What his moves stop at (0x080C1DC8); his landing panel must be free of any body (0x080C8814).
-local BLOCKERS: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local MOVES_ON: PanelCondition = { solid = true, own_other_body = false, enemy_other_body = false, neutral = false }
 -- His afterimages' color shader, and their lifetimes on his dash and his rush.
 local AFTERIMAGE_SHADER = 0x814A
 local DASH_SPEED = 0x6_AAAB
@@ -59,7 +59,7 @@ local APPEAR, DASH, CUT_BACK, RUSH = 0x0, 0x4, 0x8, 0xC
 -- 0x080C1DC8: the panel under him is solid with no blocker on it.
 local function on_ground(me: Object): boolean
     local x, y = link_chips.panel_at(me.pos.x, me.pos.y, me.alliance)
-    return field.valid(x, y) and field.check(x, y, "solid", BLOCKERS)
+    return field.valid(x, y) and field.check(x, y, MOVES_ON)
 end
 
 -- 0x080C20D0: his afterimage as he stands (his sheet, his animation, his side's flip), lasting `ticks`, with its
@@ -96,6 +96,8 @@ local function sheathe(me: Object)
     end
 end
 
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
+
 -- 0x080C89E4: along his row from his panel, the panel before the first with an enemy body, or the field's edge (7, or
 -- 0 for side 1).
 local function dash_target(me: Object): (number, number)
@@ -104,7 +106,7 @@ local function dash_target(me: Object): (number, number)
     local x = me.panel_x
     while true do
         -- (An enemy body on the panel, 0x080C8A20.)
-        if field.any(x, me.panel_y, "enemy_body", me.alliance) then
+        if field.any(x, me.panel_y, ENEMY_BODY, me.alliance) then
             return x - dir, me.panel_y
         end
         x += dir
@@ -184,6 +186,8 @@ local function dash(me: Object)
     end
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- Action 8 (0x080C87C0): a puff, hidden, its sound; 3 ticks; then two panels on, if solid with no body there (else
 -- onto column 0, where his update ends him), shown in animation 0 facing back; 8 ticks gliding on 4 pixels a tick;
 -- then the cut on the column behind him (region 4, no spark, an attack of no element at navis, modifier 1) with its
@@ -203,7 +207,7 @@ local function cut_back(me: Object)
             return
         end
         local x = me.panel_x + 2 * dir
-        if not (field.valid(x, me.panel_y) and field.check(x, me.panel_y, "solid", "any_body")) then
+        if not (field.valid(x, me.panel_y) and field.check(x, me.panel_y, SOLID_NOT_ANY_BODY)) then
             me.panel_x = 0
             me:set_coordinates_from_panel()
             return

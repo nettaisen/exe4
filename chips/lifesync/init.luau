@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = lifesync.hook,
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }

@@ -18,7 +18,7 @@ local chip: Chip = {
     damage = 260,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = navi.controller { id = "deltaray/controller", palette = 0 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

@@ -28,7 +28,7 @@ local timebom: Chip = {
     damage = 600,
     hit_param = 168,
     lockout = 0,
-    flags = { "dimming", "has_damage" },
+    flags = { dimming = true, has_damage = true },
     program_advances = { { order = 35, code_run = { chip = timebombs.timebomb, count = 3 } } },
     dimming = bomb.controller.hook(BIG_BOMB),
     auto_battle = { class = "when_far_front_free" },

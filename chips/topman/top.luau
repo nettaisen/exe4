@@ -36,8 +36,8 @@ local VX = (0x28_0000 + bit32.lshift(PERIOD, 15) + bit32.lshift(PERIOD, 14)) // 
 local VY = (0x18_0000 + bit32.lshift(PERIOD, 15)) // PERIOD
 -- What a hit on it does: another body's or a neutral object's (0x03800000) ends it; an object's or a body's
 -- (0x3C000000) ends its region.
-local ENDS: { HitName } = { "own_other_body", "enemy_other_body", "neutral" }
-local STOPS: { HitName } = { "own_object", "enemy_object", "own_body", "enemy_body" }
+local ENDS: HitNames = { own_other_body = true, enemy_other_body = true, neutral = true }
+local STOPS: HitNames = { own_object = true, enemy_object = true, own_body = true, enemy_body = true }
 -- Past this X it is off the field's right edge (0x080B6C7C).
 local RIGHT_EDGE = 0x8C_0000
 

@@ -14,7 +14,7 @@ local thunder_ball_sprite = asset.sprite("thunder-ball")
 local thunder = {}
 
 -- The other side's navi on a panel, of the ball's side (0x080D221C: the other side's body).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 
 -- 0x080D21D4: the first column holding the other side's navi, bottom row up, from the ball's side's back column
 -- toward the other side (side 0's from column 0 to 6, side 1's from 6 to 1); none, (0, 0).

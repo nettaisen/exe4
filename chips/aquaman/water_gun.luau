@@ -69,11 +69,13 @@ local function spray(me: Object, dx: number)
     end
 end
 
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
+
 -- Action 0 (0x080D3504): on a solid panel nothing stands on, its region on it and its sound; 20 ticks. Else gone.
 local function up(me: Object)
     if me.phase_init == 0 then
         -- (Nothing on it: bodies, neutral objects, blockers and reservations, 0x080D351A.)
-        if not field.check(me.panel_x, me.panel_y, "solid", "occupied") then
+        if not field.check(me.panel_x, me.panel_y, SOLID_NOT_OCCUPIED) then
             leave(me, 0)
             return
         end

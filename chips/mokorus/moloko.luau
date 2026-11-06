@@ -24,7 +24,7 @@ local HIT_MOD = 0x21
 local REACH, SPEED, DUST_EVERY = 140, 0x3_0000, 10
 local PUFF_UP = 0x10_0000
 -- What stops it on its panel, of its side (0x080D2504): the other side's obstacle, or a neutral one; or no solid panel.
-local BLOCKS: { PanelFlag } = { "enemy_other_body", "neutral" }
+local GOES_ON: PanelCondition = { solid = true, enemy_other_body = false, neutral = false }
 
 local WAIT, CHARGE = 0x0, 0x4
 
@@ -75,7 +75,7 @@ local function charge(me: Object)
     if not field.valid(me.panel_x, me.panel_y) then
         return
     end
-    if field.check(me.panel_x, me.panel_y, "solid", BLOCKS, me.alliance) then
+    if field.check(me.panel_x, me.panel_y, GOES_ON, me.alliance) then
         return
     end
     local q = me.pos

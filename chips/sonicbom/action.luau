@@ -35,6 +35,8 @@ local function set_step(me: Object, step: number)
     me.step, me.step_init = step, 0
 end
 
+local ON_FIELD_NOT_ANY_BODY: PanelCondition = { on_field = true, any_body = false }
+
 -- 0x080ED810: on to the set-up; a charged one steps two panels ahead first.
 local function start(me: Object)
     set_step(me, SET_UP)
@@ -45,7 +47,7 @@ local function start(me: Object)
     me:reserve_panel(me.panel_x, me.panel_y)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
     -- (The panel the step goes to: on the field, a flag every panel type has, with no body on it.)
-    if field.check(x, y, "on_field", "any_body") then
+    if field.check(x, y, ON_FIELD_NOT_ANY_BODY) then
         me.panel_x, me.panel_y = x, y
         me:set_coordinates_from_panel()
         me:update_collision_panels()

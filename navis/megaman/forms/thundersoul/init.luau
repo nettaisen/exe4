@@ -23,7 +23,7 @@ local form: FormDef = {
     element = "elec",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
-    paralyzing_chips = { "null", "elec" },
+    paralyzing_chips = { null = true, elec = true },
     palette = 0,
     mugshot = { normal = asset.mugshot("thundersoul") },
 }

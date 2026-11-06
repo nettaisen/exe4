@@ -48,6 +48,8 @@ local function leave(me: Object)
     me:set_lifecycle("destroy")
 end
 
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
+
 -- Action 0 (0x080DD614): three ticks; then its panel if it is free solid ground (with a sound), else a puff and it
 -- goes (0x080DD6EA).
 local function appear(me: Object)
@@ -57,7 +59,7 @@ local function appear(me: Object)
         return
     end
     -- (Where it can stand: a solid panel with nothing on it.)
-    if not field.check(me.panel_x, me.panel_y, "solid", "occupied") then
+    if not field.check(me.panel_x, me.panel_y, SOLID_NOT_OCCUPIED) then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + EFFECT_Z), PUFF)
         leave(me)

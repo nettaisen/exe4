@@ -21,7 +21,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 129,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     program_advances = { { order = 6, sequence = { recipe_hole, recipe_drkline, recipe_anubis } } },
     dimming = anubis.controller.hook(STATUE),
     auto_battle = { class = "landing_ahead" },

@@ -29,7 +29,7 @@ local airhoc1: Chip = {
     damage = 50,
     hit_param = 20,
     lockout = 15,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 
@@ -51,7 +51,7 @@ local airhoc2: Chip = {
     damage = 60,
     hit_param = 20,
     lockout = 40,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 
@@ -73,7 +73,7 @@ local airhoc3: Chip = {
     damage = 70,
     hit_param = 20,
     lockout = 50,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 

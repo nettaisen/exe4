@@ -32,14 +32,14 @@ local DELAY = 5
 -- It lasts 19 ticks, its region its panel until 7 are left.
 local LASTS, REGION_UNTIL = 19, 7
 -- What a hit on it must have touched to end its region (a body or an object).
-local STOPS: { HitName } = {
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local STOPS: HitNames = {
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 local function count(me: Object, by: number)

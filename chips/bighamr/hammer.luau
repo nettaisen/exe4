@@ -83,12 +83,12 @@ end
 -- 0x080D6B74 (BigHamr's): two of the other side's solid panels cracked, picked at random (the panels but its own
 -- meeting its side's condition, 0x080D6BBC: the other side's solid panels, not metal; shuffled with as many rounds as
 -- panels, `sub_8000C72`).
-local CRACKED: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "metal" }
+local CRACKED: PanelCondition = { solid = true, enemy_area = true, metal = false }
 
 function hammer.crack_two(me: Object)
     local cond = CRACKED
     -- (Shuffled from its side's order: docs/engine/side-symmetry.md.)
-    local list = panels.filtered_except(me, cond.require, cond.forbid, me.alliance, me.alliance)
+    local list = panels.filtered_except(me, cond, me.alliance, me.alliance)
     local n = #list
     if n == 0 then
         return

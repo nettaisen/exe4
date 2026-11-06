@@ -19,7 +19,7 @@ local thunsoul: Chip = {
     lockout = 0,
     flags = {},
     -- Next in the hand it shows no icon over MegaMan (0x0801502E: chips 0x160 to 0x16F).
-    traits = { "no_icon_when_next" },
+    traits = { no_icon_when_next = true },
     action = change.make {
         id = "thunsoul",
     },

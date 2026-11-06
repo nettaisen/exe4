@@ -79,7 +79,7 @@ local chip: Chip = {
     damage = 80,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = CONTROLLER.hook,
     megaman = "dark",
     auto_battle = { class = "into_target_row" },

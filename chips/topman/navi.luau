@@ -39,6 +39,8 @@ local SPIN_UP_STEPS = 19
 
 local APPEAR, SPIN_UP, LEAP, LAND = 0x0, 0x4, 0x8, 0xC
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- 0x080B85E8: 31 ticks; then, on a solid panel, his tops (0x080B876C: each on a solid panel with no body or object),
 -- and he spins up (animation 4); else he goes.
 local function appear(me: Object)
@@ -54,7 +56,7 @@ local function appear(me: Object)
     for i, d in TOPS do
         local x, y = me.panel_x + me.facing * d[1], me.panel_y + d[2]
         -- (A panel his top lands on has no body on it.)
-        if field.check(x, y, "solid", "any_body") then
+        if field.check(x, y, SOLID_NOT_ANY_BODY) then
             top.spawn(me, x, y, i - 1)
         end
     end

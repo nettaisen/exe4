@@ -54,7 +54,7 @@ local form: FormDef = {
     element = "wood",
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
-    traits = { "status_immune" },
+    traits = { status_immune = true },
     reset = function(navi: Object)
         fold(navi.alliance, true)
     end,

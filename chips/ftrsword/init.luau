@@ -29,7 +29,7 @@ local ftrsword: Chip = {
     damage = 80,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 

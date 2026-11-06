@@ -18,7 +18,7 @@ local sparks = require("../lib/sparks")
 -- Lava's burn (0x08013128, 0x0801309E: hit effect 1, jittered by 15, from 0x080E2140).
 local BURN = panel_types.burn {
     damage = 50,
-    spared_by = { "invisible", "submerged", "flashing" },
+    spared_by = { invisible = true, submerged = true, flashing = true },
     mood = 20,
     players_while_dimmed = true,
     spark = sparks.fire,
@@ -63,24 +63,24 @@ return {
         metal = 0x20000,
     },
     types = {
-        missing = { flags = { "missing", "on_field" } },
-        broken = { flags = { "broken", "on_field" } },
-        normal = { flags = { "solid", "on_field" } },
-        cracked = { flags = { "solid", "cracked", "on_field" } },
+        missing = { flags = { missing = true, on_field = true } },
+        broken = { flags = { broken = true, on_field = true } },
+        normal = { flags = { solid = true, on_field = true } },
+        cracked = { flags = { solid = true, cracked = true, on_field = true } },
         poison = {
-            flags = { "solid", "poison", "on_field" },
+            flags = { solid = true, poison = true, on_field = true },
             trail_sound = asset.sound("panel-poison"),
             stand = panel_types.poison,
         },
-        metal = { flags = { "solid", "on_field", "metal" }, unbreakable = true },
+        metal = { flags = { solid = true, on_field = true, metal = true }, unbreakable = true },
         grass = {
-            flags = { "solid", "grass", "on_field" },
+            flags = { solid = true, grass = true, on_field = true },
             doubles = "fire",
             stand = panel_types.grass(nil),
             cleared_by = "fire",
         },
         ice = {
-            flags = { "solid", "ice", "on_field" },
+            flags = { solid = true, ice = true, on_field = true },
             doubles = "elec",
             move_end = panel_types.ice_pushes({
                 { none = 0x00, up = 0x40, down = 0x80, back = 0x20, forward = 0x10 },
@@ -88,17 +88,22 @@ return {
             }),
             slide = panel_types.ice,
         },
-        lava = { flags = { "solid", "lava", "on_field" }, expires = 960, burn = LAVA_BURN, cleared_by = "aqua" },
-        holy = { flags = { "solid", "holy", "on_field" }, damage_shift = 1 },
+        lava = {
+            flags = { solid = true, lava = true, on_field = true },
+            expires = 960,
+            burn = LAVA_BURN,
+            cleared_by = "aqua",
+        },
+        holy = { flags = { solid = true, holy = true, on_field = true }, damage_shift = 1 },
         pitfall = {
-            flags = { "solid", "pitfall", "on_field" },
+            flags = { solid = true, pitfall = true, on_field = true },
             traps = true,
             slide = panel_types.pitfall,
             tick = PITFALL.tick,
             changed = PITFALL.changed,
             start = PITFALL.start,
         },
-        hole = { flags = { "solid", "on_field" } },
+        hole = { flags = { solid = true, on_field = true } },
     },
     -- EXE4's panel types by its own numbers.
     numbers = { "missing", "broken", "normal", "cracked", "poison", "metal", "grass", "ice", "lava", "holy", "pitfall", "hole" },
@@ -122,24 +127,38 @@ return {
     },
     step = {
         grounded = {
-            require = { "solid", "own_area" },
-            forbid = { "reserved", "own_body", "own_other_body", "enemy_other_body", "neutral", "blocker" },
+            solid = true,
+            own_area = true,
+            reserved = false,
+            own_body = false,
+            own_other_body = false,
+            enemy_other_body = false,
+            neutral = false,
+            blocker = false,
         },
         floor_free = {
-            require = { "own_area" },
-            forbid = { "reserved", "own_body", "own_other_body", "enemy_other_body", "neutral", "blocker" },
+            own_area = true,
+            reserved = false,
+            own_body = false,
+            own_other_body = false,
+            enemy_other_body = false,
+            neutral = false,
+            blocker = false,
         },
     },
     dash_step = {
-        grounded = { require = { "solid", "own_area" }, forbid = { "occupied" } },
-        floor_free = { require = { "own_area" }, forbid = { "occupied" } },
+        grounded = { solid = true, own_area = true, occupied = false },
+        floor_free = { own_area = true, occupied = false },
     },
     any_side_step = {
         grounded = {
-            require = { "solid" },
-            forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" },
+            solid = true,
+            enemy_body = false,
+            own_other_body = false,
+            enemy_other_body = false,
+            neutral = false,
         },
-        floor_free = { forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" } },
+        floor_free = { enemy_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
     },
     -- A broken panel mends after 600 ticks in every battle (0x08009132, 0x0800976C).
     mend = { normal = 600, battle_mode_1 = 600 },
@@ -148,7 +167,17 @@ return {
     reservations = "unmarked",
     -- The flags' bits a type owns, which a crack, a break or poison clears (0x08009AEC and its kin), metal's
     -- 0x20000 among them.
-    type_mask = { "solid", "cracked", "poison", "pitfall", "grass", "ice", "lava", "holy", "metal" },
+    type_mask = {
+        solid = true,
+        cracked = true,
+        poison = true,
+        pitfall = true,
+        grass = true,
+        ice = true,
+        lava = true,
+        holy = true,
+        metal = true,
+    },
     -- What each panel is drawn as is in tables of their own (0x02037AE6 its type, 0x02037B0E its owner), which the
     -- panel update alone writes (0x08009240): a cracked panel a body stepped off shows its hole a tick after it
     -- breaks (0x080097C8), and a dimmed tick draws every panel as it is, no blink showing (0x08009A38). The drawing

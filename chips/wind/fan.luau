@@ -21,13 +21,15 @@ local fan = {}
 fan.variant = common.variant
 
 -- 0x080D66E8 by the fan's side: the other side's panels.
-local FRONT = "enemy_area"
+local FRONT: PanelCondition = { enemy_area = true }
+
+local NEUTRAL: PanelFlags = { neutral = true }
 
 -- 0x080D6688.
 local function column(me: Object, row: number, pulls: boolean): number
-    local x = panels.closest_in_row(bit32.bxor(me.alliance, 1), row, FRONT, nil, me.alliance)
+    local x = panels.closest_in_row(bit32.bxor(me.alliance, 1), row, FRONT, me.alliance)
     -- (Another obstacle on the panel: a neutral object.)
-    if field.any(x, row, "neutral") then
+    if field.any(x, row, NEUTRAL) then
         return 0
     end
     if not pulls then
@@ -36,7 +38,7 @@ local function column(me: Object, row: number, pulls: boolean): number
     local step = panels.side_direction(me.alliance)
     repeat
         x += step
-    until x < 1 or x > 6 or field.any(x, row, "neutral")
+    until x < 1 or x > 6 or field.any(x, row, NEUTRAL)
     return x - step
 end
 

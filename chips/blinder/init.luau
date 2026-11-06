@@ -18,7 +18,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = controller.make {
         id = "blinder/controller",
         sound = asset.sound("spark-flash"),

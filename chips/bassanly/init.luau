@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 160,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     dimming = navi.controller { id = "bassanly/controller" }.hook,
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

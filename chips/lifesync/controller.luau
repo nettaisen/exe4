@@ -39,7 +39,7 @@ local SOUND_DOWN = asset.sound("lifesync")
 -- The warning's (0x08008424).
 local SOUND_WARNING = asset.sound("program-advance-part")
 -- The other side's player navi stands there (0x080E89F8, 0x080E8A40).
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 -- Its hit under event flag 0x1187.
 local HIT_DAMAGE, HIT_MOD = 50, 3
 

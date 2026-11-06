@@ -19,7 +19,7 @@ local bstfang1: Chip = {
     damage = 50,
     hit_param = 5,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 26, code_run = { chip = twnfngs.twnfng1, count = 3 } } },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }
@@ -35,7 +35,7 @@ local bstfang2: Chip = {
     damage = 60,
     hit_param = 5,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 27, code_run = { chip = twnfngs.twnfng2, count = 3 } } },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }
@@ -51,7 +51,7 @@ local bstfang3: Chip = {
     damage = 70,
     hit_param = 5,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 28, code_run = { chip = twnfngs.twnfng3, count = 3 } } },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }

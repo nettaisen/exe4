@@ -33,7 +33,7 @@ local sandring: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     auto_battle = { class = "into_target_row" },
 }
 

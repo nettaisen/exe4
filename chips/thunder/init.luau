@@ -18,7 +18,7 @@ local thunder1: Chip = {
     damage = 40,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 
@@ -33,7 +33,7 @@ local thunder2: Chip = {
     damage = 60,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 
@@ -48,7 +48,7 @@ local thunder3: Chip = {
     damage = 80,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "to_front" },
 }
 

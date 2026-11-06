@@ -51,12 +51,14 @@ local function pack(x: number, y: number): number
     return bit32.band(bit32.lshift(y, 4) + x, 0xFF)
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- 0x080CC320: an obstacle (`o`); the panel behind it as he faces, his own or free solid ground, he stops on (true).
 local function reaches(me: Object, o: Object, dir: number): boolean
     local s = me.state :: State
     local x, y = o.panel_x - dir, o.panel_y
     -- (A panel he stands on behind an obstacle, or forms his cube on, has no body.)
-    if not (x == me.panel_x and y == me.panel_y) and not field.check(x, y, "solid", "any_body") then
+    if not (x == me.panel_x and y == me.panel_y) and not field.check(x, y, SOLID_NOT_ANY_BODY) then
         return false
     end
     s.count += 1
@@ -221,7 +223,7 @@ local function attack(me: Object)
             end
             me.phase_init = 1
             local x, y = me.panel_x + 1 - 2 * me.alliance, me.panel_y
-            if not field.check(x, y, "solid", "any_body") then
+            if not field.check(x, y, SOLID_NOT_ANY_BODY) then
                 me:set_lifecycle("destroy")
                 return
             end

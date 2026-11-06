@@ -84,7 +84,7 @@ local propbom1: Chip = {
     damage = 120,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },
 }
 
@@ -99,7 +99,7 @@ local propbom2: Chip = {
     damage = 160,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },
 }
 
@@ -114,7 +114,7 @@ local propbom3: Chip = {
     damage = 200,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_empty_row" },
 }
 

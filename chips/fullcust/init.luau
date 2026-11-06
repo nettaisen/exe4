@@ -23,7 +23,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 0,
     lockout = 0,
-    flags = { "library" },
+    flags = { library = true },
     auto_battle = { class = "at_once" },
 }
 

@@ -19,7 +19,7 @@ local circgun1: Chip = {
     damage = 80,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = circgun.hook(circgun.variant { period = 6, shots = 4, palette = 0, hit = collision.thrown }),
     auto_battle = { class = "spot_test", range = "on_far_ring" },
 }
@@ -35,7 +35,7 @@ local circgun2: Chip = {
     damage = 100,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = circgun.hook(circgun.variant { period = 4, shots = 4, palette = 0, hit = collision.thrown }),
     auto_battle = { class = "spot_test", range = "on_far_ring" },
 }
@@ -51,7 +51,7 @@ local circgun3: Chip = {
     damage = 120,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = circgun.hook(circgun.variant { period = 2, shots = 4, palette = 0, hit = collision.thrown }),
     auto_battle = { class = "spot_test", range = "on_far_ring" },
 }

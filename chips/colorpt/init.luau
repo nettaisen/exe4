@@ -17,7 +17,7 @@ local colorpt_chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     dimming = colorpt.hook { palette = 0, bonus = 10 },
     auto_battle = { class = "when_area_whole" },
 }
@@ -35,7 +35,7 @@ local dblpoint: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     dimming = colorpt.hook { palette = 4, bonus = 20 },
     auto_battle = { class = "when_area_whole" },
 }

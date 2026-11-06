@@ -11,14 +11,14 @@ local projectile = {}
 
 -- What stops the recovery's count of open panels (0x0800B6DC: one mask whichever side shoots, EXE5's): off the field,
 -- or anything on the panel.
-local CLOSED = "occupied"
+local NOT_OCCUPIED: PanelCondition = { occupied = false }
 
 -- 0x0800B6DC: the ticks of recovery by a Rapid (the recovery table's row: the buster's the shooter's Rapid, other
 -- shots' their own) and the open panels ahead of (x, y), counted on from it (5 at most).
 function projectile.recovery(navi: Object, x: number, y: number, rapid: number): number
     local open = 0
     while true do
-        if not field.check(x, y, nil, CLOSED) then
+        if not field.check(x, y, NOT_OCCUPIED) then
             break
         end
         open += 1

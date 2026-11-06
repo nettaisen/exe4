@@ -41,7 +41,7 @@ local greenwd1: Chip = {
     damage = 120,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_grass" },
 }
 
@@ -56,7 +56,7 @@ local greenwd2: Chip = {
     damage = 140,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_grass" },
 }
 
@@ -71,7 +71,7 @@ local greenwd3: Chip = {
     damage = 160,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_grass" },
 }
 

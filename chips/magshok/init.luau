@@ -32,7 +32,7 @@ local magshok1: Chip = {
     damage = 200,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 32, code_run = { chip = magbolts.magbolt1, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
@@ -48,7 +48,7 @@ local magshok2: Chip = {
     damage = 250,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 33, code_run = { chip = magbolts.magbolt2, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
@@ -64,7 +64,7 @@ local magshok3: Chip = {
     damage = 300,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 34, code_run = { chip = magbolts.magbolt3, count = 3 } } },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }

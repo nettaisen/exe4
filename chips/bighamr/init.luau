@@ -49,7 +49,7 @@ local bighamr1: Chip = {
     damage = 160,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = controller.make("bighamr1/controller", big_hammer("bighamr1/hammer", 0, 1)),
     auto_battle = { class = "landing_ahead" },
 }
@@ -65,7 +65,7 @@ local bighamr2: Chip = {
     damage = 220,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = controller.make("bighamr2/controller", big_hammer("bighamr2/hammer", 4, 2)),
     auto_battle = { class = "landing_ahead" },
 }
@@ -81,7 +81,7 @@ local bighamr3: Chip = {
     damage = 280,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     dimming = controller.make("bighamr3/controller", big_hammer("bighamr3/hammer", 8, 3)),
     auto_battle = { class = "landing_ahead" },
 }
@@ -98,7 +98,7 @@ local godhammr: Chip = {
     damage = 250,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = controller.make(
         "godhammr/controller",
         hammer.make({ id = "godhammr/hammer", palette = 10, stand_anim = 0, blinks = false, land = quake }).spawn

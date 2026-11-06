@@ -33,7 +33,7 @@ local SHURIKEN = shuriken.make_kind {
 -- 0x0800FAF6: one of the other player navi's panels (0x0800FB2C: its body's flag), picked by a draw; none, none.
 local function target(me: Object): (number?, number?)
     local marked = regions.other_navi[me.alliance].field :: PanelCondition
-    local list = panels.filtered(marked.require, marked.forbid, me.alliance)
+    local list = panels.filtered(marked, me.alliance)
     if #list == 0 then
         return nil, nil
     end

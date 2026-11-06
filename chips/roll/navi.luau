@@ -25,8 +25,8 @@ local roll_ribbon_sprite = asset.sprite("roll-ribbon")
 local roll_sprite = asset.sprite("roll")
 local navi_status = require("@exelib/navi_status")
 
--- What a panel she lands on must be free of, of her side (0x080C1AE8).
-local OCCUPIED: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+-- What a panel she lands on must be, of her side: free of these (0x080C1AE8).
+local LANDS_ON: PanelCondition = { enemy_body = false, own_other_body = false, enemy_other_body = false, neutral = false }
 
 -- 0x080C1988: her heart on her side's navi's panel.
 local function heart_at(me: Object): (Object?, number, number)
@@ -70,7 +70,7 @@ local roll = common.make {
     wind_up_anim = 10,
     summoned_alone = true,
     ribbon_slot = "related",
-    occupied = OCCUPIED,
+    lands_on = LANDS_ON,
     user_panel_free = false,
     recall = function(me: Object)
         navi_chips.warp(me.alliance, false)

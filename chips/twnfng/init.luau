@@ -16,7 +16,7 @@ local twnfng1: Chip = {
     damage = 70,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }
 
@@ -31,7 +31,7 @@ local twnfng2: Chip = {
     damage = 100,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }
 
@@ -46,7 +46,7 @@ local twnfng3: Chip = {
     damage = 130,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "spot_test", range = "a_row_off" },
 }
 

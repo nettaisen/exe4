@@ -19,7 +19,7 @@ local flmcros1: Chip = {
     damage = 300,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 20, code_run = { chip = flmlines.flmline1, count = 3 } } },
     auto_battle = { class = "into_reach", range = "cross_two_ahead" },
 }
@@ -35,7 +35,7 @@ local flmcros2: Chip = {
     damage = 400,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 21, code_run = { chip = flmlines.flmline2, count = 3 } } },
     auto_battle = { class = "into_reach", range = "cross_two_ahead" },
 }
@@ -51,7 +51,7 @@ local flmcros3: Chip = {
     damage = 500,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     program_advances = { { order = 22, code_run = { chip = flmlines.flmline3, count = 3 } } },
     auto_battle = { class = "into_reach", range = "cross_two_ahead" },
 }

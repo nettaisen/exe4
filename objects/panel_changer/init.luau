@@ -19,9 +19,9 @@ panel_changer.CHANGE_SOUND = asset.sound("panel-change")
 panel_changer.POISON_SOUND = asset.sound("panel-poison")
 
 -- The conditions EXE4's rows use: a side's own area, the other side's, and any panel, none missing.
-panel_changer.OWN_AREA = { require = "own_area", forbid = "missing" } :: PanelCondition
-panel_changer.OTHER_AREA = { require = "enemy_area", forbid = "missing" } :: PanelCondition
-panel_changer.ANY = { forbid = "missing" } :: PanelCondition
+panel_changer.OWN_AREA = { own_area = true, missing = false } :: PanelCondition
+panel_changer.OTHER_AREA = { enemy_area = true, missing = false } :: PanelCondition
+panel_changer.ANY = { missing = false } :: PanelCondition
 
 panel_changer.kind = common.make_kind("panel-changer")
 

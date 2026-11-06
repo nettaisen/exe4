@@ -23,7 +23,7 @@ local chip: Chip = {
     damage = 20,
     hit_param = 133,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     dimming = blakwing.make {
         controller_id = "blakwing/controller",
         flock_id = "blakwing/flock",

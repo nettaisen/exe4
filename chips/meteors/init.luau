@@ -17,7 +17,7 @@ local meteors1: Chip = {
     damage = 50,
     hit_param = 10,
     lockout = 120,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
@@ -32,7 +32,7 @@ local meteors2: Chip = {
     damage = 60,
     hit_param = 10,
     lockout = 120,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
@@ -47,7 +47,7 @@ local meteors3: Chip = {
     damage = 70,
     hit_param = 10,
     lockout = 120,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 

@@ -22,9 +22,9 @@ type State = {
 
 local SOUND = asset.sound("metal-punch")
 -- Its rocks fall on solid panels without these (bodies of the stage's and the sides' objects: 0x080D07FA).
-local ROCK_FORBID: { PanelFlag } = { "own_other_body", "enemy_other_body", "neutral" }
+local ROCK_PANEL: PanelCondition = { solid = true, own_other_body = false, enemy_other_body = false, neutral = false }
 -- The other side's player navi, by side (0x080D088C).
-local OTHER_NAVI = "enemy_navi"
+local OTHER_NAVI: PanelFlags = { enemy_navi = true }
 -- How many panels it cracks at random, and rocks it drops at random.
 local CRACKS, ROCKS = 6, 2
 
@@ -91,7 +91,7 @@ local function drop(me: Object)
     local tx, ty = 0, 0
     repeat
         for y = 3, 1, -1 do
-            if field.check(x, y, "solid", ROCK_FORBID) then
+            if field.check(x, y, ROCK_PANEL) then
                 if tx == 0 and field.any(x, y, OTHER_NAVI, me.alliance) then
                     tx, ty = x, y
                 else

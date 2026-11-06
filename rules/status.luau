@@ -213,7 +213,7 @@ local status = {
     -- status's bit 0).
     rules = {
         hp_drain = { periods = "stat", stops_while_paused = false },
-        custom_drain = { periods = "stat", status = { "selecting" } },
+        custom_drain = { periods = "stat", status = { selecting = true } },
         -- No per-form tick (the player's update, 0x080EAECC, runs none: a soul's is its own, to read with the souls).
         form_tick = false,
         -- A soul's weapon load (0x0800BD48) sets AIData +0x0C to +0x0F alone: its B+Left special (+0x00) stays as the

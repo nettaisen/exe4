@@ -20,7 +20,7 @@ local boomer1: Chip = {
     damage = 60,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
@@ -35,7 +35,7 @@ local boomer2: Chip = {
     damage = 80,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
@@ -50,7 +50,7 @@ local boomer3: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 

@@ -15,7 +15,7 @@ local crakout: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = crack.action { id = "crakout/action", panels = crack.ahead },
     auto_battle = { class = "to_front" },
 }
@@ -30,7 +30,7 @@ local dublcrak: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = crack.action { id = "dublcrak/action", panels = crack.ahead_two },
     auto_battle = { class = "to_front" },
 }
@@ -45,7 +45,7 @@ local tripcrak: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     action = crack.action { id = "tripcrak/action", panels = crack.column },
     auto_battle = { class = "to_front" },
 }

@@ -38,7 +38,7 @@ return {
         float_shoe_needs_self_bit = false,
         bubbled_as_submerged = false,
         elec_reaches_submerged = false,
-        guard_breaks_to = { "breaks_guard", "break" },
+        guard_breaks_to = { breaks_guard = true, ["break"] = true },
         guard_before_untouchable = true,
         guard_marks_direction = false,
     },
@@ -53,9 +53,9 @@ return {
     -- alone (0x08010CB8: 0x800), so a chip asked for before the field dimmed is used after it.
     request_clears = {
         attack = {},
-        paralysis = { "anti_sword_triggered" },
-        flinch = { "anti_sword_triggered" },
-        drag = { "anti_sword_triggered" },
+        paralysis = { anti_sword_triggered = true },
+        flinch = { anti_sword_triggered = true },
+        drag = { anti_sword_triggered = true },
         cut_in = {},
     },
     -- EXE4's own request (the collision's flag2 bit 0x8000): its counter mark, a paralysis a counter made that tick
@@ -66,9 +66,9 @@ return {
     -- flags (0xE800), the requests 0x8068 and the four timers (its flag 0x10000 holds a navi changing into a soul:
     -- rules/souls/change).
     status_end = {
-        flags = { "paralyzed", "blind", "immobilized", "confused" },
-        requests = { "paralyze", "blind", "immobilize", "counter_mark" },
-        timers = { "paralyze", "confuse", "blind", "immobilize" },
+        flags = { paralyzed = true, blind = true, immobilized = true, confused = true },
+        requests = { paralyze = true, blind = true, immobilize = true, counter_mark = true },
+        timers = { paralyze = true, confuse = true, blind = true, immobilize = true },
     },
     push = {
         { dx = 1, dy = 0, panels = 6 },

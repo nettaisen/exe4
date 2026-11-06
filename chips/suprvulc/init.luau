@@ -32,7 +32,7 @@ local suprvulc: Chip = {
     damage = 10,
     hit_param = 3,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "behind_target" },
 }
 

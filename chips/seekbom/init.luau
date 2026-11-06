@@ -29,7 +29,7 @@ local seekbom1: Chip = {
     damage = 80,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "at_once" },
 }
 
@@ -44,7 +44,7 @@ local seekbom2: Chip = {
     damage = 110,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "at_once" },
 }
 
@@ -59,7 +59,7 @@ local seekbom3: Chip = {
     damage = 140,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "at_once" },
 }
 

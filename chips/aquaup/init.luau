@@ -42,7 +42,7 @@ local aquaup1: Chip = {
     damage = 110,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_cracked" },
 }
 
@@ -57,7 +57,7 @@ local aquaup2: Chip = {
     damage = 140,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_cracked" },
 }
 
@@ -72,7 +72,7 @@ local aquaup3: Chip = {
     damage = 170,
     hit_param = 30,
     lockout = 45,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     auto_battle = { class = "when_enemy_on_cracked" },
 }
 
