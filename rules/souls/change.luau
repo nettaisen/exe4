@@ -214,7 +214,7 @@ function change.make(spec: Spec): Action
     local spawn_image = image.make(spec.id .. "/image")
     return new.action {
         id = spec.id .. "/change",
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- One tick of the change.
         update = function(me: Object, s: State)
             local soul = me:form_change_target()

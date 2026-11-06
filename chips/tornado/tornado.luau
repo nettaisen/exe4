@@ -118,10 +118,12 @@ local function init(me: Object)
     tick(me)
 end
 
+local TORNADO_LOOK = schema.record_type("tornado-look")
+
 local kind = new.kind {
     id = "tornado/tornado",
     pool = "attack",
-    state = { look = "record:tornado-look", step = "u16", count = "u16" },
+    state = { look = TORNADO_LOOK, step = schema.u16, count = schema.u16 },
     -- 0x080D2FDC (its sprite in its tick).
     update = function(me: Object)
         local l = me.lifecycle
@@ -136,7 +138,7 @@ local kind = new.kind {
 }
 
 function tornado.look(look: TornadoLook): TornadoLook
-    return new.record("tornado-look", look)
+    return new.record(TORNADO_LOOK, look)
 end
 
 -- 0x080D3130: a tornado of `user`'s on (x, y) of `look`, with the attack's element and damage word. (Its position is

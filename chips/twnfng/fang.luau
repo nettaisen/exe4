@@ -138,7 +138,7 @@ end
 local kind = new.kind {
     id = "twnfng/fang",
     pool = "attack",
-    state = { up = "bool", weak = "bool" },
+    state = { up = schema.bool, weak = schema.bool },
     -- 0x080D79B8: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

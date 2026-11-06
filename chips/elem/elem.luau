@@ -147,7 +147,7 @@ function elem.action(spec: ElemSpec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16", roar = "u16", raged = "bool" },
+        state = { timer = schema.u16, roar = schema.u16, raged = schema.bool },
         -- 0x080EE2AE.
         update = function(me: Object, s: State)
             if me.step == 0 then

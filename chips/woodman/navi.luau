@@ -217,7 +217,7 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4
 woodman.kind = new.kind {
     id = "woodman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", down = "u8", a = "u8", b = "u8", again = "bool" },
+    state = { controller = schema.object, palette = schema.u8, down = schema.u8, a = schema.u8, b = schema.u8, again = schema.bool },
     -- 0x080C980C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

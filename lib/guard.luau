@@ -79,7 +79,7 @@ function guard.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = spec,
         -- 0x080ECCF2: one phase.
         update = function(me: Object, s: State)

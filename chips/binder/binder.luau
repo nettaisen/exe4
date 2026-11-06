@@ -164,7 +164,7 @@ end
 binder.kind = new.kind {
     id = "binder/binder",
     pool = "attack",
-    state = { palette = "u8", landings = "u8" },
+    state = { palette = schema.u8, landings = schema.u8 },
     -- 0x080D2568: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle

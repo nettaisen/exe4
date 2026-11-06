@@ -185,7 +185,7 @@ end
 sparkman.kind = new.kind {
     id = "sparkman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", sparks = "u32" },
+    state = { controller = schema.object, palette = schema.u8, sparks = schema.u32 },
     -- 0x080B89C0: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

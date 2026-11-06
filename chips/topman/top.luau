@@ -189,7 +189,7 @@ end
 top.kind = new.kind {
     id = "topman/top",
     pool = "attack",
-    state = { number = "u8", period = "u8", half = "u8", count = "u8", hit_at = "u16" },
+    state = { number = schema.u8, period = schema.u8, half = schema.u8, count = schema.u8, hit_at = schema.u16 },
     -- 0x080D1DD0: by its state, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

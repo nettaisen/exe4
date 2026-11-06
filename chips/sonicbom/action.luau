@@ -119,7 +119,7 @@ end
 function action.make(id: string, hit_mod: number, pierces: boolean): Action
     return new.action {
         id = id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED7E6.
         update = function(me: Object, s: State)
             local step = me.step

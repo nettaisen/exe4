@@ -88,7 +88,7 @@ end
 local windrack: Chip = {
     action = new.action {
         id = "windrack/action",
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED330.
         update = function(me: Object, s: State)
             local step = me.step

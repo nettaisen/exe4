@@ -38,9 +38,9 @@ export type State = {
 }
 
 dark.state = {
-    dark_soul_asked = "bool",
-    dark_soul_spent = "bool",
-    dark_soul_ticks = "u16",
+    dark_soul_asked = schema.bool,
+    dark_soul_spent = schema.bool,
+    dark_soul_ticks = schema.u16,
     auto_battle = ai.STATE,
 } :: StateSchema
 

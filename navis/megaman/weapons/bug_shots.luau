@@ -73,7 +73,7 @@ end
 
 bug_shots.rock_cube_action = new.action {
     id = "megaman/rock-cube/action",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     -- 0x080EEA56.
     update = function(me: Object, s: State)
         local step = me.step
@@ -114,7 +114,7 @@ bug_shots.rock_cube_action = new.action {
 
 bug_shots.bubble_action = new.action {
     id = "megaman/bubble/action",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     -- 0x080ED02A.
     update = function(me: Object, s: State)
         local step = me.step

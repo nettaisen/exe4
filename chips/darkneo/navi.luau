@@ -301,7 +301,7 @@ end
 navi.kind = new.kind {
     id = "darkneo/navi",
     pool = "actor",
-    state = { controller = "object", floorless = "bool", held = "object", image = "object" },
+    state = { controller = schema.object, floorless = schema.bool, held = schema.object, image = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

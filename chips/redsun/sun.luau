@@ -203,7 +203,7 @@ end
 local kind = new.kind {
     id = "redsun/sun",
     pool = "attack",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- 0x080DDB34.
     update = function(me: Object)
         local l = me.lifecycle

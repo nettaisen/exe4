@@ -56,7 +56,7 @@ end
 local controller = new.kind {
     id = "drkstage/controller",
     pool = "effect",
-    state = { busy = "bool" },
+    state = { busy = schema.bool },
     update = dimming_chips.phases { name = "DrkStage", effect = effect },
 }
 

@@ -84,7 +84,7 @@ function flmline.action(id: string, flames: Flames): Action
 
     return new.action {
         id = id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ECAAE.
         update = function(me: Object, s: State)
             if me.step == 0 then

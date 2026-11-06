@@ -140,7 +140,7 @@ function magbolt.action(spec: MagnetSpec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16", hum = "u16" },
+        state = { timer = schema.u16, hum = schema.u16 },
         -- 0x080EE012.
         update = function(me: Object, s: State)
             local step = me.step

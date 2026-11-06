@@ -7,6 +7,7 @@
 -- shader, white flash, blending and flip; it runs while dimmed (header flag 0x10) but not while paused. What it shows is a
 -- look (`attachment.look { sprite, palette, lift }`, a row); `attachment.attach(owner, look, slot, anim)`.
 
+local common = require("@exelib/attachment")
 local slot = require("@exelib/slot")
 local muzzle_flash_sprite = asset.sprite("muzzle-flash")
 
@@ -22,7 +23,7 @@ type State = {
 
 -- An attachment's look: a row of 0x080CD524.
 function attachment.look(spec: AttachmentLook): AttachmentLook
-    return new.record("attachment-look", spec)
+    return new.record(common.ATTACHMENT_LOOK, spec)
 end
 
 -- 0x080CD666, each tick from its init's: at the owner's position less the lift (Y and Z, unsigned); its visibility,
@@ -57,7 +58,7 @@ end
 attachment.kind = new.kind {
     id = "attachment",
     pool = "attack",
-    state = { slot = slot.TYPE, look = "record:attachment-look", anim = "u8", while_dimmed = "bool" },
+    state = { slot = slot.TYPE, look = common.ATTACHMENT_LOOK, anim = schema.u8, while_dimmed = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

@@ -206,7 +206,7 @@ end
 gear.kind = new.kind {
     id = "gear",
     pool = "attack",
-    state = { mode = "u8", travel = "u8" },
+    state = { mode = schema.u8, travel = schema.u8 },
     -- 0x080DBD94.
     update = function(me: Object)
         local l = me.lifecycle

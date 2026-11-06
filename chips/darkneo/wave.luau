@@ -99,7 +99,7 @@ end
 wave.kind = new.kind {
     id = "darkneo/wave",
     pool = "attack",
-    state = { hit_panel = "u16" },
+    state = { hit_panel = schema.u16 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

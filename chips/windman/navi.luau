@@ -146,7 +146,7 @@ end
 windman.kind = new.kind {
     id = "windman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", swirl = "object" },
+    state = { controller = schema.object, palette = schema.u8, swirl = schema.object },
     -- 0x080C3DA8: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

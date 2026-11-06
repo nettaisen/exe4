@@ -141,7 +141,7 @@ local function update(me: Object, s: State)
 end
 
 local slasher: Chip = {
-    action = new.action { id = "slasher/action", state = { timer = "u16", target_x = "u8" }, update = update },
+    action = new.action { id = "slasher/action", state = { timer = schema.u16, target_x = schema.u8 }, update = update },
     codes = { "F", "H", "R" },
     element = "null",
     family = "sword",

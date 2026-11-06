@@ -62,7 +62,7 @@ end
 -- The revert out of a soul, MegaMan's action 0x11: one of rules/souls's actions (./init).
 revert.action = new.action {
     id = "souls/revert",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = revert.update,
 }
 

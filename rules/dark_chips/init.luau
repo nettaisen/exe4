@@ -42,9 +42,9 @@ export type State = {
     offered_picks: number,
 }
 dark_chips.state = {
-    dark_chips_sent = "u8",
-    picks = "u8",
-    offered_picks = "u16",
+    dark_chips_sent = schema.u8,
+    picks = schema.u8,
+    offered_picks = schema.u16,
 }
 
 -- The slots the offer fills (0x0801DF84, 0x0801DF88: the block's +6 and +8, slots 8 and 9).

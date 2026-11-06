@@ -85,7 +85,7 @@ end
 
 charge.action = new.action {
     id = "rollsoul/charged-shot/action",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
         if step == SHOOT then

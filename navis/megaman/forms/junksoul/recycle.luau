@@ -14,6 +14,7 @@
 
 local sent_chips = require("../../../../rules/sent_chips")
 local order = require("@exelib/order")
+local soul_custom = require("@exelib/souls/custom")
 
 local recycle = {}
 
@@ -107,8 +108,8 @@ local function confirmed(side: number, s: Screen)
     sent_chips.set(side, kept)
 end
 
-recycle.custom = new.record("soul-custom", {
-    state = { offered_again = schema.list("u8", 2) },
+recycle.custom = new.record(soul_custom.SOUL_CUSTOM, {
+    state = { offered_again = schema.list(schema.u8, 2) },
     deal = deal,
     confirmed = confirmed,
 } :: SoulCustom)

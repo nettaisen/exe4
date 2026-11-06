@@ -92,13 +92,13 @@ souls.windows = windows
 -- and the custom screen's (./custom): the UNITE button's offer (the screen's +0x0D; once given, the soul given) and
 -- the soul's choice's step and count; and what each soul's screen keeps.
 souls.state = {
-    soul_turns = schema.role("form_offer.turns", "u8"),
-    soul_turn_limit = schema.role("form_offer.turn_limit", "u8"),
-    souls_used = schema.list("form", 12),
-    offer = schema.role("form_offer.form", "form"),
-    unite_step = schema.role("offer_flight.step", "u8"),
-    unite_count = schema.role("offer_flight.count", "u8"),
-    soul_hand_sent = "bool",
+    soul_turns = schema.role("form_offer.turns", schema.u8),
+    soul_turn_limit = schema.role("form_offer.turn_limit", schema.u8),
+    souls_used = schema.list(schema.form, 12),
+    offer = schema.role("form_offer.form", schema.form),
+    unite_step = schema.role("offer_flight.step", schema.u8),
+    unite_count = schema.role("offer_flight.count", schema.u8),
+    soul_hand_sent = schema.bool,
 } :: StateSchema
 for name, kind in screen do
     assert(souls.state[name] == nil, `a soul's screen field \`{name}\` is one of Double Soul's own`)

@@ -136,7 +136,7 @@ end
 thunder.kind = new.kind {
     id = "thunman/thunder",
     pool = "attack",
-    state = { breaks = "bool", struck = "bool" },
+    state = { breaks = schema.bool, struck = schema.bool },
     -- 0x080DB540: by its state, then its sprite (`object_updateSprite`).
     update = function(me: Object)
         local l = me.lifecycle

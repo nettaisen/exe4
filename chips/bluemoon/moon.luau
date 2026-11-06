@@ -107,7 +107,7 @@ end
 local kind = new.kind {
     id = "bluemoon/moon",
     pool = "attack",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- 0x080DDFEC.
     update = function(me: Object)
         local l = me.lifecycle

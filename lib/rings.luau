@@ -75,7 +75,7 @@ function rings.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080EDC5A.
         update = function(me: Object, s: State)
             local step = me.step

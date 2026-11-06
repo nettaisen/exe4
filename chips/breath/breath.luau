@@ -180,7 +180,7 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
     local kind = new.kind {
         id = look.id,
         pool = "attack",
-        state = { hit = "bool", ahead = "bool", above = "bool", below = "bool", count = "u16" },
+        state = { hit = schema.bool, ahead = schema.bool, above = schema.bool, below = schema.bool, count = schema.u16 },
         -- 0x080D3A7C: then the sprite.
         update = function(me: Object)
             local l = me.lifecycle
@@ -260,7 +260,7 @@ function breath.action(spec: {
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED412.
         update = function(me: Object, s: ActionState)
             if me.step == 0 then

@@ -15,9 +15,11 @@ local ring = {}
 
 type State = { variant: RingVariant }
 
+local RING_VARIANT = schema.record_type("ring-variant")
+
 -- A ring's variant.
 function ring.variant(v: RingVariant): RingVariant
-    return new.record("ring-variant", v)
+    return new.record(RING_VARIANT, v)
 end
 
 -- Gone: off its panels, hidden, then freed.
@@ -85,7 +87,7 @@ end
 ring.kind = new.kind {
     id = "ring",
     pool = "attack",
-    state = { variant = "record:ring-variant" },
+    state = { variant = RING_VARIANT },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

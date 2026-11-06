@@ -56,7 +56,7 @@ end
 local function action(id: string): Action
     return new.action {
         id = id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080EE532.
         update = function(me: Object, s: State)
             local step = me.step

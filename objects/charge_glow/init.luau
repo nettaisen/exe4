@@ -78,7 +78,7 @@ end
 glow.kind = new.kind {
     id = "charge-glow",
     pool = "effect",
-    state = { source = "u8", shown = "bool" },
+    state = { source = schema.u8, shown = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

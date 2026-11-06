@@ -18,6 +18,8 @@ local souls = require("@self/souls")
 local soul_turns = require("@self/souls/turns")
 local wind = require("@self/wind")
 local souls_intake = require("@self/souls/intake")
+local soul_custom = require("@exelib/souls/custom")
+local soul_image = require("@exelib/souls/image")
 
 -- What the tools read of the game's builds, as data (./builds: the versions, a new save's folder): loaded with the
 -- rules, which read none of it.
@@ -40,68 +42,68 @@ local rules: Rules = {
     -- charged shot reads), and the NaviCust's and the patch cards' move bug (+0x0D: 0xFF confused at the start, 0x10
     -- and 0x20 steps of its own, right and left: ./navicust).
     stats = {
-        weapon_level = "u8",
-        move_bug = "u8",
+        weapon_level = schema.u8,
+        move_bug = schema.u8,
         -- The Full Synchro at the start (+0x1F: patch card 45's, ./patch_cards; the reload's reset clears it), which
         -- the starting mood reads (./light_dark).
-        full_synchro_start = "bool",
+        full_synchro_start = schema.bool,
         -- MegaMan's color (+0x27: 0, or patch cards 59, 60, 89, 90's 1 to 4, ./patch_cards; the reset clears it),
         -- which his palette reads (./light_dark).
-        color = "u8",
+        color = schema.u8,
         -- All Guard (+0x28: the pair of patch cards 76 and 77, ./patch_cards; the reset clears it), which raises the
         -- navi's guard whenever its abilities are reset (./roles' `abilities_reset`, 0x0800D8E4).
-        all_guard = "bool",
+        all_guard = schema.bool,
         -- Fighting in the sun (+0x29: the overworld sets it by the map, 0x0802A770, and the reset keeps it: ./save),
         -- which GunSol reads.
-        sun = "bool",
+        sun = schema.bool,
         -- The NaviCust's encounter and result bugs (+0x15 = 1, +0x19 = 1: ./navicust), which no netbattle feels but
         -- the count of the navi's kinds of bug reads (./navicust's `bug_kinds`: Static's).
-        encounter_bug = "bool",
-        result_bug = "bool",
+        encounter_bug = schema.bool,
+        result_bug = schema.bool,
     },
     -- What a player brings (nettai-match from a match's side, exe4-compat from a recording): a side's facts.
     setup = {
         -- The navi they play: the round's stats are its. No default: a side states it.
-        navi = "navi",
+        navi = schema.navi,
         -- Their folder as the folder screen shows it, an entry with no chip empty (a folder being made); the Regular
         -- chip, an entry of it (from 0), dealt first.
-        folder = schema.list({ chip = "chip", code = "code" }, 30),
-        regular_chip = "u8?",
+        folder = schema.list({ chip = schema.chip, code = schema.code }, 30),
+        regular_chip = schema.optional(schema.u8),
         -- What the save brings to the navi's stats (./save): MegaMan's HP, the Regular memory and fighting in the sun
         -- (NaviStats +0x29).
-        hp = "u16",
-        reg_up = "u8",
-        sun = "bool",
+        hp = schema.u16,
+        reg_up = schema.u8,
+        sun = schema.bool,
         -- MegaMan's light/dark value (NaviStats +0x36): ./light_dark.
-        karma = "u16",
+        karma = schema.u16,
         -- Their wins less their losses in link battles against the rival game's players, -100 to 100 (the save's
         -- signed halfword at 0x21D6, the game state's struct the toolkit's +0x44 points at, its +0x22: the status
         -- screen's "VS BM Battles: +100 W", 0x0803A978; such a battle's win adds 1 and its loss takes 1, 0x0803AB90),
         -- which each side's link record carries (+0xB6), the battle keeps at 0x0203BE72 + 8 a side and RedSun's and
         -- BlueMoon's damage reads (./sun_and_moon).
-        rival_wins = "i16",
+        rival_wins = schema.i16,
         -- Their NaviCust (./navicust): the programs placed on its 5x5 board (the engine's 7x7 grid's middle) in its
         -- list's order, each in one of its colors (its definition's `colors`), its center at (x, y), turned
         -- `rotation` quarters clockwise, compressed or not.
         navicust_programs = schema.list({
-            program = "navicust_programs",
+            program = schema.entry("navicust_programs"),
             color = { "white", "pink", "yellow", "red", "blue", "green" },
-            x = "u8",
-            y = "u8",
-            rotation = "u8",
-            compressed = "bool",
+            x = schema.u8,
+            y = schema.u8,
+            rotation = schema.u8,
+            compressed = schema.bool,
         }, 25),
         -- Their patch cards (./patch_cards): each card switched on and the slot it is in (a save's 0x464C, by slot).
-        patch_cards = schema.list({ card = "patch_cards", slot = "u8" }, patch_cards.SLOTS),
+        patch_cards = schema.list({ card = schema.entry("patch_cards"), slot = schema.u8 }, patch_cards.SLOTS),
         -- How long the save took to delete each SP navi (./sp_chips: a battle's copy at 0x02037C80), by its SP chip,
         -- in frames; one not stated, deleted in no time.
-        sp_times = schema.list({ chip = "chip", frames = "u16" }, 22),
+        sp_times = schema.list({ chip = schema.chip, frames = schema.u16 }, 22),
         -- The souls the save has (./souls/custom), which the UNITE button may offer: a save's are its version's that
         -- it has (the soul flags, 0x08020018's by soul: a boundary's, which writes them as the list of them; the
         -- app's presets name each version's six). And Double Soul (event flag 0x14): without it the custom screen has
         -- no UNITE button.
-        souls = "form[12]",
-        double_soul = "bool",
+        souls = schema.array(schema.form, 12),
+        double_soul = schema.bool,
         -- Their auto battle data as their save holds it (./auto_battle/block: the block's 42 places), which the dark
         -- soul of a dark MegaMan plays of his own player as their console sends it.
         auto_battle_places = schema.list(auto_battle.block.PLACE, auto_battle.block.PLACES),
@@ -144,7 +146,7 @@ local rules: Rules = {
     -- form's own `put_on`: a GigaCan's afterimages (lib/cannon).
     extends = {
         chip = {
-            sp = "u16[11]",
+            sp = schema.array(schema.u16, 11),
             -- The MegaMan who may use it (./light_dark; its record's +0x15): none, anyone.
             megaman = { "light", "dark" },
             -- The version whose saves hold the chip (a version's own Giga chips: each version's game gives its own
@@ -152,7 +154,7 @@ local rules: Rules = {
             -- version's (the e-Reader's Duo).
             version = { "redsun", "bluemoon" },
             -- A chip a save can collect though no library lists it (./folder: an e-Reader card's: Duo, PrixPowr).
-            collectible = "bool",
+            collectible = schema.bool,
             -- What the auto battle AI reads of it (./auto_battle/place; the record's bytes 13, 14 and 23): how the navi
             -- gets in place for it, its positioning class, for the classes that read one its reach list
             -- (./auto_battle/data's, by name) or its spot test, and the loss it answers ahead of its turn
@@ -190,7 +192,7 @@ local rules: Rules = {
                         "ahead_within_a_row", "a_row_off", "on_far_ring",
                     },
                 },
-                element_trap = "bool",
+                element_trap = schema.bool,
                 answers = { "area_lost", "panels_spoiled" },
             },
         },
@@ -200,12 +202,12 @@ local rules: Rules = {
                     "recovery", "break", "wind", "invisible", "fire", "elec", "sword", "plus", "metal", "summon",
                     "aqua", "wood",
                 },
-                turns = "u8",
+                turns = schema.u8,
             },
-            chip = "chip",
-            image = "record:soul-image",
-            wears = "sprite",
-            custom = "record:soul-custom",
+            chip = schema.chip,
+            image = soul_image.SOUL_IMAGE,
+            wears = schema.sprite,
+            custom = soul_custom.SOUL_CUSTOM,
         },
     },
     -- Its own actions, which reach its state: the souls' changes and the revert (./souls).

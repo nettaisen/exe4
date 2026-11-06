@@ -162,7 +162,7 @@ end
 local kind = new.kind {
     id = "propbom/bomb",
     pool = "attack",
-    state = { speed = "u8" },
+    state = { speed = schema.u8 },
     -- 0x080DEB70: then the sprite, but while dimmed.
     update = function(me: Object)
         local l = me.lifecycle

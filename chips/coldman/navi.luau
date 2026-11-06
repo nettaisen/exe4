@@ -287,7 +287,7 @@ end
 coldman.kind = new.kind {
     id = "coldman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", stops = "u8[7]", count = "i8" },
+    state = { controller = schema.object, palette = schema.u8, stops = schema.array(schema.u8, 7), count = schema.i8 },
     -- 0x080CC04C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

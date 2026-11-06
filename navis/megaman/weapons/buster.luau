@@ -96,7 +96,7 @@ end
 function buster.shot_action(id: string, variant: ProjectileVariant): Action
     return new.action {
         id = id,
-        state = { timer = "i16" },
+        state = { timer = schema.i16 },
         update = function(me: Object, s: State)
             local step = me.step
             if step == SHOOT then

@@ -186,7 +186,7 @@ end
 topman.kind = new.kind {
     id = "topman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8" },
+    state = { controller = schema.object, palette = schema.u8 },
     -- 0x080B8520: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

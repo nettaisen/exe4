@@ -139,7 +139,7 @@ end
 laserman.kind = new.kind {
     id = "laserman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", aims = "bool", course = "u8" },
+    state = { controller = schema.object, palette = schema.u8, aims = schema.bool, course = schema.u8 },
     -- 0x080CABE4: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

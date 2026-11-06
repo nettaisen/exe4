@@ -93,7 +93,7 @@ function flame.action(spec: { id: string, count: number }): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080EC44A.
         update = function(me: Object, s: State)
             if me.step == 0 then

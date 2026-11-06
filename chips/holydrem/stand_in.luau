@@ -161,7 +161,7 @@ end
 local kind = new.kind {
     id = "holydrem/stand-in",
     pool = "attack",
-    state = { controller = "object", x = "i32", y = "i32", dx = "i32" },
+    state = { controller = schema.object, x = schema.i32, y = schema.i32, dx = schema.i32 },
     -- 0x080DD798.
     update = function(me: Object)
         local l = me.lifecycle

@@ -114,7 +114,7 @@ local function controller(id: string, pick: (me: Object) -> ()): (user: Object, 
     local kind = new.kind {
         id = id,
         pool = "effect",
-        state = { bonus = "u16", out = "u8" },
+        state = { bonus = schema.u16, out = schema.u8 },
         -- 0x080E79B8.
         update = dimming_chips.phases { name = "PanlSht", effect = effect },
     }

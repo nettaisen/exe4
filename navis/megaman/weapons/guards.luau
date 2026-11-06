@@ -91,7 +91,7 @@ type AntiMagicState = { timer: number }
 -- side's defensive chip AntiDmg with the stance's damage word and bonus, for 13 ticks, then none, and back to idle.
 local ANTI_MAGIC = new.action {
     id = "megaman/anti-magic/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = function(me: Object, s: AntiMagicState)
         if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
             me:check_reactive_abort()

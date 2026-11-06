@@ -157,7 +157,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
     local kind = new.kind {
         id = "burnman/pillar",
         pool = "attack",
-        state = { lower = "bool", palette = "u8" },
+        state = { lower = schema.bool, palette = schema.u8 },
         -- 0x080D46DC: by its state, then its sprite.
         update = function(me: Object)
             local l = me.lifecycle

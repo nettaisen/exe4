@@ -197,7 +197,7 @@ end
 fireman.kind = new.kind {
     id = "fireman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", flame = "object", command_steps = "u8", commanded = "bool" },
+    state = { controller = schema.object, palette = schema.u8, flame = schema.object, command_steps = schema.u8, commanded = schema.bool },
     -- 0x080B92A2: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

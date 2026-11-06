@@ -104,7 +104,7 @@ end
 videoman.kind = new.kind {
     id = "prixpowr/videoman",
     pool = "actor",
-    state = { controller = "object", held = "object" },
+    state = { controller = schema.object, held = schema.object },
     -- 0x080CBB40: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

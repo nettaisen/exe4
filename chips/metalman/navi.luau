@@ -380,13 +380,13 @@ metalman.kind = new.kind {
     id = "metalman/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        palette = "u8",
-        gray = "u8",
-        aim = "u8",
-        target_x = "u8",
-        target_y = "u8",
-        fist = "object",
+        controller = schema.object,
+        palette = schema.u8,
+        gray = schema.u8,
+        aim = schema.u8,
+        target_x = schema.u8,
+        target_y = schema.u8,
+        fist = schema.object,
     },
     -- 0x080C7D44.
     update = function(me: Object)

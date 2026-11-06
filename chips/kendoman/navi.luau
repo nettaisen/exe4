@@ -349,7 +349,7 @@ end
 kendoman.kind = new.kind {
     id = "kendoman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", target_x = "u8", target_y = "u8" },
+    state = { controller = schema.object, palette = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080C85E8: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle

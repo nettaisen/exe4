@@ -101,7 +101,7 @@ function widesht.action(id: string, variant: WaveVariant, waves: number): Action
 
     return new.action {
         id = id,
-        state = { timer = "u16", waves = "u16" },
+        state = { timer = schema.u16, waves = schema.u16 },
         -- 0x080ED25C.
         update = function(me: Object, s: State)
             local step = me.step

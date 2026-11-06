@@ -117,7 +117,7 @@ end
 ghost.kind = new.kind {
     id = "darkneo/ghost",
     pool = "effect",
-    state = { anim = "u8", delay = "u8", blink = "u8", shader = "u16" },
+    state = { anim = schema.u8, delay = schema.u8, blink = schema.u8, shader = schema.u16 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

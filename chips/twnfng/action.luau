@@ -62,7 +62,7 @@ function twnfng.action(id: string, pairs: number, weak: boolean): Action
 
     return new.action {
         id = id,
-        state = { timer = "u16", pairs = "u16" },
+        state = { timer = schema.u16, pairs = schema.u16 },
         -- 0x080ED4C6.
         update = function(me: Object, s: State)
             local step = me.step

@@ -90,7 +90,7 @@ end
 
 machine_gun.action = new.action {
     id = "gutssoul/machine-gun",
-    state = { timer = "i16" },
+    state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
         if step == START then

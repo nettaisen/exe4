@@ -163,7 +163,7 @@ function gunsol.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16", beam = "object" },
+        state = { timer = schema.u16, beam = schema.object },
         -- 0x080EDE0E: the phase, then the reactive-defense abort (requests 0x200, 0x400).
         update = function(me: Object, s: State)
             local step = me.step

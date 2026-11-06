@@ -131,7 +131,7 @@ end
 tape.kind = new.kind {
     id = "videoman/tape",
     pool = "attack",
-    state = { rounds = "u8" },
+    state = { rounds = schema.u8 },
     -- 0x080D90C8: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
