@@ -11,7 +11,7 @@ local charge = {}
 -- 0x0800CE4C.
 local function setup(navi: Object): Chip
     navi:load_chip_attack(poltrgst)
-    navi.hit_param = 0x94
+    navi.attack_word = damage_word.of { amount = damage_word.damage(navi.attack_word), counter = 20, cant_counter = true }
     return poltrgst
 end
 

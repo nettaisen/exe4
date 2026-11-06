@@ -140,6 +140,7 @@ function navi_chips.anti_recovery(
         if not battle.dimmed() then
             local trap = battle.linked(bit32.bxor(user.alliance, 1)).chip
             if trap and trap.trap == "anti_recovery" then
+                -- (Half the whole word, three times: its counter byte halves and triples too.)
                 local damage = int.u32(bit32.rshift(spec.damage, 1) * 3)
                 local c = navi_chip.spring_anti_recovery(user, damage)
                 dimming.start(user.alliance, true, c, user, nil)

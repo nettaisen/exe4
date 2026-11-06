@@ -215,20 +215,18 @@ local COSTS: { [Chip]: (side: number, stats: Stats) -> () } = {
     end,
 }
 
--- The mark of a hand entry the install has been over (its flags' 0x04).
-local INSTALLED = 0x04
 
 -- 0x0801EA1E, as both hands are installed (0x0801E9AC, 0x0801E9CC), each side's in turn: each entry of the hand not
--- yet marked is marked, and costs its user if it is a dark chip. Once an entry: a hand that stays through a screen
--- with no pick keeps its marks.
+-- yet marked is marked (its mark `installed`, the flags' 0x04), and costs its user if it is a dark chip. Once an
+-- entry: a hand that stays through a screen with no pick keeps its marks.
 function dark_chips.custom_result(side: number)
     local stats = battle.navi(side)
     local i = 0
     local chip = chip_hand.chip(side, i)
     while chip do
         local marks = battle.hand_entry(side, i).marks
-        if not bit32.btest(marks, INSTALLED) then
-            battle.hand_entry(side, i).marks = bit32.bor(marks, INSTALLED)
+        if not marks.installed then
+            marks.installed = true
             local cost = COSTS[chip]
             if cost then
                 cost(side, stats)

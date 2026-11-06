@@ -16,7 +16,7 @@ local zap_ring = {}
 
 -- The damage by weapon level (0x0800CD28).
 local DAMAGE: { number } = { 30, 40, 50 }
-local ELEC, VARIANT, HIT_PARAM = 3, 3, 10
+local ELEC, VARIANT, COUNTER = 3, 3, 10
 
 local ACTION = rings.action {
     id = "megaman/zap-ring/action",
@@ -39,13 +39,12 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0
-    navi.hit_param = HIT_PARAM
     local level = battle.navi(navi.alliance).weapon_level
     local damage = DAMAGE[level + 1]
     if damage == nil then
         error(string.format("the zap ring's damage reads past 0x0800CD28 at weapon level %d", level))
     end
-    navi.attack_word = damage_word.with_damage(navi.attack_word, damage)
+    navi.attack_word = damage_word.of { amount = damage, counter = COUNTER }
     return ACTION
 end
 

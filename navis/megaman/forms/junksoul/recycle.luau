@@ -25,7 +25,7 @@ type Screen = { offered_again: { number } }
 local SLOTS: { number } = { 8, 9 }
 -- A chip offered again: its hand entry's mark (0x0801F0B8), and no pick of the hand's (0x0801F118). (The cursor on
 -- one shades nothing, a dark chip or not: the hover reads the slot's flag 0x20, the dark offer's, 0x0801E4DE.)
-local OFFERED_AGAIN: Offer = { marks = 0x02, listed = false }
+local OFFERED_AGAIN: Offer = { marks = { offered_again = true }, listed = false }
 -- The shuffle's rounds (0x0801DFCE).
 local SWAPS = 64
 -- The class a draw's low three bits pick (0x0801E0A4; with the navi's HP at half its maximum or less, 0x0801E0AC).

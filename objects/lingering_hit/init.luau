@@ -109,7 +109,7 @@ function lingering_hit.make(id: string): LingeringHit
         c:set_hit_effect(s.hit_effect)
         c.status_base = s.status
         if s.bug ~= 0 then
-            c.bugs = s.bug + s.bug_arg * 0x100
+            c.bug, c.bug_arg = s.bug, s.bug_arg
         end
         c:present()
         keep(me, me)

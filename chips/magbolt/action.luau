@@ -40,7 +40,7 @@ local ANIM = 13
 local RAISE_TICKS, PULL_TICKS, RECOVER_TICKS = 6, 30, 10
 local HUM_EVERY = 16
 -- The pull's hit modifier: the push of bit 2 (toward the puller, over the panels).
-local PULL_MOD = 4
+local PULL_MOD: HitModifier = { forward_far = true }
 
 type State = {
     -- Ticks left in the step (AIAttackVars +0x10), and toward the hum (+0x12).

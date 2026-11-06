@@ -19,7 +19,7 @@ plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
 function plus.spawner(bonus: SpecialBonus): (user: Object, element: number, damage: number) -> ()
     return function(user: Object, _element: number, _damage: number)
         if main_started then
-            battle.add_special_bonus(user.alliance, bonus, user.attack_damage)
+            battle.add_special_bonus(user.alliance, bonus, damage_word.damage(user.attack_word))
             return
         end
         plus.sparkle(user)

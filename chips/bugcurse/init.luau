@@ -28,7 +28,7 @@ local chip: Chip = {
         sprite = bug_curse_sprite,
         sound = asset.sound("curse"),
         untouched = { "invisible", "submerged", "flashing" },
-        bugs = { 0x02FF, 0x03FF, 0x04FF, 0x06FF },
+        bugs = { { bug = 0xFF, arg = 2 }, { bug = 0xFF, arg = 3 }, { bug = 0xFF, arg = 4 }, { bug = 0xFF, arg = 6 } },
         is = collision.breaking,
         hits = collision.hits_navis,
     },

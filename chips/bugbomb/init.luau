@@ -32,7 +32,7 @@ local HELD_ANIM = 4
 -- 0x080DC0F8: one of the kinds at random, raised by code 0xFF.
 local function pick_bug(me: Object)
     local kind = common.pick(BUG_KINDS, BUG_KINDS)
-    me.collision.bugs = kind * 0x100 + 0xFF
+    me.collision.bug, me.collision.bug_arg = 0xFF, kind
 end
 
 local KIND = common.make_kind("bugbomb/bomb", {

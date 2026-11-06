@@ -42,7 +42,7 @@ local function shoot(me: Object, s: State)
     end
     if s.timer == 1 then
         battle.play_sound(SHOT_SOUND)
-        me.attack_count = projectile.fire(me, { variant = SHOT, damage = me.attack_damage, z = SHOT_Z })
+        me.attack_count = projectile.fire(me, { variant = SHOT, damage = damage_word.damage(me.attack_word), z = SHOT_Z })
         attachment.attach(me, attachment.muzzle_flash, "related", NAVI_NUMBER)
     end
     s.timer += 1

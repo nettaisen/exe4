@@ -72,7 +72,7 @@ local GAME: SlashGame = {
         return battle.navi(me.alliance).form.sprite
     end,
     -- 0x080EB6E8: the hit modifier by the variant, ProtoSoul's from its own row.
-    hit_mod = function(me: Object, chip_hit_mod: HitModifier): number
+    hit_mod = function(me: Object, chip_hit_mod: HitModifier): HitModifier
         return if in_protosoul(me) then PROTOSOUL_HIT_MOD else chip_hit_mod
     end,
     hold = function(me: Object, blade: AttachmentLook, anim: number)
