@@ -6,7 +6,7 @@
 local action = require("@self/action")
 
 local sonicbom: Chip = {
-    action = action.make("sonicbom/action", 3, false),
+    action = action.make("sonicbom/action", { flinch = true, flash = true }, false),
     codes = { "E", "L", "S", "*" },
     element = "null",
     family = "sword",

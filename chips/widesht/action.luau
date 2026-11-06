@@ -73,7 +73,7 @@ function widesht.action(id: string, variant: WaveVariant, waves: number): Action
         end
         s.timer = INTERVAL
         local damage = damage_word.plus(me.attack_word, me.extra)
-        wave.fire(WAVE, me, me.panel_x + me.facing, me.panel_y, 0, variant, me.attack_element, damage, 0)
+        wave.fire(WAVE, me, me.panel_x + me.facing, me.panel_y, 0, variant, me.attack_element, damage, {})
         local left = s.waves - 1
         s.waves = int.u16(left)
         if left <= 0 then
