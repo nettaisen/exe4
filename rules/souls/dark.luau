@@ -80,7 +80,7 @@ dark.change = change.make {
     emerged = function(navi: Object)
         state().dark_soul_ticks = TICKS
         navi.ticked = true
-        rules.listen(navi.alliance, "controller", true)
+        rules.listening(navi.alliance).controller = true
     end,
     reset = function(_navi: Object)
         ai.reset(state().auto_battle)
@@ -119,11 +119,11 @@ function dark.countdown(navi: Object)
     end
     s.dark_soul_ticks -= 1
     if s.dark_soul_ticks == 0 then
-        navi:set_request("revert_form", true)
+        navi.requests.revert_form = true
     end
     -- (His last ticks pulse: the rules' `navi_shader` is asked from then.)
     if s.dark_soul_ticks >= 1 and s.dark_soul_ticks <= PULSING then
-        rules.listen(navi.alliance, "navi_shader", true)
+        rules.listening(navi.alliance).navi_shader = true
     end
 end
 
@@ -131,8 +131,8 @@ end
 -- more.
 function dark.navi_intake(side: number, navi: Object)
     if dark.united(side) and battle.player(side) == navi then
-        navi:set_status_timer("flash", FLASH_TICKS)
-        navi:set_status("invisible", true)
+        navi.status_timers.flash = FLASH_TICKS
+        navi.status.invisible = true
     end
 end
 
@@ -144,7 +144,7 @@ function dark.navi_shader(side: number, navi: Object): number?
     local ticks = state().dark_soul_ticks
     if ticks < 1 or ticks > PULSING then
         -- (Until his last ticks come again: ./countdown.)
-        rules.listen(side, "navi_shader", false)
+        rules.listening(side).navi_shader = false
         return nil
     end
     return bit32.lshift(PULSE[bit32.band(battle.battle_time(), 15) + 1], 10)
@@ -165,7 +165,7 @@ end
 function dark.controller(side: number, navi: Object): "nothing"?
     if not dark.united(side) then
         -- (Until he emerges again.)
-        rules.listen(side, "controller", false)
+        rules.listening(side).controller = false
         return nil
     end
     if battle.player(side) ~= navi then

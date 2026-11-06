@@ -165,12 +165,12 @@ local roles: RolesSpec = {
         -- turned aside (0x08012B84).
         abilities_reset = function(navi: Object)
             if battle.navi(navi.alliance).all_guard then
-                navi:set_status("guard", true)
+                navi.status.guard = true
             end
         end,
         -- An obstacle encased in ice or a bubble is done (EXE4's encasing is ColdMan's, chips/coldman): no side's wind
         -- (`sub_80E544C`: ./wind), then what it becomes (0x08011788: an ice block or the ice cube).
-        encased = function(obstacle: Object, ice: boolean, class: number?)
+        encased = function(obstacle: Object, ice: boolean, class: ObstacleClass?)
             wind_registry.clear(winds.of, obstacle)
             ice_cube.replace(obstacle, ice, class)
         end,

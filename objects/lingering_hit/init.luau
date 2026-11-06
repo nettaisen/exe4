@@ -54,7 +54,7 @@ local function held(owner: Object): boolean
     if not owner.has_collision then
         return false
     end
-    return owner:status("paralyzed") or owner:status("drag") or owner:status("sliding")
+    return owner.status.paralyzed or owner.status.drag or owner.status.sliding
 end
 
 function lingering_hit.make(id: string): LingeringHit

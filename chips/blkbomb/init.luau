@@ -72,7 +72,7 @@ destroyed = function(me: Object)
             battle.effect(me.pos, EXPLOSION)
             if not (me.state :: { set_off: boolean }).set_off then
                 battle.play_sound(SOUND_HIT_BOMB)
-                if me:status("carried") then
+                if me.status.carried then
                     finish(me)
                     return
                 end

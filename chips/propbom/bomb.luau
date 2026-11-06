@@ -112,7 +112,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if bit32.btest(c.hit_flags, BREAKS) or me:take_damage(0) < 0 then
+    if bit32.btest(c.hit_flags, BREAKS) or me:take_damage("damage_sound") == "broken" then
         battle.effect(me.pos, EXPLOSION)
         battle.play_sound(BROKEN)
         finish(me)
@@ -193,7 +193,7 @@ function bomb.spawn(user: Object, x: number, y: number, z: number, element: numb
         o.related1 = user
         o.identity = IDENTITY;
         (o.state :: State).speed = speed
-        obstacle.register(o, user.alliance, 1)
+        obstacle.register(o, user.alliance, "one_a_side")
     end
 end
 

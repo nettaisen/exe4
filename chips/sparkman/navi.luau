@@ -86,7 +86,7 @@ local function flash(me: Object)
     if box then
         box.run_while_dimmed = true
     end
-    battle.palette_flash(0, FLASH_TICKS, true, false)
+    battle.palette_flash("one_layer", FLASH_TICKS, true, false)
     battle.play_sound(SOUND_FLASH)
 end
 

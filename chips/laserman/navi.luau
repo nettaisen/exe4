@@ -70,7 +70,7 @@ local function attack(me: Object)
             local navi = battle.player(me.alliance)
             if navi then
                 for _, aim in AIMS do
-                    if navi:dimmed_held(aim.key) then
+                    if (navi.dimmed_held :: any)[aim.key] then
                         s.course = aim.course
                         break
                     end

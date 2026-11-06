@@ -225,7 +225,7 @@ function breath.action(spec: {
             me.anim = ANIM
             me:open_counter_window()
             attachment.attach(me, spec.nozzle, "related", 3 * NAVI_NUMBER)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = HOLD_TICKS
             me.step_init = 4
         end

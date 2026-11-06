@@ -16,7 +16,7 @@ local plus = {}
 plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
 
 -- The spawner of a plus chip of parameter `bonus` (its record's +0x10: the side's bonus its damage goes to).
-function plus.spawner(bonus: number): (user: Object, element: number, damage: number) -> ()
+function plus.spawner(bonus: SpecialBonus): (user: Object, element: number, damage: number) -> ()
     return function(user: Object, _element: number, _damage: number)
         if main_started then
             battle.add_special_bonus(user.alliance, bonus, user.attack_damage)

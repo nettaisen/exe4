@@ -59,13 +59,13 @@ local function command(me: Object)
     local s = me.state :: State
     local navi = battle.player(me.alliance)
     if navi then
-        if navi:dimmed_pressed("down") then
+        if navi.dimmed_pressed.down then
             s.down = PRESS_TICKS
         end
-        if navi:dimmed_pressed("a") then
+        if navi.dimmed_pressed.a then
             s.a = PRESS_TICKS
         end
-        if navi:dimmed_pressed("b") then
+        if navi.dimmed_pressed.b then
             s.b = PRESS_TICKS
         end
     end

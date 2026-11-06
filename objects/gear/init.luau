@@ -198,7 +198,7 @@ local function init(me: Object)
         me:setup_collision(collision.neutral_body, collision.everything, HIT_MOD)
     end
     -- (Its status word's bit 0, 0x080DBE5C: the guard's.)
-    me:set_status("guard", true)
+    me.status.guard = true
     me.timer = TIMER
     me.lifecycle = "update"
 end
@@ -251,7 +251,7 @@ function gear.spawn(x: number, y: number, element: number, alliance: number, mod
     o.run_while_dimmed = true
     state(o).mode = mode
     if mode == 1 then
-        obstacle.register(o, alliance, 1)
+        obstacle.register(o, alliance, "one_a_side")
     end
     return o
 end

@@ -63,7 +63,7 @@ local function swing(me: Object, s: State, hit_mod: number, pierces: boolean)
         me:open_counter_window()
         battle.play_sound(swords.swing)
         attachment.attach(me, swords.blade, "related", swords.blade_anim(me))
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = SWING_TICKS
         me.step_init = 4
     end

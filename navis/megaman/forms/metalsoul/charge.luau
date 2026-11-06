@@ -34,7 +34,7 @@ local function swing(me: Object, s: State)
     if me.step_init == 0 then
         me.anim = ANIM
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         battle.play_sound(SOUND_SWING)
         s.timer = 0
         me.step_init = 4
