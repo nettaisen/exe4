@@ -65,7 +65,7 @@ tornado.sand_kind = sand_kind
 -- 0x080DAF88: sand of the tornado's on its panel, of its side and element, with its damage word, running while
 -- dimmed. (Its position is the spawner's registers, which it keeps: the row, the element and 0.)
 local function drop_sand(me: Object)
-    local o = battle.spawn(sand_kind, Vec3.new(me.panel_y, me.element, 0))
+    local o = battle.spawn(sand_kind, Vec3.new(me.panel_y, me.element.byte, 0))
     if not o then
         return
     end
@@ -260,7 +260,7 @@ local function init(me: Object)
     me.anim = 0
     sprite:set_animation(0)
     sprite:step()
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -304,8 +304,8 @@ tornado.kind = new.kind {
 
 -- 0x080DAEEC: a tornado on (x, y) of WindMan's side, his, with `element` and his damage word, running while dimmed.
 -- (Its position is the spawner's registers: the row, the element and 0.)
-function tornado.spawn(windman: Object, x: number, y: number, element: number): Object?
-    local o = battle.spawn(tornado.kind, Vec3.new(y, element, 0))
+function tornado.spawn(windman: Object, x: number, y: number, element: Element): Object?
+    local o = battle.spawn(tornado.kind, Vec3.new(y, element.byte, 0))
     if not o then
         return nil
     end

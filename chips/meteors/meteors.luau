@@ -64,7 +64,7 @@ local function tick(me: Object)
     -- 0x080D877C: the row its parameter word (r4), its position the registers until its init places it.
     local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
     falling_meteor.spawn_kind(METEOR, ROW, me, me.panel_x, me.panel_y, me.element, damage, false,
-        Vec3.new(me.panel_y, me.element, 0))
+        Vec3.new(me.panel_y, me.element.byte, 0))
     local left = me.timer2 - 1
     me.timer2 = left
     if left <= 0 then
@@ -97,7 +97,7 @@ local OWNED: PanelCondition = { enemy_area = true }
 -- 0x0800FC48: in the user's row, from the user's side's back edge on, the first of the other side's panels holding
 -- its navi, else the first of the other side's panels; 0 for none.
 local function target(user: Object): number
-    local other, y = bit32.bxor(user.alliance, 1), user.panel_y
+    local other, y = battle.other_side(user.alliance), user.panel_y
     local x = panels.closest_in_row(other, y, HOLDING, user.alliance)
     if x == 0 then
         x = panels.closest_in_row(other, y, OWNED, user.alliance)
@@ -108,12 +108,12 @@ end
 -- 0x080EAE92: the spawner: the dropper on the target's panel in the user's row (none without one), with the attack's
 -- element and damage word, of the user's side, not running while dimmed (0x080EAE6C: header flag 0x10 cleared). Its
 -- position is the registers (the row, the element, the filter the search ended on), which nothing reads.
-function meteors.spawn(user: Object, element: number, damage: number)
+function meteors.spawn(user: Object, element: Element, damage: number)
     local x = target(user)
     if x == 0 then
         return
     end
-    local o = battle.spawn(DROPPER, Vec3.new(user.panel_y, element, 0))
+    local o = battle.spawn(DROPPER, Vec3.new(user.panel_y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, user.panel_y
         o.element = element

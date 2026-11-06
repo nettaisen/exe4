@@ -19,7 +19,7 @@ exe4_lance.kind = lance.make_kind("lance", {
 
 -- 0x080D7540, action 0x20's variant 6: three lances of `user`'s side in the far column at its height, in palette
 -- `palette`, with the damage word `damage`.
-function exe4_lance.thrust(user: Object, element: number, palette: number, damage: number)
+function exe4_lance.thrust(user: Object, element: Element, palette: number, damage: number)
     lance.thrust(exe4_lance.kind, user, element, user.pos.z, palette, damage, true)
 end
 

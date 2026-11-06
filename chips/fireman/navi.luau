@@ -47,7 +47,7 @@ local FLAME = flame_common.make_kind {
 -- His flames (0x080B9400: Param1 5, Param2 0x50, Param3 0xF0, Param4 1, its high nibble 8 with his command): five
 -- along his row, each 80 ticks, 16 pixels back from its panel's center, running while dimmed; fire, 34 pixels up.
 local FLAMES, FLAME_TICKS, FLAME_OFFSET = 5, 0x50, -16
-local FIRE, FLAME_Z = 1, 0x22_0000
+local FIRE, FLAME_Z = Element.fire, 0x22_0000
 
 -- His command (0x080B9298's one sequence, 0x080B94A8): each key held alone, while dimmed, in turn.
 local COMMAND: { Key } = { "down", "right" }
@@ -184,7 +184,7 @@ local function init(me: Object)
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -220,7 +220,7 @@ fireman.kind = new.kind {
 -- 0x080B9482: FireMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and whatever the controller left in r3, which his init overwrites.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(fireman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(fireman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

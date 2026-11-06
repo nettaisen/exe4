@@ -91,7 +91,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
@@ -128,7 +128,7 @@ videoman.kind = new.kind {
 -- 0x080C7844: VideoMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(videoman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(videoman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

@@ -20,7 +20,7 @@ local AHEAD = 2
 type State = { timer: number }
 
 -- A blow: the tornadoes on (x, y) and around, with the attack's element and damage word.
-export type FanBlow = (me: Object, x: number, y: number, element: number, damage: number) -> ()
+export type FanBlow = (me: Object, x: number, y: number, element: Element, damage: number) -> ()
 
 -- The fan's action `id`, holding up `look` and blowing `blow`.
 function fan.action(id: string, look: AttachmentLook, blow: FanBlow): Action

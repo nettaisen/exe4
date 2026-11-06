@@ -11,7 +11,7 @@ charge.action = flame.action { id = "firesoul/charged-shot/action", count = 3 }
 
 -- 0x0800CCAE.
 local function setup(navi: Object): Action
-    navi.attack_element = 1
+    navi.attack_element = Element.fire
     navi.attack_variant = 0
     navi.charged = 0
     navi.attack_lockout = 0

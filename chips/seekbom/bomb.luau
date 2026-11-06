@@ -186,7 +186,7 @@ function bomb.thrower(): Thrower
             local o = battle.spawn(bomb.kind, pos)
             if o then
                 o.alliance = user.alliance
-                o.element = 0
+                o.element = Element.null
                 o:set_damage_word(damage)
                 local s = o.state :: State
                 s.target_x, s.target_y = x, y

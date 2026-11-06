@@ -75,7 +75,7 @@ local function enemy_navi_on(x: number, y: number, side: number): Object?
     if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
-    local o = battle.player(bit32.bxor(side, 1))
+    local o = battle.player(battle.other_side(side))
     if o then
         local c = o.collision
         if c.panel_x == x and c.panel_y == y then
@@ -91,7 +91,7 @@ local function hit(me: Object, x: number, y: number)
     local h = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = sparks.plain,

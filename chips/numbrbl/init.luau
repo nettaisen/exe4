@@ -26,7 +26,8 @@ local BALL = common_ball.make {
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     is = collision.attack,
     hits = collision.hits_navis,
-    hidden_parts = 0x3FFF_FC00,
+    -- (Parts 2 to 21.)
+    hidden_parts = { [2] = true, [3] = true, [4] = true, [5] = true, [6] = true, [7] = true, [8] = true, [9] = true, [10] = true, [11] = true, [12] = true, [13] = true, [14] = true, [15] = true, [16] = true, [17] = true, [18] = true, [19] = true, [20] = true, [21] = true },
 }
 
 -- NumberMan (0x080C8CE8): sheet 08-08 in palette 0 (0x0800B950 by navi 8 and the chip's level 0), appearing with

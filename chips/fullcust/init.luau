@@ -8,7 +8,7 @@
 local spawners = require("../lib/spawners")
 
 -- 0x080084BC: 0x08016810(0x4000).
-local function fill(_user: Object, _element: number, _damage: number)
+local function fill(_user: Object, _element: Element, _damage: number)
     battle.fill_custom_gauge()
 end
 

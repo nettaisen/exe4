@@ -185,7 +185,7 @@ local function init(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = 0, 0xFF
     me:set_coordinates_from_panel()
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     if not me:create_collision() then
         me:free()
         return
@@ -217,8 +217,8 @@ water_gun.kind = new.kind {
 
 -- 0x080D3710: a water gun on (x, y) of AquaMan's side, his, with `element` and the damage word, running while dimmed,
 -- in his slot. (Its position is the spawner's registers: the row, the element and 0.)
-function water_gun.spawn(aquaman: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(water_gun.kind, Vec3.new(y, element, 0))
+function water_gun.spawn(aquaman: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(water_gun.kind, Vec3.new(y, element.byte, 0))
     if not o then
         return nil
     end

@@ -93,7 +93,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
@@ -128,7 +128,7 @@ laserman.kind = new.kind {
 -- 0x080CBE18: LaserMan on (x, y) for `controller`, of its side, with its element and the damage word. (His position
 -- is the spawner's registers: the row, the element and 0.)
 function laserman.summon(controller: Object, x: number, y: number, damage: number): Object?
-    local o = battle.spawn(laserman.kind, Vec3.new(y, controller.element, 0))
+    local o = battle.spawn(laserman.kind, Vec3.new(y, controller.element.byte, 0))
     if not o then
         return nil
     end

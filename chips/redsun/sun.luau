@@ -87,7 +87,7 @@ local function meteors(me: Object)
         end
         me.timer = 0xF
         -- (Its element is the register the object loop leaves: 0 in every recording.)
-        local o = meteor.spawn(me, me.panel_x, me.panel_y, 0, meteor.fire, METEOR_DAMAGE, me.pos.z)
+        local o = meteor.spawn(me, me.panel_x, me.panel_y, Element.null, meteor.fire, METEOR_DAMAGE, me.pos.z)
         if o then
             o.run_while_dimmed = true
         end
@@ -192,8 +192,8 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me.element = 0
+    sprite:face(me)
+    me.element = Element.null
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me:set_lifecycle("update")
@@ -222,7 +222,7 @@ local kind = new.kind {
 -- 0x080DDDBA: the sun on the controller's panel, `sun.HEIGHT` up (the spawner's register), with its element and the
 -- damage word, of the controller's side alone; it acts while dimmed.
 function sun.spawn(controller: Object, damage: number): Object?
-    local o = battle.spawn(kind, Vec3.new(controller.panel_y, controller.element, sun.HEIGHT))
+    local o = battle.spawn(kind, Vec3.new(controller.panel_y, controller.element.byte, sun.HEIGHT))
     if o then
         o.panel_x, o.panel_y = controller.panel_x, controller.panel_y
         o.element = controller.element

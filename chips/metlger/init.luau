@@ -20,7 +20,7 @@ local GEAR_PANEL: PanelCondition = { solid = true, own_area = true, any_body = f
 -- 0x080E7288.
 local function effect(me: Object)
     if me.phase_init == 0 then
-        local other = bit32.bxor(me.alliance, 1)
+        local other = battle.other_side(me.alliance)
         -- (Its own area: side 1's for a side 1, else side 0's.)
         local x = panels.closest_in_row(other, me.panel_y, GEAR_PANEL, if other == 1 then 1 else 0)
         if x ~= 0 then

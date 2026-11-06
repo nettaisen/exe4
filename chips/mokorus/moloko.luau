@@ -122,7 +122,7 @@ local function init(me: Object)
     me.pos = Vec3.new(-me.facing * REACH * 0x10000, p.y, 0)
     me:set_panel_from_coordinates()
     sprite.palette = (me.state :: State).palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     if not me:create_collision() then
         me:free()
         return
@@ -155,13 +155,13 @@ moloko.kind = new.kind {
 
 -- 0x080D252A, the spawners' variant 1: a Moloko in `palette` (twice the chip's parameter) on each row, the rows
 -- shuffled, each 10 ticks after the one before, with the attack's element and damage word.
-function moloko.spawner(palette: number): (user: Object, element: number, damage: number) -> ()
-    return function(user: Object, element: number, damage: number)
+function moloko.spawner(palette: number): (user: Object, element: Element, damage: number) -> ()
+    return function(user: Object, element: Element, damage: number)
         local rows = { 1, 2, 3 }
         panels.shuffle(rows, 3, 3)
         for i, y in rows do
             -- 0x080D250C: on (1, y), its position the registers until its init places it.
-            local o = battle.spawn(moloko.kind, Vec3.new(y, element, 0))
+            local o = battle.spawn(moloko.kind, Vec3.new(y, element.byte, 0))
             if o then
                 o.panel_x, o.panel_y = 1, y
                 o.element = element

@@ -52,7 +52,7 @@ local REFLECT = guard.action {
 }
 
 local function raise(navi: Object, variant: number, damage: number)
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = variant
     navi.charged = 0
     navi.attack_lockout = 0

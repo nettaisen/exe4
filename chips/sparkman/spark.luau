@@ -141,7 +141,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 8, 8
     sprite:set_animation(8)
     sprite.palette = 0
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -186,8 +186,8 @@ spark.kind = new.kind {
 -- 0x080D1252: a spark of `owner`'s side on (x, y) with `element`, going up its column (`up`), at height `z`, with
 -- `owner`'s damage word, counted in `holder`'s sparks. (Its position is the spawner's registers: the row, the element
 -- and the height, of which its init keeps the height.)
-function spark.spawn(owner: Object, x: number, y: number, element: number, up: boolean, z: number, holder: Object?): Object?
-    local o = battle.spawn(spark.kind, Vec3.new(y, element, z))
+function spark.spawn(owner: Object, x: number, y: number, element: Element, up: boolean, z: number, holder: Object?): Object?
+    local o = battle.spawn(spark.kind, Vec3.new(y, element.byte, z))
     if not o then
         return nil
     end

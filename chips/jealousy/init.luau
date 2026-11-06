@@ -14,7 +14,7 @@ local chip_hand = require("@exelib/chip_hand")
 
 -- 0x080E5FDC: the chips the other side's navi holds (none without one).
 local function count(me: Object): number
-    local navi = battle.player(bit32.bxor(me.alliance, 1))
+    local navi = battle.player(battle.other_side(me.alliance))
     if not navi then
         return 0
     end

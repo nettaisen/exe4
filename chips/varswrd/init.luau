@@ -14,15 +14,14 @@ local sword_family = require("./sword")
 local varswrd: Chip = {
     action = action.action {
         id = "varswrd/action",
-        -- The sequences (0x080ED6FC), as joypad words with A held: 0x81 A+down, 0x91 A+down+right, 0x11 A+right, 0xA1
-        -- A+down+left, 0x21 A+left, 0x41 A+up, 0x03 A+B.
+        -- The sequences (0x080ED6FC, joypad words each ending in 0), each step the buttons held, A among them.
         sequences = {
-            [0] = {
-                { 0x81, 0x91, 0x11, 0 },
-                { 0x21, 0xA1, 0x81, 0x91, 0x11, 0 },
-                { 0x41, 0x11, 0x81, 0 },
-                { 0x81, 0x21, 0x41, 0x11, 0x81, 0 },
-                { 0x21, 0x03, 0x11, 0x03, 0 },
+            unturned = {
+                { { a = true, down = true }, { a = true, right = true, down = true }, { a = true, right = true } },
+                { { a = true, left = true }, { a = true, left = true, down = true }, { a = true, down = true }, { a = true, right = true, down = true }, { a = true, right = true } },
+                { { a = true, up = true }, { a = true, right = true }, { a = true, down = true } },
+                { { a = true, down = true }, { a = true, left = true }, { a = true, up = true }, { a = true, right = true }, { a = true, down = true } },
+                { { a = true, left = true }, { a = true, b = true }, { a = true, right = true }, { a = true, b = true } },
             },
         },
         -- LongSwrd, FtrSword, WideSwrd, LifeSrd, SonicBom (0x080ED7DC: chips 0x32, 0x172, 0x31, 0x158, 0x173); a

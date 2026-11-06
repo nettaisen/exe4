@@ -73,7 +73,7 @@ local SHADEMAN = require("@exelib/shademan/navi").make {
 -- 0x080BAF1A: ShadeMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(SHADEMAN.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(SHADEMAN.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

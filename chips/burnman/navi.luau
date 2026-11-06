@@ -31,7 +31,7 @@ local SOUND_PILLARS = asset.sound("tops")
 local SOUND_BREATH = asset.sound("rage-roar")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
-local FIRE = 1
+local FIRE = Element.fire
 
 local HITS = lingering_hit.make("burnman/hit")
 
@@ -154,7 +154,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
@@ -191,7 +191,7 @@ burnman.kind = new.kind {
 -- 0x080BE328: BurnMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(burnman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(burnman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

@@ -261,7 +261,7 @@ local status = {
                 { emotion = "soul", when = { { in_form = true } } },
                 { emotion = "angry", when = { { angry = true } } },
                 { emotion = "evil", when = { { mood = 0 } } },
-                { emotion = "full_synchro", when = { { mood = 0xFF } } },
+                { emotion = "full_synchro", when = { { mood = "full_synchro" } } },
                 { emotion = "worried", when = { { mood_below = 65 } } },
                 { emotion = "normal" },
             },

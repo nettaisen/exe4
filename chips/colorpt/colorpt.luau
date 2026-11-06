@@ -21,7 +21,7 @@ local trajectory = require("../../lib/trajectory")
 local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- 0x080E7EAA: the element the point's spawn leaves.
-local ELEMENT = 0xD9
+local ELEMENT = Element.from_byte(0xd9)
 
 local OWN_AREA: PanelCondition = { own_area = true }
 

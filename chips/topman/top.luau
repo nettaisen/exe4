@@ -171,7 +171,7 @@ local function init(me: Object, number: number)
     local vy = if number >= 2 then -VY else VY
     me.vel = Vec3.new(vx * me.facing, vy, me.vel.z)
     sprite.palette = 0
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -213,7 +213,7 @@ top.kind = new.kind {
 -- running while dimmed. (Its position is the spawner's registers: the row, the element and his height, of which its init
 -- keeps the height.)
 function top.spawn(navi: Object, x: number, y: number, number: number): Object?
-    local o = battle.spawn(top.kind, Vec3.new(y, navi.element, navi.pos.z))
+    local o = battle.spawn(top.kind, Vec3.new(y, navi.element.byte, navi.pos.z))
     if not o then
         return nil
     end

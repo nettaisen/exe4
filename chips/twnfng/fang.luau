@@ -120,7 +120,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     local dy = if (me.state :: State).up then -1 else 1
     me.vel = Vec3.new(me.facing * ACROSS, dy * ALONG, me.vel.z)
     if not me:create_collision() then
@@ -155,8 +155,8 @@ local kind = new.kind {
 
 -- 0x080D7B3A: a fang of `user`'s on (x, y), going down or up a row first, with the attack's element and damage word;
 -- weak once across (its second parameter). (Its position is the spawner's registers until its init places it.)
-function fang.spawn(user: Object, x: number, y: number, element: number, damage: number, up: boolean, weak: boolean)
-    local o = battle.spawn(kind, Vec3.new(y, element, 0))
+function fang.spawn(user: Object, x: number, y: number, element: Element, damage: number, up: boolean, weak: boolean)
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.up, s.weak = up, weak

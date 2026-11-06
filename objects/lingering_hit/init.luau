@@ -23,7 +23,7 @@ export type Spec = {
     damage: number,
     z: number,
     ticks: number,
-    element: number,
+    element: Element,
     -- The holder that keeps it, and the slot of its `hits` (1 to 3).
     holder: Object?,
     slot: number?,

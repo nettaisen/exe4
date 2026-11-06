@@ -22,7 +22,7 @@ local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
 -- A chip's controller (kind `id`) setting its hammer (`spawn`, ./hammer's): the chip's `dimming` hook.
 function controller.make(
     id: string,
-    spawn: (owner: Object, x: number, y: number, element: number, damage: number) -> Object?
+    spawn: (owner: Object, x: number, y: number, element: Element, damage: number) -> Object?
 ): (user: Object, spec: DimmingChipSpec) -> Object?
     -- 0x080E4BCC.
     local function effect(me: Object)

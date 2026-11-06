@@ -54,7 +54,7 @@ local function start_panel(me: Object, s: State, y: number): number
     if side > 1 then
         error(string.format("wind side %d reads past its panel table (0x080E69AC)", side))
     end
-    local x = panels.closest_in_row(bit32.bxor(side, 1), y, PANELS, side)
+    local x = panels.closest_in_row(battle.other_side(side), y, PANELS, side)
     -- (A panel with a neutral object: an obstacle's body.)
     if field.any(x, y, NEUTRAL) then
         return 0

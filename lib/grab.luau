@@ -36,7 +36,7 @@ end
 -- (each row's closest of that side from its far edge): the least of them for a user of side 0, the greatest for side
 -- 1; none without one.
 local function column(me: Object): number?
-    local other = bit32.bxor(me.alliance, 1)
+    local other = battle.other_side(me.alliance)
     local x = panels.front_most(other, OWN, other)
     return if x ~= 0 then x else nil
 end

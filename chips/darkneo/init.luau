@@ -32,7 +32,7 @@ local function back(c: Object)
         sprite.shadow = "ground"
         c.pos = user.pos
         sprite.palette = user.sprite.palette
-        sprite:set_flip(bit32.bxor(c.alliance, c.flip))
+        sprite:face(c)
         c.anim, c.anim_loaded = 0, 0xFF
     end
     c.visible = false

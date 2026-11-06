@@ -33,7 +33,7 @@ local SOUND_FLASH = asset.sound("spark-flash")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His sparks' element (elec), whatever his chip's.
-local ELEC = 3
+local ELEC = Element.elec
 -- The flash's flicker (a white palette flash, effect #0x0A's variant 0, going on while dimmed).
 local FLASH_TICKS = 0x14
 -- His charge, his flash's ticks, and the shock's.
@@ -71,7 +71,7 @@ local function flash(me: Object)
     local box = battle.hitbox(me, {
         panel_x = me.panel_x,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.other_navi[me.alliance],
         hit_effect = nil,
@@ -173,7 +173,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 9, 9
     sprite:set_animation(9)
     sprite.palette = s.palette
-    sprite:set_flip(me.alliance)
+    sprite:face_side(me.alliance)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 0x1E
@@ -210,7 +210,7 @@ sparkman.kind = new.kind {
 -- 0x080B8B94: SparkMan for the controller's user, with the damage plus the bonus, in the chip's palette. (His position
 -- is the spawner's registers: the row, the element and 0, of which his init keeps the height.)
 local function spawn(controller: Object, damage: number, palette: number): Object?
-    local o = battle.spawn(sparkman.kind, Vec3.new(controller.panel_y, controller.element, 0))
+    local o = battle.spawn(sparkman.kind, Vec3.new(controller.panel_y, controller.element.byte, 0))
     if not o then
         return nil
     end

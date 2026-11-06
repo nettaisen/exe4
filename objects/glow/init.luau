@@ -97,7 +97,7 @@ function glow.make(spec: Spec): Glow
         me.pos = Vec3.new(p.x, p.y - 0x10000, p.z - 0x10000)
         -- 0x0800BFFE: the navi's palette (the one it wears).
         sprite.palette = navi.sprite.palette
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         overlays.put_on_form(me, battle.navi(me.alliance).form)
         me.anim, me.anim_loaded = 0, 0xFF
         me:set_lifecycle("update")

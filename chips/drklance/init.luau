@@ -21,7 +21,7 @@ local drklance: Chip = {
     flags = { has_damage = true, dark = true, variable_damage = true },
     action = spawners.action {
         id = "drklance/action",
-        spawn = function(user: Object, element: number, damage: number)
+        spawn = function(user: Object, element: Element, damage: number)
             lance.thrust(user, element, 1, damage)
         end,
     },
