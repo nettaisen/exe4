@@ -35,7 +35,7 @@ local function LAVA_BURN(me: Object, player: boolean)
         local c = me.collision
         local x, y = c.panel_x, c.panel_y
         me:heal(LAVA_HEAL, false)
-        c:add_raw_damage("fire", LAVA_HEAL)
+        c:add_raw_damage(PrimaryElement.fire, LAVA_HEAL)
         field.set_type(x, y, PanelType.normal)
         return
     end

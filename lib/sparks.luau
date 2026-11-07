@@ -13,7 +13,7 @@ local impact_sprite = asset.sprite("impact")
 local pink_flash_sprite = asset.sprite("pink-flash")
 
 -- By primary element (null, fire, aqua, elec, wood, and the drain): hit effects 0 to 5.
-local BY_ELEMENT: { [PrimaryElement]: Spark } = {
+local BY_ELEMENT: { [string]: Spark } = {
     null = new.spark { sprite = HIT_SPARKS, anim = 0, palette = 0, steps = 5 },
     fire = new.spark { sprite = HIT_SPARKS, anim = 2, palette = 0, steps = 18 },
     aqua = new.spark { sprite = HIT_SPARKS, anim = 3, palette = 0, steps = 14 },
@@ -46,7 +46,7 @@ sparks.erase = new.spark { sprite = pink_flash_sprite, anim = 0, palette = 2, st
 -- it), hit effects 0 to 5.
 function sparks.of_element(element: Element): Spark
     local p = element.primary
-    local s = if p and element == Element.new(p) then BY_ELEMENT[p] else nil
+    local s = if p and element == Element.new(p) then BY_ELEMENT[p.name] else nil
     if not s then
         error(string.format("0x08012F7A: element %s has no hit spark", tostring(element)))
     end
