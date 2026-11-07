@@ -21,7 +21,7 @@ local WOOD_TOWER = tower.make {
 
 -- 0x080DF908: a grass panel of the other side's holding its navi: a wood tower.
 local function strike(me: Object, x: number, y: number): boolean
-    if not towers.enemy_panel(me, x, y, "grass") then
+    if not towers.enemy_panel(me, x, y, PanelType.grass) then
         return false
     end
     WOOD_TOWER(me, x, y, me.element, towers.damage_word(me))

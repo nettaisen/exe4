@@ -37,7 +37,7 @@ return common.make {
     spark = sparks.plain,
     set_down = nil,
     breaking_hits = nil,
-    landing_panel = "hole",
+    landing_panel = PanelType.hole,
     landing_sound = asset.sound("panel-hole"),
     puff = rock.effects.puff,
     trajectory = trajectory,

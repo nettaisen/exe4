@@ -21,7 +21,7 @@ local sandring: Chip = {
             status = nil,
             sound = asset.sound("spreader"),
             hit_mod = { flinch = true },
-            sand = "pitfall",
+            sand = PanelType.pitfall,
         },
     },
     codes = { "C", "R", "S", "*" },

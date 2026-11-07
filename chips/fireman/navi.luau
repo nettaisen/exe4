@@ -37,7 +37,7 @@ local SOUND_ROAR = asset.sound("roar")
 local FLAME = flame_common.make_kind {
     id = "fireman/flame",
     sprite = rage_flame_sprite,
-    leaves = { "lava" },
+    leaves = { PanelType.lava },
     spreads = false,
     attack = collision.attack,
     attack_480 = collision.attack_480,
@@ -134,7 +134,7 @@ local function attack(me: Object)
             paralyzes = false,
             attack_480 = false,
             while_dimmed = true,
-            leaves = if s.commanded then "lava" else nil,
+            leaves = if s.commanded then PanelType.lava else nil,
             palette = 0,
             hit = false,
             sent = false,

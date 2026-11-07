@@ -21,7 +21,7 @@ local AQUA_TOWER = tower.make {
 -- 0x080DF8A4: a cracked panel of the other side's holding its navi: an aqua tower, and the panel broken if nothing
 -- stands on it (0x08009BAC: something always does).
 local function strike(me: Object, x: number, y: number): boolean
-    if not towers.enemy_panel(me, x, y, "cracked") then
+    if not towers.enemy_panel(me, x, y, PanelType.cracked) then
         return false
     end
     AQUA_TOWER(me, x, y, me.element, towers.damage_word(me))
