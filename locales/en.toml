@@ -399,8 +399,6 @@ language = "en"
 "undernet" = { name = "Undernet", long_name = "Undernet" }
 "yais-hp" = { name = "Yai's HP", long_name = "Yai's HP" }
 "yumland-area" = { name = "YumLand Area", long_name = "YumLand Area" }
-"hong-kong" = { name = "Liberate HK", long_name = "Liberate Hong Kong, Revolution of Our Times" }
-"taiwan" = { name = "Today HK, Tomorrow TW", long_name = "Today Hong Kong, Tomorrow Taiwan" }
 
 [navicust_programs]
 "airshoes" = { name = "AirShoes", long_name = "Air Shoes", description = "Walk even\nif no\npanels!" }
@@ -745,8 +743,6 @@ language = "en"
 "boss-battle" = "Boss Battle"
 "tournament-battle" = "Tournament Battle"
 "final-battle" = "vs Duo"
-"glory-to-hong-kong" = "Glory to Hong Kong"
-"national-anthem-of-the-roc" = "National Anthem of the ROC"
 
 # The words of the battle's lettered pictures, by picture (docs/design/text-rendering.md §12): the enhanced graphics
 # draw them in the lettering font in the picture's place, in its look; the original graphics draw the pictures. A

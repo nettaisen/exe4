@@ -399,8 +399,6 @@ language = "zh-Hant"
 "undernet" = { name = "裏網路" }
 "yais-hp" = { name = "雅伊朵的首頁" }
 "yumland-area" = { name = "雅吉納區域" }
-"hong-kong" = { name = "光復香港，時代革命" }
-"taiwan" = { name = "今日香港，明日台灣" }
 
 [navicust_programs]
 "airshoes" = { name = "飛行鞋", description = "能夠移動至\n沒有地面的格子！" }
@@ -713,8 +711,6 @@ language = "zh-Hant"
 "boss-battle" = "頭目戰"
 "tournament-battle" = "錦標賽戰鬥"
 "final-battle" = "VS 迪歐"
-"glory-to-hong-kong" = "願榮光歸香港"
-"national-anthem-of-the-roc" = "中華民國國歌"
 
 [emotions]
 "full_synchro" = "完全同步"

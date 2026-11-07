@@ -398,8 +398,6 @@ language = "ja"
 "undernet" = { name = "ウラインターネット" }
 "yais-hp" = { name = "やいとのHP" }
 "yumland-area" = { name = "アジーナエリア" }
-"hong-kong" = { name = "光復香港、時代革命" }
-"taiwan" = { name = "今日の香港、明日の台湾" }
 
 [navicust_programs]
 "airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
@@ -729,8 +727,6 @@ language = "ja"
 "boss-battle" = "ボスバトル"
 "tournament-battle" = "トーナメントバトル"
 "final-battle" = "VS デューオ"
-"glory-to-hong-kong" = "香港に栄光あれ"
-"national-anthem-of-the-roc" = "中華民国国歌"
 
 # The words of the battle's lettered pictures, by picture (en.toml says what this is): the Japanese ROMs' words. Those
 # the four ROMs of the game show alike are the English words in both languages (BATTLE START!, PAUSE, CUSTOM); the
