@@ -15,7 +15,7 @@ local chip_hand = require("@exelib/chip_hand")
 
 -- The status reset's bonus, and the families it goes to.
 local BONUS = 30
-local function bonus_family(family: string?): boolean
+local function bonus_family(family: Family?): boolean
     return family == Family.null or family == Family["break"]
 end
 
