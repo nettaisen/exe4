@@ -25,7 +25,7 @@ local function needed(side: number): boolean
     end
     for i = 0, 5 do
         local chip = chip_hand.chip(side, i)
-        if chip ~= nil and chip.family == "special" then
+        if chip ~= nil and chip.family == Family.special then
             return true
         end
     end

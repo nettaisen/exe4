@@ -134,7 +134,7 @@ local function attack(me: Object)
             paralyzes = false,
             attack_480 = false,
             while_dimmed = true,
-            leaves = if s.commanded then PanelType.lava else nil,
+            leaves = if s.commanded then "lava" else nil,
             palette = 0,
             hit = false,
             sent = false,

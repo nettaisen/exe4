@@ -24,12 +24,12 @@ local function fold(side: number, whole: boolean)
         if c == nil then
             break
         end
-        if c.family == "wood" then
+        if c.family == Family.wood then
             local after = chip_hand.chip(side, i + 1)
             if after == nil then
                 break
             end
-            if after.family == "null" and chip_hand.damages(side, i + 1) then
+            if after.family == Family.null and chip_hand.damages(side, i + 1) then
                 battle.fold_hand_chip(side, i, whole)
             end
         end

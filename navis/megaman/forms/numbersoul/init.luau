@@ -30,7 +30,7 @@ local function hand(side: number)
         if c == nil then
             break
         end
-        if chip_hand.damages(side, i) and c.family == "null" then
+        if chip_hand.damages(side, i) and c.family == Family.null then
             chip_hand.add_bonus(side, i, "charge_bonus", BONUS)
         end
         i += 1
