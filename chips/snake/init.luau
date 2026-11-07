@@ -33,8 +33,8 @@ local MADE = batch.make { nest_id = "snake/nest", controller_id = "snake/control
 
 local chip: Chip = {
     codes = { "D", "M", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 3,
     mb = 60,

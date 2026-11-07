@@ -27,8 +27,8 @@ end
 local chip: Chip = {
     action = spawners.action { id = "repair/action", spawn = repair },
     codes = { "I", "P", "R", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,

@@ -15,8 +15,8 @@ local ROW: { number } = { 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40 }
 
 local numbrman: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.mega,
     rarity = 3,
     mb = 33,
@@ -32,8 +32,8 @@ local numbrman: Chip = {
 
 local numbmn_sp: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.mega,
     rarity = 4,
     mb = 66,
@@ -50,12 +50,12 @@ local numbmn_sp: Chip = {
 
 local numbmn_ds: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.mega,
     rarity = 4,
     mb = 66,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 50,
     cant_counter = true,
     lockout = 0,

@@ -22,14 +22,14 @@ local SHOT = projectile.variant {
     id = "cannon/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = { flinch = true, flash = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.impact,
 }
 
 local cannon: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 8,
@@ -43,8 +43,8 @@ local cannon: Chip = {
 
 local hicannon: Chip = {
     codes = { "C", "D", "E" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 24,
@@ -58,8 +58,8 @@ local hicannon: Chip = {
 
 local m_cannon: Chip = {
     codes = { "E", "F", "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 40,

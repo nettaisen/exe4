@@ -15,21 +15,21 @@ local metalsoul_sprite = asset.sprite("metalsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "metal", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.metal, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(metalman_sprite),
     sprite = metalsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,
         a_charge = soul.chip_charge("metalsoul/charged-chip", { 70, 70, 70, 70, 70, 90 }),
     },
-    charged_chips = { { family = "metal", damaging = true }, { family = "null", damaging = true } },
+    charged_chips = { { family = Family.metal, damaging = true }, { family = Family.null, damaging = true } },
     charged_bonus = { doubles = true },
     palette = 0,
     mugshot = { normal = asset.mugshot("metalsoul") },

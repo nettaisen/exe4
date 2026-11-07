@@ -15,21 +15,21 @@ local protosoul_sprite = asset.sprite("protosoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "sword", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.sword, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(protoman_sprite),
     sprite = protosoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = {
         buster = soul.buster,
         charge_shot = charge.weapon,
         a_charge = soul.chip_charge("protosoul/charged-chip", { 30, 30, 30, 30, 30, 80 }),
     },
-    charged_chips = { { family = "sword", damaging = true } },
+    charged_chips = { { family = Family.sword, damaging = true } },
     charged_bonus = { doubles = true },
     -- 0x0800E12C: the B+Left special (AIData +0x00, which the weapon load leaves in a soul).
     reset = function(navi: Object)

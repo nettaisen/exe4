@@ -10,8 +10,8 @@ local strike = require("@self/strike")
 local counter1: Chip = {
     action = spawners.action { id = "counter1/action", spawn = strike.spawner },
     codes = { "F", "M", "T", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 14,
@@ -25,8 +25,8 @@ local counter1: Chip = {
 local counter2: Chip = {
     action = spawners.action { id = "counter2/action", spawn = strike.spawner },
     codes = { "B", "H", "L", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 28,
@@ -40,8 +40,8 @@ local counter2: Chip = {
 local counter3: Chip = {
     action = spawners.action { id = "counter3/action", spawn = strike.spawner },
     codes = { "A", "N", "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 42,

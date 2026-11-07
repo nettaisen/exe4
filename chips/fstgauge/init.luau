@@ -7,8 +7,8 @@ local gauge_speed = require("../lib/gauge_speed")
 
 local chip: Chip = {
     codes = { "I", "Q", "U", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 32,

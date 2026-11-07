@@ -82,7 +82,7 @@ function block.turn(side: number)
 end
 
 -- A soul's chip: its family the souls' (15), which the intake reads for one (0x0800B68C, 0x0800B924).
-local SOUL_FAMILY = "special"
+local SOUL_FAMILY = Family.special
 
 -- `validate`'s part: the places' (each one thing, a pattern one of the eight records, no chip the AI can't play:
 -- its positioning class past the table at 0x0800F3C8; only mega chips in the mega list, giga chips in the giga list

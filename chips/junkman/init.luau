@@ -16,8 +16,8 @@ local ROW: { number } = { 200, 190, 180, 170, 160, 150, 140, 130, 120, 110, 100 
 
 local junkman: Chip = {
     codes = { "J" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.mega,
     rarity = 3,
     mb = 80,
@@ -33,8 +33,8 @@ local junkman: Chip = {
 
 local junkmn_sp: Chip = {
     codes = { "J" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.mega,
     rarity = 4,
     mb = 80,
@@ -51,12 +51,12 @@ local junkmn_sp: Chip = {
 
 local junkmn_ds: Chip = {
     codes = { "J" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.mega,
     rarity = 4,
     mb = 80,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 20,
     cant_counter = true,
     lockout = 0,

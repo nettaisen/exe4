@@ -17,7 +17,7 @@ local SHOT = projectile.variant {
     id = "windsoul/buster/shot",
     collision = { is = collision.pushing, hits = collision.hits_navis },
     hit_mod = { flinch = true, back = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.impact,
 }
 

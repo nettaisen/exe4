@@ -10,8 +10,8 @@ local thunder = require("@self/ball")
 local thunder1: Chip = {
     action = thunder.shoot { id = "thunder1/action", ball = { panels = 5, status = statuses.paralyze_90 } },
     codes = { "B", "L", "P", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 0,
     mb = 7,
@@ -25,8 +25,8 @@ local thunder1: Chip = {
 local thunder2: Chip = {
     action = thunder.shoot { id = "thunder2/action", ball = { panels = 7, status = statuses.paralyze_120 } },
     codes = { "H", "S", "P" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 1,
     mb = 18,
@@ -40,8 +40,8 @@ local thunder2: Chip = {
 local thunder3: Chip = {
     action = thunder.shoot { id = "thunder3/action", ball = { panels = 9, status = statuses.paralyze_150 } },
     codes = { "I", "T", "W" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 2,
     mb = 33,

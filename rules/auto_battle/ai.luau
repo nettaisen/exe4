@@ -390,7 +390,7 @@ local function spoiled_panels(side: number): number
     for x = 1, 6 do
         for y = 1, 3 do
             local p = field.panel(x, y)
-            if p ~= nil and p.alliance == side and (p.kind == "broken" or p.kind == "poison") then
+            if p ~= nil and p.alliance == side and (p.kind == PanelType.broken or p.kind == PanelType.poison) then
                 n += 1
             end
         end

@@ -15,8 +15,8 @@ local ROW: { number } = { 300, 290, 280, 270, 260, 250, 240, 230, 220, 210, 200 
 
 local metalman: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.mega,
     rarity = 3,
     mb = 52,
@@ -32,8 +32,8 @@ local metalman: Chip = {
 
 local metlmn_sp: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.mega,
     rarity = 4,
     mb = 74,
@@ -50,12 +50,12 @@ local metlmn_sp: Chip = {
 
 local metlmn_ds: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.mega,
     rarity = 4,
     mb = 74,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 50,
     cant_counter = true,
     lockout = 0,

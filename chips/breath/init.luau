@@ -23,7 +23,7 @@ local heat_breath = breath.make {
     hit_effect = new.effect { sprite = HEAT_BREATH, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
     panel_effect = new.effect { sprite = HEAT_BREATH, anim = 1, palette = 0, steps = 12 },
-    panel = "lava",
+    panel = PanelType.lava,
     -- 0x080D3C6C: its panels left alone until it leaves them.
     step = nil,
     sound = breath.every_8(asset.sound("roar")),
@@ -54,7 +54,7 @@ local blizzard_breath = breath.make {
     hit_effect = new.effect { sprite = BLIZZARD, anim = 0, palette = 0, steps = 6 },
     hit_effect_lasts = false,
     panel_effect = new.effect { sprite = BLIZZARD, anim = 2, palette = 0, steps = 9 },
-    panel = "ice",
+    panel = PanelType.ice,
     -- 0x080D3C74: the frost.
     step = function(me: Object, s: BreathState)
         if me.timer == FROST_AT and s.hit then
@@ -87,7 +87,7 @@ local elec_breath = breath.make {
     hit_effect = new.effect { sprite = LIGHTNING, anim = 0, palette = 0, steps = 9 },
     hit_effect_lasts = true,
     panel_effect = new.effect { sprite = LIGHTNING, anim = 1, palette = 0, steps = 10 },
-    panel = "cracked",
+    panel = PanelType.cracked,
     -- 0x080D3D60: the panels it hit highlighted.
     step = function(me: Object, s: BreathState)
         if me.timer >= HIGHLIGHT_UNTIL and s.hit then
@@ -120,7 +120,7 @@ local wood_breath = breath.make {
     hit_effect = POWDER,
     hit_effect_lasts = false,
     panel_effect = nil,
-    panel = "grass",
+    panel = PanelType.grass,
     -- 0x080D3CEA: more powder.
     step = function(me: Object, s: BreathState)
         local t = me.timer
@@ -142,8 +142,8 @@ end
 local heatbrth: Chip = {
     action = breath.action { id = "heatbrth/action", nozzle = nozzle(0), spawn = heat_breath },
     codes = { "D", "K", "O", "*" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 30,
@@ -157,8 +157,8 @@ local heatbrth: Chip = {
 local blizzard: Chip = {
     action = breath.action { id = "blizzard/action", nozzle = nozzle(2), spawn = blizzard_breath },
     codes = { "H", "J", "V", "*" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 1,
     mb = 26,
@@ -172,8 +172,8 @@ local blizzard: Chip = {
 local elecshok: Chip = {
     action = breath.action { id = "elecshok/action", nozzle = nozzle(4), spawn = elec_breath },
     codes = { "J", "L", "S", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 2,
     mb = 40,
@@ -187,8 +187,8 @@ local elecshok: Chip = {
 local woodpwdr: Chip = {
     action = breath.action { id = "woodpwdr/action", nozzle = nozzle(6), spawn = wood_breath },
     codes = { "F", "T", "W", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 40,

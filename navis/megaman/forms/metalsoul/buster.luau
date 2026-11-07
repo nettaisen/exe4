@@ -16,7 +16,7 @@ local SHOT = shot.variant {
     id = "metalsoul/buster/row",
     collision = { is = collision.breaking, hits = collision.hits_navis },
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.breaking,
 }
 

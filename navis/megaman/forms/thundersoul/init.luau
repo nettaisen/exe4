@@ -13,14 +13,14 @@ local thundersoul_sprite = asset.sprite("thundersoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "elec", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family.elec, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(thunderman_sprite),
     sprite = thundersoul_sprite,
-    element = "elec",
+    element = Element.elec,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     paralyzing_chips = { null = true, elec = true },

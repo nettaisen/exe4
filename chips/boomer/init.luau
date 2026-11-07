@@ -12,8 +12,8 @@ local THROW = boomerang.spawner(boomerang.boomer)
 local boomer1: Chip = {
     action = spawners.action { id = "boomer1/action", spawn = THROW },
     codes = { "L", "M", "N", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 0,
     mb = 16,
@@ -27,8 +27,8 @@ local boomer1: Chip = {
 local boomer2: Chip = {
     action = spawners.action { id = "boomer2/action", spawn = THROW },
     codes = { "L", "M", "N" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 1,
     mb = 28,
@@ -42,8 +42,8 @@ local boomer2: Chip = {
 local boomer3: Chip = {
     action = spawners.action { id = "boomer3/action", spawn = THROW },
     codes = { "S", "T", "U" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 40,

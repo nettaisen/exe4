@@ -10,8 +10,8 @@ local supports = require("../lib/supports/controller")
 
 local rush: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,
@@ -26,8 +26,8 @@ local rush: Chip = {
 
 local beat: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,
@@ -42,8 +42,8 @@ local beat: Chip = {
 
 local tango: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,

@@ -41,8 +41,8 @@ end
 -- BigHamr1 (EXE4 chip 0x068): its hammer in palette 0, shaking the camera by 1.
 local bighamr1: Chip = {
     codes = { "B", "R", "O" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.standard,
     rarity = 0,
     mb = 22,
@@ -58,8 +58,8 @@ local bighamr1: Chip = {
 -- BigHamr2 (EXE4 chip 0x069): its hammer in palette 4, shaking the camera by 2.
 local bighamr2: Chip = {
     codes = { "G", "J", "W" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.standard,
     rarity = 1,
     mb = 33,
@@ -75,8 +75,8 @@ local bighamr2: Chip = {
 -- BigHamr3 (EXE4 chip 0x06A): its hammer in palette 8, shaking the camera by 3.
 local bighamr3: Chip = {
     codes = { "D", "V", "Z" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = ChipClass.standard,
     rarity = 2,
     mb = 44,
@@ -93,8 +93,8 @@ local bighamr3: Chip = {
 -- landing a quake.
 local godhammr: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.mega,
     rarity = 3,
     mb = 68,

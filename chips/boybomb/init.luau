@@ -148,8 +148,8 @@ end
 -- BoyBomb1 (EXE4 chip 0x055).
 local boybomb1: Chip = {
     codes = { "E", "J", "M" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 0,
     mb = 30,
@@ -165,8 +165,8 @@ local boybomb1: Chip = {
 -- BoyBomb2 (EXE4 chip 0x056).
 local boybomb2: Chip = {
     codes = { "I", "S", "W" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 1,
     mb = 40,
@@ -182,8 +182,8 @@ local boybomb2: Chip = {
 -- BoyBomb3 (EXE4 chip 0x057).
 local boybomb3: Chip = {
     codes = { "G", "T", "V" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,

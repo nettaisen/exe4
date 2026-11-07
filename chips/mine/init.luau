@@ -29,8 +29,8 @@ local CONTROLLER = common.make { id = "mine/controller", mine = MINE }
 
 local chip: Chip = {
     codes = { "C", "H", "Z" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 2,
     mb = 42,

@@ -13,8 +13,8 @@ local HOLD = 40
 local sidbmbo1: Chip = {
     action = spawners.action { id = "sidbmbo1/action", spawn = bamboo.spawner(0), hold = HOLD },
     codes = { "B", "I", "R", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 0,
     mb = 14,
@@ -28,8 +28,8 @@ local sidbmbo1: Chip = {
 local sidbmbo2: Chip = {
     action = spawners.action { id = "sidbmbo2/action", spawn = bamboo.spawner(2), hold = HOLD },
     codes = { "H", "O", "S" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 1,
     mb = 22,
@@ -43,8 +43,8 @@ local sidbmbo2: Chip = {
 local sidbmbo3: Chip = {
     action = spawners.action { id = "sidbmbo3/action", spawn = bamboo.spawner(4), hold = HOLD },
     codes = { "A", "F", "U" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 30,

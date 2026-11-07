@@ -105,3 +105,23 @@ export type SoulCustom = {
     -- (0x0801F1B0, 0x0801F1E2: what the build does to it by the soul).
     built: ((side: number) -> ())?,
 }
+
+-- The names the game defines, as value tables (docs/design/scripting.md §2.1): what its rules, builds and root
+-- say it has, which the engine holds a module's reads to (written by verify tools/api-names/api-game-names/declare.py).
+declare PanelType: {
+    missing: PanelType, broken: PanelType, normal: PanelType, cracked: PanelType, poison: PanelType, metal: PanelType,
+    grass: PanelType, ice: PanelType, lava: PanelType, holy: PanelType, pitfall: PanelType, hole: PanelType,
+}
+declare Family: {
+    fire: Family, aqua: Family, elec: Family, wood: Family, recovery: Family, plus: Family, sword: Family,
+    invisible: Family, ["break"]: Family, summon: Family, wind: Family, metal: Family, null: Family,
+    program_advance: Family, special: Family,
+}
+declare Emotion: {
+    normal: Emotion, soul: Emotion, angry: Emotion, evil: Emotion, full_synchro: Emotion, worried: Emotion,
+}
+declare Version: { redsun: Version, bluemoon: Version }
+declare Window: { double_soul: Window, shuffle: Window }
+declare Button: { redeal: Button, soul: Button }
+declare Collection: { navicust_programs: Collection, patch_cards: Collection }
+-- (End of the names the game defines.)

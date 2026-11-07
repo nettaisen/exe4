@@ -17,14 +17,14 @@ local SHOT = projectile.variant {
     id = "zeroed/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = { flinch = true, flash = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.impact,
 }
 
 local zeroed: Chip = {
     codes = {},
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,

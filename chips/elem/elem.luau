@@ -24,7 +24,7 @@ local elem = {}
 local FLAME = flame_common.make_kind {
     id = "elem/flame",
     sprite = rage_flame_sprite,
-    leaves = { "poison" },
+    leaves = { PanelType.poison },
     spreads = false,
     attack = collision.attack,
     attack_480 = collision.attack_480,
@@ -40,7 +40,7 @@ local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0 }
 local ROAR, RAGE_ROAR = asset.sound("roar"), asset.sound("rage-roar")
 -- The user's panel back to normal (the panel changer's row 11: its own panel, 30 ticks, flickering).
 local RESTORE = panel_changer.change {
-    panel = "normal",
+    panel = PanelType.normal,
     panels = "own",
     flicker = true,
     ticks = 30,

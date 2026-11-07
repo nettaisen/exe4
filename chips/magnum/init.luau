@@ -37,8 +37,8 @@ local CONTROLLER = common_controller.make { id = "magnum/controller", gunner = G
 
 local chip: Chip = {
     codes = { "H", "Q", "V" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 2,
     mb = 52,

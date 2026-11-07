@@ -23,8 +23,8 @@ end
 
 local chip: Chip = {
     codes = { "J" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 35,

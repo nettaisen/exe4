@@ -95,7 +95,7 @@ end
 function dark_chips.deal(side: number)
     local s = rules.state() :: State
     s.picks, s.offered_picks = 0, 0
-    if not battle.link() or custom.player(side).emotion ~= "evil" then
+    if not battle.link() or custom.player(side).emotion ~= Emotion.evil then
         return
     end
     local navi = battle.player(side)

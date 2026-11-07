@@ -13,10 +13,10 @@ local CONTROLLER = sun_and_moon.make { id = "bluemoon/controller", name = "BlueM
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "bluemoon",
+    version = Version.bluemoon,
     codes = { "B" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.giga,
     rarity = 4,
     mb = 90,

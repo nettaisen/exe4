@@ -75,8 +75,8 @@ end
 local pitrng1: Chip = {
     action = spawners.action { id = "pitrng1/action", spawn = spawn },
     codes = { "A", "B", "C", "*" },
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -91,8 +91,8 @@ local pitrng1: Chip = {
 local pitrng2: Chip = {
     action = spawners.action { id = "pitrng2/action", spawn = spawn },
     codes = { "A", "B", "C", "*" },
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
@@ -107,8 +107,8 @@ local pitrng2: Chip = {
 local pitrng3: Chip = {
     action = spawners.action { id = "pitrng3/action", spawn = spawn },
     codes = { "A", "B", "C", "*" },
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

@@ -17,8 +17,8 @@ local SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2, ste
 
 local drksword: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

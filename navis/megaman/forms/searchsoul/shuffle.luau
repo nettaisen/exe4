@@ -28,7 +28,7 @@ type Screen = {
 }
 
 -- The button's name: the pack's look of it.
-local BUTTON = "redeal"
+local BUTTON = Button.redeal
 -- A screen's shuffles (0x0801DD2A).
 local SHUFFLES = 3
 -- The state's steps: one every 4 ticks, the fifth the deal's (0x080209A0, 0x080209BE).
@@ -146,7 +146,7 @@ shuffle.custom = new.record(soul_custom.SOUL_CUSTOM, {
         shuffle_deal = schema.list({ chip = schema.chip, code = schema.code }, 30),
     },
     buttons = {
-        [BUTTON] = {
+        [BUTTON.name] = {
             slot = 8,
             cells = 2,
             uses = SHUFFLES,
@@ -159,7 +159,7 @@ shuffle.custom = new.record(soul_custom.SOUL_CUSTOM, {
                 end
                 custom.set_button_uses(side, BUTTON, left - 1)
                 make_deal(side, s)
-                custom.open_window(side, "shuffle")
+                custom.open_window(side, Window.shuffle)
                 -- (The tick's draw is the new state's, 0x0801E41E: the button's cursor.)
                 custom.draw_cursor(side)
             end,

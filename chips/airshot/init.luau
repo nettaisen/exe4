@@ -14,14 +14,14 @@ local SHOT = projectile.variant {
     id = "airshot/shot",
     collision = { is = collision.pushing, hits = collision.hits_navis },
     hit_mod = { flinch = true, back = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.impact,
 }
 
 local chip: Chip = {
     codes = { "A", "S", "V", "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = ChipClass.standard,
     rarity = 1,
     mb = 6,

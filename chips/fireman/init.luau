@@ -15,8 +15,8 @@ local ROW: { number } = { 250, 240, 230, 220, 210, 200, 190, 180, 170, 160, 150 
 
 local fireman: Chip = {
     codes = { "F" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 3,
     mb = 36,
@@ -32,8 +32,8 @@ local fireman: Chip = {
 
 local firemn_sp: Chip = {
     codes = { "F" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 4,
     mb = 72,
@@ -50,12 +50,12 @@ local firemn_sp: Chip = {
 
 local firemn_ds: Chip = {
     codes = { "F" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 4,
     mb = 72,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

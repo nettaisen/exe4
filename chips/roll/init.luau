@@ -17,8 +17,8 @@ local ROW: { number } = { 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30 }
 
 local roll: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.mega,
     rarity = 3,
     mb = 28,
@@ -34,8 +34,8 @@ local roll: Chip = {
 
 local roll_sp: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.mega,
     rarity = 4,
     mb = 60,
@@ -52,12 +52,12 @@ local roll_sp: Chip = {
 
 local roll_ds: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.mega,
     rarity = 4,
     mb = 60,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 10,
     cant_counter = true,
     lockout = 0,

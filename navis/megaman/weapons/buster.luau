@@ -28,7 +28,7 @@ local SHOT = shot.variant {
     id = "megaman/buster/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.plain,
 }
 -- The flash's animation: NaviStats +0x23, the navi's number (MegaMan's 0, the one navi EXE4's netbattles have).

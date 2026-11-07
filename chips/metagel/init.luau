@@ -40,8 +40,8 @@ local CONTROLLER = common_controller.make {
 
 local chip: Chip = {
     codes = { "K", "T", "Z" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 3,
     mb = 52,

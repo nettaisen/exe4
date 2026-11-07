@@ -15,8 +15,8 @@ end
 -- HawkCut1 (EXE4 chip 0x0A9).
 local hawkcut1: Chip = {
     codes = { "H", "N", "O" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 1,
     mb = 40,
@@ -33,8 +33,8 @@ local hawkcut1: Chip = {
 -- HawkCut2 (EXE4 chip 0x0AA).
 local hawkcut2: Chip = {
     codes = { "F", "S", "V" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,
@@ -51,8 +51,8 @@ local hawkcut2: Chip = {
 -- HawkCut3 (EXE4 chip 0x0AB).
 local hawkcut3: Chip = {
     codes = { "I", "N", "Z" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 3,
     mb = 60,

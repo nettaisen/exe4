@@ -7,8 +7,8 @@ local crack = require("../lib/crack")
 
 local crakout: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 0,
     mb = 4,
@@ -22,8 +22,8 @@ local crakout: Chip = {
 
 local dublcrak: Chip = {
     codes = { "B", "L", "R", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 0,
     mb = 7,
@@ -37,8 +37,8 @@ local dublcrak: Chip = {
 
 local tripcrak: Chip = {
     codes = { "B", "L", "R", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 0,
     mb = 10,

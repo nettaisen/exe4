@@ -15,8 +15,8 @@ local chip_hand = require("@exelib/chip_hand")
 
 -- The status reset's bonus, and the families it goes to.
 local BONUS = 30
-local function bonus_family(family: string?): boolean
-    return family == "null" or family == "break"
+local function bonus_family(family: Family?): boolean
+    return family == Family.null or family == Family["break"]
 end
 
 -- 0x0800E1CA, and 0x0801F29A's for soul 2 on the hand installed.
@@ -36,15 +36,15 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "break", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family["break"], turns = 3 },
     custom = soul.custom { built = hand },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(gutsman_sprite),
     sprite = gutssoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     -- Six B presses, each within 10 ticks of the last, ask for the machine gun (request 0x20: the role

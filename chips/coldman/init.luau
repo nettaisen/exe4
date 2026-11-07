@@ -16,8 +16,8 @@ local ROW: { number } = { 230, 220, 210, 200, 190, 180, 170, 160, 150, 140, 130 
 
 local coldman: Chip = {
     codes = { "C" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 3,
     mb = 53,
@@ -33,8 +33,8 @@ local coldman: Chip = {
 
 local coldmn_sp: Chip = {
     codes = { "C" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 4,
     mb = 72,
@@ -51,12 +51,12 @@ local coldmn_sp: Chip = {
 
 local coldmn_ds: Chip = {
     codes = { "C" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.mega,
     rarity = 4,
     mb = 72,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 40,
     cant_counter = true,
     lockout = 0,

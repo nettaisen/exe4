@@ -43,7 +43,7 @@ local OK_SOUND = asset.sound("custom-ok")
 
 -- 0x0801FFBE: the soul a chip of `family` is given up for: the side's navi's form (of any of its lists) that is the
 -- soul of that family (0x08020008's table by soul). No two souls are of one family.
-local function soul_for(side: number, family: string): FormDef?
+local function soul_for(side: number, family: Family): FormDef?
     local forms: { [string]: any } = battle.navi(side).navi.forms or {}
     for _, set in forms do
         local list: { FormDef } = set.form_list or {}
@@ -104,7 +104,7 @@ custom_souls.button = {
     -- and OK's DOWN goes nowhere (0x0802069E).
     shown = function(side: number): boolean
         local emotion = custom.player(side).emotion
-        return (rules.setup() :: Setup).double_soul and emotion ~= "worried" and emotion ~= "evil"
+        return (rules.setup() :: Setup).double_soul and emotion ~= Emotion.worried and emotion ~= Emotion.evil
     end,
     -- 0x0801FF84 after each pick (and 0x0801FF14's look): lit while the last pick offers a soul, gray while it doesn't.
     -- The offer is asked only before a soul is given (+0x0C 1: once given it is the soul given) and while the navi's
@@ -112,7 +112,7 @@ custom_souls.button = {
     -- else it stays as it was.
     state = function(side: number): ButtonState
         local s = rules.state() :: State
-        if not custom.button_picked(side, "soul") and turns.counted() then
+        if not custom.button_picked(side, Button.soul) and turns.counted() then
             s.offer = offer(side)
         end
         return if s.offer == nil then ButtonState.unavailable else ButtonState.selectable
@@ -127,13 +127,13 @@ custom_souls.button = {
         custom.play_sound(side, OK_SOUND)
         local s = rules.state() :: State
         s.unite_step, s.unite_count = 0, 0
-        custom.open_window(side, "double_soul")
+        custom.open_window(side, Window.double_soul)
     end,
     -- 0x0801F0A0: picked, the soul's chip goes first in the hand (0x160 + its number: the soul's form's `chip`).
     hand_chip = function(side: number): Chip?
         local s = rules.state() :: State
         local soul = s.offer
-        return if soul ~= nil and custom.button_picked(side, "soul") then soul.chip else nil
+        return if soul ~= nil and custom.button_picked(side, Button.soul) then soul.chip else nil
     end,
 } :: ButtonSpec
 
@@ -182,9 +182,9 @@ custom_souls.window = {
         elseif step == 20 then
             -- 0x080208F4
             if not fading then
-                custom.trade_last_pick(side, "soul")
+                custom.trade_last_pick(side, Button.soul)
                 dark_chips.last_pick_first(side)
-                custom.set_button_state(side, "soul", ButtonState.selected)
+                custom.set_button_state(side, Button.soul, ButtonState.selected)
                 custom.update_availability(side)
                 custom.fade(side, CustomFade.intro_from_white, FADE_SPEED)
                 custom.play(side, ScreenSound.program_advance)
@@ -225,12 +225,12 @@ end
 -- is given this round.
 function custom_souls.confirmed(side: number)
     local s = rules.state() :: State
-    s.soul_hand_sent = custom.last_pick(side) ~= nil or custom.button_picked(side, "soul")
-    if not custom.button_picked(side, "soul") then
+    s.soul_hand_sent = custom.last_pick(side) ~= nil or custom.button_picked(side, Button.soul)
+    if not custom.button_picked(side, Button.soul) then
         return
     end
     local soul = s.offer :: FormDef
-    custom.set_form(side, "soul", soul)
+    custom.set_form(side, Button.soul, soul)
     s.souls_used[#s.souls_used + 1] = soul
 end
 

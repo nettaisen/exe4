@@ -22,7 +22,7 @@ local form: FormDef = {
     revert = soul.revert,
     image = soul.image(megaman_ds_sprite),
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = base.weapons,
     traits = { ignores_b = true, emotions_as_base = true },

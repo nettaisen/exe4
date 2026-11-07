@@ -15,8 +15,8 @@ local ROW: { number } = { 220, 210, 200, 190, 180, 170, 160, 150, 140, 130, 120 
 
 local thunman: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.mega,
     rarity = 3,
     mb = 48,
@@ -32,8 +32,8 @@ local thunman: Chip = {
 
 local thunmn_sp: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.mega,
     rarity = 4,
     mb = 68,
@@ -50,12 +50,12 @@ local thunmn_sp: Chip = {
 
 local thunmn_ds: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.mega,
     rarity = 4,
     mb = 68,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

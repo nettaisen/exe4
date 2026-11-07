@@ -83,15 +83,15 @@ function light_dark.navi_panel(_side: number, navi: Object)
     local dark = (rules.setup() :: Setup).karma <= DARK_AT_MOST
     local x, y = navi.panel_x, navi.panel_y
     local p = field.panel(x, y)
-    if dark and p and p.kind == "holy" then
-        field.set_type(x, y, "normal")
+    if dark and p and p.kind == PanelType.holy then
+        field.set_type(x, y, PanelType.normal)
     end
     if battle.dimmed() or dark then
         return
     end
     p = field.panel(x, y)
-    if p and p.kind == "hole" then
-        field.set_type(navi.collision.panel_x, navi.collision.panel_y, "normal")
+    if p and p.kind == PanelType.hole then
+        field.set_type(navi.collision.panel_x, navi.collision.panel_y, PanelType.normal)
     end
 end
 

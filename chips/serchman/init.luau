@@ -16,8 +16,8 @@ local ROW: { number } = { 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25 }
 
 local serchman: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "invisible",
+    element = Element.null,
+    family = Family.invisible,
     class = ChipClass.mega,
     rarity = 3,
     mb = 45,
@@ -33,8 +33,8 @@ local serchman: Chip = {
 
 local srchmn_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "invisible",
+    element = Element.null,
+    family = Family.invisible,
     class = ChipClass.mega,
     rarity = 4,
     mb = 70,
@@ -51,12 +51,12 @@ local srchmn_sp: Chip = {
 
 local srchmn_ds: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "invisible",
+    element = Element.null,
+    family = Family.invisible,
     class = ChipClass.mega,
     rarity = 4,
     mb = 70,
-    damage = { formula = Formula.count, of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 10,
     cant_counter = true,
     lockout = 0,

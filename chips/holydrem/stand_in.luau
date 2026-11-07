@@ -38,7 +38,7 @@ local FIRST, BETWEEN, AFTER = 3, 10, 60
 local function next_holy(s: State): boolean
     while field.valid(s.x, s.y) do
         local p = field.panel(s.x, s.y)
-        if p and p.kind == "holy" then
+        if p and p.kind == PanelType.holy then
             return true
         end
         s.y += 1
@@ -70,7 +70,7 @@ local function fire(me: Object, s: State)
     if me.timer2 ~= 0 and field.valid(s.x, s.y) then
         local cx, cy = field.center(s.x, s.y)
         battle.effect(Vec3.new(cx, cy, 0), FLASH)
-        field.set_type(s.x, s.y, "normal")
+        field.set_type(s.x, s.y, PanelType.normal)
     end
     local p = me.pos
     local muzzle = Vec3.new(int.i32(p.x + me.facing * MUZZLE_X * 0x1_0000), p.y, int.i32(p.z + MUZZLE_Z * 0x1_0000))

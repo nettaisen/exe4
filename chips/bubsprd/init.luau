@@ -27,8 +27,8 @@ local BURST = bullet.variant {
 local chip: Chip = {
     action = spreader.action { id = "bubsprd/action", gun = GUN, delay = 10, z = 0, shot = BURST },
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

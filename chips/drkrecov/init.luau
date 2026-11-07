@@ -8,8 +8,8 @@ local recov = require("./recov/recov")
 
 local drkrecov: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

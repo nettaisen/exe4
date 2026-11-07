@@ -137,14 +137,14 @@ local function hole(me: Object)
     local s = me.state :: State
     local x, y = me.panel_x, me.panel_y
     if not bit32.btest(me.timer, 4) and not s.floorless then
-        field.blink(x, y, "hole", me.alliance)
+        field.blink(x, y, PanelType.hole, me.alliance)
     end
     hum(me)
     if not ran_out(me) then
         return
     end
     if not s.floorless then
-        field.set_type(x, y, "hole")
+        field.set_type(x, y, PanelType.hole)
     end
     -- (0x0800B90A: the image's sprite is its side's navi's, by its navi and soul: the image's own `load_like`.)
     s.image = image.spawn(me, x, y, me.damage_word)

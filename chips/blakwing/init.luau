@@ -15,8 +15,8 @@ local black_wing_sprite = asset.sprite("black-wing")
 
 local chip: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 58,
@@ -37,7 +37,7 @@ local chip: Chip = {
         hits = collision.hits_navis,
         spark = sparks.plain,
         perches_by_column = true,
-        ends_with_hole = true,
+        ends_with = PanelType.hole,
     },
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ahead_then_column" },

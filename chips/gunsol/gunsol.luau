@@ -53,7 +53,7 @@ local BEAM_AHEAD = 0x50
 local ELEMENT, AHEAD = Element.drain, 2
 local DAMAGE, SUN_DAMAGE = 2, 4
 -- What the light fills, and what it leaves.
-local HOLE: PanelType, NORMAL: PanelType = "hole", "normal"
+local HOLE: PanelType, NORMAL: PanelType = PanelType.hole, PanelType.normal
 
 local WIND_UP, FIRING, RECOVER = 0x0, 0x4, 0x8
 

@@ -24,8 +24,8 @@ local DIMMING = controller.make {
 
 local chip: Chip = {
     codes = { "R" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.mega,
     rarity = 4,
     mb = 73,

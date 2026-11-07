@@ -9,8 +9,8 @@ local change = require("../../../../rules/souls/change")
 
 local aquasoul: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "special",
+    element = Element.null,
+    family = Family.special,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,

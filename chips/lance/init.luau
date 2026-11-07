@@ -8,8 +8,8 @@ local spawners = require("../lib/spawners")
 
 local chip: Chip = {
     codes = { "A", "G", "R", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 3,
     mb = 42,

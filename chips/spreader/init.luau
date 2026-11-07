@@ -24,8 +24,8 @@ local BURST = bullet.variant {
 local chip: Chip = {
     action = spreader.action { id = "spreader/action", gun = GUN, delay = 1, z = 0x10, shot = BURST },
     codes = { "L", "M", "N", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 10,

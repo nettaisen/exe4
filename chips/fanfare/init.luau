@@ -22,8 +22,8 @@ end
 
 local chip: Chip = {
     codes = { "E", "G", "N", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 1,
     mb = 20,

@@ -122,7 +122,7 @@ function souls.navi_intake(side: number, navi: Object)
             navi.requests.form_change = false
         else
             local next = navi:next_chip()
-            if next ~= nil and next.family == "special" then
+            if next ~= nil and next.family == Family.special then
                 navi.requests.form_change = true
             else
                 navi.requests.form_change = false
@@ -149,7 +149,7 @@ function souls.grass_heal(side: number, navi: Object)
     end
     local c = navi.collision
     local p = field.panel(c.panel_x, c.panel_y)
-    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle(FightCycle.second) ~= 0 then
+    if p == nil or p.kind ~= PanelType.grass or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle(FightCycle.second) ~= 0 then
         return
     end
     navi.hp = math.min(navi.hp + 1, navi.max_hp)

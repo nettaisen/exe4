@@ -22,18 +22,18 @@ local overlay = soul.overlay(FLAMES)
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "fire", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family.fire, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(fireman_sprite, attachment.look { sprite = fireman_flame_sprite, palette = 0 }),
     sprite = firesoul_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon, a_charge = charged_chip.weapon },
     -- 0x0800BC78: any fire chip.
-    charged_chips = { { family = "fire", damaging = false } },
+    charged_chips = { { family = Family.fire, damaging = false } },
     wears = FLAMES,
     put_on = overlay.put_on,
     take_off = overlay.take_off,

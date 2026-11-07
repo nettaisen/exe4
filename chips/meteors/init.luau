@@ -9,8 +9,8 @@ local spawners = require("../lib/spawners")
 local meteors1: Chip = {
     action = spawners.action { id = "meteors1/action", spawn = meteors.spawn },
     codes = { "G", "L", "S", "*" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 15,
@@ -24,8 +24,8 @@ local meteors1: Chip = {
 local meteors2: Chip = {
     action = spawners.action { id = "meteors2/action", spawn = meteors.spawn },
     codes = { "M", "Q", "T" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 2,
     mb = 23,
@@ -39,8 +39,8 @@ local meteors2: Chip = {
 local meteors3: Chip = {
     action = spawners.action { id = "meteors3/action", spawn = meteors.spawn },
     codes = { "C", "R", "Z" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 3,
     mb = 31,

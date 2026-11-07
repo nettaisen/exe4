@@ -37,8 +37,8 @@ local GEYSER = common.make({
 local geyser: Chip = {
     action = bombs.throw { id = "geyser/action", held = bombs.held, thrower = GEYSER.thrower() },
     codes = { "B", "L", "V" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 3,
     mb = 38,

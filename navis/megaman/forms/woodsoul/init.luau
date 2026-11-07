@@ -24,12 +24,12 @@ local function fold(side: number, whole: boolean)
         if c == nil then
             break
         end
-        if c.family == "wood" then
+        if c.family == Family.wood then
             local after = chip_hand.chip(side, i + 1)
             if after == nil then
                 break
             end
-            if after.family == "null" and chip_hand.damages(side, i + 1) then
+            if after.family == Family.null and chip_hand.damages(side, i + 1) then
                 battle.fold_hand_chip(side, i, whole)
             end
         end
@@ -39,8 +39,8 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "wood", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.wood, turns = 3 },
     custom = soul.custom {
         built = function(side: number)
             fold(side, false)
@@ -51,7 +51,7 @@ local form: FormDef = {
     revert = soul.revert,
     image = soul.image(woodman_sprite),
     sprite = woodsoul_sprite,
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     traits = { status_immune = true },

@@ -25,8 +25,8 @@ local RAISE = towers.controller { id = "ligtnin/controller", strike = strike }
 local ligtnin1: Chip = {
     action = spawners.action { id = "ligtnin1/action", spawn = RAISE },
     codes = { "L", "T", "W", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 1,
     mb = 37,
@@ -40,8 +40,8 @@ local ligtnin1: Chip = {
 local ligtnin2: Chip = {
     action = spawners.action { id = "ligtnin2/action", spawn = RAISE },
     codes = { "A", "E", "V" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 2,
     mb = 45,
@@ -55,8 +55,8 @@ local ligtnin2: Chip = {
 local ligtnin3: Chip = {
     action = spawners.action { id = "ligtnin3/action", spawn = RAISE },
     codes = { "H", "J", "Q" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 3,
     mb = 53,

@@ -15,15 +15,15 @@ local searchsoul_sprite = asset.sprite("searchsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "invisible", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family.invisible, turns = 3 },
     custom = shuffle.custom,
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(searchman_sprite),
     sprite = searchsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     -- 0x0800E13E.

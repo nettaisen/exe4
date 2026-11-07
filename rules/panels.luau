@@ -36,7 +36,7 @@ local function LAVA_BURN(me: Object, player: boolean)
         local x, y = c.panel_x, c.panel_y
         me:heal(LAVA_HEAL, false)
         c:add_raw_damage("fire", LAVA_HEAL)
-        field.set_type(x, y, "normal")
+        field.set_type(x, y, PanelType.normal)
         return
     end
     BURN(me, player)
@@ -74,13 +74,13 @@ return {
         metal = { flags = { solid = true, on_field = true, metal = true }, unbreakable = true },
         grass = {
             flags = { solid = true, grass = true, on_field = true },
-            doubles = "fire",
+            doubles = Element.fire,
             stand = panel_types.grass(nil),
-            cleared_by = "fire",
+            cleared_by = Element.fire,
         },
         ice = {
             flags = { solid = true, ice = true, on_field = true },
-            doubles = "elec",
+            doubles = Element.elec,
             move_end = panel_types.ice_pushes({
                 {
                     [MoveDirection.none] = {},
@@ -103,7 +103,7 @@ return {
             flags = { solid = true, lava = true, on_field = true },
             expires = 960,
             burn = LAVA_BURN,
-            cleared_by = "aqua",
+            cleared_by = Element.aqua,
         },
         holy = { flags = { solid = true, holy = true, on_field = true }, damage_shift = 1 },
         pitfall = {
@@ -121,7 +121,7 @@ return {
     -- The types the engine's own code needs: the missing panel, which no type change reaches; what a break and a
     -- crack make (0x08009AEC and its kin: 1 and 3); the normal panel, what a mend, an expiry and a clearing leave
     -- (0x08009740, 0x08013058: 2).
-    roles = { missing = "missing", broken = "broken", cracked = "cracked", normal = "normal" },
+    roles = { missing = PanelType.missing, broken = PanelType.broken, cracked = PanelType.cracked, normal = PanelType.normal },
     start_visible = {
         { true, true, true, true, true, true, true, true },
         { true, true, true, true, true, true, true, true },
