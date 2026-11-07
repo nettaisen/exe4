@@ -384,7 +384,7 @@ end
 
 -- A panel the navi's chip lands right on: one a body stands on (solid) that isn't lava.
 local function landing(x: number, y: number): boolean
-    return field.solid(x, y) and kind_at(x, y) ~= "lava"
+    return field.solid(x, y) and kind_at(x, y) ~= PanelType.lava
 end
 
 -- 0x080234F8 (`landing_ahead`, class 9): the panel toward its enemies is a landing: in place; else a step to a panel
@@ -500,7 +500,7 @@ local FIRE = Element.fire
 local function lava_ahead(navi: Object, s: State)
     local ahead = panels.enemy_direction(navi) * 3
     local x, y = step_where(navi, function(x: number, y: number): boolean
-        return field.valid(x + ahead, y) and kind_at(x + ahead, y) == "lava"
+        return field.valid(x + ahead, y) and kind_at(x + ahead, y) == PanelType.lava
     end)
     if x == nil then
         x, y = before_enemies(navi, FIRE)
@@ -610,7 +610,7 @@ end
 local function no_hole_ahead(navi: Object, s: State)
     local dir = panels.enemy_direction(navi)
     local x, y = step_where(navi, function(x: number, y: number): boolean
-        return field.valid(x + dir, y) and kind_at(x + dir, y) ~= "hole"
+        return field.valid(x + dir, y) and kind_at(x + dir, y) ~= PanelType.hole
     end)
     if x ~= nil then
         return go(navi, s, x, y :: number)
@@ -701,7 +701,7 @@ local function panel_changed(navi: Object): boolean
     for y = 1, 3 do
         for x = 1, 6 do
             local p = field.panel(x, y)
-            if p ~= nil and p.alliance == navi.alliance and p.kind ~= "holy" and p.kind ~= "normal" then
+            if p ~= nil and p.alliance == navi.alliance and p.kind ~= PanelType.holy and p.kind ~= PanelType.normal then
                 return true
             end
         end
@@ -732,7 +732,7 @@ local function own_panel_ahead(navi: Object, s: State)
     local dir = panels.enemy_direction(navi)
     local x, y = step_where(navi, function(x: number, y: number): boolean
         local ahead = field.panel(x + dir, y)
-        return field.valid(x + dir, y) and ahead ~= nil and ahead.alliance == navi.alliance and ahead.kind ~= "holy"
+        return field.valid(x + dir, y) and ahead ~= nil and ahead.alliance == navi.alliance and ahead.kind ~= PanelType.holy
     end)
     go_or(navi, s, x, y, settle)
 end
@@ -885,7 +885,7 @@ end
 -- 0x08024830, 0x08024850: row `y` has a hole; has a panel that is none.
 local function row_has(y: number, hole: boolean): boolean
     for x = 1, 6 do
-        if (kind_at(x, y) == "hole") == hole then
+        if (kind_at(x, y) == PanelType.hole) == hole then
             return true
         end
     end

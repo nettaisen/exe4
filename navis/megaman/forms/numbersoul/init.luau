@@ -39,15 +39,15 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "plus", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.plus, turns = 3 },
     custom = soul.custom { built = hand },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(numberman_sprite, attachment.look { sprite = numberman_face_sprite, palette = 0 }),
     sprite = numbersoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     wears = OVERLAY,

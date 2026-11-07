@@ -11,8 +11,8 @@ local north_wind = require("../../../../objects/north_wind")
 
 local windsoul: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "special",
+    element = Element.null,
+    family = Family.special,
     class = "special",
     rarity = 0,
     mb = 5,

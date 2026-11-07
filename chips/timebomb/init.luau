@@ -12,8 +12,8 @@ local BOMB = countdown.variant { appear_anim = 0, idle_anim = 1, hp = 50, class 
 -- TimeBomb (EXE4 chip 0x061).
 local timebomb: Chip = {
     codes = { "J", "K", "L" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 2,
     mb = 55,

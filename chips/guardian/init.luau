@@ -55,8 +55,8 @@ local CONTROLLER = controller.make { id = "guardian/controller", statue = STATUE
 
 local chip: Chip = {
     codes = { "O" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "mega",
     rarity = 3,
     mb = 64,

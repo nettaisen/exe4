@@ -9,8 +9,8 @@ local lifesync = require("@self/controller")
 
 local chip: Chip = {
     codes = { "N", "Q", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 12,

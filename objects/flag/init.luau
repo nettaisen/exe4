@@ -27,7 +27,7 @@ local function take_damage(me: Object): number
         total += c:element_damage(e)
     end
     local p = field.panel(me.panel_x, me.panel_y)
-    if p and p.kind == "holy" then
+    if p and p.kind == PanelType.holy then
         total = (total + 1) // 2
     end
     local hp = me.hp - total

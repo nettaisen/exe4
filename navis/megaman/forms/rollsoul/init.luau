@@ -11,14 +11,14 @@ local rollsoul_sprite = asset.sprite("rollsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "recovery", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family.recovery, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(roll_sprite),
     sprite = rollsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its row of 0x080184F0: the buster on B, no A charge, Roll's arrow charged (routine 0x22, ./charge).
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
@@ -26,7 +26,7 @@ local form: FormDef = {
     -- when that is 0), with the heal's sparkle (effect row 7) and sound (0x9A), as the hand moves on past it.
     chip_used = function(navi: Object)
         local used = navi.attack_chip
-        if used ~= nil and used.family == "recovery" then
+        if used ~= nil and used.family == Family.recovery then
             return
         end
         local amount = navi.max_hp // 10

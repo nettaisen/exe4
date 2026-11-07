@@ -10,8 +10,8 @@ local fan = require("@self/fan")
 -- tick, 100 HP, its palette 0).
 local wind: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 1,
     mb = 10,
@@ -33,8 +33,8 @@ local wind: Chip = {
 -- rising after a tick, 100 HP, its palette 1).
 local fan_chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 1,
     mb = 10,

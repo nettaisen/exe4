@@ -9,8 +9,8 @@ local panel_chips = require("../lib/panel_chips")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 23,
@@ -19,7 +19,7 @@ local chip: Chip = {
     lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     dimming = panel_chips.hook(panel_changer.change {
-        panel = "hole",
+        panel = PanelType.hole,
         panels = "front",
         flicker = false,
         ticks = 0x40,

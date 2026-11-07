@@ -16,8 +16,8 @@ local ROW: { number } = { 220, 210, 200, 190, 180, 170, 160, 150, 140, 130, 120 
 
 local laserman: Chip = {
     codes = { "L" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 60,
@@ -32,8 +32,8 @@ local laserman: Chip = {
 
 local lasrmn_sp: Chip = {
     codes = { "L" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 80,
@@ -50,12 +50,12 @@ local lasrmn_sp: Chip = {
 
 local lasrmn_ds: Chip = {
     codes = { "L" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 80,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 20,
     cant_counter = true,
     lockout = 0,

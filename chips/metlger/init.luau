@@ -54,8 +54,8 @@ end
 -- MetlGer1 (EXE4 chip 0x0AF).
 local metlger1: Chip = {
     codes = { "A", "M", "P", "*" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "standard",
     rarity = 1,
     mb = 20,
@@ -71,8 +71,8 @@ local metlger1: Chip = {
 -- MetlGer2 (EXE4 chip 0x0B0).
 local metlger2: Chip = {
     codes = { "C", "E", "G", "*" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "standard",
     rarity = 2,
     mb = 28,
@@ -88,8 +88,8 @@ local metlger2: Chip = {
 -- MetlGer3 (EXE4 chip 0x0B1).
 local metlger3: Chip = {
     codes = { "I", "L", "Q", "*" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "standard",
     rarity = 3,
     mb = 36,

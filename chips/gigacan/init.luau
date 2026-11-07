@@ -25,14 +25,14 @@ local SHOT = projectile.variant {
     id = "gigacan/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = { flinch = true, back_far = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.blast,
 }
 
 local gigacan1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -47,8 +47,8 @@ local gigacan1: Chip = {
 
 local gigacan2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -63,8 +63,8 @@ local gigacan2: Chip = {
 
 local gigacan3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

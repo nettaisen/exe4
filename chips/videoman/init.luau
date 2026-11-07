@@ -15,8 +15,8 @@ local ROW: { number } = { 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30 }
 
 local videoman: Chip = {
     codes = { "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 44,
@@ -32,8 +32,8 @@ local videoman: Chip = {
 
 local videmn_sp: Chip = {
     codes = { "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 67,
@@ -50,12 +50,12 @@ local videmn_sp: Chip = {
 
 local videmn_ds: Chip = {
     codes = { "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 67,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 10,
     cant_counter = true,
     lockout = 0,

@@ -15,8 +15,8 @@ local ROW: { number } = { 130, 125, 120, 115, 110, 105, 100, 95, 90, 85, 80 }
 
 local kendoman: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 45,
@@ -32,8 +32,8 @@ local kendoman: Chip = {
 
 local kendmn_sp: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 75,
@@ -50,12 +50,12 @@ local kendmn_sp: Chip = {
 
 local kendmn_ds: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 75,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 20,
     cant_counter = true,
     lockout = 0,

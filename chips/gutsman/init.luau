@@ -16,8 +16,8 @@ local ROW: { number } = { 200, 190, 180, 170, 160, 150, 140, 130, 120, 110, 100 
 
 local gutsman: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "mega",
     rarity = 3,
     mb = 32,
@@ -33,8 +33,8 @@ local gutsman: Chip = {
 
 local gutsmn_sp: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "mega",
     rarity = 4,
     mb = 68,
@@ -51,12 +51,12 @@ local gutsmn_sp: Chip = {
 
 local gutsmn_ds: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "mega",
     rarity = 4,
     mb = 68,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

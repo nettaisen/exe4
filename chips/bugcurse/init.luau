@@ -12,10 +12,10 @@ local bug_curse_sprite = asset.sprite("bug-curse")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "bluemoon",
+    version = Version.bluemoon,
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "giga",
     rarity = 4,
     mb = 73,

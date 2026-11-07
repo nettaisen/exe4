@@ -86,7 +86,7 @@ local rules: Rules = {
         -- list's order, each in one of its colors (its definition's `colors`), its center at (x, y), turned
         -- `rotation` quarters clockwise, compressed or not.
         navicust_programs = schema.list({
-            program = schema.entry("navicust_programs"),
+            program = schema.entry(Collection.navicust_programs),
             color = { "white", "pink", "yellow", "red", "blue", "green" },
             x = schema.u8,
             y = schema.u8,
@@ -94,7 +94,7 @@ local rules: Rules = {
             compressed = schema.bool,
         }, 25),
         -- Their patch cards (./patch_cards): each card switched on and the slot it is in (a save's 0x464C, by slot).
-        patch_cards = schema.list({ card = schema.entry("patch_cards"), slot = schema.u8 }, patch_cards.SLOTS),
+        patch_cards = schema.list({ card = schema.entry(Collection.patch_cards), slot = schema.u8 }, patch_cards.SLOTS),
         -- How long the save took to delete each SP navi (./sp_chips: a battle's copy at 0x02037C80), by its SP chip,
         -- in frames; one not stated, deleted in no time.
         sp_times = schema.list({ chip = schema.chip, frames = schema.u16 }, 22),
@@ -152,7 +152,7 @@ local rules: Rules = {
             -- The version whose saves hold the chip (a version's own Giga chips: each version's game gives its own
             -- five, and a Giga chip isn't traded), which a ruleset's groups go by (./builds' `groups`). None: either
             -- version's (the e-Reader's Duo).
-            version = { "redsun", "bluemoon" },
+            version = { Version.redsun, Version.bluemoon },
             -- A chip a save can collect though no library lists it (./folder: an e-Reader card's: Duo, PrixPowr).
             collectible = schema.bool,
             -- What the auto battle AI reads of it (./auto_battle/place; the record's bytes 13, 14 and 23): how the navi
@@ -199,8 +199,8 @@ local rules: Rules = {
         form = {
             soul = {
                 family = {
-                    "recovery", "break", "wind", "invisible", "fire", "elec", "sword", "plus", "metal", "summon",
-                    "aqua", "wood",
+                    Family.recovery, Family["break"], Family.wind, Family.invisible, Family.fire, Family.elec, Family.sword, Family.plus, Family.metal, Family.summon,
+                    Family.aqua, Family.wood,
                 },
                 turns = schema.u8,
             },

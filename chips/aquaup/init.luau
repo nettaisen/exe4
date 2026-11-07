@@ -34,8 +34,8 @@ local RAISE = towers.controller { id = "aquaup/controller", strike = strike }
 local aquaup1: Chip = {
     action = spawners.action { id = "aquaup1/action", spawn = RAISE },
     codes = { "B", "S", "Z" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 1,
     mb = 22,
@@ -49,8 +49,8 @@ local aquaup1: Chip = {
 local aquaup2: Chip = {
     action = spawners.action { id = "aquaup2/action", spawn = RAISE },
     codes = { "I", "P", "U" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 28,
@@ -64,8 +64,8 @@ local aquaup2: Chip = {
 local aquaup3: Chip = {
     action = spawners.action { id = "aquaup3/action", spawn = RAISE },
     codes = { "F", "K", "W" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 3,
     mb = 34,

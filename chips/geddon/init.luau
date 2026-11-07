@@ -26,8 +26,8 @@ local POISON = quake.change { apply = quake.poison, show = quake.bubbles }
 -- Geddon1 (EXE4 chip 0x07B): a quake cracks every solid panel of the field, one every 8 ticks in a random order.
 local geddon1: Chip = {
     codes = { "J", "K", "W" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 34,
@@ -43,8 +43,8 @@ local geddon1: Chip = {
 -- every 8 ticks in a random order.
 local geddon2: Chip = {
     codes = { "N", "T", "Y" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 47,
@@ -60,8 +60,8 @@ local geddon2: Chip = {
 -- order.
 local geddon3: Chip = {
     codes = { "H", "Q", "U" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 62,

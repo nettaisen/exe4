@@ -33,5 +33,5 @@ return {
         -- The souls' own chips (0x160 on), as EXE6's special family.
         special = 15,
     },
-    non_elemental = "null",
+    non_elemental = Family.null,
 }

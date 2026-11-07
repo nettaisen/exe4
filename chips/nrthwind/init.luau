@@ -14,8 +14,8 @@ local DIMMING = controller.make { id = "nrthwind/controller", wind = north_wind,
 
 local chip: Chip = {
     codes = { "E", "N", "T", "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 33,

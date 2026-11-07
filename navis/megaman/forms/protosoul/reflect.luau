@@ -19,7 +19,7 @@ local REFLECTED = projectile.variant {
     id = "protosoul/reflect/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.charged,
 }
 local REFLECTED_Z = 0x14_0000

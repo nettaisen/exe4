@@ -15,8 +15,8 @@ local ROW: { number } = { 250, 240, 230, 220, 210, 200, 190, 180, 170, 160, 150 
 
 local woodman: Chip = {
     codes = { "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "mega",
     rarity = 3,
     mb = 50,
@@ -32,8 +32,8 @@ local woodman: Chip = {
 
 local woodmn_sp: Chip = {
     codes = { "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "mega",
     rarity = 4,
     mb = 76,
@@ -50,12 +50,12 @@ local woodmn_sp: Chip = {
 
 local woodmn_ds: Chip = {
     codes = { "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "mega",
     rarity = 4,
     mb = 76,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 40,
     cant_counter = true,
     lockout = 0,

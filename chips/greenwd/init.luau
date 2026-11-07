@@ -33,8 +33,8 @@ local RAISE = towers.controller { id = "greenwd/controller", strike = strike }
 local greenwd1: Chip = {
     action = spawners.action { id = "greenwd1/action", spawn = RAISE },
     codes = { "G", "J", "Y" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 1,
     mb = 35,
@@ -48,8 +48,8 @@ local greenwd1: Chip = {
 local greenwd2: Chip = {
     action = spawners.action { id = "greenwd2/action", spawn = RAISE },
     codes = { "D", "K", "P" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 2,
     mb = 40,
@@ -63,8 +63,8 @@ local greenwd2: Chip = {
 local greenwd3: Chip = {
     action = spawners.action { id = "greenwd3/action", spawn = RAISE },
     codes = { "E", "N", "P" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 3,
     mb = 45,

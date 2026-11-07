@@ -8,10 +8,10 @@ local navi = require("@self/navi")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "bluemoon",
+    version = Version.bluemoon,
     codes = { "Z" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "giga",
     rarity = 4,
     mb = 82,

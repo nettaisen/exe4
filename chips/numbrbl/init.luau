@@ -59,8 +59,8 @@ local CONTROLLER = common.make(
 local numbrbl1: Chip = {
     damage = { formula = "hp_last_digits" },
     codes = { "E", "L", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 28,
@@ -77,8 +77,8 @@ local numbrbl1: Chip = {
 local numbrbl2: Chip = {
     damage = { formula = "hp_last_digits" },
     codes = { "A", "E", "P" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 35,
@@ -95,8 +95,8 @@ local numbrbl2: Chip = {
 local numbrbl3: Chip = {
     damage = { formula = "hp_last_digits" },
     codes = { "L", "T", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 42,

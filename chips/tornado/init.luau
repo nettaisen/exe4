@@ -45,8 +45,8 @@ end
 local tornado_chip: Chip = {
     action = fan.action("tornado/action", attachment.look { sprite = FAN, palette = 0 }, single),
     codes = { "E", "L", "T" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 22,
@@ -60,8 +60,8 @@ local tornado_chip: Chip = {
 local static: Chip = {
     action = fan.action("static/action", attachment.look { sprite = FAN, palette = 1 }, spread),
     codes = { "B", "G", "Z", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 30,

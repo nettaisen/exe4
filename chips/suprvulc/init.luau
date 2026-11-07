@@ -24,8 +24,8 @@ local SHOT = bullet.variant {
 local suprvulc: Chip = {
     action = vulcan.action { id = "suprvulc/action", gun = GUN, shots = 12, shot = SHOT },
     codes = { "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 75,

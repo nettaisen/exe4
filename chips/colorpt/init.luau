@@ -9,8 +9,8 @@ local colorpt = require("@self/colorpt")
 -- palette 0, 10 each).
 local colorpt_chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = "standard",
     rarity = 1,
     mb = 25,
@@ -27,8 +27,8 @@ local colorpt_chip: Chip = {
 -- palette 4, the record's 1 times 4 as the point's init reads it, 0x080E7D46; 20 each).
 local dblpoint: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = "mega",
     rarity = 3,
     mb = 50,

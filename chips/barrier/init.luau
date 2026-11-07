@@ -9,8 +9,8 @@ local barriers = require("../lib/barriers")
 -- Barrier (EXE4 chip 0x087): a barrier of 10 HP (type 1).
 local barrier: Chip = {
     codes = { "A", "D", "Z", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 7,
@@ -26,8 +26,8 @@ local barrier: Chip = {
 -- Barr100 (EXE4 chip 0x088): a barrier of 100 HP (type 2).
 local barr100: Chip = {
     codes = { "P", "Q", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 27,
@@ -43,8 +43,8 @@ local barr100: Chip = {
 -- Barr200 (EXE4 chip 0x089): a barrier of 200 HP (type 3).
 local barr200: Chip = {
     codes = { "I", "O", "U" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 47,
@@ -60,8 +60,8 @@ local barr200: Chip = {
 -- LifeAura (EXE4 chip 0x0C9): an aura that stops every hit of less than 200 for 3000 ticks (type 6).
 local lifeaura: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 70,
@@ -76,10 +76,10 @@ local lifeaura: Chip = {
 -- BlakBarr (EXE4 chip 0x134, Red Sun's): a barrier of 150 HP, back whole 180 ticks after it is worn down (type 4).
 local blakbarr: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "redsun",
+    version = Version.redsun,
     codes = { "A" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "giga",
     rarity = 4,
     mb = 87,

@@ -138,8 +138,8 @@ end
 local slasher: Chip = {
     action = new.action { id = "slasher/action", state = { timer = schema.u16, target_x = schema.u8 }, update = update },
     codes = { "F", "H", "R" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 2,
     mb = 18,

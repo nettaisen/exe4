@@ -10,8 +10,8 @@ local widesht1: Chip = {
     -- Its wave 3.
     action = widesht.action("widesht1/action", widesht.wave(0x6_0000, false), 1),
     codes = { "C", "D", "E", "*" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 0,
     mb = 10,
@@ -26,8 +26,8 @@ local widesht2: Chip = {
     -- Its wave 4.
     action = widesht.action("widesht2/action", widesht.wave(0x6_8000, false), 1),
     codes = { "L", "M", "N" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 1,
     mb = 30,
@@ -42,8 +42,8 @@ local widesht3: Chip = {
     -- Its wave 5.
     action = widesht.action("widesht3/action", widesht.wave(0x7_0000, false), 1),
     codes = { "S", "T", "U" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 50,

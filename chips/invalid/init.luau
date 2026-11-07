@@ -10,8 +10,8 @@ local spawners = require("../lib/spawners")
 
 local invalid: Chip = {
     codes = {},
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "special",
     rarity = 0,
     mb = 5,

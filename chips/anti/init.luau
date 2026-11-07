@@ -12,8 +12,8 @@ local traps = require("../lib/traps")
 
 local antifire: Chip = {
     codes = { "K" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 2,
     mb = 58,
@@ -27,8 +27,8 @@ local antifire: Chip = {
 
 local antiwatr: Chip = {
     codes = { "D" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 54,
@@ -42,8 +42,8 @@ local antiwatr: Chip = {
 
 local antielec: Chip = {
     codes = { "H" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 59,
@@ -57,8 +57,8 @@ local antielec: Chip = {
 
 local antiwood: Chip = {
     codes = { "M" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 2,
     mb = 55,
@@ -72,8 +72,8 @@ local antiwood: Chip = {
 
 local antinavi: Chip = {
     codes = { "J", "M", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 44,
@@ -88,8 +88,8 @@ local antinavi: Chip = {
 
 local antidmg: Chip = {
     codes = { "K", "M", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 31,
@@ -105,8 +105,8 @@ local antidmg: Chip = {
 
 local antiswrd: Chip = {
     codes = { "C", "I", "N", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 2,
     mb = 43,
@@ -122,8 +122,8 @@ local antiswrd: Chip = {
 
 local antirecv: Chip = {
     codes = { "B", "D", "G", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 37,

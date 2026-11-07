@@ -8,8 +8,8 @@ local recov = require("@self/recov")
 
 local recov10: Chip = {
     codes = { "A", "L", "N", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 8,
@@ -23,8 +23,8 @@ local recov10: Chip = {
 
 local recov30: Chip = {
     codes = { "F", "H", "R", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 16,
@@ -38,8 +38,8 @@ local recov30: Chip = {
 
 local recov50: Chip = {
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 24,
@@ -53,8 +53,8 @@ local recov50: Chip = {
 
 local recov80: Chip = {
     codes = { "B", "J", "O", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 1,
     mb = 32,
@@ -68,8 +68,8 @@ local recov80: Chip = {
 
 local recov120: Chip = {
     codes = { "F", "J", "Q", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -83,8 +83,8 @@ local recov120: Chip = {
 
 local recov150: Chip = {
     codes = { "C", "T", "Z" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 2,
     mb = 48,
@@ -98,8 +98,8 @@ local recov150: Chip = {
 
 local recov200: Chip = {
     codes = { "H", "M", "W" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 2,
     mb = 56,
@@ -113,8 +113,8 @@ local recov200: Chip = {
 
 local recov300: Chip = {
     codes = { "J", "N", "Y" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 3,
     mb = 64,

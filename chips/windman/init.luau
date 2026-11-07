@@ -15,8 +15,8 @@ local ROW: { number } = { 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50 }
 
 local windman: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 3,
     mb = 48,
@@ -32,8 +32,8 @@ local windman: Chip = {
 
 local windmn_sp: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 4,
     mb = 64,
@@ -50,12 +50,12 @@ local windmn_sp: Chip = {
 
 local windmn_ds: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "mega",
     rarity = 4,
     mb = 64,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 20,
     cant_counter = true,
     lockout = 0,

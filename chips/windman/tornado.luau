@@ -82,12 +82,12 @@ local function sand(me: Object)
     local s = me.state :: State
     if not s.sandy then
         local p = field.panel(me.panel_x, me.panel_y)
-        if p == nil or p.kind ~= "pitfall" then
+        if p == nil or p.kind ~= PanelType.pitfall then
             return
         end
         s.sandy = true
         me.sprite.palette = 1
-        field.set_type(me.panel_x, me.panel_y, "normal")
+        field.set_type(me.panel_x, me.panel_y, PanelType.normal)
     end
     drop_sand(me)
 end

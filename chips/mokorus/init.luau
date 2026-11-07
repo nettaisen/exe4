@@ -10,8 +10,8 @@ local spawners = require("../lib/spawners")
 local mokorus1: Chip = {
     action = spawners.action { id = "mokorus1/action", spawn = moloko.spawner(0) },
     codes = { "C", "I", "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 14,
@@ -25,8 +25,8 @@ local mokorus1: Chip = {
 local mokorus2: Chip = {
     action = spawners.action { id = "mokorus2/action", spawn = moloko.spawner(2) },
     codes = { "G", "K", "U" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 28,
@@ -40,8 +40,8 @@ local mokorus2: Chip = {
 local mokorus3: Chip = {
     action = spawners.action { id = "mokorus3/action", spawn = moloko.spawner(4) },
     codes = { "O", "T", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 42,

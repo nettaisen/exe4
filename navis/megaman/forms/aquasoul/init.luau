@@ -16,21 +16,21 @@ local aquasoul_sprite = asset.sprite("aquasoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "aqua", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.aqua, turns = 3 },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(aquaman_sprite, attachment.look { sprite = aquaman_spout_sprite, palette = 0 }),
     sprite = aquasoul_sprite,
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 0,
     weapons = {
         buster = soul.buster,
         charge_shot = charge.weapon,
         a_charge = soul.chip_charge("aquasoul/charged-chip", { 20, 20, 20, 20, 20, 60 }),
     },
-    charged_chips = { { family = "aqua", damaging = true } },
+    charged_chips = { { family = Family.aqua, damaging = true } },
     charged_bonus = { doubles = true },
     palette = 0,
     mugshot = { normal = asset.mugshot("aquasoul") },

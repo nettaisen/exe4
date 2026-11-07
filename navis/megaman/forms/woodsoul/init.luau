@@ -39,8 +39,8 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "wood", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.wood, turns = 3 },
     custom = soul.custom {
         built = function(side: number)
             fold(side, false)
@@ -51,7 +51,7 @@ local form: FormDef = {
     revert = soul.revert,
     image = soul.image(woodman_sprite),
     sprite = woodsoul_sprite,
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     traits = { status_immune = true },

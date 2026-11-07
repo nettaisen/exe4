@@ -8,7 +8,7 @@
 
 local grass = {}
 
-local GRASS: PanelType = "grass"
+local GRASS: PanelType = PanelType.grass
 local TICKS = 10
 local ROW = 2
 local MORE: { { number } } = { { 2, 1 }, { 2, 3 }, { 5, 1 }, { 5, 3 } }
@@ -17,7 +17,7 @@ local MORE: { { number } } = { { 2, 1 }, { 2, 3 }, { 5, 1 }, { 5, 3 } }
 local function each(f: (x: number, y: number, p: Panel) -> ())
     local function one(x: number, y: number)
         local p = field.panel(x, y)
-        if p ~= nil and p.kind ~= "missing" then
+        if p ~= nil and p.kind ~= PanelType.missing then
             f(x, y, p)
         end
     end

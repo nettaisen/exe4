@@ -8,8 +8,8 @@ local action = require("./sonicbom/action")
 local sprsonic: Chip = {
     action = action.make("sprsonic/action", { flinch = true }, true),
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "special",
     rarity = 0,
     mb = 8,

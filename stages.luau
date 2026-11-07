@@ -12,13 +12,14 @@ local boulder = require("./objects/boulder")
 local flag = require("./objects/flag")
 local gear = require("./objects/gear")
 local wind = require("./objects/wind")
+local P = PanelType
 
 local stages: { [string]: StageDef } = {
     ["netbattle-1"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -28,9 +29,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-2"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -40,9 +41,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-3"] = {
         layout = {
-            "normal cracked normal normal cracked normal",
-            "normal normal normal normal normal normal",
-            "normal cracked normal normal cracked normal",
+            { P.normal, P.cracked, P.normal, P.normal, P.cracked, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.cracked, P.normal, P.normal, P.cracked, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -52,9 +53,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-4"] = {
         layout = {
-            "normal cracked normal normal cracked normal",
-            "normal normal normal normal normal normal",
-            "normal cracked normal normal cracked normal",
+            { P.normal, P.cracked, P.normal, P.normal, P.cracked, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.cracked, P.normal, P.normal, P.cracked, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -64,9 +65,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-5"] = {
         layout = {
-            "normal cracked cracked cracked cracked normal",
-            "normal normal normal normal normal normal",
-            "cracked cracked normal normal cracked cracked",
+            { P.normal, P.cracked, P.cracked, P.cracked, P.cracked, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -76,9 +77,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-6"] = {
         layout = {
-            "normal cracked cracked cracked cracked normal",
-            "normal normal normal normal normal normal",
-            "cracked cracked normal normal cracked cracked",
+            { P.normal, P.cracked, P.cracked, P.cracked, P.cracked, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -88,9 +89,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-7"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "cracked cracked cracked cracked cracked cracked",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -100,9 +101,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-8"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "cracked cracked cracked cracked cracked cracked",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -112,9 +113,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-9"] = {
         layout = {
-            "cracked cracked normal normal cracked cracked",
-            "normal normal normal normal normal normal",
-            "cracked cracked normal normal cracked cracked",
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -124,9 +125,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-10"] = {
         layout = {
-            "cracked cracked normal normal cracked cracked",
-            "normal normal normal normal normal normal",
-            "cracked cracked normal normal cracked cracked",
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -136,9 +137,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-11"] = {
         layout = {
-            "missing normal normal normal normal missing",
-            "normal normal normal normal normal normal",
-            "missing normal normal normal normal missing",
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -148,9 +149,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-12"] = {
         layout = {
-            "missing normal normal normal normal missing",
-            "normal normal normal normal normal normal",
-            "missing normal normal normal normal missing",
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -160,9 +161,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-13"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -172,9 +173,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-14"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -184,9 +185,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-15"] = {
         layout = {
-            "normal normal missing missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing missing normal normal",
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -196,9 +197,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-16"] = {
         layout = {
-            "normal normal missing missing normal normal",
-            "normal normal normal normal normal normal",
-            "normal normal missing missing normal normal",
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -208,9 +209,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-17"] = {
         layout = {
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -220,9 +221,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-18"] = {
         layout = {
-            "normal missing normal normal missing normal",
-            "normal normal normal normal normal normal",
-            "normal missing normal normal missing normal",
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -232,9 +233,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-19"] = {
         layout = {
-            "normal normal missing missing normal normal",
-            "normal normal normal normal normal normal",
-            "missing normal normal normal normal missing",
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -244,9 +245,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-20"] = {
         layout = {
-            "normal normal missing missing normal normal",
-            "normal normal normal normal normal normal",
-            "missing normal normal normal normal missing",
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -256,9 +257,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-21"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -273,9 +274,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-22"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -290,9 +291,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-23"] = {
         layout = {
-            "normal normal grass grass normal normal",
-            "normal grass grass grass grass normal",
-            "normal normal grass grass normal normal",
+            { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -302,9 +303,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-24"] = {
         layout = {
-            "normal normal grass grass normal normal",
-            "normal grass grass grass grass normal",
-            "normal normal grass grass normal normal",
+            { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
+            { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
+            { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -314,9 +315,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-25"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "normal normal normal normal normal normal",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -331,9 +332,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-26"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "normal normal normal normal normal normal",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -348,9 +349,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-27"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "normal normal normal normal normal normal",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -365,9 +366,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-28"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "normal normal normal normal normal normal",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -382,9 +383,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-29"] = {
         layout = {
-            "normal grass normal normal grass normal",
-            "grass normal grass grass normal grass",
-            "normal grass normal normal grass normal",
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
+            { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -399,9 +400,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-30"] = {
         layout = {
-            "normal grass normal normal grass normal",
-            "grass normal grass grass normal grass",
-            "normal grass normal normal grass normal",
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
+            { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -416,9 +417,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-31"] = {
         layout = {
-            "normal grass normal normal grass normal",
-            "grass normal grass grass normal grass",
-            "normal grass normal normal grass normal",
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
+            { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -433,9 +434,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-32"] = {
         layout = {
-            "normal grass normal normal grass normal",
-            "grass normal grass grass normal grass",
-            "normal grass normal normal grass normal",
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
+            { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
+            { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -450,9 +451,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-33"] = {
         layout = {
-            "metal metal metal metal metal metal",
-            "metal metal metal metal metal metal",
-            "metal metal metal metal metal metal",
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -467,9 +468,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-34"] = {
         layout = {
-            "metal metal metal metal metal metal",
-            "metal metal metal metal metal metal",
-            "metal metal metal metal metal metal",
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -484,9 +485,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-35"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "metal metal metal metal metal metal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -501,9 +502,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-36"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "metal metal metal metal metal metal",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -518,9 +519,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-37"] = {
         layout = {
-            "cracked metal cracked cracked metal cracked",
-            "metal metal metal metal metal metal",
-            "cracked metal cracked cracked metal cracked",
+            { P.cracked, P.metal, P.cracked, P.cracked, P.metal, P.cracked },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.cracked, P.metal, P.cracked, P.cracked, P.metal, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -530,9 +531,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-38"] = {
         layout = {
-            "cracked metal cracked cracked metal cracked",
-            "metal metal metal metal metal metal",
-            "cracked metal cracked cracked metal cracked",
+            { P.cracked, P.metal, P.cracked, P.cracked, P.metal, P.cracked },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.cracked, P.metal, P.cracked, P.cracked, P.metal, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -542,9 +543,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-39"] = {
         layout = {
-            "grass grass pitfall pitfall grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass pitfall pitfall grass grass",
+            { P.grass, P.grass, P.pitfall, P.pitfall, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.pitfall, P.pitfall, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -554,9 +555,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-40"] = {
         layout = {
-            "grass grass pitfall pitfall grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass pitfall pitfall grass grass",
+            { P.grass, P.grass, P.pitfall, P.pitfall, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.pitfall, P.pitfall, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -566,9 +567,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-41"] = {
         layout = {
-            "pitfall grass pitfall pitfall grass pitfall",
-            "grass grass grass grass grass grass",
-            "pitfall grass pitfall pitfall grass pitfall",
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -578,9 +579,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-42"] = {
         layout = {
-            "pitfall grass pitfall pitfall grass pitfall",
-            "grass grass grass grass grass grass",
-            "pitfall grass pitfall pitfall grass pitfall",
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -590,9 +591,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-43"] = {
         layout = {
-            "pitfall pitfall grass grass pitfall pitfall",
-            "grass grass grass grass grass grass",
-            "pitfall pitfall grass grass pitfall pitfall",
+            { P.pitfall, P.pitfall, P.grass, P.grass, P.pitfall, P.pitfall },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.pitfall, P.pitfall, P.grass, P.grass, P.pitfall, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -602,9 +603,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-44"] = {
         layout = {
-            "pitfall pitfall grass grass pitfall pitfall",
-            "grass grass grass grass grass grass",
-            "pitfall pitfall grass grass pitfall pitfall",
+            { P.pitfall, P.pitfall, P.grass, P.grass, P.pitfall, P.pitfall },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.pitfall, P.pitfall, P.grass, P.grass, P.pitfall, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -614,9 +615,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-45"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -626,9 +627,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-46"] = {
         layout = {
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
-            "normal ice ice ice ice normal",
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
+            { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -638,9 +639,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-47"] = {
         layout = {
-            "missing ice ice ice ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice ice ice ice missing",
+            { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -650,9 +651,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-48"] = {
         layout = {
-            "missing ice ice ice ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice ice ice ice missing",
+            { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -662,9 +663,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-49"] = {
         layout = {
-            "ice ice ice ice ice missing",
-            "ice ice ice ice ice ice",
-            "missing ice ice ice ice ice",
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -674,9 +675,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-50"] = {
         layout = {
-            "ice ice ice ice ice missing",
-            "ice ice ice ice ice ice",
-            "missing ice ice ice ice ice",
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -686,9 +687,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-51"] = {
         layout = {
-            "ice ice ice missing ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice missing ice ice ice",
+            { P.ice, P.ice, P.ice, P.missing, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -698,9 +699,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-52"] = {
         layout = {
-            "ice ice ice missing ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice missing ice ice ice",
+            { P.ice, P.ice, P.ice, P.missing, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.missing, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -710,9 +711,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-53"] = {
         layout = {
-            "ice ice missing ice ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice ice missing ice ice",
+            { P.ice, P.ice, P.missing, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.missing, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -722,9 +723,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-54"] = {
         layout = {
-            "ice ice missing ice ice ice",
-            "ice ice ice ice ice ice",
-            "ice ice ice missing ice ice",
+            { P.ice, P.ice, P.missing, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.ice, P.ice, P.missing, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -734,9 +735,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-55"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -746,9 +747,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-56"] = {
         layout = {
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
-            "normal normal poison poison normal normal",
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
+            { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -758,9 +759,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-57"] = {
         layout = {
-            "normal poison poison poison poison normal",
-            "normal poison poison poison poison normal",
-            "normal poison poison poison poison normal",
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -770,9 +771,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-58"] = {
         layout = {
-            "normal poison poison poison poison normal",
-            "normal poison poison poison poison normal",
-            "normal poison poison poison poison normal",
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
+            { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -782,9 +783,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-59"] = {
         layout = {
-            "grass grass lava lava grass grass",
-            "grass lava lava lava lava grass",
-            "grass grass lava lava grass grass",
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.grass, P.lava, P.lava, P.lava, P.lava, P.grass },
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -794,9 +795,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-60"] = {
         layout = {
-            "grass grass lava lava grass grass",
-            "grass lava lava lava lava grass",
-            "grass grass lava lava grass grass",
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.grass, P.lava, P.lava, P.lava, P.lava, P.grass },
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -806,9 +807,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-61"] = {
         layout = {
-            "grass grass lava lava grass grass",
-            "grass grass lava lava grass grass",
-            "lava grass grass grass grass lava",
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.lava, P.grass, P.grass, P.grass, P.grass, P.lava },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -818,9 +819,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-62"] = {
         layout = {
-            "grass grass lava lava grass grass",
-            "grass grass lava lava grass grass",
-            "lava grass grass grass grass lava",
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
+            { P.lava, P.grass, P.grass, P.grass, P.grass, P.lava },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -830,9 +831,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-63"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -842,9 +843,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-64"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -854,9 +855,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-65"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "holy holy holy holy holy holy",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.holy, P.holy, P.holy, P.holy, P.holy, P.holy },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -866,9 +867,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-66"] = {
         layout = {
-            "normal normal normal normal normal normal",
-            "holy holy holy holy holy holy",
-            "normal normal normal normal normal normal",
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.holy, P.holy, P.holy, P.holy, P.holy, P.holy },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -878,9 +879,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-67"] = {
         layout = {
-            "normal holy normal normal holy normal",
-            "normal holy normal normal holy normal",
-            "normal holy normal normal holy normal",
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -890,9 +891,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-68"] = {
         layout = {
-            "normal holy normal normal holy normal",
-            "normal holy normal normal holy normal",
-            "normal holy normal normal holy normal",
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
+            { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -902,9 +903,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-69"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -914,9 +915,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-70"] = {
         layout = {
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
-            "cracked cracked cracked cracked cracked cracked",
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
+            { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -926,9 +927,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-71"] = {
         layout = {
-            "pitfall pitfall pitfall pitfall pitfall pitfall",
-            "pitfall grass pitfall pitfall grass pitfall",
-            "pitfall pitfall pitfall pitfall pitfall pitfall",
+            { P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall },
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
+            { P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -938,9 +939,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-72"] = {
         layout = {
-            "pitfall pitfall pitfall pitfall pitfall pitfall",
-            "pitfall grass pitfall pitfall grass pitfall",
-            "pitfall pitfall pitfall pitfall pitfall pitfall",
+            { P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall },
+            { P.pitfall, P.grass, P.pitfall, P.pitfall, P.grass, P.pitfall },
+            { P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.pitfall },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -950,9 +951,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-73"] = {
         layout = {
-            "ice ice ice ice ice ice",
-            "ice missing ice ice missing ice",
-            "ice ice ice ice ice ice",
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.missing, P.ice, P.ice, P.missing, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -962,9 +963,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-74"] = {
         layout = {
-            "ice ice ice ice ice ice",
-            "ice missing ice ice missing ice",
-            "ice ice ice ice ice ice",
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
+            { P.ice, P.missing, P.ice, P.ice, P.missing, P.ice },
+            { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -974,9 +975,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-75"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -986,9 +987,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-76"] = {
         layout = {
-            "poison poison poison poison poison poison",
-            "poison normal poison poison normal poison",
-            "poison poison poison poison poison poison",
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -998,9 +999,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-77"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass lava grass grass lava grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.lava, P.grass, P.grass, P.lava, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1015,9 +1016,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-78"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass lava grass grass lava grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.lava, P.grass, P.grass, P.lava, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1032,9 +1033,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-79"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass lava grass grass lava grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.lava, P.grass, P.grass, P.lava, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1049,9 +1050,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-80"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass lava grass grass lava grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.lava, P.grass, P.grass, P.lava, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1066,9 +1067,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-81"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1083,9 +1084,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-82"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1100,9 +1101,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-83"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1117,9 +1118,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-84"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "grass pitfall pitfall pitfall pitfall grass",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.grass, P.pitfall, P.pitfall, P.pitfall, P.pitfall, P.grass },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1134,9 +1135,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-85"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1151,9 +1152,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-86"] = {
         layout = {
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
-            "ice ice normal normal ice ice",
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
+            { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1168,9 +1169,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-87"] = {
         layout = {
-            "missing normal normal normal normal missing",
-            "normal normal normal normal normal normal",
-            "normal normal missing missing normal normal",
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1185,9 +1186,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-88"] = {
         layout = {
-            "missing normal normal normal normal missing",
-            "normal normal normal normal normal normal",
-            "normal normal missing missing normal normal",
+            { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
+            { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
+            { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1202,9 +1203,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-89"] = {
         layout = {
-            "metal metal metal metal metal metal",
-            "metal cracked cracked cracked cracked metal",
-            "metal metal metal metal metal metal",
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.cracked, P.cracked, P.cracked, P.cracked, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1219,9 +1220,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-90"] = {
         layout = {
-            "metal metal metal metal metal metal",
-            "metal cracked cracked cracked cracked metal",
-            "metal metal metal metal metal metal",
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
+            { P.metal, P.cracked, P.cracked, P.cracked, P.cracked, P.metal },
+            { P.metal, P.metal, P.metal, P.metal, P.metal, P.metal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1236,9 +1237,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-91"] = {
         layout = {
-            "grass grass poison poison grass grass",
-            "grass poison poison poison poison grass",
-            "grass grass poison poison grass grass",
+            { P.grass, P.grass, P.poison, P.poison, P.grass, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.grass, P.poison, P.poison, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1253,9 +1254,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-92"] = {
         layout = {
-            "grass grass poison poison grass grass",
-            "grass poison poison poison poison grass",
-            "grass grass poison poison grass grass",
+            { P.grass, P.grass, P.poison, P.poison, P.grass, P.grass },
+            { P.grass, P.poison, P.poison, P.poison, P.poison, P.grass },
+            { P.grass, P.grass, P.poison, P.poison, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1270,9 +1271,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-93"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "poison poison poison poison poison poison",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1287,9 +1288,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-94"] = {
         layout = {
-            "grass grass grass grass grass grass",
-            "poison poison poison poison poison poison",
-            "grass grass grass grass grass grass",
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
+            { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
+            { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1304,9 +1305,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-95"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,
@@ -1321,9 +1322,9 @@ local stages: { [string]: StageDef } = {
     },
     ["netbattle-96"] = {
         layout = {
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
-            "normal normal holy holy normal normal",
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
+            { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
         mode = 0,

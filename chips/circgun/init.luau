@@ -11,8 +11,8 @@ local collision = require("../rules/collision")
 -- CircGun1 (EXE4 chip 0x042): a step every 7 ticks.
 local circgun1: Chip = {
     codes = { "H", "T", "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 28,
@@ -28,8 +28,8 @@ local circgun1: Chip = {
 -- CircGun2 (EXE4 chip 0x043): a step every 5 ticks.
 local circgun2: Chip = {
     codes = { "D", "G", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -45,8 +45,8 @@ local circgun2: Chip = {
 -- CircGun3 (EXE4 chip 0x044): a step every 3 ticks.
 local circgun3: Chip = {
     codes = { "J", "M", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 52,

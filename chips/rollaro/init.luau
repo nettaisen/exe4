@@ -15,8 +15,8 @@ end
 -- RollAro1 (EXE4 chip 0x097).
 local rollaro1: Chip = {
     codes = { "A", "F", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 32,
@@ -33,8 +33,8 @@ local rollaro1: Chip = {
 -- RollAro2 (EXE4 chip 0x098).
 local rollaro2: Chip = {
     codes = { "D", "R", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 38,
@@ -51,8 +51,8 @@ local rollaro2: Chip = {
 -- RollAro3 (EXE4 chip 0x099).
 local rollaro3: Chip = {
     codes = { "Q", "Y", "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 44,

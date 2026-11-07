@@ -15,8 +15,8 @@ local ROW: { number } = { 240, 230, 220, 210, 200, 190, 180, 170, 160, 150, 140 
 
 local shademan: Chip = {
     codes = { "X" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 73,
@@ -31,8 +31,8 @@ local shademan: Chip = {
 
 local shadmn_sp: Chip = {
     codes = { "X" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 88,
@@ -49,12 +49,12 @@ local shadmn_sp: Chip = {
 
 local shadmn_ds: Chip = {
     codes = { "X" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 4,
     mb = 88,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

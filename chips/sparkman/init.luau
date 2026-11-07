@@ -15,8 +15,8 @@ local ROW: { number } = { 200, 190, 180, 170, 160, 150, 140, 130, 120, 110, 100 
 
 local sparkman: Chip = {
     codes = { "S" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 55,
@@ -32,8 +32,8 @@ local sparkman: Chip = {
 
 local sprkmn_sp: Chip = {
     codes = { "S" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 4,
     mb = 77,
@@ -50,12 +50,12 @@ local sprkmn_sp: Chip = {
 
 local sprkmn_ds: Chip = {
     codes = { "S" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 4,
     mb = 77,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

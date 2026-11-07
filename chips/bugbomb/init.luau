@@ -57,8 +57,8 @@ local KIND = common.make_kind("bugbomb/bomb", {
 local bugbomb: Chip = {
     action = bombs.throw { id = "bugbomb/action", held = HELD, held_anim = HELD_ANIM, thrower = common.thrower(KIND) },
     codes = { "B", "G", "Z", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 30,

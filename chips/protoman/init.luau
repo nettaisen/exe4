@@ -15,8 +15,8 @@ local ROW: { number } = { 240, 230, 220, 210, 200, 190, 180, 170, 160, 150, 140 
 
 local protoman: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 3,
     mb = 54,
@@ -32,8 +32,8 @@ local protoman: Chip = {
 
 local protom_sp: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 4,
     mb = 79,
@@ -50,12 +50,12 @@ local protom_sp: Chip = {
 
 local protom_ds: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 4,
     mb = 79,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 30,
     cant_counter = true,
     lockout = 0,

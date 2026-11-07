@@ -12,8 +12,8 @@ local suprspr1: Chip = {
     -- Its wave 6.
     action = widesht.action("suprspr1/action", widesht.wave(0x6_0000, true), 3),
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -29,8 +29,8 @@ local suprspr2: Chip = {
     -- Its wave 7.
     action = widesht.action("suprspr2/action", widesht.wave(0x6_8000, true), 3),
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -46,8 +46,8 @@ local suprspr3: Chip = {
     -- Its wave 8.
     action = widesht.action("suprspr3/action", widesht.wave(0x7_0000, true), 3),
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

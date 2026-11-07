@@ -91,7 +91,7 @@ dark.change = change.make {
 function dark.hp_emptied(side: number, navi: Object): boolean
     local s = state()
     local form = form_of(side)
-    if s.dark_soul_spent or form == nil or battle.player(side) ~= navi or battle.emotion(side) ~= "evil" then
+    if s.dark_soul_spent or form == nil or battle.player(side) ~= navi or battle.emotion(side) ~= Emotion.evil then
         return false
     end
     s.dark_soul_spent = true

@@ -27,7 +27,7 @@ local SHOT = shot.variant {
     id = "gutssoul/machine-gun/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = {},
-    element = "null",
+    element = Element.null,
     spark = sparks.charged,
 }
 -- Its shots' damage word: 5 damage, counter strength 5, and they can't counter (0x85).

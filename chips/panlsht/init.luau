@@ -125,8 +125,8 @@ end
 -- PanlSht1 (EXE4 chip 0x0B2): the panel in front.
 local panlsht1: Chip = {
     codes = { "A", "H", "S", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 1,
     mb = 19,
@@ -142,8 +142,8 @@ local panlsht1: Chip = {
 -- PanlSht2 (EXE4 chip 0x0B3): the user's row.
 local panlsht2: Chip = {
     codes = { "C", "G", "T", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 25,
@@ -159,8 +159,8 @@ local panlsht2: Chip = {
 -- PanlSht3 (EXE4 chip 0x0B4): the four panels around the user.
 local panlsht3: Chip = {
     codes = { "F", "J", "N", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 3,
     mb = 31,

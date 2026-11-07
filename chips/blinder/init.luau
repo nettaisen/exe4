@@ -10,8 +10,8 @@ local statuses = require("../rules/status")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 9,

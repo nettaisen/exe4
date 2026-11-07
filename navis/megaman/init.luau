@@ -30,7 +30,7 @@ local megaman_sprite = asset.sprite("megaman")
 
 local navi: NaviDef = {
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     -- (EXE4's buster adds 1 to Attack itself: ./weapons/buster.)
     buster_bonus = 0,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

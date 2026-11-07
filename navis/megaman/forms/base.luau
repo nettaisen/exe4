@@ -14,7 +14,7 @@ local megaman_sprite = asset.sprite("megaman")
 local form: FormDef = {
     base = true,
     sprite = megaman_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },
     palette = 0,

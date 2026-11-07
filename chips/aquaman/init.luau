@@ -15,8 +15,8 @@ local ROW: { number } = { 180, 170, 160, 150, 140, 130, 120, 110, 100, 90, 80 }
 
 local aquaman: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 3,
     mb = 41,
@@ -32,8 +32,8 @@ local aquaman: Chip = {
 
 local aquamn_sp: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 4,
     mb = 63,
@@ -50,12 +50,12 @@ local aquamn_sp: Chip = {
 
 local aquamn_ds: Chip = {
     codes = { "A" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 4,
     mb = 63,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 20,
     cant_counter = true,
     lockout = 0,

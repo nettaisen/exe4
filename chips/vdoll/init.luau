@@ -11,8 +11,8 @@ local doll = require("@self/doll")
 local vdoll: Chip = {
     action = bombs.throw { id = "vdoll/action", held = bombs.held, thrower = doll.thrower() },
     codes = { "I", "O", "Y" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 3,
     mb = 58,

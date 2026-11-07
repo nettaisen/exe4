@@ -23,8 +23,8 @@ end
 -- GutPnch1 (EXE4 chip 0x09A).
 local gutpnch1: Chip = {
     codes = { "B", "E", "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 22,
@@ -41,8 +41,8 @@ local gutpnch1: Chip = {
 -- GutPnch2 (EXE4 chip 0x09B).
 local gutpnch2: Chip = {
     codes = { "G", "P", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 36,
@@ -59,8 +59,8 @@ local gutpnch2: Chip = {
 -- GutPnch3 (EXE4 chip 0x09C).
 local gutpnch3: Chip = {
     codes = { "M", "Q", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 50,

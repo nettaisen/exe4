@@ -21,8 +21,8 @@ local SHIELD = shield.look { anim = 0 }
 local guard1: Chip = {
     action = guard.action { id = "guard1/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "A", "L", "V", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 4,
@@ -36,8 +36,8 @@ local guard1: Chip = {
 local guard2: Chip = {
     action = guard.action { id = "guard2/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "C", "G", "P", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 10,
@@ -51,8 +51,8 @@ local guard2: Chip = {
 local guard3: Chip = {
     action = guard.action { id = "guard3/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "F", "R", "T", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 16,

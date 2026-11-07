@@ -90,8 +90,8 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", LOOK)
 local blkbomb: Chip = {
     action = bombs.throw { id = "blkbomb/action", held = HELD, thrower = black_bomb.thrower(KIND) },
     codes = { "D", "H", "Z" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 3,
     mb = 55,

@@ -37,8 +37,8 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "wind", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family.wind, turns = 3 },
     custom = soul.custom { built = hand },
     chip = chip,
     change = chip.action,
@@ -46,7 +46,7 @@ local form: FormDef = {
     -- WindMan's image holds his swirl as it comes (attachment row 0x34: 10-28, palette 0).
     image = soul.image(windman_sprite, attachment.look { sprite = windman_swirl_sprite, palette = 0 }),
     sprite = windsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- 0x0800E0F4: air and float shoes (flags 0x10, 0x20), a floating navi's body (row 0x10; EXE4's retype sets what it

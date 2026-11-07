@@ -13,10 +13,10 @@ local CONTROLLER = common.make { id = "holydrem/controller", stand_in = stand_in
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "redsun",
+    version = Version.redsun,
     codes = { "H" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "giga",
     rarity = 4,
     mb = 92,

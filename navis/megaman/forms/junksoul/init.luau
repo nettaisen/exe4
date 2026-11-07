@@ -18,15 +18,15 @@ local junksoul_sprite = asset.sprite("junksoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "bluemoon",
-    soul = { family = "summon", turns = 3 },
+    version = Version.bluemoon,
+    soul = { family = Family.summon, turns = 3 },
     custom = recycle.custom,
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(junkman_sprite),
     sprite = junksoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     -- 0x0800E146: the hit (attack 3 through 0x080CD81E, which runs while dimmed), anchored at his panel, its

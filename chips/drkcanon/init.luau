@@ -22,14 +22,14 @@ local SHOT = projectile.variant {
     id = "drkcanon/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = { flinch = true, flash = true },
-    element = "null",
+    element = Element.null,
     spark = sparks.impact,
 }
 
 local drkcanon: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 4,
     mb = 99,

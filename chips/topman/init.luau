@@ -15,8 +15,8 @@ local ROW: { number } = { 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30 }
 
 local topman: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "mega",
     rarity = 3,
     mb = 54,
@@ -32,8 +32,8 @@ local topman: Chip = {
 
 local topmn_sp: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "mega",
     rarity = 4,
     mb = 71,
@@ -50,12 +50,12 @@ local topmn_sp: Chip = {
 
 local topmn_ds: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "metal",
+    element = Element.null,
+    family = Family.metal,
     class = "mega",
     rarity = 4,
     mb = 71,
-    damage = { formula = "count", of = { panels = "hole" }, by_count = navi_chips.by_holes(ROW) },
+    damage = { formula = "count", of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
     counter = 10,
     cant_counter = true,
     lockout = 0,

@@ -8,8 +8,8 @@ local action = require("@self/action")
 local sonicbom: Chip = {
     action = action.make("sonicbom/action", { flinch = true, flash = true }, false),
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "special",
     rarity = 0,
     mb = 8,

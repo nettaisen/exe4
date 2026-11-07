@@ -15,8 +15,8 @@ local EFFECT = effects.hush(statuses.blind_4, collision.guard_breaking, collisio
 
 local chip: Chip = {
     codes = { "C", "M", "R", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 1,
     mb = 20,

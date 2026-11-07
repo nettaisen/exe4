@@ -14,7 +14,7 @@ local tornado = {}
 local SPRITE = asset.sprite("tornado")
 local SOUND = asset.sound("tornado")
 -- SandRing's pitfall: twice the re-arms, its own look, and normal after.
-local PITFALL: PanelType, NORMAL: PanelType = "pitfall", "normal"
+local PITFALL: PanelType, NORMAL: PanelType = PanelType.pitfall, PanelType.normal
 local PITFALL_PALETTE = 2
 local REARM = 4
 local HIT_MOD: HitModifier = { flinch = true }

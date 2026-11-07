@@ -101,8 +101,8 @@ local CONTROLLER = navi_chips.controller {
 
 local chip: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     -- A save can collect it (rules/folder), though no library lists it: an e-Reader card's chip.
     collectible = true,

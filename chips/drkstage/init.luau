@@ -11,7 +11,7 @@ local panel_changer = require("../objects/panel_changer")
 
 -- Row 12: the own area to holes.
 local HOLES = panel_changer.change {
-    panel = "hole",
+    panel = PanelType.hole,
     panels = "all",
     flicker = false,
     ticks = 30,
@@ -23,7 +23,7 @@ local HOLES = panel_changer.change {
 
 -- Row 13: the other side's area to poison.
 local POISON = panel_changer.change {
-    panel = "poison",
+    panel = PanelType.poison,
     panels = "all",
     flicker = true,
     ticks = 30,
@@ -62,8 +62,8 @@ local controller = new.kind {
 
 local drkstage: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 4,
     mb = 99,

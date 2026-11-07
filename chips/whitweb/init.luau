@@ -10,8 +10,8 @@ local web = require("@self/web")
 local whitweb1: Chip = {
     action = spawners.action { id = "whitweb1/action", spawn = web.spawner(1) },
     codes = { "D", "L", "R", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 0,
     mb = 26,
@@ -25,8 +25,8 @@ local whitweb1: Chip = {
 local whitweb2: Chip = {
     action = spawners.action { id = "whitweb2/action", spawn = web.spawner(2) },
     codes = { "C", "E", "Y", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 1,
     mb = 36,
@@ -40,8 +40,8 @@ local whitweb2: Chip = {
 local whitweb3: Chip = {
     action = spawners.action { id = "whitweb3/action", spawn = web.spawner(3) },
     codes = { "K", "O", "V", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 2,
     mb = 46,

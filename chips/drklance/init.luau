@@ -10,8 +10,8 @@ local spawners = require("../lib/spawners")
 
 local drklance: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 4,
     mb = 99,

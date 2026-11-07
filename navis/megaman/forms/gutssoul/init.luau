@@ -36,15 +36,15 @@ end
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "redsun",
-    soul = { family = "break", turns = 3 },
+    version = Version.redsun,
+    soul = { family = Family["break"], turns = 3 },
     custom = soul.custom { built = hand },
     chip = chip,
     change = chip.action,
     revert = soul.revert,
     image = soul.image(gutsman_sprite),
     sprite = gutssoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     weapons = { buster = soul.buster, charge_shot = charge.weapon },
     -- Six B presses, each within 10 ticks of the last, ask for the machine gun (request 0x20: the role
