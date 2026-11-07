@@ -99,7 +99,7 @@ function elem.action(spec: ElemSpec): Action
                 paralyzes = raged,
                 attack_480 = spec.attack_480 == true,
                 while_dimmed = false,
-                leaves = leaves,
+                leaves = if leaves then leaves.name else nil,
                 palette = spec.palette,
                 hit = false,
                 sent = false,
