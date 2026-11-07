@@ -65,7 +65,7 @@ local function swing(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -86,7 +86,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -95,20 +95,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 videoman.kind = new.kind {
     id = "videoman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080C76EC: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C7710: a puff 16 pixels above him (effect row 0x13); the controller moves on; he is freed.

@@ -131,20 +131,20 @@ local function tick(me: Object)
         return
     end
     drop(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 quake.kind = new.kind {
     id = "gutsman/quake",
-    pool = "attack",
+    pool = Pool.attack,
     state = { cracks_all = schema.bool },
     -- 0x080D055C: by its state.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080D057C: on a solid panel, on; else gone.
-            me:set_lifecycle(if field.solid(me.panel_x, me.panel_y) then "update" else "destroy")
-        elseif l == "update" then
+            if field.solid(me.panel_x, me.panel_y) then me:enter_update() else me:enter_destroy() end
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -172,11 +172,11 @@ shuffle.custom = new.record(soul_custom.SOUL_CUSTOM, {
                 local count = custom.window_tick(side) - 1
                 if count % STEP == 0 then
                     if count < LAST then
-                        custom.set_button_state(side, BUTTON, "selected")
+                        custom.set_button_state(side, BUTTON, ButtonState.selected)
                         show_shuffled(side)
                     else
                         local left = custom.button_uses(side, BUTTON)
-                        custom.set_button_state(side, BUTTON, if left == 0 then "unavailable" else "selectable")
+                        custom.set_button_state(side, BUTTON, if left == 0 then ButtonState.unavailable else ButtonState.selectable)
                         land(side, s)
                     end
                     -- 0x0801F5EC, 0x0801F674, 0x0801F9E0, 0x0801FAE0: the slots as they are now.

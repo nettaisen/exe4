@@ -80,7 +80,7 @@ local function fly(me: Object)
     if int.u32(int.asr(x, 16) + REACH) >= 2 * REACH then
         me.collision:set_region(nil)
         let_go(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -93,7 +93,7 @@ local function tick(me: Object)
         me.visible = false
         c:set_region(nil)
         let_go(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local a = me.action
@@ -114,7 +114,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:set_animation(0)
     sprite:step()
@@ -136,23 +136,23 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
     battle.play_sound(TEAR_SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 panel.kind = new.kind {
     id = "panlsht/panel",
-    pool = "attack",
+    pool = Pool.attack,
     state = { controller = schema.object, wait = schema.u8 },
     -- 0x080DCAA4: by state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

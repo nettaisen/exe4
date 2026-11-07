@@ -49,7 +49,7 @@ function tower.make(look: Look): (owner: Object, x: number, y: number, element: 
             me.phase, me.phase_init = 0, 0
         else
             me.collision:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     end
 
@@ -80,7 +80,7 @@ function tower.make(look: Look): (owner: Object, x: number, y: number, element: 
     local function init(me: Object)
         local sprite = me.sprite
         sprite:load(look.sprite)
-        sprite.shadow = "with_sprite"
+        sprite.shadow = Shadow.with_sprite
         me.visible = true
         me.anim, me.anim_loaded = look.steps[1].anim :: number, 0xFF
         me:set_coordinates_from_panel()
@@ -91,19 +91,19 @@ function tower.make(look: Look): (owner: Object, x: number, y: number, element: 
         me:setup_collision(collision.thrown, collision.hits_navis, look.hit_mod)
         me.collision:set_hit_effect(sparks.of_element(me.element))
         me.collision:present()
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = look.id,
-        pool = "attack",
+        pool = Pool.attack,
         -- 0x080DF68C: then the sprite, even while dimmed (0x08014446).
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:destroy()

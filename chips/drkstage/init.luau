@@ -55,7 +55,7 @@ end
 -- 0x080E9838.
 local controller = new.kind {
     id = "drkstage/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { busy = schema.bool },
     update = dimming_chips.phases { name = "DrkStage", effect = effect },
 }
@@ -64,7 +64,7 @@ local drkstage: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "null",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 4,
     mb = 99,
     damage = 0,

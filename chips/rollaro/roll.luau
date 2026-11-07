@@ -174,7 +174,7 @@ local function rise(me: Object)
         local z = int.i32(p.z + me.vel.z)
         me.pos = Vec3.new(p.x, p.y, z)
         if int.asr(z, 16) >= GONE_Z then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -212,27 +212,27 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = ANIM_STAND, 0
     sprite:set_animation(ANIM_STAND)
     me:set_coordinates_from_panel()
     sprite:face_side(me.alliance)
     sprite.palette = PALETTE
     sprite.color_shader = 0x7FFF
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 roll.kind = new.kind {
     id = "rollaro/roll",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, gray = schema.u8 },
     -- 0x080C8120.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C839E: the controller moves on, and she is freed.

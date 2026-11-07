@@ -47,11 +47,11 @@ export type Setup = {
 }
 
 -- 0x0800F56A: the starting mood by the value and the Full Synchro at the start.
-local function starting_mood(v: number, full_synchro: boolean): Mood
+local function starting_mood(v: number, full_synchro: boolean): NaviMood
     if v < 470 then
         return 0
     elseif full_synchro then
-        return "full_synchro"
+        return Mood.full_synchro
     elseif v >= 1000 then
         return 190
     end
@@ -65,7 +65,7 @@ local DARK_AT_MOST = 499
 
 -- 0x0800D872: MegaMan's starting mood, by the light/dark value and the Full Synchro at the start (NaviStats +0x1F:
 -- the rules' stat, patch card 45's, ../patch_cards).
-function light_dark.starting_mood(side: number): Mood?
+function light_dark.starting_mood(side: number): NaviMood?
     local setup = rules.setup() :: Setup
     return starting_mood(setup.karma, battle.navi(side).full_synchro_start)
 end
@@ -147,7 +147,7 @@ function light_dark.navi_palette(side: number, _navi: Object): number?
         -- (A soul's: 0, no color.)
         return 0
     end
-    local palette = if stats.mood == "full_synchro" then 4 else tier((rules.setup() :: Setup).karma)
+    local palette = if stats.mood == Mood.full_synchro then 4 else tier((rules.setup() :: Setup).karma)
     return palette + 5 * stats.color
 end
 

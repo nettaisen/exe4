@@ -39,7 +39,7 @@ local chip: Chip = {
     codes = { "D" },
     element = "null",
     family = "null",
-    class = "giga",
+    class = ChipClass.giga,
     -- A save can collect it (rules/folder), though no library lists it: an e-Reader card's chip.
     collectible = true,
     rarity = 4,

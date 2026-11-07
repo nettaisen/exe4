@@ -51,7 +51,7 @@ local function wait(me: Object)
         return
     end
     if not field.check(me.panel_x, me.panel_y, RISES_ON) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         me:set_action(UP)
     end
@@ -83,7 +83,7 @@ local function up(me: Object)
         end
         if countdown(me, 9) then
             me.collision:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("WoodMan's tower's phase %#x reads past its table (0x080CDFC0)", me.phase))
@@ -113,7 +113,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     me:set_coordinates_from_panel()
     if not me:create_collision() then
@@ -125,23 +125,23 @@ local function init(me: Object)
     c:set_hit_effect(sparks.wood)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 tower.kind = new.kind {
     id = "woodman/tower",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_mod = schema.u8, sounds = schema.bool },
     -- 0x080CDEB8: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

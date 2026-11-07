@@ -26,7 +26,7 @@ local function tick(me: Object)
     local t = me.timer - 1
     me.timer = bit32.band(t, 0xFFFF)
     if t < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -34,7 +34,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0xFF
     me:set_coordinates_from_panel()
@@ -51,19 +51,19 @@ local function init(me: Object)
         damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 strike.kind = new.kind {
     id = "counter/strike",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080CFD48: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

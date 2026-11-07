@@ -32,7 +32,7 @@ type State = {
 -- Off its panels, and gone at the next update.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D7AAC: down or up a row (a hit takes it off its panels); there, an attack of its hit modifier on its panel.
@@ -90,7 +90,7 @@ local function tick(me: Object)
     if battle.over() then
         battle.effect(me.pos, PUFF)
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         c:present()
         return
     end
@@ -114,7 +114,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0xFF
     me:set_coordinates_from_panel()
@@ -131,20 +131,20 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.plain)
     me.collision:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 local kind = new.kind {
     id = "twnfng/fang",
-    pool = "attack",
+    pool = Pool.attack,
     state = { up = schema.bool, weak = schema.bool },
     -- 0x080D79B8: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

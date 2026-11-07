@@ -85,7 +85,7 @@ local function strike(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -97,7 +97,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         if c:hit_any(ENDS_REGION) then
             c:set_region(nil)
@@ -110,9 +110,9 @@ local function tick(me: Object)
         else
             error(string.format("ThunMan's thunderbolt's action %#x reads past its table (0x080DB618)", a))
         end
-        if me.lifecycle == "destroy" then
+        if me.lifecycle == Lifecycle.destroy then
             c:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     end
     c:present()
@@ -123,7 +123,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:face_side(bit32.band(battle.rng_positive(), 1))
@@ -140,19 +140,19 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.elec)
     ;(me.state :: State).struck = false
     me.collision:set_region(nil)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 thunder.kind = new.kind {
     id = "thunman/thunder",
-    pool = "attack",
+    pool = Pool.attack,
     state = { breaks = schema.bool, struck = schema.bool },
     -- 0x080DB540: by its state, then its sprite (`object_updateSprite`).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x08010560: its collision, then itself, freed.

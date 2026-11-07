@@ -50,7 +50,7 @@ local function appear(me: Object)
     if field.solid(me.panel_x, me.panel_y) then
         me:set_action(ATTACK)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -95,7 +95,7 @@ local function attack(me: Object)
         end
     elseif me.phase == 8 then
         if me.sprite.steps >= LAST_STEPS then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("LaserMan's attack's phase %#x reads past its table (0x080CACF0)", me.phase))
@@ -112,7 +112,7 @@ local function tick(me: Object)
         error(string.format("LaserMan's action %#x reads past his table (0x080CACAC)", me.action))
     end
     if not field.valid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -122,7 +122,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -131,20 +131,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 laserman.kind = new.kind {
     id = "laserman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, aims = schema.bool, course = schema.u8 },
     -- 0x080CABE4: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080CAC08: a puff 16 pixels above him; the controller moves on; he is freed.

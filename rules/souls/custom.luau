@@ -98,7 +98,7 @@ end
 -- The UNITE button (0x0801FF14, the screen's +0x0C: 0 none, 1 on the screen, 2 a soul given), under OK in slot 11.
 custom_souls.button = {
     slot = 11,
-    view = "form_offer",
+    view = ButtonView.form_offer,
     -- 0x0801E0B4, as the screen opens: with Double Soul (event flag 0x14), unless the side's navi is worried or worn
     -- out (the screen's +0x10, 0x0800F49C's 1 and 5). Without it the button's place shows the window (its look 2),
     -- and OK's DOWN goes nowhere (0x0802069E).
@@ -110,17 +110,17 @@ custom_souls.button = {
     -- The offer is asked only before a soul is given (+0x0C 1: once given it is the soul given) and while the navi's
     -- turns are counted (AIData +0x18 not 0xFF: a navi that started the round in a soul, which no netbattle's does);
     -- else it stays as it was.
-    state = function(side: number): "selectable" | "unavailable"
+    state = function(side: number): ButtonState
         local s = rules.state() :: State
         if not custom.button_picked(side, "soul") and turns.counted() then
             s.offer = offer(side)
         end
-        return if s.offer == nil then "unavailable" else "selectable"
+        return if s.offer == nil then ButtonState.unavailable else ButtonState.selectable
     end,
     -- 0x0801F8BC: a soul on offer, not given yet, starts its choice (the screen's +0x0C 2; OK's sound, 0x080207EC[0]);
     -- with none A is refused (0x080207EC[1]).
     pressed = function(side: number)
-        if custom.cursor_state(side) ~= "selectable" then
+        if custom.cursor_state(side) ~= ButtonState.selectable then
             custom.refuse(side)
             return
         end
@@ -144,7 +144,7 @@ custom_souls.button = {
 -- sound, 0x97: 0x080208F4); then the picking goes on (state 0xC, 0x0802095E). Each step after the flash
 -- waits for the fade before it. Drawn as EXE5's (the window view `offer_flight`).
 custom_souls.window = {
-    view = "offer_flight",
+    view = WindowView.offer_flight,
     update = function(side: number): boolean
         local s = rules.state() :: State
         local fading = custom.fading(side)
@@ -163,20 +163,20 @@ custom_souls.window = {
             count += 1
             if count >= 8 then
                 count = 0
-                custom.fade(side, "flash", FADE_SPEED)
-                custom.play(side, "program_advance_part")
+                custom.fade(side, CustomFade.flash, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance_part)
                 step = 12
             end
         elseif step == 12 then
             -- 0x080208C4
             if not fading then
-                custom.fade(side, "flash_back", FADE_SPEED)
+                custom.fade(side, CustomFade.flash_back, FADE_SPEED)
                 step = 16
             end
         elseif step == 16 then
             -- 0x080208DC
             if not fading then
-                custom.fade(side, "end_to_white", FADE_SPEED)
+                custom.fade(side, CustomFade.end_to_white, FADE_SPEED)
                 step = 20
             end
         elseif step == 20 then
@@ -184,10 +184,10 @@ custom_souls.window = {
             if not fading then
                 custom.trade_last_pick(side, "soul")
                 dark_chips.last_pick_first(side)
-                custom.set_button_state(side, "soul", "selected")
+                custom.set_button_state(side, "soul", ButtonState.selected)
                 custom.update_availability(side)
-                custom.fade(side, "intro_from_white", FADE_SPEED)
-                custom.play(side, "program_advance")
+                custom.fade(side, CustomFade.intro_from_white, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance)
                 step = 24
             end
         elseif step == 24 then

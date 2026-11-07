@@ -101,7 +101,7 @@ function block.validate(side: number, problem: (p: SetupProblem) -> ())
     for i, p in stated do
         if p.zero then
             problem({
-                kind = "invalid",
+                kind = SetupProblemKind.invalid,
                 field = "auto_battle_places",
                 entry = i,
                 text = string.format("place %d of the auto battle data holds 0: the original plays its chip table's first record there, which is no chip", i),
@@ -110,7 +110,7 @@ function block.validate(side: number, problem: (p: SetupProblem) -> ())
         local chip: Chip? = p.chip
         if chip ~= nil and chip.family == SOUL_FAMILY then
             problem({
-                kind = "chip_not_allowed",
+                kind = SetupProblemKind.chip_not_allowed,
                 field = "auto_battle_places",
                 entry = i,
                 chip = chip,

@@ -181,11 +181,11 @@ local function fly(me: Object)
     -- 0x080CD708: the aura goes.
     local aura = (me.state :: State).held
     if aura then
-        aura:set_lifecycle("destroy")
+        aura:enter_destroy()
     end
     local px, py = panel_at(me.pos.x, me.pos.y, me.alliance)
     if not field.check(px, py, LANDS_ON, me.alliance) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.anim = 11
@@ -245,7 +245,7 @@ local function blast(me: Object)
         me.phase_init = 2
     end
     if ran_out(me) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -259,7 +259,7 @@ local function tick(me: Object)
     end
     action(me)
     if not field.valid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -267,7 +267,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -276,11 +276,11 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(APPEAR)
     me.related1 =
-        battle.form_overlay(me, { sprite = SPRITE, stepping = "while_dimmed", anim_offset = CAPE_ANIM_OFFSET })
+        battle.form_overlay(me, { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = CAPE_ANIM_OFFSET })
     local s = me.state :: State
     s.floorless = field.any(me.panel_x, me.panel_y, NO_FLOOR)
     me.timer = RISE
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -290,7 +290,7 @@ local function leave(me: Object)
     battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), SMOKE)
     local cape = me.related1
     if cape then
-        cape:set_lifecycle("destroy")
+        cape:enter_destroy()
     end
     local s = me.state :: State
     if s.controller then
@@ -304,13 +304,13 @@ end
 
 navi.kind = new.kind {
     id = "darkneo/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, floorless = schema.bool, held = schema.object, image = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             leave(me)

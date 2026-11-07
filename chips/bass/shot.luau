@@ -46,23 +46,23 @@ local function tick(me: Object)
         end
         battle.play_sound(SOUND)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 shot.kind = new.kind {
     id = "bass/shot",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DB6FC: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080DB720: on its panel, a pixel down; its ticks (Param1 1's, 0x080DB740).
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, int.i32(p.y + 0x1_0000), p.z)
             me.timer = WARNING
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

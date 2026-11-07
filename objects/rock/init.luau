@@ -58,7 +58,7 @@ local made = common.make {
     end,
     leaves_by_hp = true,
     -- 0x08013F3E: a touch destroys it, its HP as it is.
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
 }
 
 rock.kind = made.kind

@@ -45,7 +45,7 @@ local function leave(me: Object)
     me.collision:set_region(nil)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
@@ -132,9 +132,9 @@ local ACTIONS: { [number]: (Object) -> () } = {
 local function tick(me: Object)
     me.visible = true
     me.sprite.white = false
-    obstacle.take_hits(me, "keeps_damage")
+    obstacle.take_hits(me, ObstaclePush.keeps_damage)
     obstacle.tick_lifetime(me)
-    local a = obstacle.react(me, "destroys")
+    local a = obstacle.react(me, ObstacleCrush.destroys)
     if a then
         local action = ACTIONS[a]
         if not action then
@@ -152,7 +152,7 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
@@ -169,13 +169,13 @@ local function init(me: Object)
     end
     me:setup_collision(collision.own_body, collision.hit_by_other_side, HIT_MOD)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 signal.kind = new.kind {
     id = "signlred/signal",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x08011704, the encasing's first step (ColdMan's ice or bubble), calls 0x080DD73C for it: the other side's
     -- chips on again, since the encasing ends it without its own leaving.
     encased = function(me: Object)
@@ -184,9 +184,9 @@ signal.kind = new.kind {
     -- 0x080DD538.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -205,7 +205,7 @@ function signal.spawn(owner: Object, x: number, y: number, damage: number): Obje
     o.panel_x, o.panel_y = x, y
     o.alliance = owner.alliance
     o.run_while_dimmed = true
-    obstacle.register(o, o.alliance, "one_a_side")
+    obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
     return o
 end
 

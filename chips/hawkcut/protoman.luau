@@ -176,7 +176,7 @@ local function leave(me: Object)
         controller.done(c)
     end
     -- (A byte store: his action and phase stay.)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- 0x080C8A90.
@@ -199,26 +199,26 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = PALETTE
     sprite:face(me)
     me:set_coordinates_from_panel()
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 protoman.kind = new.kind {
     id = "hawkcut/protoman",
-    pool = "actor",
+    pool = Pool.actor,
     state = { held = schema.object },
     -- 0x080C8A28: its state's routine, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

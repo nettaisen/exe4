@@ -41,7 +41,7 @@ local function start(me: Object)
     me.anim = 2
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     me.barrier_visual = nil
-    me.collision.barrier = "none"
+    me.collision.barrier = BarrierState.none
     go(me, EXPLODE)
 end
 
@@ -90,7 +90,7 @@ local function fade(me: Object)
         battle.set_damage_carry(side, carry)
     end
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 deletion.action = new.action {

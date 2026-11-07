@@ -14,7 +14,7 @@ local HIT = { hits = collision.hits_navis, is = collision.slash }
 local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 8, steps = 15 }
 
 local muramasa: Chip = {
-    damage = { formula = "hp_lost", cap = 999 },
+    damage = { formula = Formula.hp_lost, cap = 999 },
     action = swords.slash {
         id = "muramasa/action",
         blade = swords.blade,
@@ -25,7 +25,7 @@ local muramasa: Chip = {
     codes = { "M" },
     element = "null",
     family = "sword",
-    class = "mega",
+    class = ChipClass.mega,
     rarity = 4,
     mb = 81,
     counter = 50,

@@ -16,7 +16,7 @@ local puff_sprite = asset.sprite("puff")
 local BASSANLY = common.make {
     id = "bassanly/navi",
     sprite = SPRITE,
-    cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x0E },
+    cloak = { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = 0x0E },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("panel-hole") },
     anims = { raise = 9, stance = 0xA, fire = 0xB, fire_loop = 0xC, rest = 0xD },
     steps = { raise = 5, fire = 3 },

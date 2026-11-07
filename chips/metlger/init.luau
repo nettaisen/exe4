@@ -41,7 +41,7 @@ end
 
 local kind = new.kind {
     id = "metlger/controller",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E7244.
     update = dimming_chips.phases { name = "MetlGer", effect = effect },
 }
@@ -56,7 +56,7 @@ local metlger1: Chip = {
     codes = { "A", "M", "P", "*" },
     element = "null",
     family = "metal",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 20,
     damage = 100,
@@ -73,7 +73,7 @@ local metlger2: Chip = {
     codes = { "C", "E", "G", "*" },
     element = "null",
     family = "metal",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 28,
     damage = 130,
@@ -90,7 +90,7 @@ local metlger3: Chip = {
     codes = { "I", "L", "Q", "*" },
     element = "null",
     family = "metal",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 3,
     mb = 36,
     damage = 160,

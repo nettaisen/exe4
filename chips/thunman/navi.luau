@@ -66,7 +66,7 @@ local function ready(me: Object)
     if field.solid(me.panel_x, me.panel_y) then
         me:set_action(4)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -147,7 +147,7 @@ local function leave(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -181,7 +181,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
@@ -189,20 +189,20 @@ local function init(me: Object)
     sprite.palette = s.palette
     sprite.color_shader = 0x7FFF
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 thunman.kind = new.kind {
     id = "thunman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, gray = schema.u8, row = schema.u8 },
     -- 0x080C5920.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C5B2C: the controller moves on, and he is freed.

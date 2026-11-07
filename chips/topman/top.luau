@@ -83,7 +83,7 @@ local function gone(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, bit32.bor(bit32.lshift(240, 16), bit32.band(p.y, 0xFFFF)), p.z)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D1F26: it moves; over a panel that isn't solid (but on column 7) it goes in a puff, past the right edge it goes.
@@ -107,7 +107,7 @@ end
 -- Its region ends, and it goes.
 local function ends(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D1E94: its hits resolve and spark; the battle over, it goes; a body hit, it goes; another hit ends its region
@@ -139,7 +139,7 @@ local function tick(me: Object)
     else
         error(string.format("TopMan's top's action %#x reads past its table (0x080D1F08)", a))
     end
-    if me.lifecycle ~= "destroy" and c.region == nil and me.panel_x + me.panel_y * 0x100 ~= s.hit_at then
+    if me.lifecycle ~= Lifecycle.destroy and c.region == nil and me.panel_x + me.panel_y * 0x100 ~= s.hit_at then
         c:set_region(regions.single)
     end
     if field.valid(me.panel_x, me.panel_y) then
@@ -161,7 +161,7 @@ local function init(me: Object, number: number)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 8, 8
     sprite:set_animation(8)
@@ -182,20 +182,20 @@ local function init(me: Object, number: number)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:present()
     battle.play_sound(SOUND_APPEAR)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 top.kind = new.kind {
     id = "topman/top",
-    pool = "attack",
+    pool = Pool.attack,
     state = { number = schema.u8, period = schema.u8, half = schema.u8, count = schema.u8, hit_at = schema.u16 },
     -- 0x080D1DD0: by its state, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me, (me.state :: any).number :: number)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x08010560: its collision, then itself, freed.

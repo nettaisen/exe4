@@ -59,7 +59,7 @@ local made = common.make {
     absorbs = false,
     removal_explodes = true,
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
     column = column,
 }
 

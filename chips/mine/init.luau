@@ -16,7 +16,7 @@ local MINE = land_mine.make_kind {
     id = "mine/land-mine",
     -- A field object that JunkMan's poltergeist and ColdMan leave alone (0x0800B3E8: attack object #0x4C among the
     -- kinds they skip).
-    identity = new.identity { class = "field_object", throwable = false },
+    identity = new.identity { class = IdentityClass.field_object, throwable = false },
     sprite = land_mine_sprite,
     hop_sound = asset.sound("hop"),
     blast = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 },
@@ -31,7 +31,7 @@ local chip: Chip = {
     codes = { "C", "H", "Z" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 42,
     damage = 300,

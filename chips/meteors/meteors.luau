@@ -68,20 +68,20 @@ local function tick(me: Object)
     local left = me.timer2 - 1
     me.timer2 = left
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 local DROPPER = new.kind {
     id = "meteors/dropper",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080EADF4.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080EAE14
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

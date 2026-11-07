@@ -162,7 +162,7 @@ local function dive(me: Object)
         end
         if ran_out(me) then
             sun_and_moon.done((me.state :: State).controller)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("RedSun's sun: phase %#x reads past its table (0x080DDCA4)", phase))
@@ -188,27 +188,27 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
     sprite:face(me)
     me.element = Element.null
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 local kind = new.kind {
     id = "redsun/sun",
-    pool = "attack",
+    pool = Pool.attack,
     state = { controller = schema.object },
     -- 0x080DDB34.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

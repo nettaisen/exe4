@@ -65,7 +65,7 @@ local function attack(me: Object)
     elseif me.phase == 8 then
         if me.sprite.steps >= LAST_STEPS then
             silhouette.show(me, me.panel_x, me.panel_y, 18)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("PrixPowr's LaserMan's attack's phase %#x reads past its table (0x080CBD7C)", me.phase))
@@ -88,7 +88,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -97,20 +97,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 laserman.kind = new.kind {
     id = "prixpowr/laserman",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- 0x080CBCB0: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080CBCD4: the controller moves on; he is freed.

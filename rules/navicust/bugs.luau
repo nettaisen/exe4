@@ -44,7 +44,7 @@ local function bug_named(kind: number): string?
 end
 
 -- 0x0800D9E8's part: the navi's hit's code, if any, written; "edited" then.
-function bugs.navi_bug(side: number, navi: Object): ("edited" | "spared")?
+function bugs.navi_bug(side: number, navi: Object): BugOutcome?
     local code, arg = navi.collision.inflicted_bug, navi.collision.inflicted_bug_arg
     if code == 0 then
         return nil
@@ -93,7 +93,7 @@ function bugs.navi_bug(side: number, navi: Object): ("edited" | "spared")?
     else
         error(string.format("a hit's bug code %#x: no EXE4 object sets it", code))
     end
-    return "edited"
+    return BugOutcome.edited
 end
 
 return bugs

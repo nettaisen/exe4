@@ -62,7 +62,7 @@ local DRIVEN = "darksoul"
 
 -- 0x080EDF00's test: a player who must hold A to keep firing has let go of it.
 local function let_go(me: Object): boolean
-    if me.actor_type ~= "player" or battle.navi(me.alliance).form.id == DRIVEN then
+    if me.actor_type ~= ActorType.player or battle.navi(me.alliance).form.id == DRIVEN then
         return false
     end
     return not me.held.a

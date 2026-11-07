@@ -90,7 +90,7 @@ local function attack(me: Object)
         -- 0x080CD708: the charger goes.
         local charger = me.related1
         if charger then
-            charger:set_lifecycle("destroy")
+            charger:enter_destroy()
         end
         me.anim = 0
         me:set_action(STANDING)
@@ -147,7 +147,7 @@ local function leave(me: Object)
     if me.related2 then
         overlays.take_off_form(me, battle.navi(me.alliance).form)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [FADING] = fade_in, [WAITING] = wait, [STANDING] = stand, [ATTACKING] = attack, [LEAVING] = leave }
@@ -174,7 +174,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     looks.load_like(sprite, navi)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -185,17 +185,17 @@ local function init(me: Object)
     me.timer2 = 0
     sprite.alpha = 0
     battle.play_sound(APPEAR)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 image.kind = new.kind {
     id = "darkneo/image",
-    pool = "attack",
+    pool = Pool.attack,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

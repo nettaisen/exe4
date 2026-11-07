@@ -401,7 +401,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     local parts = rules.setup_of(side).navicust_programs :: { Placed }
     if #parts > 0 and battle.navi(side).navi.forms == nil then
         problem({
-            kind = "not_taken",
+            kind = SetupProblemKind.not_taken,
             field = "navicust_programs",
             text = "a NaviCust, but the navi's stats aren't a NaviCust's (only MegaMan's compiles)",
         })
@@ -412,11 +412,11 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
         local def = p.program
         local what = string.format("navicust program %d (%s)", i, battle.name(def))
         if table.find(def.colors, p.color) == nil then
-            problem({ kind = "invalid", field = "navicust_programs", entry = i, text = string.format("%s: a color it doesn't come in", what) })
+            problem({ kind = SetupProblemKind.invalid, field = "navicust_programs", entry = i, text = string.format("%s: a color it doesn't come in", what) })
         end
         if p.rotation > 3 then
             problem({
-                kind = "range",
+                kind = SetupProblemKind.range,
                 field = "navicust_programs",
                 entry = i,
                 value = p.rotation,
@@ -438,7 +438,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
         local on = cells(s, p.x, p.y)
         if #on ~= covered then
             problem({
-                kind = "off_board",
+                kind = SetupProblemKind.off_board,
                 field = "navicust_programs",
                 entry = i,
                 text = string.format("%s at (%d, %d): off the board", what, p.x - center + 2, p.y - center + 2),
@@ -448,7 +448,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
             local at = c[2] * SIZE + c[1]
             if grid[at] ~= nil then
                 problem({
-                    kind = "overlap",
+                    kind = SetupProblemKind.overlap,
                     field = "navicust_programs",
                     entry = i,
                     other = grid[at],

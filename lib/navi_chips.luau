@@ -43,7 +43,7 @@ type WarpState = {
 local function warp_tick(me: Object)
     local s = me.state :: WarpState
     local navi = me.related1 :: Object
-    local player = navi.actor_type == "player"
+    local player = navi.actor_type == ActorType.player
     if me.phase_init == 0 then
         if s.out then
             if player then
@@ -63,17 +63,17 @@ local function warp_tick(me: Object)
                 dimming.show_actor(navi)
             end
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     me:update_sprite_while_dimmed()
 end
 
 local function warp_init(me: Object)
     local navi = me.related1 :: Object
-    if navi.actor_type == "player" then
+    if navi.actor_type == ActorType.player then
         local sprite = me.sprite
         looks.load_like(sprite, navi)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.visible = true
         me.pos = navi.pos
         sprite.palette = navi.sprite.palette
@@ -81,7 +81,7 @@ local function warp_init(me: Object)
         me.anim = if (me.state :: WarpState).out then 4 else 3
         me.anim_loaded = 0xFF
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     warp_tick(me)
 end
 
@@ -89,13 +89,13 @@ end
 -- `load_like` of @exelib/looks is the same lookup.)
 navi_chips.warp_kind = new.kind {
     id = "navi-chip-warp",
-    pool = "effect",
+    pool = Pool.effect,
     state = { out = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             warp_init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             warp_tick(me)
         else
             me:free()
@@ -139,7 +139,7 @@ function navi_chips.anti_recovery(
     return function(user: Object, spec: DimmingChipSpec): Object?
         if not battle.dimmed() then
             local trap = battle.linked(battle.other_side(user.alliance)).chip
-            if trap and trap.trap == "anti_recovery" then
+            if trap and trap.trap == TrapKind.anti_recovery then
                 -- (Half the whole word, three times: its counter byte halves and triples too.)
                 local damage = int.u32(bit32.rshift(spec.damage, 1) * 3)
                 local c = navi_chip.spring_anti_recovery(user, damage)

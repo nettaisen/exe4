@@ -92,12 +92,12 @@ souls.windows = windows
 -- and the custom screen's (./custom): the UNITE button's offer (the screen's +0x0D; once given, the soul given) and
 -- the soul's choice's step and count; and what each soul's screen keeps.
 souls.state = {
-    soul_turns = schema.role("form_offer.turns", schema.u8),
-    soul_turn_limit = schema.role("form_offer.turn_limit", schema.u8),
+    soul_turns = schema.role(SchemaRole.form_offer_turns, schema.u8),
+    soul_turn_limit = schema.role(SchemaRole.form_offer_turn_limit, schema.u8),
     souls_used = schema.list(schema.form, 12),
-    offer = schema.role("form_offer.form", schema.form),
-    unite_step = schema.role("offer_flight.step", schema.u8),
-    unite_count = schema.role("offer_flight.count", schema.u8),
+    offer = schema.role(SchemaRole.form_offer_form, schema.form),
+    unite_step = schema.role(SchemaRole.offer_flight_step, schema.u8),
+    unite_count = schema.role(SchemaRole.offer_flight_count, schema.u8),
     soul_hand_sent = schema.bool,
 } :: StateSchema
 for name, kind in screen do
@@ -149,7 +149,7 @@ function souls.grass_heal(side: number, navi: Object)
     end
     local c = navi.collision
     local p = field.panel(c.panel_x, c.panel_y)
-    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle("second") ~= 0 then
+    if p == nil or p.kind ~= "grass" or battle.navi(side).form.id ~= HEALS_ON_GRASS or battle.cycle(FightCycle.second) ~= 0 then
         return
     end
     navi.hp = math.min(navi.hp + 1, navi.max_hp)

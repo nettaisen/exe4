@@ -31,7 +31,7 @@ local OTHER_SIDE: PanelCondition = { enemy_area = true }
 
 local function gone(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D4E74: animation 1 once animation 0 has played; gone at its end.
@@ -55,7 +55,7 @@ local function tick(me: Object)
         gone(me)
         return
     end
-    if me:take_damage("damage_sound") == "broken" then
+    if me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x8_0000), IMPACT)
         battle.play_sound(GONE_SOUND)
@@ -81,7 +81,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -98,18 +98,18 @@ local function init(me: Object)
     me.timer = TICKS
     me.collision:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 web.kind = new.kind {
     id = "whitweb/web",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080D4D30: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080D4D54 (its count, none here).

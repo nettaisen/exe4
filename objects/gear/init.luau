@@ -65,7 +65,7 @@ local function leave(me: Object)
     if state(me).mode == 1 then
         obstacle.unregister(me)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DBEF8: once the fight is on, it no longer runs while paused, shows, and rolls.
@@ -140,14 +140,14 @@ local ACTIONS: { [number]: (Object) -> () } = {
 -- EXE4's other five reactions it doesn't read the removal request); its sprite, its panel highlighted while it shows,
 -- facing its way, and its collision (even on the tick it broke: its region is gone then).
 local function tick(me: Object)
-    obstacle.take_hits(me, "ignored")
+    obstacle.take_hits(me, ObstaclePush.ignored)
     if battle.over() then
         return leave(me)
     end
     if state(me).mode == 1 then
         obstacle.tick_lifetime(me)
     end
-    local a = obstacle.react(me, "destroys")
+    local a = obstacle.react(me, ObstacleCrush.destroys)
     if a then
         local action = ACTIONS[a]
         if not action then
@@ -173,7 +173,7 @@ local function init(me: Object)
     me.anim = 0
     sprite:set_animation(0)
     sprite:step()
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -202,19 +202,19 @@ local function init(me: Object)
     -- (Its status word's bit 0, 0x080DBE5C: the guard's.)
     me.status.guard = true
     me.timer = TIMER
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
 end
 
 gear.kind = new.kind {
     id = "gear",
-    pool = "attack",
+    pool = Pool.attack,
     state = { mode = schema.u8, travel = schema.u8 },
     -- 0x080DBD94.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -253,7 +253,7 @@ function gear.spawn(x: number, y: number, element: Element, alliance: number, mo
     o.run_while_dimmed = true
     state(o).mode = mode
     if mode == 1 then
-        obstacle.register(o, alliance, "one_a_side")
+        obstacle.register(o, alliance, ObstacleClass.one_a_side)
     end
     return o
 end

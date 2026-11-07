@@ -140,7 +140,7 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
     local function tick(me: Object)
         local s = me.state :: BreathState
         if battle.over() then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         if look.step then
@@ -153,7 +153,7 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
         local t = me.timer - 1
         me.timer = int.u16(t)
         if t <= 0 then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         if t == COLUMN_AT and s.hit then
@@ -171,20 +171,20 @@ function breath.make(look: BreathLook): (user: Object, x: number, y: number, ele
         battle.play_sound(SOUND)
         local s = me.state :: BreathState
         s.hit = hit(me, me.panel_x, me.panel_y)
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = look.id,
-        pool = "attack",
+        pool = Pool.attack,
         state = { hit = schema.bool, ahead = schema.bool, above = schema.bool, below = schema.bool, count = schema.u16 },
         -- 0x080D3A7C: then the sprite.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:destroy()

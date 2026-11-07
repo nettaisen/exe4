@@ -29,7 +29,7 @@ end
 
 local controller = new.kind {
     id = "signlred/controller",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E83F8.
     update = dimming_chips.phases { name = "SignlRed", effect = effect },
 }
@@ -40,7 +40,7 @@ local chip: Chip = {
     codes = { "S" },
     element = "null",
     family = "summon",
-    class = "giga",
+    class = ChipClass.giga,
     rarity = 4,
     mb = 61,
     damage = 0,

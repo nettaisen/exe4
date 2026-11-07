@@ -51,7 +51,7 @@ local function appear(me: Object)
         return
     end
     if not field.solid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.anim = 3
@@ -84,7 +84,7 @@ local function flash(me: Object)
     if box then
         box.run_while_dimmed = true
     end
-    battle.palette_flash("one_layer", FLASH_TICKS, true, false)
+    battle.palette_flash(PaletteFlashVariant.one_layer, FLASH_TICKS, true, false)
     battle.play_sound(SOUND_FLASH)
 end
 
@@ -145,7 +145,7 @@ local function attack(me: Object)
         end
     end
     if me.timer2 == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -166,7 +166,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 9, 9
     sprite:set_animation(9)
@@ -175,20 +175,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 0x1E
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 sparkman.kind = new.kind {
     id = "sparkman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, sparks = schema.u32 },
     -- 0x080B89C0: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080B89E4: a puff 16 pixels above him (effect row 0x13); the controller moves on; he is freed.

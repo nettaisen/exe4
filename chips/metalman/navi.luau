@@ -310,7 +310,7 @@ local function leave(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -353,7 +353,7 @@ local function init(me: Object)
     local s = st(me)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
@@ -370,13 +370,13 @@ local function init(me: Object)
     s.fist = fist
     s.target_x, s.target_y = me.panel_x, me.panel_y
     s.aim = 0
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 metalman.kind = new.kind {
     id = "metalman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         palette = schema.u8,
@@ -389,9 +389,9 @@ metalman.kind = new.kind {
     -- 0x080C7D44.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C7FEA: the controller moves on, his fist goes, and he is freed.

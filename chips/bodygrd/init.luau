@@ -31,7 +31,7 @@ local STRIKER = striker.make_kind {
     id = "bodygrd/striker",
     -- EXE4 writes no NameID. What the poltergeist and ColdMan leave alone they tell by kind (0x0800B3E8: effect object
     -- #0x6E among them): the identity says so.
-    identity = new.identity { class = "field_object", version = 0, ai_index = 0, throwable = false },
+    identity = new.identity { class = IdentityClass.field_object, version = 0, ai_index = 0, throwable = false },
     shuriken = SHURIKEN,
     throw_sound = asset.sound("boomerang"),
 }
@@ -42,7 +42,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 100,

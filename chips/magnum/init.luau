@@ -17,7 +17,7 @@ local search_scope_sprite = asset.sprite("search-scope")
 
 local GUNNER = common_gunner.make {
     id = "magnum/gunner",
-    pool = "attack",
+    pool = Pool.attack,
     -- (0x080D7590 puts nothing of its user's on it.)
     wear = function(_me: Object, _user: Object) end,
     step_sound = asset.sound("scope-move"),
@@ -39,7 +39,7 @@ local chip: Chip = {
     codes = { "H", "Q", "V" },
     element = "null",
     family = "break",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 52,
     damage = 130,

@@ -42,7 +42,7 @@ end
 -- Its end: its region off, gone.
 local function ends(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 4, phase 0 (0x080D4830): it rises (30 ticks, the lower 40); then its flame: the lingering hits on the two
@@ -132,7 +132,7 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
         end
         local sprite = me.sprite
         sprite:load(SPRITE)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.visible = true
         local a = anim(me, 9)
         me.anim, me.anim_loaded = a, a
@@ -151,19 +151,19 @@ function pillar.make(hits: (owner: Object, dx: number, dy: number) -> ()): { kin
         local p = me.pos
         me.pos = Vec3.new(int.i32(p.x + if s.lower then -SHIFT else SHIFT), p.y, p.z)
         me.timer = 20
-        me:set_lifecycle("update")
+        me:enter_update()
     end
 
     local kind = new.kind {
         id = "burnman/pillar",
-        pool = "attack",
+        pool = Pool.attack,
         state = { lower = schema.bool, palette = schema.u8 },
         -- 0x080D46DC: by its state, then its sprite.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 -- 0x080D4700: its collision, then itself, freed.

@@ -35,7 +35,7 @@ local function afterimages(me: Object, spec: CannonSpec, flip: number)
         facing = flip,
         lifetime = AFTERIMAGE_TICKS,
         color_shader = AFTERIMAGE_SHADER,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
     battle.afterimage(me, me.pos, {
         sprite = spec.arm.sprite,

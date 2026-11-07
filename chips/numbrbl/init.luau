@@ -57,11 +57,11 @@ local CONTROLLER = common.make(
 
 -- NumbrBl1 (EXE4 chip 0x0AC): three balls.
 local numbrbl1: Chip = {
-    damage = { formula = "hp_last_digits" },
+    damage = { formula = Formula.hp_last_digits },
     codes = { "E", "L", "W" },
     element = "null",
     family = "null",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 28,
     counter = 20,
@@ -75,11 +75,11 @@ local numbrbl1: Chip = {
 
 -- NumbrBl2 (EXE4 chip 0x0AD): four balls.
 local numbrbl2: Chip = {
-    damage = { formula = "hp_last_digits" },
+    damage = { formula = Formula.hp_last_digits },
     codes = { "A", "E", "P" },
     element = "null",
     family = "null",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 35,
     counter = 20,
@@ -93,11 +93,11 @@ local numbrbl2: Chip = {
 
 -- NumbrBl3 (EXE4 chip 0x0AE): five balls.
 local numbrbl3: Chip = {
-    damage = { formula = "hp_last_digits" },
+    damage = { formula = Formula.hp_last_digits },
     codes = { "L", "T", "Y" },
     element = "null",
     family = "null",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 3,
     mb = 42,
     counter = 20,

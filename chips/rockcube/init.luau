@@ -32,14 +32,14 @@ local chip: Chip = {
     codes = { "*" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 0,
     mb = 6,
     damage = 200,
     counter = 50,
     lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
-    dimming = CONTROLLER.places { variant = CUBE, class = "two_a_side", entrance = "rise" },
+    dimming = CONTROLLER.places { variant = CUBE, class = ObstacleClass.two_a_side, entrance = "rise" },
     auto_battle = { class = "landing_ahead" },
 }
 

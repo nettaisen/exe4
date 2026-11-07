@@ -162,7 +162,7 @@ end
 
 -- 0x080EEC78 (the rules' `controller`, where the idle would read the pad for a step): in the dark soul the AI
 -- decides.
-function dark.controller(side: number, navi: Object): "nothing"?
+function dark.controller(side: number, navi: Object): ControlOutcome?
     if not dark.united(side) then
         -- (Until he emerges again.)
         rules.listening(side).controller = false
@@ -172,7 +172,7 @@ function dark.controller(side: number, navi: Object): "nothing"?
         return nil
     end
     ai.run(navi, state().auto_battle)
-    return "nothing"
+    return ControlOutcome.nothing
 end
 
 -- 0x080EED38 (the rules' `chip_used`): a chip's use from idle, the hand's, zeroes the AI's block, whatever the form.

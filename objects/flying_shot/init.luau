@@ -65,7 +65,7 @@ end
 local function finish(me: Object)
     me.visible = false
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080CE78E: the hits against it resolve and spark; it ends on a hit, else flies: each panel center passed spends
@@ -118,7 +118,7 @@ local function init(me: Object)
     me.related1 = nil
     local look = me.sprite
     look:load(r.sprite)
-    look.shadow = if r.shadow then "ground" else "with_sprite"
+    look.shadow = if r.shadow then Shadow.ground else Shadow.with_sprite
     me.anim = r.anim
     me.anim_loaded = 0xFF
     me.visible = true
@@ -136,23 +136,23 @@ local function init(me: Object)
     local c = me.collision
     c:set_hit_effect(r.spark)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 flying_shot.kind = new.kind {
     id = "flying-shot",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = FLYING_SHOT_VARIANT, range = schema.u8, highlight = schema.bool },
     -- 0x080CE6E0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

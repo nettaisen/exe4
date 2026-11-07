@@ -25,25 +25,25 @@ end
 
 hole.kind = new.kind {
     id = "underground-hole",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E64FC: its state's routine, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E6520: its sprite (0C-2D) with its shadow, all of it under the objects, animation 0 from its first
             -- frame, stepped once. (Its call of 0x0800307C, EXE6's `sub_800302A`, with 1 sets bits of the sprite
             -- nothing that draws one reads.)
             me.visible = true
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             sprite.under_objects = true
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
             sprite:step()
-            me:set_lifecycle("update")
+            me:enter_update()
             follow(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             follow(me)
         else
             me:free()

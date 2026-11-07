@@ -43,7 +43,7 @@ function soul.image(sprite: SpriteAsset, part: AttachmentLook?): SoulImage
         take_off = function(image: Object)
             local held = (image.state :: { held: Object? }).held
             if held ~= nil then
-                held:set_lifecycle("destroy")
+                held:enter_destroy()
             end
         end,
     }
@@ -54,7 +54,7 @@ end
 -- the next row's first entry); the routine itself does nothing (0x0800CC2C): the charged use is the chip's (0x0800D4B4
 -- with the charge, the form's `charged_bonus`).
 function soul.chip_charge(id: string, ticks: { number }): Weapon
-    return new.weapon { id = id, charge_ticks = ticks, charged_chip = "bonus" }
+    return new.weapon { id = id, charge_ticks = ticks, charged_chip = ChargedChip.bonus }
 end
 
 -- What a soul does at the custom screen, its form's `custom` (a `SoulCustom`, types.d.luau: the screen keeps the
@@ -74,13 +74,13 @@ export type SoulOverlay = { put_on: (me: Object) -> (), take_off: (me: Object) -
 function soul.overlay(sprite: SpriteAsset): SoulOverlay
     return {
         put_on = function(me: Object)
-            local stepping: FormOverlayStepping = if battle.player(me.alliance) == me then "normal" else "while_dimmed"
+            local stepping: FormOverlayStepping = if battle.player(me.alliance) == me then FormOverlayStepping.normal else FormOverlayStepping.while_dimmed
             me.related2 = battle.form_overlay(me, { sprite = sprite, stepping = stepping })
         end,
         take_off = function(me: Object)
             local o = me.related2
             if o ~= nil then
-                o:set_lifecycle("destroy")
+                o:enter_destroy()
             end
             me.related2 = nil
         end,

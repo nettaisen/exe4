@@ -98,7 +98,7 @@ local function tick(me: Object)
     end
     if me.timer == 0 and me.timer2 == 0 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -110,7 +110,7 @@ local function update(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c:hit_any(STOPS) then
@@ -136,7 +136,7 @@ local function init(me: Object)
     count(me, 1)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 8, 8
     sprite:set_animation(8)
@@ -156,19 +156,19 @@ local function init(me: Object)
     local s = me.state :: State
     me.timer2 = if me.panel_x ~= s.next_x then DELAY * 2 else DELAY
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 spark.kind = new.kind {
     id = "sparkman/spark",
-    pool = "attack",
+    pool = Pool.attack,
     state = { up = schema.bool, next_x = schema.u8, next_y = schema.u8, holder = schema.object },
     -- 0x080D10D0: by its state, then its sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             -- 0x080D10F4: it leaves SparkMan's count; its collision, then itself, freed.

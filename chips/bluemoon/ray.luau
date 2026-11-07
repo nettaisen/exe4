@@ -84,7 +84,7 @@ local function shine(me: Object)
     local t = me.timer - 1
     me.timer = int.u16(t)
     if t < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -110,25 +110,25 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 local kind = new.kind {
     id = "bluemoon/ray",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DE160.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

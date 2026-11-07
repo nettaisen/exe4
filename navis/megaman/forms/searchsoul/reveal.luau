@@ -49,18 +49,18 @@ local function hit(me: Object)
     if o then
         o.run_while_dimmed = true
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 reveal.kind = new.kind {
     id = "searchsoul/reveal",
-    pool = "effect",
+    pool = Pool.effect,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E6D94
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             if me.action == 0 then
                 if me.phase_init == 0 then
                     mark(me)
@@ -68,7 +68,7 @@ reveal.kind = new.kind {
                     local t = me.timer - 1
                     me.timer = bit32.band(t, 0xFFFF)
                     if t < 0 then
-                        me:set_lifecycle("update")
+                        me:enter_update()
                     end
                 end
             elseif me.action == 4 then

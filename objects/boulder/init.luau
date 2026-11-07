@@ -40,8 +40,8 @@ boulder.kind = common.make {
     hits = collision.everything,
     absorbed = nil,
     damage = 100,
-    push = "ignored",
-    crush = "destroys_sparing_bodies",
+    push = ObstaclePush.ignored,
+    crush = ObstacleCrush.destroys_sparing_bodies,
     keeps_waiting = true,
     -- 0x080DB1A0, by the framework's numbers (its rows 0 to 6: 0, 1, 2, 3, 4, 5, 8).
     actions = function(wait: (Object) -> (), destroyed: (Object) -> (), standing: (Object) -> ())

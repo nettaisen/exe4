@@ -37,14 +37,14 @@ local LOOK: BlackBombLook = {
     tracked = false,
     set_off_empties_hp = false,
     bursts_as_freed = false,
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
     sprite = SPRITE,
     spark = sparks.breaking,
     is = collision.neutral_body,
     target = collision.everything,
     burst_is = collision.attack,
     burst_target = collision.hits_navis,
-    push = "keeps_damage",
+    push = ObstaclePush.keeps_damage,
     land_sound = asset.sound("metal-punch"),
     burst_sound = asset.sound("burst"),
     burst_effect = EXPLOSION,
@@ -58,7 +58,7 @@ local function finish(me: Object)
     black_bomb.burst(me, LOOK)
     obstacle.unregister(me)
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D6320: leaving. Hidden; broken (its HP 0), an explosion, and the bomb's sound unless a fire hit set it off,
@@ -92,7 +92,7 @@ local blkbomb: Chip = {
     codes = { "D", "H", "Z" },
     element = "fire",
     family = "fire",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 3,
     mb = 55,
     damage = 210,

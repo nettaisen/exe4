@@ -50,7 +50,7 @@ local function appear(me: Object)
         return
     end
     if not field.solid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     for i, d in TOPS do
@@ -135,7 +135,7 @@ local function land(me: Object)
         me.phase_init = 1
         hit(me)
         if not field.solid(me.panel_x, me.panel_y) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         me.timer = 12
@@ -148,7 +148,7 @@ local function land(me: Object)
     local p = me.phase + 1
     me.phase, me.phase_init = p, 0
     if p == 3 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -169,7 +169,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -178,20 +178,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 0x1E
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 topman.kind = new.kind {
     id = "topman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080B8520: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080B8544: a puff 16 pixels above him (effect row 0x13); the controller moves on; he is freed.

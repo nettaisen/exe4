@@ -9,11 +9,11 @@ local spawners = require("../lib/spawners")
 
 local chip: Chip = {
     modifier = "attack_plus",
-    action = spawners.action { id = "atk-30/action", spawn = plus.spawner("attack") },
+    action = spawners.action { id = "atk-30/action", spawn = plus.spawner(SpecialBonus.attack) },
     codes = { "*" },
     element = "null",
     family = "plus",
-    class = "mega",
+    class = ChipClass.mega,
     rarity = 3,
     mb = 66,
     damage = 30,

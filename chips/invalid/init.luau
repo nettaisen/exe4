@@ -12,14 +12,14 @@ local invalid: Chip = {
     codes = {},
     element = "null",
     family = "null",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 5,
     damage = 10,
     counter = 0,
     lockout = 0,
     flags = {},
-    action = spawners.action { id = "invalid/action", spawn = plus.spawner("attack") },
+    action = spawners.action { id = "invalid/action", spawn = plus.spawner(SpecialBonus.attack) },
     auto_battle = { class = "at_once" },
 }
 

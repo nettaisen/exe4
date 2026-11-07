@@ -39,7 +39,7 @@ local BURST_ROW = 2
 local EDGE = 0x8C
 -- A field object that JunkMan's poltergeist and ColdMan leave alone (0x0800B3E8: attack object #0x8C among the kinds
 -- they skip).
-local IDENTITY = new.identity { class = "field_object", throwable = false }
+local IDENTITY = new.identity { class = IdentityClass.field_object, throwable = false }
 
 local HOVER, FLY, BURST = 0x0, 0x4, 0x8
 
@@ -52,7 +52,7 @@ type State = {
 local function finish(me: Object)
     me.collision:set_region(nil)
     obstacle.unregister(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DECA4: 6 ticks hovering; then animation 0, flying.
@@ -105,7 +105,7 @@ local function burst(me: Object)
     })
     battle.region_effects(x, BURST_ROW, regions.wide_long, me.alliance, EXPLOSION, 0)
     obstacle.unregister(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DEC16: the hits against it resolve and spark; the battle's end puffs it away; broken it explodes; while not
@@ -119,7 +119,7 @@ local function tick(me: Object)
         finish(me)
         return
     end
-    if c:hit_any(BREAKS) or me:take_damage("damage_sound") == "broken" then
+    if c:hit_any(BREAKS) or me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         battle.effect(me.pos, EXPLOSION)
         battle.play_sound(BROKEN)
         finish(me)
@@ -145,7 +145,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 1, 0xFF
     me.hp, me.max_hp = HP, HP
@@ -162,20 +162,20 @@ local function init(me: Object)
     c:set_hit_effect(nil)
     c:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 local kind = new.kind {
     id = "propbom/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = { speed = schema.u8 },
     -- 0x080DEB70: then the sprite, but while dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -200,7 +200,7 @@ function bomb.spawn(user: Object, x: number, y: number, z: number, element: Elem
         o.related1 = user
         o.identity = IDENTITY;
         (o.state :: State).speed = speed
-        obstacle.register(o, user.alliance, "one_a_side")
+        obstacle.register(o, user.alliance, ObstacleClass.one_a_side)
     end
 end
 

@@ -44,7 +44,7 @@ type State = { palette: number, landings: number }
 local function puff(me: Object)
     local p = me.pos
     battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + PUFF_Z)), PUFF)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D271C: whether the other side's navi stands on its panel.
@@ -148,7 +148,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = ANIM_FIRST, 0xFF
     sprite.palette = (me.state :: State).palette
@@ -156,20 +156,20 @@ local function init(me: Object)
     me:set_panel_from_coordinates()
     local s = me.state :: State
     s.landings = 0
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
 binder.kind = new.kind {
     id = "binder/binder",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, landings = schema.u8 },
     -- 0x080D2568: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             me:destroy()

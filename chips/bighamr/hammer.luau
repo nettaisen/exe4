@@ -107,7 +107,7 @@ function hammer.make(look: Look): Hammer
         battle.play_sound(LEAVE_SOUND)
         obstacle.unregister(me)
         me:unreserve_panel(me.future_panel_x, me.future_panel_y)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 
     -- 0x080D69AC: it appears, then waits.
@@ -225,9 +225,9 @@ function hammer.make(look: Look): Hammer
 
     -- 0x080D6974.
     local function tick(me: Object)
-        obstacle.take_hits(me, "keeps_damage")
+        obstacle.take_hits(me, ObstaclePush.keeps_damage)
         -- (0x08013F3E: a crushing touch destroys it, its HP as it is.)
-        local a = obstacle.react(me, "destroys")
+        local a = obstacle.react(me, ObstacleCrush.destroys)
         if a then
             local action = ACTIONS[a]
             if not action then
@@ -243,7 +243,7 @@ function hammer.make(look: Look): Hammer
         me.visible = true
         local sprite = me.sprite
         sprite:load(SPRITE)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.anim, me.anim_loaded = look.stand_anim, 0xFF
         sprite:set_animation(look.stand_anim)
         sprite:step()
@@ -259,22 +259,22 @@ function hammer.make(look: Look): Hammer
         end
         me:setup_collision(collision.own_body, collision.hit_by_other_side, HIT_MOD)
         me.collision:present()
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = look.id,
-        pool = "attack",
+        pool = Pool.attack,
         -- 0x080D68CC: its state's routine, then its sprite.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
                 if not me.active then
                     return
                 end
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:destroy()
@@ -293,7 +293,7 @@ function hammer.make(look: Look): Hammer
         o.element = element
         o.alliance = owner.alliance
         o.damage_word = damage
-        obstacle.register(o, o.alliance, "one_a_side")
+        obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
         o.run_while_dimmed = true
         return o
     end

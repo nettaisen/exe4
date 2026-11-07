@@ -9,11 +9,11 @@ local spawners = require("../lib/spawners")
 
 local chip: Chip = {
     modifier = "navi_plus",
-    action = spawners.action { id = "navi-20/action", spawn = plus.spawner("navi") },
+    action = spawners.action { id = "navi-20/action", spawn = plus.spawner(SpecialBonus.navi) },
     codes = { "*" },
     element = "null",
     family = "plus",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 36,
     damage = 20,

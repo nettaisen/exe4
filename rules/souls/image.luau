@@ -25,7 +25,7 @@ export type Spawn = (owner: Object, soul: FormDef) -> Object?
 function image.make(id: string): Spawn
     local made = common.make {
         id = id,
-        pool = "effect",
+        pool = Pool.effect,
         sound = asset.sound("soul-image"),
         sine = SINE,
         offset = Vec3.new(0, 0, 0),

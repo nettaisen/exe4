@@ -33,7 +33,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
                 return
             end
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 
     -- 0x080D3F20: his sprite in its animation 8, no shadow, shown, facing its side's way, on the panel its position
@@ -41,7 +41,7 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
     local function init(me: Object)
         local sprite = me.sprite
         sprite:load(SPRITE)
-        sprite.shadow = "with_sprite"
+        sprite.shadow = Shadow.with_sprite
         me.visible = true
         me.anim, me.anim_loaded = 8, 8
         sprite:set_animation(8)
@@ -52,19 +52,19 @@ function flame.make(hits: (owner: Object, dx: number, dy: number, slot: number) 
         for i = 0, 2 do
             hits(me, i * me.facing, 0, i + 1)
         end
-        me:set_lifecycle("update")
+        me:enter_update()
     end
 
     local kind = new.kind {
         id = "burnman/flame",
-        pool = "attack",
+        pool = Pool.attack,
         state = { hits = schema.array(schema.object, 3) } :: StateSchema,
         -- 0x080D3EF0: by its state, then its sprite.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 -- 0x080D3F14: its hits' ticks cut to the last (0x080D4034), then it is freed.

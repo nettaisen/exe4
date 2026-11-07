@@ -40,7 +40,7 @@ local function sparks(me: Object)
     end
     me.timer2 += 1
     if me.timer2 >= #AROUND then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -62,7 +62,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -72,17 +72,17 @@ local function init(me: Object)
     me.collision:set_region(regions.ring)
     me.collision:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 lightning.kind = new.kind {
     id = "lightning",
-    pool = "attack",
+    pool = Pool.attack,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

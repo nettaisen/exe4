@@ -15,7 +15,7 @@ local HIT = { hits = collision.hits_navis, is = collision.slash }
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 1, steps = 15 }
 
 local custswrd: Chip = {
-    damage = { formula = "gauge", full = 0 },
+    damage = { formula = Formula.gauge, full = 0 },
     action = swords.slash {
         id = "custswrd/action",
         blade = swords.blade,
@@ -26,7 +26,7 @@ local custswrd: Chip = {
     codes = { "B", "P", "S" },
     element = "null",
     family = "sword",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 20,
     counter = 40,

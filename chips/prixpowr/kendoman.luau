@@ -91,13 +91,13 @@ local function stop(me: Object)
     me.visible = false
     local sword = me.related1
     if sword and sword.active then
-        sword:set_lifecycle("destroy")
+        sword:enter_destroy()
     end
     local out = (me.state :: State).hits[1]
     if out then
         out.timer = 1
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080CBEF4), his only one: his sword out and his first hit; then his rush.
@@ -121,7 +121,7 @@ local function rush(me: Object)
             facing = me.alliance,
             lifetime = AFTERIMAGE_TICKS,
             color_shader = AFTERIMAGE_SHADER,
-            shadow = "hidden",
+            shadow = Shadow.hidden,
         })
         t = 0
     end
@@ -148,7 +148,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -157,20 +157,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local s = me.state :: State
     s.gone_at, s.gone = 0, false
-    me:set_lifecycle("update")
+    me:enter_update()
     rush(me)
 end
 
 kendoman.kind = new.kind {
     id = "prixpowr/kendoman",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, hits = schema.array(schema.object, 1), gone_at = schema.u8, gone = schema.bool } :: StateSchema,
     -- 0x080CBE40: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             if me.action ~= 0 then
                 error(string.format("PrixPowr's KendoMan's action %#x reads past his table (0x080CBEF0)", me.action))
             end
@@ -183,7 +183,7 @@ kendoman.kind = new.kind {
             end
             local sword = me.related1
             if sword and sword.active then
-                sword:set_lifecycle("destroy")
+                sword:enter_destroy()
             end
             if s.hits[1] then
                 (s.hits[1] :: Object).timer = 1

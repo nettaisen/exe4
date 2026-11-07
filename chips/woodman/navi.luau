@@ -85,7 +85,7 @@ local function appear(me: Object)
     if field.solid(me.panel_x, me.panel_y) then
         me:set_action(ATTACK)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -169,7 +169,7 @@ local function attack(me: Object)
             s.again = false
             me.phase, me.phase_init = 0xC, 0
         else
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("WoodMan's attack's phase %#x reads past its table (0x080C9908)", phase))
@@ -186,7 +186,7 @@ local function tick(me: Object)
         error(string.format("WoodMan's action %#x reads past his table (0x080C98C4)", me.action))
     end
     if not field.valid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -196,7 +196,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -205,7 +205,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 20
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -214,14 +214,14 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4
 
 woodman.kind = new.kind {
     id = "woodman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, down = schema.u8, a = schema.u8, b = schema.u8, again = schema.bool },
     -- 0x080C980C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C9830: a puff 16 pixels above him; the controller moves on; he is freed.

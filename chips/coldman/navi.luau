@@ -128,7 +128,7 @@ local function appear(me: Object)
         return
     end
     if not field.solid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     survey(me)
@@ -182,7 +182,7 @@ local function attack(me: Object)
         end
         s.count -= 1
         if s.count < 0 then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         local stop = s.stops[s.count + 1]
@@ -223,7 +223,7 @@ local function attack(me: Object)
             me.phase_init = 1
             local x, y = me.panel_x + 1 - 2 * me.alliance, me.panel_y
             if not field.check(x, y, SOLID_NOT_ANY_BODY) then
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
                 return
             end
             ice_cube.spawn(me, x, y, 0, me.damage_word, 0)
@@ -270,7 +270,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -279,20 +279,20 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     battle.play_sound(SOUND_APPEAR)
     me.timer = 10
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 coldman.kind = new.kind {
     id = "coldman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, stops = schema.array(schema.u8, 7), count = schema.i8 },
     -- 0x080CC04C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080CC070: a puff 16 pixels above him; the controller moves on; he is freed.

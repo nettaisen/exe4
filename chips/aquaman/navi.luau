@@ -103,13 +103,13 @@ local function leave(me: Object)
         local s = me.state :: State
         local spout = s.spout
         if spout then
-            spout:set_lifecycle("destroy")
+            spout:enter_destroy()
         end
         if s.controller then
             navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -122,7 +122,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = s.palette
@@ -131,19 +131,19 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     s.spout = SPOUT.spawn(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 aquaman.kind = new.kind {
     id = "aquaman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, spout = schema.object, gun = schema.object },
     -- 0x080BAF88: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local f = ACTIONS[me.action]
             if not f then
                 error(string.format("AquaMan's action %#x reads past his table (0x080BB014)", me.action))

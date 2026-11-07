@@ -68,7 +68,7 @@ local function tick(me: Object)
         return
     end
     c:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080E12B0.
@@ -76,7 +76,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- sprite_noShadow: the first part is drawn with the sprite.
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -91,20 +91,20 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.plain)
     me.collision:present()
     me.timer = TRAIL_EVERY
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
     battle.play_sound(SOUND)
 end
 
 wave.kind = new.kind {
     id = "darkneo/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_panel = schema.u16 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -94,7 +94,7 @@ bug_shots.rock_cube_action = new.action {
             -- 0x080EEAA6: the cube on the panel ahead (its parameter: row 1, slot class 0, rising).
             battle.play_sound(PLACE_SOUND)
             local damage = me.attack_word
-            rock.spawn(me.panel_x + me.facing, me.panel_y, me.alliance, { variant = CUBE, class = "two_a_side", entrance = "rise" }, damage)
+            rock.spawn(me.panel_x + me.facing, me.panel_y, me.alliance, { variant = CUBE, class = ObstacleClass.two_a_side, entrance = "rise" }, damage)
             me.step, me.step_init = 0x8, 0
         elseif step == 0x8 then
             -- 0x080EEAC8: 31 ticks, then back to idle.

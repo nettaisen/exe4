@@ -71,7 +71,7 @@ local function afterimage(me: Object, ticks: number)
         facing = me.alliance,
         lifetime = ticks,
         color_shader = AFTERIMAGE_SHADER,
-        shadow = "hidden",
+        shadow = Shadow.hidden,
     })
 end
 
@@ -92,7 +92,7 @@ end
 local function sheathe(me: Object)
     local sword = me.related1
     if sword and sword.active then
-        sword:set_lifecycle("destroy")
+        sword:enter_destroy()
     end
 end
 
@@ -126,7 +126,7 @@ local function appear(me: Object)
     if field.solid(me.panel_x, me.panel_y) then
         me:set_action(DASH)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -322,7 +322,7 @@ local function tick(me: Object)
     end
     f(me)
     if not field.valid(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -332,7 +332,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -342,20 +342,20 @@ local function init(me: Object)
     me.element = Element.null
     battle.play_sound(SOUND_APPEAR)
     me.timer = 30
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 kendoman.kind = new.kind {
     id = "kendoman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080C85E8: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C860C: a puff 16 pixels above him; the controller moves on; his sword away; he is freed. (The rush's

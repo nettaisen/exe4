@@ -112,13 +112,13 @@ local function leave(me: Object)
         local s = me.state :: State
         local swirl = s.swirl
         if swirl then
-            swirl:set_lifecycle("destroy")
+            swirl:enter_destroy()
         end
         if s.controller then
             navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -131,7 +131,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = s.palette
@@ -140,19 +140,19 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     s.swirl = SWIRL.spawn(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 windman.kind = new.kind {
     id = "windman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, swirl = schema.object },
     -- 0x080C3DA8: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local f = ACTIONS[me.action]
             if not f then
                 error(string.format("WindMan's action %#x reads past his table (0x080C3E3C)", me.action))

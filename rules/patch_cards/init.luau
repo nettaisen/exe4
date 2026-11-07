@@ -52,7 +52,7 @@ function patch_cards.validate(side: number, problem: (p: SetupProblem) -> ())
     for i, c in rules.setup_of(side).patch_cards :: { { card: PatchCard, slot: number } } do
         if c.slot >= patch_cards.SLOTS then
             problem({
-                kind = "range",
+                kind = SetupProblemKind.range,
                 field = "patch_cards",
                 entry = i,
                 value = c.slot,
@@ -62,7 +62,7 @@ function patch_cards.validate(side: number, problem: (p: SetupProblem) -> ())
             })
         elseif seen[c.slot] then
             problem({
-                kind = "twice",
+                kind = SetupProblemKind.twice,
                 field = "patch_cards",
                 entry = i,
                 text = string.format("patch card %d: slot %d holds another", i, c.slot),
@@ -83,7 +83,7 @@ function patch_cards.build_check(side: number, problem: (p: SetupProblem) -> ())
         local own = c.card.slot
         if c.slot < patch_cards.SLOTS and c.slot ~= own then
             problem({
-                kind = "slot",
+                kind = SetupProblemKind.slot,
                 field = "patch_cards",
                 entry = i,
                 def = c.card,

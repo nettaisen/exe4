@@ -25,7 +25,7 @@ end
 
 local KIND = new.kind {
     id = "popup/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { busy = schema.bool },
     -- 0x080E6470.
     update = dimming_chips.phases { name = "PopUp", effect = effect },

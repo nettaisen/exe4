@@ -38,14 +38,14 @@ local function init(me: Object)
     local k = s.look
     local sprite = me.sprite
     sprite:load(k.sprite)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim = s.anim
     me.anim_loaded = s.anim
     me.visible = true
     sprite:set_animation(s.anim)
     sprite.palette = k.palette
     me:set_coordinates_from_panel()
-    me:set_lifecycle("update")
+    me:enter_update()
     local lift = (k.lift or 0) * 0x10000
     slot.follow(me, me.related1 :: Object, s.slot, {
         offset = Vec3.new(0, -lift, -lift),
@@ -57,11 +57,11 @@ end
 
 attachment.kind = new.kind {
     id = "attachment",
-    pool = "attack",
+    pool = Pool.attack,
     state = { slot = slot.TYPE, look = common.ATTACHMENT_LOOK, anim = schema.u8, while_dimmed = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
         else
             me:free()

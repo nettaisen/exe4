@@ -91,7 +91,7 @@ function lingering_hit.make(id: string): LingeringHit
             end
         end
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 
     -- 0x080DCC8E: on its panel's center; its collision (freed without one), its region, spark, status and bug; kept
@@ -113,13 +113,13 @@ function lingering_hit.make(id: string): LingeringHit
         end
         c:present()
         keep(me, me)
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = id,
-        pool = "attack",
+        pool = Pool.attack,
         state = {
             dx = schema.i8,
             dy = schema.i8,
@@ -137,9 +137,9 @@ function lingering_hit.make(id: string): LingeringHit
         -- 0x080DCC5C.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 -- 0x080DCC7C: out of its holder's slot; its collision, then itself, freed.

@@ -29,7 +29,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     local setup = rules.setup_of(side)
     if setup.hp < 1 or setup.hp > MAX_HP then
         problem({
-            kind = "range",
+            kind = SetupProblemKind.range,
             field = "hp",
             value = setup.hp,
             least = 1,
@@ -39,7 +39,7 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     end
     if setup.reg_up > MAX_REG_UP then
         problem({
-            kind = "range",
+            kind = SetupProblemKind.range,
             field = "reg_up",
             value = setup.reg_up,
             least = 0,

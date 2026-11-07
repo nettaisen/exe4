@@ -25,11 +25,11 @@ local function back(c: Object)
     if not user then
         error("DarkNeo's controller brings its user back, but its side has no navi (0x080EA744 reads through a null pointer)")
     end
-    local player = user.actor_type == "player"
+    local player = user.actor_type == ActorType.player
     if player then
         local sprite = c.sprite
         looks.load_like(sprite, user)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         c.pos = user.pos
         sprite.palette = user.sprite.palette
         sprite:face(c)
@@ -65,7 +65,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 250,

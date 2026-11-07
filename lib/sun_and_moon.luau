@@ -95,7 +95,7 @@ function sun_and_moon.make(spec: Spec): { kind: Kind, hook: (user: Object, chip:
 
     local kind = new.kind {
         id = spec.id,
-        pool = "effect",
+        pool = Pool.effect,
         state = { bonus = schema.u16, busy = schema.bool },
         update = dimming_chips.phases { name = spec.name, effect = effect },
     }

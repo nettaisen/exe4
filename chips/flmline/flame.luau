@@ -69,7 +69,7 @@ local function sink(me: Object)
     if t > 0 then
         return
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D0008: the hits against it resolve and spark (a hit takes it off its panel), its action, present.
@@ -103,7 +103,7 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
     me:set_coordinates_from_panel()
@@ -117,20 +117,20 @@ local function init(me: Object)
     c:set_region(nil)
     c:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 local kind = new.kind {
     id = "flmline/flame",
-    pool = "attack",
+    pool = Pool.attack,
     state = { burns = schema.u8 },
     -- 0x080CFF80: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

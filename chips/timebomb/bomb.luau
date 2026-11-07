@@ -43,7 +43,7 @@ local KIND = countdown.make_kind("timebomb/countdown", {
     blasts_after_battle = true,
     reads_no_removal = true,
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
     actions = {
         [1] = return_to_idle,
         [3] = function(_me: Object) end,

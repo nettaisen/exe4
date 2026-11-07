@@ -57,7 +57,7 @@ local function tick(me: Object)
         battle.play_sound(BROKEN)
         battle.lose_round(me.alliance)
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me:update_sprite()
@@ -69,7 +69,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me:set_coordinates_from_panel()
@@ -84,19 +84,19 @@ local function init(me: Object)
     end
     me:setup_collision(collision.collision_29, collision.hit_by_other_side, HIT_MOD)
     me.collision:present()
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 flag.kind = new.kind {
     id = "flag",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080E06AC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

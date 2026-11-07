@@ -33,7 +33,7 @@ type State = { palette: number }
 
 local function gone(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D244C: its count, then its hit on its panel, the sound, the charge.
@@ -114,7 +114,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = ANIM, 0xFF
     me:set_coordinates_from_panel()
@@ -131,20 +131,20 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 moloko.kind = new.kind {
     id = "mokorus/moloko",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8 },
     -- 0x080D235C: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

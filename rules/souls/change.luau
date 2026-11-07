@@ -101,7 +101,7 @@ local function prepare(me: Object, soul: FormDef, spec: Spec)
     if me.step_init == 0 then
         me.attack_lockout = END_LOCKOUT
         me.status.frozen = true
-        battle.screen_fade("transform_out", FADE_SPEED)
+        battle.screen_fade(ScreenFade.transform_out, FADE_SPEED)
         me:snap_to_future_panel()
         flash(me)
         battle.play_sound(CHANGE_SOUND)
@@ -131,7 +131,7 @@ local function show_image(me: Object, s: State, soul: FormDef, spec: Spec, spawn
         battle.play_sound(UNITE_SOUND)
         flash(me)
         if spec.flash == true then
-            battle.palette_flash("one_layer", 0x28, true, false)
+            battle.palette_flash(PaletteFlashVariant.one_layer, 0x28, true, false)
         end
     end
     s.timer -= 1
@@ -173,7 +173,7 @@ end
 -- 0x080EBC20
 local function fade_in(me: Object, spec: Spec)
     if me.step_init == 0 then
-        battle.screen_fade("transform_in", FADE_SPEED)
+        battle.screen_fade(ScreenFade.transform_in, FADE_SPEED)
         me.step_init = 4
         return
     end

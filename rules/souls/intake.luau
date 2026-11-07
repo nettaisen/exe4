@@ -19,7 +19,7 @@ local function needed(side: number): boolean
     end
     for i = 1, 4 do
         local navi = battle.alive_actor_slot(side, i)
-        if navi ~= nil and (navi.actor_type == "navi" or navi.requests.form_change) then
+        if navi ~= nil and (navi.actor_type == ActorType.navi or navi.requests.form_change) then
             return true
         end
     end

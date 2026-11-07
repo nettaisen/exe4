@@ -13,7 +13,7 @@ local BIG_BOMB = countdown.variant {
     appear_anim = 2,
     idle_anim = 3,
     hp = 300,
-    class = "one_a_side",
+    class = ObstacleClass.one_a_side,
     collision = bomb.body,
     strong_shake = true,
 }
@@ -22,7 +22,7 @@ local timebom: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 600,

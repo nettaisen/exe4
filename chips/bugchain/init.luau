@@ -41,7 +41,7 @@ local function mark_tick(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     local navi = me.related1
     if not navi then
@@ -52,11 +52,11 @@ end
 
 local MARK = new.kind {
     id = "bugchain/mark",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E6718: then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E673C: no shadow, animation 0 from its first frame, stepped once (0x0800285C); its navi's side.
             local navi = me.related1
             if not navi then
@@ -64,16 +64,16 @@ local MARK = new.kind {
             end
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "with_sprite"
+            sprite.shadow = Shadow.with_sprite
             me.visible = true
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
             sprite:step()
             me.alliance = navi.alliance
             sprite:face_side(me.alliance)
-            me:set_lifecycle("update")
+            me:enter_update()
             mark_tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             mark_tick(me)
         else
             me:free()
@@ -154,7 +154,7 @@ end
 
 local CONTROLLER = new.kind {
     id = "bugchain/controller",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E65E0.
     update = dimming_chips.phases { name = "BugChain", effect = effect },
 }
@@ -168,7 +168,7 @@ local chip: Chip = {
     codes = { "C", "*" },
     element = "null",
     family = "null",
-    class = "mega",
+    class = ChipClass.mega,
     rarity = 3,
     mb = 59,
     damage = 0,

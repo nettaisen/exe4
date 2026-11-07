@@ -93,7 +93,7 @@ local function arrive(me: Object)
     elseif phase == 4 then
         local sprite = me.sprite
         sprite:load(SPRITE)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.visible = true
         me.anim, me.anim_loaded = 0, 0
         sprite:set_animation(0)
@@ -158,7 +158,7 @@ local function back_out(me: Object)
     local p = me.pos
     me.pos = Vec3.new(int.i32(p.x - me.vel.x), p.y, p.z)
     if ran_out(me) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -200,16 +200,16 @@ end
 
 navi.kind = new.kind {
     id = "duo/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, last = targets.LAST, grid = targets.GRID },
     -- 0x080CB70C: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080CB74C: (his sheet's tiles made ready;) his first tick at once.
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080CB730: his controller moves on; his panels are drawn again; he is freed.

@@ -115,19 +115,19 @@ end
 
 wind.kind = new.kind {
     id = "wind",
-    pool = "effect",
+    pool = Pool.effect,
     state = { gusts = schema.array(schema.u8, 2), row = schema.u8, pulls = schema.bool, unseen = schema.bool, waits = schema.bool },
     -- 0x080E6820.
     update = function(me: Object)
         local l = me.lifecycle
         local s = state(me)
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E6840: the row count, the sound, and its first update at once.
             s.row = 3
             battle.play_sound(START)
-            me.lifecycle = "update"
+            me.lifecycle = Lifecycle.update
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080E68E0: one that registered itself is no side's wind; its slots empty.

@@ -29,13 +29,14 @@ local OFFERED_AGAIN: Offer = { marks = { offered_again = true }, listed = false 
 -- The shuffle's rounds (0x0801DFCE).
 local SWAPS = 64
 -- The class a draw's low three bits pick (0x0801E0A4; with the navi's HP at half its maximum or less, 0x0801E0AC).
-local HEALTHY: { string } = { "standard", "standard", "standard", "standard", "mega", "mega", "mega", "giga" }
-local HURT: { string } = { "standard", "standard", "standard", "mega", "mega", "mega", "giga", "giga" }
+local S, M, G = ChipClass.standard, ChipClass.mega, ChipClass.giga
+local HEALTHY: { ChipClass } = { S, S, S, S, M, M, M, G }
+local HURT: { ChipClass } = { S, S, S, M, M, M, G, G }
 -- A class with none listed gives way to the one below it, the standard chips to the Giga chips (0x0801E058).
-local BELOW: { [string]: string } = { giga = "mega", mega = "standard", standard = "giga" }
+local BELOW: { [ChipClass]: ChipClass } = { [G] = M, [M] = S, [S] = G }
 
 -- 0x0801E040: a draw's class, or the first below it with a chip left.
-local function draw_class(side: number, classes: { string }, left: { [string]: number }): string
+local function draw_class(side: number, classes: { ChipClass }, left: { [ChipClass]: number }): ChipClass
     local class = classes[bit32.band(battle.console_rng_positive(side), 7) + 1]
     while left[class] == 0 do
         class = BELOW[class]
@@ -44,7 +45,7 @@ local function draw_class(side: number, classes: { string }, left: { [string]: n
 end
 
 -- 0x0801E064: the list's first chip of `class`, but entry `taken`.
-local function first_of(sent: { FolderChip }, class: string, taken: number?): number
+local function first_of(sent: { FolderChip }, class: ChipClass, taken: number?): number
     for i, c in sent do
         if i ~= taken and c.chip.class == class then
             return i
@@ -64,9 +65,9 @@ local function deal(side: number, s: Screen)
     order.apply(sent, 0, battle.console_shuffle_order(side, n, SWAPS))
     sent_chips.set(side, sent)
     -- 0x0801DFDA: how many of each class (a folder's chips are of these three).
-    local left: { [string]: number } = { standard = 0, mega = 0, giga = 0 }
+    local left: { [ChipClass]: number } = { [S] = 0, [M] = 0, [G] = 0 }
     for _, c in sent do
-        local class: string = c.chip.class
+        local class = c.chip.class :: ChipClass
         left[class] += 1
     end
     local navi = battle.player(side)

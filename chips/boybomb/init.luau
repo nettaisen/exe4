@@ -55,7 +55,7 @@ local BOMB = common.make {
         [0] = { solid = true, own_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
         [1] = { solid = true, own_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
     },
-    push = "keeps_damage",
+    push = ObstaclePush.keeps_damage,
     actions = {
         [1] = return_to_idle,
         [3] = function(_me: Object) end,
@@ -64,7 +64,7 @@ local BOMB = common.make {
     },
     breaks_while_dimmed = true,
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
     side_only = true,
 }
 
@@ -130,7 +130,7 @@ end
 
 local controller = new.kind {
     id = "boybomb/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16 },
     -- 0x080E94CC.
     update = dimming_chips.phases { name = "BoyBomb", effect = effect },
@@ -150,7 +150,7 @@ local boybomb1: Chip = {
     codes = { "E", "J", "M" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 0,
     mb = 30,
     damage = 220,
@@ -167,7 +167,7 @@ local boybomb2: Chip = {
     codes = { "I", "S", "W" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 40,
     damage = 250,
@@ -184,7 +184,7 @@ local boybomb3: Chip = {
     codes = { "G", "T", "V" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 50,
     damage = 280,

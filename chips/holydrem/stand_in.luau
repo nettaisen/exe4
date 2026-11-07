@@ -96,7 +96,7 @@ local function finish(me: Object)
         return
     end
     overlays.remove_parts_of(me, me.related1 :: Object)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DD860: its one action (0x080DD878), by phase.
@@ -128,14 +128,14 @@ local function init(me: Object)
     end
     local sprite = me.sprite
     looks.load_like(sprite, user)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.pos = user.pos
     me:set_panel_from_coordinates()
     sprite.palette = user.sprite.palette
     sprite:face(me)
     me.vel = Vec3.new(me.facing, me.vel.y, me.vel.z)
-    if user.actor_type == "player" then
+    if user.actor_type == ActorType.player then
         overlays.add_overlay_of(me, user)
     end
     dimming.hide_user_sparing(user)
@@ -143,7 +143,7 @@ local function init(me: Object)
     s.dx = -me.facing
     s.y = 1
     s.x = 6 - 5 * me.alliance
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -160,14 +160,14 @@ end
 
 local kind = new.kind {
     id = "holydrem/stand-in",
-    pool = "attack",
+    pool = Pool.attack,
     state = { controller = schema.object, x = schema.i32, y = schema.i32, dx = schema.i32 },
     -- 0x080DD798.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             leave(me)

@@ -71,16 +71,16 @@ function towers.controller(spec: { id: string, strike: Strike }): (user: Object,
 
     local kind = new.kind {
         id = spec.id,
-        pool = "attack",
+        pool = Pool.attack,
         -- 0x080DF7F8.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 -- 0x080DF818: from the user's back column, a column a sweep toward its facing (+0x40).
                 me.panel_x = me.alliance * 5 + 1
                 me.vel = Vec3.new(me.facing, me.vel.y, me.vel.z)
-                me:set_lifecycle("update")
-            elseif l == "update" then
+                me:enter_update()
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:free()

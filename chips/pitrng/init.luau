@@ -44,16 +44,16 @@ end
 
 local THROWER = new.kind {
     id = "pitrng/thrower",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E999C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E99BC: its first tick runs its first update too, the setup (0x080E99E4: phase 0, which it leaves).
-            me:set_lifecycle("update")
+            me:enter_update()
             me.timer2 = THROWS
             me.phase, me.phase_init = THROW, 0
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -77,7 +77,7 @@ local pitrng1: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "wood",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 200,
@@ -93,7 +93,7 @@ local pitrng2: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "wood",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 250,
@@ -109,7 +109,7 @@ local pitrng3: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "wood",
     family = "program_advance",
-    class = "program_advance",
+    class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,
     damage = 300,

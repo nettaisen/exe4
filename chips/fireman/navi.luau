@@ -161,13 +161,13 @@ local function leave(me: Object)
         local s = me.state :: State
         local flame = s.flame
         if flame then
-            flame:set_lifecycle("destroy")
+            flame:enter_destroy()
         end
         if s.controller then
             navi_left(s.controller :: Object)
         end
         -- (The state byte alone: his action and phase stay.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -180,7 +180,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0xFF
     sprite:set_animation(0xFF)
     sprite.palette = s.palette
@@ -188,22 +188,22 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    s.flame = battle.form_overlay(me, { sprite = HEAD_FLAME, stepping = "while_dimmed", owner_palette = true })
+    s.flame = battle.form_overlay(me, { sprite = HEAD_FLAME, stepping = FormOverlayStepping.while_dimmed, owner_palette = true })
     s.command_steps = 0
     s.commanded = false
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 fireman.kind = new.kind {
     id = "fireman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, flame = schema.object, command_steps = schema.u8, commanded = schema.bool },
     -- 0x080B92A2: by his state, then his sprite, while dimmed too.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local f = ACTIONS[me.action]
             if not f then
                 error(string.format("FireMan's action %#x reads past his table (0x080B9334)", me.action))

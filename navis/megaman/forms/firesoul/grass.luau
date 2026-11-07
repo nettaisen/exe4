@@ -49,7 +49,7 @@ end
 
 grass.kind = new.kind {
     id = "firesoul/grass",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E33E8: by its mode alone, whatever its state.
     update = tick,
 }

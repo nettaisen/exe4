@@ -716,14 +716,14 @@ end
 
 -- 0x08023FBC (`when_unbarriered`, class 26): the navi has no barrier (its collision record's +0x04).
 local function unbarriered(navi: Object): boolean
-    return navi.collision.barrier == "none"
+    return navi.collision.barrier == BarrierState.none
 end
 
 -- 0x08023FE8 (`when_enemy_barrier`, class 27): the first of the other side's navis (0x080238E0's) has a barrier. (The
 -- loop means each of them, but it steps the record it read, not the list: 0x0802402A.)
 local function enemy_barrier(navi: Object): boolean
     local e = other_navis(navi)[1]
-    return e ~= nil and e.collision.barrier ~= "none"
+    return e ~= nil and e.collision.barrier ~= BarrierState.none
 end
 
 -- 0x08024054 (`own_panel_ahead`, class 28): a step to a panel whose panel toward its enemies is the navi's side's and

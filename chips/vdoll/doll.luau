@@ -43,7 +43,7 @@ return common.make {
     trajectory = trajectory,
     curse = curse,
     tracked = false,
-    crush = "destroys",
+    crush = ObstacleCrush.destroys,
     -- 0x080DC888, by the framework's numbers (its rows 0 to 6: 0, 1, 2, 3, 4, 5, 8).
     actions = function(fly: (Object) -> (), destroyed: (Object) -> (), set_down: (Object) -> ())
         return {

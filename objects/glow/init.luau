@@ -70,7 +70,7 @@ end
 -- Done: its holder isn't busy, and it goes.
 function glow.done(me: Object)
     release(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 function glow.make(spec: Spec): Glow
@@ -83,7 +83,7 @@ function glow.make(spec: Spec): Glow
     -- 0x080CCF7C.
     local function init(me: Object)
         local navi = glow.navi_of(me, "0x080CCF7C")
-        if navi.actor_type == "virus" then
+        if navi.actor_type == ActorType.virus then
             -- 0x080CD010.
             release(me)
             me:free()
@@ -91,7 +91,7 @@ function glow.make(spec: Spec): Glow
         end
         local sprite = me.sprite
         looks.load_like(sprite, navi)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.visible = true
         local p = navi.pos
         me.pos = Vec3.new(p.x, p.y - 0x10000, p.z - 0x10000)
@@ -100,20 +100,20 @@ function glow.make(spec: Spec): Glow
         sprite:face(me)
         overlays.put_on_form(me, battle.navi(me.alliance).form)
         me.anim, me.anim_loaded = 0, 0xFF
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = spec.id,
-        pool = "actor",
+        pool = Pool.actor,
         state = { holder = schema.object },
         -- 0x080CCF5C.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:free()

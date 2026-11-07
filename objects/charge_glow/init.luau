@@ -39,11 +39,11 @@ local function tick(me: Object)
     if not state.shown then
         me.visible = false
     end
-    if navi.charge_source ~= state.source or navi.charge_level == "none" then
+    if navi.charge_source ~= state.source or navi.charge_level == ChargeLevel.none then
         return finish(me, navi)
     end
     local before = me.anim
-    local anim = if navi.charge_level == "full" then 2 else 0
+    local anim = if navi.charge_level == ChargeLevel.full then 2 else 0
     me.anim = anim
     if anim ~= before and anim == 2 then
         battle.play_sound(CHARGED)
@@ -61,29 +61,29 @@ local function init(me: Object)
     local state = me.state :: State
     local source = navi.charge_source
     state.source = source
-    if source == "none" then
+    if source == ChargeSource.none then
         return finish(me, navi)
     end
     local sprite = me.sprite
-    sprite:load(if source == "b" then B_GLOW else A_GLOW)
-    sprite.shadow = "with_sprite"
+    sprite:load(if source == ChargeSource.b then B_GLOW else A_GLOW)
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     me.visible = true
     battle.play_sound(CHARGING)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 glow.kind = new.kind {
     id = "charge-glow",
-    pool = "effect",
-    state = { source = { "none", "a", "b" }, shown = schema.bool },
+    pool = Pool.effect,
+    state = { source = schema.choice(ChargeSource), shown = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

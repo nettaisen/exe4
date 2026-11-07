@@ -71,7 +71,7 @@ local function fly(me: Object, s: State)
     local t = me.timer - 1
     me.timer = int.u16(t)
     if t == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -100,7 +100,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     me.anim = s.anim
     sprite:set_animation(s.anim)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     sprite.under_objects = true
     sprite.hidden_parts[0] = true
     sprite.palette = PALETTE
@@ -108,7 +108,7 @@ local function init(me: Object)
     sprite:face_side(me.alliance)
     s.blink = 2
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     if s.delay == 0 then
         me.action = FLYING
     end
@@ -116,13 +116,13 @@ end
 
 ghost.kind = new.kind {
     id = "darkneo/ghost",
-    pool = "effect",
+    pool = Pool.effect,
     state = { anim = schema.u8, delay = schema.u8, blink = schema.u8, shader = schema.u16 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

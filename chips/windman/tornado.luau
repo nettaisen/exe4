@@ -30,7 +30,7 @@ local DOWN, ACROSS, UP, BACK = 0x0, 0x4, 0x8, 0xC
 -- state: its timer counts from its first update.)
 local sand_kind = new.kind {
     id = "windman/sand",
-    pool = "attack",
+    pool = Pool.attack,
     update = function(me: Object)
         if me.phase_init == 0 then
             me.timer = 10
@@ -210,7 +210,7 @@ local function back(me: Object)
     local px = x // 0x1_0000
     if px + 130 < 0 or px + 130 > 260 or (s.ticks == 4 and s.steps >= 7) then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     moved(me)
@@ -255,7 +255,7 @@ local function init(me: Object)
     me.visible = true
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim = 0
     sprite:set_animation(0)
     sprite:step()
@@ -274,24 +274,24 @@ local function init(me: Object)
     end
     me:setup_collision(collision.collision_20, collision.hits_navis, { flinch = true, flash = true })
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     battle.play_sound(SOUND)
     tick(me)
 end
 
 tornado.kind = new.kind {
     id = "windman/tornado",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ticks = schema.u32, steps = schema.u8, sandy = schema.bool },
     -- 0x080DAC54: by its state, then its sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
