@@ -82,8 +82,20 @@ return {
             flags = { solid = true, ice = true, on_field = true },
             doubles = "elec",
             move_end = panel_types.ice_pushes({
-                { none = {}, up = { up = true }, down = { down = true }, left = { back = true }, right = { forward = true } },
-                { none = {}, up = { up = true }, down = { down = true }, left = { forward = true }, right = { back = true } },
+                {
+                    [MoveDirection.none] = {},
+                    [MoveDirection.up] = { up = true },
+                    [MoveDirection.down] = { down = true },
+                    [MoveDirection.left] = { back = true },
+                    [MoveDirection.right] = { forward = true },
+                },
+                {
+                    [MoveDirection.none] = {},
+                    [MoveDirection.up] = { up = true },
+                    [MoveDirection.down] = { down = true },
+                    [MoveDirection.left] = { forward = true },
+                    [MoveDirection.right] = { back = true },
+                },
             }),
             slide = panel_types.ice,
         },
