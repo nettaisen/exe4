@@ -64,7 +64,7 @@ local function strike(me: Object, what: "hit" | BugCode)
         panel_y = me.panel_y,
         element = me.element,
         z = me.pos.z,
-        region = regions.region_08,
+        region = regions.row,
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.piercing,

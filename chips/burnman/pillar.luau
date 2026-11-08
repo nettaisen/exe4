@@ -72,7 +72,7 @@ end
 -- until its ticks run out; then it goes.
 local function burn(me: Object)
     local s = me.state :: State
-    local region = if s.lower then regions.tall else regions.region_19
+    local region = if s.lower then regions.tall else regions.tall_down
     local y = me.panel_y + toward(me)
     for _, o in region.panels or {} do
         field.highlight(me.panel_x + o[1] * me.facing, y + o[2])
