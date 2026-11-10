@@ -310,12 +310,15 @@ local rules: Rules = {
             return out
         end,
         -- What is wrong with a side's setup as a player's build, beside what `validate` says of any setup: a patch
-        -- card out of its own slot (./patch_cards).
+        -- card out of its own slot (./patch_cards); the folder's limits, as the tool's ruleset leaves them
+        -- (rules/rulesets' `limits`).
         build_check = function(side: number): { SetupProblem }
             local out: { SetupProblem } = {}
-            patch_cards.build_check(side, function(p: SetupProblem)
+            local function problem(p: SetupProblem)
                 table.insert(out, p)
-            end)
+            end
+            patch_cards.build_check(side, problem)
+            folder.build_check(side, problem)
             return out
         end,
         -- What rules a folder a tool asks of breaks, and what they allow of one (./folder).

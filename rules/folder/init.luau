@@ -1,7 +1,7 @@
 --!strict
 -- EXE4's folder rules, as its folder editor enforces them as a chip goes in (0x08031458 on, by the chip's class,
--- 0x080190D0's +0x08): a tool's questions (`folder_check`, `folder_view`, `validate`: a match's checks, netplay's
--- offer, the build screens), never the simulation's. The rules every game of the series shares are
+-- 0x080190D0's +0x08): a tool's questions (`folder_check`, `folder_view`, `validate`, `build_check`: a match's checks,
+-- netplay's offer, the build screens), never the simulation's. The rules every game of the series shares are
 -- @exelib/folder_rules; these are EXE4's own. Red Sun US's addresses.
 --
 -- - A folder is 30 chips.
@@ -46,5 +46,8 @@ return {
     end,
     validate = function(side: number, problem: (p: SetupProblem) -> ())
         folder_rules.validate(RULES, side, rules.setup_of(side), problem)
+    end,
+    build_check = function(side: number, problem: (p: SetupProblem) -> ())
+        folder_rules.build_check(RULES, side, rules.setup_of(side), problem)
     end,
 }
