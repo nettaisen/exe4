@@ -1,0 +1,43 @@
+--!strict
+-- EXE4's CircGun kinds (the dimming chips' variant 0x33: effect object #0x5E, 0x080E8AFC; attack objects #0x89,
+-- 0x080DE610, and #0x8A, 0x080DE888): the shared CircGun (@exelib/circle_gun, EXE6's code) with EXE4's look: its sight
+-- (10-22, SearchMan's scope's sheet), sounds (a step 0x128, the mark 0x12F, the hit 0xBB), the hit's flash (effect
+-- row 0x27, 14-04), spark 0 and hit types (thrown, at navis), its gun and shots on their panels' centers at height 0;
+-- its gun turning back along a row on a column with any of the user's side's panels (0x080DE7AA); and its controller
+-- (0x080E8B40) setting the gun whatever the far column holds, its spawn (0x080E8B84) taking the user's side alone.
+
+local collision = require("../../rules/collision")
+local controller = require("@exelib/circle_gun/controller")
+local gun = require("@exelib/circle_gun/gun")
+local shot = require("@exelib/circle_gun/shot")
+local sparks = require("../../lib/sparks")
+local pink_flash_sprite = asset.sprite("pink_flash")
+local search_scope_sprite = asset.sprite("search_scope")
+
+local circle_gun = {}
+
+local LOOK: CircGunLook = {
+    sprite = search_scope_sprite,
+    sounds = {
+        step = asset.sound("scope_move"),
+        mark = asset.sound("mark"),
+        hit = asset.sound("vulcan"),
+    },
+    target = collision.hits_navis,
+    flash = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
+    spark = sparks.plain,
+    on_floor = true,
+    turns_on_own_column = true,
+}
+
+local SHOT = shot.make_kind("circle_gun/shot", LOOK)
+local GUN = gun.make_kind("circle_gun/gun", LOOK, SHOT)
+local CONTROLLER = controller.make("circle_gun/controller", GUN, { side_only = true, always_sets_gun = true })
+
+-- A controller variant.
+circle_gun.variant = controller.variant
+
+-- A chip's `dimming` hook, of controller variant `v`.
+circle_gun.hook = CONTROLLER.hook
+
+return circle_gun

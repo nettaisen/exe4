@@ -6,7 +6,7 @@
 
 local recov = require("@self/recov")
 
-local recov10: Chip = {
+local recovery_10: Chip = {
     codes = { "A", "L", "N", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -17,11 +17,11 @@ local recov10: Chip = {
     counter = 30,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov10/action", hp = 10, mood = 30 },
+    action = recov.action { id = "recovery_10/action", hp = 10, mood = 30 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov30: Chip = {
+local recovery_30: Chip = {
     codes = { "F", "H", "R", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -32,11 +32,11 @@ local recov30: Chip = {
     counter = 30,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov30/action", hp = 30, mood = 30 },
+    action = recov.action { id = "recovery_30/action", hp = 30, mood = 30 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov50: Chip = {
+local recovery_50: Chip = {
     codes = { "E", "L", "S", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -47,11 +47,11 @@ local recov50: Chip = {
     counter = 40,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov50/action", hp = 50, mood = 40 },
+    action = recov.action { id = "recovery_50/action", hp = 50, mood = 40 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov80: Chip = {
+local recovery_80: Chip = {
     codes = { "B", "J", "O", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -62,11 +62,11 @@ local recov80: Chip = {
     counter = 40,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov80/action", hp = 80, mood = 40 },
+    action = recov.action { id = "recovery_80/action", hp = 80, mood = 40 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov120: Chip = {
+local recovery_120: Chip = {
     codes = { "F", "J", "Q", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -77,11 +77,11 @@ local recov120: Chip = {
     counter = 50,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov120/action", hp = 120, mood = 50 },
+    action = recov.action { id = "recovery_120/action", hp = 120, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov150: Chip = {
+local recovery_150: Chip = {
     codes = { "C", "T", "Z" },
     element = Element.null,
     family = Family.recovery,
@@ -92,11 +92,11 @@ local recov150: Chip = {
     counter = 50,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov150/action", hp = 150, mood = 50 },
+    action = recov.action { id = "recovery_150/action", hp = 150, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov200: Chip = {
+local recovery_200: Chip = {
     codes = { "H", "M", "W" },
     element = Element.null,
     family = Family.recovery,
@@ -107,11 +107,11 @@ local recov200: Chip = {
     counter = 50,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov200/action", hp = 200, mood = 50 },
+    action = recov.action { id = "recovery_200/action", hp = 200, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
 
-local recov300: Chip = {
+local recovery_300: Chip = {
     codes = { "J", "N", "Y" },
     element = Element.null,
     family = Family.recovery,
@@ -122,8 +122,8 @@ local recov300: Chip = {
     counter = 50,
     lockout = 30,
     flags = { standard_library = true, library = true },
-    action = recov.action { id = "recov300/action", hp = 300, mood = 50 },
+    action = recov.action { id = "recovery_300/action", hp = 300, mood = 50 },
     auto_battle = { class = "when_hp_low" },
 }
 
-return { recov10 = recov10, recov30 = recov30, recov50 = recov50, recov80 = recov80, recov120 = recov120, recov150 = recov150, recov200 = recov200, recov300 = recov300 }
+return { recovery_10 = recovery_10, recovery_30 = recovery_30, recovery_50 = recovery_50, recovery_80 = recovery_80, recovery_120 = recovery_120, recovery_150 = recovery_150, recovery_200 = recovery_200, recovery_300 = recovery_300 }

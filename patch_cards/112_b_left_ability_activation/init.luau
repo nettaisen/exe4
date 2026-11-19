@@ -8,8 +8,8 @@ local chips = require("../navis/megaman/weapons/chips")
 local card: SlottedPatchCard = {
     slot = cards.SLOT_0D,
     effects = {
-        cards.b_left(chips.tripcrak),
+        cards.b_left(chips.triple_crack),
     },
 }
 
-return { ["112-b-left-ability-activation"] = card }
+return { ["112_b_left_ability_activation"] = card }

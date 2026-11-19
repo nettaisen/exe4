@@ -8,7 +8,7 @@
 -- makes his flames leave lava.
 
 local collision = require("../../rules/collision")
-local flame_common = require("@exelib/elemrage/flame")
+local flame_common = require("@exelib/element_rage/flame")
 local navi_chips = require("../../lib/navi_chips")
 local sparks = require("../../lib/sparks")
 
@@ -27,8 +27,8 @@ type State = {
 }
 
 local SPRITE = asset.sprite("fireman")
-local HEAD_FLAME = asset.sprite("fireman-flame")
-local rage_flame_sprite = asset.sprite("rage-flame")
+local HEAD_FLAME = asset.sprite("fireman_flame")
+local rage_flame_sprite = asset.sprite("rage_flame")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROAR = asset.sound("roar")

@@ -29,7 +29,7 @@ local SPRITE = asset.sprite("woodman")
 local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_LAND = asset.sound("metal-punch")
+local SOUND_LAND = asset.sound("metal_punch")
 -- The panels his towers rise on, by his side (0x080C9A60: the other side's solid panels).
 local TOWER_PANELS: PanelCondition = { solid = true, enemy_area = true }
 -- His leap: up 27 pixels a tick, falling a pixel a tick faster each.

@@ -7,15 +7,15 @@
 -- it runs while dimmed (not while paused) and animates then too, with no test of its owner's having vanished, and its
 -- spawn (0x080D2338) takes its owner's side alone.
 
-local common = require("@exelib/rflectr/shield")
+local common = require("@exelib/reflector/shield")
 
 local shield = {}
 
-local SPRITE = asset.sprite("reflector-shield")
+local SPRITE = asset.sprite("reflector_shield")
 local FADE_TICKS = 14
 
 local made = common.make {
-    id = "guard-shield",
+    id = "guard_shield",
     sound = asset.sound("shield"),
     animates_while_dimmed = true,
     runs_while_paused = false,

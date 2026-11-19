@@ -1,0 +1,68 @@
+--!strict
+-- ThunMan, ThunMnSP and ThunMnDS (EXE4 chips 0x0EC to 0x0EE): navi chips, the dimming chips' action 0x0C, its variant
+-- 0x23: their controller (./navi) brings ThunMan, who calls a thunderbolt on each row of the column three ahead of him;
+-- each chip states his palette (0x0800B950 by its first parameter, its level 0, 3 or 4: two palettes a variant, times
+-- 0, 2 or 3). ThunMnSP's damage goes by how fast its user deleted ThunMan SP (rules/sp_chips: formula 6, the table's
+-- row 5), ThunMnDS's by the field's holes (formula 28).
+-- Their records are written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local navi = require("@self/navi")
+local navi_chips = require("../lib/navi_chips")
+local sp_chips = require("../rules/sp_chips")
+
+-- ThunMan's row of the navi chips' damage (0x08018B48's row 5), by step.
+local ROW: { number } = { 220, 210, 200, 190, 180, 170, 160, 150, 140, 130, 120 }
+
+local thunderman: Chip = {
+    codes = { "T" },
+    element = Element.elec,
+    family = Family.elec,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 48,
+    damage = 90,
+    counter = 30,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    dimming = navi.controller { id = "thunderman/controller", palette = 0 }.hook,
+    megaman = "light",
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+local thunderman_sp: Chip = {
+    codes = { "T" },
+    element = Element.elec,
+    family = Family.elec,
+    class = ChipClass.mega,
+    rarity = 4,
+    mb = 68,
+    sp = ROW,
+    damage = sp_chips.damage,
+    counter = 30,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    dimming = navi.controller { id = "thunderman_sp/controller", palette = 4 }.hook,
+    megaman = "light",
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+local thunderman_ds: Chip = {
+    codes = { "T" },
+    element = Element.elec,
+    family = Family.elec,
+    class = ChipClass.mega,
+    rarity = 4,
+    mb = 68,
+    damage = { formula = Formula.count, of = { panels = PanelType.hole }, by_count = navi_chips.by_holes(ROW) },
+    counter = 30,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
+    dimming = navi.controller { id = "thunderman_ds/controller", palette = 6 }.hook,
+    megaman = "dark",
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+return { thunderman = thunderman, thunderman_sp = thunderman_sp, thunderman_ds = thunderman_ds }

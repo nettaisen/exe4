@@ -29,12 +29,12 @@ type State = {
 
 local SPRITE = asset.sprite("kendoman")
 local puff_sprite = asset.sprite("puff")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_DASH = asset.sound("counter-strike")
-local SOUND_VANISH = asset.sound("sword-swing")
-local SOUND_DRAW = asset.sound("kendo-draw")
+local SOUND_DASH = asset.sound("counter_strike")
+local SOUND_VANISH = asset.sound("sword_swing")
+local SOUND_DRAW = asset.sound("kendo_draw")
 -- The puff he vanishes and goes in (effect row 0x13), and his cut (effect row 0x17: the sword slash, palette 2 on).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local CUT = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
@@ -42,7 +42,7 @@ local CUT = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, ste
 local SWORD = attachment.look { sprite = SPRITE, palette = 0 }
 local SWORD_ANIM = 8
 -- His hit while he rushes back (0x080C892E).
-local RUSH_HITS = lingering_hit.make("kendoman/rush-hit")
+local RUSH_HITS = lingering_hit.make("kendoman/rush_hit")
 local RUSH_TICKS = 100
 -- His animations' lengths in his sprite's steps: his slash's (animation 4), his cut's (7), drawing his sword (5).
 local SLASH_STEPS, CUT_STEPS, DRAW_STEPS = 8, 12, 9

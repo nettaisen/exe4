@@ -30,7 +30,7 @@ local sparkman: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-local sprkmn_sp: Chip = {
+local sparkman_sp: Chip = {
     codes = { "S" },
     element = Element.elec,
     family = Family.elec,
@@ -43,12 +43,12 @@ local sprkmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "sprkmn-sp/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "sparkman_sp/controller", palette = 3 }.hook,
     megaman = "light",
     auto_battle = { class = "at_once" },
 }
 
-local sprkmn_ds: Chip = {
+local sparkman_ds: Chip = {
     codes = { "S" },
     element = Element.elec,
     family = Family.elec,
@@ -60,9 +60,9 @@ local sprkmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "sprkmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "sparkman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "at_once" },
 }
 
-return { sparkman = sparkman, ["sprkmn-sp"] = sprkmn_sp, ["sprkmn-ds"] = sprkmn_ds }
+return { sparkman = sparkman, sparkman_sp = sparkman_sp, sparkman_ds = sparkman_ds }

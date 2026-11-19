@@ -5,7 +5,7 @@
 -- it in a slot of its state's `hits` (the original's word its spawner was given), which it fills as it starts and
 -- empties as it goes.
 --
--- Each user makes its kind (`lingering_hit.make`): BurnMan's pillars and flame (chips/burnman), AquaMan's.
+-- Each user makes its kind (`lingering_hit.make`): BurnMan's pillars and flame (chips/burnerman), AquaMan's.
 
 local lingering_hit = {}
 

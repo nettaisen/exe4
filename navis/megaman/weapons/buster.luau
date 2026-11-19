@@ -34,8 +34,8 @@ local SHOT = shot.variant {
 -- The flash's animation: NaviStats +0x23, the navi's number (MegaMan's 0, the one navi EXE4's netbattles have).
 local NAVI_NUMBER = 0
 -- Its sounds: the shot (0x6A) and a blank's click (0x1C0).
-local SHOT_SOUND = asset.sound("buster-shot")
-local BLANK_SOUND = asset.sound("buster-blank")
+local SHOT_SOUND = asset.sound("buster_shot")
+local BLANK_SOUND = asset.sound("buster_blank")
 
 -- (The timer is a signed halfword: the recovery counts it down past 0, `bge`.)
 type State = { timer: number }

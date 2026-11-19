@@ -31,7 +31,7 @@ local gutsman: Chip = {
     auto_battle = { class = "to_front_before_solid" },
 }
 
-local gutsmn_sp: Chip = {
+local gutsman_sp: Chip = {
     codes = { "G" },
     element = Element.null,
     family = Family["break"],
@@ -44,12 +44,12 @@ local gutsmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "gutsmn-sp/controller", palette = 2, cracks = "all" }.hook,
+    dimming = navi.controller { id = "gutsman_sp/controller", palette = 2, cracks = "all" }.hook,
     megaman = "light",
     auto_battle = { class = "to_front_before_solid" },
 }
 
-local gutsmn_ds: Chip = {
+local gutsman_ds: Chip = {
     codes = { "G" },
     element = Element.null,
     family = Family["break"],
@@ -61,9 +61,9 @@ local gutsmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "gutsmn-ds/controller", palette = 3, cracks = "all" }.hook,
+    dimming = navi.controller { id = "gutsman_ds/controller", palette = 3, cracks = "all" }.hook,
     megaman = "dark",
     auto_battle = { class = "to_front_before_solid" },
 }
 
-return { gutsman = gutsman, ["gutsmn-sp"] = gutsmn_sp, ["gutsmn-ds"] = gutsmn_ds }
+return { gutsman = gutsman, gutsman_sp = gutsman_sp, gutsman_ds = gutsman_ds }

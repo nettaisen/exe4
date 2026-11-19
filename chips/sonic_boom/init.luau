@@ -1,0 +1,23 @@
+--!strict
+-- SonicBom (EXE4 chip 0x173, past the library: VarSwrd's pick): a swing that throws a sonic boom down the row, action
+-- 0x37 (./action), hit modifier 3, not going through.
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local action = require("@self/action")
+
+local sonic_boom: Chip = {
+    action = action.make("sonic_boom/action", { flinch = true, flash = true }, false),
+    codes = { "E", "L", "S", "*" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.special,
+    rarity = 0,
+    mb = 8,
+    damage = 80,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    auto_battle = { class = "into_reach", range = "ahead_then_column" },
+}
+
+return { sonic_boom = sonic_boom }

@@ -23,15 +23,15 @@ local PROTOSOUL_BLADE, PROTOSOUL_HIT_MOD = 13, { flinch = true }
 
 -- In ProtoSoul (NaviStats +0x24 7).
 local function in_protosoul(me: Object): boolean
-    return battle.navi(me.alliance).form.id == "protosoul"
+    return battle.navi(me.alliance).form.id == "proto_soul"
 end
 
 -- The blade a navi holds (attachment row 3, 0x080CD524: 0c-00 in palette 0).
 swords.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 
 -- The swings' sounds (0x080EB612).
-swords.swing = asset.sound("sword-swing")
-swords.big_swing = asset.sound("big-sword-swing")
+swords.swing = asset.sound("sword_swing")
+swords.big_swing = asset.sound("big_sword_swing")
 
 -- EXE4's sword step (0x080EB548, as EXE5's grew from it): a charged slash (AIAttackVars +4: ProtoSoul's charged
 -- Swords) steps two panels ahead, if the navi can move (`object_canMove`, 0x0800AD2A: it holds its panel, setting no

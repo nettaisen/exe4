@@ -1,0 +1,48 @@
+--!strict
+-- Ball (EXE4 chip 0x02C; its record at 0x080197EC + 0x2C * 0x2C): the throw, action 0x09's variant 4: the navi holds
+-- the bomb in palette 4 (attachment row 0x2A, its animation 0: 0x080EB4EC) and lobs a cannonball (attack object 0x35,
+-- 0x080D384C, thrown by 0x080D3A58) at the panel three ahead, which breaks the panel where it lands: the shared one
+-- (@exelib/cannon_ball/ball, EXE5's CannBall's code but for its constants) with EXE4's look: the bomb's sprite, effect
+-- rows 0x15 (a puff) and 0x12 (an impact), the crack's sound (0x95), a thrown object that breaks, hitting navis.
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local attachment = require("../objects/attachment")
+local bombs = require("../lib/bombs")
+local collision = require("../rules/collision")
+local common = require("@exelib/cannon_ball/ball")
+local trajectory = require("../lib/trajectory")
+
+local SPRITE = asset.sprite("bomb")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+local puff_sprite = asset.sprite("puff")
+
+local BALL = common.make({
+    id = "cannon_ball/ball",
+    sprite = SPRITE,
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+    impact = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 0, steps = 10 },
+    crack = asset.sound("panel_crack"),
+    is = collision.thrown_break,
+    hits = collision.hits_navis,
+}, trajectory)
+
+local cannon_ball: Chip = {
+    action = bombs.throw {
+        id = "cannon_ball/action",
+        held = attachment.look { sprite = SPRITE, palette = 4 },
+        thrower = BALL.thrower(),
+    },
+    codes = { "B", "T", "V", "*" },
+    element = Element.null,
+    family = Family.metal,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 30,
+    damage = 140,
+    counter = 50,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "into_reach", range = "three_ahead" },
+}
+
+return { cannon_ball = cannon_ball }

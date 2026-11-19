@@ -1,6 +1,6 @@
 --!strict
 -- EXE4's glow over a navi (actor object #0x5D, 0x080CCF5C): a copy of the side's navi, which vanishes under it, glowing
--- white. EXE6's and EXE5's (@exelib/bugfix/glow) but at its start, in its tick and at its end: EXE4's own. What it
+-- white. EXE6's and EXE5's (@exelib/bug_fix/glow) but at its start, in its tick and at its end: EXE4's own. What it
 -- does is its user's (the original's first parameter, 0x080CD034's rows: 0 BugFix's flashes, 0x080CD03C; 1 PopUp's
 -- dive, 0x080CD0E2): each user makes its own kind with its own action (`glow.make`), the original's one actor kind
 -- compat's. When it is done it clears its holder's `busy` flag (the byte its spawner gave it, 0x080CD14E).

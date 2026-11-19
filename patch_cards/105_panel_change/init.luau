@@ -14,4 +14,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["105-panel-change"] = card }
+return { ["105_panel_change"] = card }

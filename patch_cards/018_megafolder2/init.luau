@@ -12,4 +12,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["018-megafolder2"] = card }
+return { ["018_megafolder2"] = card }

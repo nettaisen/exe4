@@ -1,7 +1,7 @@
 --!strict
 -- AquaMan, the navi of EXE4's AquaMan chips (EXE4's actor object #0x1A, 0x080BAF88: EXE4's own, on EXE6's navi
 -- template), and each chip's controller, which brings him (effect object #0x16, 0x080E3958: lib/navi_chips' long
--- course). He appears with the spout on his head (EXE4's actor #0x5C, @exelib/numbrman/face's object, its sprite
+-- course). He appears with the spout on his head (EXE4's actor #0x5C, @exelib/numberman/face's object, its sprite
 -- row 1) and, off a panel that isn't solid, goes at once; stands 20 ticks; then, 10 ticks into his pose, sets his
 -- water gun (./water_gun) on the panel ahead and waits for it to go, then 21 ticks more; then he goes.
 
@@ -22,13 +22,13 @@ type State = {
 }
 
 local SPRITE = asset.sprite("aquaman")
-local aquaman_spout_sprite = asset.sprite("aquaman-spout")
+local aquaman_spout_sprite = asset.sprite("aquaman_spout")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The spout on his head (actor #0x5C's sprite row 1, 10-0C; its Param2 1: with the fight on, it follows him from its
 -- first update).
-local SPOUT = require("@exelib/numbrman/face").make {
+local SPOUT = require("@exelib/numberman/face").make {
     id = "aquaman/spout",
     sprite = aquaman_spout_sprite,
     follows_in_fight = true,

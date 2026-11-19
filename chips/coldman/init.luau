@@ -31,7 +31,7 @@ local coldman: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local coldmn_sp: Chip = {
+local coldman_sp: Chip = {
     codes = { "C" },
     element = Element.aqua,
     family = Family.aqua,
@@ -44,12 +44,12 @@ local coldmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "coldmn-sp/controller", palette = 2 }.hook,
+    dimming = navi.controller { id = "coldman_sp/controller", palette = 2 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local coldmn_ds: Chip = {
+local coldman_ds: Chip = {
     codes = { "C" },
     element = Element.aqua,
     family = Family.aqua,
@@ -61,9 +61,9 @@ local coldmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "coldmn-ds/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "coldman_ds/controller", palette = 3 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { coldman = coldman, ["coldmn-sp"] = coldmn_sp, ["coldmn-ds"] = coldmn_ds }
+return { coldman = coldman, coldman_sp = coldman_sp, coldman_ds = coldman_ds }

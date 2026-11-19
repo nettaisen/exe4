@@ -18,7 +18,7 @@ local bombs = {}
 local SPRITE = asset.sprite("bomb")
 local explosion_sprite = asset.sprite("explosion")
 local puff_sprite = asset.sprite("puff")
-local small_puff_sprite = asset.sprite("small-puff")
+local small_puff_sprite = asset.sprite("small_puff")
 
 -- What a navi holds while throwing a bomb (attachment row 4, 0x080CD524: 0c-02 in palette 0).
 bombs.held = attachment.look { sprite = SPRITE, palette = 0 }
@@ -32,7 +32,7 @@ local made = bomb.make {
     id = "bomb",
     sprite = SPRITE,
     -- 0x080CE216.
-    hit_sound = asset.sound("hit-bomb-1"),
+    hit_sound = asset.sound("hit_bomb_1"),
     splash = new.effect { sprite = small_puff_sprite, anim = 0, palette = 0, steps = 16 },
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
@@ -46,7 +46,7 @@ local EMPTY_HANDED: { number } = { 5, 10 }
 local NAVI_NUMBER = 0
 
 local LOOK: ThrowLook = {
-    sound = asset.sound("minibomb-throw"),
+    sound = asset.sound("mini_bomb_throw"),
     attachment = attachment.kind,
     -- 0x080EB436: EXE4's own attachment in the related slot, but in the hands of navis 5 and 10.
     hold = function(me: Object, held: AttachmentLook, anim: number)

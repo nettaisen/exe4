@@ -9,9 +9,9 @@ stage = "comp"
 # The backgrounds a netbattle picks one of at random with its settings (another `PosRNG2() % 24` from 0x0803AAA4, after
 # its stage's), by the pick's index: the table's 24 (0x0A, 0x11 and 0x17 not among them).
 link_battle = [
-    "eltwr-comp", "toyrobo-comp", "lans-hp", "comp", "acdc-area", "town-area", "park-area", "yumland-area",
-    "undernet", "darksoul", "mayls-hp", "dexs-hp", "yais-hp", "hotel-hp", "castillo-hp", "jomonelec-hp",
-    "toyrobo-comp4", "netopia-area", "netfrica-area", "sharo-area", "spacectr-hp", "stadium", "air-stadium",
+    "electric_tower_comp", "toyrobo_comp", "lans_hp", "comp", "acdc_area", "town_area", "park_area", "yumland_area",
+    "undernet", "dark_soul", "mayls_hp", "dexs_hp", "yais_hp", "hotel_hp", "castillo_hp", "jomon_electric_hp",
+    "toyrobo_comp_4", "netopia_area", "netfrica_area", "sharo_area", "space_center_hp", "stadium", "air_stadium",
     "colosseum"
 ]
 
@@ -24,37 +24,37 @@ link_battle = [
 # battle's, the virus battles'. A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's
 # pick: by count every one would be the virus battles', its encounters outnumbering them).
 [backgrounds]
-acdc-area = { music = "virus-battle" }
-air-stadium = { music = "tournament-battle" }
+acdc_area = { music = "virus_battle" }
+air_stadium = { music = "tournament_battle" }
 # BlackEarth2's seven navi battles (records 169 to 175).
-black-earth = { music = "boss-battle" }
-castillo-hp = { music = "virus-battle" }
-colosseum = { music = "tournament-battle" }
-comp = { music = "virus-battle" }
+black_earth = { music = "boss_battle" }
+castillo_hp = { music = "virus_battle" }
+colosseum = { music = "tournament_battle" }
+comp = { music = "virus_battle" }
 # No map's: the DarkSoul battle (record 58, on CastNBMComp) states it.
-darksoul = { music = "boss-battle" }
-dexs-hp = { music = "virus-battle" }
+dark_soul = { music = "boss_battle" }
+dexs_hp = { music = "virus_battle" }
 # No map's: Duo's two battles (records 93 and 94, on ControlArea) state it.
-duo = { music = "final-battle" }
+duo = { music = "final_battle" }
 # ElTwrComp's navi battle (record 6) ends its dungeon.
-eltwr-comp = { music = "boss-battle" }
-hotel-hp = { music = "virus-battle" }
-jomonelec-hp = { music = "virus-battle" }
-lans-hp = { music = "virus-battle" }
-mayls-hp = { music = "virus-battle" }
+electric_tower_comp = { music = "boss_battle" }
+hotel_hp = { music = "virus_battle" }
+jomon_electric_hp = { music = "virus_battle" }
+lans_hp = { music = "virus_battle" }
+mayls_hp = { music = "virus_battle" }
 # MeteorComp's navi battles (records 91, MeteorComp4, and 92, ControlArea) end its dungeon.
-meteor-comp = { music = "boss-battle" }
-netfrica-area = { music = "virus-battle" }
-netopia-area = { music = "virus-battle" }
-park-area = { music = "virus-battle" }
-sharo-area = { music = "virus-battle" }
-spacectr-hp = { music = "virus-battle" }
+meteor_comp = { music = "boss_battle" }
+netfrica_area = { music = "virus_battle" }
+netopia_area = { music = "virus_battle" }
+park_area = { music = "virus_battle" }
+sharo_area = { music = "virus_battle" }
+space_center_hp = { music = "virus_battle" }
 # No map's: the tournament battles the venues' scripts start (maps 2:3, 3:3 and 4:4) state these, eight each.
-stadium = { music = "tournament-battle" }
-town-area = { music = "virus-battle" }
-toyrobo-comp = { music = "virus-battle" }
+stadium = { music = "tournament_battle" }
+town_area = { music = "virus_battle" }
+toyrobo_comp = { music = "virus_battle" }
 # ToyRoboComp4's navi battle (record 57) ends ToyRoboComp's dungeon.
-toyrobo-comp4 = { music = "boss-battle" }
-undernet = { music = "virus-battle" }
-yais-hp = { music = "virus-battle" }
-yumland-area = { music = "virus-battle" }
+toyrobo_comp_4 = { music = "boss_battle" }
+undernet = { music = "virus_battle" }
+yais_hp = { music = "virus_battle" }
+yumland_area = { music = "virus_battle" }

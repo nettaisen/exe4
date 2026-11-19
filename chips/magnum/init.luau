@@ -13,17 +13,17 @@ local common_controller = require("@exelib/magnum/controller")
 local common_gunner = require("@exelib/magnum/gunner")
 local sparks = require("../lib/sparks")
 local explosion_sprite = asset.sprite("explosion")
-local search_scope_sprite = asset.sprite("search-scope")
+local search_scope_sprite = asset.sprite("search_scope")
 
 local GUNNER = common_gunner.make {
     id = "magnum/gunner",
     pool = Pool.attack,
     -- (0x080D7590 puts nothing of its user's on it.)
     wear = function(_me: Object, _user: Object) end,
-    step_sound = asset.sound("scope-move"),
-    shot = asset.sound("hockey-puck"),
-    blast = asset.sound("heat-burst"),
-    crack = asset.sound("panel-crack"),
+    step_sound = asset.sound("scope_move"),
+    shot = asset.sound("hockey_puck"),
+    blast = asset.sound("heat_burst"),
+    crack = asset.sound("panel_crack"),
     fire_anim = 0x10,
     sight = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0, steps = 21 },
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },

@@ -14,7 +14,7 @@ return {
         installed = 0x04,
     },
     -- A hand entry's marks add nothing to the damage word and heal no one: EXE4's use (0x0800D4C0) has no such step.
-    -- Its marks are 0x01 the Regular chip, 0x02 a chip offered again (JunkSoul's: navis/megaman/forms/junksoul/
+    -- Its marks are 0x01 the Regular chip, 0x02 a chip offered again (JunkSoul's: navis/megaman/forms/junk_soul/
     -- recycle) and 0x04 an entry whose hand was installed (rules/dark_chips). What reads them: the install itself;
     -- the use's 0x0800D59A, for which a dark chip offered again doesn't set the side's statistic 2 (the story's
     -- karma reads it, 0x0800F5E2) nor, outside a netbattle, the mood; and the local console's check of its own next

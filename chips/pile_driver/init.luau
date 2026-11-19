@@ -1,0 +1,57 @@
+--!strict
+-- P.Driver (EXE4 chip 0x159): the Program Advance of GunSol1, GunSol2 and GunSol3 in that order (the recipe table,
+-- the pointer list at 0x080212B0): a pile ahead of the user and another at the far end of the row, turned around,
+-- each beaming ten times at the first of the other side's bodies it sees down the row. The dimming chips' variant
+-- 0x3E (0x080E9CD4): the shared pile driver (@exelib/piledrvr: its controller, effect object #0x6F, 0x080E9C30; its
+-- pile, attack object #0x99, 0x080E0318; its beam, #0x9A, 0x080E04A4: the code EXE5's PileDrvr kept) with EXE4's
+-- look: the pile's sprite 0c-46 and sound 0x161, the beam's sprite 0c-4a and sound 0x162, its hits the erase spark's
+-- (0x0C), piercing and breaking (row 0x16), hitting navis; its second pile beams at whom it sees whether or not the
+-- first saw anyone (0x080E9DC6).
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local beam = require("@exelib/pile_driver/beam")
+local collision = require("../rules/collision")
+local controller = require("@exelib/pile_driver/controller")
+local gunsols = require("./gun_del_sol")
+local pile = require("@exelib/pile_driver/pile")
+local sparks = require("../lib/sparks")
+local pile_beam_sprite = asset.sprite("pile_beam")
+local pile_driver_sprite = asset.sprite("pile_driver")
+
+local BEAM = beam.make_kind {
+    id = "pile_driver/beam",
+    sprite = pile_beam_sprite,
+    sound = asset.sound("django_charge"),
+    spark = sparks.erase,
+    is = collision.piercing_break,
+    hits = collision.hits_navis,
+}
+
+local PILE = pile.make_kind {
+    id = "pile_driver/pile",
+    sprite = pile_driver_sprite,
+    sound = asset.sound("pile_driver"),
+    beam = BEAM,
+}
+
+local CONTROLLER = controller.make { id = "pile_driver/controller", pile = PILE, second_alone = true }
+
+local chip: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 40,
+    counter = 2,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true },
+    program_advances = { { order = 5, sequence = { gunsols.gun_del_sol_1, gunsols.gun_del_sol_2, gunsols.gun_del_sol_3 } } },
+    dimming = CONTROLLER.hook,
+    megaman = "light",
+    auto_battle = { class = "into_reach", range = "ahead_in_row" },
+}
+
+return { pile_driver = chip }

@@ -41,7 +41,7 @@ local cannon: Chip = {
     auto_battle = { class = "into_target_row" },
 }
 
-local hicannon: Chip = {
+local high_cannon: Chip = {
     codes = { "C", "D", "E" },
     element = Element.null,
     family = Family.null,
@@ -52,11 +52,11 @@ local hicannon: Chip = {
     counter = 30,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
-    action = cannon_lib.action { id = "hicannon/action", arm = HICANNON_ARM, shot = SHOT },
+    action = cannon_lib.action { id = "high_cannon/action", arm = HICANNON_ARM, shot = SHOT },
     auto_battle = { class = "into_target_row" },
 }
 
-local m_cannon: Chip = {
+local mega_cannon: Chip = {
     codes = { "E", "F", "G" },
     element = Element.null,
     family = Family.null,
@@ -67,8 +67,8 @@ local m_cannon: Chip = {
     counter = 30,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
-    action = cannon_lib.action { id = "m-cannon/action", arm = M_CANNON_ARM, shot = SHOT },
+    action = cannon_lib.action { id = "mega_cannon/action", arm = M_CANNON_ARM, shot = SHOT },
     auto_battle = { class = "into_target_row" },
 }
 
-return { cannon = cannon, hicannon = hicannon, ["m-cannon"] = m_cannon }
+return { cannon = cannon, high_cannon = high_cannon, mega_cannon = mega_cannon }

@@ -17,7 +17,7 @@ local binder = {}
 
 local SPRITE = asset.sprite("binder")
 local puff_sprite = asset.sprite("puff")
-local SOUND = asset.sound("binder-hop")
+local SOUND = asset.sound("binder_hop")
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 
 -- A hop: 26 ticks, falling 0xA000 a tick (0x080D2764), two panels ahead.

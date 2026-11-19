@@ -1,0 +1,41 @@
+--!strict
+-- DrkSpred (EXE4 chip 0x0C0): a dark chip, which no folder holds and the custom screen offers (rules/dark_chips).
+-- The spreaders' action 0x1E, its variant 3: the dark gun (attachment row 0x32) fires on the second tick, at height
+-- 0x10, bullet row 15 (its parameter +0x10): a dark burst over the 3x3 around the first thing it finds, modifier 1.
+-- Its cost: a step leaves a poison panel (rules/dark_chips).
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local attachment = require("../objects/attachment")
+local bullet = require("../objects/bullet")
+local regions = require("@exelib/regions")
+local spreader = require("./spreader/spreader")
+local pink_flash_sprite = asset.sprite("pink_flash")
+local spreader_sprite = asset.sprite("spreader")
+
+-- The dark gun (attachment row 0x32: the Spreader's, 0c-19, in palette 3).
+local GUN = attachment.look { sprite = spreader_sprite, palette = 3 }
+-- Bullet row 15: a dark burst (effect row 0x64: the Spreader's burst in palette 1) over the 3x3 around the panel found,
+-- modifier 1; sound 0x8D.
+local BURST = bullet.variant {
+    region = regions.square,
+    hit_mod = { flinch = true },
+    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 1, steps = 10 },
+    sound = asset.sound("spreader"),
+}
+
+local dark_spreader: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 99,
+    damage = 400,
+    counter = 50,
+    lockout = 0,
+    flags = { has_damage = true, dark = true },
+    action = spreader.action { id = "dark_spreader/action", gun = GUN, delay = 1, z = 0x10, shot = BURST },
+    auto_battle = { class = "behind_target" },
+}
+
+return { dark_spreader = dark_spreader }

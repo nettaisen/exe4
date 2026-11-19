@@ -8,7 +8,7 @@
 
 local attachment = require("../../objects/attachment")
 local bullet = require("../../objects/bullet")
-local common = require("@exelib/spreadr/action")
+local common = require("@exelib/spreader/action")
 
 local spreader = {}
 

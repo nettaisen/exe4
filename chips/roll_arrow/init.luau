@@ -1,0 +1,69 @@
+--!strict
+-- RollAro1 to RollAro3: the dimming chips' variant 0x35, EXE4's own: a controller (effect object #0x63, 0x080E8FA0:
+-- run as the navi chips', lib/navi_chips' long course, 0x080E8FE8) on which the user warps out (30 ticks), Roll comes
+-- and shoots an arrow down her row (./roll), 30 ticks pass and the user warps back in (30 ticks); each chip its own
+-- controller (each chip's own comment above its definition).
+-- Their records are written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local navi_chips = require("../lib/navi_chips")
+local roll = require("@self/roll")
+
+local function controller(id: string): (user: Object, spec: DimmingChipSpec) -> Object?
+    return navi_chips.controller({ id = id, name = "RollAro", spawn = roll.spawn, steps = navi_chips.LONG }).hook
+end
+
+-- RollAro1 (EXE4 chip 0x097).
+local roll_arrow_1: Chip = {
+    codes = { "A", "F", "T" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 32,
+    damage = 50,
+    counter = 20,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, library = true },
+    dimming = controller("roll_arrow_1/controller"),
+    megaman = "light",
+    auto_battle = { class = "into_target_row" },
+}
+
+-- RollAro2 (EXE4 chip 0x098).
+local roll_arrow_2: Chip = {
+    codes = { "D", "R", "W" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 38,
+    damage = 70,
+    counter = 20,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, library = true },
+    dimming = controller("roll_arrow_2/controller"),
+    megaman = "light",
+    auto_battle = { class = "into_target_row" },
+}
+
+-- RollAro3 (EXE4 chip 0x099).
+local roll_arrow_3: Chip = {
+    codes = { "Q", "Y", "Z" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 3,
+    mb = 44,
+    damage = 90,
+    counter = 20,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, library = true },
+    dimming = controller("roll_arrow_3/controller"),
+    megaman = "light",
+    auto_battle = { class = "into_target_row" },
+}
+
+return { roll_arrow_1 = roll_arrow_1, roll_arrow_2 = roll_arrow_2, roll_arrow_3 = roll_arrow_3 }

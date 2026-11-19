@@ -7,8 +7,8 @@
 local statuses = require("../rules/status")
 local thunder = require("@self/ball")
 
-local thunder1: Chip = {
-    action = thunder.shoot { id = "thunder1/action", ball = { panels = 5, status = statuses.paralyze_90 } },
+local thunder_1: Chip = {
+    action = thunder.shoot { id = "thunder_1/action", ball = { panels = 5, status = statuses.paralyze_90 } },
     codes = { "B", "L", "P", "*" },
     element = Element.elec,
     family = Family.elec,
@@ -22,8 +22,8 @@ local thunder1: Chip = {
     auto_battle = { class = "to_front" },
 }
 
-local thunder2: Chip = {
-    action = thunder.shoot { id = "thunder2/action", ball = { panels = 7, status = statuses.paralyze_120 } },
+local thunder_2: Chip = {
+    action = thunder.shoot { id = "thunder_2/action", ball = { panels = 7, status = statuses.paralyze_120 } },
     codes = { "H", "S", "P" },
     element = Element.elec,
     family = Family.elec,
@@ -37,8 +37,8 @@ local thunder2: Chip = {
     auto_battle = { class = "to_front" },
 }
 
-local thunder3: Chip = {
-    action = thunder.shoot { id = "thunder3/action", ball = { panels = 9, status = statuses.paralyze_150 } },
+local thunder_3: Chip = {
+    action = thunder.shoot { id = "thunder_3/action", ball = { panels = 9, status = statuses.paralyze_150 } },
     codes = { "I", "T", "W" },
     element = Element.elec,
     family = Family.elec,
@@ -52,4 +52,4 @@ local thunder3: Chip = {
     auto_battle = { class = "to_front" },
 }
 
-return { thunder1 = thunder1, thunder2 = thunder2, thunder3 = thunder3 }
+return { thunder_1 = thunder_1, thunder_2 = thunder_2, thunder_3 = thunder_3 }

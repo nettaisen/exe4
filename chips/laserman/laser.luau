@@ -9,7 +9,7 @@
 -- 0, ahead: the hit; 1, up: the attack, rapid and charge bugs (5 to 7), then the hit; 2, down: super armor, FloatShoes,
 -- AirShoes and Undershirt off (1 to 4), the back special weapon gone (0x0C, 0xFF), then the hit; 3, right: the charged
 -- shot the navi's own (0x0A, 1), then the hit; 4, left: the custom level one less (0x12, but not below 2), then the
--- hit; 5, PrixPowr's LaserMan's (chips/prixpowr): the hit, its list course 0's, taken two steps a strike (0x080E0EFC),
+-- hit; 5, PrixPowr's LaserMan's (chips/prix_power): the hit, its list course 0's, taken two steps a strike (0x080E0EFC),
 -- so over in five strikes' time, in the aimed courses' palette and the left course's color shader.
 
 local collision = require("../../rules/collision")

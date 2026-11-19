@@ -142,7 +142,7 @@ end
 -- standing effects (0x08012FF2), not while dimmed: in WoodSoul (NaviStats +0x24 12) on grass (the panel of its
 -- collision), a point of HP back (`object_addHP`) when the battle's second count of fight ticks comes round
 -- (BattleState +0x16: every other tick).
-local HEALS_ON_GRASS = "woodsoul"
+local HEALS_ON_GRASS = "wood_soul"
 function souls.grass_heal(side: number, navi: Object)
     if battle.dimmed() or battle.player(side) ~= navi then
         return

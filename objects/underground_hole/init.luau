@@ -10,7 +10,7 @@ local visibility = require("@exelib/visibility")
 
 local hole = {}
 
-local SPRITE = asset.sprite("underground-hole")
+local SPRITE = asset.sprite("underground_hole")
 
 -- 0x080E6562: under the navi, on the ground.
 local function follow(me: Object)
@@ -24,7 +24,7 @@ local function follow(me: Object)
 end
 
 hole.kind = new.kind {
-    id = "underground-hole",
+    id = "underground_hole",
     pool = Pool.effect,
     -- 0x080E64FC: its state's routine, then its sprite.
     update = function(me: Object)

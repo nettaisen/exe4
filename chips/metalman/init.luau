@@ -30,7 +30,7 @@ local metalman: Chip = {
     auto_battle = { class = "into_reach", range = "one_ahead" },
 }
 
-local metlmn_sp: Chip = {
+local metalman_sp: Chip = {
     codes = { "M" },
     element = Element.null,
     family = Family.metal,
@@ -43,12 +43,12 @@ local metlmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "metlmn-sp/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "metalman_sp/controller", palette = 4 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "one_ahead" },
 }
 
-local metlmn_ds: Chip = {
+local metalman_ds: Chip = {
     codes = { "M" },
     element = Element.null,
     family = Family.metal,
@@ -60,9 +60,9 @@ local metlmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "metlmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "metalman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "one_ahead" },
 }
 
-return { metalman = metalman, ["metlmn-sp"] = metlmn_sp, ["metlmn-ds"] = metlmn_ds }
+return { metalman = metalman, metalman_sp = metalman_sp, metalman_ds = metalman_ds }

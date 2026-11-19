@@ -9,7 +9,7 @@
 
 local common = require("@exelib/attachment")
 local slot = require("@exelib/slot")
-local muzzle_flash_sprite = asset.sprite("muzzle-flash")
+local muzzle_flash_sprite = asset.sprite("muzzle_flash")
 
 local attachment = {}
 

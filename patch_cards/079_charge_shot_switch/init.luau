@@ -13,4 +13,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["079-charge-shot-switch"] = card }
+return { ["079_charge_shot_switch"] = card }

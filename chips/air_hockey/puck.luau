@@ -1,0 +1,28 @@
+--!strict
+-- EXE4's hockey puck (attack object #0x2E, 0x080D2788): the shared puck (@exelib/airhocky/puck, EXE5's code) with
+-- EXE4's look: EXE5's sprite (10-12), collision types and spark, EXE4's sounds (0xC0 flicked, 0xCC bouncing), its burst
+-- a puff (effect row 0x15). Its rows (0x080D2768: the steps it lasts, how it bounces, its ticks per step) are its
+-- chips': AirHoc1 to 3 state theirs (rows 6 to 8), PitHoky1 to 3 theirs (row 9, which leaves a trail: 0x080D2ACC).
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/air_hockey/puck")
+local sparks = require("../../lib/sparks")
+local hockey_puck_sprite = asset.sprite("hockey_puck")
+local puff_sprite = asset.sprite("puff")
+
+local puck = {}
+
+puck.kind = common.make_kind("air_hockey/puck", {
+    sprite = hockey_puck_sprite,
+    sound = asset.sound("hockey_puck"),
+    bounce = asset.sound("bounce"),
+    is = collision.breaking,
+    hits = collision.hits_navis,
+    spark = sparks.breaking,
+    burst = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+})
+
+-- A puck's row.
+puck.variant = common.variant
+
+return puck

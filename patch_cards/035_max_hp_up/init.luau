@@ -12,4 +12,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["035-max-hp-up"] = card }
+return { ["035_max_hp_up"] = card }

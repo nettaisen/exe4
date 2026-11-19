@@ -2,7 +2,7 @@
 -- The chips sent this battle (0x0203DB70, their count at 0x020364A8, which the battle's start empties, 0x0801910C): a
 -- console's list of the picks of every hand installed, either side's (0x08008916: side 0's block, then side 1's in a
 -- netbattle, each through 0x08007E92, unfiltered), which JunkSoul's custom screen offers again
--- (navis/megaman/forms/junksoul/recycle: the list's one reader).
+-- (navis/megaman/forms/junk_soul/recycle: the list's one reader).
 --
 -- A hand's are its block's +0x32, written as OK builds it (0x0801F10A): its picks in order, but for this list's own
 -- chips offered again (their entries' flags 2 and on, 0x0801F118) and a soul's chip (family 15), as they were picked:

@@ -7,8 +7,8 @@
 local spawners = require("../lib/spawners")
 local strike = require("@self/strike")
 
-local counter1: Chip = {
-    action = spawners.action { id = "counter1/action", spawn = strike.spawner },
+local counter_1: Chip = {
+    action = spawners.action { id = "counter_1/action", spawn = strike.spawner },
     codes = { "F", "M", "T", "*" },
     element = Element.null,
     family = Family.null,
@@ -22,8 +22,8 @@ local counter1: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-local counter2: Chip = {
-    action = spawners.action { id = "counter2/action", spawn = strike.spawner },
+local counter_2: Chip = {
+    action = spawners.action { id = "counter_2/action", spawn = strike.spawner },
     codes = { "B", "H", "L", "*" },
     element = Element.null,
     family = Family.null,
@@ -37,8 +37,8 @@ local counter2: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-local counter3: Chip = {
-    action = spawners.action { id = "counter3/action", spawn = strike.spawner },
+local counter_3: Chip = {
+    action = spawners.action { id = "counter_3/action", spawn = strike.spawner },
     codes = { "A", "N", "V" },
     element = Element.null,
     family = Family.null,
@@ -52,4 +52,4 @@ local counter3: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-return { counter1 = counter1, counter2 = counter2, counter3 = counter3 }
+return { counter_1 = counter_1, counter_2 = counter_2, counter_3 = counter_3 }

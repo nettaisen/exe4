@@ -9,18 +9,18 @@
 local collision = require("../rules/collision")
 local common = require("@exelib/mine/controller")
 local land_mine = require("@exelib/mine/land_mine")
-local land_mine_sprite = asset.sprite("land-mine")
-local strike_flash_sprite = asset.sprite("strike-flash")
+local land_mine_sprite = asset.sprite("land_mine")
+local strike_flash_sprite = asset.sprite("strike_flash")
 
 local MINE = land_mine.make_kind {
-    id = "mine/land-mine",
+    id = "mine/land_mine",
     -- A field object that JunkMan's poltergeist and ColdMan leave alone (0x0800B3E8: attack object #0x4C among the
     -- kinds they skip).
     identity = new.identity { class = IdentityClass.field_object, throwable = false },
     sprite = land_mine_sprite,
     hop_sound = asset.sound("hop"),
     blast = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 },
-    blast_sound = asset.sound("hit-bomb-1"),
+    blast_sound = asset.sound("hit_bomb_1"),
     self_type = collision.mine,
     target = collision.hits_both_sides,
 }

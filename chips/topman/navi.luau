@@ -25,9 +25,9 @@ local SPRITE = asset.sprite("topman")
 local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_SPIN = asset.sound("top-spin")
-local SOUND_LEAP = asset.sound("top-leap")
-local SOUND_LAND = asset.sound("metal-punch")
+local SOUND_SPIN = asset.sound("top_spin")
+local SOUND_LEAP = asset.sound("top_leap")
+local SOUND_LAND = asset.sound("metal_punch")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- The tops' panels from his (0x080B8640): columns ahead (by his side's way), rows.

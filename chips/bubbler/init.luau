@@ -9,14 +9,14 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("./spreader/spreader")
-local bubble_burst_sprite = asset.sprite("bubble-burst")
+local bubble_burst_sprite = asset.sprite("bubble_burst")
 local bubbler_sprite = asset.sprite("bubbler")
 
 -- The Bubblers' gun (attachment row 0x0E: 0c-1c), and their bullets' bubble burst (effect row 0x25) and its sound
 -- (0x9F).
 local GUN = attachment.look { sprite = bubbler_sprite, palette = 0 }
 local BURST = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 }
-local SOUND = asset.sound("bubble-burst")
+local SOUND = asset.sound("bubble_burst")
 
 -- A Bubbler's spreader: its bullet row (4 to 6) bursts over `region` around the panel found.
 local function fire(id: string, region: Region): Action
@@ -39,8 +39,8 @@ local bubbler: Chip = {
     auto_battle = { class = "behind_target" },
 }
 
-local bub_v: Chip = {
-    action = fire("bub-v/action", regions.fork),
+local bubble_v: Chip = {
+    action = fire("bubble_v/action", regions.fork),
     codes = { "C", "D", "E" },
     element = Element.aqua,
     family = Family.aqua,
@@ -54,8 +54,8 @@ local bub_v: Chip = {
     auto_battle = { class = "into_target_row" },
 }
 
-local bublside: Chip = {
-    action = fire("bublside/action", regions.wide),
+local bubble_side: Chip = {
+    action = fire("bubble_side/action", regions.wide),
     codes = { "D", "E", "F" },
     element = Element.aqua,
     family = Family.aqua,
@@ -69,4 +69,4 @@ local bublside: Chip = {
     auto_battle = { class = "into_target_row" },
 }
 
-return { bubbler = bubbler, ["bub-v"] = bub_v, bublside = bublside }
+return { bubbler = bubbler, bubble_v = bubble_v, bubble_side = bubble_side }

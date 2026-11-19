@@ -5,11 +5,11 @@
 
 local collision = require("../rules/collision")
 local common = require("@exelib/swords/sonic_boom")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 
 local sonic_boom = {}
 
-sonic_boom.kind = common.make_kind("sonic-boom", {
+sonic_boom.kind = common.make_kind("sonic_boom", {
     sprite = sword_slash_sprite,
     z = 0,
     piercing_palette = 9,

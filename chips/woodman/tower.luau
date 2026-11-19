@@ -17,8 +17,8 @@ type State = {
     sounds: boolean,
 }
 
-local SPRITE = asset.sprite("wood-tower")
-local SOUND = asset.sound("wood-tower")
+local SPRITE = asset.sprite("wood_tower")
+local SOUND = asset.sound("wood_tower")
 -- Bodies and blockers on a panel (0x080CDF82): other bodies, neutral objects, and what reaches the objects set down (a
 -- mine, a hitbox of both sides).
 local RISES_ON: PanelCondition = {

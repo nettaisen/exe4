@@ -11,11 +11,11 @@
 
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
-local flame_common = require("@exelib/elemrage/flame")
+local flame_common = require("@exelib/element_rage/flame")
 local panel_changer = require("../../objects/panel_changer")
 local sparks = require("../../lib/sparks")
-local rage_claw_sprite = asset.sprite("rage-claw")
-local rage_flame_sprite = asset.sprite("rage-flame")
+local rage_claw_sprite = asset.sprite("rage_claw")
+local rage_flame_sprite = asset.sprite("rage_flame")
 
 local elem = {}
 
@@ -37,7 +37,7 @@ local NAVI_NUMBER = 0
 local OFFSET, HEIGHT = -4, 26
 
 local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0 }
-local ROAR, RAGE_ROAR = asset.sound("roar"), asset.sound("rage-roar")
+local ROAR, RAGE_ROAR = asset.sound("roar"), asset.sound("rage_roar")
 -- The user's panel back to normal (the panel changer's row 11: its own panel, 30 ticks, flickering).
 local RESTORE = panel_changer.change {
     panel = PanelType.normal,

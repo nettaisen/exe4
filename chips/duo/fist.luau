@@ -9,12 +9,12 @@
 -- low bit), in palette 0 (10 for a spawner whose own first parameter is 3: the chip's Duo's is its record's, 0).
 
 local collision = require("../../rules/collision")
-local common = require("@exelib/metrknuk/fist")
+local common = require("@exelib/meteor_knuckle/fist")
 local sparks = require("../../lib/sparks")
 
 local SPRITE = asset.sprite("duo")
 local burst_sprite = asset.sprite("burst")
-local SOUND = asset.sound("justice-one")
+local SOUND = asset.sound("justice_one")
 local BURST = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
 
 local function make(id: string, anim: number)
@@ -35,5 +35,5 @@ end
 return {
     -- An even punch's (the first and the last: its thumb shows) and an odd one's.
     even = make("duo/fist", 19),
-    odd = make("duo/other-fist", 18),
+    odd = make("duo/other_fist", 18),
 }

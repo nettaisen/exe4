@@ -20,10 +20,10 @@ local form: FormDef = {
     palette = 0,
     mugshot = {
         normal = asset.mugshot("megaman"),
-        angry = asset.mugshot("megaman-angry"),
-        worried = asset.mugshot("megaman-worried"),
-        full_synchro = asset.mugshot("megaman-full-synchro"),
-        evil = asset.mugshot("megaman-dark"),
+        angry = asset.mugshot("megaman_angry"),
+        worried = asset.mugshot("megaman_worried"),
+        full_synchro = asset.mugshot("megaman_full_synchro"),
+        evil = asset.mugshot("megaman_dark"),
     },
 }
 

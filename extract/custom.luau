@@ -345,7 +345,7 @@ function custom.custom(set: Set, names: AssetNames, chip_versions: { [number]: s
     return {
         layout = layout(buttons.corners(rom, at(rom, OK_CORNERS))),
         -- The window's label: CHIP SELECT over the slots (tiles 0x22 to 0x28, color 4 on 1).
-        labels = { { name = "chip-select", first = 0x22, last = 0x28, top = 3, bottom = 6, letters = { 4 } } },
+        labels = { { name = "chip_select", first = 0x22, last = 0x28, top = 3, bottom = 6, letters = { 4 } } },
         buttons = { { name = custom.SOUL_BUTTON, value = soul }, { name = custom.REDEAL_BUTTON, value = redeal } },
         window_tiles = window_tiles,
         column_cells = custom.tiles(rom, COLUMN_CELLS),

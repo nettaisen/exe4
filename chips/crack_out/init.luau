@@ -1,0 +1,53 @@
+--!strict
+-- CrakOut, DublCrak and TripCrak (EXE4 chips 0x05B to 0x05D; their records at 0x080197EC + n * 0x2C): the cracks'
+-- action 0x21 (lib/crack), its variants 0 to 2: a crack on the panel ahead; on it and the one past it; on the column
+-- ahead.
+
+local crack = require("../lib/crack")
+
+local crack_out: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 4,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { standard_library = true, library = true },
+    action = crack.action { id = "crack_out/action", panels = crack.ahead },
+    auto_battle = { class = "to_front" },
+}
+
+local double_crack: Chip = {
+    codes = { "B", "L", "R", "*" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 7,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { standard_library = true, library = true },
+    action = crack.action { id = "double_crack/action", panels = crack.ahead_two },
+    auto_battle = { class = "to_front" },
+}
+
+local triple_crack: Chip = {
+    codes = { "B", "L", "R", "*" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 10,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { standard_library = true, library = true },
+    action = crack.action { id = "triple_crack/action", panels = crack.column },
+    auto_battle = { class = "to_front" },
+}
+
+return { crack_out = crack_out, double_crack = double_crack, triple_crack = triple_crack }

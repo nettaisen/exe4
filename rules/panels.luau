@@ -25,7 +25,7 @@ local BURN = panel_types.burn {
 }
 -- What a player takes in from lava, and in which form: FireSoul (NaviStats +0x24 5, 0x0801313E).
 local LAVA_HEAL = 50
-local TAKES_LAVA_IN = "firesoul"
+local TAKES_LAVA_IN = "fire_soul"
 
 -- 0x08013128: a player in FireSoul takes the lava in before anything else is asked (0x080131B8): 50 HP back with the
 -- heal's sparkle and sound (effect row 7, 0x9A), as raw fire damage what a barrier sees (the collision's +0x3E, and
@@ -68,7 +68,7 @@ return {
         cracked = { flags = { solid = true, cracked = true, on_field = true } },
         poison = {
             flags = { solid = true, poison = true, on_field = true },
-            trail_sound = asset.sound("panel-poison"),
+            trail_sound = asset.sound("panel_poison"),
             stand = panel_types.poison,
         },
         metal = { flags = { solid = true, on_field = true, metal = true }, unbreakable = true },

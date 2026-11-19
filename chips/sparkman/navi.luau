@@ -28,8 +28,8 @@ local SPRITE = asset.sprite("sparkman")
 local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_CHARGE = asset.sound("spark-charge")
-local SOUND_FLASH = asset.sound("spark-flash")
+local SOUND_CHARGE = asset.sound("spark_charge")
+local SOUND_FLASH = asset.sound("spark_flash")
 -- The puff he goes in (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His sparks' element (elec), whatever his chip's.

@@ -11,4 +11,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["089-megaman-color-change"] = card }
+return { ["089_megaman_color_change"] = card }

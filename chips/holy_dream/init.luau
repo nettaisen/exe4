@@ -1,0 +1,33 @@
+--!strict
+-- HolyDrem (EXE4 chip 0x133, Red Sun's Giga chip): the dimming chips' variant 0x2C: in the dimming, a stand-in of the
+-- user fires a shot along the row, then one more for each holy panel on the field, each panel turned Normal. Its
+-- controller (effect object #0x59, 0x080E8418: @exelib/holy_dream/controller, EXE5's code) sends out EXE4's stand-in
+-- (./stand_in, attack object #0x82) with the damage plus the bonus; its hook (0x080E8510) takes the user's side alone.
+-- Its shot is ./shot.
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local common = require("@exelib/holy_dream/controller")
+local stand_in = require("@self/stand_in")
+
+local CONTROLLER = common.make { id = "holy_dream/controller", stand_in = stand_in.spawn, side_only = true }
+
+local chip: Chip = {
+    -- The version whose saves hold it (rules/folder; rules/builds' groups).
+    version = Version.redsun,
+    codes = { "H" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.giga,
+    rarity = 4,
+    mb = 92,
+    damage = 50,
+    counter = 5,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, library = true },
+    dimming = CONTROLLER.hook,
+    megaman = "light",
+    auto_battle = { class = "into_target_row" },
+}
+
+return { holy_dream = chip }

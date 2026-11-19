@@ -7,9 +7,9 @@ local common_debris = require("@exelib/rock/debris")
 
 local rock = {}
 
-local SMALL_PUFF = asset.sprite("small-puff")
+local SMALL_PUFF = asset.sprite("small_puff")
 local puff_sprite = asset.sprite("puff")
-local rock_debris_sprite = asset.sprite("rock-debris")
+local rock_debris_sprite = asset.sprite("rock_debris")
 -- Effects 1 and 2 (rows 1, 2: 14-02's animations 0 and 1): a splash, dust; effect 21 (row 21: 14-0D's animation 2)
 -- a puff.
 rock.effects = {

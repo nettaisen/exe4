@@ -21,7 +21,7 @@ local collision = require("../../rules/collision")
 local heart = require("./heart")
 local navi_chips = require("../../lib/navi_chips")
 local sparks = require("../../lib/sparks")
-local roll_ribbon_sprite = asset.sprite("roll-ribbon")
+local roll_ribbon_sprite = asset.sprite("roll_ribbon")
 local roll_sprite = asset.sprite("roll")
 local navi_status = require("@exelib/navi_status")
 
@@ -54,8 +54,8 @@ local roll = common.make {
     id = "roll/navi",
     sprite = roll_sprite,
     appear = asset.sound("appear"),
-    warp = asset.sound("roll-warp"),
-    swish = asset.sound("roll-whip"),
+    warp = asset.sound("roll_warp"),
+    swish = asset.sound("roll_whip"),
     sparkle = heart.sparkle,
     ribbon = attachment.look { sprite = roll_ribbon_sprite, palette = 0 },
     ribbon_anim = 0,

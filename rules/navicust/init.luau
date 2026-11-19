@@ -31,7 +31,7 @@ local patch_cards = require("./patch_cards")
 local programs = require("@self/programs")
 
 -- HubBatc (program 23), which bugs itself.
-local HUBBATC = "hubbatc"
+local HUBBATC = "hub_batch"
 
 local SIZE: number = board.SIZE
 local COMMAND_LINE: number = board.COMMAND_LINE
@@ -380,7 +380,7 @@ local function raise_bug(side: number, bug: string)
     end
 end
 
--- 0x080E641E: BugFix's fix (EXE4's own, chips/bugfix) of side `side`'s stats: no move bug (+0x0D), no buster blanks
+-- 0x080E641E: BugFix's fix (EXE4's own, chips/bug_fix) of side `side`'s stats: no move bug (+0x0D), no buster blanks
 -- (+0x08), no HP or custom drain (+0x0E, +0x0F), no panel trail (+0x1B = 0xFF: a patch card's goes too), and the
 -- charged shot the battle started with (+0x0A from the start copy, 0x0800D81E: a NaviCust weapon bug stays; what came
 -- later, a raised bug's or DrkCanon's taunt, goes); then the navi's weapons are reloaded (0x0800BD48, which the

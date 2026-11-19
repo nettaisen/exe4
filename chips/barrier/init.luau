@@ -24,7 +24,7 @@ local barrier: Chip = {
 }
 
 -- Barr100 (EXE4 chip 0x088): a barrier of 100 HP (type 2).
-local barr100: Chip = {
+local barrier_100: Chip = {
     codes = { "P", "Q", "W" },
     element = Element.null,
     family = Family.null,
@@ -41,7 +41,7 @@ local barr100: Chip = {
 }
 
 -- Barr200 (EXE4 chip 0x089): a barrier of 200 HP (type 3).
-local barr200: Chip = {
+local barrier_200: Chip = {
     codes = { "I", "O", "U" },
     element = Element.null,
     family = Family.null,
@@ -58,7 +58,7 @@ local barr200: Chip = {
 }
 
 -- LifeAura (EXE4 chip 0x0C9): an aura that stops every hit of less than 200 for 3000 ticks (type 6).
-local lifeaura: Chip = {
+local life_aura: Chip = {
     codes = { "D" },
     element = Element.null,
     family = Family.null,
@@ -74,7 +74,7 @@ local lifeaura: Chip = {
 }
 
 -- BlakBarr (EXE4 chip 0x134, Red Sun's): a barrier of 150 HP, back whole 180 ticks after it is worn down (type 4).
-local blakbarr: Chip = {
+local black_barrier: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
     version = Version.redsun,
     codes = { "A" },
@@ -92,4 +92,4 @@ local blakbarr: Chip = {
     auto_battle = { class = "when_unbarriered" },
 }
 
-return { barrier = barrier, barr100 = barr100, barr200 = barr200, lifeaura = lifeaura, blakbarr = blakbarr }
+return { barrier = barrier, barrier_100 = barrier_100, barrier_200 = barrier_200, life_aura = life_aura, black_barrier = black_barrier }

@@ -88,7 +88,7 @@ end
 -- EXE4's warp (effect object #0x0C, 0x080E2C24). (Its init loads its sprite through 0x0800B90A's own table; the
 -- `load_like` of @exelib/looks is the same lookup.)
 navi_chips.warp_kind = new.kind {
-    id = "navi-chip-warp",
+    id = "navi_chip_warp",
     pool = Pool.effect,
     state = { out = schema.bool },
     update = function(me: Object)

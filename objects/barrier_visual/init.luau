@@ -14,7 +14,7 @@ local common = require("@exelib/barriers/visual")
 local visual = {}
 
 local made = common.make {
-    id = "barrier-visual",
+    id = "barrier_visual",
     blows = false,
     hides_off_field = false,
     -- 0x080E2572 and 0x080E2558 by the navi's number: MegaMan's rows are none, and EXE4's netbattles have no other

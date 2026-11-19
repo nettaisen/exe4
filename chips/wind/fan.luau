@@ -47,7 +47,7 @@ local made = common.make {
     sprite = fan_sprite,
     appear_sound = asset.sound("appear"),
     blow_sound = asset.sound("wind"),
-    break_sound = asset.sound("hit-bomb-1"),
+    break_sound = asset.sound("hit_bomb_1"),
     -- 0x080D6660: effect row 0 (14-00) where it stands.
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     is = collision.own_body,

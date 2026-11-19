@@ -26,7 +26,7 @@ function image.make(id: string): Spawn
     local made = common.make {
         id = id,
         pool = Pool.effect,
-        sound = asset.sound("soul-image"),
+        sound = asset.sound("soul_image"),
         sine = SINE,
         offset = Vec3.new(0, 0, 0),
         ticks_at_init = false,

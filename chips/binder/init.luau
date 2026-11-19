@@ -12,8 +12,8 @@ local function throw(id: string, palette: number): Action
     return bombs.throw { id = id, held = bombs.held, thrower = binder.thrower(palette) }
 end
 
-local binder1: Chip = {
-    action = throw("binder1/action", 0),
+local binder_1: Chip = {
+    action = throw("binder_1/action", 0),
     codes = { "C", "O", "S", "*" },
     element = Element.null,
     family = Family.null,
@@ -27,8 +27,8 @@ local binder1: Chip = {
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }
 
-local binder2: Chip = {
-    action = throw("binder2/action", 2),
+local binder_2: Chip = {
+    action = throw("binder_2/action", 2),
     codes = { "A", "T", "Y" },
     element = Element.null,
     family = Family.null,
@@ -42,8 +42,8 @@ local binder2: Chip = {
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }
 
-local binder3: Chip = {
-    action = throw("binder3/action", 4),
+local binder_3: Chip = {
+    action = throw("binder_3/action", 4),
     codes = { "E", "I", "O" },
     element = Element.null,
     family = Family.null,
@@ -57,4 +57,4 @@ local binder3: Chip = {
     auto_battle = { class = "into_reach", range = "two_ahead" },
 }
 
-return { binder1 = binder1, binder2 = binder2, binder3 = binder3 }
+return { binder_1 = binder_1, binder_2 = binder_2, binder_3 = binder_3 }

@@ -23,7 +23,7 @@ export type State = {
     timer: number,
 }
 
-local REVERT_SOUND = asset.sound("soul-revert")
+local REVERT_SOUND = asset.sound("soul_revert")
 -- Effect row 3, the deletion's flash.
 local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 

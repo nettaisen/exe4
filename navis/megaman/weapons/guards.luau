@@ -7,12 +7,12 @@
 --   turns aside is fired back as the charged shot's projectile), 100 damage, 20 ticks behind look row 1 (animation
 --   2); its routine sets the B+Left special's cooldown to 40 as it starts (AIAttackVars +0x1A: the attack's end hands
 --   no lockout on in EXE4, `reactions.attack_end_lockouts`);
--- - AntiMagc (`megaman/anti-magic`, routine 0x27, 0x0800D004): its stance (action 0x72, 0x080EE9EE), 100 damage: for
+-- - AntiMagc (`megaman/anti_magic`, routine 0x27, 0x0800D004): its stance (action 0x72, 0x080EE9EE), 100 damage: for
 --   13 ticks the side's defensive chip is AntiDmg (chips/anti), with the stance's damage word and bonus (0x08022FDE),
 --   then none (0x08022FFA); a hit AntiDmg catches meanwhile (or AntiSwrd's request) turns the stance into the trap's
 --   counter (0x0800C780, as a trap's catch: AntiDmg's counter from the next tick, its name shown to the other player).
 
-local antidmg = require("../../../chips/anti").antidmg
+local anti_damage = require("../../../chips/anti").anti_damage
 local collision = require("../../../rules/collision")
 local guard = require("../../../lib/guard")
 local projectile = require("../../../objects/projectile")
@@ -89,7 +89,7 @@ type AntiMagicState = { timer: number }
 -- 0x080EE9EE: a caught hit's request (0x600) hands over to the trap's counter; else its one phase (0x080EEA1C): the
 -- side's defensive chip AntiDmg with the stance's damage word and bonus, for 13 ticks, then none, and back to idle.
 local ANTI_MAGIC = new.action {
-    id = "megaman/anti-magic/action",
+    id = "megaman/anti_magic/action",
     state = { timer = schema.u16 },
     update = function(me: Object, s: AntiMagicState)
         if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
@@ -102,7 +102,7 @@ local ANTI_MAGIC = new.action {
         if me.step_init == 0 then
             me.status.using_action = true
             battle.set_linked(me.alliance, {
-                chip = antidmg,
+                chip = anti_damage,
                 bonus = me.extra,
                 damage = me.attack_word,
                 owner = me,
@@ -122,7 +122,7 @@ local ANTI_MAGIC = new.action {
 
 -- 0x0800D004 (the charge table's row 0x27: 60 ticks throughout).
 guards.anti_magic = new.weapon {
-    id = "megaman/anti-magic",
+    id = "megaman/anti_magic",
     charge_ticks = CHARGE,
     setup = function(navi: Object): Action
         raise(navi, 0, 100)

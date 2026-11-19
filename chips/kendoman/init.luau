@@ -30,7 +30,7 @@ local kendoman: Chip = {
     auto_battle = { class = "into_target_row_on_ground" },
 }
 
-local kendmn_sp: Chip = {
+local kendoman_sp: Chip = {
     codes = { "K" },
     element = Element.null,
     family = Family.null,
@@ -43,12 +43,12 @@ local kendmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "kendmn-sp/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "kendoman_sp/controller", palette = 3 }.hook,
     megaman = "light",
     auto_battle = { class = "into_target_row_on_ground" },
 }
 
-local kendmn_ds: Chip = {
+local kendoman_ds: Chip = {
     codes = { "K" },
     element = Element.null,
     family = Family.null,
@@ -60,9 +60,9 @@ local kendmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "kendmn-ds/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "kendoman_ds/controller", palette = 4 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_target_row_on_ground" },
 }
 
-return { kendoman = kendoman, ["kendmn-sp"] = kendmn_sp, ["kendmn-ds"] = kendmn_ds }
+return { kendoman = kendoman, kendoman_sp = kendoman_sp, kendoman_ds = kendoman_ds }

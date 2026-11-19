@@ -9,344 +9,344 @@ language = "ja"
 
 [chips]
 "cannon" = { name = "キャノン", description = "前方のてき1たいを\n攻撃できる\nキャノンほう" }
-"airshot" = { name = "エアシュート", description = "ヒットしたあいてを\n1マスおくへおす\nくうきほう" }
-"crakout" = { name = "クラックアウト", description = "パネルはかい攻撃!\n目の前の1マスを\nけしさってしまう" }
-"dublcrak" = { name = "ダブルクラック", description = "パネルはかい攻撃!\n前のよこ2マスを\nけしさってしまう" }
-"tripcrak" = { name = "トリプルクラック", description = "パネルはかい攻撃!\n前のたて3マスを\nけしさってしまう" }
-"hicannon" = { name = "ハイキャノン", description = "前方のてき1たいを\n攻撃できる\nキャノンほう" }
-"m-cannon" = { name = "メガキャノン", description = "前方のてき1たいを\n攻撃できる\nキャノンほう" }
+"air_shot" = { name = "エアシュート", description = "ヒットしたあいてを\n1マスおくへおす\nくうきほう" }
+"crack_out" = { name = "クラックアウト", description = "パネルはかい攻撃!\n目の前の1マスを\nけしさってしまう" }
+"double_crack" = { name = "ダブルクラック", description = "パネルはかい攻撃!\n前のよこ2マスを\nけしさってしまう" }
+"triple_crack" = { name = "トリプルクラック", description = "パネルはかい攻撃!\n前のたて3マスを\nけしさってしまう" }
+"high_cannon" = { name = "ハイキャノン", description = "前方のてき1たいを\n攻撃できる\nキャノンほう" }
+"mega_cannon" = { name = "メガキャノン", description = "前方のてき1たいを\n攻撃できる\nキャノンほう" }
 "lance" = { name = "バンブーランス", description = "てきエリアの右はし\nたてれつにとつぜん\nたけやりが発生!" }
-"recov10" = { name = "リカバリー10", description = "HPを10\nかいふくする" }
-"recov30" = { name = "リカバリー30", description = "HPを30\nかいふくする" }
-"recov50" = { name = "リカバリー50", description = "HPを50\nかいふくする" }
-"recov80" = { name = "リカバリー80", description = "HPを80\nかいふくする" }
-"recov120" = { name = "リカバリー120", description = "HPを120\nかいふくする" }
-"recov150" = { name = "リカバリー150", description = "HPを150\nかいふくする" }
-"recov200" = { name = "リカバリー200", description = "HPを200\nかいふくする" }
-"recov300" = { name = "リカバリー300", description = "HPを300\nかいふくする" }
-"drkcanon" = { name = "ダークキャノン", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drksword" = { name = "ダークソード", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"darkbomb" = { name = "ダークボム", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drkvulcn" = { name = "ダークバルカン", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drklance" = { name = "ダークランス", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drkspred" = { name = "ダークスプレッド", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drkstage" = { name = "ダークステージ", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"drkrecov" = { name = "ダークリカバリー", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
-"rollsoul" = { name = "ロールソウル", description = "ロールソウル" }
-"gutssoul" = { name = "ガッツソウル", description = "ガッツソウル" }
-"windsoul" = { name = "ウインドソウル", description = "ウインドソウル" }
-"srchsoul" = { name = "サーチソウル", description = "サーチソウル" }
-"firesoul" = { name = "ファイアソウル", description = "ファイアソウル" }
-"thunsoul" = { name = "サンダーソウル", description = "サンダーソウル" }
-"protsoul" = { name = "ブルースソウル", description = "ブルースソウル" }
-"numsoul" = { name = "ナンバーソウル", description = "ナンバーソウル" }
-"metlsoul" = { name = "メタルソウル", description = "メタルソウル" }
-"junksoul" = { name = "ジャンクソウル", description = "ジャンクソウル" }
-"aquasoul" = { name = "アクアソウル", description = "アクアソウル" }
-"woodsoul" = { name = "ウッドソウル", description = "ウッドソウル" }
-"panlgrab" = { name = "パネルスチール", description = "前方のてきエリアの\n1マスを 自分の\nエリアにぬりかえる" }
-"areagrab" = { name = "エリアスチール", description = "てきエリアの左はし\nたて1れつを自分の\nエリアにぬりかえる" }
+"recovery_10" = { name = "リカバリー10", description = "HPを10\nかいふくする" }
+"recovery_30" = { name = "リカバリー30", description = "HPを30\nかいふくする" }
+"recovery_50" = { name = "リカバリー50", description = "HPを50\nかいふくする" }
+"recovery_80" = { name = "リカバリー80", description = "HPを80\nかいふくする" }
+"recovery_120" = { name = "リカバリー120", description = "HPを120\nかいふくする" }
+"recovery_150" = { name = "リカバリー150", description = "HPを150\nかいふくする" }
+"recovery_200" = { name = "リカバリー200", description = "HPを200\nかいふくする" }
+"recovery_300" = { name = "リカバリー300", description = "HPを300\nかいふくする" }
+"dark_cannon" = { name = "ダークキャノン", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_sword" = { name = "ダークソード", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_bomb" = { name = "ダークボム", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_vulcan" = { name = "ダークバルカン", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_lance" = { name = "ダークランス", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_spreader" = { name = "ダークスプレッド", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_stage" = { name = "ダークステージ", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"dark_recovery" = { name = "ダークリカバリー", description = "オノレノヨクボウガ\nウミダシタアクマノ\nダークチップ・・・" }
+"roll_soul" = { name = "ロールソウル", description = "ロールソウル" }
+"guts_soul" = { name = "ガッツソウル", description = "ガッツソウル" }
+"wind_soul" = { name = "ウインドソウル", description = "ウインドソウル" }
+"search_soul" = { name = "サーチソウル", description = "サーチソウル" }
+"fire_soul" = { name = "ファイアソウル", description = "ファイアソウル" }
+"thunder_soul" = { name = "サンダーソウル", description = "サンダーソウル" }
+"proto_soul" = { name = "ブルースソウル", description = "ブルースソウル" }
+"number_soul" = { name = "ナンバーソウル", description = "ナンバーソウル" }
+"metal_soul" = { name = "メタルソウル", description = "メタルソウル" }
+"junk_soul" = { name = "ジャンクソウル", description = "ジャンクソウル" }
+"aqua_soul" = { name = "アクアソウル", description = "アクアソウル" }
+"wood_soul" = { name = "ウッドソウル", description = "ウッドソウル" }
+"panel_grab" = { name = "パネルスチール", description = "前方のてきエリアの\n1マスを 自分の\nエリアにぬりかえる" }
+"area_grab" = { name = "エリアスチール", description = "てきエリアの左はし\nたて1れつを自分の\nエリアにぬりかえる" }
 "sword" = { name = "ソード", description = "目の前のてきを\nきりつける!\n攻撃はんいは1マス" }
-"wideswrd" = { name = "ワイドソード", description = "目の前のてきを\nきりつける!\nはんいはたて3マス" }
-"longswrd" = { name = "ロングソード", description = "目の前のてきを\nきりつける!\nはんいはよこ2マス" }
-"wideblde" = { name = "ワイドブレード", description = "目の前のてきを\nきりつける!\nはんいはたて3マス" }
-"longblde" = { name = "ロングブレード", description = "目の前のてきを\nきりつける!\nはんいはよこ2マス" }
-"minibomb" = { name = "ミニボム", description = "3マス前におちる\nボムをなげつける" }
-"vulcan1" = { name = "バルカン1", description = "3れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
-"vulcan2" = { name = "バルカン2", description = "5れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
-"vulcan3" = { name = "バルカン3", description = "7れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
-"atk-10" = { name = "アタック+10", description = "攻撃チップのあとに\nえらぶと 攻撃力を\n+10できる" }
-"atk-30" = { name = "アタック+30", description = "攻撃チップのあとに\nえらぶと 攻撃力を\n+30できる" }
+"wide_sword" = { name = "ワイドソード", description = "目の前のてきを\nきりつける!\nはんいはたて3マス" }
+"long_sword" = { name = "ロングソード", description = "目の前のてきを\nきりつける!\nはんいはよこ2マス" }
+"wide_blade" = { name = "ワイドブレード", description = "目の前のてきを\nきりつける!\nはんいはたて3マス" }
+"long_blade" = { name = "ロングブレード", description = "目の前のてきを\nきりつける!\nはんいはよこ2マス" }
+"mini_bomb" = { name = "ミニボム", description = "3マス前におちる\nボムをなげつける" }
+"vulcan_1" = { name = "バルカン1", description = "3れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
+"vulcan_2" = { name = "バルカン2", description = "5れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
+"vulcan_3" = { name = "バルカン3", description = "7れんしゃバルカン\nヒットすると1マス\nおくにもかんつう!" }
+"attack_10" = { name = "アタック+10", description = "攻撃チップのあとに\nえらぶと 攻撃力を\n+10できる" }
+"attack_30" = { name = "アタック+30", description = "攻撃チップのあとに\nえらぶと 攻撃力を\n+30できる" }
 "spreader" = { name = "スプレッドガン", description = "ヒットすると\nまわりの1マスに\nゆうばく!" }
-"heatshot" = { name = "ヒートショット", description = "ヒットすると\nおくの1マスに\nゆうばくする!" }
-"heat-v" = { name = "ヒートブイ", description = "ヒットすると\nななめおく2マスに\nゆうばくする" }
-"heatside" = { name = "ヒートサイド", description = "ヒットすると\n上下の2マスに\nゆうばくする" }
+"heat_shot" = { name = "ヒートショット", description = "ヒットすると\nおくの1マスに\nゆうばくする!" }
+"heat_v" = { name = "ヒートブイ", description = "ヒットすると\nななめおく2マスに\nゆうばくする" }
+"heat_side" = { name = "ヒートサイド", description = "ヒットすると\n上下の2マスに\nゆうばくする" }
 "bubbler" = { name = "バブルショット", description = "ヒットすると\nおくの1マスに\nゆうばくする!" }
-"bub-v" = { name = "バブルブイ", description = "ヒットすると\nななめおく2マスに\nゆうばくする" }
-"bublside" = { name = "バブルサイド", description = "ヒットすると\n上下の2マスに\nゆうばくする" }
-"navi-20" = { name = "ナビ+20", description = "ナビチップの\nあとにえらぶと\n攻撃力を+20!" }
-"meteors1" = { name = "メテオレイン1", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
-"meteors2" = { name = "メテオレイン2", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
-"meteors3" = { name = "メテオレイン3", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
-"boomer1" = { name = "ブーメラン1", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
-"boomer2" = { name = "ブーメラン2", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
-"boomer3" = { name = "ブーメラン3", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
+"bubble_v" = { name = "バブルブイ", description = "ヒットすると\nななめおく2マスに\nゆうばくする" }
+"bubble_side" = { name = "バブルサイド", description = "ヒットすると\n上下の2マスに\nゆうばくする" }
+"navi_20" = { name = "ナビ+20", description = "ナビチップの\nあとにえらぶと\n攻撃力を+20!" }
+"meteors_1" = { name = "メテオレイン1", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
+"meteors_2" = { name = "メテオレイン2", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
+"meteors_3" = { name = "メテオレイン3", description = "前方のちかいてきの\nいるマスにメテオを\n5発ふらせる!" }
+"boomerang_1" = { name = "ブーメラン1", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
+"boomerang_2" = { name = "ブーメラン2", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
+"boomerang_3" = { name = "ブーメラン3", description = "バトルフィールドの\nはしにそってとぶ\nかんつうブーメラン" }
 "repair" = { name = "リペアー", description = "キューブなどの\nおきもののHPを\nかいふくさせる" }
-"fullcust" = { name = "フルカスタム", description = "カスタムゲージが\nいっしゅんで\nマンタンになる!" }
-"ligtnin1" = { name = "ライトニング1", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
-"ligtnin2" = { name = "ライトニング2", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
-"ligtnin3" = { name = "ライトニング3", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
-"aquaup1" = { name = "アクアアッパー1", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
-"aquaup2" = { name = "アクアアッパー2", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
-"aquaup3" = { name = "アクアアッパー3", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
-"greenwd1" = { name = "グリーンウッド1", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
-"greenwd2" = { name = "グリーンウッド2", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
-"greenwd3" = { name = "グリーンウッド3", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
-"counter1" = { name = "カウンター1", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
-"counter2" = { name = "カウンター2", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
-"counter3" = { name = "カウンター3", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
-"mokorus1" = { name = "モコラッシュ1", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
-"mokorus2" = { name = "モコラッシュ2", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
-"mokorus3" = { name = "モコラッシュ3", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
-"sidbmbo1" = { name = "サイドバンブー1", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
-"sidbmbo2" = { name = "サイドバンブー2", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
-"sidbmbo3" = { name = "サイドバンブー3", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
-"whitweb1" = { name = "ホワイトウェブ1", description = "てきエリアの上の\nれつにくものすを\n発生させる" }
-"whitweb2" = { name = "ホワイトウェブ2", description = "てきエリアのまん中\nれつにくものすを\n発生させる" }
-"whitweb3" = { name = "ホワイトウェブ3", description = "てきエリアの下の\nれつにくものすを\n発生させる" }
+"full_custom" = { name = "フルカスタム", description = "カスタムゲージが\nいっしゅんで\nマンタンになる!" }
+"lightning_1" = { name = "ライトニング1", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
+"lightning_2" = { name = "ライトニング2", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
+"lightning_3" = { name = "ライトニング3", description = "しょうがいぶつに\nらくらい!まわりの\nてきにもかんでん!" }
+"aqua_upper_1" = { name = "アクアアッパー1", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
+"aqua_upper_2" = { name = "アクアアッパー2", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
+"aqua_upper_3" = { name = "アクアアッパー3", description = "てきのいる\nヒビわれたマスから\nアクアタワー発生!" }
+"green_wood_1" = { name = "グリーンウッド1", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
+"green_wood_2" = { name = "グリーンウッド2", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
+"green_wood_3" = { name = "グリーンウッド3", description = "てきのいる\nくさむらのマスに\nウッディタワー!" }
+"counter_1" = { name = "カウンター1", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
+"counter_2" = { name = "カウンター2", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
+"counter_3" = { name = "カウンター3", description = "攻撃するしゅんかん\nのてきにカウンター\nどこからでもヒット" }
+"moko_rush_1" = { name = "モコラッシュ1", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
+"moko_rush_2" = { name = "モコラッシュ2", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
+"moko_rush_3" = { name = "モコラッシュ3", description = "マルモコが3たい\nたて1れつになって\nとっしんしていく!" }
+"side_bamboo_1" = { name = "サイドバンブー1", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
+"side_bamboo_2" = { name = "サイドバンブー2", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
+"side_bamboo_3" = { name = "サイドバンブー3", description = "3マス前方のれつの\n上のくうかんから\n2マスのたけやり!" }
+"white_web_1" = { name = "ホワイトウェブ1", description = "てきエリアの上の\nれつにくものすを\n発生させる" }
+"white_web_2" = { name = "ホワイトウェブ2", description = "てきエリアのまん中\nれつにくものすを\n発生させる" }
+"white_web_3" = { name = "ホワイトウェブ3", description = "てきエリアの下の\nれつにくものすを\n発生させる" }
 "roll" = { name = "ロール", description = "てき1たいを攻撃\nかいふくのハートで\nいやしてくれる" }
-"roll-sp" = { name = "ロールSP", description = "てき1たいを攻撃\nかいふくのハートで\nいやしてくれる" }
-"roll-ds" = { name = "ロールDS", description = "てき1たいを攻撃\nかいふくのハートで\nいやしてくれる" }
+"roll_sp" = { name = "ロールSP", description = "てき1たいを攻撃\nかいふくのハートで\nいやしてくれる" }
+"roll_ds" = { name = "ロールDS", description = "てき1たいを攻撃\nかいふくのハートで\nいやしてくれる" }
 "protoman" = { name = "ブルース", description = "てきの前にいって\nきりつけてまわる\nいけないばあいも" }
-"protom-sp" = { name = "ブルースSP", description = "てきの前にいって\nきりつけてまわる\nいけないばあいも" }
-"protom-ds" = { name = "ブルースDS", description = "てきの前にいって\nきりつけてまわる\nいけないばあいも" }
-"deltaray" = { name = "デルタレイエッジ", description = "きりつけるときに\nAでさいこう3だん\nのソード攻撃" }
-"elemflar" = { name = "エレメントフレア", description = "よこ3マスの攻撃\nマグマの上だと\nパワーアップ!" }
-"elemice" = { name = "エレメントアイス", description = "よこ3マスの攻撃\nこおりの上だと\nパワーアップ!" }
-"elemleaf" = { name = "エレメントリーフ", description = "よこ3マスの攻撃\nくさむらの上だと\nパワーアップ!" }
-"elemsand" = { name = "エレメントサンド", description = "よこ3マスの攻撃\nアリジゴクの上だと\nパワーアップ!" }
-"elemdark" = { name = "エレメントダーク", description = "あんこくチップ!\nどくぬまの上だと\nパワーアップ!" }
-"serchman" = { name = "サーチマン", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
-"srchmn-sp" = { name = "サーチマンSP", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
-"srchmn-ds" = { name = "サーチマンDS", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
-"thunman" = { name = "サンダーマン", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
-"thunmn-sp" = { name = "サンダーマンSP", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
-"thunmn-ds" = { name = "サンダーマンDS", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
+"protoman_sp" = { name = "ブルースSP", description = "てきの前にいって\nきりつけてまわる\nいけないばあいも" }
+"protoman_ds" = { name = "ブルースDS", description = "てきの前にいって\nきりつけてまわる\nいけないばあいも" }
+"delta_ray_edge" = { name = "デルタレイエッジ", description = "きりつけるときに\nAでさいこう3だん\nのソード攻撃" }
+"element_flare" = { name = "エレメントフレア", description = "よこ3マスの攻撃\nマグマの上だと\nパワーアップ!" }
+"element_ice" = { name = "エレメントアイス", description = "よこ3マスの攻撃\nこおりの上だと\nパワーアップ!" }
+"element_leaf" = { name = "エレメントリーフ", description = "よこ3マスの攻撃\nくさむらの上だと\nパワーアップ!" }
+"element_sand" = { name = "エレメントサンド", description = "よこ3マスの攻撃\nアリジゴクの上だと\nパワーアップ!" }
+"element_dark" = { name = "エレメントダーク", description = "あんこくチップ!\nどくぬまの上だと\nパワーアップ!" }
+"searchman" = { name = "サーチマン", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
+"searchman_sp" = { name = "サーチマンSP", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
+"searchman_ds" = { name = "サーチマンDS", description = "サイトをボタンで\nとめて 5れんしゃ\nのスコープガン!" }
+"thunderman" = { name = "サンダーマン", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
+"thunderman_sp" = { name = "サンダーマンSP", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
+"thunderman_ds" = { name = "サンダーマンDS", description = "3マス前方のたて\n1れつにらくらい!\nパネルごとこわす!" }
 "metalman" = { name = "メタルマン", description = "目の前の1マスに\nこうてつのコブシを\nふりおろす!" }
-"metlmn-sp" = { name = "メタルマンSP", description = "目の前の1マスに\nこうてつのコブシを\nふりおろす!" }
-"metlmn-ds" = { name = "メタルマンDS", description = "目の前の1マスに\nこうてつのコブシを\nふりおろす!" }
+"metalman_sp" = { name = "メタルマンSP", description = "目の前の1マスに\nこうてつのコブシを\nふりおろす!" }
+"metalman_ds" = { name = "メタルマンDS", description = "目の前の1マスに\nこうてつのコブシを\nふりおろす!" }
 "junkman" = { name = "ジャンクマン", description = "フィールド上の\nぶったいをうかせて\nてきにぶつける!" }
-"junkmn-sp" = { name = "ジャンクマンSP", description = "フィールド上の\nぶったいをうかせて\nてきにぶつける!" }
-"junkmn-ds" = { name = "ジャンクマンDS", description = "フィールド上の\nぶったいをうかせて\nてきにぶつける!" }
-"energbom" = { name = "エナジーボム", description = "3マス前に\nれんぞくばくふうの\nボムをなげつける" }
-"megenbom" = { name = "メガエナジーボム", description = "3マス前に\nれんぞくばくふうの\nボムをなげつける" }
-"binder1" = { name = "バウンドノート1", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
-"binder2" = { name = "バウンドノート2", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
-"binder3" = { name = "バウンドノート3", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
-"seekbom1" = { name = "サーチボム1", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
-"seekbom2" = { name = "サーチボム2", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
-"seekbom3" = { name = "サーチボム3", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
-"ball" = { name = "ホウガン", description = "3マス前に\nホウガンをなげる!\nパネルはかい攻撃!" }
+"junkman_sp" = { name = "ジャンクマンSP", description = "フィールド上の\nぶったいをうかせて\nてきにぶつける!" }
+"junkman_ds" = { name = "ジャンクマンDS", description = "フィールド上の\nぶったいをうかせて\nてきにぶつける!" }
+"energy_bomb" = { name = "エナジーボム", description = "3マス前に\nれんぞくばくふうの\nボムをなげつける" }
+"mega_energy_bomb" = { name = "メガエナジーボム", description = "3マス前に\nれんぞくばくふうの\nボムをなげつける" }
+"binder_1" = { name = "バウンドノート1", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
+"binder_2" = { name = "バウンドノート2", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
+"binder_3" = { name = "バウンドノート3", description = "1マスおきにはねる\nおんぷを2マス前に\nなげつける!" }
+"seek_bomb_1" = { name = "サーチボム1", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
+"seek_bomb_2" = { name = "サーチボム2", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
+"seek_bomb_3" = { name = "サーチボム3", description = "てきをねらって\nとんでいくボムを\nなげつける!" }
+"cannon_ball" = { name = "ホウガン", description = "3マス前に\nホウガンをなげる!\nパネルはかい攻撃!" }
 "geyser" = { name = "カンケツセン", description = "3マス前になげつけ\nあなマスにおちると\n水がふきだす!" }
-"thunder1" = { name = "サンダーボール1", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
-"thunder2" = { name = "サンダーボール2", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
-"thunder3" = { name = "サンダーボール3", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
+"thunder_1" = { name = "サンダーボール1", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
+"thunder_2" = { name = "サンダーボール2", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
+"thunder_3" = { name = "サンダーボール3", description = "ゆっくりとすすむ\nついび電気攻撃\nあたるとマヒする!" }
 "topman" = { name = "タップマン", description = "3マス前方にななめ\n四方からベーゴマと\nグリグリタップ攻撃" }
-"topmn-sp" = { name = "タップマンSP", description = "3マス前方にななめ\n四方からベーゴマと\nグリグリタップ攻撃" }
-"topmn-ds" = { name = "タップマンDS", description = "3マス前方にななめ\n四方からベーゴマと\nグリグリタップ攻撃" }
-"antifire" = { name = "カキゲンキン", description = "てきにワナをはる\n炎の攻撃をだすと\n自分がダメージ!" }
-"antiwatr" = { name = "ダイコウズイ", description = "てきにワナをはる\n水の攻撃をだすと\n自分がダメージ!" }
-"antielec" = { name = "ヒライシン", description = "てきにワナをはる\n電気の攻撃をだすと\n自分がダメージ!" }
-"antiwood" = { name = "マヨイノモリ", description = "てきにワナをはる\n木の攻撃をだすと\n自分がダメージ!" }
-"antinavi" = { name = "ナビスカウト", description = "てきにワナをはる\nよびだしたナビを\nねがえらせる" }
-"antidmg" = { name = "カワリミ", description = "てきにワナをはる\n攻撃にあたると\nしゅりけん攻撃!" }
-"antiswrd" = { name = "シラハドリ", description = "てきにワナをはる\nソード攻撃をうけ\nながしてはんげき!" }
-"antirecv" = { name = "バッドメディスン", description = "てきにワナをはる\nてきのリカバリーが\nぎゃくにダメージに" }
-"numbrman" = { name = "ナンバーマン", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
-"numbmn-sp" = { name = "ナンバーマンSP", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
-"numbmn-ds" = { name = "ナンバーマンDS", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
-"heatbrth" = { name = "ヒートブレス", description = "ほうしゃじょうに\nかえん攻撃!\nパネルをマグマに" }
+"topman_sp" = { name = "タップマンSP", description = "3マス前方にななめ\n四方からベーゴマと\nグリグリタップ攻撃" }
+"topman_ds" = { name = "タップマンDS", description = "3マス前方にななめ\n四方からベーゴマと\nグリグリタップ攻撃" }
+"anti_fire" = { name = "カキゲンキン", description = "てきにワナをはる\n炎の攻撃をだすと\n自分がダメージ!" }
+"anti_water" = { name = "ダイコウズイ", description = "てきにワナをはる\n水の攻撃をだすと\n自分がダメージ!" }
+"anti_elec" = { name = "ヒライシン", description = "てきにワナをはる\n電気の攻撃をだすと\n自分がダメージ!" }
+"anti_wood" = { name = "マヨイノモリ", description = "てきにワナをはる\n木の攻撃をだすと\n自分がダメージ!" }
+"anti_navi" = { name = "ナビスカウト", description = "てきにワナをはる\nよびだしたナビを\nねがえらせる" }
+"anti_damage" = { name = "カワリミ", description = "てきにワナをはる\n攻撃にあたると\nしゅりけん攻撃!" }
+"anti_sword" = { name = "シラハドリ", description = "てきにワナをはる\nソード攻撃をうけ\nながしてはんげき!" }
+"anti_recovery" = { name = "バッドメディスン", description = "てきにワナをはる\nてきのリカバリーが\nぎゃくにダメージに" }
+"numberman" = { name = "ナンバーマン", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
+"numberman_sp" = { name = "ナンバーマンSP", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
+"numberman_ds" = { name = "ナンバーマンDS", description = "3マス前方にボム!\n攻撃力は出目しだい\n9マス分にばくはつ" }
+"heat_breath" = { name = "ヒートブレス", description = "ほうしゃじょうに\nかえん攻撃!\nパネルをマグマに" }
 "blizzard" = { name = "ブリザード", description = "ほうしゃじょうに\nふぶき攻撃!\nパネルをこおりに" }
-"elecshok" = { name = "エレキショック", description = "ほうしゃじょうに\nほうでん攻撃!\nパネルをヒビに" }
-"woodpwdr" = { name = "ウッディパウダー", description = "ほうしゃじょうに\nほうし攻撃!\nパネルをくさむらに" }
+"elec_shock" = { name = "エレキショック", description = "ほうしゃじょうに\nほうでん攻撃!\nパネルをヒビに" }
+"woody_powder" = { name = "ウッディパウダー", description = "ほうしゃじょうに\nほうし攻撃!\nパネルをくさむらに" }
 "sparkman" = { name = "スパークマン", description = "前方すべてに\nスパークウェーブ!\nあいてをもうもくに" }
-"sprkmn-sp" = { name = "スパークマンSP", description = "前方すべてに\nスパークウェーブ!\nあいてをもうもくに" }
-"sprkmn-ds" = { name = "スパークマンDS", description = "前方すべてに\nスパークウェーブ!\nあいてをもうもくに" }
+"sparkman_sp" = { name = "スパークマンSP", description = "前方すべてに\nスパークウェーブ!\nあいてをもうもくに" }
+"sparkman_ds" = { name = "スパークマンDS", description = "前方すべてに\nスパークウェーブ!\nあいてをもうもくに" }
 "rush" = { name = "ラッシュサポート", description = "" }
 "beat" = { name = "ビートサポート", description = "" }
 "tango" = { name = "タンゴサポート", description = "" }
-"guard1" = { name = "メットガード1", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
-"guard2" = { name = "メットガード2", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
-"guard3" = { name = "メットガード3", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
-"flmline1" = { name = "フレイムライン1", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
-"flmline2" = { name = "フレイムライン2", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
-"flmline3" = { name = "フレイムライン3", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
-"gunsol1" = { name = "ガンデルソル1", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
-"gunsol2" = { name = "ガンデルソル2", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
-"gunsol3" = { name = "ガンデルソル3", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
-"gunsolex" = { name = "ガンデルソルEX", description = "さらにこうはんいに\nたいようこうせんを\nしょうしゃする!" }
+"guard_1" = { name = "メットガード1", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
+"guard_2" = { name = "メットガード2", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
+"guard_3" = { name = "メットガード3", description = "タイミングガードし\n攻撃をしょうげきは\nにしてはねかえす!" }
+"flame_line_1" = { name = "フレイムライン1", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
+"flame_line_2" = { name = "フレイムライン2", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
+"flame_line_3" = { name = "フレイムライン3", description = "2マス前方の\nたて3マスに\nひばしら攻撃!" }
+"gun_del_sol_1" = { name = "ガンデルソル1", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
+"gun_del_sol_2" = { name = "ガンデルソル2", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
+"gun_del_sol_3" = { name = "ガンデルソル3", description = "ボタンをおしつづけ\nると2マス前方の\nたて3マスに日の光" }
+"gun_del_sol_ex" = { name = "ガンデルソルEX", description = "さらにこうはんいに\nたいようこうせんを\nしょうしゃする!" }
 "fireman" = { name = "ファイアマン", description = "前方のよこ1れつに\nかんつうする炎!\nファイアアーム!" }
-"firemn-sp" = { name = "ファイアマンSP", description = "前方のよこ1れつに\nかんつうする炎!\nファイアアーム!" }
-"firemn-ds" = { name = "ファイアマンDS", description = "前方のよこ1れつに\nかんつうする炎!\nファイアアーム!" }
-"airhoc1" = { name = "エアホッケー1", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
-"airhoc2" = { name = "エアホッケー2", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
-"airhoc3" = { name = "エアホッケー3", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
-"widesht1" = { name = "ワイドショット1", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
-"widesht2" = { name = "ワイドショット2", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
-"widesht3" = { name = "ワイドショット3", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
-"twnfng1" = { name = "ツインファング1", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
-"twnfng2" = { name = "ツインファング2", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
-"twnfng3" = { name = "ツインファング3", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
-"magbolt1" = { name = "マグボルト1", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
-"magbolt2" = { name = "マグボルト2", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
-"magbolt3" = { name = "マグボルト3", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
-"invis" = { name = "インビジブル", description = "少しの間とうめいに\nなって ほとんどの\n攻撃にあたらない" }
-"popup" = { name = "ユカシタ", description = "地中にもぐり\n攻撃のときだけ\nすがたをあらわす" }
+"fireman_sp" = { name = "ファイアマンSP", description = "前方のよこ1れつに\nかんつうする炎!\nファイアアーム!" }
+"fireman_ds" = { name = "ファイアマンDS", description = "前方のよこ1れつに\nかんつうする炎!\nファイアアーム!" }
+"air_hockey_1" = { name = "エアホッケー1", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
+"air_hockey_2" = { name = "エアホッケー2", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
+"air_hockey_3" = { name = "エアホッケー3", description = "かべにはんしゃする\nエアホッケーを\nななめ右になげる!" }
+"wide_shot_1" = { name = "ワイドショット1", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
+"wide_shot_2" = { name = "ワイドショット2", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
+"wide_shot_3" = { name = "ワイドショット3", description = "たて3マスのはばを\nもつワイドショット\nを前方へはなつ!" }
+"twin_fang_1" = { name = "ツインファング1", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
+"twin_fang_2" = { name = "ツインファング2", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
+"twin_fang_3" = { name = "ツインファング3", description = "自分の上下のれつに\n2本のキバを\nハッシャする!" }
+"magnet_bolt_1" = { name = "マグボルト1", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
+"magnet_bolt_2" = { name = "マグボルト2", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
+"magnet_bolt_3" = { name = "マグボルト3", description = "あいてを目の前の\nマスにすいつけて\n電気ショック!" }
+"invisible" = { name = "インビジブル", description = "少しの間とうめいに\nなって ほとんどの\n攻撃にあたらない" }
+"pop_up" = { name = "ユカシタ", description = "地中にもぐり\n攻撃のときだけ\nすがたをあらわす" }
 "shademan" = { name = "シェードマン", description = "ほうしゃじょうに\nちょうおんぱ攻撃\nクラッシュノイズ!" }
-"shadmn-sp" = { name = "シェードマンSP", description = "ほうしゃじょうに\nちょうおんぱ攻撃\nクラッシュノイズ!" }
-"shadmn-ds" = { name = "シェードマンDS", description = "ほうしゃじょうに\nちょうおんぱ攻撃\nクラッシュノイズ!" }
-"propbom1" = { name = "プロペラボム1", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
-"propbom2" = { name = "プロペラボム2", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
-"propbom3" = { name = "プロペラボム3", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
+"shademan_sp" = { name = "シェードマンSP", description = "ほうしゃじょうに\nちょうおんぱ攻撃\nクラッシュノイズ!" }
+"shademan_ds" = { name = "シェードマンDS", description = "ほうしゃじょうに\nちょうおんぱ攻撃\nクラッシュノイズ!" }
+"propeller_bomb_1" = { name = "プロペラボム1", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
+"propeller_bomb_2" = { name = "プロペラボム2", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
+"propeller_bomb_3" = { name = "プロペラボム3", description = "前方へとんでいき\n画面はしにきえると\n大ばくはつをおこす" }
 "tornado" = { name = "トルネード", description = "2マス前方に\n8ヒットのたつまき\nを発生させる!" }
 "static" = { name = "ノイズストーム", description = "2マス前にノイズの\nアラシ!バグがある\nとパワーアップする" }
-"burnman" = { name = "バーナーマン", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
-"burnmn-sp" = { name = "バーナーマンSP", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
-"burnmn-ds" = { name = "バーナーマンDS", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
-"grabrvng" = { name = "スチールリベンジ", description = "ぬすまれたパネルの\nかずだけ あいてに\nてんばつがくだる!" }
-"grabbnsh" = { name = "スチールパニシュ", description = "ぬすまれたパネルの\nかずだけ あいてに\nてんばつがくだる!" }
-"custswrd" = { name = "カスタムソード", description = "カスタムゲージが\nマンタンにちかい\nほど攻撃力アップ!" }
-"muramasa" = { name = "ムラマサブレード", description = "あんこくチップ!\nへっているHP分が\n攻撃力になる" }
+"burnerman" = { name = "バーナーマン", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
+"burnerman_sp" = { name = "バーナーマンSP", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
+"burnerman_ds" = { name = "バーナーマンDS", description = "2マス前方めがけて\n3方からバーナーで\nしゅうちゅう攻撃" }
+"grab_revenge" = { name = "スチールリベンジ", description = "ぬすまれたパネルの\nかずだけ あいてに\nてんばつがくだる!" }
+"grab_banish" = { name = "スチールパニシュ", description = "ぬすまれたパネルの\nかずだけ あいてに\nてんばつがくだる!" }
+"custom_sword" = { name = "カスタムソード", description = "カスタムゲージが\nマンタンにちかい\nほど攻撃力アップ!" }
+"muramasa_blade" = { name = "ムラマサブレード", description = "あんこくチップ!\nへっているHP分が\n攻撃力になる" }
 "slasher" = { name = "イアイフォーム", description = "Aをおしている間に\n入ってくるてきを\nきる!" }
-"suprvulc" = { name = "スーパーバルカン", description = "きょういの\n12れんしゃ\nバルカンほう!" }
+"super_vulcan" = { name = "スーパーバルカン", description = "きょういの\n12れんしゃ\nバルカンほう!" }
 "hole" = { name = "ダークホール", description = "目の前のマスに\nダークホールを\nしゅつげんさせる!" }
-"pnlretrn" = { name = "パネルリターン", description = "自分のエリアの\nパネルをノーマルに\nもどす!" }
-"holypanl" = { name = "ホーリーパネル", description = "目の前のパネルを\nダメージはんげんの\nホーリーパネルに!" }
-"snctuary" = { name = "サンクチュアリ", description = "自分のエリアの\nすべてのマスを\nホーリーパネルに!" }
-"drkline" = { name = "ダークライン", description = "自分のいるれつを\nすべてダークホール\nにしてしまう!" }
+"panel_return" = { name = "パネルリターン", description = "自分のエリアの\nパネルをノーマルに\nもどす!" }
+"holy_panel" = { name = "ホーリーパネル", description = "目の前のパネルを\nダメージはんげんの\nホーリーパネルに!" }
+"sanctuary" = { name = "サンクチュアリ", description = "自分のエリアの\nすべてのマスを\nホーリーパネルに!" }
+"dark_line" = { name = "ダークライン", description = "自分のいるれつを\nすべてダークホール\nにしてしまう!" }
 "barrier" = { name = "バリア", description = "バリアをはり\n10HPぶんの\nダメージをむこうか" }
-"barr100" = { name = "バリア100", description = "バリアをはり\n100HPぶんの\nダメージをむこうか" }
-"barr200" = { name = "バリア200", description = "バリアをはり\n200HPぶんの\nダメージをむこうか" }
-"lifeaura" = { name = "ドリームオーラ", description = "攻撃力が200より\nひくい攻撃を\nむこうかするオーラ" }
-"blakbarr" = { name = "ブラックバリア", description = "やぶれてもふっかつ\nするやみのバリア!" }
+"barrier_100" = { name = "バリア100", description = "バリアをはり\n100HPぶんの\nダメージをむこうか" }
+"barrier_200" = { name = "バリア200", description = "バリアをはり\n200HPぶんの\nダメージをむこうか" }
+"life_aura" = { name = "ドリームオーラ", description = "攻撃力が200より\nひくい攻撃を\nむこうかするオーラ" }
+"black_barrier" = { name = "ブラックバリア", description = "やぶれてもふっかつ\nするやみのバリア!" }
 "fanfare" = { name = "オウエンカ", description = "ララパッパをおく\nえんそうちゅう\n自分がむてきに!" }
 "discord" = { name = "ディスコード", description = "ララチューバをおく\nえんそうちゅう\nあいてがこんらん!" }
 "timpani" = { name = "ティンパニー", description = "ララボーンをおく\nえんそうちゅう\nじしんであしどめ!" }
 "silence" = { name = "サイレンス", description = "ララミュートをおく\nえんそうちゅう\nあいてはもうもくに" }
 "gutsman" = { name = "ガッツマン", description = "ガッツハンマー!\nあいてエリアに\nヒビとガレキ攻撃!" }
-"gutsmn-sp" = { name = "ガッツマンSP", description = "ガッツハンマー!\nあいてエリアに\nヒビとガレキ攻撃!" }
-"gutsmn-ds" = { name = "ガッツマンDS", description = "ガッツハンマー!\nあいてエリアに\nヒビとガレキ攻撃!" }
-"copydmg" = { name = "コピーダメージ", description = "カーソルのあいてに\nほかのてきがうけた\nダメージをコピー!" }
-"windrack" = { name = "フウジンラケット", description = "目の前のてきを\n風でふきとばす!\nはんいはたて3マス" }
-"bighamr1" = { name = "ビッグハンマー1", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
-"bighamr2" = { name = "ビッグハンマー2", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
-"bighamr3" = { name = "ビッグハンマー3", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
-"godhammr" = { name = "ゴッドハンマー", description = "てきみかたとわず\n攻撃するせきぞうを\n目の前のマスにおく" }
-"geddon1" = { name = "デスマッチ1", description = "パネルのあるマスが\nすべてヒビに!" }
-"geddon2" = { name = "デスマッチ2", description = "あいているマスが\nすべてこわれる!" }
-"geddon3" = { name = "デスマッチ3", description = "パネルのあるマスが\nすべてどくぬまに!" }
+"gutsman_sp" = { name = "ガッツマンSP", description = "ガッツハンマー!\nあいてエリアに\nヒビとガレキ攻撃!" }
+"gutsman_ds" = { name = "ガッツマンDS", description = "ガッツハンマー!\nあいてエリアに\nヒビとガレキ攻撃!" }
+"copy_damage" = { name = "コピーダメージ", description = "カーソルのあいてに\nほかのてきがうけた\nダメージをコピー!" }
+"wind_racket" = { name = "フウジンラケット", description = "目の前のてきを\n風でふきとばす!\nはんいはたて3マス" }
+"big_hammer_1" = { name = "ビッグハンマー1", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
+"big_hammer_2" = { name = "ビッグハンマー2", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
+"big_hammer_3" = { name = "ビッグハンマー3", description = "目の前にハンマーを\nふりおろすせきぞう\nをおく!" }
+"god_hammer" = { name = "ゴッドハンマー", description = "てきみかたとわず\n攻撃するせきぞうを\n目の前のマスにおく" }
+"geddon_1" = { name = "デスマッチ1", description = "パネルのあるマスが\nすべてヒビに!" }
+"geddon_2" = { name = "デスマッチ2", description = "あいているマスが\nすべてこわれる!" }
+"geddon_3" = { name = "デスマッチ3", description = "パネルのあるマスが\nすべてどくぬまに!" }
 "wind" = { name = "トップウ", description = "ウインドボックスを\nおき てきエリアに\n風をふかせる" }
 "fan" = { name = "スイコミ", description = "バキュームファンを\nおき 風でてきを\nすいよせる" }
-"circgun1" = { name = "サークルガン1", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
-"circgun2" = { name = "サークルガン2", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
-"circgun3" = { name = "サークルガン3", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
-"varswrd" = { name = "バリアブルソード", description = "へんげんじざいの\nテクニカルソード" }
-"neovari" = { name = "ネオバリアブル", description = "へんげんじざいの\nテクニカルソード\nじょうきゅうへん" }
-"lifesrd" = { name = "ドリームソード", description = "よこ2たて3の\nきょだいソードで\nてきをぶったぎる!" }
-"ftrsword" = { name = "ファイターソード", description = "" }
-"sonicbom" = { name = "ソニックブーム", description = "" }
-"crosswrd" = { name = "クロスソード", description = "" }
-"sprsonic" = { name = "スーパーソニック", description = "" }
-"dbldream" = { name = "ダブルドリーム", description = "" }
+"circle_gun_1" = { name = "サークルガン1", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
+"circle_gun_2" = { name = "サークルガン2", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
+"circle_gun_3" = { name = "サークルガン3", description = "まわるサイトを\nボタンでとめて\nショット攻撃!" }
+"variable_sword" = { name = "バリアブルソード", description = "へんげんじざいの\nテクニカルソード" }
+"neo_variable_sword" = { name = "ネオバリアブル", description = "へんげんじざいの\nテクニカルソード\nじょうきゅうへん" }
+"life_sword" = { name = "ドリームソード", description = "よこ2たて3の\nきょだいソードで\nてきをぶったぎる!" }
+"fighter_sword" = { name = "ファイターソード", description = "" }
+"sonic_boom" = { name = "ソニックブーム", description = "" }
+"cross_sword" = { name = "クロスソード", description = "" }
+"super_sonic" = { name = "スーパーソニック", description = "" }
+"double_dream" = { name = "ダブルドリーム", description = "" }
 "aquaman" = { name = "アクアマン", description = "スイドウカンをおき\nその2マス前方まで\nほうすい攻撃!" }
-"aquamn-sp" = { name = "アクアマンSP", description = "スイドウカンをおき\nその2マス前方まで\nほうすい攻撃!" }
-"aquamn-ds" = { name = "アクアマンDS", description = "スイドウカンをおき\nその2マス前方まで\nほうすい攻撃!" }
-"sandring" = { name = "サンドリング", description = "あたるとアリジゴク\nを発生させる\nリングを前方へ!" }
-"z-saver" = { name = "Zセイバー", description = "でんせつの あかい\nレプリロイドの\n3だんぎりソード" }
-"gutpnch1" = { name = "ガッツパンチ1", description = "目の前のマスに\nガッツパンチ!" }
-"gutpnch2" = { name = "ガッツパンチ2", description = "目の前のマスに\nガッツストレート!" }
-"gutpnch3" = { name = "ガッツパンチ3", description = "目の前のマスに\nガッツインパクト!" }
+"aquaman_sp" = { name = "アクアマンSP", description = "スイドウカンをおき\nその2マス前方まで\nほうすい攻撃!" }
+"aquaman_ds" = { name = "アクアマンDS", description = "スイドウカンをおき\nその2マス前方まで\nほうすい攻撃!" }
+"sand_ring" = { name = "サンドリング", description = "あたるとアリジゴク\nを発生させる\nリングを前方へ!" }
+"z_saber" = { name = "Zセイバー", description = "でんせつの あかい\nレプリロイドの\n3だんぎりソード" }
+"guts_punch_1" = { name = "ガッツパンチ1", description = "目の前のマスに\nガッツパンチ!" }
+"guts_punch_2" = { name = "ガッツパンチ2", description = "目の前のマスに\nガッツストレート!" }
+"guts_punch_3" = { name = "ガッツパンチ3", description = "目の前のマスに\nガッツインパクト!" }
 "windman" = { name = "ウインドマン", description = "3マス四方に\nかいてんする\nたつまきを発生!" }
-"windmn-sp" = { name = "ウインドマンSP", description = "3マス四方に\nかいてんする\nたつまきを発生!" }
-"windmn-ds" = { name = "ウインドマンDS", description = "3マス四方に\nかいてんする\nたつまきを発生!" }
-"numbrbl1" = { name = "ナンバーボール1", description = "3れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
-"numbrbl2" = { name = "ナンバーボール2", description = "4れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
-"numbrbl3" = { name = "ナンバーボール3", description = "5れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
-"blkbomb" = { name = "ブラックボム", description = "ふはつだんを\n3マス前になげる!\n炎攻撃でバクハツ!" }
+"windman_sp" = { name = "ウインドマンSP", description = "3マス四方に\nかいてんする\nたつまきを発生!" }
+"windman_ds" = { name = "ウインドマンDS", description = "3マス四方に\nかいてんする\nたつまきを発生!" }
+"number_ball_1" = { name = "ナンバーボール1", description = "3れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
+"number_ball_2" = { name = "ナンバーボール2", description = "4れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
+"number_ball_3" = { name = "ナンバーボール3", description = "5れんしゃのボール\n攻撃力はそのときの\nHPの下2ケタ!" }
+"black_bomb" = { name = "ブラックボム", description = "ふはつだんを\n3マス前になげる!\n炎攻撃でバクハツ!" }
 "videoman" = { name = "ビデオマン", description = "2マスはん前方に\nテープのしんが!\nまきこみテープ攻撃" }
-"videmn-sp" = { name = "ビデオマンSP", description = "2マスはん前方に\nテープのしんが!\nまきこみテープ攻撃" }
-"videmn-ds" = { name = "ビデオマンDS", description = "2マスはん前方に\nテープのしんが!\nまきこみテープ攻撃" }
-"bugbomb" = { name = "バグボム", description = "あいてをバグらせる\nバグボムを3マス前\nになげつける" }
+"videoman_sp" = { name = "ビデオマンSP", description = "2マスはん前方に\nテープのしんが!\nまきこみテープ攻撃" }
+"videoman_ds" = { name = "ビデオマンDS", description = "2マスはん前方に\nテープのしんが!\nまきこみテープ攻撃" }
+"bug_bomb" = { name = "バグボム", description = "あいてをバグらせる\nバグボムを3マス前\nになげつける" }
 "kendoman" = { name = "ケンドーマン", description = "前方のてきに\nつっこみ 前後から\nケンドー3だん攻撃" }
-"kendmn-sp" = { name = "ケンドーマンSP", description = "前方のてきに\nつっこみ 前後から\nケンドー3だん攻撃" }
-"kendmn-ds" = { name = "ケンドーマンDS", description = "前方のてきに\nつっこみ 前後から\nケンドー3だん攻撃" }
-"nrthwind" = { name = "スーパーキタカゼ", description = "すさまじいキタカゼ\nがバリアやオーラを\nふきとばしてしまう" }
-"vdoll" = { name = "ワラニンギョウ", description = "おそろしいノロイの\nワラニンギョウを\n3マス前方になげる" }
+"kendoman_sp" = { name = "ケンドーマンSP", description = "前方のてきに\nつっこみ 前後から\nケンドー3だん攻撃" }
+"kendoman_ds" = { name = "ケンドーマンDS", description = "前方のてきに\nつっこみ 前後から\nケンドー3だん攻撃" }
+"north_wind" = { name = "スーパーキタカゼ", description = "すさまじいキタカゼ\nがバリアやオーラを\nふきとばしてしまう" }
+"voodoo_doll" = { name = "ワラニンギョウ", description = "おそろしいノロイの\nワラニンギョウを\n3マス前方になげる" }
 "curse" = { name = "ノロイ", description = "" }
-"rollaro1" = { name = "ロールアロー1", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
-"rollaro2" = { name = "ロールアロー2", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
-"rollaro3" = { name = "ロールアロー3", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
-"metlger1" = { name = "メタルギア1", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
-"metlger2" = { name = "メタルギア2", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
-"metlger3" = { name = "メタルギア3", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
+"roll_arrow_1" = { name = "ロールアロー1", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
+"roll_arrow_2" = { name = "ロールアロー2", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
+"roll_arrow_3" = { name = "ロールアロー3", description = "ロールアローを\n前方へはなつ!\nチップはかい攻撃!" }
+"metal_gear_1" = { name = "メタルギア1", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
+"metal_gear_2" = { name = "メタルギア2", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
+"metal_gear_3" = { name = "メタルギア3", description = "前方のあいてエリア\n左はしのマスに\nはぐるまが発生!" }
 "woodman" = { name = "ウッドマン", description = "あいてエリアないに\nランダムにつきだす\nウッディタワー!" }
-"woodmn-sp" = { name = "ウッドマンSP", description = "あいてエリアないに\nランダムにつきだす\nウッディタワー!" }
-"woodmn-ds" = { name = "ウッドマンDS", description = "あいてエリアないに\nランダムにつきだす\nウッディタワー!" }
+"woodman_sp" = { name = "ウッドマンSP", description = "あいてエリアないに\nランダムにつきだす\nウッディタワー!" }
+"woodman_ds" = { name = "ウッドマンDS", description = "あいてエリアないに\nランダムにつきだす\nウッディタワー!" }
 "laserman" = { name = "レーザーマン", description = "よこ1れつかんつう\nするパワーダウン\nレーザー!" }
-"lasrmn-sp" = { name = "レーザーマンSP", description = "よこ1れつかんつう\nするパワーダウン\nレーザー!" }
-"lasrmn-ds" = { name = "レーザーマンDS", description = "よこ1れつかんつう\nするパワーダウン\nレーザー!" }
-"boybomb1" = { name = "ボーイズボム1", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
-"boybomb2" = { name = "ボーイズボム2", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
-"boybomb3" = { name = "ボーイズボム3", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
-"hawkcut1" = { name = "ハヤブサギリ1", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
-"hawkcut2" = { name = "ハヤブサギリ2", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
-"hawkcut3" = { name = "ハヤブサギリ3", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
-"panlsht1" = { name = "パネルシュート1", description = "目の前のパネルを\nうきあがらせて\n前方にとばして攻撃" }
-"panlsht2" = { name = "パネルシュート2", description = "前後のパネルを\nうきあがらせて\n前方にとばして攻撃" }
-"panlsht3" = { name = "パネルシュート3", description = "上下左右のパネルを\nうきあがらせて\n前方にとばして攻撃" }
-"slogauge" = { name = "ヘビーゲージ", description = "しばらくのあいだ\nカスタムゲージの\nスピードがおちる" }
-"fstgauge" = { name = "クイックゲージ", description = "しばらくのあいだ\nカスタムゲージの\nスピードがあがる" }
+"laserman_sp" = { name = "レーザーマンSP", description = "よこ1れつかんつう\nするパワーダウン\nレーザー!" }
+"laserman_ds" = { name = "レーザーマンDS", description = "よこ1れつかんつう\nするパワーダウン\nレーザー!" }
+"boy_bomb_1" = { name = "ボーイズボム1", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
+"boy_bomb_2" = { name = "ボーイズボム2", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
+"boy_bomb_3" = { name = "ボーイズボム3", description = "自分のエリアないに\nボーイズボム!\nおすとてきエリアへ" }
+"hawk_cut_1" = { name = "ハヤブサギリ1", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
+"hawk_cut_2" = { name = "ハヤブサギリ2", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
+"hawk_cut_3" = { name = "ハヤブサギリ3", description = "ワイドとロングに\nすばやく2回\nきりつける!" }
+"panel_shoot_1" = { name = "パネルシュート1", description = "目の前のパネルを\nうきあがらせて\n前方にとばして攻撃" }
+"panel_shoot_2" = { name = "パネルシュート2", description = "前後のパネルを\nうきあがらせて\n前方にとばして攻撃" }
+"panel_shoot_3" = { name = "パネルシュート3", description = "上下左右のパネルを\nうきあがらせて\n前方にとばして攻撃" }
+"slow_gauge" = { name = "ヘビーゲージ", description = "しばらくのあいだ\nカスタムゲージの\nスピードがおちる" }
+"fast_gauge" = { name = "クイックゲージ", description = "しばらくのあいだ\nカスタムゲージの\nスピードがあがる" }
 "bass" = { name = "フォルテ", description = "バトルフィールドの\n右はんぶんにはなつ\nフォルテバスター!" }
-"timebomb" = { name = "カウントボム", description = "てきエリアにじげん\nばくだんをセットし\nエリア中にばくはつ" }
+"time_bomb" = { name = "カウントボム", description = "てきエリアにじげん\nばくだんをセットし\nエリア中にばくはつ" }
 "blinder" = { name = "ブラインド", description = "きょうりょくな光で\nあいてをもうもく\nじょうたいにする!" }
 "mine" = { name = "ステルスマイン", description = "てきエリアのどこか\nに見えないじらいを\nセットする!" }
-"bassanly" = { name = "フォルテアナザー", description = "いちどだけまがる\nリングを4発\nなげつける!" }
-"rockcube" = { name = "ストーンキューブ", description = "目の前のマスに\nストーンキューブを\n発生させる" }
-"colorpt" = { name = "カラーポイント", description = "自エリアをぎせいに\nしてつぎのチップの\n攻撃力を+10ずつ" }
-"dblpoint" = { name = "ダブルポイント", description = "自エリアをぎせいに\nしてつぎのチップの\n攻撃力を+20ずつ" }
+"bass_anomaly" = { name = "フォルテアナザー", description = "いちどだけまがる\nリングを4発\nなげつける!" }
+"rock_cube" = { name = "ストーンキューブ", description = "目の前のマスに\nストーンキューブを\n発生させる" }
+"color_point" = { name = "カラーポイント", description = "自エリアをぎせいに\nしてつぎのチップの\n攻撃力を+10ずつ" }
+"double_point" = { name = "ダブルポイント", description = "自エリアをぎせいに\nしてつぎのチップの\n攻撃力を+20ずつ" }
 "anubis" = { name = "ポイズンアヌビス", description = "あんこくチップ!\nどくを発生させる\nアヌビスぞうをおく" }
 "guardian" = { name = "オジゾウサン", description = "目の前のマスに\nこわしてはいけない\nオジゾウサンをおく" }
 "punisher" = { name = "バチアタリ", description = "" }
 "jealousy" = { name = "ジェラシー", description = "チップをもつてきに\n枚数におうじた\nダメージをあたえる" }
 "snake" = { name = "カモンスネーク", description = "自分のエリアの\nあなマスから\nこヘビがとんでいく" }
-"bugcurse" = { name = "カースオブバグ", description = "あんこくチップ!\nてきのナビをひどい\nバグじょうたいに!" }
-"bugfix" = { name = "バグシュウセイ", description = "ナビに発生している\nバグをしゅうせいし\nとりのぞく" }
+"bug_curse" = { name = "カースオブバグ", description = "あんこくチップ!\nてきのナビをひどい\nバグじょうたいに!" }
+"bug_fix" = { name = "バグシュウセイ", description = "ナビに発生している\nバグをしゅうせいし\nとりのぞく" }
 "coldman" = { name = "コールドマン", description = "フィールド上のもの\nをこおりつかせ\nおしてすべらせる!" }
-"coldmn-sp" = { name = "コールドマンSP", description = "フィールド上のもの\nをこおりつかせ\nおしてすべらせる!" }
-"coldmn-ds" = { name = "コールドマンDS", description = "フィールド上のもの\nをこおりつかせ\nおしてすべらせる!" }
-"gigacan1" = { name = "ギガキャノン1", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
-"gigacan2" = { name = "ギガキャノン2", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
-"gigacan3" = { name = "ギガキャノン3", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
-"heatsprd" = { name = "ヒートスプレッド", description = "まわり1マスに\nばくえんがひろがる\nこうはんい攻撃!" }
-"bubsprd" = { name = "バブルスプレッド", description = "まわり1マスに\nあわがひろがる\nこうはんい攻撃!" }
-"blakwing" = { name = "ブラックウイング", description = "あんこくチップ!\nてきエリアはしから\nくろいツバサ攻撃!" }
-"suprspr1" = { name = "スーパーワイド1", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
-"suprspr2" = { name = "スーパーワイド2", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
-"suprspr3" = { name = "スーパーワイド3", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
-"flmcros1" = { name = "フレイムクロス1", description = "十字にひろがる\nじごくのごうか!" }
-"flmcros2" = { name = "フレイムクロス2", description = "十字にひろがる\nじごくのごうか!" }
-"flmcros3" = { name = "フレイムクロス3", description = "十字にひろがる\nじごくのごうか!" }
-"bstfang1" = { name = "マッドファング1", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
-"bstfang2" = { name = "マッドファング2", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
-"bstfang3" = { name = "マッドファング3", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
-"pithoky1" = { name = "ジゴクホッケー1", description = "はんしゃしつづける\nきょうふのホッケー" }
-"pithoky2" = { name = "ジゴクホッケー2", description = "はんしゃしつづける\nきょうふのホッケー" }
-"pithoky3" = { name = "ジゴクホッケー3", description = "はんしゃしつづける\nきょうふのホッケー" }
-"magshok1" = { name = "マグショック1", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
-"magshok2" = { name = "マグショック2", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
-"magshok3" = { name = "マグショック3", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
-"lifesync" = { name = "ライフシンクロ", description = "2マス前のてきに\nカーソル!てきの\nHPをおなじにする" }
-"signlred" = { name = "シグナルレッド", description = "あかいあいだは\nあいてがチップを\nつかえなくなる!" }
-"metagel" = { name = "スチールゼリー", description = "てきエリア左はしに\nパネルをぬりかえる\nゼリー攻撃!" }
+"coldman_sp" = { name = "コールドマンSP", description = "フィールド上のもの\nをこおりつかせ\nおしてすべらせる!" }
+"coldman_ds" = { name = "コールドマンDS", description = "フィールド上のもの\nをこおりつかせ\nおしてすべらせる!" }
+"giga_cannon_1" = { name = "ギガキャノン1", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
+"giga_cannon_2" = { name = "ギガキャノン2", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
+"giga_cannon_3" = { name = "ギガキャノン3", description = "ギガパワーではなつ\nきょうりょくな\nキャノン!" }
+"heat_spread" = { name = "ヒートスプレッド", description = "まわり1マスに\nばくえんがひろがる\nこうはんい攻撃!" }
+"bubble_spread" = { name = "バブルスプレッド", description = "まわり1マスに\nあわがひろがる\nこうはんい攻撃!" }
+"black_wing" = { name = "ブラックウイング", description = "あんこくチップ!\nてきエリアはしから\nくろいツバサ攻撃!" }
+"super_spread_1" = { name = "スーパーワイド1", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
+"super_spread_2" = { name = "スーパーワイド2", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
+"super_spread_3" = { name = "スーパーワイド3", description = "3れんしゃの\nワイドショット!\nてきをかんつうする" }
+"flame_cross_1" = { name = "フレイムクロス1", description = "十字にひろがる\nじごくのごうか!" }
+"flame_cross_2" = { name = "フレイムクロス2", description = "十字にひろがる\nじごくのごうか!" }
+"flame_cross_3" = { name = "フレイムクロス3", description = "十字にひろがる\nじごくのごうか!" }
+"beast_fang_1" = { name = "マッドファング1", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
+"beast_fang_2" = { name = "マッドファング2", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
+"beast_fang_3" = { name = "マッドファング3", description = "自分の上下のれつに\nむすうのキバが\nつらなりすすむ!" }
+"pit_hockey_1" = { name = "ジゴクホッケー1", description = "はんしゃしつづける\nきょうふのホッケー" }
+"pit_hockey_2" = { name = "ジゴクホッケー2", description = "はんしゃしつづける\nきょうふのホッケー" }
+"pit_hockey_3" = { name = "ジゴクホッケー3", description = "はんしゃしつづける\nきょうふのホッケー" }
+"magnet_shock_1" = { name = "マグショック1", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
+"magnet_shock_2" = { name = "マグショック2", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
+"magnet_shock_3" = { name = "マグショック3", description = "つよいじりょくで\n前方のてきすべてを\nすいよせて攻撃!" }
+"life_synchro" = { name = "ライフシンクロ", description = "2マス前のてきに\nカーソル!てきの\nHPをおなじにする" }
+"signal_red" = { name = "シグナルレッド", description = "あかいあいだは\nあいてがチップを\nつかえなくなる!" }
+"metal_gel" = { name = "スチールゼリー", description = "てきエリア左はしに\nパネルをぬりかえる\nゼリー攻撃!" }
 "magnum" = { name = "マグナム", description = "カーソルをとめて\nパネルをはかいする\nマグナムをハッシャ" }
-"bugcharg" = { name = "バグチャージ", description = "あんこくチップ!\nターンがすすむほど\nつよくなる!" }
-"shotstar" = { name = "リュウセイグン", description = "あいてエリアに\nむすうのリュウセイ\nがふりそそぐ!" }
-"bugchain" = { name = "バグチェーン", description = "自分に発生している\nバグをあいてにも\nうつしてしまう!" }
-"pitrng1" = { name = "ヘルブーメラン1", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
-"pitrng2" = { name = "ヘルブーメラン2", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
-"pitrng3" = { name = "ヘルブーメラン3", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
-"timebom" = { name = "ギガカウントボム", description = "あいてエリアに\nギガカウントボムを\nおく!" }
-"h-burst" = { name = "ハイパーバースト", description = "まわり1マスに\nばくふうがひろがる\nさくれつだん!" }
-"poisphar" = { name = "ポイズンファラオ", description = "てきエリアにどくを\n発生させる\nファラオぞうをおく" }
-"bodygrd" = { name = "ボディガード", description = "ウラのあんさつしゃ\nをやとい てきを\nはいじょしてもらう" }
-"pdriver" = { name = "パイルドライバー", description = "目の前に たいよう\nジェネレーター!\n日の光でやきつくす" }
-"poltrgst" = { name = "ポルターガイスト", description = "" }
-"darkneo" = { name = "ダークメシアネオ", description = "やみにおちた\nきょうしゃたちの\nがったいわざ!" }
-"redsun" = { name = "メテオレッドサン", description = "3マス前方めがけて\nレッドサンのメテオ\n攻撃がふりそそぐ!" }
-"bluemoon" = { name = "ブルームーンレイ", description = "3マス前方めがけて\nブルームーンが力を\nうばう光をはなつ!" }
-"holydrem" = { name = "ホーリードリーム", description = "ホーリーパネルを\nすいこんで前方へ\nホーリーショット!" }
+"bug_charge" = { name = "バグチャージ", description = "あんこくチップ!\nターンがすすむほど\nつよくなる!" }
+"shooting_star" = { name = "リュウセイグン", description = "あいてエリアに\nむすうのリュウセイ\nがふりそそぐ!" }
+"bug_chain" = { name = "バグチェーン", description = "自分に発生している\nバグをあいてにも\nうつしてしまう!" }
+"pit_boomerang_1" = { name = "ヘルブーメラン1", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
+"pit_boomerang_2" = { name = "ヘルブーメラン2", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
+"pit_boomerang_3" = { name = "ヘルブーメラン3", description = "3本のブーメランが\nれんぞくであいてに\nおそいかかる!" }
+"time_bomb_plus" = { name = "ギガカウントボム", description = "あいてエリアに\nギガカウントボムを\nおく!" }
+"hyper_burst" = { name = "ハイパーバースト", description = "まわり1マスに\nばくふうがひろがる\nさくれつだん!" }
+"poison_pharaoh" = { name = "ポイズンファラオ", description = "てきエリアにどくを\n発生させる\nファラオぞうをおく" }
+"body_guard" = { name = "ボディガード", description = "ウラのあんさつしゃ\nをやとい てきを\nはいじょしてもらう" }
+"pile_driver" = { name = "パイルドライバー", description = "目の前に たいよう\nジェネレーター!\n日の光でやきつくす" }
+"poltergeist" = { name = "ポルターガイスト", description = "" }
+"darkness_neo" = { name = "ダークメシアネオ", description = "やみにおちた\nきょうしゃたちの\nがったいわざ!" }
+"red_sun" = { name = "メテオレッドサン", description = "3マス前方めがけて\nレッドサンのメテオ\n攻撃がふりそそぐ!" }
+"blue_moon" = { name = "ブルームーンレイ", description = "3マス前方めがけて\nブルームーンが力を\nうばう光をはなつ!" }
+"holy_dream" = { name = "ホーリードリーム", description = "ホーリーパネルを\nすいこんで前方へ\nホーリーショット!" }
 "duo" = { name = "デューオ", description = "むすうにふりそそぐ\nせいぎのコブシ\nメテオナックル!" }
-"prixpowr" = { name = "グランプリパワー", description = "グランプリをとった\n3体のナビたちの\nゆめのきょうえん!" }
+"prix_power" = { name = "グランプリパワー", description = "グランプリをとった\n3体のナビたちの\nゆめのきょうえん!" }
 "invalid" = { name = " ", description = "" }
 "zeroed" = { name = "", description = "" }
 
@@ -355,226 +355,226 @@ language = "ja"
 
 # The souls' names (en.toml's `[forms]` says what they are).
 [forms]
-"aquasoul" = { name = "アクアソウル" }
-"firesoul" = { name = "ファイアソウル" }
-"gutssoul" = { name = "ガッツソウル" }
-"junksoul" = { name = "ジャンクソウル" }
-"metalsoul" = { name = "メタルソウル" }
-"numbersoul" = { name = "ナンバーソウル" }
-"protosoul" = { name = "ブルースソウル" }
-"rollsoul" = { name = "ロールソウル" }
-"searchsoul" = { name = "サーチソウル" }
-"thundersoul" = { name = "サンダーソウル" }
-"windsoul" = { name = "ウインドソウル" }
-"woodsoul" = { name = "ウッドソウル" }
+"aqua_soul" = { name = "アクアソウル" }
+"fire_soul" = { name = "ファイアソウル" }
+"guts_soul" = { name = "ガッツソウル" }
+"junk_soul" = { name = "ジャンクソウル" }
+"metal_soul" = { name = "メタルソウル" }
+"number_soul" = { name = "ナンバーソウル" }
+"proto_soul" = { name = "ブルースソウル" }
+"roll_soul" = { name = "ロールソウル" }
+"search_soul" = { name = "サーチソウル" }
+"thunder_soul" = { name = "サンダーソウル" }
+"wind_soul" = { name = "ウインドソウル" }
+"wood_soul" = { name = "ウッドソウル" }
 
 # The backgrounds' names by asset name: the game's menus' names of their areas (the verification's
 # tools/backgrounds/names.tsv, which its areas.py --check holds to the US and the Japanese ROMs).
 [backgrounds]
-"acdc-area" = { name = "秋原エリア" }
-"air-stadium" = { name = "くうちゅうスタジアム" }
-"black-earth" = { name = "ブラックアース" }
-"castillo-hp" = { name = "シェロ・カスティロのHP" }
+"acdc_area" = { name = "秋原エリア" }
+"air_stadium" = { name = "くうちゅうスタジアム" }
+"black_earth" = { name = "ブラックアース" }
+"castillo_hp" = { name = "シェロ・カスティロのHP" }
 "colosseum" = { name = "コロッセオ" }
 "comp" = { name = "電脳" }
-"darksoul" = { name = "ダークソウル" }
-"dexs-hp" = { name = "デカオのHP" }
+"dark_soul" = { name = "ダークソウル" }
+"dexs_hp" = { name = "デカオのHP" }
 "duo" = { name = "デューオ" }
-"eltwr-comp" = { name = "でんぱとうの電脳" }
-"hotel-hp" = { name = "ホテルのHP" }
-"jomonelec-hp" = { name = "ジョーモン電気のHP" }
-"lans-hp" = { name = "熱斗のHP" }
-"mayls-hp" = { name = "メイルのHP" }
-"meteor-comp" = { name = "しょうわくせいの電脳" }
-"netfrica-area" = { name = "アッフリクエリア" }
-"netopia-area" = { name = "アメロッパエリア" }
-"park-area" = { name = "パークエリア" }
-"sharo-area" = { name = "シャーロエリア" }
-"spacectr-hp" = { name = "うちゅうセンターのHP" }
+"electric_tower_comp" = { name = "でんぱとうの電脳" }
+"hotel_hp" = { name = "ホテルのHP" }
+"jomon_electric_hp" = { name = "ジョーモン電気のHP" }
+"lans_hp" = { name = "熱斗のHP" }
+"mayls_hp" = { name = "メイルのHP" }
+"meteor_comp" = { name = "しょうわくせいの電脳" }
+"netfrica_area" = { name = "アッフリクエリア" }
+"netopia_area" = { name = "アメロッパエリア" }
+"park_area" = { name = "パークエリア" }
+"sharo_area" = { name = "シャーロエリア" }
+"space_center_hp" = { name = "うちゅうセンターのHP" }
 "stadium" = { name = "スタジアム" }
-"town-area" = { name = "タウンエリア" }
-"toyrobo-comp" = { name = "ぬいぐるみロボの電脳" }
-"toyrobo-comp4" = { name = "ぬいぐるみロボの電脳4" }
+"town_area" = { name = "タウンエリア" }
+"toyrobo_comp" = { name = "ぬいぐるみロボの電脳" }
+"toyrobo_comp_4" = { name = "ぬいぐるみロボの電脳4" }
 "undernet" = { name = "ウラインターネット" }
-"yais-hp" = { name = "やいとのHP" }
-"yumland-area" = { name = "アジーナエリア" }
+"yais_hp" = { name = "やいとのHP" }
+"yumland_area" = { name = "アジーナエリア" }
 
 [navicust_programs]
-"airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
-"antimagc" = { name = "カワリミマジック", description = "Ⓑ+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
-"attack-1" = { name = "アタック+1", description = "ロックバスターの\n攻撃力が1アップ!" }
-"attckmax" = { name = "アタックMAX", description = "ロックバスターの\n攻撃力がMAXに!" }
+"air_shoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
+"anti_magic" = { name = "カワリミマジック", description = "Ⓑ+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
+"attack_1" = { name = "アタック+1", description = "ロックバスターの\n攻撃力が1アップ!" }
+"attack_max" = { name = "アタックMAX", description = "ロックバスターの\n攻撃力がMAXに!" }
 "battery" = { name = "バッテリーモード", description = "バッテリーじょうたい\nで電気属性ウイルスが\nよってくるようになる" }
 "beat" = { name = "ビートサポート", description = "たいせんせんよう!\nメガクラスいじょうの\nチップをうばいさる" }
-"bodypack" = { name = "ボディパック", description = "アーマー、シャツ\nエア、フロートの\n4てんパック!" }
-"bugstop" = { name = "バグストッパー", description = "バグの発生をおさえる\nとくしゅなプログラム" }
-"bustpack" = { name = "バスターパック", description = "バスターのアタック、\nラピッド、チャージが\nそれぞれ+3!" }
-"charge-1" = { name = "チャージ+1", description = "ロックバスターの\nチャージ力が\n1アップ!" }
-"chargmax" = { name = "チャージMAX", description = "ロックバスターの\nチャージ力が\nMAXに!" }
+"body_pack" = { name = "ボディパック", description = "アーマー、シャツ\nエア、フロートの\n4てんパック!" }
+"bug_stop" = { name = "バグストッパー", description = "バグの発生をおさえる\nとくしゅなプログラム" }
+"buster_pack" = { name = "バスターパック", description = "バスターのアタック、\nラピッド、チャージが\nそれぞれ+3!" }
+"charge_1" = { name = "チャージ+1", description = "ロックバスターの\nチャージ力が\n1アップ!" }
+"charge_max" = { name = "チャージMAX", description = "ロックバスターの\nチャージ力が\nMAXに!" }
 "collect" = { name = "コレクターズアイ", description = "てきのざんがいから\nチップデータをみつけ\nだすがんりきがアップ" }
-"custom1" = { name = "カスタム1", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+1" }
-"custom2" = { name = "カスタム2", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+2" }
+"custom_1" = { name = "カスタム1", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+1" }
+"custom_2" = { name = "カスタム2", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+2" }
 "fish" = { name = "アイムフィッシュ", description = "さかなになりきって\n水属性のウイルスから\nみつけられやすくなる" }
-"flotshoe" = { name = "フロートシューズ", description = "地面からすこしういて\nいるのでパネルの\nえいきょうをうけない" }
-"fstbarr" = { name = "ファーストバリア", description = "さいしょからバリアが\nそうびされている!" }
-"gigfldr1" = { name = "ギガフォルダ1", description = "フォルダに入れられる\nギガクラスチップの\n枚数が+1" }
-"hp-100" = { name = "HP+100", description = "マックスHPが\n100ふえる!" }
-"hp-200" = { name = "HP+200", description = "マックスHPが\n200ふえる!" }
-"hp-300" = { name = "HP+300", description = "マックスHPが\n300ふえる!" }
-"hp-400" = { name = "HP+400", description = "マックスHPが\n400ふえる!" }
-"hp-50" = { name = "HP+50", description = "マックスHPが\n50ふえる!" }
-"hp-500" = { name = "HP+500", description = "マックスHPが\n500ふえる!" }
-"hubbatc" = { name = "サイトバッチ", description = "せんざいのうりょくを\n100%ひきだす\nキケンなプログラム" }
+"float_shoes" = { name = "フロートシューズ", description = "地面からすこしういて\nいるのでパネルの\nえいきょうをうけない" }
+"first_barrier" = { name = "ファーストバリア", description = "さいしょからバリアが\nそうびされている!" }
+"giga_folder_1" = { name = "ギガフォルダ1", description = "フォルダに入れられる\nギガクラスチップの\n枚数が+1" }
+"hp_100" = { name = "HP+100", description = "マックスHPが\n100ふえる!" }
+"hp_200" = { name = "HP+200", description = "マックスHPが\n200ふえる!" }
+"hp_300" = { name = "HP+300", description = "マックスHPが\n300ふえる!" }
+"hp_400" = { name = "HP+400", description = "マックスHPが\n400ふえる!" }
+"hp_50" = { name = "HP+50", description = "マックスHPが\n50ふえる!" }
+"hp_500" = { name = "HP+500", description = "マックスHPが\n500ふえる!" }
+"hub_batch" = { name = "サイトバッチ", description = "せんざいのうりょくを\n100%ひきだす\nキケンなプログラム" }
 "humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでⓁで\nはなしてみてください" }
 "jungle" = { name = "ジャングルランド", description = "ジャングルのかおりを\nほうしゅつして木属性\nウイルスをひきつける" }
-"megfldr1" = { name = "メガフォルダ1", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+1" }
-"megfldr2" = { name = "メガフォルダ2", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+2" }
-"oilbody" = { name = "オイルボディ", description = "炎属性ウイルスが\n大スキなオイルをぬり\nねらわれやすくなる!" }
+"mega_folder_1" = { name = "メガフォルダ1", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+1" }
+"mega_folder_2" = { name = "メガフォルダ2", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+2" }
+"oil_body" = { name = "オイルボディ", description = "炎属性ウイルスが\n大スキなオイルをぬり\nねらわれやすくなる!" }
 "reflect" = { name = "リフレクト", description = "Ⓑ+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
 "rush" = { name = "ラッシュサポート", description = "たいせんせんよう!\nきえたあいてのニオイ\nをかぎつけとびかかる" }
 "shield" = { name = "シールド", description = "Ⓑ+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
-"sneakrun" = { name = "シノビダッシュ", description = "自分よりよわいてきと\nであわなくなる!" }
-"soulclen" = { name = "ソウルクリーナー", description = "おのれのあくぎょうを\nくいあらためるための\nしゅぎょうプログラム" }
-"speed-1" = { name = "ラピッド+1", description = "ロックバスターの\n連射力が1アップ!" }
-"speedmax" = { name = "ラピッドMAX", description = "ロックバスターの\n連射力がMAXに!" }
-"sprarmr" = { name = "スーパーアーマー", description = "攻撃をくらっても\nのけぞらなくなる!" }
+"sneak_run" = { name = "シノビダッシュ", description = "自分よりよわいてきと\nであわなくなる!" }
+"soul_cleaner" = { name = "ソウルクリーナー", description = "おのれのあくぎょうを\nくいあらためるための\nしゅぎょうプログラム" }
+"speed_1" = { name = "ラピッド+1", description = "ロックバスターの\n連射力が1アップ!" }
+"speed_max" = { name = "ラピッドMAX", description = "ロックバスターの\n連射力がMAXに!" }
+"super_armor" = { name = "スーパーアーマー", description = "攻撃をくらっても\nのけぞらなくなる!" }
 "tango" = { name = "タンゴサポート", description = "たいせんせんよう!\nひんしになったときに\nてあてをしてくれる!" }
-"undersht" = { name = "アンダーシャツ", description = "ちしりょうのダメージ\nをうけてもHP1で\nとりあえずたえる!" }
+"undershirt" = { name = "アンダーシャツ", description = "ちしりょうのダメージ\nをうけてもHP1で\nとりあえずたえる!" }
 
 [patch_cards]
-"001-max-hp-up" = { name = "マックスHP+100" }
-"002-max-hp-up" = { name = "マックスHP+100" }
-"003-max-hp-up" = { name = "マックスHP+150" }
-"004-max-hp-up" = { name = "マックスHP+150" }
-"005-max-hp-up" = { name = "マックスHP+200" }
-"006-max-hp-up" = { name = "マックスHP+200" }
-"007-max-hp-up" = { name = "マックスHP+250" }
-"008-max-hp-up" = { name = "マックスHP+250" }
-"009-max-hp-up" = { name = "マックスHP+300" }
-"010-max-hp-up" = { name = "マックスHP+300" }
-"011-first-barrier-100" = { name = "ファーストバリア100\nバグあり" }
-"012-buster-patch" = { name = "ブラインドバスター\nバグあり" }
-"013-buster-patch" = { name = "クサムラバスター" }
-"014-panel-change" = { name = "パネルチェンジ:メタル" }
-"015-panel-change" = { name = "パネルチェンジ:ヒビ" }
-"016-panel-change" = { name = "パネルチェンジ:アナ" }
-"017-custom2" = { name = "カスタム2\nバグあり" }
-"018-megafolder2" = { name = "メガフォルダ2\nバグあり" }
-"019-buster-attack-10" = { name = "バスター攻撃力10\nバグあり" }
-"020-charge-shot-switch" = { name = "チャージガッツマシンガン" }
-"021-charge-shot-switch" = { name = "チャージキャノン" }
-"022-charge-shot-switch" = { name = "チャージミニボム" }
-"023-charge-shot-switch" = { name = "チャージヒートショット" }
-"024-charge-shot-switch" = { name = "チャージバブルショット" }
-"025-charge-shot-switch" = { name = "チャージサンダーボール1" }
-"026-charge-shot-switch" = { name = "チャージソード" }
-"027-charge-shot-switch" = { name = "チャージスプレッドガン" }
-"028-pet-menu-color-change" = { name = "PET画面カラー:ブルー" }
-"029-pet-menu-color-change" = { name = "PET画面カラー:ピンク" }
-"030-pet-menu-color-change" = { name = "PET画面カラー:グリーン" }
-"031-max-hp-up" = { name = "マックスHP+350" }
-"032-max-hp-up" = { name = "マックスHP+350" }
-"033-max-hp-up" = { name = "マックスHP+400" }
-"034-max-hp-up" = { name = "マックスHP+400" }
-"035-max-hp-up" = { name = "マックスHP+450\nバグあり" }
-"036-max-hp-up" = { name = "マックスHP+450\nバグあり" }
-"037-max-hp-up" = { name = "マックスHP+500" }
-"038-max-hp-up" = { name = "マックスHP+500\nバグあり" }
-"039-b-left-ability-activation" = { name = "Ⓑ+左でエアシュート" }
-"040-b-left-ability-activation" = { name = "Ⓑ+左でランダムトラップ" }
-"041-b-left-ability-activation" = { name = "Ⓑ+左でバグボム" }
-"042-b-left-ability-activation" = { name = "Ⓑ+左でクラックアウト" }
-"043-buster-patch" = { name = "クラックバスター" }
-"044-buster-patch" = { name = "ポイズンバスター" }
-"045-default-full-synchro" = { name = "デフォルトフルシンクロ" }
-"046-first-barrier200" = { name = "ファーストバリア200\nバグあり" }
-"047-weapon-change" = { name = "バスターメットガード1" }
-"048-weapon-change" = { name = "バスタークラックアウト" }
-"049-buster-attack-15" = { name = "バスター攻撃力15\nバグあり" }
-"050-gigafolder1" = { name = "ギガフォルダ1\nバグあり" }
-"051-charge-shot-switch" = { name = "チャージコピーダメージ" }
-"052-charge-shot-switch" = { name = "チャージワイドショット1" }
-"053-charge-shot-switch" = { name = "チャージブリザード" }
-"054-charge-shot-switch" = { name = "チャージヒートブレス" }
-"055-charge-shot-switch" = { name = "チャージエレキショック" }
-"056-charge-shot-switch" = { name = "チャージウッディパウダー" }
-"057-charge-shot-switch" = { name = "チャージパネルリターン" }
-"058-charge-shot-switch" = { name = "チャージワイドソード" }
-"059-megaman-color-change" = { name = "ロックマンカラー:レッド" }
-"060-megaman-color-change" = { name = "ロックマンカラー:イエロー" }
-"061-max-hp-up" = { name = "マックスHP+550" }
-"062-max-hp-up" = { name = "マックスHP+550" }
-"063-max-hp-up" = { name = "マックスHP+600" }
-"064-max-hp-up" = { name = "マックスHP+600" }
-"065-max-hp-up" = { name = "マックスHP+650" }
-"066-max-hp-up" = { name = "マックスHP+650\nバグあり" }
-"067-max-hp-up" = { name = "マックスHP+700\nバグあり" }
-"068-b-left-ability-activation" = { name = "Ⓑ+左でメガエナジーボム" }
-"069-b-left-ability-activation" = { name = "Ⓑ+左でリカバリー10" }
-"070-b-left-ability-activation" = { name = "Ⓑ+左でパネルリターン" }
-"071-b-left-ability-activation" = { name = "Ⓑ+左でスーパーキタカゼ" }
-"072-b-left-ability-activation" = { name = "Ⓑ+左でバンブーランス" }
-"073-b-left-ability-activation" = { name = "Ⓑ+左でダブルクラック" }
-"074-triple-supporter-1-2" = { name = "トリプルサポーター1/2" }
-"075-triple-supporter-2-2" = { name = "トリプルサポーター2/2" }
-"076-all-guard-1-2" = { name = "オールガード1/2\nバグあり" }
-"077-all-guard-2-2" = { name = "オールガード2/2\nバグあり" }
-"078-first-life-aura" = { name = "ファーストドリームオーラ\nバグあり" }
-"079-charge-shot-switch" = { name = "チャージダークホール" }
-"080-charge-shot-switch" = { name = "チャージワイドショット2" }
-"081-charge-shot-switch" = { name = "チャージラビリング" }
-"082-charge-shot-switch" = { name = "チャージサンドリング" }
-"083-charge-shot-switch" = { name = "チャージエナジーボム" }
-"084-charge-shot-switch" = { name = "チャージサンダーボール2" }
-"085-charge-shot-switch" = { name = "チャージリペアー" }
-"086-charge-shot-switch" = { name = "チャージトリプルクラック" }
-"087-charge-shot-switch" = { name = "チャージロングソード" }
-"088-pet-menu-color-change" = { name = "PET画面カラー:ブラック" }
-"089-megaman-color-change" = { name = "ロックマンカラー:ホワイト" }
-"090-megaman-color-change" = { name = "ロックマンカラー:グリーン" }
-"091-max-hp-up" = { name = "マックスHP+700\nバグあり" }
-"092-max-hp-up" = { name = "マックスHP+750" }
-"093-max-hp-up" = { name = "マックスHP+750\nバグあり" }
-"094-max-hp-up" = { name = "マックスHP+800" }
-"095-max-hp-up" = { name = "マックスHP+800\nバグあり" }
-"096-max-hp-up" = { name = "マックスHP+850" }
-"097-max-hp-up" = { name = "マックスHP+850\nバグあり" }
-"098-max-hp-up" = { name = "マックスHP+900" }
-"099-max-hp-up" = { name = "マックスHP+900\nバグあり" }
-"100-max-hp-up" = { name = "マックスHP+950\nバグあり" }
-"101-max-hp-up" = { name = "マックスHP+1000" }
-"102-buster-patch" = { name = "アイスバスター" }
-"103-fullcustom-charge-1-2" = { name = "チャージフルカスタム1/2\nバグあり" }
-"104-fullcustom-charge-2-2" = { name = "チャージフルカスタム2/2\nバグあり" }
-"105-panel-change" = { name = "パネルチェンジ:ホーリー\nバグあり" }
-"106-weapon-change" = { name = "バスターリフレクト\nバグあり" }
-"107-weapon-change" = { name = "バスターフラワー" }
-"108-weapon-change" = { name = "バスターミズデッポウ" }
-"109-megafolder3" = { name = "メガフォルダ3\nバグあり" }
-"110-custom3" = { name = "カスタム3\nバグあり" }
-"111-gigafolder1" = { name = "ギガフォルダ1" }
-"112-b-left-ability-activation" = { name = "Ⓑ+左でトリプルクラック" }
-"113-charge-shot-switch" = { name = "チャージワイドショット3" }
-"114-charge-shot-switch" = { name = "チャージサンダーボール3" }
-"115-charge-shot-switch" = { name = "チャージフウジンラケット" }
-"116-charge-shot-switch" = { name = "チャージメガエナジーボム" }
-"117-charge-shot-switch" = { name = "チャージホウガン" }
-"118-charge-shot-switch" = { name = "チャージバグボム" }
-"119-charge-shot-switch" = { name = "チャージワイドブレード\nバグあり" }
-"120-charge-shot-switch" = { name = "チャージロングブレード\nバグあり" }
-"121-roll-soul" = { name = "ロールソウル\nバグあり" }
-"122-guts-soul" = { name = "ガッツソウル\nバグあり" }
-"123-wind-soul" = { name = "ウインドソウル\nバグあり" }
-"124-search-soul" = { name = "サーチソウル\nバグあり" }
-"125-fire-soul" = { name = "ファイアソウル\nバグあり" }
-"126-thunder-soul" = { name = "サンダーソウル\nバグあり" }
-"127-proto-soul" = { name = "ブルースソウル\nバグあり" }
-"128-number-soul" = { name = "ナンバーソウル\nバグあり" }
-"129-metal-soul" = { name = "メタルソウル\nバグあり" }
-"130-junk-soul" = { name = "ジャンクソウル\nバグあり" }
-"131-aqua-soul" = { name = "アクアソウル\nバグあり" }
-"132-wood-soul" = { name = "ウッドソウル\nバグあり" }
-"133-weapon-change" = { name = "バスターミニボム" }
+"001_max_hp_up" = { name = "マックスHP+100" }
+"002_max_hp_up" = { name = "マックスHP+100" }
+"003_max_hp_up" = { name = "マックスHP+150" }
+"004_max_hp_up" = { name = "マックスHP+150" }
+"005_max_hp_up" = { name = "マックスHP+200" }
+"006_max_hp_up" = { name = "マックスHP+200" }
+"007_max_hp_up" = { name = "マックスHP+250" }
+"008_max_hp_up" = { name = "マックスHP+250" }
+"009_max_hp_up" = { name = "マックスHP+300" }
+"010_max_hp_up" = { name = "マックスHP+300" }
+"011_first_barrier_100" = { name = "ファーストバリア100\nバグあり" }
+"012_buster_patch" = { name = "ブラインドバスター\nバグあり" }
+"013_buster_patch" = { name = "クサムラバスター" }
+"014_panel_change" = { name = "パネルチェンジ:メタル" }
+"015_panel_change" = { name = "パネルチェンジ:ヒビ" }
+"016_panel_change" = { name = "パネルチェンジ:アナ" }
+"017_custom2" = { name = "カスタム2\nバグあり" }
+"018_megafolder2" = { name = "メガフォルダ2\nバグあり" }
+"019_buster_attack_10" = { name = "バスター攻撃力10\nバグあり" }
+"020_charge_shot_switch" = { name = "チャージガッツマシンガン" }
+"021_charge_shot_switch" = { name = "チャージキャノン" }
+"022_charge_shot_switch" = { name = "チャージミニボム" }
+"023_charge_shot_switch" = { name = "チャージヒートショット" }
+"024_charge_shot_switch" = { name = "チャージバブルショット" }
+"025_charge_shot_switch" = { name = "チャージサンダーボール1" }
+"026_charge_shot_switch" = { name = "チャージソード" }
+"027_charge_shot_switch" = { name = "チャージスプレッドガン" }
+"028_pet_menu_color_change" = { name = "PET画面カラー:ブルー" }
+"029_pet_menu_color_change" = { name = "PET画面カラー:ピンク" }
+"030_pet_menu_color_change" = { name = "PET画面カラー:グリーン" }
+"031_max_hp_up" = { name = "マックスHP+350" }
+"032_max_hp_up" = { name = "マックスHP+350" }
+"033_max_hp_up" = { name = "マックスHP+400" }
+"034_max_hp_up" = { name = "マックスHP+400" }
+"035_max_hp_up" = { name = "マックスHP+450\nバグあり" }
+"036_max_hp_up" = { name = "マックスHP+450\nバグあり" }
+"037_max_hp_up" = { name = "マックスHP+500" }
+"038_max_hp_up" = { name = "マックスHP+500\nバグあり" }
+"039_b_left_ability_activation" = { name = "Ⓑ+左でエアシュート" }
+"040_b_left_ability_activation" = { name = "Ⓑ+左でランダムトラップ" }
+"041_b_left_ability_activation" = { name = "Ⓑ+左でバグボム" }
+"042_b_left_ability_activation" = { name = "Ⓑ+左でクラックアウト" }
+"043_buster_patch" = { name = "クラックバスター" }
+"044_buster_patch" = { name = "ポイズンバスター" }
+"045_default_full_synchro" = { name = "デフォルトフルシンクロ" }
+"046_first_barrier200" = { name = "ファーストバリア200\nバグあり" }
+"047_weapon_change" = { name = "バスターメットガード1" }
+"048_weapon_change" = { name = "バスタークラックアウト" }
+"049_buster_attack_15" = { name = "バスター攻撃力15\nバグあり" }
+"050_gigafolder1" = { name = "ギガフォルダ1\nバグあり" }
+"051_charge_shot_switch" = { name = "チャージコピーダメージ" }
+"052_charge_shot_switch" = { name = "チャージワイドショット1" }
+"053_charge_shot_switch" = { name = "チャージブリザード" }
+"054_charge_shot_switch" = { name = "チャージヒートブレス" }
+"055_charge_shot_switch" = { name = "チャージエレキショック" }
+"056_charge_shot_switch" = { name = "チャージウッディパウダー" }
+"057_charge_shot_switch" = { name = "チャージパネルリターン" }
+"058_charge_shot_switch" = { name = "チャージワイドソード" }
+"059_megaman_color_change" = { name = "ロックマンカラー:レッド" }
+"060_megaman_color_change" = { name = "ロックマンカラー:イエロー" }
+"061_max_hp_up" = { name = "マックスHP+550" }
+"062_max_hp_up" = { name = "マックスHP+550" }
+"063_max_hp_up" = { name = "マックスHP+600" }
+"064_max_hp_up" = { name = "マックスHP+600" }
+"065_max_hp_up" = { name = "マックスHP+650" }
+"066_max_hp_up" = { name = "マックスHP+650\nバグあり" }
+"067_max_hp_up" = { name = "マックスHP+700\nバグあり" }
+"068_b_left_ability_activation" = { name = "Ⓑ+左でメガエナジーボム" }
+"069_b_left_ability_activation" = { name = "Ⓑ+左でリカバリー10" }
+"070_b_left_ability_activation" = { name = "Ⓑ+左でパネルリターン" }
+"071_b_left_ability_activation" = { name = "Ⓑ+左でスーパーキタカゼ" }
+"072_b_left_ability_activation" = { name = "Ⓑ+左でバンブーランス" }
+"073_b_left_ability_activation" = { name = "Ⓑ+左でダブルクラック" }
+"074_triple_supporter_1_2" = { name = "トリプルサポーター1/2" }
+"075_triple_supporter_2_2" = { name = "トリプルサポーター2/2" }
+"076_all_guard_1_2" = { name = "オールガード1/2\nバグあり" }
+"077_all_guard_2_2" = { name = "オールガード2/2\nバグあり" }
+"078_first_life_aura" = { name = "ファーストドリームオーラ\nバグあり" }
+"079_charge_shot_switch" = { name = "チャージダークホール" }
+"080_charge_shot_switch" = { name = "チャージワイドショット2" }
+"081_charge_shot_switch" = { name = "チャージラビリング" }
+"082_charge_shot_switch" = { name = "チャージサンドリング" }
+"083_charge_shot_switch" = { name = "チャージエナジーボム" }
+"084_charge_shot_switch" = { name = "チャージサンダーボール2" }
+"085_charge_shot_switch" = { name = "チャージリペアー" }
+"086_charge_shot_switch" = { name = "チャージトリプルクラック" }
+"087_charge_shot_switch" = { name = "チャージロングソード" }
+"088_pet_menu_color_change" = { name = "PET画面カラー:ブラック" }
+"089_megaman_color_change" = { name = "ロックマンカラー:ホワイト" }
+"090_megaman_color_change" = { name = "ロックマンカラー:グリーン" }
+"091_max_hp_up" = { name = "マックスHP+700\nバグあり" }
+"092_max_hp_up" = { name = "マックスHP+750" }
+"093_max_hp_up" = { name = "マックスHP+750\nバグあり" }
+"094_max_hp_up" = { name = "マックスHP+800" }
+"095_max_hp_up" = { name = "マックスHP+800\nバグあり" }
+"096_max_hp_up" = { name = "マックスHP+850" }
+"097_max_hp_up" = { name = "マックスHP+850\nバグあり" }
+"098_max_hp_up" = { name = "マックスHP+900" }
+"099_max_hp_up" = { name = "マックスHP+900\nバグあり" }
+"100_max_hp_up" = { name = "マックスHP+950\nバグあり" }
+"101_max_hp_up" = { name = "マックスHP+1000" }
+"102_buster_patch" = { name = "アイスバスター" }
+"103_fullcustom_charge_1_2" = { name = "チャージフルカスタム1/2\nバグあり" }
+"104_fullcustom_charge_2_2" = { name = "チャージフルカスタム2/2\nバグあり" }
+"105_panel_change" = { name = "パネルチェンジ:ホーリー\nバグあり" }
+"106_weapon_change" = { name = "バスターリフレクト\nバグあり" }
+"107_weapon_change" = { name = "バスターフラワー" }
+"108_weapon_change" = { name = "バスターミズデッポウ" }
+"109_megafolder3" = { name = "メガフォルダ3\nバグあり" }
+"110_custom3" = { name = "カスタム3\nバグあり" }
+"111_gigafolder1" = { name = "ギガフォルダ1" }
+"112_b_left_ability_activation" = { name = "Ⓑ+左でトリプルクラック" }
+"113_charge_shot_switch" = { name = "チャージワイドショット3" }
+"114_charge_shot_switch" = { name = "チャージサンダーボール3" }
+"115_charge_shot_switch" = { name = "チャージフウジンラケット" }
+"116_charge_shot_switch" = { name = "チャージメガエナジーボム" }
+"117_charge_shot_switch" = { name = "チャージホウガン" }
+"118_charge_shot_switch" = { name = "チャージバグボム" }
+"119_charge_shot_switch" = { name = "チャージワイドブレード\nバグあり" }
+"120_charge_shot_switch" = { name = "チャージロングブレード\nバグあり" }
+"121_roll_soul" = { name = "ロールソウル\nバグあり" }
+"122_guts_soul" = { name = "ガッツソウル\nバグあり" }
+"123_wind_soul" = { name = "ウインドソウル\nバグあり" }
+"124_search_soul" = { name = "サーチソウル\nバグあり" }
+"125_fire_soul" = { name = "ファイアソウル\nバグあり" }
+"126_thunder_soul" = { name = "サンダーソウル\nバグあり" }
+"127_proto_soul" = { name = "ブルースソウル\nバグあり" }
+"128_number_soul" = { name = "ナンバーソウル\nバグあり" }
+"129_metal_soul" = { name = "メタルソウル\nバグあり" }
+"130_junk_soul" = { name = "ジャンクソウル\nバグあり" }
+"131_aqua_soul" = { name = "アクアソウル\nバグあり" }
+"132_wood_soul" = { name = "ウッドソウル\nバグあり" }
+"133_weapon_change" = { name = "バスターミニボム" }
 
 # The bugs' names (en.toml's `[bugs]` says what they are): where EXE5's or EXE6's patch cards name the same bug,
 # that effect's line, which the Japanese cards already write in full; the rest the content's own.
@@ -606,68 +606,68 @@ language = "ja"
 "all_supports" = "ラッシュ・ビート・タンゴ"
 "aura.barrier/100" = "最初からバリア100"
 "aura.barrier/200" = "最初からバリア200"
-"aura.barrier/life-aura" = "最初からライフオーラ"
-"b_button.megaman/blind-buster" = "Bボタン:ブラインドバスター"
+"aura.barrier/life_aura" = "最初からライフオーラ"
+"b_button.megaman/blind_buster" = "Bボタン:ブラインドバスター"
 "b_button.megaman/bubble" = "Bボタン:バブルショット"
-"b_button.megaman/crack-buster" = "Bボタン:クラックバスター"
-"b_button.megaman/crakout" = "Bボタン:クラックアウト"
-"b_button.megaman/grass-buster" = "Bボタン:グラスバスター"
-"b_button.megaman/guard1" = "Bボタン:メットガード1"
-"b_button.megaman/ice-buster" = "Bボタン:アイスバスター"
-"b_button.megaman/minibomb" = "Bボタン:ミニボム"
-"b_button.megaman/poison-buster" = "Bボタン:ポイズンバスター"
+"b_button.megaman/crack_buster" = "Bボタン:クラックバスター"
+"b_button.megaman/crack_out" = "Bボタン:クラックアウト"
+"b_button.megaman/grass_buster" = "Bボタン:グラスバスター"
+"b_button.megaman/guard_1" = "Bボタン:メットガード1"
+"b_button.megaman/ice_buster" = "Bボタン:アイスバスター"
+"b_button.megaman/mini_bomb" = "Bボタン:ミニボム"
+"b_button.megaman/poison_buster" = "Bボタン:ポイズンバスター"
 "b_button.megaman/reflect" = "Bボタン:リフレクト"
 "b_button.megaman/taunt" = "Bボタン:ちょうはつ"
-"b_left.megaman/airshot" = "B+←:エアシュート"
-"b_left.megaman/anti-chip" = "B+←:アンチチップ"
-"b_left.megaman/bugbomb" = "B+←:バグボム"
-"b_left.megaman/crakout" = "B+←:クラックアウト"
-"b_left.megaman/dublcrak" = "B+←:ダブルクラック"
+"b_left.megaman/air_shot" = "B+←:エアシュート"
+"b_left.megaman/anti_chip" = "B+←:アンチチップ"
+"b_left.megaman/bug_bomb" = "B+←:バグボム"
+"b_left.megaman/crack_out" = "B+←:クラックアウト"
+"b_left.megaman/double_crack" = "B+←:ダブルクラック"
 "b_left.megaman/lance" = "B+←:バンブーランス"
-"b_left.megaman/megenbom" = "B+←:メガエナジーボム"
-"b_left.megaman/nrthwind" = "B+←:スーパーキタカゼ"
-"b_left.megaman/pnlretrn" = "B+←:パネルリターン"
-"b_left.megaman/recov10" = "B+←:リカバリー10"
-"b_left.megaman/tripcrak" = "B+←:トリプルクラック"
+"b_left.megaman/mega_energy_bomb" = "B+←:メガエナジーボム"
+"b_left.megaman/north_wind" = "B+←:スーパーキタカゼ"
+"b_left.megaman/panel_return" = "B+←:パネルリターン"
+"b_left.megaman/recovery_10" = "B+←:リカバリー10"
+"b_left.megaman/triple_crack" = "B+←:トリプルクラック"
 "bug.custom" = "カスタムHPバグ+{amount}"
 "bug.hp" = "バトルHPバグ+{amount}"
 "bug.move" = "いどうバグ+{amount}"
 "bug.panel" = "パネルバグ+{amount}"
 "buster_attack" = "バスターのアタック変更"
-"charged_shot.megaman/ball" = "チャージショット:ホウガン"
+"charged_shot.megaman/cannon_ball" = "チャージショット:ホウガン"
 "charged_shot.megaman/blizzard" = "チャージショット:ブリザード"
 "charged_shot.megaman/bubbler" = "チャージショット:バブルショット"
-"charged_shot.megaman/bugbomb" = "チャージショット:バグボム"
+"charged_shot.megaman/bug_bomb" = "チャージショット:バグボム"
 "charged_shot.megaman/cannon" = "チャージショット:キャノン"
-"charged_shot.megaman/copydmg" = "チャージショット:コピーダメージ"
-"charged_shot.megaman/elecshok" = "チャージショット:エレキショック"
-"charged_shot.megaman/energbom" = "チャージショット:エナジーボム"
-"charged_shot.megaman/fullcust" = "チャージショット:フルカスタム"
-"charged_shot.megaman/heatbrth" = "チャージショット:ヒートブレス"
-"charged_shot.megaman/heatshot" = "チャージショット:ヒートショット"
+"charged_shot.megaman/copy_damage" = "チャージショット:コピーダメージ"
+"charged_shot.megaman/elec_shock" = "チャージショット:エレキショック"
+"charged_shot.megaman/energy_bomb" = "チャージショット:エナジーボム"
+"charged_shot.megaman/full_custom" = "チャージショット:フルカスタム"
+"charged_shot.megaman/heat_breath" = "チャージショット:ヒートブレス"
+"charged_shot.megaman/heat_shot" = "チャージショット:ヒートショット"
 "charged_shot.megaman/hole" = "チャージショット:ダークホール"
-"charged_shot.megaman/longblde" = "チャージショット:ロングブレード"
-"charged_shot.megaman/longswrd" = "チャージショット:ロングソード"
-"charged_shot.megaman/machine-gun" = "チャージショット:マシンガン"
-"charged_shot.megaman/megenbom" = "チャージショット:メガエナジーボム"
-"charged_shot.megaman/minibomb" = "チャージショット:ミニボム"
-"charged_shot.megaman/pnlretrn" = "チャージショット:パネルリターン"
+"charged_shot.megaman/long_blade" = "チャージショット:ロングブレード"
+"charged_shot.megaman/long_sword" = "チャージショット:ロングソード"
+"charged_shot.megaman/machine_gun" = "チャージショット:マシンガン"
+"charged_shot.megaman/mega_energy_bomb" = "チャージショット:メガエナジーボム"
+"charged_shot.megaman/mini_bomb" = "チャージショット:ミニボム"
+"charged_shot.megaman/panel_return" = "チャージショット:パネルリターン"
 "charged_shot.megaman/repair" = "チャージショット:リペア-"
-"charged_shot.megaman/sandring" = "チャージショット:サンドリング"
+"charged_shot.megaman/sand_ring" = "チャージショット:サンドリング"
 "charged_shot.megaman/spreader" = "チャージショット:スプレッドガン"
 "charged_shot.megaman/sword" = "チャージショット:ソード"
-"charged_shot.megaman/thunder1" = "チャージショット:サンダーボール1"
-"charged_shot.megaman/thunder2" = "チャージショット:サンダーボール2"
-"charged_shot.megaman/thunder3" = "チャージショット:サンダーボール3"
-"charged_shot.megaman/tripcrak" = "チャージショット:トリプルクラック"
-"charged_shot.megaman/wideblde" = "チャージショット:ワイドブレード"
-"charged_shot.megaman/widesht1" = "チャージショット:ワイドショット1"
-"charged_shot.megaman/widesht2" = "チャージショット:ワイドショット2"
-"charged_shot.megaman/widesht3" = "チャージショット:ワイドショット3"
-"charged_shot.megaman/wideswrd" = "チャージショット:ワイドソード"
-"charged_shot.megaman/windrack" = "チャージショット:フウジンラケット"
-"charged_shot.megaman/woodpwdr" = "チャージショット:ウッディパウダー"
-"charged_shot.megaman/zap-ring" = "チャージショット:ザップリング"
+"charged_shot.megaman/thunder_1" = "チャージショット:サンダーボール1"
+"charged_shot.megaman/thunder_2" = "チャージショット:サンダーボール2"
+"charged_shot.megaman/thunder_3" = "チャージショット:サンダーボール3"
+"charged_shot.megaman/triple_crack" = "チャージショット:トリプルクラック"
+"charged_shot.megaman/wide_blade" = "チャージショット:ワイドブレード"
+"charged_shot.megaman/wide_shot_1" = "チャージショット:ワイドショット1"
+"charged_shot.megaman/wide_shot_2" = "チャージショット:ワイドショット2"
+"charged_shot.megaman/wide_shot_3" = "チャージショット:ワイドショット3"
+"charged_shot.megaman/wide_sword" = "チャージショット:ワイドソード"
+"charged_shot.megaman/wind_racket" = "チャージショット:フウジンラケット"
+"charged_shot.megaman/woody_powder" = "チャージショット:ウッディパウダー"
+"charged_shot.megaman/zap_ring" = "チャージショット:ザップリング"
 "clear_bug.panel" = "パネルバグを消す"
 "clear_bug.support" = "サポートバグを消す"
 "clear_bug.weapon" = "ウェポンバグを消す"
@@ -680,18 +680,18 @@ language = "ja"
 "mega_folder" = "メガフォルダ+{amount}"
 "pair" = "{pair.slot}に{pair.card}があるとき"
 "panel_trail" = "通ったパネルが変わる"
-"soul.aquasoul" = "アクアソウルで開始"
-"soul.firesoul" = "ファイアソウルで開始"
-"soul.gutssoul" = "ガッツソウルで開始"
-"soul.junksoul" = "ジャンクソウルで開始"
-"soul.metalsoul" = "メタルソウルで開始"
-"soul.numbersoul" = "ナンバーソウルで開始"
-"soul.protosoul" = "ブルースソウルで開始"
-"soul.rollsoul" = "ロールソウルで開始"
-"soul.searchsoul" = "サーチソウルで開始"
-"soul.thundersoul" = "サンダーソウルで開始"
-"soul.windsoul" = "ウインドソウルで開始"
-"soul.woodsoul" = "ウッドソウルで開始"
+"soul.aqua_soul" = "アクアソウルで開始"
+"soul.fire_soul" = "ファイアソウルで開始"
+"soul.guts_soul" = "ガッツソウルで開始"
+"soul.junk_soul" = "ジャンクソウルで開始"
+"soul.metal_soul" = "メタルソウルで開始"
+"soul.number_soul" = "ナンバーソウルで開始"
+"soul.proto_soul" = "ブルースソウルで開始"
+"soul.roll_soul" = "ロールソウルで開始"
+"soul.search_soul" = "サーチソウルで開始"
+"soul.thunder_soul" = "サンダーソウルで開始"
+"soul.wind_soul" = "ウインドソウルで開始"
+"soul.wood_soul" = "ウッドソウルで開始"
 
 # A build's versions and its choices' presets, by name (rules/builds): the Japanese games' own words.
 [builds]
@@ -731,10 +731,10 @@ language = "ja"
 
 # The battle themes' names (en.toml's `[battle_themes]` says what they are). Ours.
 [battle_themes]
-"virus-battle" = "ウイルスバトル"
-"boss-battle" = "ボスバトル"
-"tournament-battle" = "トーナメントバトル"
-"final-battle" = "VS デューオ"
+"virus_battle" = "ウイルスバトル"
+"boss_battle" = "ボスバトル"
+"tournament_battle" = "トーナメントバトル"
+"final_battle" = "VS デューオ"
 
 # The words of the battle's lettered pictures, by picture (en.toml says what this is): the Japanese ROMs' words. Those
 # the four ROMs of the game show alike are the English words in both languages (BATTLE START!, PAUSE, CUSTOM); the
@@ -749,60 +749,60 @@ language = "ja"
 "evil" = "邪悪"
 
 [lettering]
-"banner.battle-start" = "BATTLE START!"
-"banner.battle-number" = "BATTLE {n}"
-"banner.battle-number-start" = "BATTLE {n} START!"
-"banner.turn-start" = "TURN {n} START!"
-"banner.final-turn" = "FINAL TURN!"
-"banner.enemy-deleted" = "ENEMY DELETED"
-"banner.you-win" = "YOU WIN!"
-"banner.you-lose" = "YOU LOSE"
+"banner.battle_start" = "BATTLE START!"
+"banner.battle_number" = "BATTLE {n}"
+"banner.battle_number_start" = "BATTLE {n} START!"
+"banner.turn_start" = "TURN {n} START!"
+"banner.final_turn" = "FINAL TURN!"
+"banner.enemy_deleted" = "ENEMY DELETED"
+"banner.you_win" = "YOU WIN!"
+"banner.you_lose" = "YOU LOSE"
 "banner.draw" = "DRAW!"
-"banner.hit-damage-judge" = "HIT DAMAGE JUDGE"
-"banner.flag-deleted" = "FLAG DELETED"
-"banner.aquaman-win" = "AQUAMAN WIN!"
-"banner.aquaman-deleted" = "AQUAMAN DELETED"
-"banner.fireman-win" = "FIREMAN WIN!"
-"banner.fireman-deleted" = "FIREMAN DELETED"
-"banner.gutsman-win" = "GUTSMAN WIN!"
-"banner.gutsman-deleted" = "GUTSMAN DELETED"
-"banner.junkman-win" = "JUNKMAN WIN!"
-"banner.junkman-deleted" = "JUNKMAN DELETED"
-"banner.megaman-win" = "ROCKMAN WIN!"
-"banner.megaman-deleted" = "ROCKMAN DELETED"
-"banner.metalman-win" = "METALMAN WIN!"
-"banner.metalman-deleted" = "METALMAN DELETED"
-"banner.numberman-win" = "NUMBERMAN WIN!"
-"banner.numberman-deleted" = "NUMBERMAN DELETED"
-"banner.protoman-win" = "BLUES WIN!"
-"banner.protoman-deleted" = "BLUES DELETED"
-"banner.roll-win" = "ROLL WIN!"
-"banner.roll-deleted" = "ROLL DELETED"
-"banner.searchman-win" = "SEARCHMAN WIN!"
-"banner.searchman-deleted" = "SEARCHMAN DELETED"
-"banner.thunderman-win" = "THUNDERMAN WIN!"
-"banner.thunderman-deleted" = "THUNDERMAN DELETED"
-"banner.windman-win" = "WINDMAN WIN!"
-"banner.windman-deleted" = "WINDMAN DELETED"
-"banner.woodman-win" = "WOODMAN WIN!"
-"banner.woodman-deleted" = "WOODMAN DELETED"
-"banner.healnavi-win" = "HEEL NAVI WIN!"
-"banner.normalnavi-win" = "NORMAL NAVI WIN!"
-"banner.program-advance" = "プログラムアドバンス"
-"banner.program-advance-empty" = "プログラムアドバンス"
+"banner.hit_damage_judge" = "HIT DAMAGE JUDGE"
+"banner.flag_deleted" = "FLAG DELETED"
+"banner.aquaman_win" = "AQUAMAN WIN!"
+"banner.aquaman_deleted" = "AQUAMAN DELETED"
+"banner.fireman_win" = "FIREMAN WIN!"
+"banner.fireman_deleted" = "FIREMAN DELETED"
+"banner.gutsman_win" = "GUTSMAN WIN!"
+"banner.gutsman_deleted" = "GUTSMAN DELETED"
+"banner.junkman_win" = "JUNKMAN WIN!"
+"banner.junkman_deleted" = "JUNKMAN DELETED"
+"banner.megaman_win" = "ROCKMAN WIN!"
+"banner.megaman_deleted" = "ROCKMAN DELETED"
+"banner.metalman_win" = "METALMAN WIN!"
+"banner.metalman_deleted" = "METALMAN DELETED"
+"banner.numberman_win" = "NUMBERMAN WIN!"
+"banner.numberman_deleted" = "NUMBERMAN DELETED"
+"banner.protoman_win" = "BLUES WIN!"
+"banner.protoman_deleted" = "BLUES DELETED"
+"banner.roll_win" = "ROLL WIN!"
+"banner.roll_deleted" = "ROLL DELETED"
+"banner.searchman_win" = "SEARCHMAN WIN!"
+"banner.searchman_deleted" = "SEARCHMAN DELETED"
+"banner.thunderman_win" = "THUNDERMAN WIN!"
+"banner.thunderman_deleted" = "THUNDERMAN DELETED"
+"banner.windman_win" = "WINDMAN WIN!"
+"banner.windman_deleted" = "WINDMAN DELETED"
+"banner.woodman_win" = "WOODMAN WIN!"
+"banner.woodman_deleted" = "WOODMAN DELETED"
+"banner.healnavi_win" = "HEEL NAVI WIN!"
+"banner.normalnavi_win" = "NORMAL NAVI WIN!"
+"banner.program_advance" = "プログラムアドバンス"
+"banner.program_advance_empty" = "プログラムアドバンス"
 "pause" = "PAUSE"
 "waiting" = "カスタム中…"
 "gauge.custom" = "CUSTOM"
-"gauge.l-or-r" = "L or R"
-"turn-limit" = "FINAL TURN"
+"gauge.l_or_r" = "L or R"
+"turn_limit" = "FINAL TURN"
 "pictures.ok.title" = "NO DATA\nSELECTED"
 "pictures.ok.words" = "チップが\nえらばれて\nいません"
-"pictures.ok-picked.title" = "CHIP DATA\nTRANSMISSION"
-"pictures.ok-picked.words" = "チップデータを\n送信します"
+"pictures.ok_picked.title" = "CHIP DATA\nTRANSMISSION"
+"pictures.ok_picked.words" = "チップデータを\n送信します"
 "pictures.redeal.title" = "SHUFFLE!"
 "pictures.redeal.words" = "チップフォルダを\nシャッフル!"
-"window.chip-select" = "CHIP SELECT"
-"logo.program-advance" = "プログラムアドバンス"
+"window.chip_select" = "CHIP SELECT"
+"logo.program_advance" = "プログラムアドバンス"
 "window.ok" = "OK"
 "window.shuffle" = "SHUFFLE"
 "window.unite" = "UNI\nSON"

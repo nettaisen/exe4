@@ -20,7 +20,7 @@ type State = {
     cracks_all: boolean,
 }
 
-local SOUND = asset.sound("metal-punch")
+local SOUND = asset.sound("metal_punch")
 -- Its rocks fall on solid panels without these (bodies of the stage's and the sides' objects: 0x080D07FA).
 local ROCK_PANEL: PanelCondition = { solid = true, own_other_body = false, enemy_other_body = false, neutral = false }
 -- The other side's player navi, by side (0x080D088C).

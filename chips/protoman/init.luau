@@ -30,7 +30,7 @@ local protoman: Chip = {
     auto_battle = { class = "when_enemy_approachable" },
 }
 
-local protom_sp: Chip = {
+local protoman_sp: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -43,12 +43,12 @@ local protom_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "protom-sp/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "protoman_sp/controller", palette = 4 }.hook,
     megaman = "light",
     auto_battle = { class = "when_enemy_approachable" },
 }
 
-local protom_ds: Chip = {
+local protoman_ds: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -60,9 +60,9 @@ local protom_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "protom-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "protoman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "when_enemy_approachable" },
 }
 
-return { protoman = protoman, ["protom-sp"] = protom_sp, ["protom-ds"] = protom_ds }
+return { protoman = protoman, protoman_sp = protoman_sp, protoman_ds = protoman_ds }

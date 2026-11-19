@@ -18,8 +18,8 @@ end
 local TICKS = 0x3C
 local SHIELD = shield.look { anim = 0 }
 
-local guard1: Chip = {
-    action = guard.action { id = "guard1/action", ticks = TICKS, shield = SHIELD, counter = counter },
+local guard_1: Chip = {
+    action = guard.action { id = "guard_1/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "A", "L", "V", "*" },
     element = Element.null,
     family = Family.null,
@@ -33,8 +33,8 @@ local guard1: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-local guard2: Chip = {
-    action = guard.action { id = "guard2/action", ticks = TICKS, shield = SHIELD, counter = counter },
+local guard_2: Chip = {
+    action = guard.action { id = "guard_2/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "C", "G", "P", "*" },
     element = Element.null,
     family = Family.null,
@@ -48,8 +48,8 @@ local guard2: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-local guard3: Chip = {
-    action = guard.action { id = "guard3/action", ticks = TICKS, shield = SHIELD, counter = counter },
+local guard_3: Chip = {
+    action = guard.action { id = "guard_3/action", ticks = TICKS, shield = SHIELD, counter = counter },
     codes = { "F", "R", "T", "*" },
     element = Element.null,
     family = Family.null,
@@ -63,4 +63,4 @@ local guard3: Chip = {
     auto_battle = { class = "when_counterable" },
 }
 
-return { guard1 = guard1, guard2 = guard2, guard3 = guard3 }
+return { guard_1 = guard_1, guard_2 = guard_2, guard_3 = guard_3 }

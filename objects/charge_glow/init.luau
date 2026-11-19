@@ -11,10 +11,10 @@ local visibility = require("@exelib/visibility")
 
 local glow = {}
 
-local B_GLOW = asset.sprite("charge-glow")
-local A_GLOW = asset.sprite("charge-glow-a")
-local CHARGING = asset.sound("buster-charge")
-local CHARGED = asset.sound("buster-charged")
+local B_GLOW = asset.sprite("charge_glow")
+local A_GLOW = asset.sprite("charge_glow_a")
+local CHARGING = asset.sound("buster_charge")
+local CHARGED = asset.sound("buster_charged")
 
 export type State = {
     -- The charge source it glows for (its +6).
@@ -76,7 +76,7 @@ local function init(me: Object)
 end
 
 glow.kind = new.kind {
-    id = "charge-glow",
+    id = "charge_glow",
     pool = Pool.effect,
     state = { source = schema.choice(ChargeSource), shown = schema.bool },
     update = function(me: Object)

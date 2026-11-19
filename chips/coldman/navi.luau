@@ -35,7 +35,7 @@ local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FOUND = asset.sound("place")
-local SOUND_PUNCH = asset.sound("coldman-punch")
+local SOUND_PUNCH = asset.sound("coldman_punch")
 -- A puff 16 pixels above him as he goes (effect row 0x13).
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His punch: aqua, 1 damage, hit modifier 0x21 (a push).

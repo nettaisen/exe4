@@ -12,20 +12,20 @@
 
 local buster = require("@self/weapons/buster")
 local charged_shot = require("@self/weapons/charged_shot")
-local aquasoul = require("@self/forms/aquasoul").aquasoul
-local darksoul = require("@self/forms/darksoul").darksoul
-local firesoul = require("@self/forms/firesoul").firesoul
-local gutssoul = require("@self/forms/gutssoul").gutssoul
-local junksoul = require("@self/forms/junksoul").junksoul
-local metalsoul = require("@self/forms/metalsoul").metalsoul
-local numbersoul = require("@self/forms/numbersoul").numbersoul
-local protosoul = require("@self/forms/protosoul").protosoul
-local rollsoul = require("@self/forms/rollsoul").rollsoul
-local searchsoul = require("@self/forms/searchsoul").searchsoul
-local thundersoul = require("@self/forms/thundersoul").thundersoul
-local windsoul = require("@self/forms/windsoul").windsoul
-local woodsoul = require("@self/forms/woodsoul").woodsoul
-local megaman_portrait_sprite = asset.sprite("megaman-portrait")
+local aqua_soul = require("@self/forms/aqua_soul").aqua_soul
+local dark_soul = require("@self/forms/dark_soul").dark_soul
+local fire_soul = require("@self/forms/fire_soul").fire_soul
+local guts_soul = require("@self/forms/guts_soul").guts_soul
+local junk_soul = require("@self/forms/junk_soul").junk_soul
+local metal_soul = require("@self/forms/metal_soul").metal_soul
+local number_soul = require("@self/forms/number_soul").number_soul
+local proto_soul = require("@self/forms/proto_soul").proto_soul
+local roll_soul = require("@self/forms/roll_soul").roll_soul
+local search_soul = require("@self/forms/search_soul").search_soul
+local thunder_soul = require("@self/forms/thunder_soul").thunder_soul
+local wind_soul = require("@self/forms/wind_soul").wind_soul
+local wood_soul = require("@self/forms/wood_soul").wood_soul
+local megaman_portrait_sprite = asset.sprite("megaman_portrait")
 local megaman_sprite = asset.sprite("megaman")
 
 local navi: NaviDef = {
@@ -34,7 +34,7 @@ local navi: NaviDef = {
     -- (EXE4's buster adds 1 to Attack itself: ./weapons/buster.)
     buster_bonus = 0,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("megaman-deleted"), lose = asset.banner("megaman-deleted") },
+    banners = { win = asset.banner("megaman_deleted"), lose = asset.banner("megaman_deleted") },
     -- The no-running message, L on the custom screen in a netbattle (0x080205C6: the script archive 0x08749294's entry
     -- 3; its words are locales/<lang>.toml's). Its script is EXE6's shape: the portrait (F4 00 40: the chatbox's
     -- mugshot 0x40), the box opening (E7 00), the two lines, the wait for A or B (E6 00), the end (E5). (Its first
@@ -50,20 +50,20 @@ local navi: NaviDef = {
     -- (rules/souls/dark: soul 15).
     forms = {
         souls = {
-            dark_soul = darksoul,
+            dark_soul = dark_soul,
             form_list = {
-                rollsoul,
-                gutssoul,
-                windsoul,
-                searchsoul,
-                firesoul,
-                thundersoul,
-                protosoul,
-                numbersoul,
-                metalsoul,
-                junksoul,
-                aquasoul,
-                woodsoul,
+                roll_soul,
+                guts_soul,
+                wind_soul,
+                search_soul,
+                fire_soul,
+                thunder_soul,
+                proto_soul,
+                number_soul,
+                metal_soul,
+                junk_soul,
+                aqua_soul,
+                wood_soul,
             },
         },
     },

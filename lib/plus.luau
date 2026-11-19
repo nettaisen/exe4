@@ -13,7 +13,7 @@ local sparkle = require("@exelib/instant/sparkle")
 local plus = {}
 
 -- The sparkle by the navi.
-plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
+plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel_poison"))
 
 -- The spawner of a plus chip of parameter `bonus` (its record's +0x10: the side's bonus its damage goes to).
 function plus.spawner(bonus: SpecialBonus): (user: Object, element: Element, damage: number) -> ()

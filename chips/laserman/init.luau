@@ -30,7 +30,7 @@ local laserman: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local lasrmn_sp: Chip = {
+local laserman_sp: Chip = {
     codes = { "L" },
     element = Element.null,
     family = Family.null,
@@ -43,12 +43,12 @@ local lasrmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "lasrmn-sp/controller", palette = 10, aims = true }.hook,
+    dimming = navi.controller { id = "laserman_sp/controller", palette = 10, aims = true }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local lasrmn_ds: Chip = {
+local laserman_ds: Chip = {
     codes = { "L" },
     element = Element.null,
     family = Family.null,
@@ -60,9 +60,9 @@ local lasrmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "lasrmn-ds/controller", palette = 11, aims = true }.hook,
+    dimming = navi.controller { id = "laserman_ds/controller", palette = 11, aims = true }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { laserman = laserman, ["lasrmn-sp"] = lasrmn_sp, ["lasrmn-ds"] = lasrmn_ds }
+return { laserman = laserman, laserman_sp = laserman_sp, laserman_ds = laserman_ds }

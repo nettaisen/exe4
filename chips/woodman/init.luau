@@ -30,7 +30,7 @@ local woodman: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-local woodmn_sp: Chip = {
+local woodman_sp: Chip = {
     codes = { "W" },
     element = Element.wood,
     family = Family.wood,
@@ -43,12 +43,12 @@ local woodmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "woodmn-sp/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "woodman_sp/controller", palette = 4 }.hook,
     megaman = "light",
     auto_battle = { class = "at_once" },
 }
 
-local woodmn_ds: Chip = {
+local woodman_ds: Chip = {
     codes = { "W" },
     element = Element.wood,
     family = Family.wood,
@@ -60,9 +60,9 @@ local woodmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "woodmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "woodman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "at_once" },
 }
 
-return { woodman = woodman, ["woodmn-sp"] = woodmn_sp, ["woodmn-ds"] = woodmn_ds }
+return { woodman = woodman, woodman_sp = woodman_sp, woodman_ds = woodman_ds }

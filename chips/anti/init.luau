@@ -10,7 +10,7 @@
 local anti_trap = require("../lib/traps/anti_trap")
 local traps = require("../lib/traps")
 
-local antifire: Chip = {
+local anti_fire: Chip = {
     codes = { "K" },
     element = Element.fire,
     family = Family.fire,
@@ -25,7 +25,7 @@ local antifire: Chip = {
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
-local antiwatr: Chip = {
+local anti_water: Chip = {
     codes = { "D" },
     element = Element.aqua,
     family = Family.aqua,
@@ -40,7 +40,7 @@ local antiwatr: Chip = {
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
-local antielec: Chip = {
+local anti_elec: Chip = {
     codes = { "H" },
     element = Element.elec,
     family = Family.elec,
@@ -55,7 +55,7 @@ local antielec: Chip = {
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
-local antiwood: Chip = {
+local anti_wood: Chip = {
     codes = { "M" },
     element = Element.wood,
     family = Family.wood,
@@ -70,7 +70,7 @@ local antiwood: Chip = {
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 
-local antinavi: Chip = {
+local anti_navi: Chip = {
     codes = { "J", "M", "T" },
     element = Element.null,
     family = Family.null,
@@ -86,7 +86,7 @@ local antinavi: Chip = {
     auto_battle = { class = "when_trap_free" },
 }
 
-local antidmg: Chip = {
+local anti_damage: Chip = {
     codes = { "K", "M", "R" },
     element = Element.null,
     family = Family.null,
@@ -103,7 +103,7 @@ local antidmg: Chip = {
     auto_battle = { class = "when_trap_free" },
 }
 
-local antiswrd: Chip = {
+local anti_sword: Chip = {
     codes = { "C", "I", "N", "*" },
     element = Element.null,
     family = Family.sword,
@@ -120,7 +120,7 @@ local antiswrd: Chip = {
     auto_battle = { class = "when_trap_free" },
 }
 
-local antirecv: Chip = {
+local anti_recovery: Chip = {
     codes = { "B", "D", "G", "*" },
     element = Element.null,
     family = Family.null,
@@ -137,12 +137,12 @@ local antirecv: Chip = {
 }
 
 return {
-    antifire = antifire,
-    antiwatr = antiwatr,
-    antielec = antielec,
-    antiwood = antiwood,
-    antinavi = antinavi,
-    antidmg = antidmg,
-    antiswrd = antiswrd,
-    antirecv = antirecv,
+    anti_fire = anti_fire,
+    anti_water = anti_water,
+    anti_elec = anti_elec,
+    anti_wood = anti_wood,
+    anti_navi = anti_navi,
+    anti_damage = anti_damage,
+    anti_sword = anti_sword,
+    anti_recovery = anti_recovery,
 }

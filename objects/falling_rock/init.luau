@@ -21,11 +21,11 @@ export type FallingRock = {
 }
 
 -- The rock's sheet (10-0E).
-local SPRITE = asset.sprite("falling-rock")
+local SPRITE = asset.sprite("falling_rock")
 
--- A user's falling rock: its kind (`id`) and its chips' (`id`'s "-chip").
+-- A user's falling rock: its kind (`id`) and its chips' (`id`'s "_chip").
 function falling_rock.make(id: string): FallingRock
-    local chips = falling_chip.make_kind(id .. "-chip", SPRITE)
+    local chips = falling_chip.make_kind(id .. "_chip", SPRITE)
     local kind = falling.make_kind {
         id = id,
         sprite = SPRITE,
@@ -37,7 +37,7 @@ function falling_rock.make(id: string): FallingRock
         spark = sparks.plain,
         puff = rock.effects.puff,
         chips = chips,
-        shatter_sound = asset.sound("falling-rock"),
+        shatter_sound = asset.sound("falling_rock"),
     }
 
     -- 0x080D0A40: a rock on (x, y) of `owner`'s side, with `element` and the damage word. (Its position is the

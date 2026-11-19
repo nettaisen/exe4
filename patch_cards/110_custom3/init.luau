@@ -12,4 +12,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["110-custom3"] = card }
+return { ["110_custom3"] = card }

@@ -18,7 +18,7 @@ local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
 local aura_sprite = asset.sprite("aura")
 local barrier_sprite = asset.sprite("barrier")
-local black_barrier_sprite = asset.sprite("black-barrier")
+local black_barrier_sprite = asset.sprite("black_barrier")
 
 local barriers = {}
 
@@ -74,7 +74,7 @@ barriers.black_barrier = barrier {
 
 -- Type 6: an aura that stops every hit of less than 200 for 3000 ticks.
 barriers.life_aura = barrier {
-    id = "barrier/life-aura",
+    id = "barrier/life_aura",
     behavior = BarrierBehavior.plain,
     hp = 1,
     threshold = 200,

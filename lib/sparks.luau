@@ -5,12 +5,12 @@
 
 local sparks = {}
 
-local HIT_SPARKS = asset.sprite("hit-sparks")
-local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
+local HIT_SPARKS = asset.sprite("hit_sparks")
+local chip_destruction_spark_sprite = asset.sprite("chip_destruction_spark")
 local explosion_sprite = asset.sprite("explosion")
 local hit_sprite = asset.sprite("hit")
 local impact_sprite = asset.sprite("impact")
-local pink_flash_sprite = asset.sprite("pink-flash")
+local pink_flash_sprite = asset.sprite("pink_flash")
 
 -- By primary element (null, fire, aqua, elec, wood, and the drain): hit effects 0 to 5.
 local BY_ELEMENT: { [string]: Spark } = {

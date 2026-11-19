@@ -10,13 +10,13 @@ local breath = require("@self/breath")
 local sparks = require("../lib/sparks")
 local statuses = require("../rules/status")
 
-local NOZZLE = asset.sprite("breath-nozzle")
+local NOZZLE = asset.sprite("breath_nozzle")
 
 -- HeatBrth's (its parameter 0): fire (effect rows 0x38 and 0x39, its fire lasting 40 ticks) leaving lava; the roar
 -- every 8 ticks.
-local HEAT_BREATH = asset.sprite("heat-breath")
+local HEAT_BREATH = asset.sprite("heat_breath")
 local heat_breath = breath.make {
-    id = "heatbrth/breath",
+    id = "heat_breath/breath",
     spark = sparks.fire,
     element = Element.fire,
     hit_mod = { flinch = true, flash = true },
@@ -75,12 +75,12 @@ local blizzard_breath = breath.make {
 
 -- ElecShok's (its parameter 3): lightning (effect rows 0x3E and 0x3F, its lightning lasting 40 ticks) leaving cracked
 -- panels; the thunder ball's sound every 8 ticks.
-local LIGHTNING = asset.sprite("element-pillar-lightning")
-local wood_powder_sprite = asset.sprite("wood-powder")
+local LIGHTNING = asset.sprite("element_pillar_lightning")
+local wood_powder_sprite = asset.sprite("wood_powder")
 -- Its own panel highlighted until 15 ticks before its end, the column's until its last tick.
 local HIGHLIGHT_UNTIL, COLUMN_UNTIL = 15, 1
 local elec_breath = breath.make {
-    id = "elecshok/breath",
+    id = "elec_shock/breath",
     spark = sparks.elec,
     element = Element.elec,
     hit_mod = { flinch = true, flash = true },
@@ -97,7 +97,7 @@ local elec_breath = breath.make {
             breath.on_column(me, s, field.highlight)
         end
     end,
-    sound = breath.every_8(asset.sound("thunder-ball")),
+    sound = breath.every_8(asset.sound("thunder_ball")),
 }
 
 -- WoodPwdr's (its parameter 2): powder (effect row 0x3D) leaving grass, its hits confusing (hit modifier 1, status
@@ -112,7 +112,7 @@ local function powder(x: number, y: number)
 end
 
 local wood_breath = breath.make {
-    id = "woodpwdr/breath",
+    id = "woody_powder/breath",
     spark = sparks.wood,
     element = Element.wood,
     hit_mod = { flinch = true },
@@ -131,7 +131,7 @@ local wood_breath = breath.make {
             breath.on_column(me, s, powder)
         end
     end,
-    sound = breath.every_8(asset.sound("wood-powder")),
+    sound = breath.every_8(asset.sound("wood_powder")),
 }
 
 -- A chip's nozzle in its palette (attachment rows 0x18 to 0x1B: the original's row 0x17 and the attack's element).
@@ -140,7 +140,7 @@ local function nozzle(palette: number): AttachmentLook
 end
 
 local heatbrth: Chip = {
-    action = breath.action { id = "heatbrth/action", nozzle = nozzle(0), spawn = heat_breath },
+    action = breath.action { id = "heat_breath/action", nozzle = nozzle(0), spawn = heat_breath },
     codes = { "D", "K", "O", "*" },
     element = Element.fire,
     family = Family.fire,
@@ -169,8 +169,8 @@ local blizzard: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-local elecshok: Chip = {
-    action = breath.action { id = "elecshok/action", nozzle = nozzle(4), spawn = elec_breath },
+local elec_shock: Chip = {
+    action = breath.action { id = "elec_shock/action", nozzle = nozzle(4), spawn = elec_breath },
     codes = { "J", "L", "S", "*" },
     element = Element.elec,
     family = Family.elec,
@@ -184,8 +184,8 @@ local elecshok: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-local woodpwdr: Chip = {
-    action = breath.action { id = "woodpwdr/action", nozzle = nozzle(6), spawn = wood_breath },
+local woody_powder: Chip = {
+    action = breath.action { id = "woody_powder/action", nozzle = nozzle(6), spawn = wood_breath },
     codes = { "F", "T", "W", "*" },
     element = Element.wood,
     family = Family.wood,
@@ -199,4 +199,4 @@ local woodpwdr: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-return { heatbrth = heatbrth, blizzard = blizzard, elecshok = elecshok, woodpwdr = woodpwdr }
+return { heat_breath = heatbrth, blizzard = blizzard, elec_shock = elec_shock, woody_powder = woody_powder }

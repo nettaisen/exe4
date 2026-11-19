@@ -15,7 +15,7 @@ local common = require("@exelib/geyser/geyser")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
 local bomb_sprite = asset.sprite("bomb")
-local bubble_burst_sprite = asset.sprite("bubble-burst")
+local bubble_burst_sprite = asset.sprite("bubble_burst")
 local geyser_sprite = asset.sprite("geyser")
 
 local GEYSER = common.make({
@@ -24,7 +24,7 @@ local GEYSER = common.make({
     bomb = bomb_sprite,
     geyser = geyser_sprite,
     splash = new.effect { sprite = bubble_burst_sprite, anim = 0, palette = 0, steps = 26 },
-    splash_sound = asset.sound("bubble-burst"),
+    splash_sound = asset.sound("bubble_burst"),
     erupt = asset.sound("geyser"),
     attack = collision.attack,
     hits = collision.hits_navis,

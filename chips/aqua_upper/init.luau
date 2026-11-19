@@ -1,0 +1,79 @@
+--!strict
+-- AquaUp1, AquaUp2 and AquaUp3 (EXE4 chips 0x0B5 to 0x0B7; their records at 0x080197EC + n * 0x2C): the spawners'
+-- action 0x20 (lib/spawners), its variant 0x0C, their parameter 0: the towers' controller (lib/towers) raises an aqua
+-- tower from each cracked panel of the other side's holding its navi, a column at a time.
+-- Their records are written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local spawners = require("../lib/spawners")
+local tower = require("../objects/tower")
+local towers = require("../lib/towers")
+local geyser_sprite = asset.sprite("geyser")
+
+-- The aqua tower (the towers' row 0): 0c-25, animations 0, 1 and 2 for 12, 4 and 9 ticks; hit modifier 3; sound 0x120.
+local AQUA_TOWER = tower.make {
+    id = "aqua_upper/tower",
+    sprite = geyser_sprite,
+    steps = { { anim = 0, ticks = 0x0B }, { anim = 1, ticks = 3 }, { anim = 2, ticks = 8 } },
+    hit_mod = { flinch = true, flash = true },
+    sound = asset.sound("geyser"),
+}
+
+-- 0x080DF8A4: a cracked panel of the other side's holding its navi: an aqua tower, and the panel broken if nothing
+-- stands on it (0x08009BAC: something always does).
+local function strike(me: Object, x: number, y: number): boolean
+    if not towers.enemy_panel(me, x, y, PanelType.cracked) then
+        return false
+    end
+    AQUA_TOWER(me, x, y, me.element, towers.damage_word(me))
+    field.break_empty(x, y)
+    return true
+end
+
+local RAISE = towers.controller { id = "aqua_upper/controller", strike = strike }
+
+local aqua_upper_1: Chip = {
+    action = spawners.action { id = "aqua_upper_1/action", spawn = RAISE },
+    codes = { "B", "S", "Z" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 22,
+    damage = 110,
+    counter = 30,
+    lockout = 45,
+    flags = { has_damage = true, library = true },
+    auto_battle = { class = "when_enemy_on_cracked" },
+}
+
+local aqua_upper_2: Chip = {
+    action = spawners.action { id = "aqua_upper_2/action", spawn = RAISE },
+    codes = { "I", "P", "U" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 28,
+    damage = 140,
+    counter = 30,
+    lockout = 45,
+    flags = { has_damage = true, library = true },
+    auto_battle = { class = "when_enemy_on_cracked" },
+}
+
+local aqua_upper_3: Chip = {
+    action = spawners.action { id = "aqua_upper_3/action", spawn = RAISE },
+    codes = { "F", "K", "W" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 3,
+    mb = 34,
+    damage = 170,
+    counter = 30,
+    lockout = 45,
+    flags = { has_damage = true, library = true },
+    auto_battle = { class = "when_enemy_on_cracked" },
+}
+
+return { aqua_upper_1 = aqua_upper_1, aqua_upper_2 = aqua_upper_2, aqua_upper_3 = aqua_upper_3 }

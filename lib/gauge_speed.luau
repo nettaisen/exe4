@@ -7,4 +7,4 @@
 
 local common = require("@exelib/gauge_speed/controller")
 
-return common.make { id = "gauge-speed", warning = asset.sound("program-advance-part") }
+return common.make { id = "gauge_speed", warning = asset.sound("program_advance_part") }

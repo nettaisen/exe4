@@ -24,7 +24,7 @@ local HP = 100
 instruments.kind = instrument.make_kind("instrument", {
     sprite = instruments.sprite,
     hp = HP,
-    sounds = { appear = asset.sound("appear"), broken = asset.sound("hit-bomb-1") },
+    sounds = { appear = asset.sound("appear"), broken = asset.sound("hit_bomb_1") },
     body = { is = collision.own_body, hits = collision.hit_by_other_side },
     removal_explodes = true,
     -- 0x08013F3E: a crushing touch destroys it, its HP as it is.

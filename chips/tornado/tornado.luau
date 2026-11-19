@@ -118,7 +118,7 @@ local function init(me: Object)
     tick(me)
 end
 
-local TORNADO_LOOK = schema.record_type("tornado-look")
+local TORNADO_LOOK = schema.record_type("tornado_look")
 
 local kind = new.kind {
     id = "tornado/tornado",

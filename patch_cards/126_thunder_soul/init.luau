@@ -3,14 +3,14 @@
 -- Written by tools/exe4/gen_patch_cards.py (bn6battle-verify) from the EXE4 ROMs.
 
 local cards = require("../rules/patch_cards/cards")
-local thundersoul = require("../navis/megaman/forms/thundersoul").thundersoul
+local thunder_soul = require("../navis/megaman/forms/thunder_soul").thunder_soul
 
 local card: SlottedPatchCard = {
     slot = cards.SLOT_0E,
     effects = {
-        cards.soul(thundersoul),
+        cards.soul(thunder_soul),
         cards.bug("hp", 2),
     },
 }
 
-return { ["126-thunder-soul"] = card }
+return { ["126_thunder_soul"] = card }

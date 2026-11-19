@@ -10,17 +10,17 @@
 -- (0x080E531F).
 
 local collision = require("../../rules/collision")
-local common_strike = require("@exelib/elemtrap/strike")
-local common_trap = require("@exelib/elemtrap/trap")
+local common_strike = require("@exelib/element_trap/strike")
+local common_trap = require("@exelib/element_trap/trap")
 local panel_bursts = require("../../objects/panel_bursts")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local sparks = require("../sparks")
 local statuses = require("../../rules/status")
 local traps = require("../traps")
-local bubble_burst_sprite = asset.sprite("bubble-burst")
-local heat_burst_sprite = asset.sprite("heat-burst")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local bubble_burst_sprite = asset.sprite("bubble_burst")
+local heat_burst_sprite = asset.sprite("heat_burst")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 local lightning_sprite = asset.sprite("lightning")
 
 local trap = {}
@@ -50,11 +50,11 @@ local function after(me: Object)
     battle.set_mood(battle.other_side(me.alliance), 1)
 end
 
-trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
+trap.strike_kind = common_strike.make_kind("anti_trap/strike", {
     strikes = {
         null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = HEAT },
-        fire = { sound = asset.sound("heat-burst"), spark = sparks.fire, hit_mod = { flinch = true, flash = true }, status = nil, burst = HEAT },
-        aqua = { sound = asset.sound("bubble-burst"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = BUBBLE },
+        fire = { sound = asset.sound("heat_burst"), spark = sparks.fire, hit_mod = { flinch = true, flash = true }, status = nil, burst = HEAT },
+        aqua = { sound = asset.sound("bubble_burst"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = BUBBLE },
         elec = {
             sound = asset.sound("lightning"),
             spark = sparks.elec,
@@ -63,7 +63,7 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
             burst = LIGHTNING,
         },
         wood = {
-            sound = asset.sound("wood-strike"),
+            sound = asset.sound("wood_strike"),
             spark = sparks.wood,
             hit_mod = { flinch = true, flash = true },
             status = statuses.confuse_480,
@@ -80,9 +80,9 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     end,
 })
 
-trap.kind = common_trap.make_kind("anti-trap/trap", {
+trap.kind = common_trap.make_kind("anti_trap/trap", {
     sparkle = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0, steps = 24 },
-    sparkle_sound = asset.sound("dimming-sparkle"),
+    sparkle_sound = asset.sound("dimming_sparkle"),
     watches = "one",
     self_type = collision.nothing,
     target = collision.hit_by_other_attacks,

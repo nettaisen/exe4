@@ -21,14 +21,14 @@ local ICE_BLOCK = rock.variant {
     hp = 100,
     element = Element.aqua,
     debris_palette = 1,
-    break_sound = asset.sound("falling-rock"),
+    break_sound = asset.sound("falling_rock"),
     identity = nil,
 }
 
 return common.make {
-    id = "ice-cube",
+    id = "ice_cube",
     sprite = rock_sprite,
-    sounds = { form = asset.sound("place"), burst = asset.sound("falling-rock") },
+    sounds = { form = asset.sound("place"), burst = asset.sound("falling_rock") },
     spark = sparks.aqua,
     is = collision.neutral_body,
     hits = collision.everything,

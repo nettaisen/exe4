@@ -7,32 +7,32 @@
 --
 -- The rest wait on their chips (docs/design/exe4-map.md §18 item 57).
 
-local airshot = require("../../../chips/airshot").airshot
+local air_shot = require("../../../chips/air_shot").air_shot
 local anti_chips = require("../../../chips/anti")
-local ball = require("../../../chips/ball").ball
+local cannon_ball = require("../../../chips/cannon_ball").cannon_ball
 local breath_chips = require("../../../chips/breath")
 local bubbler = require("../../../chips/bubbler").bubbler
-local bugbomb = require("../../../chips/bugbomb").bugbomb
+local bug_bomb = require("../../../chips/bug_bomb").bug_bomb
 local cannon = require("../../../chips/cannon").cannon
-local copydmg = require("../../../chips/copydmg").copydmg
-local crakout_chips = require("../../../chips/crakout")
-local energbom_chips = require("../../../chips/energbom")
-local fullcust = require("../../../chips/fullcust").fullcust
+local copy_damage = require("../../../chips/copy_damage").copy_damage
+local crakout_chips = require("../../../chips/crack_out")
+local energbom_chips = require("../../../chips/energy_bomb")
+local full_custom = require("../../../chips/full_custom").full_custom
 local guard_chips = require("../../../chips/guard")
-local heatshot = require("../../../chips/heatshot").heatshot
+local heat_shot = require("../../../chips/heat_shot").heat_shot
 local hole = require("../../../chips/hole").hole
 local lance = require("../../../chips/lance").lance
-local minibomb = require("../../../chips/minibomb").minibomb
-local nrthwind = require("../../../chips/nrthwind").nrthwind
-local pnlretrn = require("../../../chips/pnlretrn").pnlretrn
+local mini_bomb = require("../../../chips/mini_bomb").mini_bomb
+local north_wind = require("../../../chips/north_wind").north_wind
+local panel_return = require("../../../chips/panel_return").panel_return
 local recov_chips = require("../../../chips/recov")
 local repair = require("../../../chips/repair").repair
-local sandring = require("../../../chips/sandring").sandring
+local sand_ring = require("../../../chips/sand_ring").sand_ring
 local spreader = require("../../../chips/spreader").spreader
 local sword_chips = require("../../../chips/sword")
 local thunder_chips = require("../../../chips/thunder")
-local widesht_chips = require("../../../chips/widesht")
-local windrack = require("../../../chips/windrack").windrack
+local widesht_chips = require("../../../chips/wide_shot")
+local wind_racket = require("../../../chips/wind_racket").wind_racket
 
 local chips = {}
 
@@ -54,27 +54,27 @@ end
 local SIXTY: { number } = { 60, 60, 60, 60, 60, 60 }
 
 chips.cannon = fires("megaman/cannon", cannon, SIXTY) -- 0x29
-chips.minibomb = fires("megaman/minibomb", minibomb, SIXTY) -- 0x2A
-chips.heatshot = fires("megaman/heatshot", heatshot, SIXTY) -- 0x2B
+chips.mini_bomb = fires("megaman/mini_bomb", mini_bomb, SIXTY) -- 0x2A
+chips.heat_shot = fires("megaman/heat_shot", heat_shot, SIXTY) -- 0x2B
 chips.bubbler = fires("megaman/bubbler", bubbler, { 60, 60, 60, 60, 60, 120 }) -- 0x2C
-chips.thunder1 = fires("megaman/thunder1", thunder_chips.thunder1, { 120, 120, 120, 120, 120, 60 }) -- 0x2D
+chips.thunder_1 = fires("megaman/thunder_1", thunder_chips.thunder_1, { 120, 120, 120, 120, 120, 60 }) -- 0x2D
 chips.sword = fires("megaman/sword", sword_chips.sword, SIXTY) -- 0x2E
 chips.spreader = fires("megaman/spreader", spreader, SIXTY) -- 0x2F
 -- 0x0800D074 (routine 0x31, card 40's B+Left): one of the eight Anti chips (0x0800D094: 0x8C to 0x93) at random (an
 -- RNG2 draw), loaded as the attack; then its parameters' fourth byte (AIAttackVars +0x0F) 1: the trap's telop
 -- shows "????" to its user too.
 local ANTI_CHIPS: { Chip } = {
-    anti_chips.antifire,
-    anti_chips.antiwatr,
-    anti_chips.antielec,
-    anti_chips.antiwood,
-    anti_chips.antinavi,
-    anti_chips.antidmg,
-    anti_chips.antiswrd,
-    anti_chips.antirecv,
+    anti_chips.anti_fire,
+    anti_chips.anti_water,
+    anti_chips.anti_elec,
+    anti_chips.anti_wood,
+    anti_chips.anti_navi,
+    anti_chips.anti_damage,
+    anti_chips.anti_sword,
+    anti_chips.anti_recovery,
 }
 chips.anti_chip = new.weapon {
-    id = "megaman/anti-chip",
+    id = "megaman/anti_chip",
     charge_ticks = SIXTY,
     setup = function(navi: Object): Chip
         local chip = ANTI_CHIPS[battle.rng_positive() % #ANTI_CHIPS + 1]
@@ -83,37 +83,37 @@ chips.anti_chip = new.weapon {
         return chip
     end,
 } -- 0x31
-chips.crakout = fires("megaman/crakout", crakout_chips.crakout, SIXTY) -- 0x36
-chips.copydmg = fires("megaman/copydmg", copydmg, { 60, 60, 60, 60, 60, 120 }) -- 0x37
-chips.widesht1 = fires("megaman/widesht1", widesht_chips.widesht1, { 120, 120, 120, 120, 120, 60 }) -- 0x38
-chips.thunder2 = fires("megaman/thunder2", thunder_chips.thunder2, { 150, 150, 150, 150, 150, 60 }) -- 0x3A
-chips.dublcrak = fires("megaman/dublcrak", crakout_chips.dublcrak, SIXTY) -- 0x3C
-chips.wideswrd = fires("megaman/wideswrd", sword_chips.wideswrd, SIXTY) -- 0x3E
-chips.recov10 = fires("megaman/recov10", recov_chips.recov10, SIXTY) -- 0x40
+chips.crack_out = fires("megaman/crack_out", crakout_chips.crack_out, SIXTY) -- 0x36
+chips.copy_damage = fires("megaman/copy_damage", copy_damage, { 60, 60, 60, 60, 60, 120 }) -- 0x37
+chips.wide_shot_1 = fires("megaman/wide_shot_1", widesht_chips.wide_shot_1, { 120, 120, 120, 120, 120, 60 }) -- 0x38
+chips.thunder_2 = fires("megaman/thunder_2", thunder_chips.thunder_2, { 150, 150, 150, 150, 150, 60 }) -- 0x3A
+chips.double_crack = fires("megaman/double_crack", crakout_chips.double_crack, SIXTY) -- 0x3C
+chips.wide_sword = fires("megaman/wide_sword", sword_chips.wide_sword, SIXTY) -- 0x3E
+chips.recovery_10 = fires("megaman/recovery_10", recov_chips.recovery_10, SIXTY) -- 0x40
 chips.lance = fires("megaman/lance", lance, SIXTY) -- 0x41
 chips.hole = fires("megaman/hole", hole, { 60, 60, 60, 60, 60, 150 }) -- 0x42
-chips.widesht2 = fires("megaman/widesht2", widesht_chips.widesht2, { 150, 150, 150, 150, 150, 60 }) -- 0x43
-chips.sandring = fires("megaman/sandring", sandring, SIXTY) -- 0x44
-chips.energbom = fires("megaman/energbom", energbom_chips.energbom, { 60, 60, 60, 60, 60, 180 }) -- 0x45
-chips.thunder3 = fires("megaman/thunder3", thunder_chips.thunder3, { 180, 180, 180, 180, 180, 60 }) -- 0x46
-chips.tripcrak = fires("megaman/tripcrak", crakout_chips.tripcrak, SIXTY) -- 0x48
-chips.longswrd = fires("megaman/longswrd", sword_chips.longswrd, SIXTY) -- 0x49
-chips.fullcust = fires("megaman/fullcust", fullcust, { 90, 90, 90, 90, 90, 180 }) -- 0x4B
-chips.widesht3 = fires("megaman/widesht3", widesht_chips.widesht3, { 180, 180, 180, 180, 180, 60 }) -- 0x4C
-chips.windrack = fires("megaman/windrack", windrack, SIXTY) -- 0x4E
-chips.megenbom = fires("megaman/megenbom", energbom_chips.megenbom, SIXTY) -- 0x4F
-chips.ball = fires("megaman/ball", ball, SIXTY) -- 0x50
-chips.bugbomb = fires("megaman/bugbomb", bugbomb, SIXTY) -- 0x51
-chips.wideblde = fires("megaman/wideblde", sword_chips.wideblde, SIXTY) -- 0x52
-chips.longblde = fires("megaman/longblde", sword_chips.longblde, SIXTY) -- 0x53
-chips.nrthwind = fires("megaman/nrthwind", nrthwind, SIXTY) -- 0x54
-chips.pnlretrn = fires("megaman/pnlretrn", pnlretrn, SIXTY) -- 0x55
+chips.wide_shot_2 = fires("megaman/wide_shot_2", widesht_chips.wide_shot_2, { 150, 150, 150, 150, 150, 60 }) -- 0x43
+chips.sand_ring = fires("megaman/sand_ring", sand_ring, SIXTY) -- 0x44
+chips.energy_bomb = fires("megaman/energy_bomb", energbom_chips.energy_bomb, { 60, 60, 60, 60, 60, 180 }) -- 0x45
+chips.thunder_3 = fires("megaman/thunder_3", thunder_chips.thunder_3, { 180, 180, 180, 180, 180, 60 }) -- 0x46
+chips.triple_crack = fires("megaman/triple_crack", crakout_chips.triple_crack, SIXTY) -- 0x48
+chips.long_sword = fires("megaman/long_sword", sword_chips.long_sword, SIXTY) -- 0x49
+chips.full_custom = fires("megaman/full_custom", full_custom, { 90, 90, 90, 90, 90, 180 }) -- 0x4B
+chips.wide_shot_3 = fires("megaman/wide_shot_3", widesht_chips.wide_shot_3, { 180, 180, 180, 180, 180, 60 }) -- 0x4C
+chips.wind_racket = fires("megaman/wind_racket", wind_racket, SIXTY) -- 0x4E
+chips.mega_energy_bomb = fires("megaman/mega_energy_bomb", energbom_chips.mega_energy_bomb, SIXTY) -- 0x4F
+chips.cannon_ball = fires("megaman/cannon_ball", cannon_ball, SIXTY) -- 0x50
+chips.bug_bomb = fires("megaman/bug_bomb", bug_bomb, SIXTY) -- 0x51
+chips.wide_blade = fires("megaman/wide_blade", sword_chips.wide_blade, SIXTY) -- 0x52
+chips.long_blade = fires("megaman/long_blade", sword_chips.long_blade, SIXTY) -- 0x53
+chips.north_wind = fires("megaman/north_wind", north_wind, SIXTY) -- 0x54
+chips.panel_return = fires("megaman/panel_return", panel_return, SIXTY) -- 0x55
 chips.blizzard = fires("megaman/blizzard", breath_chips.blizzard, SIXTY) -- 0x5B
-chips.heatbrth = fires("megaman/heatbrth", breath_chips.heatbrth, SIXTY) -- 0x5C
-chips.woodpwdr = fires("megaman/woodpwdr", breath_chips.woodpwdr, SIXTY) -- 0x5D
+chips.heat_breath = fires("megaman/heat_breath", breath_chips.heat_breath, SIXTY) -- 0x5C
+chips.woody_powder = fires("megaman/woody_powder", breath_chips.woody_powder, SIXTY) -- 0x5D
 chips.repair = fires("megaman/repair", repair, SIXTY) -- 0x5E
-chips.airshot = fires("megaman/airshot", airshot, SIXTY) -- 0x5F
-chips.elecshok = fires("megaman/elecshok", breath_chips.elecshok, { 60, 60, 60, 60, 60, 80 }) -- 0x60
-chips.guard1 = fires("megaman/guard1", guard_chips.guard1, { 60, 60, 60, 60, 60, 20 }) -- 0x62
+chips.air_shot = fires("megaman/air_shot", air_shot, SIXTY) -- 0x5F
+chips.elec_shock = fires("megaman/elec_shock", breath_chips.elec_shock, { 60, 60, 60, 60, 60, 80 }) -- 0x60
+chips.guard_1 = fires("megaman/guard_1", guard_chips.guard_1, { 60, 60, 60, 60, 60, 20 }) -- 0x62
 
 return chips

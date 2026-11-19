@@ -29,7 +29,7 @@ local shademan: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-local shadmn_sp: Chip = {
+local shademan_sp: Chip = {
     codes = { "X" },
     element = Element.null,
     family = Family.null,
@@ -42,12 +42,12 @@ local shadmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "shadmn-sp/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "shademan_sp/controller", palette = 6 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-local shadmn_ds: Chip = {
+local shademan_ds: Chip = {
     codes = { "X" },
     element = Element.null,
     family = Family.null,
@@ -59,9 +59,9 @@ local shadmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "shadmn-ds/controller", palette = 14 }.hook,
+    dimming = navi.controller { id = "shademan_ds/controller", palette = 14 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-return { shademan = shademan, ["shadmn-sp"] = shadmn_sp, ["shadmn-ds"] = shadmn_ds }
+return { shademan = shademan, shademan_sp = shademan_sp, shademan_ds = shademan_ds }

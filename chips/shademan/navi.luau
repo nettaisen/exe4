@@ -33,7 +33,7 @@ end
 local CRUSH = require("@exelib/shademan/crush").make {
     id = "shademan/crush",
     sprite = shademan_sprite,
-    sound = asset.sound("shade-crush"),
+    sound = asset.sound("shade_crush"),
     attack = collision.piercing,
     hits = collision.hits_navis,
     place = place,
@@ -50,7 +50,7 @@ local SHADEMAN = require("@exelib/shademan/navi").make {
     appear_anim = 0,
     call_anim = 3,
     appear = asset.sound("appear"),
-    call = asset.sound("shade-call"),
+    call = asset.sound("shade_call"),
     crush = CRUSH,
     commands = {
         {

@@ -18,9 +18,9 @@ local water_gun = {}
 -- What AquaMan keeps it in (his +0x64, the word its +0x60 points at).
 export type Holder = { gun: Object? }
 
-local SPRITE = asset.sprite("water-gun")
+local SPRITE = asset.sprite("water_gun")
 local SOUND_UP = asset.sound("tops")
-local SOUND_SPRAY = asset.sound("water-gun")
+local SOUND_SPRAY = asset.sound("water_gun")
 -- Its hits' height.
 local SPRAY_Z = 0x0A_0000
 
@@ -194,7 +194,7 @@ local function init(me: Object)
 end
 
 water_gun.kind = new.kind {
-    id = "aquaman/water-gun",
+    id = "aquaman/water_gun",
     pool = Pool.attack,
     -- 0x080D3468: by its state, then its sprite.
     update = function(me: Object)

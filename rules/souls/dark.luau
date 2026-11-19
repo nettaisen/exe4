@@ -1,5 +1,5 @@
 --!strict
--- EXE4's dark soul (soul 15, navis/megaman/forms/darksoul; docs/design/exe4-map.md §18 item 74): a dark MegaMan whose
+-- EXE4's dark soul (soul 15, navis/megaman/forms/dark_soul; docs/design/exe4-map.md §18 item 74): a dark MegaMan whose
 -- HP a hit empties holds at 1 HP, once a battle, and changes into it (the souls' change, ./change, with DarkMega's
 -- image); for 960 ticks no hit reaches him and the auto battle AI drives him on his own player's auto battle data
 -- (../auto_battle), then he reverts (the souls' revert).
@@ -72,7 +72,7 @@ end
 -- starts (0x080EBA8A), its ticks set as he emerges (0x080EBBC6) and the AI's counts taken from then on, the AI's
 -- block zeroed at the status reset (0x0800E18E), the hand left as it is (0x080EBC8E).
 dark.change = change.make {
-    id = "darksoul",
+    id = "dark_soul",
     keeps_hand = true,
     prepare = function(_navi: Object)
         state().dark_soul_asked = false

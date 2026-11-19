@@ -31,7 +31,7 @@ local junkman: Chip = {
     auto_battle = { class = "when_any_obstacle" },
 }
 
-local junkmn_sp: Chip = {
+local junkman_sp: Chip = {
     codes = { "J" },
     element = Element.null,
     family = Family.summon,
@@ -44,12 +44,12 @@ local junkmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "junkmn-sp/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "junkman_sp/controller", palette = 4 }.hook,
     megaman = "light",
     auto_battle = { class = "when_any_obstacle" },
 }
 
-local junkmn_ds: Chip = {
+local junkman_ds: Chip = {
     codes = { "J" },
     element = Element.null,
     family = Family.summon,
@@ -61,9 +61,9 @@ local junkmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "junkmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "junkman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "when_any_obstacle" },
 }
 
-return { junkman = junkman, ["junkmn-sp"] = junkmn_sp, ["junkmn-ds"] = junkmn_ds }
+return { junkman = junkman, junkman_sp = junkman_sp, junkman_ds = junkman_ds }

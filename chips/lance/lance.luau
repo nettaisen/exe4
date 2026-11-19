@@ -13,7 +13,7 @@ local exe4_lance = {}
 
 exe4_lance.kind = lance.make_kind("lance", {
     sprite = lance_sprite,
-    sound = asset.sound("sword-swing"),
+    sound = asset.sound("sword_swing"),
     attack = { is = collision.attack, hits = collision.hits_navis, hit_mod = { forward = true }, spark = sparks.of_element },
 })
 

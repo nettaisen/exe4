@@ -13,17 +13,17 @@ local panel_changer = {}
 -- A change (a "panel-change" record).
 panel_changer.change = common.change
 
-panel_changer.START_SOUND = asset.sound("panel-hole")
-panel_changer.TICK_SOUND = asset.sound("panel-change-tick")
-panel_changer.CHANGE_SOUND = asset.sound("panel-change")
-panel_changer.POISON_SOUND = asset.sound("panel-poison")
+panel_changer.START_SOUND = asset.sound("panel_hole")
+panel_changer.TICK_SOUND = asset.sound("panel_change_tick")
+panel_changer.CHANGE_SOUND = asset.sound("panel_change")
+panel_changer.POISON_SOUND = asset.sound("panel_poison")
 
 -- The conditions EXE4's rows use: a side's own area, the other side's, and any panel, none missing.
 panel_changer.OWN_AREA = { own_area = true, missing = false } :: PanelCondition
 panel_changer.OTHER_AREA = { enemy_area = true, missing = false } :: PanelCondition
 panel_changer.ANY = { missing = false } :: PanelCondition
 
-panel_changer.kind = common.make_kind("panel-changer")
+panel_changer.kind = common.make_kind("panel_changer")
 
 -- 0x080E4568: a changer of `change` on panel (`x`, `y`), on `spawner`'s side (EXE4's takes no facing of it);
 -- `holder` goes on once it is done. (It is spawned at the spawner's registers, which nothing reads.)

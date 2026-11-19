@@ -1,5 +1,5 @@
 --!strict
--- MegaMan's zap ring (`megaman/zap-ring`, weapon routine 0x04, 0x0800CD02: patch card 81's charged shot): Elec, its
+-- MegaMan's zap ring (`megaman/zap_ring`, weapon routine 0x04, 0x0800CD02: patch card 81's charged shot): Elec, its
 -- variant 3, damage by the navi's weapon level (AIData +8, NaviStats +0x0B: 30, 40, 50 by 0x0800CD28), hit parameter
 -- 10, its parameters 0; the ring throw (action 0x47, lib/rings) in animation 13, holding the ring (attachment row 0x1D,
 -- 0c-36), of ring row 0 (0x080DAFB0: 10 pixels a tick, paralysis for 90 ticks, sound 0x91, the ring 0c-37, hit modifier
@@ -9,8 +9,8 @@ local attachment = require("../../../objects/attachment")
 local ring = require("../../../objects/ring")
 local rings = require("../../../lib/rings")
 local statuses = require("../../../rules/status")
-local zap_ring_arm_sprite = asset.sprite("zap-ring-arm")
-local zap_ring_sprite = asset.sprite("zap-ring")
+local zap_ring_arm_sprite = asset.sprite("zap_ring_arm")
+local zap_ring_sprite = asset.sprite("zap_ring")
 
 local zap_ring = {}
 
@@ -19,14 +19,14 @@ local DAMAGE: { number } = { 30, 40, 50 }
 local ELEC, VARIANT, COUNTER = Element.elec, 3, 10
 
 local ACTION = rings.action {
-    id = "megaman/zap-ring/action",
+    id = "megaman/zap_ring/action",
     anim = 13,
     held = attachment.look { sprite = zap_ring_arm_sprite, palette = 0 },
     ring = ring.variant {
         sprite = zap_ring_sprite,
         speed = 10,
         status = statuses.paralyze_90,
-        sound = asset.sound("zap-ring"),
+        sound = asset.sound("zap_ring"),
         hit_mod = {},
         sand = nil,
     },
@@ -49,7 +49,7 @@ local function setup(navi: Object): Action
 end
 
 zap_ring.weapon = new.weapon {
-    id = "megaman/zap-ring",
+    id = "megaman/zap_ring",
     charge_ticks = { 210, 190, 170, 150, 130, 180 },
     setup = setup,
 }

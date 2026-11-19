@@ -1,0 +1,34 @@
+--!strict
+-- HolyPanl (EXE4 chip 0x08B): the panel in front of the user turns holy: the panel chips' controller
+-- (lib/panel_chips, the dimming chips' variant 0x0B) with the panel changer's row 6: the panel in front, whatever its
+-- side, shown as holy for 64 ticks, flickering, with the tick and change sounds.
+-- Its record is written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local panel_changer = require("../objects/panel_changer")
+local panel_chips = require("../lib/panel_chips")
+
+local chip: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 24,
+    damage = 40,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    dimming = panel_chips.hook(panel_changer.change {
+        panel = PanelType.holy,
+        panels = "front",
+        flicker = true,
+        ticks = 0x40,
+        condition = panel_changer.ANY,
+        tick_sound = panel_changer.TICK_SOUND,
+        change_sound = panel_changer.CHANGE_SOUND,
+    }),
+    megaman = "light",
+    auto_battle = { class = "own_panel_ahead" },
+}
+
+return { holy_panel = chip }

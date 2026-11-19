@@ -1,0 +1,60 @@
+--!strict
+-- GutsSoul (soul 2): EXE4's Double Soul with GutsMan, for a break chip given up (0x08020008[1]). MegaMan's
+-- sprite in it is 00-02, his face picture 6 (0x08014B78), GutsMan's image gutsman (08-02). Its weapons (0x080184F0's
+-- row 2): the buster on B, no A charge, GutsMan's fist charged (routine 0x24, ./charge); six quick B presses fire its
+-- machine gun (0x0800BE50, ./machine_gun). Its status reset (0x0800E1CA) gives each damaging Null and Break chip of the
+-- hand from its cursor on 30 more, and so does the custom screen as OK builds a hand in it (0x0801F29A). (What the
+-- souls share: forms/soul.)
+
+local charge = require("@self/charge")
+local chip = require("@self/chip").guts_soul
+local soul = require("./soul")
+local gutsman_sprite = asset.sprite("gutsman")
+local gutssoul_sprite = asset.sprite("guts_soul")
+local chip_hand = require("@exelib/chip_hand")
+
+-- The status reset's bonus, and the families it goes to.
+local BONUS = 30
+local function bonus_family(family: Family?): boolean
+    return family == Family.null or family == Family["break"]
+end
+
+-- 0x0800E1CA, and 0x0801F29A's for soul 2 on the hand installed.
+local function hand(side: number)
+    local i = battle.hand_cursor(side)
+    while true do
+        local c = chip_hand.chip(side, i)
+        if c == nil then
+            break
+        end
+        if chip_hand.damages(side, i) and bonus_family(c.family) then
+            chip_hand.add_bonus(side, i, "charge_bonus", BONUS)
+        end
+        i += 1
+    end
+end
+
+local form: FormDef = {
+    -- The version whose saves own it (rules/builds' groups).
+    version = Version.redsun,
+    soul = { family = Family["break"], turns = 3 },
+    custom = soul.custom { built = hand },
+    chip = chip,
+    change = chip.action,
+    revert = soul.revert,
+    image = soul.image(gutsman_sprite),
+    sprite = gutssoul_sprite,
+    element = Element.null,
+    buster_bonus = 0,
+    weapons = { buster = soul.buster, charge_shot = charge.weapon },
+    -- Six B presses, each within 10 ticks of the last, ask for the machine gun (request 0x20: the role
+    -- `actions.forced_charged_shot`).
+    rapid_presses = { presses = 6, window = 10 },
+    reset = function(navi: Object)
+        hand(navi.alliance)
+    end,
+    palette = 0,
+    mugshot = { normal = asset.mugshot("guts_soul") },
+}
+
+return { guts_soul = form }

@@ -21,7 +21,7 @@ local chip: Chip = {
     flags = { dimming = true, standard_library = true, library = true },
     dimming = controller.make {
         id = "blinder/controller",
-        sound = asset.sound("spark-flash"),
+        sound = asset.sound("spark_flash"),
         is = collision.collision_34,
         hits = collision.hits_navis,
         status = statuses.blind_480,

@@ -17,7 +17,7 @@
 
 local fists = require("./fist")
 local panels = require("@exelib/panels")
-local targets = require("@exelib/metrknuk/targets")
+local targets = require("@exelib/meteor_knuckle/targets")
 
 local navi = {}
 
@@ -31,8 +31,8 @@ type State = {
 
 local SPRITE = asset.sprite("duo")
 local navi_left = require("@exelib/navi_chips/left")
-local SOUND_ARRIVE = asset.sound("red-sun-dive")
-local SOUND_STOP = asset.sound("metal-punch")
+local SOUND_ARRIVE = asset.sound("red_sun_dive")
+local SOUND_STOP = asset.sound("metal_punch")
 
 -- His fists' targets: an enemy's panel is any an enemy's body is on (0x080CBABC); with no enemy standing no fist goes
 -- (0x080CB9C8).

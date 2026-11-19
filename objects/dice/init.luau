@@ -1,29 +1,29 @@
 --!strict
--- EXE4's die (attack object #5, 0x080CD9E8; its spawner 0x080CDCB8): EXE5's (@exelib/numbrman/dice: the same code)
+-- EXE4's die (attack object #5, 0x080CD9E8; its spawner 0x080CDCB8): EXE5's (@exelib/numberman/dice: the same code)
 -- with EXE4's differences: it states its own 40 HP and hit modifier 3 and no status (0x080CDA44, 0x080CDA74:
 -- `dice.own`, which each thrower hands it), places itself on its panel in its init (0x080CDA4A), has no markers and no
 -- face 9 of its own, and multiplies its damage's whole halfword by its face (0x080CDC6E); its effects are EXE4's rows
 -- 0 (its explosion), 2 (off solid ground) and 0x15 (the battle's end), its sounds EXE4's (its bounce TopMan's spin's).
--- Its throwers: NumberMan (chips/numbrman: an attack at navis that runs while dimmed) and NumberSoul's charged shot
+-- Its throwers: NumberMan (chips/numberman: an attack at navis that runs while dimmed) and NumberSoul's charged shot
 -- (action 0x15: a body the other side can hit).
 
 local collision = require("../rules/collision")
 local dice_sprite = asset.sprite("dice")
 local explosion_sprite = asset.sprite("explosion")
 local puff_sprite = asset.sprite("puff")
-local small_puff_sprite = asset.sprite("small-puff")
+local small_puff_sprite = asset.sprite("small_puff")
 
 local dice = {}
 
-dice.made = require("@exelib/numbrman/dice").make {
+dice.made = require("@exelib/numberman/dice").make {
     id = "dice",
     sprite = dice_sprite,
     explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 27 },
     puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 },
     gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     blow_up = asset.sound("damage"),
-    bounce = asset.sound("top-spin"),
-    burst = asset.sound("heat-burst"),
+    bounce = asset.sound("top_spin"),
+    burst = asset.sound("heat_burst"),
     -- NumberMan's: an attack at navis (rows 4 and 5); the others': their own body, which the other side or a blocker
     -- hits (rows 12 and 13).
     attack = collision.attack,

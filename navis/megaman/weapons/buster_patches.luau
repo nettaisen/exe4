@@ -49,23 +49,23 @@ local function patch(id: string, variant: ProjectileVariant): Weapon
 end
 
 -- Routine 0x34 (card 43): row 7, cracking.
-buster_patches.crack = patch("megaman/crack-buster", row("megaman/crack-buster/row", { effect = "crack" }, nil))
+buster_patches.crack = patch("megaman/crack_buster", row("megaman/crack_buster/row", { effect = "crack" }, nil))
 -- Routine 0x35 (card 44): row 8, poison.
 buster_patches.poison = patch(
-    "megaman/poison-buster",
-    row("megaman/poison-buster/row", { effect = "set_type", left_side = PanelType.poison, right_side = PanelType.poison }, nil)
+    "megaman/poison_buster",
+    row("megaman/poison_buster/row", { effect = "set_type", left_side = PanelType.poison, right_side = PanelType.poison }, nil)
 )
 -- Routine 0x5A (card 12): row 0x0B, blinding.
-buster_patches.blind = patch("megaman/blind-buster", row("megaman/blind-buster/row", nil, statuses.blind_1200))
+buster_patches.blind = patch("megaman/blind_buster", row("megaman/blind_buster/row", nil, statuses.blind_1200))
 -- Routine 0x68 (card 13): row 0x0D, grass.
 buster_patches.grass = patch(
-    "megaman/grass-buster",
-    row("megaman/grass-buster/row", { effect = "set_type", left_side = PanelType.grass, right_side = PanelType.grass }, nil)
+    "megaman/grass_buster",
+    row("megaman/grass_buster/row", { effect = "set_type", left_side = PanelType.grass, right_side = PanelType.grass }, nil)
 )
 -- Routine 0x69 (card 102): row 0x0E, ice.
 buster_patches.ice = patch(
-    "megaman/ice-buster",
-    row("megaman/ice-buster/row", { effect = "set_type", left_side = PanelType.ice, right_side = PanelType.ice }, nil)
+    "megaman/ice_buster",
+    row("megaman/ice_buster/row", { effect = "set_type", left_side = PanelType.ice, right_side = PanelType.ice }, nil)
 )
 
 return buster_patches

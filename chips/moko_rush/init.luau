@@ -1,0 +1,55 @@
+--!strict
+-- MokoRus1, MokoRus2 and MokoRus3 (EXE4 chips 0x082 to 0x084; their records at 0x080197EC + n * 0x2C): the spawners'
+-- action 0x20 (lib/spawners), its variant 1: three Molokos charge along the rows (./moloko), in palette 0, 2 or 4 (twice
+-- their parameter, 0 to 2).
+-- Their records are written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local moloko = require("@self/moloko")
+local spawners = require("../lib/spawners")
+
+local moko_rush_1: Chip = {
+    action = spawners.action { id = "moko_rush_1/action", spawn = moloko.spawner(0) },
+    codes = { "C", "I", "M" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 14,
+    damage = 60,
+    counter = 20,
+    lockout = 100,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "when_run_clear" },
+}
+
+local moko_rush_2: Chip = {
+    action = spawners.action { id = "moko_rush_2/action", spawn = moloko.spawner(2) },
+    codes = { "G", "K", "U" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 28,
+    damage = 90,
+    counter = 20,
+    lockout = 100,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "when_run_clear" },
+}
+
+local moko_rush_3: Chip = {
+    action = spawners.action { id = "moko_rush_3/action", spawn = moloko.spawner(4) },
+    codes = { "O", "T", "Y" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 42,
+    damage = 120,
+    counter = 20,
+    lockout = 100,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "when_run_clear" },
+}
+
+return { moko_rush_1 = moko_rush_1, moko_rush_2 = moko_rush_2, moko_rush_3 = moko_rush_3 }

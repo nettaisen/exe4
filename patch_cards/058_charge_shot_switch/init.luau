@@ -8,9 +8,9 @@ local chips = require("../navis/megaman/weapons/chips")
 local card: SlottedPatchCard = {
     slot = cards.SLOT_0E,
     effects = {
-        cards.charged_shot(chips.wideswrd),
+        cards.charged_shot(chips.wide_sword),
         cards.clear_bug("weapon"),
     },
 }
 
-return { ["058-charge-shot-switch"] = card }
+return { ["058_charge_shot_switch"] = card }

@@ -1,6 +1,6 @@
 --!strict
 -- EXE4's auto battle (docs/design/exe4-map.md §18 item 74): in a netbattle, the dark soul of a dark MegaMan (soul 15,
--- navis/megaman/forms/darksoul), whose idle the AI drives (./ai) on his own player's auto battle data (./block).
+-- navis/megaman/forms/dark_soul), whose idle the AI drives (./ai) on his own player's auto battle data (./block).
 
 local block = require("@self/block")
 

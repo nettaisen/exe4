@@ -6,10 +6,10 @@
 # (0x080FC138).
 settings = 0xC
 
-[jp-redsun]
+[jp_redsun]
 # Its settings records at 0x080FC00C.
 settings = -300  # -0x12C
 
-[jp-bluemoon]
+[jp_bluemoon]
 # Its settings records at 0x080FC018.
 settings = -288  # -0x120

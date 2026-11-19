@@ -10,9 +10,9 @@ local elem = require("@self/elem")
 
 local COUNT, TICKS = 3, 60
 
-local elemflar: Chip = {
+local element_flare: Chip = {
     action = elem.action {
-        id = "elemflar/action",
+        id = "element_flare/action",
         rages_on = PanelType.lava,
         palette = 0,
         count = COUNT,
@@ -31,9 +31,9 @@ local elemflar: Chip = {
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
-local elemice: Chip = {
+local element_ice: Chip = {
     action = elem.action {
-        id = "elemice/action",
+        id = "element_ice/action",
         rages_on = PanelType.ice,
         palette = 1,
         count = COUNT,
@@ -52,9 +52,9 @@ local elemice: Chip = {
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
-local elemleaf: Chip = {
+local element_leaf: Chip = {
     action = elem.action {
-        id = "elemleaf/action",
+        id = "element_leaf/action",
         rages_on = PanelType.grass,
         palette = 2,
         count = COUNT,
@@ -73,9 +73,9 @@ local elemleaf: Chip = {
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
-local elemsand: Chip = {
+local element_sand: Chip = {
     action = elem.action {
-        id = "elemsand/action",
+        id = "element_sand/action",
         rages_on = PanelType.pitfall,
         palette = 3,
         count = COUNT,
@@ -94,9 +94,9 @@ local elemsand: Chip = {
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
-local elemdark: Chip = {
+local element_dark: Chip = {
     action = elem.action {
-        id = "elemdark/action",
+        id = "element_dark/action",
         rages_on = PanelType.poison,
         palette = 4,
         raging_leaves = PanelType.poison,
@@ -118,4 +118,4 @@ local elemdark: Chip = {
     auto_battle = { class = "into_reach", range = "three_in_row" },
 }
 
-return { elemflar = elemflar, elemice = elemice, elemleaf = elemleaf, elemsand = elemsand, elemdark = elemdark }
+return { element_flare = element_flare, element_ice = element_ice, element_leaf = element_leaf, element_sand = element_sand, element_dark = element_dark }

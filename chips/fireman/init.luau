@@ -30,7 +30,7 @@ local fireman: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local firemn_sp: Chip = {
+local fireman_sp: Chip = {
     codes = { "F" },
     element = Element.fire,
     family = Family.fire,
@@ -43,12 +43,12 @@ local firemn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "firemn-sp/controller", palette = 2 }.hook,
+    dimming = navi.controller { id = "fireman_sp/controller", palette = 2 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local firemn_ds: Chip = {
+local fireman_ds: Chip = {
     codes = { "F" },
     element = Element.fire,
     family = Family.fire,
@@ -60,9 +60,9 @@ local firemn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "firemn-ds/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "fireman_ds/controller", palette = 3 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { fireman = fireman, ["firemn-sp"] = firemn_sp, ["firemn-ds"] = firemn_ds }
+return { fireman = fireman, fireman_sp = fireman_sp, fireman_ds = fireman_ds }

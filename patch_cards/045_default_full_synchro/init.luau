@@ -11,4 +11,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["045-default-full-synchro"] = card }
+return { ["045_default_full_synchro"] = card }

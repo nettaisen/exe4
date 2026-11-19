@@ -7,7 +7,7 @@
 --
 -- The routines that read the blocks are EXE6's or EXE5's, the same or nearly (docs/design/exe4-map.md §3), or EXE4's
 -- own (§14); the verification workspace's tools/exe5/bmap.py and tools/exe4/emap.py pair EXE4's routines with EXE6's
--- and EXE5's, and its tools/cross-rom find each block's pointer. What the four ROMs have alike (the battle sprites,
+-- and EXE5's, and its tools/cross_rom find each block's pointer. What the four ROMs have alike (the battle sprites,
 -- the backgrounds, the sound, the field, most of the HUD and the custom screen) is read from the Red Sun US ROM
 -- (B4WE), Red Sun's base version; a version's own (its giga chips, its souls' faces) from its US ROM (versions.luau);
 -- the Japanese words from the Japanese Red Sun ROM (lettering.luau). The e-Reader cards' pictures, which no ROM holds,

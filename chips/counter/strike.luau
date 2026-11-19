@@ -11,8 +11,8 @@ local sparks = require("../../lib/sparks")
 
 local strike = {}
 
-local SPRITE = asset.sprite("counter-strike")
-local SOUND = asset.sound("counter-strike")
+local SPRITE = asset.sprite("counter_strike")
+local SOUND = asset.sound("counter_strike")
 local Z = 0x10_0000
 local HIT_MOD: HitModifier = { flinch = true }
 local TICKS = 0x25

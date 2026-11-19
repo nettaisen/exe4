@@ -30,7 +30,7 @@ local topman: Chip = {
     auto_battle = { class = "into_reach", range = "three_ahead" },
 }
 
-local topmn_sp: Chip = {
+local topman_sp: Chip = {
     codes = { "T" },
     element = Element.null,
     family = Family.metal,
@@ -43,12 +43,12 @@ local topmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "topmn-sp/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "topman_sp/controller", palette = 3 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "three_ahead" },
 }
 
-local topmn_ds: Chip = {
+local topman_ds: Chip = {
     codes = { "T" },
     element = Element.null,
     family = Family.metal,
@@ -60,9 +60,9 @@ local topmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "topmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "topman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "three_ahead" },
 }
 
-return { topman = topman, ["topmn-sp"] = topmn_sp, ["topmn-ds"] = topmn_ds }
+return { topman = topman, topman_sp = topman_sp, topman_ds = topman_ds }

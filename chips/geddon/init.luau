@@ -24,7 +24,7 @@ local BREAK = quake.change {
 local POISON = quake.change { apply = quake.poison, show = quake.bubbles }
 
 -- Geddon1 (EXE4 chip 0x07B): a quake cracks every solid panel of the field, one every 8 ticks in a random order.
-local geddon1: Chip = {
+local geddon_1: Chip = {
     codes = { "J", "K", "W" },
     element = Element.null,
     family = Family["break"],
@@ -41,7 +41,7 @@ local geddon1: Chip = {
 
 -- Geddon2 (EXE4 chip 0x07C): a quake breaks every solid panel of the field (cracking those something stands on), one
 -- every 8 ticks in a random order.
-local geddon2: Chip = {
+local geddon_2: Chip = {
     codes = { "N", "T", "Y" },
     element = Element.null,
     family = Family["break"],
@@ -58,7 +58,7 @@ local geddon2: Chip = {
 
 -- Geddon3 (EXE4 chip 0x07D): a quake turns every solid panel of the field to poison, one every 8 ticks in a random
 -- order.
-local geddon3: Chip = {
+local geddon_3: Chip = {
     codes = { "H", "Q", "U" },
     element = Element.null,
     family = Family.null,
@@ -73,4 +73,4 @@ local geddon3: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-return { geddon1 = geddon1, geddon2 = geddon2, geddon3 = geddon3 }
+return { geddon_1 = geddon_1, geddon_2 = geddon_2, geddon_3 = geddon_3 }

@@ -2,7 +2,7 @@
 -- MegaMan's weapons the NaviCust's weapon bug (bug 8, rules/navicust: NaviStats +0x0A = 0x1F, 0x20, 0x21 by its level,
 -- 0x08042E44) sets his charged shot to, the taunt (./taunt) its third: weapon routines 0x1F and 0x20.
 --
--- - The rock cube (`megaman/rock-cube`, routine 0x1F, 0x0800CE7C: 200 damage, hit parameter 0xB2, its rock row 1;
+-- - The rock cube (`megaman/rock_cube`, routine 0x1F, 0x0800CE7C: 200 damage, hit parameter 0xB2, its rock row 1;
 --   action 0x73, 0x080EEA56): the navi stands (animation 0x12, its load not forced; a counter window) 5 ticks, then
 --   with Rush's sound (0xAA) a rock cube rises on the panel ahead (../../../objects/rock, row 1: 200 HP, the cube's
 --   standing animation 1, the panel crack's sound as it breaks), one of the side's field objects; 31 ticks, and back to
@@ -33,7 +33,7 @@ local CUBE = rock.variant {
     hp = 200,
     element = Element.null,
     debris_palette = 0,
-    break_sound = asset.sound("panel-crack"),
+    break_sound = asset.sound("panel_crack"),
     identity = nil,
 }
 local PLACE_SOUND = asset.sound("place")
@@ -72,7 +72,7 @@ local function recover(me: Object, s: State)
 end
 
 bug_shots.rock_cube_action = new.action {
-    id = "megaman/rock-cube/action",
+    id = "megaman/rock_cube/action",
     state = { timer = schema.i16 },
     -- 0x080EEA56.
     update = function(me: Object, s: State)
@@ -175,7 +175,7 @@ local function bubble_setup(navi: Object): Action
     return bug_shots.bubble_action
 end
 
-bug_shots.rock_cube = new.weapon { id = "megaman/rock-cube", charge_ticks = ROCK_CUBE_CHARGE, setup = rock_cube_setup }
+bug_shots.rock_cube = new.weapon { id = "megaman/rock_cube", charge_ticks = ROCK_CUBE_CHARGE, setup = rock_cube_setup }
 bug_shots.bubble = new.weapon { id = "megaman/bubble", charge_ticks = BUBBLE_CHARGE, setup = bubble_setup }
 
 return bug_shots

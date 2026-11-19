@@ -8,7 +8,7 @@
 -- variant other than 0, which neither routine sets.)
 
 local attachment = require("../objects/attachment")
-local guts_fist_sprite = asset.sprite("guts-fist")
+local guts_fist_sprite = asset.sprite("guts_fist")
 
 local punch = {}
 
@@ -17,7 +17,7 @@ local SWING, RECOVER = 0x0, 0x4
 local ANIM = 10
 local FIST = attachment.look { sprite = guts_fist_sprite, palette = 0 }
 -- Its sound as it starts (0xA4).
-local SOUND = asset.sound("fist-swing")
+local SOUND = asset.sound("fist_swing")
 -- Its ticks: 24 swinging, striking on the tick its count reaches 16, then 6 recovering.
 local SWING_TICKS, STRIKE_AT, RECOVER_TICKS = 23, 16, 5
 -- The hitbox's height and hit modifier.

@@ -14,7 +14,7 @@ local HIT = { hits = collision.hits_navis, is = collision.slash }
 
 -- Their slashes (the effect table 0x080E1698's rows 0x19, 0x17, 0x18, 0x1A and 0x1B: the slash sprite 0c-14): one
 -- panel's, a column's, two panels', and the wide and long ones in palette 5.
-local SLASH = asset.sprite("sword-slash")
+local SLASH = asset.sprite("sword_slash")
 local SWORD_SLASH = new.effect { sprite = SLASH, anim = 2, palette = 0, steps = 12 }
 local WIDE_SLASH = new.effect { sprite = SLASH, anim = 0, palette = 0, steps = 15 }
 local LONG_SLASH = new.effect { sprite = SLASH, anim = 1, palette = 0, steps = 15 }
@@ -46,8 +46,8 @@ local sword: Chip = {
     auto_battle = { class = "into_reach", range = "one_ahead" },
 }
 
-local wideswrd: Chip = {
-    action = slash("wideswrd/action", regions.wide, WIDE_SLASH),
+local wide_sword: Chip = {
+    action = slash("wide_sword/action", regions.wide, WIDE_SLASH),
     codes = { "E", "L", "S" },
     element = Element.null,
     family = Family.sword,
@@ -61,8 +61,8 @@ local wideswrd: Chip = {
     auto_battle = { class = "into_reach", range = "column_ahead" },
 }
 
-local longswrd: Chip = {
-    action = slash("longswrd/action", regions.long, LONG_SLASH),
+local long_sword: Chip = {
+    action = slash("long_sword/action", regions.long, LONG_SLASH),
     codes = { "E", "L", "S" },
     element = Element.null,
     family = Family.sword,
@@ -76,8 +76,8 @@ local longswrd: Chip = {
     auto_battle = { class = "into_reach", range = "two_in_row" },
 }
 
-local wideblde: Chip = {
-    action = slash("wideblde/action", regions.wide, WIDE_BLADE_SLASH),
+local wide_blade: Chip = {
+    action = slash("wide_blade/action", regions.wide, WIDE_BLADE_SLASH),
     codes = { "C", "K", "S" },
     element = Element.null,
     family = Family.sword,
@@ -91,8 +91,8 @@ local wideblde: Chip = {
     auto_battle = { class = "into_reach", range = "column_ahead" },
 }
 
-local longblde: Chip = {
-    action = slash("longblde/action", regions.long, LONG_BLADE_SLASH),
+local long_blade: Chip = {
+    action = slash("long_blade/action", regions.long, LONG_BLADE_SLASH),
     codes = { "G", "R", "S" },
     element = Element.null,
     family = Family.sword,
@@ -106,4 +106,4 @@ local longblde: Chip = {
     auto_battle = { class = "into_reach", range = "two_in_row" },
 }
 
-return { sword = sword, wideswrd = wideswrd, longswrd = longswrd, wideblde = wideblde, longblde = longblde }
+return { sword = sword, wide_sword = wide_sword, long_sword = long_sword, wide_blade = wide_blade, long_blade = long_blade }

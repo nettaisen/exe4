@@ -12,7 +12,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/protoman/navi")
 local navi_chips = require("../../lib/navi_chips")
 local protoman_sprite = asset.sprite("protoman")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local sword_sprite = asset.sprite("sword")
 
 -- What a panel he lands on must be, of his side: solid, and free of these (0x080C70CC).
@@ -36,7 +36,7 @@ end
 local protoman = common.make {
     id = "protoman/navi",
     appear_sound = asset.sound("appear"),
-    swing_sound = asset.sound("sword-swing"),
+    swing_sound = asset.sound("sword_swing"),
     attachment = attachment.kind,
     target = collision.hits_navis,
     self_type = collision.slash,

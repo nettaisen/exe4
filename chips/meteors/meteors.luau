@@ -30,7 +30,7 @@ local ROW = falling_meteor.row { is = collision.thrown, hits = collision.hits_na
 -- (ShotStar's meteors are this kind too, of row 1: chips/shotstar.)
 local METEOR = falling_meteor.make_kind("meteor", {
     sprite = meteor_sprite,
-    sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
+    sounds = { fall = asset.sound("justice_one"), land = asset.sound("hit_bomb_1") },
     spark = sparks.of_element,
     -- Effect row 6 (0x080E1698): 14-0a.
     burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 },

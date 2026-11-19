@@ -12,7 +12,7 @@ local flag = {}
 local SPRITE = asset.sprite("flag")
 local DAMAGE = asset.sound("damage")
 -- Its breaking (0x080E078A: 0x6F).
-local BROKEN = asset.sound("hit-bomb-0")
+local BROKEN = asset.sound("hit_bomb_0")
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The damage slots it takes (null to wood: not the drain's).
 local ELEMENTS: { PrimaryElement } = { PrimaryElement.null, PrimaryElement.fire, PrimaryElement.aqua, PrimaryElement.elec, PrimaryElement.wood }

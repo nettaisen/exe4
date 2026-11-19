@@ -11,4 +11,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["111-gigafolder1"] = card }
+return { ["111_gigafolder1"] = card }

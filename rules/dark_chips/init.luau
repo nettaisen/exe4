@@ -20,14 +20,14 @@
 --   neither the pick nor the use touches it.
 
 local MOVE_BUG = require("./move_bug")
-local drkcanon = require("../chips/drkcanon").drkcanon
-local drksword = require("../chips/drksword").drksword
-local darkbomb = require("../chips/darkbomb").darkbomb
-local drkvulcn = require("../chips/drkvulcn").drkvulcn
-local drklance = require("../chips/drklance").drklance
-local drkspred = require("../chips/drkspred").drkspred
-local drkstage = require("../chips/drkstage").drkstage
-local drkrecov = require("../chips/drkrecov").drkrecov
+local dark_cannon = require("../chips/dark_cannon").dark_cannon
+local dark_sword = require("../chips/dark_sword").dark_sword
+local dark_bomb = require("../chips/dark_bomb").dark_bomb
+local dark_vulcan = require("../chips/dark_vulcan").dark_vulcan
+local dark_lance = require("../chips/dark_lance").dark_lance
+local dark_spreader = require("../chips/dark_spreader").dark_spreader
+local dark_stage = require("../chips/dark_stage").dark_stage
+local dark_recovery = require("../chips/dark_recovery").dark_recovery
 local status = require("./status")
 local taunt = require("../navis/megaman/weapons/taunt")
 local chip_hand = require("@exelib/chip_hand")
@@ -68,22 +68,22 @@ local function list(runs: { Run }): { Chip }
     return out
 end
 local HEALTHY = list {
-    { chip = drksword, n = 12 },
-    { chip = darkbomb, n = 12 },
-    { chip = drkvulcn, n = 12 },
-    { chip = drklance, n = 12 },
-    { chip = drkspred, n = 8 },
-    { chip = drkstage, n = 8 },
+    { chip = dark_sword, n = 12 },
+    { chip = dark_bomb, n = 12 },
+    { chip = dark_vulcan, n = 12 },
+    { chip = dark_lance, n = 12 },
+    { chip = dark_spreader, n = 8 },
+    { chip = dark_stage, n = 8 },
 }
 local HURT = list {
-    { chip = drkcanon, n = 24 },
-    { chip = drksword, n = 3 },
-    { chip = darkbomb, n = 3 },
-    { chip = drkvulcn, n = 3 },
-    { chip = drklance, n = 3 },
-    { chip = drkspred, n = 2 },
-    { chip = drkstage, n = 2 },
-    { chip = drkrecov, n = 24 },
+    { chip = dark_cannon, n = 24 },
+    { chip = dark_sword, n = 3 },
+    { chip = dark_bomb, n = 3 },
+    { chip = dark_vulcan, n = 3 },
+    { chip = dark_lance, n = 3 },
+    { chip = dark_spreader, n = 2 },
+    { chip = dark_stage, n = 2 },
+    { chip = dark_recovery, n = 24 },
 }
 
 -- 0x0801DF5E: a draw of the side's console's RNG1, its low six bits an entry of the list.
@@ -178,39 +178,39 @@ end
 -- 0x0801EAF4: each chip's cost (its NaviStats byte and value, 0x0801EA9A's rules), by chip.
 local COSTS: { [Chip]: (side: number, stats: Stats) -> () } = {
     -- +0x0A: the charged shot becomes weapon routine 0x21, the taunt, which angers the other side's navi.
-    [drkcanon] = function(_side: number, stats: Stats)
+    [dark_cannon] = function(_side: number, stats: Stats)
         stats.charge_shot_weapon = taunt.weapon
     end,
     -- +0x0D: the move bug, the keys the navi steps by with none held (0x0800B4D8: effects.steps.bug): right, left.
-    [drksword] = function(_side: number, stats: Stats)
+    [dark_sword] = function(_side: number, stats: Stats)
         stats.move_bug = MOVE_BUG.right
     end,
-    [darkbomb] = function(_side: number, stats: Stats)
+    [dark_bomb] = function(_side: number, stats: Stats)
         stats.move_bug = MOVE_BUG.left
     end,
     -- 0x40: a status on its user (0x080134C4's 0x21: 720 ticks of confusion).
-    [drkvulcn] = function(side: number, _stats: Stats)
+    [dark_vulcan] = function(side: number, _stats: Stats)
         local navi = battle.player(side)
         if navi then
             navi:take_status(status.confuse_720)
         end
     end,
     -- +0x0F: the custom screen's drain, 6, else 4 up to 6, else 3.
-    [drklance] = function(_side: number, stats: Stats)
+    [dark_lance] = function(_side: number, stats: Stats)
         stats.custom_drain = worsened(stats.custom_drain, 6, 4)
     end,
     -- +0x1B: a step leaves a poison panel (the panel trail, 4: effects.panel_trail).
-    [drkspred] = function(_side: number, stats: Stats)
+    [dark_spreader] = function(_side: number, stats: Stats)
         stats.panel_trail = 4
     end,
     -- +0x12: the custom level one less, down to 2.
-    [drkstage] = function(_side: number, stats: Stats)
+    [dark_stage] = function(_side: number, stats: Stats)
         if stats.custom_level > 2 then
             stats.custom_level -= 1
         end
     end,
     -- +0x0F as DrkLance's, then +0x0E (0x0801EB04): the HP drain, 10, else 6 up to 10, else 3.
-    [drkrecov] = function(_side: number, stats: Stats)
+    [dark_recovery] = function(_side: number, stats: Stats)
         stats.custom_drain = worsened(stats.custom_drain, 6, 4)
         stats.hp_drain = worsened(stats.hp_drain, 10, 6)
     end,

@@ -30,7 +30,7 @@ local aquaman: Chip = {
     auto_battle = { class = "three_before_target" },
 }
 
-local aquamn_sp: Chip = {
+local aquaman_sp: Chip = {
     codes = { "A" },
     element = Element.aqua,
     family = Family.aqua,
@@ -43,12 +43,12 @@ local aquamn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "aquamn-sp/controller", palette = 2 }.hook,
+    dimming = navi.controller { id = "aquaman_sp/controller", palette = 2 }.hook,
     megaman = "light",
     auto_battle = { class = "three_before_target" },
 }
 
-local aquamn_ds: Chip = {
+local aquaman_ds: Chip = {
     codes = { "A" },
     element = Element.aqua,
     family = Family.aqua,
@@ -60,9 +60,9 @@ local aquamn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "aquamn-ds/controller", palette = 3 }.hook,
+    dimming = navi.controller { id = "aquaman_ds/controller", palette = 3 }.hook,
     megaman = "dark",
     auto_battle = { class = "three_before_target" },
 }
 
-return { aquaman = aquaman, ["aquamn-sp"] = aquamn_sp, ["aquamn-ds"] = aquamn_ds }
+return { aquaman = aquaman, aquaman_sp = aquaman_sp, aquaman_ds = aquaman_ds }

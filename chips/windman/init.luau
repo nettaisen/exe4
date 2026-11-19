@@ -30,7 +30,7 @@ local windman: Chip = {
     auto_battle = { class = "into_reach", range = "ring_two_ahead" },
 }
 
-local windmn_sp: Chip = {
+local windman_sp: Chip = {
     codes = { "W" },
     element = Element.null,
     family = Family.wind,
@@ -43,12 +43,12 @@ local windmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "windmn-sp/controller", palette = 4 }.hook,
+    dimming = navi.controller { id = "windman_sp/controller", palette = 4 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "ring_two_ahead" },
 }
 
-local windmn_ds: Chip = {
+local windman_ds: Chip = {
     codes = { "W" },
     element = Element.null,
     family = Family.wind,
@@ -60,9 +60,9 @@ local windmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "windmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "windman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "ring_two_ahead" },
 }
 
-return { windman = windman, ["windmn-sp"] = windmn_sp, ["windmn-ds"] = windmn_ds }
+return { windman = windman, windman_sp = windman_sp, windman_ds = windman_ds }

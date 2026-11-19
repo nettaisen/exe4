@@ -15,7 +15,7 @@ local punisher = require("./punisher").punisher
 local rising_bubble = require("../objects/rising_bubble")
 local statue = require("@exelib/guardian/statue")
 local strike = require("@exelib/guardian/strike")
-local guardian_statue_sprite = asset.sprite("guardian-statue")
+local guardian_statue_sprite = asset.sprite("guardian_statue")
 local lightning_sprite = asset.sprite("lightning")
 local puff_sprite = asset.sprite("puff")
 

@@ -1,7 +1,7 @@
 --!strict
 -- WindMan, the navi of EXE4's WindMan chips (EXE4's actor object #0x34, 0x080C3DA8: EXE4's own, on EXE6's navi
 -- template), and each chip's controller, which brings him (effect object #0x46, 0x080E6E68: lib/navi_chips' long
--- course with a wait of 61 ticks). He appears with the swirl on his head (EXE4's actor #0x5C, @exelib/numbrman/face's
+-- course with a wait of 61 ticks). He appears with the swirl on his head (EXE4's actor #0x5C, @exelib/numberman/face's
 -- object, its sprite row 2) and stands 20 ticks; then, three times, 11 ticks and a blow (animation 16, 16 ticks)
 -- that sends a tornado (./tornado) from the panel ahead 5 ticks in; 11 ticks on, he goes.
 
@@ -20,14 +20,14 @@ type State = {
 }
 
 local SPRITE = asset.sprite("windman")
-local windman_swirl_sprite = asset.sprite("windman-swirl")
+local windman_swirl_sprite = asset.sprite("windman_swirl")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- The swirl on his head (actor #0x5C's sprite row 2, 10-28; its Param2 1: with the fight on, it follows him from its
 -- first update). (Row 2's follow sets its animation 1 while the object at its owner's +0x64 has Param1 0: WindMan
 -- never sets one, so it stays at 0, as rows 0 and 1 keep theirs.)
-local SWIRL = require("@exelib/numbrman/face").make {
+local SWIRL = require("@exelib/numberman/face").make {
     id = "windman/swirl",
     sprite = windman_swirl_sprite,
     follows_in_fight = true,

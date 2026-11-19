@@ -12,4 +12,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["040-b-left-ability-activation"] = card }
+return { ["040_b_left_ability_activation"] = card }

@@ -1,0 +1,55 @@
+--!strict
+-- EXE4's GrabRvng's and GrabBnsh's dimming controller (effect object #0x22, 0x080E474C) and hand (attack object #0x46,
+-- 0x080D5FF8): @exelib/grab_banish (EXE6's and EXE5's code) with EXE4's look and its own taking back. The hand drops from
+-- 256 pixels on the grab shot's sheet (0c-13) with its sounds (0x93, 0x94) and hits as a thrown break of hit modifier
+-- 0x0B. The taking back (0x080E4836) counts the panels of the user's home columns (side 0's 1 to 3, side 1's 4 to 6)
+-- the other side holds, each flashing (effect row 0x45: the grab shot's animation 1), and returns none; with its sound
+-- (0x79) a hand drops on every enemy navi for each, 31 ticks apart; then 91 ticks (set as the strikes end).
+
+local collision = require("../../rules/collision")
+local common = require("@exelib/grab_banish/controller")
+local hand = require("@exelib/grab_banish/hand")
+
+local SHEET = asset.sprite("grab_shot")
+local FLASH = new.effect { sprite = SHEET, anim = 1, palette = 0, steps = 20 }
+-- The other side's ownership of a panel, of the user's side (0x080E4888, by side).
+local OTHER: PanelCondition = { enemy_area = true }
+local AFTER_STRIKES = 90
+
+local hand_kind = hand.make_kind {
+    id = "grab_banish/hand",
+    sprite = SHEET,
+    fall_sound = asset.sound("grab_shot_2"),
+    land_sound = asset.sound("grab_shot"),
+    grab_steps = 20,
+    target = collision.hits_navis,
+    self_type = collision.thrown_break,
+    height = 0x100_0000,
+    hit_mod = { flinch = true, flash = true, back_far = true },
+}
+
+-- 0x080E4836: of the user's home columns (from 0x080E4898's, by side: 1 or 4), each panel, the rows from the bottom,
+-- that the other side holds flashes; how many.
+local function take_back(me: Object): number
+    local first = 1 + 3 * me.alliance
+    local n = 0
+    for x = first, first + 2 do
+        for y = 3, 1, -1 do
+            if field.check(x, y, OTHER, me.alliance) then
+                n += 1
+                local cx, cy = field.center(x, y)
+                battle.effect(Vec3.new(cx, cy, 0), FLASH)
+            end
+        end
+    end
+    return n
+end
+
+return common.make {
+    id = "grab_banish/controller",
+    hand = hand_kind,
+    returned = FLASH,
+    return_sound = asset.sound("program_advance_part"),
+    take_back = take_back,
+    after_strikes = AFTER_STRIKES,
+}

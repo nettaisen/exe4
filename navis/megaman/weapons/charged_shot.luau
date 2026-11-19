@@ -1,5 +1,5 @@
 --!strict
--- MegaMan's charged shot in EXE4 (`megaman/charged-shot`): the original's weapon routine 1 (0x0800CC54: (Attack + 1) *
+-- MegaMan's charged shot in EXE4 (`megaman/charged_shot`): the original's weapon routine 1 (0x0800CC54: (Attack + 1) *
 -- 10 damage, every attack variable 0) and the shot it starts (action 0x24, 0x080ECC2C), EXE4's own: as the buster's
 -- shot (./buster) but always firing, the charged projectile (row 6) with the attack's damage alone (its halfword),
 -- and after the recovery runs out a move may still start on the same tick.
@@ -19,7 +19,7 @@ local SHOOT, RECOVER = 0x0, 0x4
 local SHOT_Z = 0x18_0000
 -- Its shot (projectile row 6: action 0x24, 0x080ECC7E).
 local SHOT = shot.variant {
-    id = "megaman/charged-shot/shot",
+    id = "megaman/charged_shot/shot",
     collision = { is = collision.attack, hits = collision.hits_navis },
     hit_mod = {},
     element = Element.null,
@@ -28,7 +28,7 @@ local SHOT = shot.variant {
 -- The flash's animation: NaviStats +0x23, the navi's number (MegaMan's 0).
 local NAVI_NUMBER = 0
 -- Its sound: the buster's shot (0x6A).
-local SHOT_SOUND = asset.sound("buster-shot")
+local SHOT_SOUND = asset.sound("buster_shot")
 
 type State = { timer: number }
 
@@ -78,7 +78,7 @@ local function recover(me: Object, s: State)
 end
 
 charged_shot.action = new.action {
-    id = "megaman/charged-shot/action",
+    id = "megaman/charged_shot/action",
     state = { timer = schema.i16 },
     update = function(me: Object, s: State)
         local step = me.step
@@ -103,7 +103,7 @@ function charged_shot.setup(navi: Object): Action
 end
 
 charged_shot.weapon = new.weapon {
-    id = "megaman/charged-shot",
+    id = "megaman/charged_shot",
     -- The charge table's row 1 (0x080180B8 by NaviStats +0x0A, 0x0800BD6A and 0x0800BD1C), by Charge 0 to 4; Charge
     -- 5 reads on into row 2's first entry.
     charge_ticks = { 120, 100, 85, 70, 60, 180 },

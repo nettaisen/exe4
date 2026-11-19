@@ -33,11 +33,11 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("metalman")
-local metalman_fist_sprite = asset.sprite("metalman-fist")
-local strike_flash_sprite = asset.sprite("strike-flash")
+local metalman_fist_sprite = asset.sprite("metalman_fist")
+local strike_flash_sprite = asset.sprite("strike_flash")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_WIND_UP = asset.sound("metal-fist")
+local SOUND_WIND_UP = asset.sound("metal_fist")
 
 -- His fist: the follow effect's look 5 (sprite 10-39), whose routine (0x080E5AC8) hides it but while he stands in his
 -- animation 0, then shows it as he is, on his panel a pixel up, with his blending and mosaic; once the fight is on it
@@ -65,7 +65,7 @@ local FIST = follow_effect.make {
         me.pos = Vec3.new(p.x, p.y - 0x10000, p.z)
     end,
 }
-local SOUND_PUNCH = asset.sound("metal-punch")
+local SOUND_PUNCH = asset.sound("metal_punch")
 -- The punch's flash on a solid panel (effect row 0x47).
 local FLASH = new.effect { sprite = strike_flash_sprite, anim = 0, palette = 0, steps = 22 }
 local FADE_GRAY = 0x1F

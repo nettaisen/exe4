@@ -13,4 +13,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["078-first-life-aura"] = card }
+return { ["078_first_life_aura"] = card }

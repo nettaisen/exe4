@@ -13,4 +13,4 @@ local card: SlottedPatchCard = {
     },
 }
 
-return { ["046-first-barrier200"] = card }
+return { ["046_first_barrier200"] = card }

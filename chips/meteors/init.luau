@@ -6,8 +6,8 @@
 local meteors = require("@self/meteors")
 local spawners = require("../lib/spawners")
 
-local meteors1: Chip = {
-    action = spawners.action { id = "meteors1/action", spawn = meteors.spawn },
+local meteors_1: Chip = {
+    action = spawners.action { id = "meteors_1/action", spawn = meteors.spawn },
     codes = { "G", "L", "S", "*" },
     element = Element.fire,
     family = Family.fire,
@@ -21,8 +21,8 @@ local meteors1: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local meteors2: Chip = {
-    action = spawners.action { id = "meteors2/action", spawn = meteors.spawn },
+local meteors_2: Chip = {
+    action = spawners.action { id = "meteors_2/action", spawn = meteors.spawn },
     codes = { "M", "Q", "T" },
     element = Element.fire,
     family = Family.fire,
@@ -36,8 +36,8 @@ local meteors2: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-local meteors3: Chip = {
-    action = spawners.action { id = "meteors3/action", spawn = meteors.spawn },
+local meteors_3: Chip = {
+    action = spawners.action { id = "meteors_3/action", spawn = meteors.spawn },
     codes = { "C", "R", "Z" },
     element = Element.fire,
     family = Family.fire,
@@ -51,4 +51,4 @@ local meteors3: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { meteors1 = meteors1, meteors2 = meteors2, meteors3 = meteors3 }
+return { meteors_1 = meteors_1, meteors_2 = meteors_2, meteors_3 = meteors_3 }

@@ -8,7 +8,7 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local spreader = require("@self/spreader")
-local pink_flash_sprite = asset.sprite("pink-flash")
+local pink_flash_sprite = asset.sprite("pink_flash")
 local spreader_sprite = asset.sprite("spreader")
 
 -- Its gun (attachment row 0x0A: 0c-19).

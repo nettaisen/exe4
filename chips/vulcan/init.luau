@@ -8,7 +8,7 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/vulcan")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 local vulcan_sprite = asset.sprite("vulcan")
 
 -- Bullet row 12: the panel found and the one behind it, modifier 1, its hit (effect row 0x26) shown once at the bullet.
@@ -26,8 +26,8 @@ local function fire(id: string, shots: number): Action
     return vulcan.action { id = id, gun = GUN, shots = shots, shot = SHOT }
 end
 
-local vulcan1: Chip = {
-    action = fire("vulcan1/action", 3),
+local vulcan_1: Chip = {
+    action = fire("vulcan_1/action", 3),
     codes = { "E", "S", "V", "*" },
     element = Element.null,
     family = Family.null,
@@ -41,8 +41,8 @@ local vulcan1: Chip = {
     auto_battle = { class = "behind_target" },
 }
 
-local vulcan2: Chip = {
-    action = fire("vulcan2/action", 5),
+local vulcan_2: Chip = {
+    action = fire("vulcan_2/action", 5),
     codes = { "B", "H", "O" },
     element = Element.null,
     family = Family.null,
@@ -56,8 +56,8 @@ local vulcan2: Chip = {
     auto_battle = { class = "behind_target" },
 }
 
-local vulcan3: Chip = {
-    action = fire("vulcan3/action", 7),
+local vulcan_3: Chip = {
+    action = fire("vulcan_3/action", 7),
     codes = { "O", "T", "W" },
     element = Element.null,
     family = Family.null,
@@ -71,4 +71,4 @@ local vulcan3: Chip = {
     auto_battle = { class = "behind_target" },
 }
 
-return { vulcan1 = vulcan1, vulcan2 = vulcan2, vulcan3 = vulcan3 }
+return { vulcan_1 = vulcan_1, vulcan_2 = vulcan_2, vulcan_3 = vulcan_3 }

@@ -15,7 +15,7 @@ local ring = {}
 
 type State = { variant: RingVariant }
 
-local RING_VARIANT = schema.record_type("ring-variant")
+local RING_VARIANT = schema.record_type("ring_variant")
 
 -- A ring's variant.
 function ring.variant(v: RingVariant): RingVariant

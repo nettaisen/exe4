@@ -15,7 +15,7 @@ local collision = require("./collision")
 local deletion = require("./deletion")
 local ice_cube = require("../objects/ice_cube")
 local invalid = require("../chips/invalid").invalid
-local machine_gun = require("../navis/megaman/forms/gutssoul/machine_gun")
+local machine_gun = require("../navis/megaman/forms/guts_soul/machine_gun")
 local regions = require("@exelib/regions")
 local sparks = require("../lib/sparks")
 local statuses = require("./status")
@@ -27,10 +27,10 @@ local underground_hole = require("../objects/underground_hole")
 local zeroed = require("../chips/zeroed").zeroed
 local blindness_sprite = asset.sprite("blindness")
 local confusion_sprite = asset.sprite("confusion")
-local full_synchro_aura_sprite = asset.sprite("full-synchro-aura")
+local full_synchro_aura_sprite = asset.sprite("full_synchro_aura")
 local heal_sprite = asset.sprite("heal")
-local hit_marker_sprite = asset.sprite("hit-marker")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local hit_marker_sprite = asset.sprite("hit_marker")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 local rock_sprite = asset.sprite("rock")
 
 local roles: RolesSpec = {
@@ -96,13 +96,13 @@ local roles: RolesSpec = {
         -- An obstacle taking damage (0x08014058: the stages' boulder).
         damage = asset.sound("damage"),
         -- The custom gauge fills (0x080147F4); the HP box's alarm (0x0801475E).
-        gauge_full = asset.sound("gauge-full"),
-        low_hp = asset.sound("low-hp"),
+        gauge_full = asset.sound("gauge_full"),
+        low_hp = asset.sound("low_hp"),
         -- A counter hit (0x08013410); a chip's Full Synchro boost (0x0800D54E).
-        counter_hit = asset.sound("counter-hit"),
-        damage_bonus = asset.sound("damage-bonus"),
+        counter_hit = asset.sound("counter_hit"),
+        damage_bonus = asset.sound("damage_bonus"),
         -- A panel cracks or breaks (0x08009AEC); a panel turns to poison (0x08009D68).
-        panel_crack = asset.sound("panel-crack"),
+        panel_crack = asset.sound("panel_crack"),
         -- What the custom screen can't pick or take back (0x08020386, 0x08020634).
         refused = asset.sound("refused"),
         -- The custom screen's, which its player hears (docs/design/exe4-map.md §5): the window slides in (0x0801E24E);
@@ -110,22 +110,22 @@ local roles: RolesSpec = {
         -- description opens (0x080203C0; its close, SELECT's hiding and L's message play none); a dark chip under the
         -- cursor, every 61 ticks (0x0801E4A6); the Program Advance animation's chips of the recipe and the Program
         -- Advance (0x0801E74E, 0x0801E83A).
-        custom_open = asset.sound("custom-open"),
-        custom_cursor = asset.sound("custom-cursor"),
-        custom_pick = asset.sound("custom-pick"),
-        custom_ok = asset.sound("custom-ok"),
-        custom_back = asset.sound("custom-back"),
-        custom_description = asset.sound("description-open"),
-        custom_shade = asset.sound("dark-hover"),
-        program_advance_part = asset.sound("program-advance-part"),
-        program_advance = asset.sound("program-advance"),
+        custom_open = asset.sound("custom_open"),
+        custom_cursor = asset.sound("custom_cursor"),
+        custom_pick = asset.sound("custom_pick"),
+        custom_ok = asset.sound("custom_ok"),
+        custom_back = asset.sound("custom_back"),
+        custom_description = asset.sound("description_open"),
+        custom_shade = asset.sound("dark_hover"),
+        program_advance_part = asset.sound("program_advance_part"),
+        program_advance = asset.sound("program_advance"),
         -- A battle entered: what every battle's start plays as the screen
         -- breaks into it, a random encounter's too (the battle's game state's entries, 0x08005490, 0x080054EE and 0x08005520).
         -- No rule plays it; the app plays it as it goes into a battle.
         encounter = asset.sound("encounter"),
         -- The fight's: a navi's hit, every console's (0x08013A96: 0x6B), a navi in auto battle's (0x6D).
         hit = asset.sound("hit"),
-        auto_battle_hit = asset.sound("auto-battle-hit"),
+        auto_battle_hit = asset.sound("auto_battle_hit"),
         -- A hit turned aside (the guard's spark, 0x0800B0F6: 0x6E). Unlike EXE6's, the routine doesn't test for a
         -- pause: a guarded object hit the tick before a pause and running through it would sound it again, which
         -- nothing of EXE4's content does (the stages' gear runs while paused only before the fight).
@@ -133,11 +133,11 @@ local roles: RolesSpec = {
         -- HP recovered (the heal, 0x0800ABCA: 0x9A).
         recovery = asset.sound("heal"),
         -- A trap springs (the trap's mark, 0x0800815C: 0x10D). (A cut-in's flash plays nothing, 0x08008BB6: no `cut_in`.)
-        trap_mark = asset.sound("dimming-sparkle"),
+        trap_mark = asset.sound("dimming_sparkle"),
         -- A thrown obstacle (JunkMan's, the obstacles' throw request) lifted (0x08011616: 0xFA, ColorPt's points' rise)
         -- and flying (0x08011690: 0x146, the meteors' fall).
-        obstacle_lift = asset.sound("point-rise"),
-        obstacle_throw = asset.sound("justice-one"),
+        obstacle_lift = asset.sound("point_rise"),
+        obstacle_throw = asset.sound("justice_one"),
     },
     effects = {
         -- HP recovered (the heal, 0x0800ABCA: effect row 7, 0x080E16B4).
@@ -190,32 +190,32 @@ local roles: RolesSpec = {
         -- The battle start's song by the battle's type (0x080074A4, the table 0x08007510: types 0x46 and 0x47 song
         -- 0x14, 0x48 and 0x49 song 0x15): a triple battle's, the boss battles' song, and a single battle's, the virus
         -- battles'.
-        link_battle = asset.sound("boss-battle"),
-        link_battle_single = asset.sound("virus-battle"),
+        link_battle = asset.sound("boss_battle"),
+        link_battle_single = asset.sound("virus_battle"),
         -- The round's end (0x080071F8): the winner's, a special battle's (battle flag 2); a netbattle's loser's
         -- (0x0800727C).
         winner = asset.sound("winner"),
-        winner_special = asset.sound("winner-special"),
+        winner_special = asset.sound("winner_special"),
         loser = asset.sound("loser"),
         -- The start screen's, which its first state sets as the screen opens (song 0: 0x08025430, then the setter
         -- 0x08000586). No rule plays it; the app plays it across its menus.
-        title_screen = asset.sound("title-screen"),
+        title_screen = asset.sound("title_screen"),
     },
     banners = {
         -- A round's start, a turn's (a netbattle's: 0x080070BA), the final turns' (0x08007094).
-        round_start = asset.banner("battle-number-start"),
-        turn_start = asset.banner("turn-start"),
-        final_turn = asset.banner("final-turn"),
+        round_start = asset.banner("battle_number_start"),
+        turn_start = asset.banner("turn_start"),
+        final_turn = asset.banner("final_turn"),
         -- A draw (0x0800730C); a win's, and a win and a loss on the judge's ruling (0x08007220, 0x080072C8); the
         -- damage judge's (0x080163EE).
         draw = asset.banner("draw"),
-        win = asset.banner("enemy-deleted"),
-        win_judged = asset.banner("you-win"),
-        lose_judged = asset.banner("you-lose"),
-        judge = asset.banner("hit-damage-judge"),
+        win = asset.banner("enemy_deleted"),
+        win_judged = asset.banner("you_win"),
+        lose_judged = asset.banner("you_lose"),
+        judge = asset.banner("hit_damage_judge"),
         -- A Program Advance, and a selection that makes none (0x0801E696: no netbattle's screen shows the second).
-        program_advance = asset.banner("program-advance"),
-        program_advance_empty = asset.banner("program-advance-empty"),
+        program_advance = asset.banner("program_advance"),
+        program_advance_empty = asset.banner("program_advance_empty"),
         -- (No `telop` nor `telop_remote`: a dimming chip's telop, 0x08008C2A, has no banner of its own. 0x0801650C lays
         -- the chip's name on the banner block, the user's console's, 0x08016454, or on the second block, the other
         -- player's, 0x080164B4, each in the banners' steps, and the HUD draws it in its own look, `Hud.layout.telop`.)

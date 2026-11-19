@@ -4,4 +4,4 @@
 # the navis met in the net), the tournaments' (24, at the three venues) and Duo's two (../compat/assets.toml). Their
 # names are the locales' (`battle_themes`, by asset name). Presentation, read with the locales: no tick reads them, so
 # the content hash leaves them out.
-themes = ["virus-battle", "boss-battle", "tournament-battle", "final-battle"]
+themes = ["virus_battle", "boss_battle", "tournament_battle", "final_battle"]

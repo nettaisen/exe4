@@ -7,6 +7,6 @@ local common = require("@exelib/panel_bursts")
 
 local panel_bursts = {}
 
-panel_bursts.kind = common.make_kind("panel-bursts")
+panel_bursts.kind = common.make_kind("panel_bursts")
 
 return panel_bursts

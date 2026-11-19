@@ -30,7 +30,7 @@ local videoman: Chip = {
     auto_battle = { class = "into_reach", range = "two_and_three_ahead" },
 }
 
-local videmn_sp: Chip = {
+local videoman_sp: Chip = {
     codes = { "V" },
     element = Element.null,
     family = Family.null,
@@ -43,12 +43,12 @@ local videmn_sp: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true },
-    dimming = navi.controller { id = "videmn-sp/controller", palette = 5 }.hook,
+    dimming = navi.controller { id = "videoman_sp/controller", palette = 5 }.hook,
     megaman = "light",
     auto_battle = { class = "into_reach", range = "two_and_three_ahead" },
 }
 
-local videmn_ds: Chip = {
+local videoman_ds: Chip = {
     codes = { "V" },
     element = Element.null,
     family = Family.null,
@@ -60,9 +60,9 @@ local videmn_ds: Chip = {
     cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, navi = true, library = true, variable_damage = true },
-    dimming = navi.controller { id = "videmn-ds/controller", palette = 6 }.hook,
+    dimming = navi.controller { id = "videoman_ds/controller", palette = 6 }.hook,
     megaman = "dark",
     auto_battle = { class = "into_reach", range = "two_and_three_ahead" },
 }
 
-return { videoman = videoman, ["videmn-sp"] = videmn_sp, ["videmn-ds"] = videmn_ds }
+return { videoman = videoman, videoman_sp = videoman_sp, videoman_ds = videoman_ds }

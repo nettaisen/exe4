@@ -1,0 +1,58 @@
+--!strict
+-- SidBmbo1, SidBmbo2 and SidBmbo3 (EXE4 chips 0x04E to 0x050; their records at 0x080197EC + n * 0x2C): the spawners'
+-- action 0x20 (lib/spawners), its variant 5, which holds the user 40 ticks: a bamboo swings down three columns ahead
+-- (./bamboo), in palette 0, 2 or 4 (twice their parameter, 0 to 2).
+-- Their records are written by tools/exe4/gen_content.py (bn6battle-verify) from the EXE4 ROMs.
+
+local bamboo = require("@self/bamboo")
+local spawners = require("../lib/spawners")
+
+-- The spawners' hold for variant 5 (0x080EC9B0).
+local HOLD = 40
+
+local side_bamboo_1: Chip = {
+    action = spawners.action { id = "side_bamboo_1/action", spawn = bamboo.spawner(0), hold = HOLD },
+    codes = { "B", "I", "R", "*" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 14,
+    damage = 80,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+local side_bamboo_2: Chip = {
+    action = spawners.action { id = "side_bamboo_2/action", spawn = bamboo.spawner(2), hold = HOLD },
+    codes = { "H", "O", "S" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 22,
+    damage = 110,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+local side_bamboo_3: Chip = {
+    action = spawners.action { id = "side_bamboo_3/action", spawn = bamboo.spawner(4), hold = HOLD },
+    codes = { "A", "F", "U" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 30,
+    damage = 140,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+return { side_bamboo_1 = side_bamboo_1, side_bamboo_2 = side_bamboo_2, side_bamboo_3 = side_bamboo_3 }

@@ -10,7 +10,7 @@
 
 local sp_chips = {}
 
-local SP_DELETION_TIMES = schema.record_type("sp-deletion-times")
+local SP_DELETION_TIMES = schema.record_type("sp_deletion_times")
 
 -- The deletion times at which an SP chip's damage steps down (0x080194F0).
 sp_chips.DELETION_TIMES = new.record(SP_DELETION_TIMES, {

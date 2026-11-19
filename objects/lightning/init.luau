@@ -1,6 +1,6 @@
 --!strict
 -- EXE4's lightning (attack object 0x8E, 0x080DEFEC: EXE5's 0x080D8348, which no EXE5 chip uses), which LigtNin's
--- towers' controller (chips/ligtnin) strikes onto a panel holding an obstacle: with its sound (0x143) it hits the
+-- towers' controller (chips/lightning) strikes onto a panel holding an obstacle: with its sound (0x143) it hits the
 -- eight panels around it once (region 0x10: an attack hitting navis, modifier 3, no spark), then sparks around them,
 -- one every 2 ticks in its order (0x080DF0F8), each for 3 ticks (effect row 0x6B: 14-05's animation 13), and goes
 -- after the eighth. Unturned, its shadow drawn with it.
@@ -11,7 +11,7 @@ local regions = require("@exelib/regions")
 local lightning = {}
 
 local SPRITE = asset.sprite("lightning")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
 local SOUND = asset.sound("lightning")
 local SPARK = new.effect { sprite = hit_sparks_sprite, anim = 13, palette = 0, steps = 2 }
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
